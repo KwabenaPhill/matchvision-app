@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-14T21:19:20",
+ "updated": "2026-10-14T23:45:08",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-15 Thursday",
@@ -1369,18 +1369,347 @@
     "WhatsApp": false,
     "Community": false
    },
-   "results": {},
+   "results": {
+    "date": "2026-10-14",
+    "matches": [
+     {
+      "n": 1,
+      "home": "AS Roma",
+      "away": "Real Madrid",
+      "status": "FT",
+      "score": "3-4",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Real Madrid or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.28,
+        "p": 0.74,
+        "won": true
+       },
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.8,
+        "p": 0.72,
+        "won": false
+       },
+       {
+        "text": "AS Roma to score",
+        "market": "TEAM GOALS",
+        "odds": null,
+        "p": 0.66,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 2,
+      "home": "Manchester City",
+      "away": "Paris Saint-Germain",
+      "status": "FT",
+      "score": "2-4",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.73,
+        "p": 0.68,
+        "won": false
+       },
+       {
+        "text": "Manchester City or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.36,
+        "p": 0.68,
+        "won": false
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.4,
+        "p": 0.57,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 3,
+      "home": "Lask Linz",
+      "away": "Liverpool",
+      "status": "FT",
+      "score": "3-6",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Liverpool to win",
+        "market": "RESULT",
+        "odds": 1.3,
+        "p": 0.66,
+        "won": true
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.4,
+        "p": 0.64,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.67,
+        "p": 0.57,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 4,
+      "home": "Bodo/Glimt",
+      "away": "Borussia Dortmund",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.4,
+        "p": 0.69,
+        "won": false
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.36,
+        "p": 0.69,
+        "won": false
+       },
+       {
+        "text": "Borussia Dortmund or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.36,
+        "p": 0.64,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 5,
+      "home": "Real Betis",
+      "away": "Porto",
+      "status": "FT",
+      "score": "3-2",
+      "predicted": "2-0",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.22,
+        "p": 0.7,
+        "won": true
+       },
+       {
+        "text": "Real Betis or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.3,
+        "p": 0.75,
+        "won": true
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": 2.2,
+        "p": 0.52,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 6,
+      "home": "Aston Villa",
+      "away": "Fenerbahçe",
+      "status": "FT",
+      "score": "6-0",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.2,
+        "p": 0.76,
+        "won": true
+       },
+       {
+        "text": "Fenerbahçe to score",
+        "market": "TEAM GOALS",
+        "odds": null,
+        "p": 0.64,
+        "won": false
+       },
+       {
+        "text": "Aston Villa to win",
+        "market": "RESULT",
+        "odds": 1.62,
+        "p": 0.55,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 7,
+      "home": "Feyenoord",
+      "away": "Como",
+      "status": "FT",
+      "score": "3-2",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Como or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.28,
+        "p": 0.82,
+        "won": false
+       },
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.73,
+        "p": 0.58,
+        "won": false
+       },
+       {
+        "text": "Feyenoord to score",
+        "market": "TEAM GOALS",
+        "odds": null,
+        "p": 0.67,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 8,
+      "home": "Slovan Bratislava",
+      "away": "VfB Stuttgart",
+      "status": "FT",
+      "score": "0-3",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "VfB Stuttgart to win",
+        "market": "RESULT",
+        "odds": 1.3,
+        "p": 0.69,
+        "won": true
+       },
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.91,
+        "p": 0.57,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.62,
+        "p": 0.56,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 9,
+      "home": "Shakhtar Donetsk",
+      "away": "AEK Athens FC",
+      "status": "FT",
+      "score": "3-1",
+      "predicted": "0-2",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.36,
+        "p": 0.82,
+        "won": false
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": 2.1,
+        "p": 0.55,
+        "won": false
+       },
+       {
+        "text": "AEK Athens FC to score",
+        "market": "TEAM GOALS",
+        "odds": null,
+        "p": 0.68,
+        "won": true
+       }
+      ]
+     }
+    ],
+    "checked": "2026-10-14T23:45:03",
+    "banker": {
+     "total": 2.0,
+     "won": false
+    },
+    "won": 14,
+    "lost": 13,
+    "waiting": 0,
+    "pick1": [
+     5,
+     9
+    ],
+    "correct_scores": 0
+   },
    "video_link": true
   }
  ],
- "win_rate": {},
+ "win_rate": {
+  "DC": {
+   "won": 2,
+   "of": 5
+  },
+  "U3.5": {
+   "won": 1,
+   "of": 5
+  },
+  "TEAM": {
+   "won": 3,
+   "of": 4
+  },
+  "BTTS-Y": {
+   "won": 2,
+   "of": 4
+  },
+  "WIN": {
+   "won": 3,
+   "of": 3
+  },
+  "O2.5": {
+   "won": 1,
+   "of": 2
+  },
+  "O1.5": {
+   "won": 2,
+   "of": 2
+  },
+  "BTTS-N": {
+   "won": 0,
+   "of": 2
+  }
+ },
  "banker_streak": 0,
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "naLXF6thU0cehMZHKCaYBw==",
-  "nonce": "yryoijmm2i6Iihz6/BN0aQ==",
-  "ct": "1S4soqr7yj7VJ9br2w7wyeUHtMIDGbwfvbGejM0zk7kQgFVlc/+G4olVp3eVLPtKlFC4VtYS0QMMYvPaswNNgA7A111+T9DgyLTRM95I+u3qJbzLud15eLWiRGXqAo6+Q09LrzeTPFAOb60Stu8cT4UOufKiZh7ktzTQpfJ7mUPY5WBbCObAAGc9Bbih8ar3cvY8",
-  "mac": "ehHNlTdBhdp3KWCf+IDAV/OkpVfkAXHcf1gqwrkvB2Y="
+  "salt": "0BX8D3UFDdsY7u3tXOtC0w==",
+  "nonce": "3Brx4Jt731XC0o9ZngZ0/w==",
+  "ct": "1QLmwVuwNnfU3SG0KZsYM+UhAGuHwU+KGljbtYEP++Cyn4++lOJEL1dqF91DEgtC5DJOSRBg34Nr1LQAsjaErqmKPAbe+g/1/V5DQ30C0CJMsh4DdTkWj9MOmBd+5xmI2HWPXvkpTfm/CC7I9D9+uUuK5AK9vqmYjvT/kfKg8prLzjyG/Jb0PYyc8igUEjUF5l8P",
+  "mac": "FNp5uc7PSWdGKyOIE0eDXTLYrS4K5CAM22pTYwwC3Do="
  }
 }
