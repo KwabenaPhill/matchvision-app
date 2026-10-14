@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-14T19:24:29",
+ "updated": "2026-10-14T21:16:06",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-15 Thursday",
@@ -19,21 +19,40 @@
      "home": "Celta Vigo",
      "away": "Juventus",
      "score": "0-2",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.28,
-       "chance": 0.83
+       "chance": 0.83,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - No",
        "odds": 1.95,
-       "chance": 0.59
+       "chance": 0.59,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.4,
-       "chance": 0.66
+       "chance": 0.66,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       }
      ]
     },
@@ -44,21 +63,41 @@
      "home": "Red Bull Salzburg",
      "away": "AC Milan",
      "score": "1-2",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.2,
-       "chance": 0.74
+       "chance": 0.74,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.28,
-       "chance": 0.73
+       "chance": 0.73,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Red Bull Salzburg to score",
        "odds": null,
-       "chance": 0.7
+       "chance": 0.7,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
       }
      ]
     },
@@ -69,21 +108,40 @@
      "home": "Lech Poznan",
      "away": "Bayer Leverkusen",
      "score": "1-2",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.22,
-       "chance": 0.77
+       "chance": 0.77,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Over 2.5 goals",
        "odds": 1.44,
-       "chance": 0.55
+       "chance": 0.55,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - Yes",
        "odds": 1.5,
-       "chance": 0.56
+       "chance": 0.56,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
       }
      ]
     },
@@ -94,21 +152,41 @@
      "home": "Benfica",
      "away": "Celtic",
      "score": "3-0",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.22,
-       "chance": 0.77
+       "chance": 0.77,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Under 3.5 goals",
        "odds": 1.73,
-       "chance": 0.6
+       "chance": 0.6,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "Benfica over 1.5 goals",
        "odds": null,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
       }
      ]
     },
@@ -119,21 +197,41 @@
      "home": "Lyon",
      "away": "Crystal Palace",
      "score": "2-1",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.2,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Lyon to score",
        "odds": null,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.28,
-       "chance": 0.73
+       "chance": 0.73,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       }
      ]
     },
@@ -144,21 +242,39 @@
      "home": "Marseille",
      "away": "Olympiakos Piraeus",
      "score": "1-2",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.44,
-       "chance": 0.77
+       "chance": 0.77,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "Marseille to score",
        "odds": null,
-       "chance": 0.69
+       "chance": 0.69,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Under 9.5 corners",
        "odds": 1.67,
-       "chance": 0.56
+       "chance": 0.56,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null
       }
      ]
     },
@@ -169,21 +285,41 @@
      "home": "Union St. Gilloise",
      "away": "Real Sociedad",
      "score": "2-1",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.2,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Real Sociedad to score",
        "odds": null,
-       "chance": 0.68
+       "chance": 0.68,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.3,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       }
      ]
     },
@@ -194,21 +330,40 @@
      "home": "HNK Hajduk Split",
      "away": "Ajax",
      "score": "1-3",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 2.5 goals",
        "odds": 1.53,
-       "chance": 0.75
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - Yes",
        "odds": 1.73,
-       "chance": 0.73
+       "chance": 0.73,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
       },
       {
        "text": "Ajax over 1.5 goals",
        "odds": null,
-       "chance": 0.66
+       "chance": 0.66,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
+       },
+       "live": null
       }
      ]
     },
@@ -219,21 +374,40 @@
      "home": "Atalanta",
      "away": "Pafos",
      "score": "2-0",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.57,
-       "chance": 0.74
+       "chance": 0.74,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.25,
-       "chance": 0.75
+       "chance": 0.75,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - No",
        "odds": 1.91,
-       "chance": 0.57
+       "chance": 0.57,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       }
      ]
     },
@@ -244,21 +418,40 @@
      "home": "Bournemouth",
      "away": "Sturm Graz",
      "score": "3-0",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.2,
-       "chance": 0.78
+       "chance": 0.78,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Under 3.5 goals",
        "odds": 1.91,
-       "chance": 0.68
+       "chance": 0.68,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - No",
        "odds": 1.91,
-       "chance": 0.57
+       "chance": 0.57,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       }
      ]
     },
@@ -269,21 +462,40 @@
      "home": "CSKA Sofia",
      "away": "Monaco",
      "score": "0-2",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.2,
-       "chance": 0.71
+       "chance": 0.71,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.3,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - No",
        "odds": 1.83,
-       "chance": 0.56
+       "chance": 0.56,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       }
      ]
     },
@@ -294,21 +506,40 @@
      "home": "Torreense",
      "away": "Sunderland",
      "score": "0-2",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.17,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.25,
-       "chance": 0.75
+       "chance": 0.75,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - No",
        "odds": 1.95,
-       "chance": 0.57
+       "chance": 0.57,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       }
      ]
     },
@@ -319,21 +550,40 @@
      "home": "Brighton",
      "away": "Kauno Žalgiris",
      "score": "3-0",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "BTTS - No",
        "odds": 1.36,
-       "chance": 0.64
+       "chance": 0.64,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       },
       {
        "text": "Over 1.5 goals 1st half",
        "odds": 1.53,
-       "chance": 0.61
+       "chance": 0.61,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Under 3.5 goals",
        "odds": 2.75,
-       "chance": 0.58
+       "chance": 0.58,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       }
      ]
     },
@@ -344,21 +594,41 @@
      "home": "Ferencvarosi TC",
      "away": "Viktoria Plzen",
      "score": "2-1",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.2,
-       "chance": 0.8
+       "chance": 0.8,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Ferencvarosi TC over 1.5 goals",
        "odds": null,
-       "chance": 0.59
+       "chance": 0.59,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.3,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       }
      ]
     },
@@ -369,21 +639,40 @@
      "home": "AZ Alkmaar",
      "away": "Hapoel Beer Sheva",
      "score": "2-0",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.67,
-       "chance": 0.76
+       "chance": 0.76,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - No",
        "odds": 1.95,
-       "chance": 0.6
+       "chance": 0.6,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       },
       {
        "text": "AZ Alkmaar over 1.5 goals",
        "odds": null,
-       "chance": 0.55
+       "chance": 0.55,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
       }
      ]
     },
@@ -394,21 +683,41 @@
      "home": "Celje",
      "away": "Omonia Nicosia",
      "score": "0-2",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.4,
-       "chance": 0.81
+       "chance": 0.81,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "Omonia Nicosia to score",
        "odds": null,
-       "chance": 0.69
+       "chance": 0.69,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "Over 0.5 goals 1st half",
        "odds": 1.36,
-       "chance": 0.69
+       "chance": 0.69,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
       }
      ]
     },
@@ -419,21 +728,39 @@
      "home": "Sparta Praha",
      "away": "Lillestrom",
      "score": "2-0",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.17,
-       "chance": 0.77
+       "chance": 0.77,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
       },
       {
        "text": "Under 10.5 corners",
        "odds": 1.67,
-       "chance": 0.56
+       "chance": 0.56,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null
       },
       {
        "text": "Sparta Praha over 1.5 goals",
        "odds": null,
-       "chance": 0.61
+       "chance": 0.61,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
       }
      ]
     },
@@ -444,21 +771,40 @@
      "home": "Dinamo Zagreb",
      "away": "Anderlecht",
      "score": "1-0",
+     "date": "2026-10-15",
+     "live": null,
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.4,
-       "chance": 0.84
+       "chance": 0.84,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
       },
       {
        "text": "Dinamo Zagreb to score",
        "odds": null,
-       "chance": 0.7
+       "chance": 0.7,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
       },
       {
        "text": "BTTS - No",
        "odds": 2.1,
-       "chance": 0.59
+       "chance": 0.59,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
       }
      ]
     }
@@ -498,7 +844,8 @@
     "WhatsApp": false,
     "Community": false
    },
-   "results": {}
+   "results": {},
+   "video_link": true
   },
   {
    "date": "2026-10-14",
@@ -512,21 +859,49 @@
      "home": "AS Roma",
      "away": "Real Madrid",
      "score": "1-2",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 3,
+      "ga": 4,
+      "hh": null,
+      "ha": null,
+      "espn": "401915414",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Real Madrid or draw",
        "odds": 1.28,
-       "chance": 0.74
+       "chance": 0.74,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": true
       },
       {
        "text": "Under 3.5 goals",
        "odds": 1.8,
-       "chance": 0.72
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": false
       },
       {
        "text": "AS Roma to score",
        "odds": null,
-       "chance": 0.66
+       "chance": 0.66,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": true
       }
      ]
     },
@@ -537,21 +912,48 @@
      "home": "Manchester City",
      "away": "Paris Saint-Germain",
      "score": "2-1",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 2,
+      "ga": 4,
+      "hh": null,
+      "ha": null,
+      "espn": "401915407",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.73,
-       "chance": 0.68
+       "chance": 0.68,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": false
       },
       {
        "text": "Manchester City or draw",
        "odds": 1.36,
-       "chance": 0.68
+       "chance": 0.68,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": false
       },
       {
        "text": "BTTS - Yes",
        "odds": 1.4,
-       "chance": 0.57
+       "chance": 0.57,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": true
       }
      ]
     },
@@ -562,21 +964,48 @@
      "home": "Lask Linz",
      "away": "Liverpool",
      "score": "1-2",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 3,
+      "ga": 6,
+      "hh": null,
+      "ha": null,
+      "espn": "401915415",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Liverpool to win",
        "odds": 1.3,
-       "chance": 0.66
+       "chance": 0.66,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": true
       },
       {
        "text": "Over 2.5 goals",
        "odds": 1.4,
-       "chance": 0.64
+       "chance": 0.64,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": true
       },
       {
        "text": "BTTS - Yes",
        "odds": 1.67,
-       "chance": 0.57
+       "chance": 0.57,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": true
       }
      ]
     },
@@ -587,21 +1016,48 @@
      "home": "Bodo/Glimt",
      "away": "Borussia Dortmund",
      "score": "1-2",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 1,
+      "ga": 0,
+      "hh": null,
+      "ha": null,
+      "espn": "401915393",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Over 2.5 goals",
        "odds": 1.4,
-       "chance": 0.69
+       "chance": 0.69,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": false
       },
       {
        "text": "BTTS - Yes",
        "odds": 1.36,
-       "chance": 0.69
+       "chance": 0.69,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": false
       },
       {
        "text": "Borussia Dortmund or draw",
        "odds": 1.36,
-       "chance": 0.64
+       "chance": 0.64,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": false
       }
      ]
     },
@@ -612,21 +1068,48 @@
      "home": "Real Betis",
      "away": "Porto",
      "score": "2-0",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 3,
+      "ga": 2,
+      "hh": null,
+      "ha": null,
+      "espn": "401915408",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.22,
-       "chance": 0.7
+       "chance": 0.7,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": true
       },
       {
        "text": "Real Betis or draw",
        "odds": 1.3,
-       "chance": 0.75
+       "chance": 0.75,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": true
       },
       {
        "text": "BTTS - No",
        "odds": 2.2,
-       "chance": 0.52
+       "chance": 0.52,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": false
       }
      ]
     },
@@ -637,21 +1120,49 @@
      "home": "Aston Villa",
      "away": "Fenerbahçe",
      "score": "2-1",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 6,
+      "ga": 0,
+      "hh": null,
+      "ha": null,
+      "espn": "401915409",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Over 1.5 goals",
        "odds": 1.2,
-       "chance": 0.76
+       "chance": 0.76,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": true
       },
       {
        "text": "Fenerbahçe to score",
        "odds": null,
-       "chance": 0.64
+       "chance": 0.64,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": false
       },
       {
        "text": "Aston Villa to win",
        "odds": 1.62,
-       "chance": 0.55
+       "chance": 0.55,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": true
       }
      ]
     },
@@ -662,21 +1173,49 @@
      "home": "Feyenoord",
      "away": "Como",
      "score": "1-2",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 3,
+      "ga": 2,
+      "hh": null,
+      "ha": null,
+      "espn": "401915416",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Como or draw",
        "odds": 1.28,
-       "chance": 0.82
+       "chance": 0.82,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": false
       },
       {
        "text": "Under 3.5 goals",
        "odds": 1.73,
-       "chance": 0.58
+       "chance": 0.58,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": false
       },
       {
        "text": "Feyenoord to score",
        "odds": null,
-       "chance": 0.67
+       "chance": 0.67,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": true
       }
      ]
     },
@@ -687,21 +1226,48 @@
      "home": "Slovan Bratislava",
      "away": "VfB Stuttgart",
      "score": "1-2",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 0,
+      "ga": 3,
+      "hh": null,
+      "ha": null,
+      "espn": "401915405",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "VfB Stuttgart to win",
        "odds": 1.3,
-       "chance": 0.69
+       "chance": 0.69,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": true
       },
       {
        "text": "Under 3.5 goals",
        "odds": 1.91,
-       "chance": 0.57
+       "chance": 0.57,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": true
       },
       {
        "text": "BTTS - Yes",
        "odds": 1.62,
-       "chance": 0.56
+       "chance": 0.56,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": false
       }
      ]
     },
@@ -712,21 +1278,49 @@
      "home": "Shakhtar Donetsk",
      "away": "AEK Athens FC",
      "score": "0-2",
+     "date": "2026-10-14",
+     "live": {
+      "st": "FT",
+      "min": null,
+      "gh": 3,
+      "ga": 1,
+      "hh": null,
+      "ha": null,
+      "espn": "401915406",
+      "at": "2026-10-14T21:15:58"
+     },
      "picks": [
       {
        "text": "Under 3.5 goals",
        "odds": 1.36,
-       "chance": 0.82
+       "chance": 0.82,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": false
       },
       {
        "text": "BTTS - No",
        "odds": 2.1,
-       "chance": 0.55
+       "chance": 0.55,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": false
       },
       {
        "text": "AEK Athens FC to score",
        "odds": null,
-       "chance": 0.68
+       "chance": 0.68,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": true
       }
      ]
     }
@@ -775,7 +1369,8 @@
     "WhatsApp": false,
     "Community": false
    },
-   "results": {}
+   "results": {},
+   "video_link": true
   }
  ],
  "win_rate": {},
