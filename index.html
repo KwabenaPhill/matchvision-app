@@ -3,56 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Match Vision 1.0</title>
+<title>Match Vision 2.0</title>
 <meta name="theme-color" content="#0b0b0c">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <style>
-:root{--bg:#0b0b0c;--card:#16171a;--card2:#1e2024;--line:#2a2d33;--txt:#f4f5f2;--mut:#9a9fa8;--lime:#dffb51;--win:#3ddc84;--lose:#ff5c5c;--wait:#f5c542}
+:root{--bg:#0b0b0c;--card:#16171a;--card2:#1f2125;--line:#2a2d33;--txt:#f4f5f2;--mut:#9a9fa8;--lime:#dffb51;--gold:#ecc462;--win:#3ddc84;--lose:#ff5c5c;--wait:#f5c542;--live:#ff3b3b}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 16px 8px;border-bottom:1px solid var(--line)}
+button{font:inherit;color:inherit;cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 16px 8px;border-bottom:1px solid var(--line)}
 .top{display:flex;align-items:center;gap:10px}
-.top img{width:36px;height:36px;border-radius:9px}
-.top h1{font-size:19px;margin:0;letter-spacing:.5px;font-weight:900}
+.top img{width:34px;height:34px;border-radius:9px}
+.top h1{font-size:18px;margin:0;letter-spacing:.5px;font-weight:900}
 .top h1 b{color:var(--lime)}
-.top .st{margin-left:auto;font-size:12px;color:var(--mut);text-align:right}
+.top .st{margin-left:auto;font-size:11px;color:var(--mut);text-align:right;line-height:1.3}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-right:5px}
-.dot.on{background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.dot.on{background:var(--live);box-shadow:0 0 8px var(--live);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{opacity:.35}}
 .days{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
 .days::-webkit-scrollbar{display:none}
-.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:20px;padding:6px 12px;font-size:13px}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 12px;font-size:13px}
 .chip.on{background:var(--lime);color:#111;border-color:var(--lime);font-weight:700}
-main{padding:12px 16px 90px;max-width:720px;margin:0 auto}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 12px}
+main{padding:12px 16px 96px;max-width:720px;margin:0 auto}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
-.mrow{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-.teams{font-weight:800;font-size:16px}
+.card.lime{border-color:var(--lime)} .card.gold{border-color:var(--gold)}
+.row{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.teams{font-weight:800;font-size:15.5px;line-height:1.25}
 .meta{color:var(--mut);font-size:12px}
-.score{background:var(--card2);border-radius:8px;padding:2px 8px;font-weight:800;color:var(--lime);white-space:nowrap}
-.pick{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.score{background:var(--card2);border-radius:8px;padding:3px 9px;font-weight:900;white-space:nowrap;font-size:16px}
+.score.live{color:var(--live)} .score.ft{color:var(--txt)} .score.pred{color:var(--lime);font-size:13px}
+.state{font-size:11px;font-weight:800;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.state.LIVE,.state.HT{background:rgba(255,59,59,.15);color:var(--live)}
+.state.FT{background:var(--card2);color:var(--mut)} .state.NS{background:var(--card2);color:var(--txt)}
+.state.PST,.state.CANC{background:rgba(245,197,66,.15);color:var(--wait)}
+.pick{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:14px;align-items:center}
 .pick:first-of-type{border-top:0}
-.pick .o{color:var(--mut);white-space:nowrap}
+.pick .o{color:var(--mut);white-space:nowrap;font-size:13px}
+.ic{display:inline-flex;width:20px;height:20px;border-radius:50%;align-items:center;justify-content:center;font-size:12px;font-weight:900;margin-right:8px;flex:none;background:var(--card2);color:var(--mut)}
+.ic.w{background:var(--win);color:#062} .ic.l{background:var(--lose);color:#300} .ic.up{background:rgba(61,220,132,.2);color:var(--win)} .ic.dn{background:rgba(255,92,92,.2);color:var(--lose)}
 .tag{font-size:10px;font-weight:800;border-radius:5px;padding:1px 6px;margin-right:6px;background:var(--lime);color:#111}
-.won{color:var(--win)} .lost{color:var(--lose)} .waiting{color:var(--wait)}
-.big{font-size:30px;font-weight:900;color:var(--lime)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.k{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.tag.gold{background:var(--gold)}
+.big{font-size:28px;font-weight:900}
+.lime{color:var(--lime)} .goldc{color:var(--gold)} .winc{color:var(--win)} .losec{color:var(--lose)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+.stat .big{font-size:24px}
+.k{color:var(--mut);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
 .bar{height:8px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:6px}
 .bar i{display:block;height:100%;background:var(--lime)}
-h2{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:1px;margin:18px 0 8px}
+h2{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:1px;margin:18px 0 8px;display:flex;align-items:center;gap:8px}
 button.act{width:100%;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:15px;background:var(--lime);color:#111;margin-top:8px}
-button.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
-input[type=text]{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:14px}
+button.act.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+button.act.gold{background:var(--gold)}
+button.sm{border:1px solid var(--line);background:var(--card2);border-radius:9px;padding:6px 10px;font-size:13px;font-weight:700}
+input[type=text],input[type=password],input[type=number]{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:15px}
 nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#111214;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:6}
-nav button{flex:1;background:none;border:0;color:var(--mut);padding:10px 0 12px;font-size:12px;font-weight:700}
-nav button span{display:block;font-size:20px;line-height:1.2}
+nav button{flex:1;background:none;border:0;color:var(--mut);padding:9px 0 11px;font-size:11px;font-weight:700}
+nav button span{display:block;font-size:19px;line-height:1.25}
 nav button.on{color:var(--lime)}
-.empty{text-align:center;color:var(--mut);padding:40px 10px}
+.empty{text-align:center;color:var(--mut);padding:30px 10px}
 .check{display:flex;flex-wrap:wrap;gap:6px}
 .check span{font-size:12px;padding:4px 9px;border-radius:14px;background:var(--card2);color:var(--mut)}
 .check span.y{background:rgba(223,251,81,.15);color:var(--lime)}
-.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--lime);color:#111;font-weight:800;padding:9px 16px;border-radius:20px;display:none;z-index:9}
+.rem{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.rem:first-child{border-top:0}
+.mem{border-top:1px solid var(--line);padding:9px 0}
+.mem:first-child{border-top:0}
+.mt{font-size:10px;font-weight:800;border-radius:5px;padding:2px 6px}
+.mt.ok{background:rgba(61,220,132,.15);color:var(--win)} .mt.due{background:rgba(245,197,66,.15);color:var(--wait)} .mt.exp{background:rgba(255,92,92,.15);color:var(--lose)}
+.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--lime);color:#111;font-weight:800;padding:9px 16px;border-radius:20px;display:none;z-index:9;max-width:90%;text-align:center}
+.switch{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.switch:first-child{border-top:0}
+.how p{margin:6px 0;color:#d6d8dc;font-size:14px}
 </style>
 </head>
 <body>
@@ -66,124 +92,341 @@ nav button.on{color:var(--lime)}
 </header>
 <main id="main"></main>
 <nav id="nav">
-  <button data-t="today" class="on"><span>⚽</span>Picks</button>
-  <button data-t="results"><span>✅</span>Results</button>
-  <button data-t="stats"><span>📈</span>Win rate</button>
-  <button data-t="more"><span>⚙️</span>More</button>
+  <button data-t="home"><span>🏠</span>Home</button>
+  <button data-t="picks"><span>⚽</span>Picks</button>
+  <button data-t="records"><span>📊</span>Records</button>
+  <button data-t="premium"><span>👑</span>Premium</button>
+  <button data-t="settings"><span>⚙️</span>Settings</button>
 </nav>
 <div class="toast" id="toast"></div>
 <script>
-// Match Vision app 1.0 - shows feed.json, written by the Match Vision builder on the laptop and sent to GitHub.
-// Storage: only keys starting with "mv_app_" (never touches other apps on this address).
-const APP_VERSION = '1.0';
-const K_FEED = 'mv_app_feed', K_URL = 'mv_app_feed_url', K_TAB = 'mv_app_tab';
+// Match Vision app 2.0
+// - feed.json: written by the Match Vision builder on the laptop and sent to GitHub (after every review, every finished
+//   match and the 23:45 results). The Vision Premium part is locked with the PIN typed in Connect > App on the laptop.
+// - live scores: the app asks ESPN's free scoreboard itself (no key), so picks turn won or lost while you watch.
+// - members are changed ONLY by the bot (member / renew / remove). The app copies the bot word and opens the bot chat.
+// Storage: only keys starting with "mv_app_" (never touches other apps).
+const APP_VERSION = '2.0';
+const K = {feed:'mv_app_feed', pin:'mv_app_pin', set:'mv_app_set', tab:'mv_app_tab', espn:'mv_app_espn'};
 const $ = s => document.querySelector(s);
-const store = {
-  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
-  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
-};
-let feed = null, day = 0, tab = store.get(K_TAB) || 'today', source = '';
+const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}}, del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const DEF = {live:true, every:2, bot:'MatchVision707Bot', url:'feed.json'};
+let SET = Object.assign({}, DEF, (()=>{try{return JSON.parse(store.get(K.set)||'{}')}catch(e){return {}}})());
+let feed = null, day = 0, tab = store.get(K.tab) || 'home', source = '', prem = null, premErr = '', pickFilter = 'all', memFilter = 'all';
+let ESPN = (()=>{try{return JSON.parse(store.get(K.espn)||'{}')}catch(e){return {}}})();   // date -> {at, games}
+const saveSet = () => store.set(K.set, JSON.stringify(SET));
 
-function esc(t){ return String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-function toast(t){ const e = $('#toast'); e.textContent = t; e.style.display = 'block'; clearTimeout(toast.t); toast.t = setTimeout(()=>e.style.display='none', 1800); }
-function niceDate(d){ try { return new Date(d+'T12:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}); } catch(e){ return d; } }
-function odds(o){ return o ? '@' + Number(o).toFixed(2) : ''; }
-function feedUrl(){ return store.get(K_URL) || 'feed.json'; }
+function esc(t){return String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2200);}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+const TODAY = () => iso(new Date());
+function addDays(k,n){const d=new Date(k+'T12:00:00');d.setDate(d.getDate()+n);return iso(d);}
+function niceDate(d,long){try{return new Date(d+'T12:00:00').toLocaleDateString('en-GB',long?{weekday:'long',day:'numeric',month:'long'}:{weekday:'short',day:'numeric',month:'short'});}catch(e){return d;}}
+function daysBetween(a,b){return Math.round((new Date(b+'T12:00:00')-new Date(a+'T12:00:00'))/864e5);}
+function odds(o){return o ? '@' + Number(o).toFixed(2) : '';}
+function copy(t){return (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>true).catch(()=>{try{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();return true;}catch(e){return false;}});}
 
-async function load(quiet){
-  try {
-    const r = await fetch(feedUrl() + (feedUrl().includes('?') ? '&' : '?') + 't=' + Date.now(), {cache:'no-store'});
-    if (!r.ok) throw new Error(r.status);
+// ------------------------------------------------------------------ feed from the laptop
+async function loadFeed(quiet){
+  try{
+    const u = SET.url || 'feed.json';
+    const r = await fetch(u + (u.includes('?')?'&':'?') + 't=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error(r.status);
     const j = await r.json();
-    if (!j || j.app !== 'Match Vision') throw new Error('not a Match Vision feed');
-    feed = j; source = 'online'; store.set(K_FEED, JSON.stringify(j));
-    if (!quiet) toast('Updated ✓');
-  } catch(e) {
-    const saved = store.get(K_FEED);
-    if (saved) { try { feed = JSON.parse(saved); source = 'saved'; } catch(_){} }
-    if (!quiet) toast(feed ? 'Offline: showing the last saved picks' : 'No picks yet');
+    if(!j || j.app !== 'Match Vision') throw new Error('not a Match Vision feed');
+    feed = j; source = 'online'; store.set(K.feed, JSON.stringify(j));
+    await unlockPremium(true);
+    if(!quiet) toast('Updated ✓');
+  }catch(e){
+    if(!feed){const s=store.get(K.feed); if(s){try{feed=JSON.parse(s);source='saved';await unlockPremium(true);}catch(_){}}}
+    if(!quiet) toast(feed ? 'Offline: showing the last saved picks' : 'No picks yet');
   }
   render();
 }
 
+// ------------------------------------------------------------------ Vision Premium lock (same as the laptop: PBKDF2 + HMAC-SHA256)
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+function cat(a,b){const r=new Uint8Array(a.length+b.length);r.set(a);r.set(b,a.length);return r;}
+async function unlockWith(lock, pin){
+  const enc = new TextEncoder();
+  const base = await crypto.subtle.importKey('raw', enc.encode(pin), 'PBKDF2', false, ['deriveBits']);
+  const bits = await crypto.subtle.deriveBits({name:'PBKDF2', salt:b64(lock.salt), iterations:lock.iter, hash:'SHA-256'}, base, 256);
+  const key = await crypto.subtle.importKey('raw', bits, {name:'HMAC', hash:'SHA-256'}, false, ['sign']);
+  const nonce = b64(lock.nonce), ct = b64(lock.ct);
+  const mac = new Uint8Array(await crypto.subtle.sign('HMAC', key, cat(nonce, ct)));
+  const want = b64(lock.mac);
+  if(mac.length !== want.length || mac.some((x,i)=>x!==want[i])) return null;
+  const out = new Uint8Array(ct.length);
+  for(let i=0, off=0; off<ct.length; i++, off+=32){
+    const c = new Uint8Array(4); new DataView(c.buffer).setUint32(0, i);
+    const ks = new Uint8Array(await crypto.subtle.sign('HMAC', key, cat(nonce, c)));
+    for(let j=0; j<32 && off+j<ct.length; j++) out[off+j] = ct[off+j] ^ ks[j];
+  }
+  return JSON.parse(new TextDecoder().decode(out));
+}
+async function unlockPremium(quiet, pin){
+  premErr = '';
+  const lock = feed && feed.premium_lock;
+  const p = pin || store.get(K.pin);
+  if(!lock || !p){ prem = null; return false; }
+  try{
+    const body = await unlockWith(lock, p);
+    if(!body){ prem = null; premErr = 'Wrong PIN. Use the PIN typed in Connect > App on the laptop.'; if(pin) store.del(K.pin); return false; }
+    prem = body; if(pin) store.set(K.pin, pin); return true;
+  }catch(e){ prem = null; premErr = 'This phone could not open the lock (' + e.message + ').'; return false; }
+}
+
+// ------------------------------------------------------------------ live scores (ESPN, free)
+function espnFix(ev){try{const c=ev.competitions[0];const h=c.competitors.find(x=>x.homeAway==='home'),a=c.competitors.find(x=>x.homeAway==='away');
+  const s=(c.status||ev.status), t=s.type||{}, nm=String(t.name||'');
+  let st=t.state==='pre'?'NS':t.state==='in'?(/HALF_?TIME/i.test(nm)?'HT':'LIVE'):'FT';
+  if(/POSTPONED|DELAYED/i.test(nm))st='PST'; if(/CANCEL|ABANDON|FORFEIT|SUSPEND/i.test(nm))st='CANC';
+  const g=v=>{const n=parseInt(v,10);return isNaN(n)?null:n;};
+  const fh=x=>x.linescores&&x.linescores[0]&&x.linescores[0].value!=null?g(x.linescores[0].value):null;
+  const no=['NS','PST','CANC'].includes(st);
+  return {id:String(ev.id),home:h.team.displayName,away:a.team.displayName,st,min:st==='LIVE'?(parseInt(s.displayClock,10)||null):null,
+    gh:no?null:g(h.score),ga:no?null:g(a.score),hh:fh(h),ha:fh(a),at:new Date().toISOString(),src:'phone'};}catch(e){return null;}}
+async function espnDay(k){
+  const r = await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard?dates=${k.replace(/-/g,'')}&limit=1000`, {cache:'no-store'});
+  if(!r.ok) throw new Error(r.status);
+  const j = await r.json();
+  return (j.events||[]).map(espnFix).filter(Boolean);
+}
+const STOP = new Set(['fc','cf','afc','sc','ac','as','club','de','the','cd','sd','ss','us','fk','sk','bk','if','ssc','calcio','football','sporting']);
+function words(n){return String(n||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(w=>w&&!STOP.has(w));}
+function sameTeam(a,b){const A=words(a),B=words(b);if(!A.length||!B.length)return 0;if(A.join(' ')===B.join(' '))return 1;
+  let hit=0;for(const w of A){if(B.some(x=>x===w||(w.length>3&&x.length>3&&(x.startsWith(w)||w.startsWith(x)))))hit++;}return hit/Math.min(A.length,B.length);}
+function findGame(m, games){
+  if(m.live && m.live.espn){const g=games.find(x=>x.id===String(m.live.espn)); if(g) return g;}
+  let best=null, sc=0;
+  for(const g of games){const s1=sameTeam(m.home,g.home), s2=sameTeam(m.away,g.away), s=Math.min(s1,s2)*.6+Math.max(s1,s2)*.4; if(s>sc){sc=s;best=g;}}
+  return sc>=0.72?best:null;
+}
+let liveBusy=false;
+async function liveTick(force){
+  if(!SET.live || liveBusy || !feed || !navigator.onLine || document.hidden) return;
+  const t=TODAY(), want=new Set([t, addDays(t,-1)]);
+  const dates=new Set();
+  for(const d of feed.days||[]) for(const m of d.matches||[]) if(want.has(m.date||d.date) && !(m.live&&['FT','CANC'].includes(m.live.st))) dates.add(m.date||d.date);
+  if(!dates.size) return;
+  liveBusy=true; let ok=false;
+  try{
+    for(const k of dates){
+      const old=ESPN[k];
+      if(!force && old && Date.now()-old.at < (SET.every||2)*60e3) continue;
+      try{ ESPN[k]={at:Date.now(), games:await espnDay(k)}; ok=true; }catch(e){}
+    }
+    for(const k of Object.keys(ESPN)) if(!want.has(k)) delete ESPN[k];
+    store.set(K.espn, JSON.stringify(ESPN));
+  }finally{ liveBusy=false; }
+  if(ok) render();
+}
+function liveOf(m, d){
+  const k=m.date||d.date, mine=ESPN[k] && findGame(m, ESPN[k].games||[]);
+  const lap=m.live;
+  if(mine && lap && lap.st==='FT' && mine.st!=='FT') return lap;
+  return mine || lap || null;
+}
+
+// ------------------------------------------------------------------ is a pick won?
+function evalRule(r, L){
+  // returns 'w' (won), 'l' (lost), 'up' (winning now), 'dn' (losing now), null (unknown / not started)
+  if(!r || !L || L.gh==null || L.ga==null || ['NS','PST','CANC'].includes(L.st)) return null;
+  const fin = L.st==='FT', h=L.gh, a=L.ga, tot=h+a;
+  const out = (now, sureW, sureL) => sureW ? 'w' : sureL ? 'l' : fin ? (now?'w':'l') : (now?'up':'dn');
+  switch(r.t){
+    case 'g': return r.o==='o' ? out(tot>r.v, tot>r.v, false) : out(tot<r.v, false, tot>r.v);
+    case 'g1': { if(L.hh==null||L.ha==null){ return null; } const t1=L.hh+L.ha, done=fin||L.st==='HT'||(L.st==='LIVE'&&(L.min||0)>45);
+      const now=r.o==='o'?t1>r.v:t1<r.v; return done?(now?'w':'l'):(now?'up':'dn'); }
+    case 'win': return out(r.s==='h'?h>a:a>h, false, false);
+    case 'dc': return out(r.s==='h'?h>=a:a>=h, false, false);
+    case 'draw': return out(h===a, false, false);
+    case 'btts': return r.y ? out(h>0&&a>0, h>0&&a>0, false) : out(!(h>0&&a>0), false, h>0&&a>0);
+    case 'ts': { const g=r.s==='h'?h:a; return out(g>r.v, g>r.v, false); }
+    default: return null;
+  }
+}
+function pickState(p, i, m, d, L){
+  const res=(d.results&&d.results.matches||[]).find(x=>x.n===m.n);
+  const off=res&&res.picks&&res.picks[i]&&res.picks[i].won;
+  if(off===true) return 'w'; if(off===false) return 'l';
+  const e=evalRule(p.rule, L); if(e) return e;
+  if(p.live===true) return 'w'; if(p.live===false) return 'l';
+  return null;
+}
+const ICON={w:'✓',l:'✗',up:'↑',dn:'↓'};
+function icon(s){return `<span class="ic ${s||''}">${s?ICON[s]:'·'}</span>`;}
+function stateTag(L, m){
+  if(!L||L.st==='NS') return `<span class="state NS">${esc(m.kickoff||'--:--')}</span>`;
+  if(L.st==='LIVE') return `<span class="state LIVE">LIVE ${L.min?L.min+"'":''}</span>`;
+  if(L.st==='HT') return `<span class="state HT">HT</span>`;
+  if(L.st==='PST') return `<span class="state PST">POSTPONED</span>`;
+  if(L.st==='CANC') return `<span class="state CANC">CANCELLED</span>`;
+  return `<span class="state FT">FT</span>`;
+}
+function dayCount(d){let w=0,l=0,p=0;for(const m of d.matches||[]){const L=liveOf(m,d);(m.picks||[]).slice(0,3).forEach((pk,i)=>{const s=pickState(pk,i,m,d,L);if(s==='w')w++;else if(s==='l')l++;else p++;});}return {w,l,p};}
+function bankerState(d){if(!d.banker||!d.banker.games)return null;if(d.results&&d.results.banker&&d.results.banker.won!=null)return d.results.banker.won?'w':'l';
+  let all=true;for(const g of d.banker.games){const m=(d.matches||[]).find(x=>x.n===g.n);if(!m)return null;const i=(m.picks||[]).findIndex(p=>p.text===(g.pick&&g.pick.text));const s=i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));if(s==='l')return 'l';if(s!=='w')all=false;}return all?'w':null;}
+
+// ------------------------------------------------------------------ views
+function matchCard(m, d, prem){
+  const L=liveOf(m,d), live=L&&['LIVE','HT'].includes(L.st), fin=L&&L.st==='FT';
+  const sc = L&&L.gh!=null ? `<div class="score ${live?'live':'ft'}">${L.gh}-${L.ga}</div>` : (m.score?`<div class="score pred">${esc(m.score)}</div>`:'');
+  const premN = prem ? new Set(prem.map(x=>x.n)) : new Set();
+  return `<div class="card ${live?'lime':''}"><div class="row"><div><div class="teams">${esc(m.home)}<br>${esc(m.away)}</div>
+    <div class="meta">${esc(m.league||'')}${m.score&&L&&L.gh!=null?' · predicted '+esc(m.score):''}${L&&L.hh!=null&&(fin||L.st==='HT'||live)?' · HT '+L.hh+'-'+L.ha:''}</div></div>
+    <div style="text-align:right">${stateTag(L,m)}<div style="margin-top:6px">${sc}</div></div></div>
+    <div style="margin-top:6px">${(m.picks||[]).slice(0,3).map((p,i)=>`<div class="pick"><div style="display:flex;align-items:center">${icon(pickState(p,i,m,d,L))}<span>${i===0?'<span class="tag">SAFEST</span>':''}${premN.has(m.n)&&prem.find(x=>x.n===m.n&&x.text===p.text)?'<span class="tag gold">👑</span>':''}${esc(p.text)}</span></div><div class="o">${odds(p.odds)}</div></div>`).join('')}</div></div>`;
+}
+function todayDays(){const t=TODAY();return (feed.days||[]).filter(d=>d.date===t||(d.matches||[]).some(m=>(m.date||d.date)===t));}
+function premToday(d){if(!prem||!d)return null;const x=(prem.days||[]).find(p=>p.date===d.date);return x?x.picks:null;}
+
+function viewHome(){
+  const t=TODAY(); const tds=todayDays();
+  let h=`<div class="meta" style="margin-bottom:8px">${esc(niceDate(t,true))}</div>`;
+  if(!tds.length){
+    const next=(feed.days||[]).filter(d=>d.date>t).sort((a,b)=>a.date<b.date?-1:1)[0];
+    h+=`<div class="card"><div class="teams">No Match Vision games today</div><div class="meta" style="margin-top:4px">${next?'Next day ready: '+esc(niceDate(next.date))+' ('+(next.matches||[]).length+' matches)':'The next day appears here after the review on Telegram.'}</div></div>`;
+  }
+  for(const d of tds){
+    const c=dayCount(d), ms=(d.matches||[]).filter(m=>(m.date||d.date)===t);
+    const lv=ms.filter(m=>{const L=liveOf(m,d);return L&&['LIVE','HT'].includes(L.st);});
+    const up=ms.filter(m=>{const L=liveOf(m,d);return !L||L.st==='NS';}).sort((a,b)=>(a.kickoff||'')<(b.kickoff||'')?-1:1);
+    const fin=ms.filter(m=>{const L=liveOf(m,d);return L&&L.st==='FT';});
+    h+=`<div class="grid3"><div class="stat"><div class="k">Won</div><div class="big winc">${c.w}</div></div><div class="stat"><div class="k">Lost</div><div class="big losec">${c.l}</div></div><div class="stat"><div class="k">To play</div><div class="big">${c.p}</div></div></div>`;
+    const bs=bankerState(d);
+    if(d.banker) h+=`<div class="card lime"><div class="row"><div><div class="k">Banker of the day</div><div class="meta">${(d.banker.games||[]).length} picks</div></div><div style="text-align:right"><div class="big lime">${Number(d.banker.total).toFixed(2)}</div><div class="${bs==='w'?'winc':bs==='l'?'losec':'meta'}" style="font-weight:800">${bs==='w'?'WON ✓':bs==='l'?'LOST':'WAITING'}</div></div></div></div>`;
+    const pt=premToday(d);
+    if(pt&&pt.length){let w=0,l=0;for(const g of pt){const m=(d.matches||[]).find(x=>x.n===g.n);if(!m)continue;const i=(m.picks||[]).findIndex(p=>p.text===g.text);const s=g.won===true?'w':g.won===false?'l':(i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d)));if(s==='w')w++;if(s==='l')l++;}
+      h+=`<div class="card gold" onclick="go('premium')"><div class="row"><div><div class="k goldc">👑 ${esc(prem.name||'Vision Premium')} today</div><div class="meta">${pt.length} picks · tap to open</div></div><div class="big goldc">${w}/${pt.length}</div></div></div>`;}
+    if(lv.length){h+=`<h2><span class="dot on"></span>Live now</h2>`+lv.map(m=>matchCard(m,d,pt)).join('');}
+    if(up.length){h+=`<h2>Up next</h2>`+up.slice(0,4).map(m=>matchCard(m,d,pt)).join('')+(up.length>4?`<button class="act sec" onclick="go('picks')">All ${up.length} upcoming matches</button>`:'');}
+    if(fin.length){h+=`<h2>Finished</h2>`+fin.slice().reverse().map(m=>matchCard(m,d,pt)).join('');}
+  }
+  const rem=reminders();
+  if(rem.length) h+=`<h2>Reminders</h2><div class="card">${rem.map(r=>`<div class="rem"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('')}</div>`;
+  return h;
+}
+function reminders(){
+  const out=[], t=TODAY();
+  if(prem){for(const m of prem.members||[]){const x=m.until;if(!x)continue;const dl=daysBetween(t,x);
+    if(dl<0&&dl>-15)out.push(['👑',`${esc(m.name)}'s membership ended ${esc(niceDate(x))}. The bot asks "Remove?".`]);
+    else if(dl>=0&&dl<=3)out.push(['👑',`${esc(m.name)} ends ${dl===0?'today':dl===1?'tomorrow':'in '+dl+' days'} (renewal text comes from the bot).`]);}}
+  for(const d of feed.days||[]){ if(d.date<addDays(t,-1)||d.date>addDays(t,1)) continue;
+    if(d.date>=t && !d.video_link) out.push(['🎬',`${esc(niceDate(d.date))}: share the YouTube video to the bot (Share > Telegram > Match Vision bot).`]);
+    const miss=Object.entries(d.checklist||{}).filter(([k,v])=>!v).map(([k])=>k);
+    if(d.date<=t && miss.length && miss.length<8) out.push(['✅',`${esc(niceDate(d.date))} not posted yet: ${esc(miss.join(', '))}.`]);}
+  if(feed.builder&&feed.builder.busy) out.unshift(['⚙️',`The laptop is building: ${esc(feed.builder.step||'')} (${Math.round((feed.builder.done||0)*100)}%).`]);
+  return out;
+}
+function viewPicks(){
+  const d=(feed.days||[])[day]; if(!d) return '<div class="empty">No days yet.</div>';
+  const pt=premToday(d);
+  const has=f=>(d.matches||[]).filter(m=>{const L=liveOf(m,d),s=L?L.st:'NS';return f==='all'||(f==='live'&&['LIVE','HT'].includes(s))||(f==='fin'&&s==='FT')||(f==='up'&&(s==='NS'||s==='PST'));});
+  let h=`<div class="meta" style="margin-bottom:6px">${esc(d.title||'')}</div><div class="chips">${[['all','All'],['live','Live'],['up','Upcoming'],['fin','Finished']].map(([k,l])=>`<button class="chip ${pickFilter===k?'on':''}" onclick="pickFilter='${k}';render()">${l} ${has(k).length}</button>`).join('')}</div>`;
+  const c=dayCount(d);
+  h+=`<div class="grid3"><div class="stat"><div class="k">Won</div><div class="big winc">${c.w}</div></div><div class="stat"><div class="k">Lost</div><div class="big losec">${c.l}</div></div><div class="stat"><div class="k">Waiting</div><div class="big">${c.p}</div></div></div>`;
+  const list=has(pickFilter); h+=list.length?list.map(m=>matchCard(m,d,pt)).join(''):'<div class="empty">Nothing here.</div>';
+  h+=`<button class="act" onclick="copyPicks()">Copy the picks</button>`;
+  return h;
+}
+const KIND={'DC':'Win or draw','DRAW':'Draw','WIN':'Win','TEAM':'Team goals','BTTS-Y':'Both teams score','BTTS-N':'Not both score'};
+function kindName(k){if(KIND[k])return KIND[k];const m=/^([OU])([\d.]+)(.*)$/.exec(k);return m?(m[1]==='O'?'Over ':'Under ')+m[2]+(m[3]||' goals'):k;}
+function viewRecords(){
+  const days=(feed.days||[]).filter(d=>d.results&&((d.results.won||0)+(d.results.lost||0))>0).sort((a,b)=>a.date<b.date?1:-1);
+  const sum=list=>{let w=0,n=0,cs=0;for(const d of list){w+=d.results.won||0;n+=(d.results.won||0)+(d.results.lost||0);cs+=d.results.correct_scores||0;}return {w,n,cs};};
+  const t=TODAY(), a7=sum(days.filter(d=>d.date>addDays(t,-7))), all=sum(days);
+  const w=feed.win_rate||{}; const rows=Object.entries(w).filter(([k,v])=>v.of>0).sort((a,b)=>b[1].of-a[1].of);
+  let tw=0,to=0; rows.forEach(([k,v])=>{tw+=v.won;to+=v.of;});
+  let h=`<div class="grid2"><div class="stat"><div class="k">Win rate</div><div class="big lime">${to?Math.round(tw/to*100):0}%</div><div class="meta">${tw} of ${to} picks</div></div><div class="stat"><div class="k">Banker streak</div><div class="big">${feed.banker_streak||0}</div><div class="meta">wins in a row</div></div></div>`;
+  h+=`<div class="grid2"><div class="stat"><div class="k">Last 7 days</div><div class="big">${a7.n?Math.round(a7.w/a7.n*100):0}%</div><div class="meta">${a7.w}/${a7.n} · ${a7.cs} correct scores</div></div><div class="stat"><div class="k">Correct scores</div><div class="big">${all.cs}</div><div class="meta">all days shown</div></div></div>`;
+  h+='<h2>Every day</h2>';
+  h+=days.length?days.map(d=>{const r=d.results,n=(r.won||0)+(r.lost||0),p=n?Math.round(r.won/n*100):0;return `<div class="card"><div class="row"><div><div class="teams">${esc(niceDate(d.date))}</div><div class="meta">${r.correct_scores||0} correct scores${r.banker?` · banker ${r.banker.won?'<span class="winc">won</span>':r.banker.won===false?'<span class="losec">lost</span>':'waiting'}`:''}${r.waiting?` · ${r.waiting} waiting`:''}</div></div><div style="text-align:right"><div class="big" style="font-size:22px">${r.won||0}/${n}</div><div class="meta">${p}%</div></div></div><div class="bar"><i style="width:${p}%"></i></div></div>`;}).join(''):'<div class="empty">Results come after the matches (23:45).</div>';
+  h+='<h2>By kind of pick</h2>';
+  h+=rows.length?rows.map(([k,v])=>{const p=Math.round(v.won/v.of*100);return `<div class="card"><div class="row"><div>${esc(kindName(k))}</div><div><b>${p}%</b> <span class="meta">${v.won}/${v.of}</span></div></div><div class="bar"><i style="width:${p}%"></i></div></div>`;}).join(''):'<div class="empty">The win rate starts after the first results.</div>';
+  return h;
+}
+function viewPremium(){
+  if(!feed.premium_lock) return `<div class="card gold"><div class="teams goldc">👑 Vision Premium</div><p class="meta">Vision Premium is not in the app yet. On the laptop: Connect > "4. Connect the app (GitHub)" > type a PIN in the Vision Premium PIN box > Save and test. Then tap Settings > Update now here.</p></div>`;
+  if(!prem) return `<div class="card gold"><div class="teams goldc">👑 Vision Premium</div><p class="meta">Locked. Type the PIN you typed in Connect > App on the laptop. This phone remembers it.</p>
+    <input type="password" id="pin" inputmode="text" autocomplete="off" placeholder="Your PIN"><button class="act gold" onclick="tryPin()">Unlock</button>${premErr?`<p class="losec" style="font-size:13px">${esc(premErr)}</p>`:''}</div>`;
+  const t=TODAY(), price=parseFloat(String(prem.price||'').replace(/[^0-9.]/g,''))||0;
+  const all=(prem.members||[]).slice(); const isExp=m=>m.until<t, isDue=m=>m.until>=t&&m.until<=addDays(t,7);
+  const active=all.filter(m=>!isExp(m)), due=all.filter(isDue), exp=all.filter(m=>isExp(m)&&daysBetween(m.until,t)<=60);
+  const mon=t.slice(0,7); let paid=0; for(const m of all) for(const p of m.payments||[]) if((p.date||'').slice(0,7)===mon) paid+=price*(Number(p.months)||1);
+  let h=`<div class="card gold"><div class="row"><div><div class="teams goldc">👑 ${esc(prem.name||'Vision Premium')}</div><div class="meta">${prem.on?'<span class="winc">ON</span>':'<span class="losec">OFF</span> (Settings > Vision Premium on the laptop)'} · ${esc(prem.price||'')} a month</div></div><button class="sm" onclick="lockAgain()">Lock</button></div></div>`;
+  h+=`<div class="grid3"><div class="stat"><div class="k">Active</div><div class="big">${active.length}</div></div><div class="stat"><div class="k">Seats left</div><div class="big">${Math.max(0,(prem.seats||0)-active.length)}</div></div><div class="stat"><div class="k">This month</div><div class="big" style="font-size:18px">${price?Math.round(paid):'-'}</div></div></div>`;
+  // today's picks
+  const days=(prem.days||[]); const td=days.filter(d=>d.date>=t).sort((a,b)=>a.date<b.date?-1:1)[0]||days[0];
+  if(td){h+=`<h2>Picks · ${td.date===t?'today':esc(niceDate(td.date))}</h2><div class="card">`+td.picks.map(g=>{const d=(feed.days||[]).find(x=>x.date===td.date);const m=d&&(d.matches||[]).find(x=>x.n===g.n);let s=g.won===true?'w':g.won===false?'l':null,L=null;
+      if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}
+      return `<div class="pick"><div style="display:flex;align-items:center">${icon(s)}<span><b>${esc(g.text)}</b><br><span class="meta">${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?' · '+L.gh+'-'+L.ga+' '+(L.st==='FT'?'FT':L.st==='HT'?'HT':"LIVE"):' · '+esc(g.kickoff||'')}</span></span></div><div class="o">${odds(g.odds)}</div></div>`;}).join('')+'</div>';}
+  // record
+  let w=0,n=0,w7=0,n7=0;for(const d of days)for(const g of d.picks){if(g.won==null)continue;n++;if(g.won)w++;if(d.date>addDays(t,-7)){n7++;if(g.won)w7++;}}
+  h+=`<div class="grid2"><div class="stat"><div class="k">Premium record</div><div class="big goldc">${n?Math.round(w/n*100):0}%</div><div class="meta">${w} of ${n} won</div></div><div class="stat"><div class="k">Last 7 days</div><div class="big">${n7?Math.round(w7/n7*100):0}%</div><div class="meta">${w7} of ${n7}</div></div></div>`;
+  // members
+  const list=memFilter==='due'?due:memFilter==='exp'?exp:all.filter(m=>!isExp(m)||daysBetween(m.until,t)<=60);
+  h+=`<h2>Members</h2><div class="chips">${[['all',`All ${active.length+exp.length}`],['due',`Ending soon ${due.length}`],['exp',`Ended ${exp.length}`]].map(([k,l])=>`<button class="chip ${memFilter===k?'on':''}" onclick="memFilter='${k}';render()">${l}</button>`).join('')}</div>`;
+  h+=`<button class="act gold" onclick="botWord('add')">+ Add member (through the bot)</button><div class="card" style="margin-top:10px">`;
+  h+=list.length?list.map(m=>{const cls=isExp(m)?'exp':isDue(m)?'due':'ok',dl=daysBetween(t,m.until);
+    return `<div class="mem"><div class="row"><div><b>${esc(m.name)}</b> <span class="mt ${cls}">${cls==='exp'?'Ended':cls==='due'?'Ends soon':'Active'}</span><div class="meta">${cls==='exp'?'ended':'until'} ${esc(niceDate(m.until))}${dl>=0?' · '+dl+' days left':''} · ${m.months||0} month(s) paid since ${esc(niceDate(m.since))}</div></div></div>
+      <div style="display:flex;gap:8px;margin-top:8px"><button class="sm" onclick="botWord('renew','${esc(m.name).replace(/'/g,"\\'")}')">Renew</button><button class="sm" onclick="botWord('remove','${esc(m.name).replace(/'/g,"\\'")}')">Remove</button></div></div>`;}).join(''):'<div class="meta">No members here.</div>';
+  h+=`</div><p class="meta">Members are changed only by the bot, so the bot and the app never disagree. The buttons copy the bot word and open your bot: paste it and send. The app shows the change after the bot's answer (about a minute).</p>`;
+  return h;
+}
+function viewSettings(){
+  const b=feed&&feed.builder||{};
+  return `<h2>App</h2><div class="card">
+    <div class="switch"><div><b>Live scores</b><div class="meta">Picks turn won or lost while matches are played (free, from ESPN).</div></div><button class="sm" onclick="SET.live=!SET.live;saveSet();render()">${SET.live?'ON':'OFF'}</button></div>
+    <div class="switch"><div><b>Check live scores every</b><div class="meta">While the app is open.</div></div><div>${[1,2,5].map(n=>`<button class="sm" style="${SET.every===n?'background:var(--lime);color:#111':''}" onclick="SET.every=${n};saveSet();render()">${n} min</button>`).join(' ')}</div></div>
+    <div class="switch"><div><b>Your bot</b><div class="meta">The member buttons open this chat.</div></div><span class="meta">@${esc(SET.bot)}</span></div></div>
+    <button class="act" onclick="loadFeed();liveTick(true)">Update now</button>
+    <h2>Vision Premium</h2><div class="card"><div class="meta">${prem?'Unlocked on this phone.':feed&&feed.premium_lock?'Locked: open the Premium tab and type your PIN.':'Not in the app yet (Connect > App on the laptop, type a PIN).'}</div>${prem?'<button class="act sec" onclick="lockAgain()">Lock Premium on this phone</button>':''}</div>
+    <h2>Laptop</h2><div class="card"><div>${esc(b.step||'')}</div><div class="meta">Feed written ${esc(feed&&feed.updated||'')}${source==='saved'?' · offline copy':''}</div></div>
+    <h2>How it works</h2><div class="card how">
+      <p><b>1.</b> The laptop builder makes the day after your review on Telegram, then sends the picks here (GitHub).</p>
+      <p><b>2.</b> While matches are played, this app asks the free live scoreboard itself and ticks every pick ✓ or ✗. The laptop does the same and sends you "FULL TIME" on Telegram for each match.</p>
+      <p><b>3.</b> At 23:45 the laptop checks the official results (corners and cards too). They replace the live ticks and fill Records.</p>
+      <p><b>4.</b> Vision Premium is locked with your PIN. Members are changed only with the bot words (member, renew, remove). The bot sends you the welcome and renewal texts, and the app shows the list.</p>
+      <p><b>5.</b> Nothing here can post or change anything. Control stays in your Telegram bot.</p></div>
+    <h2>Feed address</h2><div class="card"><input type="text" id="url" value="${esc(SET.url)}"><button class="act sec" onclick="SET.url=$('#url').value.trim()||'feed.json';saveSet();loadFeed()">Save address</button><div class="meta" style="margin-top:6px">Normally leave it as feed.json.</div></div>
+    <div class="meta" style="text-align:center;margin-top:16px">Match Vision app ${APP_VERSION}</div>`;
+}
+
 function render(){
   document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
-  const st = $('#st');
-  if (!feed) { st.textContent = ''; $('#days').innerHTML = ''; $('#main').innerHTML = '<div class="empty">No picks yet.<br><br>When the builder on your laptop has made a day, its picks show here.<br><br><button class="act" onclick="load()">Try again</button></div>'; return; }
-  const b = feed.builder || {};
-  const upd = feed.updated ? new Date(feed.updated) : null;
-  st.innerHTML = `<span class="dot ${b.busy?'on':''}"></span>${b.busy ? 'Building ' + Math.round((b.done||0)*100) + '%' : 'Ready'}<br>${upd ? upd.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}) + ' ' + upd.toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : ''}${source==='saved'?' · offline':''}`;
-  const days = feed.days || [];
-  if (day >= days.length) day = 0;
-  $('#days').innerHTML = (tab==='stats'||tab==='more') ? '' : days.map((d,i)=>`<button class="chip ${i===day?'on':''}" onclick="day=${i};render()">${esc(niceDate(d.date))}</button>`).join('');
-  const d = days[day];
-  if (tab === 'today') $('#main').innerHTML = d ? picksView(d) : '<div class="empty">No days yet.</div>';
-  else if (tab === 'results') $('#main').innerHTML = d ? resultsView(d) : '<div class="empty">No days yet.</div>';
-  else if (tab === 'stats') $('#main').innerHTML = statsView();
-  else $('#main').innerHTML = moreView();
+  const st=$('#st');
+  if(!feed){st.textContent='';$('#days').innerHTML='';$('#main').innerHTML='<div class="empty">No picks yet.<br><br>When the builder on your laptop has made a day, its picks show here.<br><br><button class="act" onclick="loadFeed()">Try again</button></div>';return;}
+  const b=feed.builder||{}; const upd=feed.updated?new Date(feed.updated):null;
+  const anyLive=todayDays().some(d=>(d.matches||[]).some(m=>{const L=liveOf(m,d);return L&&['LIVE','HT'].includes(L.st);}));
+  st.innerHTML=`<span class="dot ${anyLive||b.busy?'on':''}"></span>${anyLive?'Live':b.busy?'Building '+Math.round((b.done||0)*100)+'%':'Ready'}<br>${upd?upd.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''}${source==='saved'?' · offline':''}`;
+  const days=feed.days||[]; if(day>=days.length) day=0;
+  $('#days').innerHTML = tab==='picks' ? days.map((d,i)=>`<button class="chip ${i===day?'on':''}" onclick="day=${i};render()">${esc(niceDate(d.date))}</button>`).join('') : '';
+  const v={home:viewHome,picks:viewPicks,records:viewRecords,premium:viewPremium,settings:viewSettings}[tab]||viewHome;
+  $('#main').innerHTML=v();
 }
-
-function picksView(d){
-  let h = `<div class="meta" style="margin-bottom:10px">${esc(d.title||'')}</div>`;
-  if (d.banker && d.banker.games && d.banker.games.length){
-    h += `<div class="card" style="border-color:var(--lime)"><div class="mrow"><div class="k">Banker of the day</div><div class="big">${Number(d.banker.total).toFixed(2)}</div></div>` +
-      d.banker.games.map(g=>{ const m=(d.matches||[]).find(x=>x.n===g.n)||{}; const p=g.pick||{}; return `<div class="pick"><div>${esc(m.home||'')} vs ${esc(m.away||'')}<br><b>${esc(p.text||'')}</b></div><div class="o">${odds(g.odds||p.odds)}</div></div>`; }).join('') + '</div>';
-  }
-  h += '<h2>All matches</h2>';
-  h += (d.matches||[]).map(m=>`<div class="card"><div class="mrow"><div class="teams">${esc(m.home)} vs ${esc(m.away)}</div>${m.score?`<div class="score">${esc(m.score)}</div>`:''}</div>
-    <div class="meta">${esc(m.league||'')}${m.kickoff?' · '+esc(m.kickoff):''}</div>
-    <div style="margin-top:6px">${(m.picks||[]).map((p,i)=>`<div class="pick"><div>${i===0?'<span class="tag">SAFEST</span>':''}${esc(p.text)}</div><div class="o">${odds(p.odds)}${p.chance?' · '+Math.round(p.chance*100)+'%':''}</div></div>`).join('')}</div></div>`).join('');
-  h += `<button class="act" onclick="copyPicks()">Copy the picks</button>`;
-  return h;
+function go(t){tab=t;store.set(K.tab,t);window.scrollTo(0,0);render();}
+async function tryPin(){const p=($('#pin').value||'').trim();if(!p){toast('Type your PIN first');return;}toast('Checking…');const ok=await unlockPremium(false,p);toast(ok?'Unlocked ✓':'Wrong PIN');render();}
+function lockAgain(){store.del(K.pin);prem=null;toast('Premium locked on this phone');render();}
+async function botWord(kind,name){
+  let w='';
+  if(kind==='add'){const n=prompt('Member name (as you want it in the list):');if(!n)return;const mo=prompt('How many months did they pay?','1')||'1';w=`member ${n.trim()} ${parseInt(mo,10)||1} month`;}
+  else if(kind==='renew'){const mo=prompt(`Renew ${name}: how many months?`,'1')||'1';w=`renew ${name} ${parseInt(mo,10)||1} month`;}
+  else if(kind==='remove'){if(!confirm(`Remove ${name} from the room? The bot asks you once more.`))return;w=`remove ${name}`;}
+  const ok=await copy(w); toast(ok?`Copied "${w}". Paste it in the bot chat and send.`:`Send this to your bot: ${w}`);
+  setTimeout(()=>{location.href='https://t.me/'+(prem&&prem.bot||SET.bot);},900);
 }
+function copyPicks(){const d=(feed.days||[])[day];if(!d)return;
+  const t=['MATCH VISION · '+niceDate(d.date),''].concat((d.matches||[]).map(m=>`${m.kickoff?m.kickoff+' ':''}${m.home} vs ${m.away}: ${(m.picks&&m.picks[0]||{}).text||''}${m.score?' ('+m.score+')':''}`)).join('\n');
+  copy(t).then(ok=>toast(ok?'Copied ✓':'Copy not allowed here'));}
 
-function resultsView(d){
-  const r = d.results || {};
-  if (!r.matches || !r.matches.length) return `<div class="empty">No results yet for ${esc(niceDate(d.date))}.<br>They come after the matches (about 23:45).</div>`;
-  let won=0, of=0; r.matches.forEach(m=>(m.picks||[]).forEach(p=>{ if(p.won===true){won++;of++;} else if(p.won===false) of++; }));
-  let h = `<div class="grid"><div class="card"><div class="k">Picks won</div><div class="big">${won}/${of}</div></div><div class="card"><div class="k">Correct scores</div><div class="big">${r.correct_scores ?? 0}</div></div></div>`;
-  if (r.banker) h += `<div class="card"><div class="mrow"><div class="k">Banker ${r.banker.total?Number(r.banker.total).toFixed(2):''}</div><div class="${r.banker.won?'won':r.banker.won===false?'lost':'waiting'}" style="font-weight:800">${r.banker.won?'WON ✓':r.banker.won===false?'LOST':'WAITING'}</div></div></div>`;
-  h += r.matches.map(m=>`<div class="card"><div class="mrow"><div class="teams">${esc(m.home)} vs ${esc(m.away)}</div><div class="score">${esc(m.score||'-')}</div></div>
-    <div class="meta">Predicted ${esc(m.predicted||'')}${m.status?' · '+esc(m.status):''}</div>
-    ${(m.picks||[]).map(p=>`<div class="pick"><div>${esc(p.text)}</div><div class="${p.won===true?'won':p.won===false?'lost':'waiting'}">${p.won===true?'✓ WON':p.won===false?'✗':'…'}</div></div>`).join('')}</div>`).join('');
-  return h;
-}
-
-const KIND = {'DC':'Win or draw','O1.5':'Over 1.5 goals','O2.5':'Over 2.5 goals','U3.5':'Under 3.5 goals','U2.5':'Under 2.5 goals','BTTS-Y':'Both teams score','BTTS-N':'Not both score','WIN':'Win','TEAM':'Team goals','HT':'Half time','1H':'First half','CORNERS':'Corners','CARDS':'Cards','DNB':'Draw no bet','HCP':'Handicap'};
-function statsView(){
-  const w = feed.win_rate || {};
-  const rows = Object.entries(w).filter(([k,v])=>v.of>0).sort((a,b)=>b[1].of-a[1].of);
-  let tw=0, to=0; rows.forEach(([k,v])=>{tw+=v.won;to+=v.of;});
-  let h = `<div class="grid"><div class="card"><div class="k">Win rate</div><div class="big">${to?Math.round(tw/to*100):0}%</div><div class="meta">${tw} of ${to} picks</div></div><div class="card"><div class="k">Banker streak</div><div class="big">${feed.banker_streak||0}</div><div class="meta">wins in a row</div></div></div>`;
-  h += '<h2>By kind of pick</h2>';
-  h += rows.length ? rows.map(([k,v])=>{ const p=Math.round(v.won/v.of*100); return `<div class="card"><div class="mrow"><div>${esc(KIND[k]||k)}</div><div><b>${p}%</b> <span class="meta">${v.won}/${v.of}</span></div></div><div class="bar"><i style="width:${p}%"></i></div></div>`; }).join('') : '<div class="empty">The win rate starts after the first results.</div>';
-  return h;
-}
-
-function moreView(){
-  const d = (feed.days||[])[day] || {};
-  const ck = d.checklist || {};
-  let h = '<h2>Posted today</h2><div class="card"><div class="check">' + Object.entries(ck).map(([k,v])=>`<span class="${v?'y':''}">${v?'✓ ':''}${esc(k)}</span>`).join('') + '</div></div>';
-  h += `<h2>Builder</h2><div class="card"><div>${esc((feed.builder||{}).step||'')}</div><div class="meta">Feed written ${esc(feed.updated||'')}</div></div>`;
-  h += `<button class="act" onclick="load()">Update now</button>`;
-  h += `<h2>Feed address</h2><div class="card"><input type="text" id="url" value="${esc(feedUrl())}"><button class="act sec" onclick="saveUrl()">Save address</button><div class="meta" style="margin-top:6px">Normally leave it as feed.json.</div></div>`;
-  h += `<div class="meta" style="text-align:center;margin-top:16px">Match Vision app ${APP_VERSION}</div>`;
-  return h;
-}
-function saveUrl(){ const v = $('#url').value.trim(); if (v) { store.set(K_URL, v); load(); } }
-
-function copyPicks(){
-  const d = (feed.days||[])[day]; if (!d) return;
-  const t = ['MATCH VISION · ' + niceDate(d.date), ''].concat((d.matches||[]).map(m=>`${m.kickoff?m.kickoff+' ':''}${m.home} vs ${m.away}: ${(m.picks&&m.picks[0]||{}).text||''}${m.score?' ('+m.score+')':''}`)).join('\n');
-  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(()=>toast('Copied ✓')).catch(()=>toast('Copy not allowed here'));
-}
-
-document.querySelectorAll('nav button').forEach(b => b.onclick = () => { tab = b.dataset.t; store.set(K_TAB, tab); window.scrollTo(0,0); render(); });
-const saved = store.get(K_FEED); if (saved) { try { feed = JSON.parse(saved); source = 'saved'; } catch(e){} }
-render(); load(true);
-setInterval(()=>{ if (document.visibilityState==='visible') load(true); }, 120000);
-document.addEventListener('visibilitychange', ()=>{ if (document.visibilityState==='visible') load(true); });
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => go(b.dataset.t));
+(async()=>{const s=store.get(K.feed);if(s){try{feed=JSON.parse(s);source='saved';await unlockPremium(true);}catch(e){}}
+  render(); await loadFeed(true); liveTick(true);})();
+setInterval(()=>{ if(document.visibilityState==='visible') liveTick(false); }, 30000);
+setInterval(()=>{ if(document.visibilityState==='visible') loadFeed(true); }, 120000);
+document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible'){ loadFeed(true); liveTick(true); } });
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
 </html>
