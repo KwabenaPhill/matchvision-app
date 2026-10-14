@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Match Vision 1.0</title>
+<meta name="theme-color" content="#0b0b0c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{--bg:#0b0b0c;--card:#16171a;--card2:#1e2024;--line:#2a2d33;--txt:#f4f5f2;--mut:#9a9fa8;--lime:#dffb51;--win:#3ddc84;--lose:#ff5c5c;--wait:#f5c542}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 16px 8px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;gap:10px}
+.top img{width:36px;height:36px;border-radius:9px}
+.top h1{font-size:19px;margin:0;letter-spacing:.5px;font-weight:900}
+.top h1 b{color:var(--lime)}
+.top .st{margin-left:auto;font-size:12px;color:var(--mut);text-align:right}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut);margin-right:5px}
+.dot.on{background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.days{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:20px;padding:6px 12px;font-size:13px}
+.chip.on{background:var(--lime);color:#111;border-color:var(--lime);font-weight:700}
+main{padding:12px 16px 90px;max-width:720px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.mrow{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.teams{font-weight:800;font-size:16px}
+.meta{color:var(--mut);font-size:12px}
+.score{background:var(--card2);border-radius:8px;padding:2px 8px;font-weight:800;color:var(--lime);white-space:nowrap}
+.pick{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:14px}
+.pick:first-of-type{border-top:0}
+.pick .o{color:var(--mut);white-space:nowrap}
+.tag{font-size:10px;font-weight:800;border-radius:5px;padding:1px 6px;margin-right:6px;background:var(--lime);color:#111}
+.won{color:var(--win)} .lost{color:var(--lose)} .waiting{color:var(--wait)}
+.big{font-size:30px;font-weight:900;color:var(--lime)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.k{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.bar{height:8px;background:var(--card2);border-radius:5px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--lime)}
+h2{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:1px;margin:18px 0 8px}
+button.act{width:100%;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:15px;background:var(--lime);color:#111;margin-top:8px}
+button.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+input[type=text]{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:14px}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#111214;border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:6}
+nav button{flex:1;background:none;border:0;color:var(--mut);padding:10px 0 12px;font-size:12px;font-weight:700}
+nav button span{display:block;font-size:20px;line-height:1.2}
+nav button.on{color:var(--lime)}
+.empty{text-align:center;color:var(--mut);padding:40px 10px}
+.check{display:flex;flex-wrap:wrap;gap:6px}
+.check span{font-size:12px;padding:4px 9px;border-radius:14px;background:var(--card2);color:var(--mut)}
+.check span.y{background:rgba(223,251,81,.15);color:var(--lime)}
+.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--lime);color:#111;font-weight:800;padding:9px 16px;border-radius:20px;display:none;z-index:9}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <img src="icons/icon-192.png" alt="">
+    <h1>MATCH <b>VISION</b></h1>
+    <div class="st" id="st"></div>
+  </div>
+  <div class="days" id="days"></div>
+</header>
+<main id="main"></main>
+<nav id="nav">
+  <button data-t="today" class="on"><span>⚽</span>Picks</button>
+  <button data-t="results"><span>✅</span>Results</button>
+  <button data-t="stats"><span>📈</span>Win rate</button>
+  <button data-t="more"><span>⚙️</span>More</button>
+</nav>
+<div class="toast" id="toast"></div>
+<script>
+// Match Vision app 1.0 - shows feed.json, written by the Match Vision builder on the laptop and sent to GitHub.
+// Storage: only keys starting with "mv_app_" (never touches other apps on this address).
+const APP_VERSION = '1.0';
+const K_FEED = 'mv_app_feed', K_URL = 'mv_app_feed_url', K_TAB = 'mv_app_tab';
+const $ = s => document.querySelector(s);
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+};
+let feed = null, day = 0, tab = store.get(K_TAB) || 'today', source = '';
+
+function esc(t){ return String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function toast(t){ const e = $('#toast'); e.textContent = t; e.style.display = 'block'; clearTimeout(toast.t); toast.t = setTimeout(()=>e.style.display='none', 1800); }
+function niceDate(d){ try { return new Date(d+'T12:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}); } catch(e){ return d; } }
+function odds(o){ return o ? '@' + Number(o).toFixed(2) : ''; }
+function feedUrl(){ return store.get(K_URL) || 'feed.json'; }
+
+async function load(quiet){
+  try {
+    const r = await fetch(feedUrl() + (feedUrl().includes('?') ? '&' : '?') + 't=' + Date.now(), {cache:'no-store'});
+    if (!r.ok) throw new Error(r.status);
+    const j = await r.json();
+    if (!j || j.app !== 'Match Vision') throw new Error('not a Match Vision feed');
+    feed = j; source = 'online'; store.set(K_FEED, JSON.stringify(j));
+    if (!quiet) toast('Updated ✓');
+  } catch(e) {
+    const saved = store.get(K_FEED);
+    if (saved) { try { feed = JSON.parse(saved); source = 'saved'; } catch(_){} }
+    if (!quiet) toast(feed ? 'Offline: showing the last saved picks' : 'No picks yet');
+  }
+  render();
+}
+
+function render(){
+  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
+  const st = $('#st');
+  if (!feed) { st.textContent = ''; $('#days').innerHTML = ''; $('#main').innerHTML = '<div class="empty">No picks yet.<br><br>When the builder on your laptop has made a day, its picks show here.<br><br><button class="act" onclick="load()">Try again</button></div>'; return; }
+  const b = feed.builder || {};
+  const upd = feed.updated ? new Date(feed.updated) : null;
+  st.innerHTML = `<span class="dot ${b.busy?'on':''}"></span>${b.busy ? 'Building ' + Math.round((b.done||0)*100) + '%' : 'Ready'}<br>${upd ? upd.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}) + ' ' + upd.toLocaleDateString('en-GB',{day:'numeric',month:'short'}) : ''}${source==='saved'?' · offline':''}`;
+  const days = feed.days || [];
+  if (day >= days.length) day = 0;
+  $('#days').innerHTML = (tab==='stats'||tab==='more') ? '' : days.map((d,i)=>`<button class="chip ${i===day?'on':''}" onclick="day=${i};render()">${esc(niceDate(d.date))}</button>`).join('');
+  const d = days[day];
+  if (tab === 'today') $('#main').innerHTML = d ? picksView(d) : '<div class="empty">No days yet.</div>';
+  else if (tab === 'results') $('#main').innerHTML = d ? resultsView(d) : '<div class="empty">No days yet.</div>';
+  else if (tab === 'stats') $('#main').innerHTML = statsView();
+  else $('#main').innerHTML = moreView();
+}
+
+function picksView(d){
+  let h = `<div class="meta" style="margin-bottom:10px">${esc(d.title||'')}</div>`;
+  if (d.banker && d.banker.games && d.banker.games.length){
+    h += `<div class="card" style="border-color:var(--lime)"><div class="mrow"><div class="k">Banker of the day</div><div class="big">${Number(d.banker.total).toFixed(2)}</div></div>` +
+      d.banker.games.map(g=>{ const m=(d.matches||[]).find(x=>x.n===g.n)||{}; const p=g.pick||{}; return `<div class="pick"><div>${esc(m.home||'')} vs ${esc(m.away||'')}<br><b>${esc(p.text||'')}</b></div><div class="o">${odds(g.odds||p.odds)}</div></div>`; }).join('') + '</div>';
+  }
+  h += '<h2>All matches</h2>';
+  h += (d.matches||[]).map(m=>`<div class="card"><div class="mrow"><div class="teams">${esc(m.home)} vs ${esc(m.away)}</div>${m.score?`<div class="score">${esc(m.score)}</div>`:''}</div>
+    <div class="meta">${esc(m.league||'')}${m.kickoff?' · '+esc(m.kickoff):''}</div>
+    <div style="margin-top:6px">${(m.picks||[]).map((p,i)=>`<div class="pick"><div>${i===0?'<span class="tag">SAFEST</span>':''}${esc(p.text)}</div><div class="o">${odds(p.odds)}${p.chance?' · '+Math.round(p.chance*100)+'%':''}</div></div>`).join('')}</div></div>`).join('');
+  h += `<button class="act" onclick="copyPicks()">Copy the picks</button>`;
+  return h;
+}
+
+function resultsView(d){
+  const r = d.results || {};
+  if (!r.matches || !r.matches.length) return `<div class="empty">No results yet for ${esc(niceDate(d.date))}.<br>They come after the matches (about 23:45).</div>`;
+  let won=0, of=0; r.matches.forEach(m=>(m.picks||[]).forEach(p=>{ if(p.won===true){won++;of++;} else if(p.won===false) of++; }));
+  let h = `<div class="grid"><div class="card"><div class="k">Picks won</div><div class="big">${won}/${of}</div></div><div class="card"><div class="k">Correct scores</div><div class="big">${r.correct_scores ?? 0}</div></div></div>`;
+  if (r.banker) h += `<div class="card"><div class="mrow"><div class="k">Banker ${r.banker.total?Number(r.banker.total).toFixed(2):''}</div><div class="${r.banker.won?'won':r.banker.won===false?'lost':'waiting'}" style="font-weight:800">${r.banker.won?'WON ✓':r.banker.won===false?'LOST':'WAITING'}</div></div></div>`;
+  h += r.matches.map(m=>`<div class="card"><div class="mrow"><div class="teams">${esc(m.home)} vs ${esc(m.away)}</div><div class="score">${esc(m.score||'-')}</div></div>
+    <div class="meta">Predicted ${esc(m.predicted||'')}${m.status?' · '+esc(m.status):''}</div>
+    ${(m.picks||[]).map(p=>`<div class="pick"><div>${esc(p.text)}</div><div class="${p.won===true?'won':p.won===false?'lost':'waiting'}">${p.won===true?'✓ WON':p.won===false?'✗':'…'}</div></div>`).join('')}</div>`).join('');
+  return h;
+}
+
+const KIND = {'DC':'Win or draw','O1.5':'Over 1.5 goals','O2.5':'Over 2.5 goals','U3.5':'Under 3.5 goals','U2.5':'Under 2.5 goals','BTTS-Y':'Both teams score','BTTS-N':'Not both score','WIN':'Win','TEAM':'Team goals','HT':'Half time','1H':'First half','CORNERS':'Corners','CARDS':'Cards','DNB':'Draw no bet','HCP':'Handicap'};
+function statsView(){
+  const w = feed.win_rate || {};
+  const rows = Object.entries(w).filter(([k,v])=>v.of>0).sort((a,b)=>b[1].of-a[1].of);
+  let tw=0, to=0; rows.forEach(([k,v])=>{tw+=v.won;to+=v.of;});
+  let h = `<div class="grid"><div class="card"><div class="k">Win rate</div><div class="big">${to?Math.round(tw/to*100):0}%</div><div class="meta">${tw} of ${to} picks</div></div><div class="card"><div class="k">Banker streak</div><div class="big">${feed.banker_streak||0}</div><div class="meta">wins in a row</div></div></div>`;
+  h += '<h2>By kind of pick</h2>';
+  h += rows.length ? rows.map(([k,v])=>{ const p=Math.round(v.won/v.of*100); return `<div class="card"><div class="mrow"><div>${esc(KIND[k]||k)}</div><div><b>${p}%</b> <span class="meta">${v.won}/${v.of}</span></div></div><div class="bar"><i style="width:${p}%"></i></div></div>`; }).join('') : '<div class="empty">The win rate starts after the first results.</div>';
+  return h;
+}
+
+function moreView(){
+  const d = (feed.days||[])[day] || {};
+  const ck = d.checklist || {};
+  let h = '<h2>Posted today</h2><div class="card"><div class="check">' + Object.entries(ck).map(([k,v])=>`<span class="${v?'y':''}">${v?'✓ ':''}${esc(k)}</span>`).join('') + '</div></div>';
+  h += `<h2>Builder</h2><div class="card"><div>${esc((feed.builder||{}).step||'')}</div><div class="meta">Feed written ${esc(feed.updated||'')}</div></div>`;
+  h += `<button class="act" onclick="load()">Update now</button>`;
+  h += `<h2>Feed address</h2><div class="card"><input type="text" id="url" value="${esc(feedUrl())}"><button class="act sec" onclick="saveUrl()">Save address</button><div class="meta" style="margin-top:6px">Normally leave it as feed.json.</div></div>`;
+  h += `<div class="meta" style="text-align:center;margin-top:16px">Match Vision app ${APP_VERSION}</div>`;
+  return h;
+}
+function saveUrl(){ const v = $('#url').value.trim(); if (v) { store.set(K_URL, v); load(); } }
+
+function copyPicks(){
+  const d = (feed.days||[])[day]; if (!d) return;
+  const t = ['MATCH VISION · ' + niceDate(d.date), ''].concat((d.matches||[]).map(m=>`${m.kickoff?m.kickoff+' ':''}${m.home} vs ${m.away}: ${(m.picks&&m.picks[0]||{}).text||''}${m.score?' ('+m.score+')':''}`)).join('\n');
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(()=>toast('Copied ✓')).catch(()=>toast('Copy not allowed here'));
+}
+
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => { tab = b.dataset.t; store.set(K_TAB, tab); window.scrollTo(0,0); render(); });
+const saved = store.get(K_FEED); if (saved) { try { feed = JSON.parse(saved); source = 'saved'; } catch(e){} }
+render(); load(true);
+setInterval(()=>{ if (document.visibilityState==='visible') load(true); }, 120000);
+document.addEventListener('visibilitychange', ()=>{ if (document.visibilityState==='visible') load(true); });
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
