@@ -1,12 +1,523 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-14T23:45:08",
+ "updated": "2026-10-15T10:25:25",
  "builder": {
   "busy": false,
-  "step": "Finished: 2026-10-15 Thursday",
+  "step": "Finished: 2026-10-16 Friday",
   "done": 1.0
  },
  "days": [
+  {
+   "date": "2026-10-16",
+   "where": "Ready to Upload",
+   "title": "Football Predictions Today | 16 October 2026 | 11 Matches | Football & More",
+   "matches": [
+    {
+     "n": 1,
+     "league": "Bundesliga",
+     "kickoff": "18:30",
+     "home": "Eintracht Frankfurt",
+     "away": "1. FC Köln",
+     "score": "3-1",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.36,
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.36,
+       "chance": 0.74,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Eintracht Frankfurt over 1.5 goals",
+       "odds": null,
+       "chance": 0.62,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "league": "CAF Champions League",
+     "kickoff": "13:00",
+     "home": "EL Merriekh Bentiu",
+     "away": "Pyramids FC",
+     "score": "0-0",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "BTTS - No",
+       "odds": null,
+       "chance": 0.78,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
+      },
+      {
+       "text": "Under 1.5 goals",
+       "odds": null,
+       "chance": 0.64,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 1.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "league": "CAF Champions League",
+     "kickoff": "16:00",
+     "home": "APR",
+     "away": "Zamalek SC",
+     "score": "0-2",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.79,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.44,
+       "chance": 0.64,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - No",
+       "odds": 1.55,
+       "chance": 0.56,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "league": "LaLiga",
+     "kickoff": "19:00",
+     "home": "Deportivo La Coruna",
+     "away": "Levante",
+     "score": "2-1",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.28,
+       "chance": 0.76,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.75,
+       "chance": 0.55,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.36,
+       "chance": 0.69,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "league": "Serie A",
+     "kickoff": "18:45",
+     "home": "Frosinone",
+     "away": "Sassuolo",
+     "score": "2-1",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.22,
+       "chance": 0.77,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "Over 9.5 corners",
+       "odds": 1.67,
+       "chance": 0.56,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.73,
+       "chance": 0.61,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "league": "Ligue 1",
+     "kickoff": "18:45",
+     "home": "Le Mans",
+     "away": "Toulouse",
+     "score": "1-2",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.22,
+       "chance": 0.83,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "Under 9.5 corners",
+       "odds": 1.67,
+       "chance": 0.56,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.57,
+       "chance": 0.64,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "league": "Pro League",
+     "kickoff": "15:00",
+     "home": "Al Riyadh",
+     "away": "Al Hilal",
+     "score": "0-3",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.36,
+       "chance": 0.67,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - No",
+       "odds": 1.73,
+       "chance": 0.54,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
+      },
+      {
+       "text": "Over 10.5 corners",
+       "odds": 1.83,
+       "chance": 0.5,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "league": "Eredivisie",
+     "kickoff": "18:00",
+     "home": "Heerenveen",
+     "away": "Excelsior",
+     "score": "2-1",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.44,
+       "chance": 0.63,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.5,
+       "chance": 0.63,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Heerenveen over 1.5 goals",
+       "odds": null,
+       "chance": 0.55,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "league": "Pro League",
+     "kickoff": "13:15",
+     "home": "Al-Qadisiyah FC",
+     "away": "Abha",
+     "score": "3-0",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.33,
+       "chance": 0.71,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null
+      },
+      {
+       "text": "Under 9.5 corners",
+       "odds": 2.0,
+       "chance": 0.47,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null
+      },
+      {
+       "text": "Al-Qadisiyah FC over 1.5 goals",
+       "odds": null,
+       "chance": 0.78,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "Süper Lig",
+     "kickoff": "17:00",
+     "home": "Çorum FK",
+     "away": "Rizespor",
+     "score": "2-1",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.22,
+       "chance": 0.78,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "Rizespor to score",
+       "odds": null,
+       "chance": 0.72,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.67,
+       "chance": 0.58,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "Pro League",
+     "kickoff": "18:00",
+     "home": "Al-Ittihad FC",
+     "away": "Al Shabab",
+     "score": "2-1",
+     "date": "2026-10-16",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.4,
+       "chance": 0.62,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.4,
+       "chance": 0.62,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Al-Ittihad FC over 1.5 goals",
+       "odds": null,
+       "chance": 0.57,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
+      }
+     ]
+    }
+   ],
+   "banker": {
+    "total": 2.02,
+    "games": [
+     {
+      "n": 3,
+      "pick": {
+       "market": "FIRST HALF",
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.44,
+       "p": 0.64
+      },
+      "odds": 1.44
+     },
+     {
+      "n": 11,
+      "pick": {
+       "market": "GOALS",
+       "text": "Over 2.5 goals",
+       "odds": 1.4,
+       "p": 0.62
+      },
+      "odds": 1.4
+     }
+    ]
+   },
+   "checklist": {
+    "YouTube": false,
+    "TikTok": false,
+    "Instagram": false,
+    "X": false,
+    "Threads": false,
+    "Telegram": false,
+    "WhatsApp": false,
+    "Community": false
+   },
+   "results": {},
+   "video_link": false
+  },
   {
    "date": "2026-10-15",
    "where": "Ready to Upload",
@@ -840,7 +1351,7 @@
     "Instagram": false,
     "X": false,
     "Threads": false,
-    "Telegram": false,
+    "Telegram": true,
     "WhatsApp": false,
     "Community": false
    },
@@ -1707,9 +2218,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "0BX8D3UFDdsY7u3tXOtC0w==",
-  "nonce": "3Brx4Jt731XC0o9ZngZ0/w==",
-  "ct": "1QLmwVuwNnfU3SG0KZsYM+UhAGuHwU+KGljbtYEP++Cyn4++lOJEL1dqF91DEgtC5DJOSRBg34Nr1LQAsjaErqmKPAbe+g/1/V5DQ30C0CJMsh4DdTkWj9MOmBd+5xmI2HWPXvkpTfm/CC7I9D9+uUuK5AK9vqmYjvT/kfKg8prLzjyG/Jb0PYyc8igUEjUF5l8P",
-  "mac": "FNp5uc7PSWdGKyOIE0eDXTLYrS4K5CAM22pTYwwC3Do="
+  "salt": "FrRkG9fHMMD4jqPFZrSSrw==",
+  "nonce": "FV4B2RaJHOkRh6i54k3EIQ==",
+  "ct": "lvStQg+Hd6iSZ2yXK+jjSZ9Npb4QN+QK2vWcfh6X9sy8EjA5TF9ZQdr8pBeJjbo3VrNsRjJ+7KLSXBzp8xwNJUj4+0BXMd49fgO9EevrEZiqYh4Arxrc5jgsUa7Kh4z7BpEaDw6HswzHLTe+UEw4zkowYRT8bDdpudPu7rweQ6gke2/rOrNV2j5muU7GeU6OaSzd+LalsyTjMrtCluDO/MsawUP3VihgaD5ux6JO9hMzFU2xySY1hkA0ZJ9C/MtnPI4yIi0jylJavmx9opSj/zu8uy6VpWx2cGWe8hafp8Ms9KJ9uRqZdTQRJujj9i9hCcV/dJLxziB4/t/Lf9g9ym95hemOfbfinCknG8+Zdee1E9o/GhfzC3ZE3n8h5cfRyXdE4Q/iiEQKH0TECT7OxC5re0DKijGYk39V23YVmEbFH5e01O4f0zQAXyeEX4gMwL9XOcPkszMuxXml5TiTrH3a0vqWn/EndEqwrrNOMdP/qzMZ+XzEwv9vi6rL98R3FBovIXdaphzgVoLf3SKr+xteoe25iu8NzcY94Cl3hb5iM+VL/jSVw2fSF89v21801s4aHCWQqBaozpC2JLQ2PFDQAW4F9WuCNKZnsJKL1QWfSpvtSRd/oAgtSjFHj71DLry8dQhbyHxaqqvgQniqF3E4f8zuqlIP+B7wNAwuKTF+9zSDJMOfrHvy8ImEL/LBDKIdMTbVJ0tbOJn129LrRVaYOFRnaZ1sG4mkoZnRudNXc6kSBeTowNge0I394odl+WQ83FJHpG1N4szOBFZ70EYyba/h8i9q3H20SJj4OKgXkx0jIDeB2AdgljVCvRvpVZL/CaoZhMo9MCcRH6KEt8EBfpA9UT8q7+QqH9zZYJadpY5MLhRRRNlW/KmN2pfu4ccvqejnjJ/jJIdpBjwZTIikYWPVyuIsXCtWhl6hZuLpPRtvd0lroNTbiuVx04RBUeg11Ks8LIdF1AkyP3ufy7919GSziGbpXdjq+Vh6mvZ1FfLv/RiV9MlCYb+9enq2CS68bM1zqn2cw8BKOmlK5Y6avp5AfBZ0tYAJZ+M=",
+  "mac": "6q1lGWMopnvPiB3gpN83JZhgPayH5fUNm/8BuDqryDk="
  }
 }
