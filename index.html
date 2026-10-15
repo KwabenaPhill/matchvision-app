@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Match Vision 2.1</title>
-<meta name="theme-color" content="#0b0b0c">
+<title>Match Vision 2.2</title>
+<meta name="theme-color" content="#000000">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -119,6 +119,44 @@ input[type=date]{width:100%;padding:11px;border-radius:10px;border:1px solid var
 .record-period button.on{background:var(--lime);color:#111}
 .settings-help{line-height:1.5;color:var(--mut);font-size:13px}
 @media(max-width:380px){main{padding-left:13px;padding-right:13px}.top{gap:8px}.top img{width:40px;height:40px}.top h1{font-size:17px}nav button{font-size:8px}nav button .nav-icon{width:20px;height:20px}}
+/* Match the Sure Stake app's phone layout and sizing, with Match Vision branding. */
+:root{--f:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+html,body{background:#000}
+body{font-family:var(--f);max-width:480px;min-height:100vh;margin:0 auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+header{left:50%;transform:translateX(-50%);width:100%;max-width:480px;padding:18px 18px 8px;background:#000;border-bottom:1px solid #222}
+.top{gap:11px;align-items:center}
+.top img{width:48px;height:48px;border-radius:16px}
+.top h1{font-size:22px;letter-spacing:.2px;font-weight:900}
+.date{font-size:14px;margin-top:2px}
+.version{font-size:11px;padding:4px 10px}
+.top .st{font-size:11px}
+main{width:100%;max-width:480px;padding:14px 18px 112px}
+.card{background:#16171a;border-color:#292b30;border-radius:22px;padding:16px 18px;margin-bottom:12px}
+.stat{background:#16171a;border-color:#292b30;border-radius:22px;padding:13px 8px}
+.grid3,.grid2{gap:9px;margin-bottom:12px}
+.stat .big{font-size:26px}
+h2{color:var(--lime);font-size:12px;letter-spacing:1.7px;margin:22px 2px 11px}
+.teams{font-size:16px}
+.meta{font-size:13px}
+.quick-actions{gap:10px;margin-bottom:15px}
+.quick-action{min-height:76px;padding:14px 16px;border-radius:21px;background:#1b1c20;border-color:#292b30}
+.quick-icon{width:46px;height:46px;border-radius:15px;font-size:20px;background:rgba(223,251,81,.12)}
+.quick-action b{font-size:16px}
+.quick-action small{font-size:13px}
+button.act,a.act{border-radius:15px;padding:14px 16px;font-size:15px}
+button.sm{border-radius:12px;padding:8px 12px}
+input[type=text],input[type=password],input[type=number],input[type=date]{border-radius:14px;padding:13px 14px}
+nav#nav{position:fixed;left:50%;right:auto;bottom:0;transform:translateX(-50%);width:100%;max-width:480px;display:flex;justify-content:space-around;gap:0;background:#0d0d0d;border-top:1px solid #333;padding:0 0 env(safe-area-inset-bottom,0px);z-index:100;backdrop-filter:none}
+nav#nav button{position:relative;min-width:0;flex:1;padding:10px 3px 9px;background:none;border:0;color:#9a9a9a;font-family:var(--f);font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav#nav button::before{content:'';position:absolute;top:0;left:18%;right:18%;height:3px;background:var(--lime);border-radius:0 0 3px 3px;transform:scaleX(0);transition:transform .2s ease}
+nav#nav button.on{color:var(--lime)}
+nav#nav button.on::before{transform:scaleX(1)}
+nav#nav button .ni{display:block;font-size:20px;line-height:1.1;transition:transform .18s ease}
+nav#nav button.on .ni{transform:translateY(-1px) scale(1.12)}
+.toast{bottom:calc(82px + env(safe-area-inset-bottom,0px));background:var(--lime);border:1px solid rgba(223,251,81,.35)}
+.video-thumb.short{width:min(100%,280px);aspect-ratio:9/16;margin-left:auto;margin-right:auto}
+.video-placeholder.short{width:min(100%,280px);aspect-ratio:9/16;margin-left:auto;margin-right:auto}
+@media(max-width:380px){header{padding-left:14px;padding-right:14px}.top img{width:44px;height:44px}.top h1{font-size:20px}main{padding-left:14px;padding-right:14px}nav#nav button{font-size:9px}}
 </style>
 </head>
 <body>
@@ -126,28 +164,27 @@ input[type=date]{width:100%;padding:11px;border-radius:10px;border:1px solid var
   <div class="top">
     <img src="icons/icon-192.png" alt="">
     <div class="brand-copy"><h1>MATCH <b>VISION</b></h1><div class="date" id="brandDate"></div></div>
-    <div class="head-right"><span class="version">2.1</span><div class="st" id="st"></div></div>
+    <div class="head-right"><span class="version">2.2</span><div class="st" id="st"></div></div>
   </div>
   <div class="days" id="days"></div>
 </header>
 <main id="main"></main>
 <nav id="nav">
-  <button data-t="home"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></button>
-  <button data-t="picks"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 3 2-1 4h-4l-1-4zM5 8l4 1M19 8l-4 1M8 19l2-6M16 19l-2-6"/></svg><span>Picks</span></button>
-  <button data-t="video"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="3"/><path d="m16 10 5-3v10l-5-3z"/></svg><span>Video</span></button>
-  <button data-t="records"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V11M10 20V5M16 20v-8M22 20H2"/></svg><span>Records</span></button>
-  <button data-t="premium"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 8 4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg><span>Premium</span></button>
-  <button data-t="settings"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9 7 7m12.1 12.1L17 17M4.9 19.1 7 17M19.1 4.9 17 7"/></svg><span>Settings</span></button>
+  <button class="nav-btn on" data-t="home"><span class="ni">🏠</span>Home</button>
+  <button class="nav-btn" data-t="records"><span class="ni">📊</span>Records</button>
+  <button class="nav-btn" data-t="video"><span class="ni">🎬</span>Video</button>
+  <button class="nav-btn" data-t="premium"><span class="ni">👑</span>Premium</button>
+  <button class="nav-btn" data-t="settings"><span class="ni">⚙️</span>Settings</button>
 </nav>
 <div class="toast" id="toast"></div>
 <script>
-// Match Vision app 2.1
+// Match Vision app 2.2
 // - feed.json: written by the Match Vision builder on the laptop and sent to GitHub (after every review, every finished
 //   match and the 23:45 results). The Vision Premium part is locked with the PIN typed in Connect > App on the laptop.
 // - live scores: the app asks ESPN's free scoreboard itself (no key), so picks turn won or lost while you watch.
 // - members are changed ONLY by the bot (member / renew / remove). The app copies the bot word and opens the bot chat.
 // Storage: only keys starting with "mv_app_" (never touches other apps).
-const APP_VERSION = '2.1';
+const APP_VERSION = '2.2';
 const K = {feed:'mv_app_feed', pin:'mv_app_pin', set:'mv_app_set', tab:'mv_app_tab', espn:'mv_app_espn'};
 const $ = s => document.querySelector(s);
 const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}}, del(k){try{localStorage.removeItem(k)}catch(e){}}};
@@ -337,12 +374,12 @@ function viewHome(){
     h+=`<div class="grid3"><div class="stat"><div class="k">Won</div><div class="big winc">${c.w}</div></div><div class="stat"><div class="k">Lost</div><div class="big losec">${c.l}</div></div><div class="stat"><div class="k">To play</div><div class="big">${c.p}</div></div></div>`;
     const bs=bankerState(d);
     if(d.banker) h+=`<div class="card lime"><div class="row"><div><div class="k">Banker of the day</div><div class="meta">${(d.banker.games||[]).length} picks</div></div><div style="text-align:right"><div class="big lime">${Number(d.banker.total).toFixed(2)}</div><div class="${bs==='w'?'winc':bs==='l'?'losec':'meta'}" style="font-weight:800">${bs==='w'?'WON ✓':bs==='l'?'LOST':'WAITING'}</div></div></div></div>`;
-    h+=`<h2>To do now</h2><div class="quick-actions"><div class="quick-action" onclick="go('picks')"><div class="quick-icon">⚽</div><div><b>Today’s picks</b><small>${ms.length} matches · tap to open predictions</small></div><span class="meta">›</span></div><div class="quick-action" onclick="go('video')"><div class="quick-icon">▶</div><div><b>Match Vision video</b><small>${d.video_link?'Video ready to watch':'Video link appears here after you share it with the bot'}</small></div><span class="meta">›</span></div></div>`;
+    h+=`<h2>To do now</h2><div class="quick-actions"><div class="quick-action" onclick="openTodayPicks()"><div class="quick-icon">⚽</div><div><b>Today’s picks</b><small>${ms.length} matches · tap to open predictions</small></div><span class="meta">›</span></div><div class="quick-action" onclick="go('video')"><div class="quick-icon">▶</div><div><b>Match Vision video</b><small>${d.video_link?'Video ready to watch':'Video link appears here after you share it with the bot'}</small></div><span class="meta">›</span></div></div>`;
     const pt=premToday(d);
     if(pt&&pt.length){let w=0,l=0;for(const g of pt){const m=(d.matches||[]).find(x=>x.n===g.n);if(!m)continue;const i=(m.picks||[]).findIndex(p=>p.text===g.text);const s=g.won===true?'w':g.won===false?'l':(i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d)));if(s==='w')w++;if(s==='l')l++;}
       h+=`<div class="card gold" onclick="go('premium')"><div class="row"><div><div class="k goldc">👑 ${esc(prem.name||'Vision Premium')} today</div><div class="meta">${pt.length} picks · tap to open</div></div><div class="big goldc">${w}/${pt.length}</div></div></div>`;}
     if(lv.length){h+=`<h2><span class="dot on"></span>Live now</h2>`+lv.map(m=>matchCard(m,d,pt)).join('');}
-    if(up.length){h+=`<h2>Up next</h2>`+up.slice(0,4).map(m=>matchCard(m,d,pt)).join('')+(up.length>4?`<button class="act sec" onclick="go('picks')">All ${up.length} upcoming matches</button>`:'');}
+    if(up.length){h+=`<h2>Up next</h2>`+up.slice(0,4).map(m=>matchCard(m,d,pt)).join('')+(up.length>4?`<button class="act sec" onclick="openTodayPicks()">All ${up.length} upcoming matches</button>`:'');}
     if(fin.length){h+=`<h2>Finished</h2>`+fin.slice().reverse().map(m=>matchCard(m,d,pt)).join('');}
   }
   const rem=reminders();
@@ -434,7 +471,8 @@ function viewVideo(){
   if(!videos.length){h+='<div class="empty">No video links have been added yet.</div>';return h;}
   for(const d of videos){
     const url=String(d.video_link||'').trim(), id=(url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/)||[])[1];
-    const thumb=id?`<img class="video-thumb" src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="Match Vision video preview" loading="lazy">`:`<div class="video-placeholder"><span class="video-badge">MATCH VISION · ${esc(niceDate(d.date))}</span><span class="video-play">▶</span></div>`;
+    const short=/youtube\.com\/shorts\//i.test(url), videoClass=short?' short':'';
+    const thumb=id?`<img class="video-thumb${videoClass}" src="https://img.youtube.com/vi/${id}/hqdefault.jpg" alt="Match Vision video preview" loading="lazy">`:`<div class="video-placeholder${videoClass}"><span class="video-badge">MATCH VISION · ${esc(niceDate(d.date))}</span><span class="video-play">▶</span></div>`;
     h+=`<div class="card"><div class="row"><div><div class="teams">${esc(niceDate(d.date))}</div><div class="meta">${(d.matches||[]).length} matches</div></div><span class="tag">VIDEO</span></div>${thumb}<a class="act" href="${esc(url)}" target="_blank" rel="noopener">Watch Video ↗</a></div>`;
   }
   return h;
@@ -459,19 +497,20 @@ function viewSettings(){
 }
 
 function render(){
-  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab));
+  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('on', b.dataset.t === tab || (tab==='picks' && b.dataset.t==='home')));
   $('#brandDate').textContent=niceDate(TODAY(),true);
   const st=$('#st');
   if(!feed){st.textContent='';$('#days').innerHTML='';$('#main').innerHTML='<div class="empty">No picks yet.<br><br>When the builder on your laptop has made a day, its picks show here.<br><br><button class="act" onclick="loadFeed()">Try again</button></div>';return;}
   const b=feed.builder||{}; const upd=feed.updated?new Date(feed.updated):null;
   const anyLive=todayDays().some(d=>(d.matches||[]).some(m=>{const L=liveOf(m,d);return L&&['LIVE','HT'].includes(L.st);}));
-  st.innerHTML=`<span class="dot ${anyLive||b.busy?'on':''}"></span>${anyLive?'Live':b.busy?'Building '+Math.round((b.done||0)*100)+'%':'Ready'}<br>${upd?upd.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''}${source==='saved'?' · offline':''}`;
+  st.innerHTML=`<span class="dot ${anyLive||b.busy?'on':''}"></span>${anyLive?'Live':b.busy?'Building '+Math.round((b.done||0)*100)+'%':source==='saved'?'Saved':'Updated'}<br>${upd?upd.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'}):''}`;
   const days=feed.days||[]; if(day>=days.length) day=0;
   $('#days').innerHTML = tab==='picks' ? days.map((d,i)=>`<button class="chip ${i===day?'on':''}" onclick="day=${i};render()">${esc(niceDate(d.date))}</button>`).join('') : '';
   const v={home:viewHome,picks:viewPicks,video:viewVideo,records:viewRecords,premium:viewPremium,settings:viewSettings}[tab]||viewHome;
   $('#main').innerHTML=v();
 }
 function go(t){tab=t;store.set(K.tab,t);window.scrollTo(0,0);render();}
+function openTodayPicks(){const days=feed&&feed.days||[];let i=days.findIndex(d=>d.date===TODAY());if(i<0)i=days.findIndex(d=>d.date>TODAY());if(i>=0)day=i;go('picks');}
 function openRecordDate(value){const wanted=value||($('#recordDate')&&$('#recordDate').value);const i=(feed.days||[]).findIndex(d=>d.date===wanted);if(i<0){toast('No saved matches for that date');return;}day=i;go('picks');}
 async function tryPin(){const p=($('#pin').value||'').trim();if(!p){toast('Type your PIN first');return;}toast('Checking…');const ok=await unlockPremium(false,p);toast(ok?'Unlocked ✓':'Wrong PIN');render();}
 function lockAgain(){store.del(K.pin);prem=null;toast('Premium locked on this phone');render();}
@@ -497,3 +536,4 @@ if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch
 </script>
 </body>
 </html>
+
