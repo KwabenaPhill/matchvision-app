@@ -1,12 +1,824 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-15T10:25:25",
+ "updated": "2026-10-15T13:25:14",
  "builder": {
   "busy": false,
-  "step": "Finished: 2026-10-16 Friday",
+  "step": "Finished: 2026-10-17 Saturday",
   "done": 1.0
  },
  "days": [
+  {
+   "date": "2026-10-17",
+   "where": "Ready to Upload",
+   "title": "Football Predictions Today | 17 October 2026 | Goals & BTTS | Football",
+   "matches": [
+    {
+     "n": 1,
+     "league": "Premier League",
+     "kickoff": "14:00",
+     "home": "Manchester City",
+     "away": "Ipswich Town",
+     "score": "2-0",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.74,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - No",
+       "odds": null,
+       "chance": 0.54,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null
+      },
+      {
+       "text": "Manchester City over 1.5 goals",
+       "odds": null,
+       "chance": 0.54,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "league": "Premier League",
+     "kickoff": "14:00",
+     "home": "Brentford",
+     "away": "Liverpool",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.74,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "Liverpool to score",
+       "odds": null,
+       "chance": 0.66,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "league": "Ligue 1",
+     "kickoff": "15:15",
+     "home": "Strasbourg",
+     "away": "Paris Saint-Germain",
+     "score": "1-2",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Strasbourg to score",
+       "odds": null,
+       "chance": 0.71,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "league": "Bundesliga",
+     "kickoff": "16:30",
+     "home": "Bayern Munich",
+     "away": "RB Leipzig",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.74,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.5,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "RB Leipzig to score",
+       "odds": null,
+       "chance": 0.62,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "league": "Premier League",
+     "kickoff": "11:30",
+     "home": "Everton",
+     "away": "Chelsea",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.73,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "Chelsea to score",
+       "odds": null,
+       "chance": 0.62,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.5,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "league": "Serie A",
+     "kickoff": "16:00",
+     "home": "Bologna",
+     "away": "Inter Milan",
+     "score": "1-2",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "Bologna to score",
+       "odds": null,
+       "chance": 0.71,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "league": "Bundesliga",
+     "kickoff": "13:30",
+     "home": "1. FC Union Berlin",
+     "away": "Borussia Dortmund",
+     "score": "1-2",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.76,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.5,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "1. FC Union Berlin to score",
+       "odds": null,
+       "chance": 0.66,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "league": "Premier League",
+     "kickoff": "16:30",
+     "home": "Newcastle United",
+     "away": "Aston Villa",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "Aston Villa to score",
+       "odds": null,
+       "chance": 0.67,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "league": "Serie A",
+     "kickoff": "13:00",
+     "home": "Venezia",
+     "away": "Napoli",
+     "score": "1-2",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.76,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "Napoli to score",
+       "odds": null,
+       "chance": 0.74,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "Serie A",
+     "kickoff": "18:45",
+     "home": "AS Roma",
+     "away": "Genoa",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "Genoa to score",
+       "odds": null,
+       "chance": 0.64,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.5,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "Bundesliga",
+     "kickoff": "13:30",
+     "home": "Hamburg SV",
+     "away": "VfB Stuttgart",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "VfB Stuttgart to score",
+       "odds": null,
+       "chance": 0.7,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "league": "Premier League",
+     "kickoff": "14:00",
+     "home": "Fulham",
+     "away": "Hull City",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.73,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "Fulham to score",
+       "odds": null,
+       "chance": 0.79,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.5,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "league": "Ligue 1",
+     "kickoff": "18:45",
+     "home": "Lille",
+     "away": "Brest",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.74,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.5,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Brest to score",
+       "odds": null,
+       "chance": 0.64,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "league": "Ligue 1",
+     "kickoff": "18:45",
+     "home": "Troyes",
+     "away": "Lens",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Lens to score",
+       "odds": null,
+       "chance": 0.71,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "Eredivisie",
+     "kickoff": "14:30",
+     "home": "ADO Den Haag",
+     "away": "PSV Eindhoven",
+     "score": "1-2",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "ADO Den Haag to score",
+       "odds": null,
+       "chance": 0.71,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "league": "Super Lig",
+     "kickoff": "13:00",
+     "home": "Genclerbirligi",
+     "away": "Galatasaray",
+     "score": "1-2",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Genclerbirligi to score",
+       "odds": null,
+       "chance": 0.71,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "league": "Super Lig",
+     "kickoff": "16:00",
+     "home": "Fenerbahce",
+     "away": "Alanyaspor",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": null,
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null
+      },
+      {
+       "text": "Fenerbahce to score",
+       "odds": null,
+       "chance": 0.76,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "league": "Bundesliga",
+     "kickoff": "13:30",
+     "home": "Schalke 04",
+     "away": "Mainz",
+     "score": "2-1",
+     "date": "2026-10-17",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": null,
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": null,
+       "chance": 0.51,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null
+      },
+      {
+       "text": "Mainz to score",
+       "odds": null,
+       "chance": 0.69,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null
+      }
+     ]
+    }
+   ],
+   "banker": null,
+   "checklist": {
+    "YouTube": false,
+    "TikTok": false,
+    "Instagram": false,
+    "X": false,
+    "Threads": false,
+    "Telegram": false,
+    "WhatsApp": false,
+    "Community": false
+   },
+   "results": {},
+   "video_link": false
+  },
   {
    "date": "2026-10-16",
    "where": "Ready to Upload",
@@ -84,6 +896,16 @@
         "t": "g",
         "o": "u",
         "v": 1.5
+       },
+       "live": null
+      },
+      {
+       "text": "Pyramids FC or draw",
+       "odds": null,
+       "chance": 0.73,
+       "rule": {
+        "t": "dc",
+        "s": "a"
        },
        "live": null
       }
@@ -511,7 +1333,7 @@
     "Instagram": false,
     "X": false,
     "Threads": false,
-    "Telegram": false,
+    "Telegram": true,
     "WhatsApp": false,
     "Community": false
    },
@@ -2218,9 +3040,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "FrRkG9fHMMD4jqPFZrSSrw==",
-  "nonce": "FV4B2RaJHOkRh6i54k3EIQ==",
-  "ct": "lvStQg+Hd6iSZ2yXK+jjSZ9Npb4QN+QK2vWcfh6X9sy8EjA5TF9ZQdr8pBeJjbo3VrNsRjJ+7KLSXBzp8xwNJUj4+0BXMd49fgO9EevrEZiqYh4Arxrc5jgsUa7Kh4z7BpEaDw6HswzHLTe+UEw4zkowYRT8bDdpudPu7rweQ6gke2/rOrNV2j5muU7GeU6OaSzd+LalsyTjMrtCluDO/MsawUP3VihgaD5ux6JO9hMzFU2xySY1hkA0ZJ9C/MtnPI4yIi0jylJavmx9opSj/zu8uy6VpWx2cGWe8hafp8Ms9KJ9uRqZdTQRJujj9i9hCcV/dJLxziB4/t/Lf9g9ym95hemOfbfinCknG8+Zdee1E9o/GhfzC3ZE3n8h5cfRyXdE4Q/iiEQKH0TECT7OxC5re0DKijGYk39V23YVmEbFH5e01O4f0zQAXyeEX4gMwL9XOcPkszMuxXml5TiTrH3a0vqWn/EndEqwrrNOMdP/qzMZ+XzEwv9vi6rL98R3FBovIXdaphzgVoLf3SKr+xteoe25iu8NzcY94Cl3hb5iM+VL/jSVw2fSF89v21801s4aHCWQqBaozpC2JLQ2PFDQAW4F9WuCNKZnsJKL1QWfSpvtSRd/oAgtSjFHj71DLry8dQhbyHxaqqvgQniqF3E4f8zuqlIP+B7wNAwuKTF+9zSDJMOfrHvy8ImEL/LBDKIdMTbVJ0tbOJn129LrRVaYOFRnaZ1sG4mkoZnRudNXc6kSBeTowNge0I394odl+WQ83FJHpG1N4szOBFZ70EYyba/h8i9q3H20SJj4OKgXkx0jIDeB2AdgljVCvRvpVZL/CaoZhMo9MCcRH6KEt8EBfpA9UT8q7+QqH9zZYJadpY5MLhRRRNlW/KmN2pfu4ccvqejnjJ/jJIdpBjwZTIikYWPVyuIsXCtWhl6hZuLpPRtvd0lroNTbiuVx04RBUeg11Ks8LIdF1AkyP3ufy7919GSziGbpXdjq+Vh6mvZ1FfLv/RiV9MlCYb+9enq2CS68bM1zqn2cw8BKOmlK5Y6avp5AfBZ0tYAJZ+M=",
-  "mac": "6q1lGWMopnvPiB3gpN83JZhgPayH5fUNm/8BuDqryDk="
+  "salt": "NAaGcN/tlDQBxi5SYI6yjA==",
+  "nonce": "8dhZAXl4PHa/EwdtHPhweQ==",
+  "ct": "32qOuvA5ZEmBBYUAAuHsp46S+dnuvX9pIzf5uAzn/pc1/5lN6SRyDIbzSYnszE4YKCwYZRUYbnFH+5mAs4KgIHmrsrAmYD/jVteCiC39z0TPWOZWTvrdbN17b4Ou8PDm90wCGAzsxVZJFyXGfOW6aMFTAFYoa2pRvZBmyJWiXwKTGalHpxYxSf90K7i+wuP1VAzxE5ziKQVIT5c5FtYoq0q9Uw0LUBBrCMXq/zL+kiDker4jBIwVjHFH6CHYC8G+Nm+9USppgSFwFyJhl/OFikudBTl1zunS/6sxG+DtRZKQheANtxmJpOMFxptphSFrjopryUO0W79lwaDQzUaoSs7BQXlvyFpad3FLhA3Ms8BPhk7fd6t78Dmc1bRqUdUq5r23t4HjB6FDdm5iuOtp3o2GlcrmrV20+lG2vtocZ/XnGxNBygwTtEjFrCLBuOX2vxwtWAAGOaDvnHrWKO5ixi7/Vei/K+Z7ig8fgcA4n1e27pjRyDjZ6pECdWCAbDZ5ZHragSsdN7mFNrFlBzlh4gbaesQKFb7N35WvrngEPV3+CGofC5psYpPDooKSAWBnFNrp9IqgwzcFqafJP8asQ4Ulx4C7KT386WoQ7jKMYJqfzIdiauFo7SaFgqvVSmR9RcQjibLZ8WGME2oRNQcrvw6hGe+KYr2/s0SAZqgSTXpJ8aqI1X233obohCNmyZBOWKPnCFjtuzY32vOFWE4HmOeZVe4XAYBiKWJDWCH8jBpwwgQ7qqe7L/mka86juKRvs16rFaO1Jt6itz/e8nISiPHJOsbmlqIBoprtb8hEU9/SOy4zB0+s5lM4eiZQ5itwtEkjD4ST6OXKvM1fuZ1rmKu/Aj7WFcuONkwVz3lrnod1zAKwr+VfFCH5B7+ZXJZEwMZeyO4FJKHsH5aM+8z7QBNOThQZIfKoHdwdA38C/NiUmyfLOed1niPy+7NTSD6wpBNvUQrWB115PElyQ4iHDNrM+uTCSO5vst891Hg0tfS+5J8cnDR0e9DB0Eak3DZTfM5bbXsCfUZIerv7Am3BQelOizLQ3U4krzyKo5S0cKoMKSB5qmno39lMfh+n3LyT0qpI5WqVjN9bjLNpIEiBW68SqrF4RbGnotieVMP8JxuejNYsouLbE0gcQI46NVmpwzLc09DQNpt7Zrakj/RFUCGRhRdmNcBQ1st+aPz9icc1BotuJsqaB5+4bVnGWYHUn4AiPvqJMmRRfrTkD2s8KPqu58UpZQZUtaW0p2nApxAi3bts9X49C7ghceU7VRNzY//cMYwA0egnaYQb2ZqXOd/VmdzsmAxNbdXB926ZTB3xP1SG7OO7Tk4wzb4bu1dQm4XjpFJX9PrNH2PkDlPDdn2dr91HavM87lo9wYvZ4Z23mQwY9BxkYKc0KDJafJsCHDOgjAPZXJLOljxGrxRMWmvgvflFa5Al/AGpYGmZf+MpI2Mm6O0FCf/87S+Y8vy0dv1A33EzpBesR/dWm62XlCN3qO+kqfqGIUalzvzqRdM3fu9DhF8yIeHiSDYsriyOi/4lUVvD+w67A5NZwdTEZu7G9G5QS9Kobdcrb0v3jGyCcze5RNQ3ZKEuj280MxznpwC93X952Mf51XlrZzo5WtVKOyFVO66My38dXffC0hAb2Y1HfNQXsyBqz3+TdVKypARV/9KKCd4qr9V/RSzeoYY7J8MkYIrGWk9i43caRV2NqewSyJjebaxWGlyKSpTiK5iJT0IppBXXXmjvprEA5FBGQ3RN9rvQ1pOuHWajw/sONQ18w1GmNw9Nw+qtgLDS3YgXGKBItdX1rGisX3BJbCrZTveqIG8OwOWObNMnUJw4P7qjHtotjATNRFmypzgPyxWBvExV9fhTkYbe0b15qmFlhLUD1Zs32uAt/5i0grcmFL9OdmFN3MoFIgFsUI7XsuwNQzkzqbaWQAG8Xatiqz8=",
+  "mac": "loNS1o4RqJEqliXkdH95NnXO7XJ5xBUsXywbSv63dyg="
  }
 }
