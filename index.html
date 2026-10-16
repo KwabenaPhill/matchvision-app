@@ -743,7 +743,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.0';
+const VERSION='3.0';   // APP_VERSION = '3.0' (the laptop reads this line for its "APP UPDATED" message)
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let toastT;function toast(t,ms=2600){const el=$('toast');el.textContent=t;el.classList.remove('on');void el.offsetWidth;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),ms);}
