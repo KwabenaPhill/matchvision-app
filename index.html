@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Match Vision 2.2.1</title>
+<title>Match Vision 2.2.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <meta name="theme-color" content="#000000">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
@@ -79,92 +82,84 @@ nav button.on{color:var(--lime)}
 .switch{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
 .switch:first-child{border-top:0}
 .how p{margin:6px 0;color:#d6d8dc;font-size:14px}
-/* Match Vision 2.1: Sure Stake layout, Match Vision colors and video preview */
-header{padding:14px 18px 10px;border-bottom-color:var(--line)}
-.top{gap:11px;align-items:center}
-.top img{width:44px;height:44px;border-radius:14px}
-.brand-copy{min-width:0;flex:1}
-.top h1{font-size:19px;letter-spacing:.4px}
-.date{color:var(--mut);font-size:13px;margin-top:3px}
-.head-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none}
-.version{padding:3px 9px;border-radius:99px;background:var(--card);color:var(--mut);font-size:10px;font-weight:800}
-.top .st{margin-left:0;font-size:10px;line-height:1.25}
-.top .dot{width:7px;height:7px}
-main{padding:16px 18px 104px;max-width:600px}
-.card{border-radius:19px;padding:15px 16px}
-.stat{border-radius:18px;padding:13px 8px}
-h2{color:var(--lime);font-size:11px;letter-spacing:1.5px;margin:20px 2px 10px}
-.chip{border-radius:99px;padding:8px 13px;font-weight:700}
-button.act{border-radius:15px;padding:13px 15px}
-nav{max-width:600px;justify-content:space-around;gap:0;background:rgba(14,14,16,.95);backdrop-filter:blur(18px);padding:8px 2px calc(7px + env(safe-area-inset-bottom))}
-nav button{min-width:0;flex:1;padding:4px 1px 2px;font-size:9px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:4px}
-nav button span{font-size:0;line-height:1}
-nav button .nav-icon{display:block;width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-nav button.on{color:var(--lime)}
-.quick-actions{display:grid;gap:9px;margin-bottom:14px}
-.quick-action{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:16px;background:var(--card2)}
-.quick-icon{width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:13px;background:rgba(223,251,81,.12);color:var(--lime);font-size:18px;font-weight:900}
-.quick-action b{display:block;font-size:14px}
-.quick-action small{display:block;color:var(--mut);font-size:11px;margin-top:2px}
-.video-thumb{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:linear-gradient(135deg,#1d2a1b,#101216 65%,#08090a);margin:11px 0}
-.video-placeholder{aspect-ratio:16/9;border:1px solid var(--line);border-radius:14px;background:radial-gradient(ellipse at 50% 8%,#263522,#111512 52%,#090a0b);display:grid;place-items:center;margin:11px 0;position:relative;overflow:hidden}
-.video-placeholder:after{content:"";position:absolute;width:54%;height:55%;bottom:-28%;border:1px solid rgba(223,251,81,.22);border-radius:50%}
-.video-play{width:52px;height:52px;display:grid;place-items:center;border-radius:50%;background:var(--lime);color:#111;font-size:20px;z-index:1}
-.video-badge{position:absolute;top:11px;left:12px;font-weight:900;font-size:10px;letter-spacing:1px;color:var(--lime)}
-a.act{display:block;width:100%;margin-top:8px;border:0;border-radius:12px;padding:12px;font-weight:800;font-size:15px;background:var(--lime);color:#111;text-decoration:none;text-align:center}
-input[type=date]{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--card2);color:var(--txt);font-size:15px}
-.quick-action{cursor:pointer}
-.record-period{display:flex;gap:5px;padding:4px;background:var(--card2);border-radius:99px;margin:2px 0 13px}
-.record-period button{flex:1;border:0;border-radius:99px;background:transparent;padding:8px 4px;color:var(--mut);font-size:12px;font-weight:700}
-.record-period button.on{background:var(--lime);color:#111}
-.settings-help{line-height:1.5;color:var(--mut);font-size:13px}
-@media(max-width:380px){main{padding-left:13px;padding-right:13px}.top{gap:8px}.top img{width:40px;height:40px}.top h1{font-size:17px}nav button{font-size:8px}nav button .nav-icon{width:20px;height:20px}}
-/* Match the Sure Stake app's phone layout and sizing, with Match Vision branding. */
+/* Match Vision shell, using the same phone layout and sizing as the ShowStake reference. */
 :root{--f:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
-html,body{background:#000}
-body{font-family:var(--f);max-width:480px;min-height:100vh;margin:0 auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
-header{width:100%;max-width:480px;padding:18px 18px 8px;background:#000;border-bottom:1px solid #222}
-.top{gap:11px;align-items:center}
-.top img{width:48px;height:48px;border-radius:16px}
-.top h1{font-size:22px;letter-spacing:.2px;font-weight:900}
-.date{font-size:14px;margin-top:2px}
-.version{font-size:11px;padding:4px 10px}
-.top .st{font-size:11px}
-main{width:100%;max-width:480px;padding:14px 18px 112px}
-.card{background:#16171a;border-color:#292b30;border-radius:22px;padding:16px 18px;margin-bottom:12px}
-.stat{background:#16171a;border-color:#292b30;border-radius:22px;padding:13px 8px}
-.grid3,.grid2{gap:9px;margin-bottom:12px}
-.stat .big{font-size:26px}
-h2{color:var(--lime);font-size:12px;letter-spacing:1.7px;margin:22px 2px 11px}
-.teams{font-size:16px}
-.meta{font-size:13px}
-.quick-actions{gap:10px;margin-bottom:15px}
-.quick-action{min-height:76px;padding:14px 16px;border-radius:21px;background:#1b1c20;border-color:#292b30}
-.quick-icon{width:46px;height:46px;border-radius:15px;font-size:20px;background:rgba(223,251,81,.12)}
-.quick-action b{font-size:16px}
-.quick-action small{font-size:13px}
-button.act,a.act{border-radius:15px;padding:14px 16px;font-size:15px}
-button.sm{border-radius:12px;padding:8px 12px}
-input[type=text],input[type=password],input[type=number],input[type=date]{border-radius:14px;padding:13px 14px}
-nav#nav{position:fixed;left:50%;right:auto;bottom:0;transform:translateX(-50%);width:100%;max-width:480px;display:flex;justify-content:space-around;gap:0;background:#0d0d0d;border-top:1px solid #333;padding:0 0 env(safe-area-inset-bottom,0px);z-index:100;backdrop-filter:none}
-nav#nav button{position:relative;min-width:0;flex:1;padding:10px 3px 9px;background:none;border:0;color:#9a9a9a;font-family:var(--f);font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px}
-nav#nav button::before{content:'';position:absolute;top:0;left:18%;right:18%;height:3px;background:var(--lime);border-radius:0 0 3px 3px;transform:scaleX(0);transition:transform .2s ease}
+*,*::before,*::after{box-sizing:border-box}
+html,body{width:100%;margin:0;background:#000;color:var(--txt);font-family:var(--f);overflow-x:hidden}
+body{max-width:480px;min-height:100vh;margin:0 auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+header{position:sticky;top:0;left:auto;right:auto;transform:none;z-index:5;width:100%;max-width:480px;margin:0 auto;padding:16px 16px 6px;background:#000;border-bottom:1px solid #222}
+.top{display:flex;align-items:center;gap:10px;width:100%;min-width:0}
+.top img{display:block;width:36px;height:36px;flex:none;border-radius:50%;object-fit:cover}
+.brand-copy{flex:1;min-width:0}
+.top h1{overflow:hidden;margin:0;font-size:21px;line-height:1.15;letter-spacing:.4px;font-weight:800;white-space:nowrap;text-overflow:ellipsis}
+.top h1 b{color:var(--lime)}
+.date{margin-top:2px;color:var(--mut);font-size:13px;line-height:1.25}
+.head-right{display:flex;flex:none;flex-direction:column;align-items:flex-end;gap:4px;max-width:74px}
+.version{padding:4px 9px;border-radius:99px;background:var(--card);color:var(--mut);font-size:11px;font-weight:700}
+.top .st{margin:0;color:var(--mut);font-size:11px;line-height:1.25;text-align:right;white-space:nowrap}
+.top .dot{width:8px;height:8px}
+.days{display:flex;gap:8px;width:100%;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.days:empty{display:none}
+.days::-webkit-scrollbar{display:none}
+main{width:100%;max-width:480px;margin:0 auto;padding:12px 16px calc(96px + env(safe-area-inset-bottom,0px))}
+.card{margin-bottom:12px;padding:16px;background:#161616;border:1px solid #333;border-radius:16px}
+.card.lime{border-color:var(--lime)}
+.card.gold{border-color:var(--gold)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.teams{font-size:15px;font-weight:800;line-height:1.25}
+.meta{color:var(--mut);font-size:12px;line-height:1.4}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.stat{min-width:0;padding:13px 6px;text-align:center;background:#161616;border:1px solid #333;border-radius:14px}
+.stat .k{color:var(--mut);font-size:10px;letter-spacing:1px}
+.stat .big{margin-top:4px;font-size:24px;line-height:1.1}
+.big{font-size:26px;line-height:1.15;font-weight:900}
+h2{display:flex;align-items:center;gap:8px;margin:18px 2px 9px;color:var(--lime);font-size:11px;letter-spacing:1.6px;text-transform:uppercase}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}
+.chip{flex:none;padding:7px 12px;border:1px solid var(--line);border-radius:20px;background:var(--card);font-size:13px}
+.chip.on{border-color:var(--lime);background:var(--lime);color:#111;font-weight:700}
+button.act,a.act{width:100%;margin-top:8px;padding:12px 14px;border:0;border-radius:12px;background:var(--lime);color:#111;font-size:15px;font-weight:800;text-align:center;text-decoration:none}
+button.act.sec{border:1px solid var(--line);background:var(--card2);color:var(--txt)}
+button.act.gold,a.act.gold{background:var(--gold);color:#111}
+button.sm{padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--card2);font-size:13px;font-weight:700}
+.quick-actions{display:grid;gap:9px;margin-bottom:12px}
+.quick-action{display:flex;min-width:0;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.quick-icon{display:grid;width:40px;height:40px;flex:none;place-items:center;border-radius:13px;background:rgba(223,251,81,.12);color:var(--lime);font-size:19px;font-weight:900}
+.quick-action b{display:block;font-size:15px}
+.quick-action small{display:block;margin-top:2px;color:var(--mut);font-size:12px;line-height:1.35}
+.pick{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
+.pick:first-of-type{border-top:0}
+.bar{height:8px;margin-top:6px;overflow:hidden;border-radius:5px;background:var(--card2)}
+.bar i{display:block;height:100%;background:var(--lime)}
+.record-period{display:flex;gap:5px;margin:2px 0 13px;padding:4px;border-radius:99px;background:var(--card2)}
+.record-period button{flex:1;padding:8px 4px;border:0;border-radius:99px;background:transparent;color:var(--mut);font-size:12px;font-weight:700}
+.record-period button.on{background:var(--lime);color:#111}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.switch:first-child{border-top:0}
+.how p{margin:6px 0;color:#d6d8dc;font-size:14px;line-height:1.45}
+input[type=text],input[type=password],input[type=number],input[type=date]{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--card2);color:var(--txt);font-size:15px}
+.empty{padding:30px 10px;color:var(--mut);text-align:center}
+.toast{bottom:calc(86px + env(safe-area-inset-bottom,0px));background:var(--lime);color:#111;border:1px solid rgba(223,251,81,.35)}
+nav#nav{position:fixed;left:50%;right:auto;bottom:0;transform:translateX(-50%);z-index:100;display:flex;width:min(100vw,480px);max-width:480px;justify-content:space-around;gap:0;padding:0 0 env(safe-area-inset-bottom,0px);border-top:1px solid #333;background:#0d0d0d}
+nav#nav button{position:relative;display:flex;min-width:0;flex:1;flex-direction:column;align-items:center;gap:3px;padding:13px 4px 11px;border:0;background:none;color:#999;font-family:var(--f);font-size:10px;font-weight:600}
+nav#nav button::before{display:none!important}
 nav#nav button.on{color:var(--lime)}
-nav#nav button.on::before{transform:scaleX(1)}
-nav#nav button .ni{display:block;font-size:20px;line-height:1.1;transition:transform .18s ease}
+nav#nav button .ni{display:block;font-size:19px;line-height:1.1}
 nav#nav button.on .ni{transform:translateY(-1px) scale(1.12)}
-.toast{bottom:calc(82px + env(safe-area-inset-bottom,0px));background:var(--lime);border:1px solid rgba(223,251,81,.35)}
-.video-thumb.short{width:min(100%,280px);aspect-ratio:9/16;margin-left:auto;margin-right:auto}
-.video-placeholder.short{width:min(100%,280px);aspect-ratio:9/16;margin-left:auto;margin-right:auto}
-@media(max-width:380px){header{padding-left:14px;padding-right:14px}.top img{width:44px;height:44px}.top h1{font-size:20px}main{padding-left:14px;padding-right:14px}nav#nav button{font-size:9px}}
-</style>
+.video-thumb{display:block;width:100%;aspect-ratio:16/9;margin:11px 0;border-radius:14px;background:#111;object-fit:cover}
+.video-placeholder{position:relative;display:grid;aspect-ratio:16/9;margin:11px 0;place-items:center;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:radial-gradient(ellipse at 50% 8%,#263522,#111512 52%,#090a0b)}
+.video-placeholder:after{position:absolute;bottom:-28%;width:54%;height:55%;border:1px solid rgba(223,251,81,.22);border-radius:50%;content:""}
+.video-play{z-index:1;display:grid;width:48px;height:48px;place-items:center;border-radius:50%;background:var(--lime);color:#111;font-size:19px}
+.video-badge{position:absolute;top:11px;left:12px;color:var(--lime);font-size:10px;font-weight:900;letter-spacing:1px}
+.video-thumb.short,.video-placeholder.short{width:min(100%,280px);aspect-ratio:9/16;margin-right:auto;margin-left:auto}
+@media(max-width:380px){header{padding-right:14px;padding-left:14px}.top{gap:8px}.top img{width:34px;height:34px}.top h1{font-size:18px}main{padding-right:14px;padding-left:14px}nav#nav button{font-size:9px}}</style>
 </head>
 <body>
 <header>
   <div class="top">
     <img src="icons/icon-192.png" alt="">
     <div class="brand-copy"><h1>MATCH <b>VISION</b></h1><div class="date" id="brandDate"></div></div>
-    <div class="head-right"><span class="version">2.2.1</span><div class="st" id="st"></div></div>
+    <div class="head-right"><span class="version">2.2.2</span><div class="st" id="st"></div></div>
   </div>
   <div class="days" id="days"></div>
 </header>
@@ -178,13 +173,13 @@ nav#nav button.on .ni{transform:translateY(-1px) scale(1.12)}
 </nav>
 <div class="toast" id="toast"></div>
 <script>
-// Match Vision app 2.2
+// Match Vision app 2.2.2
 // - feed.json: written by the Match Vision builder on the laptop and sent to GitHub (after every review, every finished
 //   match and the 23:45 results). The Vision Premium part is locked with the PIN typed in Connect > App on the laptop.
 // - live scores: the app asks ESPN's free scoreboard itself (no key), so picks turn won or lost while you watch.
 // - members are changed ONLY by the bot (member / renew / remove). The app copies the bot word and opens the bot chat.
 // Storage: only keys starting with "mv_app_" (never touches other apps).
-const APP_VERSION = '2.2.1';
+const APP_VERSION = '2.2.2';
 const K = {feed:'mv_app_feed', pin:'mv_app_pin', set:'mv_app_set', tab:'mv_app_tab', espn:'mv_app_espn'};
 const $ = s => document.querySelector(s);
 const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}}, del(k){try{localStorage.removeItem(k)}catch(e){}}};
@@ -532,7 +527,26 @@ document.querySelectorAll('nav button').forEach(b => b.onclick = () => go(b.data
 setInterval(()=>{ if(document.visibilityState==='visible') liveTick(false); }, 30000);
 setInterval(()=>{ if(document.visibilityState==='visible') loadFeed(true); }, 120000);
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible'){ loadFeed(true); liveTick(true); } });
-if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+function checkAppShellVersion(){
+  const worker=navigator.serviceWorker&&navigator.serviceWorker.controller;
+  if(!worker)return;
+  const channel=new MessageChannel();
+  channel.port1.onmessage=event=>{
+    const workerVersion=String(event.data||'');
+    if(!workerVersion||workerVersion===APP_VERSION)return;
+    try{
+      const key='mv_app_worker_reload_to';
+      if(sessionStorage.getItem(key)===workerVersion)return;
+      sessionStorage.setItem(key,workerVersion);
+      location.reload();
+    }catch(e){}
+  };
+  worker.postMessage('MV_VERSION',[channel.port2]);
+}
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.addEventListener('controllerchange',checkAppShellVersion);
+  navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(registration=>registration.update()).then(checkAppShellVersion).catch(()=>{});
+}
 </script>
 </body>
 </html>
