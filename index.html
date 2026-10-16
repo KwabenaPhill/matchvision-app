@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Match Vision 2.2</title>
+<title>Match Vision 2.2.1</title>
 <meta name="theme-color" content="#000000">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
@@ -123,7 +123,7 @@ input[type=date]{width:100%;padding:11px;border-radius:10px;border:1px solid var
 :root{--f:'Outfit',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
 html,body{background:#000}
 body{font-family:var(--f);max-width:480px;min-height:100vh;margin:0 auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
-header{left:50%;transform:translateX(-50%);width:100%;max-width:480px;padding:18px 18px 8px;background:#000;border-bottom:1px solid #222}
+header{width:100%;max-width:480px;padding:18px 18px 8px;background:#000;border-bottom:1px solid #222}
 .top{gap:11px;align-items:center}
 .top img{width:48px;height:48px;border-radius:16px}
 .top h1{font-size:22px;letter-spacing:.2px;font-weight:900}
@@ -164,7 +164,7 @@ nav#nav button.on .ni{transform:translateY(-1px) scale(1.12)}
   <div class="top">
     <img src="icons/icon-192.png" alt="">
     <div class="brand-copy"><h1>MATCH <b>VISION</b></h1><div class="date" id="brandDate"></div></div>
-    <div class="head-right"><span class="version">2.2</span><div class="st" id="st"></div></div>
+    <div class="head-right"><span class="version">2.2.1</span><div class="st" id="st"></div></div>
   </div>
   <div class="days" id="days"></div>
 </header>
@@ -184,7 +184,7 @@ nav#nav button.on .ni{transform:translateY(-1px) scale(1.12)}
 // - live scores: the app asks ESPN's free scoreboard itself (no key), so picks turn won or lost while you watch.
 // - members are changed ONLY by the bot (member / renew / remove). The app copies the bot word and opens the bot chat.
 // Storage: only keys starting with "mv_app_" (never touches other apps).
-const APP_VERSION = '2.2';
+const APP_VERSION = '2.2.1';
 const K = {feed:'mv_app_feed', pin:'mv_app_pin', set:'mv_app_set', tab:'mv_app_tab', espn:'mv_app_espn'};
 const $ = s => document.querySelector(s);
 const store = {get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{localStorage.setItem(k,v)}catch(e){}}, del(k){try{localStorage.removeItem(k)}catch(e){}}};
