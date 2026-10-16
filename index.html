@@ -713,10 +713,69 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .set-row[data-s^=prem] .i,.set-row[data-s=lock] .i{--sic:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z%27/%3E%3C/svg%3E")}
 .set-row[data-s=video] .i,.set-row[data-s^=vid] .i{--sic:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Crect x=%272%27 y=%276%27 width=%2714%27 height=%2712%27 rx=%273%27/%3E%3Cpath d=%27m16 11 6-3v8l-6-3z%27/%3E%3C/svg%3E")}
 .nav-btn[data-tab=elite].active,.nav-btn[data-tab=elite].active .ni{color:var(--gold)!important}
+
+/* ===== 3.2 ===== */
+.set-row .i.ln{background:linear-gradient(145deg,#EEFF8A,#B8D63B)!important;box-shadow:0 4px 12px rgba(223,251,81,.22)}
+.set-row .i.ln::after,.set-row .i.pic::after,.set-row .i.ln::before,.set-row .i.pic::before{display:none!important;content:none!important}
+.set-row .i.ln svg{width:21px;height:21px}
+.set-row .i.pic{background:none!important;box-shadow:none!important;width:36px!important;height:36px!important}
+.set-row .i.pic svg{width:34px;height:34px;border-radius:9px}
+.set-row .i.stk{position:relative;display:block!important}
+.set-row .i.stk span{position:absolute;width:22px;height:22px;border-radius:6px;overflow:hidden;box-shadow:0 0 0 2px #161616}
+.set-row .i.stk span svg{width:22px;height:22px}
+.set-row .i.stk span:nth-child(1){left:0;top:0}.set-row .i.stk span:nth-child(2){left:12px;top:7px}.set-row .i.stk span:nth-child(3){left:6px;top:14px}
+.set-row .v.pend{color:var(--acc)!important}
+.set-title.acc{color:var(--acc)!important}
+.sendbar{margin:8px 0 4px;position:sticky;top:6px;z-index:3;box-shadow:0 6px 20px rgba(0,0,0,.6)}
+textarea{width:100%;background:#0E0E10;color:#fff;border:1px solid #333;border-radius:12px;padding:10px;font:inherit;font-size:14px;line-height:1.4;resize:vertical}
+.chips.wrap{flex-wrap:wrap}
+.chip .bi{width:16px;height:16px;margin-right:5px;display:inline-block;vertical-align:-3px}
+.askbtn{background:var(--card);border:1px solid #333;border-radius:99px;color:#fff;font-size:12px;font-weight:700;padding:5px 11px;margin-left:8px}
+.topr{display:flex;align-items:center}
+/* the match card: dark top, green bottom part (never a fixed split, so 0-0 stays in the dark part) */
+.mvc{background:radial-gradient(120% 70% at 50% 10%,rgba(255,255,255,.07),rgba(0,0,0,0) 55%),linear-gradient(180deg,#0A0B0A,#111311)!important}
+.mvc:before{display:none!important}
+.mvc .pks{margin:10px -12px -10px;padding:6px 12px 10px;background:linear-gradient(180deg,#0F2412,#0C1C0E);border-top:1px solid rgba(255,255,255,.07)}
+.mvc .cs{min-width:92px}.mvc .cs b{white-space:nowrap}
+.mvc .pk .tx b{white-space:normal!important;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.15}
+.mvc .pk .po{color:#fff!important;font-weight:800!important}
+.mvc .cs .lv:not(.ft){background:#FF3B30!important;color:#fff!important;animation:pulse 1.6s ease-in-out infinite}
+.mvc .lg b{color:var(--acc)!important}
+.bigcard .mvc{margin:0 0 4px;transform:none}
+/* small picture of the card in Matches */
+.mrow2{display:flex;gap:12px;align-items:center}
+.minicard{flex:none;width:104px;height:132px;border-radius:12px;overflow:hidden;position:relative;background:#000;border:1px solid #2a2a2a;padding:0}
+.minicard .mvc{width:300px;transform:scale(.3467);transform-origin:top left;margin:0;animation:none;pointer-events:none}
+.minicard:after{content:'⤢';position:absolute;right:5px;bottom:4px;font-size:12px;color:#fff;background:rgba(0,0,0,.6);border-radius:6px;padding:0 4px}
+.mright{flex:1;min-width:0}
+.mright .tms b{display:block;font-size:15px}
+.lgname{color:var(--acc)!important}
+.pnum{width:22px;height:22px;border-radius:50%;background:#2a2a2a;color:#fff;font-size:12px;font-weight:900;display:grid;place-items:center;flex:none}
+.pnum.first{background:var(--acc);color:#000}
+.game.pkrow .gm b{white-space:normal}
+/* live: red, like Sure Stake */
+.pill.live{background:#FF3B30!important;color:#fff!important;border-color:#FF3B30!important;font-weight:800}
+.pill.live:before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#fff;margin-right:5px;vertical-align:1px;animation:pulse 1.2s infinite}
+.kick.live{border-color:#5A1E1E!important;color:#FF6B6B!important}
+/* records in our colour */
+.hrow .a .dname{color:var(--acc)}
+.hrow.today{background:rgba(223,251,81,.09);border-radius:12px;box-shadow:inset 3px 0 0 var(--acc);padding:11px 10px;margin:6px 0}
+.hrow.today .a .dname{color:var(--acc)}
+.statrow b.acc,.acc{color:var(--acc)!important}
+.streak32{display:flex;justify-content:space-between;align-items:center;background:#161616;border:1px solid #333;border-radius:14px;padding:12px 16px;margin:-4px 0 12px}
+.streak32 b{font-size:28px;font-weight:900;color:var(--acc)}
+.streak32 small{display:block;color:var(--dim);font-size:12px}
+.summary-grid .sbox .big{color:var(--acc)!important}
+.mright .tms b{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.2}
+/* Premium money */
+.ledger .lrow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #262626;font-size:13.5px}
+.ledger .lrow:last-child{border:0}
+.ledger .plus{color:#30D158;font-weight:900}.ledger .minus{color:#FF453A;font-weight:900}
+.vplayer{width:100%;border-radius:12px;background:#000;max-height:420px}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="tver">v3.0</span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver">v3.2</span><button class="askbtn" id="askBtn">🤖 Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -743,7 +802,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.0';   // APP_VERSION = '3.0' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.2';   // APP_VERSION = '3.2' (the laptop reads this line for its "APP UPDATED" message)
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let toastT;function toast(t,ms=2600){const el=$('toast');el.textContent=t;el.classList.remove('on');void el.offsetWidth;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),ms);}
@@ -864,7 +923,7 @@ function openSheet(html,onClick,onClose){const box=$('sheetBox');box.innerHTML=h
 function closeSheet(){popLayer();}
 $('sheet').onclick=e=>{if(e.target.id==='sheet')closeSheet();};
 function editField(title,value,cb,opts={}){
-  openSheet(`<div class="modal-title">${esc(title)}</div>${opts.note?`<p class="muted" style="margin-bottom:10px">${esc(opts.note)}</p>`:''}<input id="efIn" type="${opts.type||'text'}" value="${esc(value)}">
+  openSheet(`<div class="modal-title">${esc(title)}</div>${opts.note?`<p class="muted" style="margin-bottom:10px">${esc(opts.note)}</p>`:''}${opts.multi?`<textarea id="efIn" rows="11">${esc(value)}</textarea>`:`<input id="efIn" type="${opts.type||'text'}" value="${esc(value)}">`}
     <div class="btn-row">${opts.reset?`<button class="btn-half" data-a="reset">Reset</button>`:''}<button class="btn-half" data-a="cancel">Cancel</button><button class="btn-save" data-a="ok">Save</button></div>`,
   e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='ok'){const v=$('efIn').value;closeSheet();cb(v);}else if(b.dataset.a==='reset'){closeSheet();cb(null);}else closeSheet();});
   setTimeout(()=>$('efIn')&&$('efIn').focus(),80);}
@@ -939,9 +998,9 @@ function itemsOf(d){if(!d||!Array.isArray(d.posts))return [];return d.posts.filt
 function appsOf(it){return APPS.filter(p=>SET.apps[p]&&it.texts&&it.texts[p]&&!(p==='tg'&&it.auto&&it.auto.tg));}
 const postedOf=(d,id)=>((POSTED[d.date]||{})[id])||{};
 function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return need.length>0&&need.every(x=>p[x]);}
-function textFor(it,p){const raw=(it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||'';const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
-async function filesFor(it){const L=[];const imgs=it.images||[];for(let i=0;i<imgs.length;i++){const f=await fileOf(imgs[i],`${it.id}_${i+1}`);if(f)L.push(f);}return L;}
-async function send(d,it,p){toast('Getting the picture…',1200);const files=p==='copy'?[]:await filesFor(it);const ok=await shareTo(p,textFor(it,p),files);
+function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||'');const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
+async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];}const imgs=it.images||[];for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
+async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);const ok=await shareTo(p,textFor(it,p),files);
   if(ok&&p!=='copy'){POSTED[d.date]=POSTED[d.date]||{};const o=POSTED[d.date][it.id]=POSTED[d.date][it.id]||{};o[p]=true;savePosted();
     const next=itemsOf(d).find(x=>!isDone(d,x));setTimeout(()=>toast(isDone(d,it)?(next?`Done ✓ Next: ${next.title}`:'Everything for this day is sent ✓'):`Sent to ${PNAME[p]} ✓`,3000),900);}
   refresh(true);if(subRender)rerenderSub();}
@@ -955,10 +1014,11 @@ function postCard(d,it){const p=postedOf(d,it.id);const ap=appsOf(it);const show
     ${it.note?`<div class="warnbox">${esc(it.note)}</div>`:''}
     <pre>${previewHTML(txt)}</pre>
     ${xs.length>1?xs.slice(1).map((x,i)=>`<div class="xreply"><span>${bi('x')}X reply ${i+1} (post it under the first one)</span><button data-xr="${i+1}">Copy</button></div>`).join(''):''}
-    ${it.group==='shorts'?(it.video?`<div class="btn-row"><button class="btn-half" data-p="vid">📥 Get the video</button></div>`:`<div class="vnote">🎬 The video is on your laptop, full quality:<br><b>${esc(it.file||'Ready to Upload')}</b><br>Or tap 📥 in the bot's pack to get it on the phone.</div>`):''}
+    ${it.group==='shorts'?(it.video?`<video class="vplayer" src="${esc(media(it.video))}" controls playsinline preload="none" poster="${esc(media((it.images||[])[0]||''))}"></video><div class="btn-row"><button class="btn-half" data-p="vid">📥 Save the video</button></div>`:`<div class="vnote">🎬 The video is on your laptop, full quality:<br><b>${esc(it.file||'Ready to Upload')}</b><br>Or tap 📥 in the bot's pack to get it on the phone.</div>`):''}
     ${sl?`<div class="pstat">${esc(sl)}</div>`:''}
-    <div class="mini">${ap.map(x=>btnHTML(x,p[x])).join('')}${btnHTML('copy',false)}</div></div>`;}
+    <div class="mini">${ap.map(x=>btnHTML(x,p[x])).join('')}${btnHTML('copy',false)}<button data-edit="1">✏️ Edit text</button></div></div>`;}
 async function postClick(e,after){const b=e.target.closest('button');if(!b)return;const card=b.closest('[data-post]');if(!card)return;const d=dayOf(card.dataset.dk);if(!d)return;const it=(d.posts||[]).find(x=>x.id===card.dataset.post);if(!it)return;
+  if(b.dataset.edit){closeSheet();setTimeout(()=>editPost(d,it),250);return;}
   if(b.dataset.xr){const xs=xParts(styled(it.texts.x,'x'));toast(copyText(xs[+b.dataset.xr]||'')?`Reply ${b.dataset.xr} copied`:'Copy failed');return;}
   if(b.dataset.p==='vid'){const f=await fileOf(it.video,it.id);if(f&&canShareFiles([f])){try{await navigator.share({files:[f]});}catch(err){}}else window.open(media(it.video),'_blank');return;}
   const p=b.dataset.p;if(!p)return;if(p==='copy'){const ap=appsOf(it);toast(copyText(textFor(it,ap.find(a=>a!=='x')||ap[0]||'wa'))?'Copied':'Copy failed');return;}
@@ -975,10 +1035,10 @@ function premSetOf(d){if(!prem)return [];const x=(prem.days||[]).find(p=>p.date=
 function matchCard(m,d){const L=liveOf(m,d),live=L&&['LIVE','HT'].includes(L.st);const pr=premSetOf(d);
   const sc=L&&L.gh!=null?`<div class="mscore ${live?'live':''}">${L.gh}-${L.ga}${SET.showPred&&m.score?`<small>Predicted ${esc(m.score)}</small>`:''}</div>`:(SET.showPred&&m.score?`<div class="mscore pred">${esc(m.score)}<small>Correct score</small></div>`:'');
   const picks=(m.picks||[]).slice(0,3).map((p,i)=>{const s=pickState(p,i,m,d,L);const isP=pr.some(x=>x.n===m.n&&x.text===p.text);
-    return `<div class="game"><div class="tm">${legMark(s)}</div><div class="gm"><b>${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(p.text)}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}</div>`;}).join('');
+    return `<div class="game pkrow"><span class="pnum ${i===0?'first':''}">${i+1}</span><div class="gm"><b>${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(p.text)}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}<div class="tm" style="width:auto">${legMark(s)}</div></div>`;}).join('');
   const ht=L&&L.hh!=null&&L.st!=='NS'?` · HT ${L.hh}-${L.ha}`:'';
-  return `<div class="card slipc" data-m="${m.n}" data-dk="${d.date}" style="padding:14px"><div class="sliphd" style="margin-bottom:8px"><div class="sn"><b>${esc(m.league||'')}</b><span>Match ${m.n} · ${esc(m.kickoff||'')}${m.date&&m.date!==d.date?' · '+shortDate(m.date):''}${ht}</span></div><div style="flex:none;margin-left:auto">${statePill(L,m)}</div></div>
-    <div class="mrow"><div class="tms"><b>${esc(m.home)}</b><b>${esc(m.away)}</b></div>${sc}</div><div class="glist" style="margin-top:10px">${picks}</div></div>`;}
+  return `<div class="card slipc" data-m="${m.n}" data-dk="${d.date}" style="padding:14px"><div class="sliphd" style="margin-bottom:8px"><div class="sn"><b class="lgname">${esc(m.league||'')}</b><span>Match ${m.n} · ${esc(m.kickoff||'')}${m.date&&m.date!==d.date?' · '+shortDate(m.date):''}${ht}</span></div><div style="flex:none;margin-left:auto">${statePill(L,m)}</div></div>
+    <div class="mrow2"><button class="minicard" data-big="${m.n}" data-dk="${d.date}" aria-label="The match card">${mvCard(m,d,(d.matches||[]).length,true)}</button><div class="mright"><div class="mrow"><div class="tms"><b>${esc(m.home)}</b><b>${esc(m.away)}</b></div>${sc}</div></div></div><div class="glist" style="margin-top:10px">${picks}</div></div>`;}
 function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Match Vision games for this day.</p></div>`;const now=new Date();const fk=firstKick(d);let banner='';
   const ms=(d.matches||[]).slice().sort((a,b)=>SET.sort==='league'?String(a.league).localeCompare(String(b.league))||String(a.kickoff).localeCompare(String(b.kickoff)):String(a.kickoff||'99').localeCompare(String(b.kickoff||'99'))||a.n-b.n);
   const st=ms.map(m=>mState(m,d));const nLive=st.filter(x=>x==='live').length;
@@ -1016,6 +1076,8 @@ function reminders(d){const out=[],t=todayKey();
   if(prem&&SET.premMembers)for(const m of prem.members||[]){const x=m.until;if(!x)continue;const dl=daysBetween(t,x);if(dl<0&&dl>-15)rems(out,'👑',`${m.name}'s Vision Premium ended ${shortDate(x)}. The bot asks "Remove?"`);else if(dl>=0&&dl<=3)rems(out,'👑',`${m.name} ends ${dl===0?'today':dl===1?'tomorrow':`in ${dl} days`}`);}
   for(const x of days()){if(x.date<addDays(t,-1)||x.date>addDays(t,1))continue;if(x.date>=t&&!x.video_link)out.push(['🎬',`${shortDate(x.date)}: share the YouTube video to the bot (YouTube app > Share > Telegram > Match Vision bot)`]);
     const ck=x.checklist||{};if(x.date<=t&&ck.YouTube===false&&!x.video_link)out.push(['▶️',`${shortDate(x.date)}: YouTube video not marked as uploaded yet`]);}
+  const sc=feed&&feed.schedule;if(sc){const now=fmtT(new Date());const L=[['picks','📌','Top picks go on the channel'],['games','⚽','Today\'s games go on the channel'],['tomorrow','🌙','Tomorrow\'s games go on the channel'],['upload','⏰','Upload the long video and Short 1 (the biggest teams)'],['results','📊','Results are checked']];
+    for(const [k,ic,w] of L){const tt=sc[k];if(tt&&tt>now)out.push([ic,`${tt} · ${w}`]);}}
   if(source==='saved')out.push(['📶','Offline: showing the last picks saved on this phone']);
   else if(feed&&feed.updated){const age=(Date.now()-new Date(feed.updated))/36e5;if(age>30)out.push(['💻',`The laptop last sent news ${Math.round(age)} hours ago. Is it on, with the bot running?`]);}
   return out;}
@@ -1033,6 +1095,7 @@ function postsView(d){if(!d)return `<div class="card tint"><div class="ct">No Ma
   if(todo.length){let g='';h+=`<div class="card"><div class="ct">To do now</div>${todo.map((it,i)=>{const hd=it.group!==g?(g=it.group,`<div class="sect" style="margin:${i?14:6}px 0 2px">${esc(GROUP[it.group]||it.group)}</div>`):'';return hd+todoRow(d,it,i===0);}).join('')}</div>`;}
   else if(its.length)h+=`<div class="card" style="text-align:center"><div class="ct" style="color:#30D158">All sent for today ✓</div><div class="cs" style="margin:0">Results come after the matches.</div></div>`;
   const rs=reminders(d);if(rs.length)h+=`<div class="card"><div class="ct">Reminders</div>${rs.map(r=>`<div class="rem"><span>${r[0]}</span><span>${esc(r[1])}</span></div>`).join('')}</div>`;
+  if(its.length)h+=`<button class="btn-half w100" data-act="alltexts" style="margin:0 0 12px">📝 Copy all texts / Paste all texts</button>`;
   if(done.length)h+=`<div class="card"><div class="ct" style="color:#30D158;margin-bottom:6px">✓ Done today (${done.length})</div><div class="cs" style="margin-bottom:4px">Tap one to send it again.</div>${done.map(it=>`<button class="drow" data-open="${esc(it.id)}" data-dk="${d.date}">${bi(ICON_APP[it.group]||'wa')}<span class="dt">${esc(it.title)}<small>${esc(sentLine(d,it))}</small></span><span class="ch">›</span></button>`).join('')}</div>`;
   return h;}
 function upCard(d){const it=(d.posts||[]).find(x=>(x.images||[]).length);const img=it?media(it.images[0]):'';const n=(d.matches||[]).length;const dd=dateOf(d.date);
@@ -1044,6 +1107,8 @@ function renderHome(quiet){const el=$('p-home');el.classList.toggle('noanim',!!q
   const d=todayDay();let body;if(homeView==='matches')body=matchesView(d);else if(homeView==='results')body=resultsView(d);else body=postsView(d)+upcomingCard();
   el.innerHTML=summaryBoxes(d)+body;}
 function homeClick(e,getDay,after){const b=e.target.closest('button,[data-m]');if(!b)return false;
+  if(b.dataset.big){const d=dayOf(b.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===b.dataset.big);if(m)bigCard(d,m);return true;}
+  if(b.dataset.act==='alltexts'){const d=getDay();if(d)textsSheet(d);return true;}
   if(b.dataset.view){homeView=b.dataset.view;after();return true;}
   if(b.dataset.mf){matchFilter=b.dataset.mf;after();return true;}
   if(b.dataset.act==='copypicks'){const d=getDay();if(d)copyPicks(d);return true;}
@@ -1077,16 +1142,17 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
   el.innerHTML=`<div class="sechd rec-head"><span class="sect" style="margin:0">Win rate</span><div class="seg2 rec-range">${[['week','This week'],['month','Month'],['all','All time']].map(([k,l])=>`<button data-rr="${k}" class="${recRange===k?'on':''}">${l}</button>`).join('')}</div></div>
   <div class="summary-grid">${box('Safest',pct(sw,sn),`${sw} of ${sn}`,0)}${box('All picks',pct(aw,an),`${aw} of ${an}`,1)}${box('Banker',bn?`${bw}/${bn}`:'-',bn?'won':'no banker',2)}</div>
   <div class="pltotal"><span>Correct scores right<small>${recRange==='week'?'This week':recRange==='month'?'This month':'All time'} · from the 23:45 results</small></span><b class="${cs?'up':'flat'}">${cs||'-'}</b></div>
+  <div class="streak32"><span><span class="ct">Banker streak</span><small>Bankers won in a row</small></span><b>${feed.banker_streak||0}</b></div>
   <div class="card" style="padding:4px 16px"><button class="trow" data-act="recap"><span class="tn"><b>${recRange==='week'?'Weekly':recRange==='month'?'Monthly':'All time'} results post</b><small>Tap to see it and send it</small></span><span class="ch">›</span></button></div>
   <div class="card"><div class="ct">Open any date</div><div class="cs" style="margin:0">See the matches, picks, results and posts of that day.</div><div class="datepick"><input type="date" id="recDate" value="${t}"><button class="btn-save" data-act="open">Open</button></div></div>
   ${upcomingDays().length?`<div class="wk"><span>Coming up</span></div><div class="uplist">${upcomingDays().map(upCard).join('')}</div><div style="height:14px"></div>`:''}
   ${groups.length?groups.map(g=>{const name=g.w===tw?'This week':g.w===addDays(tw,-7)?'Last week':`Week of ${shortDate(g.w).slice(4)}`;
     return `<div class="wk"><span>${name}</span></div><div class="card" style="padding:4px 16px">${g.ds.map(d=>{const s=safestCount(d),c=dayCount(d),b=bankerState(d);const its=itemsOf(d),n=its.filter(it=>isDone(d,it)).length;
-      return `<button class="hrow" data-day="${d.date}"><div class="a">${d.date===t?'Today · ':''}${longDate(d.date)}<span class="hr-r"><span class="pl ${s.n?(s.w/s.n>=.5?'up':'down'):'flat'}">${s.n?pct(s.w,s.n):''}</span><span class="ch">›</span></span></div>
+      return `<button class="hrow ${d.date===t?'today':''}" data-day="${d.date}"><div class="a"><span class="dname">${d.date===t?'Today · ':''}${longDate(d.date)}</span><span class="hr-r"><span class="pl ${s.n?(s.w/s.n>=.5?'up':'down'):'flat'}">${s.n?pct(s.w,s.n):''}</span><span class="ch">›</span></span></div>
         <div class="dpills"><span class="dpill ${s.n?'won':''}">SAFEST ${s.n?`${s.w}/${s.n}`:'WAITING'}</span><span class="dpill">ALL ${c.w}/${c.w+c.l}</span>${d.banker&&d.banker.games?`<span class="dpill ${b==='w'?'won':b==='l'?'lost':''}">BANKER ${b==='w'?'WON':b==='l'?'LOST':'WAITING'}</span>`:''}</div>
         ${its.length?`<div class="bar"><i style="width:${Math.round(n/its.length*100)}%"></i></div><div class="b">${n} of ${its.length} posts sent</div>`:''}</button>`;}).join('')}</div>`;}).join(''):'<div class="card"><p class="empty">Days show here after their results.</p></div>'}
-  ${wr.length?`<div class="sect">Win rate by kind of pick</div><div class="card">${wr.map(([k,v])=>`<div class="statrow"><span>${esc(kindName(k))}<br><small class="muted">${v.won} of ${v.of}</small></span><b>${pct(v.won,v.of)}</b></div>`).join('')}</div>`:''}
-  ${feed.banker_streak?`<div class="card"><div class="streakrow"><span><span class="ct">Banker streak</span><span class="cs" style="margin:0;display:block">Bankers won in a row</span></span><b>${feed.banker_streak}</b></div></div>`:''}`;}
+  ${wr.length?`<div class="sect">Win rate by kind of pick</div><div class="card">${wr.map(([k,v])=>`<div class="statrow"><span>${esc(kindName(k))}<br><small class="muted">${v.won} of ${v.of}</small></span><b class="acc">${pct(v.won,v.of)}</b></div>`).join('')}</div>`:''}
+  `;}
 function recapText(){const ds=days().filter(d=>inRange(d.date));let sw=0,sn=0,aw=0,an=0;for(const d of ds){const s=safestCount(d);sw+=s.w;sn+=s.n;const c=dayCount(d);aw+=c.w;an+=c.w+c.l;}if(!sn)return '';
   const head=recRange==='week'?"This Week's Results":recRange==='month'?`${MONTHS[new Date().getMonth()]} Results`:'All Time Results';
   return `${head}\nMatch Vision\n\n✅ ${aw} Of ${an} Predictions Won\n🎯 Safest Picks: ${sw} Of ${sn} Won\n\n👇 Get Tomorrow's Games:\n${SET.channel}`;}
@@ -1102,13 +1168,13 @@ $('p-history').addEventListener('click',e=>{const b=e.target.closest('button');i
 let vday=null;
 function ytId(u){return (String(u||'').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([\w-]{11})/)||[])[1]||'';}
 function crestHTML(path,name){const ini=words(name).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?';return path?`<img src="${esc(media(path))}" alt="" loading="lazy" onerror="this.outerHTML='<span class=&quot;ini&quot;>${esc(ini)}</span>'">`:`<span class="ini">${esc(ini)}</span>`;}
-function mvCard(m,d,total){const L=liveOf(m,d);const live=L&&['LIVE','HT'].includes(L.st),fin=L&&L.st==='FT';const o=m.odds||[];
+function mvCard(m,d,total,mini){const L=liveOf(m,d);const live=L&&['LIVE','HT'].includes(L.st),fin=L&&L.st==='FT';const o=m.odds||[];
   const lv=live?`<span class="lv">${L.st==='HT'?'HT':'LIVE '+(L.min?L.min+"'":'')} ${L.gh}-${L.ga}</span>`:fin?`<span class="lv ft">FT ${L.gh}-${L.ga}</span>`:'';
-  return `<div class="mvc" data-m="${m.n}" data-dk="${d.date}"><div class="hd"><div class="lg"><b>${esc(m.league||'')}</b><small>Kick-off ${esc(m.kickoff||'--:--')} GMT</small></div><div class="mn"><i>MV.</i><span>MATCH <em>${m.n}/${total}</em></span></div></div>
-    <div class="mid"><div class="tm"><div class="cr">${crestHTML(m.hc,m.home)}</div><div class="tn">${esc(m.home)}</div>${o[0]?`<div class="to">${Number(o[0]).toFixed(2)}</div>`:''}</div>
+  return `<div class="mvc" ${mini?'':`data-m="${m.n}" data-dk="${d.date}"`}><div class="hd"><div class="lg"><b>${esc(m.league||'')}</b><small>Kick-off ${esc(m.kickoff||'--:--')} GMT</small></div><div class="mn"><i>MV.</i><span>MATCH <em>${m.n}/${total}</em></span></div></div>
+    <div class="mid"><div class="tm"><div class="cr">${crestHTML(m.hc,m.home)}</div><div class="tn">${esc(shortTeam(m.home))}</div>${o[0]?`<div class="to">${Number(o[0]).toFixed(2)}</div>`:''}</div>
       <div class="cs"><small>Correct score</small><b>${esc(m.score||'-')}</b>${lv}</div>
-      <div class="tm"><div class="cr">${crestHTML(m.ac,m.away)}</div><div class="tn">${esc(m.away)}</div>${o[2]?`<div class="to">${Number(o[2]).toFixed(2)}</div>`:''}</div></div>
-    ${(m.picks||[]).slice(0,3).map((p,i)=>{const s=pickState(p,i,m,d,L);return `<div class="pk"><span class="nb">${i+1}</span><span class="tx"><small>${esc(m.labels&&m.labels[i]||marketOf(p,i))}</small><b>${esc(p.text)}</b></span>${SET.showOdds&&p.odds?`<span class="po">${Number(p.odds).toFixed(2)}</span>`:''}<span class="ck ${s||'wait'}">${s==='w'?'✓':s==='l'?'✕':s==='up'?'↑':s==='dn'?'↓':'•'}</span></div>`;}).join('')}</div>`;}
+      <div class="tm"><div class="cr">${crestHTML(m.ac,m.away)}</div><div class="tn">${esc(shortTeam(m.away))}</div>${o[2]?`<div class="to">${Number(o[2]).toFixed(2)}</div>`:''}</div></div>
+    <div class="pks">${(m.picks||[]).slice(0,3).map((p,i)=>{const s=pickState(p,i,m,d,L);return `<div class="pk"><span class="nb">${i+1}</span><span class="tx"><small>${esc(m.labels&&m.labels[i]||marketOf(p,i))}</small><b>${esc(shortPick(p.text))}</b></span>${SET.showOdds&&p.odds?`<span class="po">${Number(p.odds).toFixed(2)}</span>`:''}<span class="ck ${s||'wait'}">${s==='w'?'✓':s==='l'?'✕':s==='up'?'↑':s==='dn'?'↓':'•'}</span></div>`;}).join('')}</div></div>`;}
 function renderVideo(){const el=$('p-video');if(!feed){el.innerHTML='<div class="card"><p class="empty">No videos yet.</p></div>';return;}
   const all=days().slice().sort((a,b)=>a.date<b.date?-1:1);if(!vday||!dayOf(vday)){const td=todayDay();vday=td?td.date:(all[0]||{}).date;}const d=dayOf(vday);
   const chips=`<div class="vdays">${all.map(x=>`<button data-vd="${x.date}" class="${x.date===vday?'on':''}">${shortDate(x.date).slice(0,3)}<small>${dateOf(x.date).getDate()} ${MONTHS[dateOf(x.date).getMonth()].slice(0,3)}</small></button>`).join('')}</div>`;
@@ -1120,6 +1186,7 @@ function renderVideo(){const el=$('p-video');if(!feed){el.innerHTML='<div class=
       :`<div class="warnbox" style="margin-bottom:0">Not on YouTube yet. Upload it from the laptop (Ready to Upload\\${esc(d.date)}\\YouTube), then in the YouTube app: Share > Telegram > Match Vision bot. The link comes here by itself.</div>`}</div>`;
   if(shorts.length)h+=`<div class="sect">Shorts</div><div class="shrow">${shorts.map(s=>`<button class="shc" data-open="${esc(s.id)}" data-dk="${d.date}" style="text-align:left">${(s.images||[])[0]?`<img src="${esc(media(s.images[0]))}" alt="" loading="lazy">`:'<div class="vthumb sh" style="width:100%"></div>'}<b>${esc(s.title)}</b><small>${isDone(d,s)?'Sent ✓':'Tap to post'}</small></button>`).join('')}</div><div style="height:12px"></div>`;
   if(SET.vidCards&&(d.matches||[]).length){const n=d.matches.length;h+=`<div class="sect">Match cards · like the video</div>`+d.matches.slice().sort((a,b)=>a.n-b.n).map(m=>mvCard(m,d,n)).join('');}
+  else if((d.matches||[]).length)h+=`<p class="muted" style="text-align:center;margin-top:6px">Every match card is in Home > Matches (tap its small picture).</p>`;
   el.innerHTML=h;}
 $('p-video').addEventListener('click',async e=>{const b=e.target.closest('button,[data-m]');if(!b)return;
   if(b.dataset.vd){vday=b.dataset.vd;renderVideo();return;}
@@ -1152,6 +1219,10 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     body=`<div class="member-count"><strong>${all.length} Member${all.length===1?'':'s'}</strong><span>${active} active · ${Math.max(0,(prem.seats||0)-active)} seats left${price?` · GH₵ ${Math.round(paid)} this month`:''}</span></div><div class="member-filter">${[['all',`All ${all.length}`],['due',`Due soon ${due}`],['exp',`Ended ${exp}`]].map(([k,l])=>`<button data-mf="${k}" class="${memFilter===k?'on':''}">${l}</button>`).join('')}</div>
       <button class="btn-save gold w100" data-bw="add" style="margin-bottom:12px">+ Add member (through the bot)</button><div class="card">${list.length?list.map(m=>{const cls=isExp(m)?'exp':isDue(m)?'due':'ok',op=openMem.has(m.name),dl=daysBetween(t,m.until);
         return `<div class="mem"><button class="memhd" data-tog="${esc(m.name)}"><strong>${esc(m.name)}</strong><span class="tag ${cls}">${cls==='exp'?'Ended':cls==='due'?'Due soon':'Active'}</span><span class="ch">${op?'▴':'▾'}</span></button>${op?`<div class="s">${cls==='exp'?'Ended':'Ends'} ${longDate(m.until)}${dl>=0?` · ${dl} days left`:''}</div><div class="s">${m.months||0} month${m.months===1?'':'s'} paid since ${longDate(m.since)}</div><div class="btn-row"><button class="btn-half" data-bw="renew" data-n="${esc(m.name)}">Renew</button><button class="btn-half" data-bw="remove" data-n="${esc(m.name)}">Remove</button></div>`:''}</div>`;}).join(''):'<p class="empty">No members here.</p>'}</div>
+      ${(()=>{const L=[];for(const m of all)for(const p of m.payments||[]){const mo=Number(p.months)||1;const amt=Number(p.amount)||price*Math.abs(mo);const out=p.refund||mo<0||amt<0;L.push({d:p.date||m.since,n:m.name,a:Math.abs(amt),out,mo:Math.abs(mo)});}
+        L.sort((a,b)=>a.d<b.d?1:-1);const tin=L.filter(x=>!x.out).reduce((s,x)=>s+x.a,0),tout=L.filter(x=>x.out).reduce((s,x)=>s+x.a,0);
+        return L.length?`<div class="sect">Money</div><div class="card ledger"><div class="lrow"><span>Received</span><b class="plus">+GH₵ ${Math.round(tin)}</b></div>${tout?`<div class="lrow"><span>Refunded</span><b class="minus">−GH₵ ${Math.round(tout)}</b></div>`:''}<div class="lrow"><span><b>Balance</b></span><b class="${tin-tout>=0?'plus':'minus'}">${tin-tout>=0?'+':'−'}GH₵ ${Math.round(Math.abs(tin-tout))}</b></div></div>
+          <div class="card ledger">${L.slice(0,30).map(x=>`<div class="lrow"><span>${esc(x.n)}<br><small class="muted">${shortDate(x.d)} · ${x.mo} month${x.mo>1?'s':''}${x.out?' · refund':''}</small></span><b class="${x.out?'minus':'plus'}">${x.out?'−':'+'}GH₵ ${Math.round(x.a)}</b></div>`).join('')}</div>`:'';})()}
       <p class="muted" style="margin-top:4px">Members are changed only by the bot, so the bot and the app never disagree. The buttons copy the bot word and open your bot: paste and send.</p>`;}
   else{body=`<div class="card vip-post-card"><div class="memhd"><strong>Join post</strong></div><div class="cs" style="margin:0 0 10px">"Vision Premium is open", with your MoMo details from Settings on the laptop.</div><button class="btn-save gold w100" data-bw="join post">Get it from the bot</button></div>
       <div class="card vip-post-card"><div class="memhd"><strong>Refund terms</strong></div><div class="cs" style="margin:0 0 10px">Post and pin before anyone pays.</div><button class="btn-save gold w100" data-bw="refund terms">Get it from the bot</button></div>
@@ -1166,46 +1237,57 @@ $('p-elite').addEventListener('click',async e=>{const b=e.target.closest('button
 
 // ---------- SETTINGS (Sure Stake's grouped rows; every choice is kept on this phone) ----------
 const onOff=v=>`<span class="toggle ${v?'on':''}"></span>`;
-function renderSettings(){const row=(k,t,sub,v,cls='')=>`<button class="set-row" data-s="${k}"><span class="i ${cls}"></span><span class="t">${t}${sub?`<small>${sub}</small>`:''}</span>${v!=null?(typeof v==='boolean'?onOff(v):`<span class="v">${v}</span>`):''}${typeof v==='boolean'?'':'<span class="ch">›</span>'}</button>`;
-  const appsOn=APPS.filter(p=>SET.apps[p]).map(p=>PNAME[p]).join(', ')||'None';const upd=feed&&feed.updated?new Date(feed.updated):null;
-  $('p-settings').innerHTML=`
-  <div class="set-group"><div class="set-title">Posting</div><div class="set-list">
-    ${row('apps','Apps I post to',esc(appsOn))}
-    ${row('groups','Posts to show',Object.keys(GROUP).filter(g=>SET.groups[g]!==false).map(g=>GROUP[g]).join(', '))}
-    ${row('bold','Bold on important words','Title, Match Vision, league names and the Watch line',SET.bold)}
-    ${row('boldparts','Which words are bold',[SET.boldTitle&&'Title',SET.boldBrand&&'Match Vision',SET.boldLeague&&'Leagues',SET.boldWatch&&'Watch line'].filter(Boolean).join(', ')||'None')}
-    ${row('boldUni','Bold on X, Instagram, TikTok, Threads','These apps have no bold button, so special bold letters are used (𝗟𝗶𝗸𝗲 𝘁𝗵𝗶𝘀)',SET.uniBold)}
-    ${row('hand','Hand points down to the link','👇 Watch All Predictions: with the link on the next line',SET.hand)}
-    ${row('tags','Hashtags in the posts','Keep the hashtag line under each post',SET.tags)}
-  </div></div>
-  <div class="set-group"><div class="set-title">Matches</div><div class="set-list">
-    ${row('live','Live scores','The app asks ESPN (free) while it is open',SET.live)}
-    ${row('every','Check every',`${SET.every} minute${SET.every>1?'s':''}`,'')}
-    ${row('showPred','Show the correct score','',SET.showPred)}
-    ${row('showOdds','Show odds','',SET.showOdds)}
-    ${row('showChance','Show the chance (%)','From the builder',SET.showChance)}
-    ${row('showFin','Show finished matches','In the All list',SET.showFin)}
-    ${row('sort','Order of matches',SET.sort==='league'?'By league':'By kick-off time','')}
-    ${row('homeView','Home opens on',{posts:'Posts',matches:'Matches',results:'Results'}[SET.homeView]||'Posts','')}
-  </div></div>
-  <div class="set-group"><div class="set-title">Video</div><div class="set-list">
-    ${row('vidCards','Match cards like the video','In the Video tab, every match in the look of your long video',SET.vidCards)}
-  </div></div>
-  <div class="set-group"><div class="set-title">Vision Premium</div><div class="set-list">
-    ${row('premMembers','Member reminders on Home','Ends soon and ended',SET.premMembers,'gold')}
-    ${row('lock',prem?'Lock Vision Premium on this phone':'Vision Premium is locked',prem?'You type the PIN again next time':'Unlock it in the Premium tab','','gold')}
-  </div></div>
-  <div class="set-group"><div class="set-title">Links</div><div class="set-list">
-    ${row('channel','Telegram channel',esc(SET.channel))}${row('youtube','YouTube channel',esc(SET.youtube))}${row('bot','Your bot','@'+esc(SET.bot))}
-  </div></div>
-  <div class="set-group"><div class="set-title">The app</div><div class="set-list">
-    ${row('update','Update now',upd?`Laptop sent news ${shortDate(keyOf(upd))} at ${fmtT(upd)}${source==='saved'?' · offline':''}`:'Get the newest picks')}
-    ${row('how','How it works','The laptop, the bot and this app')}
-    ${row('feed','Feed address',esc(SET.url))}
-    ${row('reset','Reset settings','Back to the normal settings (your sent ticks stay)')}
-  </div></div>
-  <button class="btn-danger" id="clearAll">Clear this app's data on this phone</button><p class="muted" style="text-align:center;margin-top:8px">Only Match Vision app data (mv_app_). Your other apps are not touched. Match Vision ${VERSION}</p>`;}
-const TOGGLES=['bold','uniBold','hand','tags','live','showPred','showOdds','showChance','showFin','vidCards','premMembers'];
+function renderSettings(){const row=(k,t,sub,v,ico)=>`<button class="set-row" data-s="${k}">${ico||icoLine('sliders')}<span class="t">${t}${sub?`<small>${sub}</small>`:''}</span>${v!=null&&v!==''?(typeof v==='boolean'?onOff(v):`<span class="v">${v}</span>`):''}${typeof v==='boolean'?'':'<span class="ch">›</span>'}</button>`;
+  const grp=(title,rows)=>`<div class="set-group"><div class="set-title acc">${title}</div><div class="set-list">${rows}</div></div>`;
+  const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&feed.updated?new Date(feed.updated):null;const pc=pendCount();const lb=SET.lastBackup?new Date(SET.lastBackup):null;
+  $('p-settings').innerHTML=
+  (pc?`<button class="btn-save w100 sendbar" data-s="sendpend">Send ${pc} change${pc>1?'s':''} to the bot (laptop settings and texts)</button>`:'')+
+  grp('Posting',
+    row('apps','Apps I post to',esc(appsOn.map(p=>PNAME[p]).join(', ')||'None'),'',icoStack(appsOn.length?appsOn:['wa']))+
+    row('groups','Posts to show',Object.keys(GROUP).filter(g=>SET.groups[g]!==false).map(g=>GROUP[g]).join(', '),'',icoStack(['wa','ig','tt']))+
+    row('sizes','Picture sizes',`Instagram ${SET.igSize} · TikTok ${SET.ttSize} · Threads 4:5 (cropped by itself)`,'',icoStack(['ig','tt','th']))+
+    row('bold','Bold on important words','Title, Match Vision, league names and the Watch line',SET.bold,icoLine('bold'))+
+    row('boldparts','Which words are bold',[SET.boldTitle&&'Title',SET.boldBrand&&'Match Vision',SET.boldLeague&&'Leagues',SET.boldWatch&&'Watch line'].filter(Boolean).join(', ')||'None','',icoLine('bold'))+
+    row('boldUni','Bold on X, Instagram, TikTok, Threads','These apps have no bold button, so special bold letters are used (𝗟𝗶𝗸𝗲 𝘁𝗵𝗶𝘀)',SET.uniBold,icoStack(['x','ig','tt']))+
+    row('hand','Hand points down to the link','👇 Watch All Predictions: with the link on the next line',SET.hand,icoLine('hand'))+
+    row('tags','Hashtags in the posts','Keep the hashtag line under each post',SET.tags,icoLine('hash')))+
+  grp('Texts and captions',
+    row('daytexts','Today\'s texts','Edit one post, or copy all and paste all back','',icoLine('pencil'))+
+    row('templates','Texts and captions (laptop)','Titles, captions, channel posts, Vision Premium words',feed&&feed.templates?Object.keys(feed.templates).length+' parts':'',icoStack(['tg','wa','x'])))+
+  grp('Matches and records',
+    row('livepage','Live scores',`ESPN on this phone ${SET.live?'on':'off'} · every ${SET.every} min · the laptop's live check`,'',icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#141414"/><circle cx="12" cy="12" r="6.5" fill="#fff"/><path d="M12 8.5l2.4 1.8-.9 2.8h-3l-.9-2.8z" fill="#111"/><circle cx="19.5" cy="4.5" r="3" fill="#FF3B30"/></svg>'))+
+    row('showPred','Show the correct score','',SET.showPred,icoLine('score'))+
+    row('showOdds','Show odds','',SET.showOdds,icoLine('odds'))+
+    row('showChance','Show the chance (%)','From the builder',SET.showChance,icoLine('pct'))+
+    row('shortNames','Short team names','"Frankfurt over 1.5" instead of the full name, so everything fits',SET.shortNames,icoLine('names'))+
+    row('showFin','Show finished matches','In the All list',SET.showFin,icoLine('flag'))+
+    row('sort','Order of matches',SET.sort==='league'?'By league':'By kick-off time','',icoLine('sort'))+
+    row('homeView','Home opens on',{posts:'Posts',matches:'Matches',results:'Results'}[SET.homeView]||'Posts','',icoLine('home')))+
+  grp('Video',
+    row('vidCards','Match cards in the Video tab','Off: the cards are in Home > Matches (tap the small picture)',SET.vidCards,icoApp('yt'))+
+    row('bvideo','Video settings (laptop)','Card style, background, quality (1080p / 1440p / 4K), timing','',icoLine('shorts'))+
+    row('bshorts','Shorts settings (laptop)','Card style, caption (hook or exact matches), matches per Short','',icoApp('tt'))+
+    row('bthumbs','Thumbnail settings (laptop)','18 styles, 11 backgrounds','',icoLine('eye')))+
+  grp('Laptop and bot',
+    row('builder','All laptop settings','Every setting of Settings.bat. Change here, send to the bot',feed&&feed.settings?feed.settings.length+'':'',icoRaw(MVLOGO))+
+    row('ask','Ask the bot','The same Match Vision bot as on Telegram','',icoApp('tg'))+
+    row('schedule','The day\'s times',feed&&feed.schedule?Object.entries(feed.schedule).filter(([k,v])=>v).map(([k,v])=>`${k} ${v}`).join(' · '):'From the laptop','',icoLine('clock'))+
+    row('make2','Make today and tomorrow','Sends "make today and tomorrow" to the bot','',icoLine('calendar'))+
+    row('test','Test everything','The bot makes a test day and sends you every part (nothing is posted)','',icoLine('flask')))+
+  grp('Vision Premium',
+    row('premMembers','Member reminders on Home','Ends soon and ended',SET.premMembers,icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#2a2210"/><text x="12" y="17" text-anchor="middle" font-size="13">👑</text></svg>'))+
+    row('lock',prem?'Lock Vision Premium on this phone':'Vision Premium is locked',prem?'You type the PIN again next time':'Unlock it in the Premium tab','',icoLine('lock')))+
+  grp('Links',
+    row('channel','Telegram channel',esc(SET.channel),'',icoApp('tg'))+row('youtube','YouTube channel',esc(SET.youtube),'',icoApp('yt'))+row('bot','Your bot','@'+esc(SET.bot),'',icoApp('tg')))+
+  grp('Data',
+    row('backup','Save backup',lb?`Last backup ${shortDate(keyOf(lb))}`:'Your app settings, sent ticks and edited texts','',icoLine('down'))+
+    row('restore','Restore backup','Load a saved backup file','',icoLine('up'))+
+    row('update','Update now',upd?`Laptop sent news ${shortDate(keyOf(upd))} at ${fmtT(upd)}${source==='saved'?' · offline':''}`:'Get the newest picks','',icoLine('refresh'))+
+    row('how','How it works','The laptop, the bot and this app','',icoLine('info'))+
+    row('feed','Feed address',esc(SET.url),'',icoLine('link'))+
+    row('reset','Reset settings','Back to the normal settings (your sent ticks stay)','',icoLine('reset')))+
+  `<button class="btn-danger" id="clearAll">Clear this app's data on this phone</button><p class="muted" style="text-align:center;margin-top:8px">Only Match Vision app data (mv_app_). Your other apps are not touched. Match Vision app ${VERSION}${feed&&feed.version?` · laptop builder ${esc(feed.version)}`:''}</p>`;}
+const TOGGLES=['bold','uniBold','hand','tags','live','showPred','showOdds','showChance','showFin','vidCards','premMembers','shortNames'];
 $('p-settings').addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;const s=b.dataset.s;
   if(b.id==='clearAll'){if(!confirm('Clear Match Vision app data on this phone (saved picks, sent ticks, settings, PIN)? Nothing on the laptop changes.'))return;Object.values(K).forEach(k=>store.del(k));POSTED={};SET=Object.assign({},DEF);prem=null;ESPN={};toast('Cleared');loadFeed(true);return;}
   const tk=s==='boldUni'?'uniBold':s;if(TOGGLES.includes(tk)){SET[tk]=!SET[tk];saveSet();renderSettings();if(tk==='live'&&SET.live)liveTick(true);return;}
@@ -1220,7 +1302,14 @@ $('p-settings').addEventListener('click',async e=>{const b=e.target.closest('but
   else if(s==='feed')editField('Feed address',SET.url,v=>{SET.url=v&&v.trim()?v.trim():DEF.url;saveSet();loadFeed(false);},{reset:true,note:'Normally feed.json (next to the app). Only change it if Claude tells you to.'});
   else if(s==='update'){toast('Updating…');await loadFeed(false);liveTick(true);}
   else if(s==='reset'){if(confirm('Back to the normal settings?')){SET=Object.assign({},DEF,{apps:{...DEF.apps},groups:{...DEF.groups}});saveSet();renderSettings();toast('Settings reset ✓');}}
-  else if(s==='how')openHow();});
+  else if(s==='how')openHow();
+  else if(s==='sizes')choose('Instagram picture size',[['4:5','4:5 portrait (1080x1350, best for the feed)','Instagram\'s biggest post size: more of the screen'],['1:1','1:1 square (1080x1080)','']],SET.igSize,v=>{SET.igSize=v;saveSet();renderSettings();toast('TikTok photos are 9:16 and Threads 4:5 by themselves');});
+  else if(s==='daytexts'){const d=todayDay();if(d)textsSheet(d);else toast('No day for today yet');}
+  else if(s==='templates')openTemplates();else if(s==='livepage')openLivePage();else if(s==='builder')openBuilder();
+  else if(s==='bvideo')openBuilder('Long video');else if(s==='bshorts')openBuilder('Shorts');else if(s==='bthumbs')openBuilder('Thumbnails');
+  else if(s==='ask')askBot();else if(s==='make2')openBot('make today and tomorrow');else if(s==='test')openBot('test');
+  else if(s==='schedule')openBuilder('Channel');else if(s==='sendpend')sendPending();
+  else if(s==='backup')saveBackup();else if(s==='restore')restoreBackup();});
 function openApps(){const render=()=>{$('subBody').innerHTML=`<p class="muted" style="margin-bottom:12px">Only these apps get buttons. A post is "done" when it is sent to all of them.</p><div class="set-list">${APPS.map(p=>`<button class="set-row" data-a="${p}"><span class="i pic">${SVG[p]}</span><span class="t">${PNAME[p]}${p==='tg'?'<small>The bot already posts your Telegram channel by itself</small>':''}</span>${onOff(SET.apps[p])}</button>`).join('')}</div>`;};
   openSub('Apps I post to',render);$('subBody').onclick=e=>{const b=e.target.closest('button');if(!b||!b.dataset.a)return;SET.apps[b.dataset.a]=!SET.apps[b.dataset.a];saveSet();render();};}
 function openGroups(){const render=()=>{$('subBody').innerHTML=`<p class="muted" style="margin-bottom:12px">Switch off what you do not post from the phone.</p><div class="set-list">${Object.keys(GROUP).map(g=>`<button class="set-row" data-g="${g}"><span class="t">${GROUP[g]}</span>${onOff(SET.groups[g]!==false)}</button>`).join('')}</div>`;};
@@ -1235,10 +1324,174 @@ function openHow(){openSub('How it works',()=>{$('subBody').innerHTML=`<div clas
   <div class="card"><div class="ct">4. The bot is the boss</div><div class="cs" style="margin:0">The app never changes anything on the laptop. Members, posts on the channel and builds are done by the bot. The Premium buttons copy the bot word and open the bot.</div></div>
   <div class="card"><div class="ct">Install it</div><div class="cs" style="margin:0">Android Chrome: ⋮ > Add to home screen > Install. iPhone Safari: Share > Add to Home Screen > Add. New version: close the app and open it again.</div></div>`;});}
 
+
+// =====================================================================================================================
+// 3.2 (16 October 2026) - Philip's list: real logos in Settings, organised like Sure Stake, Live scores page, records
+// in our colour, a picture of every match card (tap = big), Shorts shared as VIDEOS, every post at its platform's
+// best size, every text editable (one by one, or copy all / paste all), the builder's settings and texts from the
+// phone (sent to the bot, the bot saves them on the laptop), ask the bot, test, backups, Premium money in + / -.
+// =====================================================================================================================
+const SVGI={   // line icons (Sure Stake style) for rows that are not an app
+ ball:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 4.5h-5L8 10z"/><path d="M12 3v4M21 10l-5 0M3 10h5M7 20l2-5.5M17 20l-2-5.5"/></svg>',
+ clock:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+ bold:'<svg viewBox="0 0 24 24"><text x="12" y="17.5" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="16" fill="#000">B</text></svg>',
+ hash:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M9 4L7 20M17 4l-2 16M4 9h16M3.5 15h16"/></svg>',
+ hand:'<svg viewBox="0 0 24 24"><text x="12" y="18" text-anchor="middle" font-size="16">👇</text></svg>',
+ pencil:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>',
+ sliders:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>',
+ eye:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+ odds:'<svg viewBox="0 0 24 24"><text x="12" y="16.5" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="10.5" fill="#000">1.36</text></svg>',
+ pct:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M19 5L5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg>',
+ score:'<svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3" fill="#000"/><text x="12" y="16" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="9" fill="#DFFB51">3-1</text></svg>',
+ flag:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg>',
+ sort:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"/></svg>',
+ home:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg>',
+ ruler:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M5 8h4M5 13h4M5 18h4"/></svg>',
+ robot:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 16h6"/></svg>',
+ flask:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg>',
+ calendar:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+ down:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>',
+ up:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M7 9l5-5 5 5M5 20h14"/></svg>',
+ refresh:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v5h-5"/></svg>',
+ info:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg>',
+ link:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
+ lock:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+ bell:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg>',
+ reset:'<svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.3-5.7M4 4v5h5"/></svg>',
+ names:'<svg viewBox="0 0 24 24"><text x="12" y="16" text-anchor="middle" font-family="Inter,Arial" font-weight="900" font-size="9" fill="#000">Aa</text></svg>',
+ shorts:'<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#000"/><rect x="7.5" y="3.5" width="9" height="17" rx="2.5" fill="none" stroke="#DFFB51" stroke-width="1.8"/><path d="M11 9.5v5l4-2.5z" fill="#DFFB51"/></svg>'};
+const MVLOGO='<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#111"/><text x="11" y="15.5" text-anchor="middle" font-family="Inter,Arial" font-style="italic" font-weight="900" font-size="10" fill="#DFFB51">MV</text><circle cx="19" cy="14.5" r="1.6" fill="#fff"/></svg>';
+const icoLine=n=>`<span class="i ln">${SVGI[n]||SVGI.info}</span>`;
+const icoApp=p=>`<span class="i pic">${SVG[p]||''}</span>`;
+const icoStack=list=>`<span class="i pic stk">${list.slice(0,3).map(p=>`<span>${SVG[p]||''}</span>`).join('')}</span>`;
+const icoRaw=h=>`<span class="i pic">${h}</span>`;
+
+// ---------- storage for 3.2 ----------
+K.edits='mv_app_edits';K.pend='mv_app_pending';K.ptext='mv_app_pending_texts';K.checks='mv_app_checks';
+let EDITS=jget(K.edits,{});              // "date|id|app" -> your text
+const saveEdits=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(EDITS))if(k.slice(0,10)<keep)delete EDITS[k];store.set(K.edits,JSON.stringify(EDITS));};
+let PEND=jget(K.pend,{});                // builder setting -> new value (waiting to be sent to the bot)
+let PTEXT=jget(K.ptext,{});              // template part -> new words (waiting to be sent to the bot)
+const savePend=()=>{store.set(K.pend,JSON.stringify(PEND));store.set(K.ptext,JSON.stringify(PTEXT));};
+for(const k of ['igSize','ttSize','shortNames']){if(SET[k]===undefined)SET[k]={igSize:'4:5',ttSize:'9:16',shortNames:true}[k];}
+if(!SET.v32){SET.vidCards=false;SET.v32=true;saveSet();}   // 3.2: the match cards live in Home > Matches now (Philip)
+function editKey(it,p){return `${it._dk||''}|${it.id}|${p}`;}
+function annotate(){for(const d of days())for(const it of (d.posts||[]))it._dk=d.date;}
+
+// ---------- short team names and short pick words (from the laptop's Settings) ----------
+function shortTeam(n){if(!SET.shortNames)return n;const t=(feed&&feed.short_names)||{};if(String(n).length<=14)return n;return t[n]||n;}
+function shortPick(text){let s=String(text||'');if(SET.shortNames){const t=(feed&&feed.short_names)||{};for(const [a,b] of Object.entries(t).sort((x,y)=>y[0].length-x[0].length)){if(a&&s.toLowerCase().includes(a.toLowerCase())){s=s.replace(new RegExp(a.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i'),b);break;}}}
+  const w=String((feed&&feed.short_words)||'');for(const part of w.split(';')){const i=part.indexOf('=');if(i>0){const a=part.slice(0,i).trim(),b=part.slice(i+1).trim();if(a)s=s.replace(new RegExp(a.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'ig'),b);}}
+  return s.replace(/\s{2,}/g,' ').trim();}
+
+// ---------- pictures at each platform's best size ----------
+const SIZES={ig:{'4:5':[1080,1350],'1:1':[1080,1080]},tt:{'9:16':[1080,1920]},th:{'4:5':[1080,1350]}};
+async function fitFile(file,app){try{if(!file||!/^image\//.test(file.type))return file;const want=app==='ig'?SIZES.ig[SET.igSize]:app==='tt'?SIZES.tt[SET.ttSize]:app==='th'?SIZES.th['4:5']:null;if(!want)return file;
+  const url=URL.createObjectURL(file);const img=await new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=url;});URL.revokeObjectURL(url);
+  const [W0,H0]=want;if(Math.abs(img.width/img.height-W0/H0)<0.01)return file;const k=img.width>=W0*1.9?2:1;const W=W0*k,H=H0*k;
+  const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');g.fillStyle='#050506';g.fillRect(0,0,W,H);
+  const cov=Math.max(W/img.width,H/img.height);g.filter='blur(28px) brightness(.35)';g.drawImage(img,(W-img.width*cov)/2,(H-img.height*cov)/2,img.width*cov,img.height*cov);g.filter='none';
+  const con=Math.min(W/img.width,H/img.height);g.drawImage(img,(W-img.width*con)/2,(H-img.height*con)/2,img.width*con,img.height*con);
+  const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',0.95));return blob?new File([blob],file.name.replace(/\.\w+$/,'')+`-${W0}x${H0}.jpg`,{type:'image/jpeg'}):file;}catch(e){return file;}}
+
+// ---------- the big match card (tap the small picture) ----------
+function bigCard(d,m){const n=(d.matches||[]).length;
+  openSheet(`<div class="bigcard">${mvCard(m,d,n)}</div><div class="btn-row"><button class="btn-half" data-a="copy">📋 Copy the picks</button><button class="btn-half" data-a="more">Live details</button></div><div class="btn-row" style="margin-top:8px"><button class="btn-half w100" data-a="no">Close</button></div>`,
+  e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='copy'){const t=`${m.home} vs ${m.away}${m.score?' · Correct score '+m.score:''}\n`+(m.picks||[]).slice(0,3).map((p,i)=>`${i+1}. ${p.text}${p.odds?' @'+Number(p.odds).toFixed(2):''}`).join('\n');toast(copyText(t)?'Copied ✓':'Copy failed');return;}
+    if(b.dataset.a==='more'){closeSheet();setTimeout(()=>legSheet(d,m),250);return;}closeSheet();});}
+
+// ---------- Ask the bot (the same bot as on Telegram) ----------
+function openBot(text){const bot=(feed&&feed.bot)||SET.bot;if(text)copyText(text);location.href=`https://t.me/${bot}`+(text?`?text=${enc(text)}`:'');}
+function askBot(){const quick=[['help','What can you do?'],['status','What is the laptop doing?'],['results','Check the results now'],['pack','Send me today\'s pack again'],['make today and tomorrow','Make today and tomorrow'],['test','Test everything'],['help thumbnail background','Help: thumbnail background'],['week','This week\'s results']];
+  openSheet(`<div class="modal-title">🤖 Ask the bot</div><p class="muted" style="margin-bottom:10px">It is the same Match Vision bot as on Telegram. Type anything ("help music", "make Saturday games", "set UPLOAD TIME 21:30"), then Send: Telegram opens with your words, tap the send arrow.</p>
+    <textarea id="askT" rows="3" placeholder="Ask or tell the bot..."></textarea><div class="btn-row"><button class="btn-save w100" data-a="send">Send to the bot</button></div>
+    <div class="sect" style="margin-top:14px">Quick words</div><div class="chips wrap">${quick.map(([w,l])=>`<button class="chip" data-w="${esc(w)}">${esc(l)}</button>`).join('')}</div><div class="btn-row"><button class="btn-half w100" data-a="no">Close</button></div>`,
+  e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.w){$('askT').value=b.dataset.w;return;}if(b.dataset.a==='send'){const t=($('askT').value||'').trim();if(!t){toast('Type something first');return;}openBot(t);return;}closeSheet();});}
+
+// ---------- edit a post's text (kept on this phone, used when you share) ----------
+function editPost(d,it){const ap=appsOf(it);let app=ap.find(a=>a!=='x')||ap[0]||'wa';
+  const render=()=>{const cur=EDITS[editKey(it,app)]!=null?EDITS[editKey(it,app)]:((it.texts&&(it.texts[app]||it.texts.wa))||'');
+    $('sheetBox').innerHTML=`<div class="modal-title">✏️ ${esc(it.title)}</div><div class="chips wrap" style="margin-bottom:8px">${ap.map(a=>`<button class="chip ${a===app?'on':''}" data-app="${a}">${bi(a)}${PNAME[a]}</button>`).join('')}</div>
+    <textarea id="edT" rows="12">${esc(cur)}</textarea><p class="muted" style="margin:6px 0">Bold is added by itself when you share. Your words are used for this post only (to change the words of every day, use Settings > Texts and captions).</p>
+    <div class="btn-row"><button class="btn-save" data-a="save">Save</button><button class="btn-half" data-a="all">Use for every app</button></div><div class="btn-row" style="margin-top:8px"><button class="btn-half" data-a="undo">Back to the laptop's words</button><button class="btn-half" data-a="no">Close</button></div>`;};
+  openSheet('<div></div>',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.app){app=b.dataset.app;render();return;}const v=($('edT')||{}).value;
+    if(b.dataset.a==='save'){EDITS[editKey(it,app)]=v;saveEdits();toast(`Saved for ${PNAME[app]} ✓`);refresh(true);return;}
+    if(b.dataset.a==='all'){for(const a of ap)EDITS[editKey(it,a)]=v;saveEdits();toast('Saved for every app ✓');refresh(true);return;}
+    if(b.dataset.a==='undo'){for(const a of ap)delete EDITS[editKey(it,a)];saveEdits();render();toast('Back to the laptop\'s words');refresh(true);return;}closeSheet();});render();}
+
+// ---------- copy ALL texts of a day / paste them back ----------
+function allTexts(d){const out=[`=== MATCH VISION DAY TEXTS ${d.date} ===`,'>> Edit the words under each ##### line, keep the ##### lines, then Paste all in the app.',''];
+  for(const it of (d.posts||[]))for(const a of appsOf(it)){out.push(`##### ${it.id} | ${PNAME[a]} | ${it.title}`);out.push(textFor(it,a).replace(/\*+/g,''));out.push('');}return out.join('\n');}
+function pasteTexts(d,txt){const s=String(txt||'');if(!/^=== MATCH VISION DAY TEXTS/m.test(s))return 0;let n=0;const parts=s.split(/^##### /m).slice(1);
+  for(const p of parts){const nl=p.indexOf('\n');const head=p.slice(0,nl),body=p.slice(nl+1).replace(/\n+$/,'');const [id,appN]=head.split('|').map(x=>x.trim());const app=Object.keys(PNAME).find(k=>PNAME[k]===appN);const it=(d.posts||[]).find(x=>x.id===id);
+    if(it&&app){const cur=(it.texts&&it.texts[app])||'';if(body.trim()&&body.trim()!==cur.trim()){EDITS[editKey(it,app)]=body;n++;}}}saveEdits();return n;}
+function textsSheet(d){openSheet(`<div class="modal-title">📝 All texts · ${shortDate(d.date)}</div><p class="muted" style="margin-bottom:10px">1. Copy all. 2. Edit them anywhere (Notes, ChatGPT, Claude). 3. Paste all here. Every post gets your words. Nothing on the laptop changes.</p>
+  <div class="btn-row"><button class="btn-save" data-a="copy">📋 Copy all</button><button class="btn-half" data-a="paste">📥 Paste all</button></div><textarea id="pasteT" rows="7" placeholder="Paste the edited texts here, then tap Paste all"></textarea>
+  <div class="btn-row"><button class="btn-half" data-a="undo">All back to the laptop's words</button><button class="btn-half" data-a="no">Close</button></div>`,
+  async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='copy'){toast(copyText(allTexts(d))?'All texts copied ✓':'Copy failed');return;}
+    if(b.dataset.a==='paste'){let t=($('pasteT').value||'').trim();if(!t){try{t=await navigator.clipboard.readText();}catch(_){} }const n=pasteTexts(d,t);toast(n?`${n} text${n>1?'s':''} changed ✓`:'Nothing changed (paste the copied block)');if(n)refresh(true);return;}
+    if(b.dataset.a==='undo'){for(const k of Object.keys(EDITS))if(k.startsWith(d.date+'|'))delete EDITS[k];saveEdits();toast('Back to the laptop\'s words');refresh(true);return;}closeSheet();});}
+
+// ---------- Live scores page (like Sure Stake) ----------
+function openLivePage(){const render=()=>{const t=todayKey();const g=(ESPN[t]&&ESPN[t].games)||[];const at=ESPN[t]&&ESPN[t].at?new Date(ESPN[t].at):null;const lap=feed&&feed.updated?new Date(feed.updated):null;const n=(jget(K.checks,{})[t])||0;
+  $('subBody').innerHTML=`<p class="muted" style="margin-bottom:12px">The app checks the score of every match on your list, fills in the minute and marks each prediction ✔ won or ✘ lost by itself. The 23:45 results on the laptop are the official ones.</p>
+  <div class="set-title">Sources</div><div class="set-list">
+   <button class="set-row" data-l="espn">${icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#D00"/><text x="12" y="15.5" text-anchor="middle" font-family="Arial" font-weight="900" font-style="italic" font-size="8" fill="#fff">ESPN</text></svg>')}<span class="t">ESPN on this phone<small>Free, no key. Used while the app is open</small></span>${onOff(SET.live)}</button>
+   <div class="set-row">${icoRaw(MVLOGO)}<span class="t">The laptop (API-Football + ESPN)<small>${lap?`Last news ${shortDate(keyOf(lap))} ${fmtT(lap)}`:'Not yet'} · full-time messages on Telegram</small></span></div></div>
+  <div class="card" style="margin-top:14px"><div class="ct">Check every</div><div class="chips">${[1,2,3,5].map(v=>`<button class="chip ${SET.every===v?'on':''}" data-ev="${v}">${v} min</button>`).join('')}</div>
+   <div class="statrow"><span>Checks today (this phone)</span><b>${n}</b></div><div class="statrow"><span>Games found today</span><b>${g.length}</b></div><div class="statrow"><span>Last update</span><b>${at?fmtT(at):'Not yet'}</b></div></div>
+  <button class="btn-save w100" data-l="now">Check scores now</button>`;};
+  openSub('Live scores',render);$('subBody').onclick=async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.ev){SET.every=+b.dataset.ev;saveSet();render();return;}
+    if(b.dataset.l==='espn'){SET.live=!SET.live;saveSet();render();if(SET.live)liveTick(true);return;}if(b.dataset.l==='now'){toast('Checking…');await liveTick(true);render();toast('Updated ✓');}};}
+const _liveTick=liveTick;
+liveTick=async function(force){const t=todayKey();const c=jget(K.checks,{});const before=ESPN[t]&&ESPN[t].at;await _liveTick(force);if(ESPN[t]&&ESPN[t].at!==before){c[t]=(c[t]||0)+1;for(const k of Object.keys(c))if(k<addDays(t,-3))delete c[k];store.set(K.checks,JSON.stringify(c));}};
+
+// ---------- the builder's settings, from the phone (sent to the bot, the bot saves them on the laptop) ----------
+function fmtVal(v){if(typeof v==='boolean')return v?'On':'Off';const s=String(v??'');return s.length>40?s.slice(0,40)+'…':s||'—';}
+function pendCount(){return Object.keys(PEND).length+Object.keys(PTEXT).length;}
+function sendPending(){const lines=Object.entries(PEND).map(([k,v])=>`set ${k.replace(/_/g,' ')} = ${typeof v==='boolean'?(v?'on':'off'):v}`);
+  if(!lines.length&&!Object.keys(PTEXT).length){toast('Nothing to send yet');return;}
+  if(lines.length){const msg=lines.join('\n');if(Object.keys(PTEXT).length){toast('Settings first: send them, then come back for the texts',4000);}openBot(msg);PEND={};savePend();return;}
+  const t=['=== MATCH VISION TEXTS ==='].concat(Object.entries(PTEXT).map(([k,v])=>`[${k}]\n${v}`)).join('\n');openBot(t);PTEXT={};savePend();}
+function editSetting(s,after){const cur=PEND[s.k]!==undefined?PEND[s.k]:s.v;const set=v=>{if(JSON.stringify(v)===JSON.stringify(s.v))delete PEND[s.k];else PEND[s.k]=v;savePend();after();toast('Added ✓ Tap "Send to the bot" when you are done',3000);};
+  if(s.kind==='bool'){set(!cur);return;}
+  if(s.kind==='choice'&&s.c){choose(s.k.replace(/_/g,' '),s.c.map(x=>[x,x]),String(cur),v=>set(v),s.d);return;}
+  editField(s.k.replace(/_/g,' '),String(cur??''),v=>{if(v==null)return;let x=v.trim();if(s.kind==='int'){x=parseInt(x,10);if(isNaN(x)){toast('A whole number please');return;}}else if(s.kind==='float'){x=parseFloat(x);if(isNaN(x)){toast('A number please');return;}}set(x);},{note:s.d});}
+function openBuilder(tabName,q){const L=(feed&&feed.settings)||[];if(!L.length){openSub('Laptop settings',()=>{$('subBody').innerHTML='<div class="card"><p class="empty">The laptop has not sent its settings yet. They come with the next feed from builder 3.2 (after the next review or results).</p></div>';});return;}
+  const tabs=[...new Set(L.map(s=>s.tab))];
+  const render=()=>{const qq=(q||'').toLowerCase();const list=L.filter(s=>(!tabName||s.tab===tabName)&&(!qq||(s.k+' '+s.d).toLowerCase().includes(qq)));
+    const bar=pendCount()?`<button class="btn-save w100 sendbar" data-send="1">Send ${pendCount()} change${pendCount()>1?'s':''} to the bot</button>`:'';
+    $('subBody').innerHTML=(tabName||q?'':`<p class="muted" style="margin-bottom:10px">The same settings as Settings.bat on the laptop. Change what you want here, then "Send to the bot": the bot saves them on the laptop (a copy of the old settings is kept) and the app shows them after the next update.</p><input id="bq" placeholder="Search a setting (music, thumbnail, upload...)" value="${esc(q||'')}">`)+bar+
+    (tabName||q?`<div class="set-list">${list.map(s=>`<button class="set-row" data-k="${esc(s.k)}"><span class="t">${esc(s.k.replace(/_/g,' '))}<small>${esc(s.d)}</small></span><span class="v ${PEND[s.k]!==undefined?'pend':''}">${esc(fmtVal(PEND[s.k]!==undefined?PEND[s.k]:s.v))}</span></button>`).join('')||'<p class="empty">Nothing found.</p>'}</div>`
+     :`<div class="set-list" style="margin-top:10px">${tabs.map(t=>`<button class="set-row" data-tab="${esc(t)}">${icoLine({'Long video':'shorts','Music':'bell','Thumbnails':'eye','Shorts':'shorts','Pictures':'eye','Banker':'odds','Texts':'pencil','Order':'sort','Automatic':'ball','Telegram':'robot','Review':'flask','Channel':'calendar','Daily jobs':'clock','Vision Premium':'lock'}[t]||'sliders')}<span class="t">${esc(t)}<small>${esc(((feed.tabs_help||{})[t]||'').slice(0,90))}</small></span><span class="v">${L.filter(s=>s.tab===t).length}</span><span class="ch">›</span></button>`).join('')}</div>`);
+    const bq=$('bq');if(bq)bq.oninput=()=>{const v=bq.value;clearTimeout(bq._t);bq._t=setTimeout(()=>{if(v.trim().length>=2)openBuilder('',v.trim());},500);};};
+  openSub(tabName||(q?`"${q}"`:'Laptop settings'),render,!!(tabName||q));$('subBody').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.send){sendPending();render();return;}
+    if(b.dataset.tab){openBuilder(b.dataset.tab);return;}if(b.dataset.k){const s=L.find(x=>x.k===b.dataset.k);if(s)editSetting(s,render);}};}
+
+// ---------- the builder's texts (Templates.txt), from the phone ----------
+function openTemplates(){const T=(feed&&feed.templates)||{};const names=Object.keys(T);
+  const render=()=>{if(!names.length){$('subBody').innerHTML='<div class="card"><p class="empty">The laptop has not sent its texts yet. They come with builder 3.2.</p></div>';return;}
+    $('subBody').innerHTML=`<p class="muted" style="margin-bottom:10px">The words the laptop uses for every day (titles, captions, channel posts, Vision Premium). Edit one, or Copy all / Paste all, then Send to the bot. {DAY}, {N} and the other words in { } are filled in by the builder: keep them.</p>
+    <div class="btn-row"><button class="btn-half" data-a="copy">📋 Copy all</button><button class="btn-half" data-a="paste">📥 Paste all</button></div>${pendCount()?`<button class="btn-save w100 sendbar" data-send="1">Send ${pendCount()} change${pendCount()>1?'s':''} to the bot</button>`:''}
+    <div class="set-list" style="margin-top:10px">${names.map(n=>`<button class="set-row" data-n="${esc(n)}">${icoStack(/WHATSAPP|CHANNEL/.test(n)?['tg','wa','x']:/PREMIUM/.test(n)?['tg']:/X /.test(n)?['x']:/SHORT|CAPTION|HASHTAG/.test(n)?['tt','ig','x']:['yt'])}<span class="t">${esc(n)}<small>${esc((PTEXT[n]!=null?PTEXT[n]:T[n]).split('\n').find(l=>l.trim())||'')}</small></span>${PTEXT[n]!=null?'<span class="v pend">changed</span>':''}<span class="ch">›</span></button>`).join('')}</div>`;};
+  openSub('Texts and captions',render);$('subBody').onclick=async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.send){sendPending();render();return;}
+    if(b.dataset.a==='copy'){const t=['=== MATCH VISION TEXTS ==='].concat(names.map(n=>`[${n}]\n${PTEXT[n]!=null?PTEXT[n]:T[n]}`)).join('\n\n');toast(copyText(t)?'All texts copied ✓ Edit them, then Paste all':'Copy failed',3500);return;}
+    if(b.dataset.a==='paste'){let t='';try{t=await navigator.clipboard.readText();}catch(_){t=prompt('Paste the texts here')||'';}if(!/=== MATCH VISION TEXTS ===/.test(t)){toast('Copy all first, edit, then Paste all');return;}let n=0;
+      for(const part of t.split(/^\[([A-Z0-9 ]+)\]\s*$/m).reduce((a,x,i,arr)=>{if(i%2===1)a.push([x,(arr[i+1]||'').replace(/^\n+|\n+$/g,'')]);return a;},[])){const [k,v]=part;if(T[k]!=null&&v.trim()&&v.trim()!==String(T[k]).trim()){PTEXT[k]=v;n++;}}
+      savePend();render();toast(n?`${n} text${n>1?'s':''} changed. Tap "Send to the bot".`:'Nothing changed',3500);return;}
+    if(b.dataset.n){const n=b.dataset.n;editField(n,PTEXT[n]!=null?PTEXT[n]:T[n],v=>{if(v==null)return;if(v.trim()===String(T[n]).trim())delete PTEXT[n];else PTEXT[n]=v;savePend();render();toast('Changed ✓ Tap "Send to the bot" when you are done',3000);},{multi:true,note:'Keep the words in { } (the builder fills them in).'});}};}
+
+// ---------- backup of this app (settings, sent ticks, your edits) ----------
+function saveBackup(){const data={app:'Match Vision',version:VERSION,saved:new Date().toISOString(),set:SET,posted:POSTED,edits:EDITS,pending:PEND,pendingTexts:PTEXT};
+  const blob=new Blob([JSON.stringify(data,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`Match Vision app backup ${todayKey()}.json`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);
+  SET.lastBackup=Date.now();saveSet();toast('Backup saved in Downloads ✓',3000);}
+function restoreBackup(){const inp=document.createElement('input');inp.type='file';inp.accept='.json,application/json';inp.onchange=async()=>{const f=inp.files&&inp.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(j.app!=='Match Vision')throw 0;
+    if(!confirm('Load this backup? Your app settings, sent ticks and edited texts on this phone are replaced.'))return;SET=Object.assign({},DEF,j.set||{});POSTED=j.posted||{};EDITS=j.edits||{};PEND=j.pending||{};PTEXT=j.pendingTexts||{};saveSet();savePosted();saveEdits();savePend();toast('Backup loaded ✓');refresh();}catch(e){toast('That is not a Match Vision app backup');}};inp.click();}
+
 // ---------- Tabs ----------
 let tab=store.get(K.tab)||'home';if(!['home','history','video','elite','settings'].includes(tab))tab='home';
 function renderHeader(){$('hDate').textContent=longDate(todayKey());}
-function refresh(quiet){renderHeader();if(tab==='home')renderHome(quiet);else if(tab==='history')renderHistory();else if(tab==='video')renderVideo();else if(tab==='elite')renderElite();else if(tab==='settings')renderSettings();}
+function refresh(quiet){annotate();renderHeader();if(tab==='home')renderHome(quiet);else if(tab==='history')renderHistory();else if(tab==='video')renderVideo();else if(tab==='elite')renderElite();else if(tab==='settings')renderSettings();}
 function showTab(t){tab=t;store.set(K.tab,t);document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='p-'+t));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));refresh();window.scrollTo(0,0);}
 document.querySelector('.bottom-nav').onclick=e=>{const b=e.target.closest('.nav-btn');if(b)showTab(b.dataset.tab);};
 
@@ -1252,7 +1505,8 @@ window.addEventListener('online',()=>{loadFeed(true);liveTick(true);});
 function checkAppShellVersion(){const worker=navigator.serviceWorker&&navigator.serviceWorker.controller;if(!worker)return;const ch=new MessageChannel();
   ch.port1.onmessage=ev=>{const v=String(ev.data||'');if(!v||v===VERSION)return;try{const key='mv_app_worker_reload_to';if(sessionStorage.getItem(key)===v)return;sessionStorage.setItem(key,v);location.reload();}catch(e){}};worker.postMessage('MV_VERSION',[ch.port2]);}
 if('serviceWorker' in navigator){navigator.serviceWorker.addEventListener('controllerchange',checkAppShellVersion);navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>r.update()).then(checkAppShellVersion).catch(()=>{});}
-window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay};
+$('askBtn').onclick=()=>askBot();
+window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,openBuilder,openTemplates,openLivePage,askBot,textsSheet};
 })();
 
 </script>
