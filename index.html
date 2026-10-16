@@ -831,6 +831,27 @@ textarea{width:100%;background:#0E0E10;color:#fff;border:1px solid #333;border-r
 .mlist .mi .tt{flex:1;min-width:0}.mlist .mi .tt b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mlist .mi .tt small{color:var(--dim);font-size:12.5px;white-space:nowrap}
 .mlist .mi .am{font-weight:900;white-space:nowrap}.mlist .am.plus{color:#30D158}.mlist .am.minus{color:#FF453A}
 .mlist .hd{display:flex;justify-content:space-between;font-weight:800;font-size:16px;margin-bottom:4px}
+
+/* 3.2.2 */
+.mboxes button{background:#161616;border:1px solid #333;border-radius:14px;padding:10px;text-align:left;font-family:inherit;color:#fff}
+.mboxes button.on{border-color:#ECC462;background:#1E1909;box-shadow:0 0 0 1px rgba(236,196,98,.25)}
+.mboxes button small{display:block;font-size:10.5px;letter-spacing:.8px;color:#999;font-weight:700;white-space:nowrap}
+.mboxes button.on small{color:#ECC462}
+.mboxes button b{display:block;font-size:17px;font-weight:900;margin-top:4px;white-space:nowrap}
+.mfoot{display:flex;justify-content:space-between;font-size:12px;color:#888;padding-top:10px;border-top:1px solid #222;margin-top:6px}
+.pkr .tm2{display:flex;gap:4px;align-items:center;flex:none;width:62px}
+.pkr .tm2 img,.pkr .tm2 .ini{width:28px;height:28px;object-fit:contain;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center;background:#222}
+.pkr .tm2 img{background:none}
+.pkr .gm b{display:flex;align-items:center;gap:6px}
+.pcard{cursor:pointer}
+.cshare img{width:100%;border-radius:14px;display:block;margin-bottom:12px;border:1px solid #333}
+.cs-apps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.cs-apps button{background:#161616;border:1px solid #2c2c2c;border-radius:14px;padding:10px 4px;color:#ddd;font:600 11px var(--f);display:flex;flex-direction:column;align-items:center;gap:6px}
+.cs-apps svg{width:30px;height:30px}
+.cs-text{width:100%;min-height:150px;background:#111;color:#ddd;border:1px solid #2c2c2c;border-radius:12px;padding:10px;font:13px var(--f);margin:10px 0}
+.cardbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}
+.cardbtns button{background:#141414;border:1px solid #3a3a1a;border-radius:13px;padding:11px 6px;color:#DFFB51;font:800 13px var(--f)}
+.cardbtns button small{display:block;color:#888;font-weight:500;font-size:10.5px;margin-top:3px}
 </style>
 </head>
 <body>
@@ -861,7 +882,7 @@ textarea{width:100%;background:#0E0E10;color:#fff;border:1px solid #333;border-r
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.2.1';   // APP_VERSION = '3.2.1' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.2.2';   // APP_VERSION = '3.2.2' (the laptop reads this line for its "APP UPDATED" message)
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let toastT;function toast(t,ms=2600){const el=$('toast');el.textContent=t;el.classList.remove('on');void el.offsetWidth;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),ms);}
@@ -1058,8 +1079,8 @@ function appsOf(it){return APPS.filter(p=>SET.apps[p]&&it.texts&&it.texts[p]&&!(
 const postedOf=(d,id)=>((POSTED[d.date]||{})[id])||{};
 function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return need.length>0&&need.every(x=>p[x]);}
 function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||'');const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
-async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];}const imgs=it.images||[];for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
-async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);const ok=await shareTo(p,textFor(it,p),files);
+async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return null;}const imgs=it.images||[];for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
+async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);if(files===null)return;const ok=await shareTo(p,textFor(it,p),files);
   if(ok&&p!=='copy'){POSTED[d.date]=POSTED[d.date]||{};const o=POSTED[d.date][it.id]=POSTED[d.date][it.id]||{};o[p]=true;savePosted();
     const next=itemsOf(d).find(x=>!isDone(d,x));setTimeout(()=>toast(isDone(d,it)?(next?`Done ✓ Next: ${next.title}`:'Everything for this day is sent ✓'):`Sent to ${PNAME[p]} ✓`,3000),900);}
   refresh(true);if(subRender)rerenderSub();}
@@ -1079,7 +1100,7 @@ function postCard(d,it){const p=postedOf(d,it.id);const ap=appsOf(it);const show
 async function postClick(e,after){const b=e.target.closest('button');if(!b)return;const card=b.closest('[data-post]');if(!card)return;const d=dayOf(card.dataset.dk);if(!d)return;const it=(d.posts||[]).find(x=>x.id===card.dataset.post);if(!it)return;
   if(b.dataset.edit){closeSheet();setTimeout(()=>editPost(d,it),250);return;}
   if(b.dataset.xr){const xs=xParts(styled(it.texts.x,'x'));toast(copyText(xs[+b.dataset.xr]||'')?`Reply ${b.dataset.xr} copied`:'Copy failed');return;}
-  if(b.dataset.p==='vid'){const f=await fileOf(it.video,it.id);if(f&&canShareFiles([f])){try{await navigator.share({files:[f]});}catch(err){}}else window.open(media(it.video),'_blank');return;}
+  if(b.dataset.p==='vid'){const f=await fileOf(it.video,it.id);if(f&&canShareFiles([f])){try{await navigator.share({files:[f]});}catch(err){}}else if(f){const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;document.body.appendChild(a);a.click();a.remove();toast('Saved to Downloads');}else toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return;}
   const p=b.dataset.p;if(!p)return;if(p==='copy'){const ap=appsOf(it);toast(copyText(textFor(it,ap.find(a=>a!=='x')||ap[0]||'wa'))?'Copied':'Copy failed');return;}
   if(b.classList.contains('done')&&!confirm(`Send to ${PNAME[p]} again?\n\nTap Cancel to mark it as NOT sent.`)){const o=postedOf(d,it.id);delete o[p];savePosted();after();return;}
   await send(d,it,p);after();}
@@ -1255,14 +1276,14 @@ $('p-video').addEventListener('click',async e=>{const b=e.target.closest('button
   const card=b.closest('[data-m]');if(card){const d=dayOf(card.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===card.dataset.m);if(m)legSheet(d,m);}});
 
 // ---------- VISION PREMIUM (Sure Stake's Elite page, in gold) ----------
-let eliteView='post',memFilter='all',monRange='month';K.money='mv_app_money';let MONEY=jget(K.money,[]);const saveMoney=()=>store.set(K.money,JSON.stringify(MONEY));const openMem=new Set();
+let eliteView='post',memFilter='all',monRange='month',monTab='rec';K.money='mv_app_money';let MONEY=jget(K.money,[]);const saveMoney=()=>store.set(K.money,JSON.stringify(MONEY));const openMem=new Set();
 async function botWord(kind,name){let w='';
   if(kind==='add'){const n=prompt('Member name (as you want it in the list):');if(!n)return;const mo=prompt('How many months did they pay?','1')||'1';w=`member ${n.trim()} ${parseInt(mo,10)||1} month`;}
   else if(kind==='renew'){const mo=prompt(`Renew ${name}: how many months?`,'1')||'1';w=`renew ${name} ${parseInt(mo,10)||1} month`;}
   else if(kind==='remove'){if(!confirm(`Remove ${name} from the room? The bot asks you once more.`))return;w=`remove ${name}`;}
   else w=kind;
   toast(copyText(w)?`Copied "${w}". Paste it in the bot chat and send.`:`Send this to your bot: ${w}`,3500);setTimeout(()=>{location.href='https://t.me/'+((prem&&prem.bot)||SET.bot);},900);}
-function premPicture(td){const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=d&&(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;
+function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=d&&(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;
     return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${g.kickoff?' · '+esc(g.kickoff):''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('');
   return `<div class="pcard"><div class="ph"><span class="cw">${G.crown}</span><span><b>VISION PREMIUM</b><small>${longDate(td.date)} · Today's strongest picks</small></span></div>${rows}<div class="pf"><span>${(td.picks||[]).length} picks</span>${tot>1?`<span>Combined odds <b>${tot.toFixed(2)}</b></span>`:''}</div></div>`;}
 function renderElite(){const el=$('p-elite');const head=`<div class="sechd" style="margin:0 0 10px"><span class="sect goldc" style="margin:0;display:flex;align-items:center;gap:8px"><span class="eliteimg crown">👑</span>Vision Premium</span>${prem?'<button class="link" data-act="lock" style="color:var(--gold)!important;padding:0">Lock</button>':''}</div>`;
@@ -1273,10 +1294,10 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
   if(eliteView==='post'){const ds=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=ds.filter(x=>x.date>=t).sort((a,b)=>a.date<b.date?-1:1)[0]||ds[0];
     let w=0,n=0,w7=0,n7=0;for(const x of ds)for(const g of x.picks||[]){if(g.won==null)continue;n++;if(g.won)w++;if(x.date>addDays(t,-7)){n7++;if(g.won)w7++;}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
-    if(td)body+=premPicture(td);
+    if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 14px">Share this picture (any app)</button>`;
     if(td){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=d&&(d.matches||[]).find(x=>x.n===g.n);let s=g.won===true?'w':g.won===false?'l':null,L=null;
         if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
-        return `<div class="game"><div class="tm">${legMark(s)}</div><div class="gm"><b>${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
+        return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
     else body+='<div class="card"><p class="empty">No Vision Premium picks yet.</p></div>';
     body+=`<div class="sect">Posts for the room</div><div class="card vip-post-card"><div class="memhd"><strong>Join post</strong></div><div class="cs" style="margin:0 0 10px">"Vision Premium is open", with your MoMo details from Settings on the laptop.</div><button class="btn-save gold w100" data-bw="join post">Get it from the bot</button></div>
       <div class="card vip-post-card"><div class="memhd"><strong>Refund terms</strong></div><div class="cs" style="margin:0 0 10px">Post and pin before anyone pays.</div><button class="btn-save gold w100" data-bw="refund terms">Get it from the bot</button></div>
@@ -1294,17 +1315,21 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     const row=(ic,n,sub,a,plus)=>`<div class="mi"><span class="ic2">${G[ic]}</span><span class="tt"><b>${esc(n)}</b><small>${esc(sub)}</small></span><span class="am ${plus?'plus':'minus'}">${plus?'+':'−'} GH₵ ${Math.round(a)}</span></div>`;
     body=`<div class="mrange">${[['month','Month'],['year','Year'],['all','All time']].map(([k,l])=>`<button data-mr="${k}" class="${monRange===k?'on':''}">${l}</button>`).join('')}</div>
       <div class="balcard"><small>VISION PREMIUM BALANCE</small><b>${bal<0?'−':''}GH₵ ${Math.round(Math.abs(bal))}</b></div>
-      <div class="mboxes"><div class="on"><small>VIP RECEIVED</small><b>GH₵ ${Math.round(rec)}</b></div><div><small>ADDED</small><b>GH₵ ${Math.round(add)}</b></div><div><small>TAKEN OUT</small><b style="color:#FF453A">GH₵ ${Math.round(out)}</b></div></div>
+      <div class="mboxes">${[['rec','VIP RECEIVED',rec,''],['add','ADDED',add,''],['out','TAKEN OUT',out,'color:#FF453A']].map(([k,l,v,c])=>`<button data-mt="${k}" class="${monTab===k?'on':''}"><small>${l}</small><b style="${c}">GH₵ ${Math.round(v)}</b></button>`).join('')}</div>
       <div class="mbtns"><button data-money="in">+ Add money</button><button data-money="out">− Take out money</button></div>
-      <div class="card mlist"><div class="hd"><span>VIP Received</span><span class="muted">GH₵ ${Math.round(rec)}</span></div>${L.filter(x=>!x.out).sort((a,b)=>a.d<b.d?1:-1).map(x=>row('card',x.n,`${shortDate(x.d)} · ${x.mo} month${x.mo>1?'s':''}${x.ref?' · ref '+x.ref:''}`,x.a,true)).join('')||'<p class="empty">No payments in this time.</p>'}</div>
-      ${M.length||ref?`<div class="card mlist"><div class="hd"><span>Added and taken out</span></div>${M.slice().sort((a,b)=>a.d<b.d?1:-1).map(x=>`<div data-mdel="${x.id}">${row(x.type==='in'?'cash':'cashout',x.note||(x.type==='in'?'Added':'Taken out'),shortDate(x.d)+' · tap to remove',x.a,x.type==='in')}</div>`).join('')}${L.filter(x=>x.out).map(x=>row('cashout',x.n+' (refund)',shortDate(x.d),x.a,false)).join('')}</div>`:''}
+      ${(()=>{let title,total,rows;
+        if(monTab==='rec'){title='VIP Received';total=rec;rows=L.filter(x=>!x.out).sort((a,b)=>a.d<b.d?1:-1).map(x=>row('card',x.n,`${shortDate(x.d)} · ${x.mo} month${x.mo>1?'s':''}${x.ref?' · ref '+x.ref:''}`,x.a,true)).join('');}
+        else if(monTab==='add'){title='Added';total=add;rows=M.filter(x=>x.type==='in').sort((a,b)=>a.d<b.d?1:-1).map(x=>`<div data-mdel="${x.id}">${row('cash',x.note||'Added',longDate(x.d)+' · tap to remove',x.a,true)}</div>`).join('');}
+        else{title='Taken Out';total=out;rows=M.filter(x=>x.type==='out').sort((a,b)=>a.d<b.d?1:-1).map(x=>`<div data-mdel="${x.id}">${row('cashout',x.note||'Taken out',longDate(x.d)+' · tap to remove',x.a,false)}</div>`).join('')+L.filter(x=>x.out).map(x=>row('cashout',x.n+' (refund)',longDate(x.d),x.a,false)).join('');}
+        const cnt=(rows.match(/class="mi"/g)||[]).length;
+        return `<div class="card mlist"><div class="hd"><span>${title}</span><span class="muted">GH₵ ${Math.round(total)}</span></div>${rows||'<p class="empty">No transactions in this period.</p>'}${cnt?`<div class="mfoot"><span>${cnt} transaction${cnt>1?'s':''}</span><span>${[['month','This month'],['year','This year'],['all','All time']].find(z=>z[0]===monRange)[1]}</span></div>`:''}</div>`;})()}
       <p class="muted">Payments come from the members the bot keeps. Added and taken out money is kept on this phone (Settings > Data > Save backup keeps it safe).</p>`;}
   el.innerHTML=head+`<div class="elite-tabs">${[['members','Members'],['post','Post'],['money','Money']].map(([k,l])=>`<button data-ev="${k}" class="${eliteView===k?'on':''}">${l}</button>`).join('')}</div>`+body;}
 $('p-elite').addEventListener('click',async e=>{const md=e.target.closest('[data-mdel]');if(md){if(confirm('Remove this entry?')){MONEY=MONEY.filter(x=>String(x.id)!==md.dataset.mdel);saveMoney();renderElite();}return;}const b=e.target.closest('button');if(!b)return;
   if(b.dataset.ev){eliteView=b.dataset.ev;renderElite();return;}
-  if(b.dataset.mr){monRange=b.dataset.mr;renderElite();return;}
+  if(b.dataset.mr){monRange=b.dataset.mr;renderElite();return;}if(b.dataset.mt){monTab=b.dataset.mt;renderElite();return;}if(b.dataset.cardshare){shareCard('prem');return;}
   if(b.dataset.money){const kind=b.dataset.money;editField(kind==='in'?'Add money (GH₵)':'Take out money (GH₵)','',v=>{const a=parseFloat(String(v||'').replace(/[^0-9.]/g,''));if(!a){toast('Type an amount');return;}
-      const note=prompt(kind==='in'?'What is it for? (optional)':'What was it for? (optional)')||'';MONEY.push({id:Date.now(),d:todayKey(),a,type:kind,note:note.trim()});saveMoney();renderElite();toast(kind==='in'?`+ GH₵ ${a} added`:`− GH₵ ${a} taken out`);},{type:'number',note:'Kept on this phone.'});return;}if(b.dataset.mf){memFilter=b.dataset.mf;renderElite();return;}
+      const note=prompt(kind==='in'?'What is it for? (optional)':'What was it for? (optional)')||'';MONEY.push({id:Date.now(),d:todayKey(),a,type:kind,note:note.trim()});saveMoney();monTab=kind==='in'?'add':'out';renderElite();toast(kind==='in'?`+ GH₵ ${a} added`:`− GH₵ ${a} taken out`);},{type:'number',note:'Kept on this phone.'});return;}if(b.dataset.mf){memFilter=b.dataset.mf;renderElite();return;}
   if(b.dataset.tog){openMem.has(b.dataset.tog)?openMem.delete(b.dataset.tog):openMem.add(b.dataset.tog);renderElite();return;}
   if(b.dataset.bw){botWord(b.dataset.bw,b.dataset.n);return;}
   if(b.dataset.act==='unlock'){const p=($('pin').value||'').trim();if(!p){toast('Type your PIN first');return;}toast('Checking…');const ok=await unlockPremium(false,p);toast(ok?'Unlocked ✓':'Wrong PIN');renderElite();return;}
@@ -1598,11 +1623,11 @@ function openTemplates(){const T=(feed&&feed.templates)||{};const names=Object.k
     if(b.dataset.n){const n=b.dataset.n;editField(n,PTEXT[n]!=null?PTEXT[n]:T[n],v=>{if(v==null)return;if(v.trim()===String(T[n]).trim())delete PTEXT[n];else PTEXT[n]=v;savePend();render();toast('Changed ✓ Tap "Send to the bot" when you are done',3000);},{multi:true,note:'Keep the words in { } (the builder fills them in).'});}};}
 
 // ---------- backup of this app (settings, sent ticks, your edits) ----------
-function saveBackup(){const data={app:'Match Vision',version:VERSION,saved:new Date().toISOString(),set:SET,posted:POSTED,edits:EDITS,pending:PEND,pendingTexts:PTEXT};
+function saveBackup(){const data={app:'Match Vision',version:VERSION,saved:new Date().toISOString(),set:SET,posted:POSTED,edits:EDITS,pending:PEND,pendingTexts:PTEXT,money:MONEY};
   const blob=new Blob([JSON.stringify(data,null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`Match Vision app backup ${todayKey()}.json`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);
   SET.lastBackup=Date.now();saveSet();toast('Backup saved in Downloads ✓',3000);}
 function restoreBackup(){const inp=document.createElement('input');inp.type='file';inp.accept='.json,application/json';inp.onchange=async()=>{const f=inp.files&&inp.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(j.app!=='Match Vision')throw 0;
-    if(!confirm('Load this backup? Your app settings, sent ticks and edited texts on this phone are replaced.'))return;SET=Object.assign({},DEF,j.set||{});POSTED=j.posted||{};EDITS=j.edits||{};PEND=j.pending||{};PTEXT=j.pendingTexts||{};saveSet();savePosted();saveEdits();savePend();toast('Backup loaded ✓');refresh();}catch(e){toast('That is not a Match Vision app backup');}};inp.click();}
+    if(!confirm('Load this backup? Your app settings, sent ticks and edited texts on this phone are replaced.'))return;SET=Object.assign({},DEF,j.set||{});POSTED=j.posted||{};EDITS=j.edits||{};PEND=j.pending||{};PTEXT=j.pendingTexts||{};if(Array.isArray(j.money)){MONEY=j.money;saveMoney();}saveSet();savePosted();saveEdits();savePend();toast('Backup loaded ✓');refresh();}catch(e){toast('That is not a Match Vision app backup');}};inp.click();}
 
 // ---------- Tabs ----------
 let tab=store.get(K.tab)||'home';if(!['home','history','video','elite','settings'].includes(tab))tab='home';
@@ -1622,6 +1647,61 @@ function checkAppShellVersion(){const worker=navigator.serviceWorker&&navigator.
   ch.port1.onmessage=ev=>{const v=String(ev.data||'');if(!v||v===VERSION)return;try{const key='mv_app_worker_reload_to';if(sessionStorage.getItem(key)===v)return;sessionStorage.setItem(key,v);location.reload();}catch(e){}};worker.postMessage('MV_VERSION',[ch.port2]);}
 if('serviceWorker' in navigator){navigator.serviceWorker.addEventListener('controllerchange',checkAppShellVersion);navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(r=>r.update()).then(checkAppShellVersion).catch(()=>{});}
 $('askBtn').onclick=()=>askBot();
+// ---------- 3.2.2: picture cards (the Vision Premium look) for Premium, Top picks and the Banker, shared to any app ----------
+const loadImg=src=>new Promise(r=>{if(!src)return r(null);const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=src;});
+function rr(x,X,Y,W,H,R){x.beginPath();x.moveTo(X+R,Y);x.arcTo(X+W,Y,X+W,Y+H,R);x.arcTo(X+W,Y+H,X,Y+H,R);x.arcTo(X,Y+H,X,Y,R);x.arcTo(X,Y,X+W,Y,R);x.closePath();}
+function fitT(x,t,max,size,weight,fam){let z=size;x.font=`${weight} ${z}px ${fam}`;while(x.measureText(t).width>max&&z>14){z-=2;x.font=`${weight} ${z}px ${fam}`;}
+  if(x.measureText(t).width>max){while(t.length>3&&x.measureText(t+'…').width>max)t=t.slice(0,-1);t+='…';}return t;}
+async function cardCanvas(o){const W=1080,H=1350,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');const fam="'Inter','Outfit',system-ui,sans-serif";
+  try{await document.fonts.ready;}catch(e){}
+  const A=o.acc,A2=o.accDark;let g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#15120A');g.addColorStop(1,'#060606');if(o.kind!=='prem'){g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#10140A');g.addColorStop(1,'#060606');}
+  x.fillStyle=g;x.fillRect(0,0,W,H);const rg=x.createRadialGradient(W/2,0,10,W/2,0,700);rg.addColorStop(0,o.glow);rg.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=rg;x.fillRect(0,0,W,H);
+  rr(x,30,30,W-60,H-60,46);x.lineWidth=4;x.strokeStyle=A;x.globalAlpha=.55;x.stroke();x.globalAlpha=1;
+  // badge
+  x.save();x.translate(100,105);x.fillStyle=A;if(o.kind==='prem'){x.beginPath();x.moveTo(0,70);x.lineTo(-6,10);x.lineTo(22,38);x.lineTo(40,0);x.lineTo(58,38);x.lineTo(86,10);x.lineTo(80,70);x.closePath();x.fill();x.fillRect(0,76,80,12);}
+  else{x.beginPath();x.arc(40,44,44,0,7);x.fill();x.fillStyle='#0B0B0B';x.font=`900 38px ${fam}`;x.textAlign='center';x.textBaseline='middle';x.fillText('MV',40,46);x.textAlign='left';}x.restore();
+  x.textBaseline='alphabetic';x.fillStyle=A;x.font=`900 66px ${fam}`;x.fillText(fitT(x,o.title,760,66,900,fam),215,150);
+  x.fillStyle='#BDBDBD';x.font=`500 32px ${fam}`;x.fillText(fitT(x,o.sub,780,32,500,fam),217,200);
+  const rows=o.rows.slice(0,6),n=Math.max(rows.length,1),top=265,bottom=H-200,gap=22,rh=Math.min(165,(bottom-top-gap*(n-1))/n);
+  const imgs=await Promise.all(rows.flatMap(r=>[loadImg(r.hc?media(r.hc):''),loadImg(r.ac?media(r.ac):'')]));
+  rows.forEach((r,i)=>{const y=top+i*(rh+gap),X=70,Wd=W-140;rr(x,X,y,Wd,rh,26);x.fillStyle='rgba(255,255,255,.045)';x.fill();x.lineWidth=2;x.strokeStyle=A;x.globalAlpha=.35;x.stroke();x.globalAlpha=1;
+    rr(x,X,y,10,rh,5);x.fillStyle=A;x.fill();const cy=y+rh/2;
+    x.beginPath();x.arc(X+62,cy,30,0,7);x.fillStyle=A;x.fill();x.fillStyle='#111';x.font=`900 32px ${fam}`;x.textAlign='center';x.textBaseline='middle';x.fillText(String(i+1),X+62,cy+1);
+    const cs=Math.min(78,rh-40);[[imgs[i*2],r.h],[imgs[i*2+1],r.a]].forEach(([im,nm],k)=>{const cx=X+112+k*(cs+12);if(im){const s2=Math.min(cs/im.width,cs/im.height);x.drawImage(im,cx+(cs-im.width*s2)/2,cy-im.height*s2/2,im.width*s2,im.height*s2);}
+      else{x.beginPath();x.arc(cx+cs/2,cy,cs/2,0,7);x.fillStyle='#262626';x.fill();x.fillStyle='#ddd';x.font=`800 ${cs*.34}px ${fam}`;x.fillText(words(nm).slice(0,2).map(w=>w[0]).join('').toUpperCase(),cx+cs/2,cy+1);}});
+    x.textAlign='left';x.textBaseline='alphabetic';const tx=X+112+cs*2+40,oddsW=r.odds?150:20,tw=X+Wd-oddsW-tx-10;
+    x.fillStyle='#fff';x.font=`900 40px ${fam}`;x.fillText(fitT(x,String(r.pick).toUpperCase(),tw,40,900,fam),tx,cy-6);
+    x.fillStyle='#A9A9A9';x.font=`500 27px ${fam}`;x.fillText(fitT(x,`${r.h} vs ${r.a}${r.ko?' · '+r.ko:''}`,tw,27,500,fam),tx,cy+34);
+    if(r.odds){x.fillStyle=A;x.font=`900 46px ${fam}`;x.textAlign='right';x.textBaseline='middle';x.fillText(Number(r.odds).toFixed(2),X+Wd-30,cy+2);x.textAlign='left';x.textBaseline='alphabetic';}});
+  const fy=H-125;x.fillStyle='#BDBDBD';x.font=`600 34px ${fam}`;x.fillText(`${rows.length} pick${rows.length===1?'':'s'}`,80,fy);
+  if(o.total>1){x.textAlign='right';x.fillStyle='#BDBDBD';x.font=`600 34px ${fam}`;const tv=o.total.toFixed(2);x.font=`900 58px ${fam}`;const tw2=x.measureText(tv).width;x.fillStyle=A;x.fillText(tv,W-80,fy+4);x.font=`600 34px ${fam}`;x.fillStyle='#BDBDBD';x.fillText('Combined odds ',W-90-tw2,fy);x.textAlign='left';}
+  x.fillStyle=A2;x.font=`800 26px ${fam}`;x.textAlign='center';x.fillText(o.foot,W/2,H-62);x.textAlign='left';return c;}
+function cardData(kind,d){const t=todayKey();
+  if(kind==='prem'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map(g=>{const m=dd&&(dd.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,ko:g.kickoff};});
+    const txt=`👑 VISION PREMIUM\n${longDate(td.date)}\n\nToday's Strongest Picks Are In. 💪\n\n`+rows.map((r,i)=>`${i+1}. ${r.h} vs ${r.a}${r.ko?` (${r.ko})`:''}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+(tot>1?`\n\n📊 Combined odds: ${tot.toFixed(2)}`:'')+`\n\nGood Luck, Members. Let's Win Today!\nWe Meet After The Games. 🙏`;
+    return {o:{kind,title:'VISION PREMIUM',sub:`${longDate(td.date)} · Today's strongest picks`,rows,total:tot,acc:'#ECC462',accDark:'#9C8240',glow:'rgba(236,196,98,.22)',foot:'MATCH VISION · VISION PREMIUM'},txt,name:`Vision Premium ${td.date}`};}
+  if(!d)return null;let rows=[],tot=1,title,sub;
+  if(kind==='banker'){const bk=d.banker;if(!bk||!(bk.games||[]).length)return null;rows=bk.games.map(gm=>{const m=(d.matches||[]).find(x=>x.n===gm.n)||{};const p=gm.pick||{};if(gm.odds)tot*=gm.odds;return {h:shortTeam(m.home||''),a:shortTeam(m.away||''),hc:m.hc,ac:m.ac,pick:shortPick(p.text||''),full:p.text||'',odds:gm.odds||p.odds,ko:m.kickoff};});
+    title=`${Math.round(bk.total||tot)} ODDS BANKER`;sub=`${longDate(d.date)} · The banker of the day`;}
+  else{const ms=(d.matches||[]).filter(m=>(m.picks||[]).length).slice().sort((a,b)=>(b.picks[0].chance||0)-(a.picks[0].chance||0)).slice(0,5);
+    rows=ms.map(m=>{const p=m.picks[0];if(p.odds)tot*=p.odds;return {h:shortTeam(m.home),a:shortTeam(m.away),hc:m.hc,ac:m.ac,pick:shortPick(p.text),full:p.text,odds:p.odds,ko:m.kickoff};});
+    title='TOP PICKS';sub=`${longDate(d.date)} · The safest pick of each match`;}
+  if(!rows.length)return null;
+  const txt=`⚽ MATCH VISION\n${title.charAt(0)+title.slice(1).toLowerCase()} · ${longDate(d.date)}\n\n`+rows.map((r,i)=>`${i+1}. ${r.h} vs ${r.a}${r.ko?` (${r.ko})`:''}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+(tot>1?`\n\n📊 Combined odds: ${tot.toFixed(2)}`:'')+`\n\nNo prediction is 100%. Bet responsibly.`;
+  return {o:{kind,title,sub,rows,total:tot,acc:'#DFFB51',accDark:'#8EA334',glow:'rgba(223,251,81,.16)',foot:'MATCH VISION'},txt,name:`Match Vision ${kind==='banker'?'Banker':'Top picks'} ${d.date}`};}
+async function shareCard(kind,d){const cd=cardData(kind,d);if(!cd){toast(kind==='banker'?'No banker for this day':'Nothing to show for this day yet');return;}toast('Making the picture…',1500);
+  const c=await cardCanvas(cd.o);const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.93));const file=new File([blob],cd.name+'.jpg',{type:'image/jpeg'});const url=URL.createObjectURL(blob);const text=cd.txt;
+  openSheet(`<div class="cshare"><img src="${url}" alt=""><button class="btn-save ${kind==='prem'?'gold':''} w100" data-cs="any">Share picture and text (pick any app)</button>
+    <div class="cs-apps">${['wa','tg','tt','ig','x','th','yt'].map(p=>`<button data-cs="${p}">${SVG[p]||''}<span>${PNAME[p]}</span></button>`).join('')}<button data-cs="copy">${SVG.copy||''}<span>Copy text</span></button></div>
+    <div class="btn-row"><button class="btn-half" data-cs="save">Save picture</button><button class="btn-half" data-close="1">Close</button></div><textarea class="cs-text" readonly>${esc(text)}</textarea></div>`,
+    async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.close){closeSheet();return;}const k=b.dataset.cs;if(!k)return;
+      if(k==='copy'){toast(copyText(text)?'Text copied':'Copy failed');return;}
+      if(k==='save'){const a=document.createElement('a');a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();toast('Picture saved to Downloads');return;}
+      if(k==='any'){copyText(text);if(canShareFiles([file])){try{await navigator.share({files:[file],text});toast('Text copied too: if it is not under the picture, long-press and Paste.',4000);}catch(err){}}else toast('Sharing pictures is not possible here. Tap Save picture.');return;}
+      const f2=await fitFile(file,k);await shareTo(k,styled(text,k),[f2]);});}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-card]');if(b){e.stopPropagation();e.preventDefault();shareCard(b.dataset.card,dayOf(b.dataset.dk));return;}
+  const pc=e.target.closest('#p-elite .pcard');if(pc){e.stopPropagation();shareCard('prem');}},true);
+{const _mv=matchesView;matchesView=function(d){const h=_mv(d);if(!d)return h;return `<div class="cardbtns"><button data-card="picks" data-dk="${d.date}">Top picks picture<small>Tap: share to any app</small></button><button data-card="banker" data-dk="${d.date}">Banker picture<small>Tap: share to any app</small></button></div>`+h;};}
 window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,openBuilder,openTemplates,openLivePage,askBot,textsSheet};
 })();
 
