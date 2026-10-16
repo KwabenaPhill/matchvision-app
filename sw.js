@@ -1,5 +1,6 @@
-// Match Vision app 2.2.2 - online-first app shell with offline fallback for the last saved files.
-const VERSION = '2.2.2';
+// Match Vision app 3.0 - online first, with the last saved copy when there is no internet.
+// feed.json is always fetched fresh. Only files of this app are kept (never other websites).
+const VERSION = '3.0';
 const CACHE = 'mv-app-' + VERSION;
 const FILES = ['./', 'index.html', 'manifest.json', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 self.addEventListener('message', event => {
@@ -15,9 +16,9 @@ self.addEventListener('activate', event => {
 });
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
-  if (event.request.method !== 'GET' || url.pathname.endsWith('feed.json')) return;
+  if (event.request.method !== 'GET' || url.origin !== self.location.origin || url.pathname.endsWith('feed.json')) return;
   event.respondWith(fetch(event.request).then(response => {
-    if (response.ok) caches.open(CACHE).then(cache => cache.put(event.request, response.clone()));
+    if (response.ok) { const copy = response.clone(); caches.open(CACHE).then(cache => cache.put(event.request, copy)); }
     return response;
-  }).catch(() => caches.match(event.request).then(response => response || caches.match('index.html'))));
+  }).catch(() => caches.match(event.request).then(response => response || (event.request.mode === 'navigate' ? caches.match('index.html') : undefined))));
 });

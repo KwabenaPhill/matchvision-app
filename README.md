@@ -1,5 +1,9 @@
-# Match Vision app
+# Match Vision app 3.0
 
-The Match Vision phone app: today's picks, results and win rate.
-`feed.json` is sent here by the Match Vision builder on the laptop (Connect > App). Nothing private is in it.
-Install: open the GitHub Pages address in Chrome on the phone > menu > Add to home screen / Install app.
+The Match Vision phone app (the Sure Stake 707 Hub design in Match Vision colours): today's posts with their pictures
+(share to WhatsApp, X, Instagram, TikTok, Threads), live matches, results, records, the video and Vision Premium.
+
+- `feed.json` and `media/` are sent here by the Match Vision builder on the laptop (Connect > App). Nothing private is in
+  them (Vision Premium is locked with the PIN). Pictures older than 7 days are taken off again.
+- The app never sends anything back. Control stays in the Telegram bot.
+- Install: Android Chrome > menu > Add to home screen. iPhone Safari > Share > Add to Home Screen.
