@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.3</title>
+<title>Match Vision 3.3.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -879,10 +879,14 @@ html,body{max-width:100%;overflow-x:hidden}
 .tms b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
 .chips.scroll{max-width:100%}
 .kick{gap:8px}.kick span{min-width:0}
+/* 3.3.1: Matches box like Sure Stake - one status dot, the time always fits */
+.summary-box .bv{font-size:clamp(17px,5.6vw,24px)!important;letter-spacing:-.4px;text-overflow:clip!important}
+.dots{max-height:none!important}
+.dots i{width:8px!important;height:8px!important}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.3</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.3.1</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -909,7 +913,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.3';   // APP_VERSION = '3.3' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.3.1';   // APP_VERSION = '3.3.1' (the laptop reads this line for its "APP UPDATED" message)
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let toastT;function toast(t,ms=2600){const el=$('toast');el.textContent=t;el.classList.remove('on');void el.offsetWidth;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),ms);}
@@ -1208,7 +1212,7 @@ function reminders(d){const out=[],t=todayKey();
 function rems(o,a,b){o.push([a,b]);}
 const REMI_=()=>({'⚙️':G.sliders,'👑':G.crown,'🎬':G.clapper,'▶️':G.shortphone,'📶':G.refresh,'💻':G.laptop,'📌':G.ticket,'⚽':G.ball,'🌙':G.calendar,'⏰':G.clock,'📊':G.pie});
 function summaryBoxes(d){const its=itemsOf(d);const done=its.filter(it=>isDone(d,it)).length;const ms=d?(d.matches||[]):[];const now=new Date();const st=ms.map(m=>mState(m,d));const live=st.filter(x=>x==='live').length;const fk=d&&firstKick(d);
-  let mv='-',dots='';if(ms.length){dots=st.map(x=>`<i class="${x==='live'?'live':x==='fin'?'end':''}"></i>`).slice(0,14).join('');mv=live?`${live} LIVE`:fk&&now<fk&&d.date===todayKey()?inMins(Math.ceil((fk-now)/60000)):st.every(x=>x==='fin')?'ENDED':String(ms.length);}
+  let mv='-',dots='';if(ms.length){dots=`<i class="${live?'live':st.every(x=>x==='fin')?'end':''}"></i>`;mv=live?`${live} LIVE`:fk&&now<fk&&d.date===todayKey()?inMins(Math.ceil((fk-now)/60000)):st.every(x=>x==='fin')?'ENDED':String(ms.length);}
   const s=d?safestCount(d):{w:0,n:0};const small=v=>String(v).length>5?' style="font-size:18px"':'';
   return `<div class="summary-grid"><button class="summary-box sw ${homeView==='posts'?'on':''}" data-view="posts"><div class="bl">Posts</div><div class="bv">${its.length?`${done}/${its.length}`:'-'}</div></button>
     <button class="summary-box sw ${homeView==='matches'?'on':''}" data-view="matches"><div class="bl">Matches</div><div class="bv"${small(mv)}>${mv}</div>${dots?`<div class="dots">${dots}</div>`:''}</button>
