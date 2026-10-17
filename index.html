@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.3.1</title>
+<title>Match Vision 3.5</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -886,7 +886,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.3.1</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.5</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -913,7 +913,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.3.1';   // APP_VERSION = '3.3.1' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.5';   // APP_VERSION = '3.5' (the laptop reads this line for its "APP UPDATED" message)
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let toastT;function toast(t,ms=2600){const el=$('toast');el.textContent=t;el.classList.remove('on');void el.offsetWidth;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),ms);}
@@ -1054,7 +1054,10 @@ function copyText(t){let ok=false;try{const ta=document.createElement('textarea'
 const enc=encodeURIComponent;
 function canShareFiles(files){try{return !!(files.length&&navigator.canShare&&navigator.canShare({files}));}catch(e){return false;}}
 const PNAME={wa:'WhatsApp',x:'X',ig:'Instagram',tt:'TikTok',th:'Threads',yt:'YouTube',tg:'Telegram',copy:'Copy'};
-const APPS=['wa','x','ig','tt','th','yt','tg'];
+const APPS=['wa','x','ig','tt','yt','tg'];
+// 3.5: the apps each kind of post goes to. Nothing is shown for an app you do not post that kind on.
+const GROUP_APPS={shorts:['tt','ig'],swipe:['tt','ig','yt'],morning:['wa','x','tg'],video:['wa','x','tg'],results:['wa','x','tg','ig']};
+function saveFile(f,label){if(!f)return false;try{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},4000);toast((label||'Saved')+' ✓ In your Gallery (Downloads album). iPhone: in Files > Downloads.',3800);return true;}catch(e){toast('Could not save here');return false;}}
 const fileCache=new Map();
 async function fileOf(path,name){const u=media(path);if(fileCache.has(u))return fileCache.get(u);try{const r=await fetch(u,{cache:'force-cache'});if(!r.ok)throw 0;const b=await r.blob();const ext=(b.type.split('/')[1]||'jpg').replace('jpeg','jpg');const f=new File([b],`${name}.${ext}`,{type:b.type||'image/jpeg'});fileCache.set(u,f);return f;}catch(e){return null;}}
 async function shareTo(kind,text,files=[]){
@@ -1113,7 +1116,7 @@ function xParts(t){return String(t||'').split(/\n*---\s*reply\s*---\n*/i).map(x=
 const GROUP={morning:'Morning posts',video:'Video post',swipe:'Swipe post',shorts:'Shorts',results:'Results'};
 const ICON_APP={games:'wa',picks:'wa',banker:'wa',video:'yt',swipe:'ig',results:'wa'};
 function itemsOf(d){if(!d||!Array.isArray(d.posts))return [];return d.posts.filter(it=>SET.groups[it.group]!==false&&appsOf(it).length);}
-function appsOf(it){return APPS.filter(p=>SET.apps[p]&&it.texts&&it.texts[p]&&!(p==='tg'&&it.auto&&it.auto.tg));}
+function appsOf(it){const allow=GROUP_APPS[it.group]||APPS;return APPS.filter(p=>allow.includes(p)&&SET.apps[p]&&it.texts&&it.texts[p]&&!(p==='tg'&&it.auto&&it.auto.tg));}
 const postedOf=(d,id)=>((POSTED[d.date]||{})[id])||{};
 function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return need.length>0&&need.every(x=>p[x]);}
 function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||'');const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
@@ -1129,16 +1132,19 @@ function postCard(d,it){const p=postedOf(d,it.id);const ap=appsOf(it);const show
   const xs=it.texts&&it.texts.x?xParts(styled(it.texts.x,'x')):[];const sl=sentLine(d,it);
   return `<div class="post" data-post="${esc(it.id)}" data-dk="${d.date}"><div class="ph"><span style="display:flex;align-items:center;font-size:13.5px;color:#fff">${bi(ICON_APP[it.group]||'wa')}${esc(it.title)}</span><span class="phr">${it.when?`<span>${esc(it.when)}</span>`:''}${isDone(d,it)?'<span class="pill won">SENT</span>':'<span class="pill st-notsent">NOT SENT</span>'}</span></div>
     ${imgs.length?`<div class="pimgs-row ${imgs.length===1?'one':''}">${imgs.map(u=>`<img src="${esc(media(u))}" alt="" loading="lazy">`).join('')}</div>`:''}
+    ${imgs.length&&it.group!=='shorts'?`<div class="btn-row" style="margin:6px 0"><button class="btn-half" data-p="imgsave">📥 Save ${imgs.length>1?'the '+imgs.length+' pictures':'the picture'} to gallery</button></div>`:''}
     ${it.note?`<div class="warnbox">${esc(it.note)}</div>`:''}
     <pre>${previewHTML(txt)}</pre>
     ${xs.length>1?xs.slice(1).map((x,i)=>`<div class="xreply"><span>${bi('x')}X reply ${i+1} (post it under the first one)</span><button data-xr="${i+1}">Copy</button></div>`).join(''):''}
-    ${it.group==='shorts'?(it.video?`<video class="vplayer" src="${esc(media(it.video))}" controls playsinline preload="none" poster="${esc(media((it.images||[])[0]||''))}"></video><div class="btn-row"><button class="btn-half" data-p="vid">📥 Save the video</button></div>`:`<div class="vnote">🎬 The video is on your laptop, full quality:<br><b>${esc(it.file||'Ready to Upload')}</b><br>Or tap 📥 in the bot's pack to get it on the phone.</div>`):''}
+    ${it.group==='shorts'?(it.video?`<video class="vplayer" src="${esc(media(it.video))}" controls playsinline preload="none" poster="${esc(media((it.images||[])[0]||''))}"></video><div class="btn-row"><button class="btn-half" data-p="vid">📥 Save to gallery</button><button class="btn-half" data-p="vidshare">↗ Share the video</button></div>`:`<div class="vnote">🎬 The video is on your laptop, full quality:<br><b>${esc(it.file||'Ready to Upload')}</b><br>Or tap 📥 in the bot's pack to get it on the phone.</div>`):''}
     ${sl?`<div class="pstat">${esc(sl)}</div>`:''}
     <div class="mini">${ap.map(x=>btnHTML(x,p[x])).join('')}${btnHTML('copy',false)}<button data-edit="1">✏️ Edit text</button></div></div>`;}
 async function postClick(e,after){const b=e.target.closest('button');if(!b)return;const card=b.closest('[data-post]');if(!card)return;const d=dayOf(card.dataset.dk);if(!d)return;const it=(d.posts||[]).find(x=>x.id===card.dataset.post);if(!it)return;
   if(b.dataset.edit){closeSheet();setTimeout(()=>editPost(d,it),250);return;}
   if(b.dataset.xr){const xs=xParts(styled(it.texts.x,'x'));toast(copyText(xs[+b.dataset.xr]||'')?`Reply ${b.dataset.xr} copied`:'Copy failed');return;}
-  if(b.dataset.p==='vid'){const f=await fileOf(it.video,it.id);if(f&&canShareFiles([f])){try{await navigator.share({files:[f]});}catch(err){}}else if(f){const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;document.body.appendChild(a);a.click();a.remove();toast('Saved to Downloads');}else toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return;}
+  if(b.dataset.p==='vid'){toast('Getting the video…',1500);const f=await fileOf(it.video,`${it.title||it.id} ${d.date}`);if(f)saveFile(f,'Video saved');else toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return;}
+  if(b.dataset.p==='vidshare'){const f=await fileOf(it.video,`${it.title||it.id} ${d.date}`);if(f&&canShareFiles([f])){try{await navigator.share({files:[f]});}catch(err){}}else if(f)saveFile(f,'Video saved');else toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return;}
+  if(b.dataset.p==='imgsave'){const imgs=it.images||[];let k=0;for(let i=0;i<imgs.length;i++){const f=await fileOf(imgs[i],`${it.title||it.id} ${d.date} ${i+1}`);if(f){saveFile(f,'Picture saved');k++;await new Promise(r=>setTimeout(r,500));}}if(!k)toast('The picture is not online yet. Try again in 2 minutes.');return;}
   const p=b.dataset.p;if(!p)return;if(p==='copy'){const ap=appsOf(it);toast(copyText(textFor(it,ap.find(a=>a!=='x')||ap[0]||'wa'))?'Copied':'Copy failed');return;}
   if(b.classList.contains('done')&&!confirm(`Send to ${PNAME[p]} again?\n\nTap Cancel to mark it as NOT sent.`)){const o=postedOf(d,it.id);delete o[p];savePosted();after();return;}
   await send(d,it,p);after();}
@@ -1331,8 +1337,10 @@ async function botWord(kind,name){let w='';
   else if(kind==='remove'){if(!confirm(`Remove ${name} from the room? The bot asks you once more.`))return;w=`remove ${name}`;}
   else w=kind;
   toast(copyText(w)?`Copied "${w}". Paste it in the bot chat and send.`:`Send this to your bot: ${w}`,3500);setTimeout(()=>{location.href='https://t.me/'+((prem&&prem.bot)||SET.bot);},900);}
-function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=d&&(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;
-    return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${g.kickoff?' · '+esc(g.kickoff):''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('');
+function premState(g,d){const m=d&&(d.matches||[]).find(x=>x.n===g.n);if(!m)return g.won===true?'w':g.won===false?'l':null;const i=(m.picks||[]).findIndex(p=>p.text===g.text);if(g.won===true)return 'w';if(g.won===false)return 'l';if(i<0)return null;return pickState(m.picks[i],i,m,d,liveOf(m,d));}
+function premWon(g,d){return MARKW(premState(g,d));}
+function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=d&&(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
+    return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
   return `<div class="pcard"><div class="ph"><span class="cw">${G.crown}</span><span><b>VISION PREMIUM</b><small>${longDate(td.date)} · Today's strongest picks</small></span></div>${rows}<div class="pf"><span>${(td.picks||[]).length} picks</span>${tot>1?`<span>Combined odds <b>${tot.toFixed(2)}</b></span>`:''}</div></div>`;}
 function renderElite(){const el=$('p-elite');const head=`<div class="sechd" style="margin:0 0 10px"><span class="sect goldc" style="margin:0;display:flex;align-items:center;gap:8px"><span class="eliteimg crown">👑</span>Vision Premium</span>${prem?'<button class="link" data-act="lock" style="color:var(--gold)!important;padding:0">Lock</button>':''}</div>`;
   if(!feed||!feed.premium_lock){el.innerHTML=head+`<div class="card goldb"><div class="ct goldc">Not in the app yet</div><div class="cs" style="margin:0">On the laptop: Connect > "4. Connect the app (GitHub)" > type a PIN in the Vision Premium PIN box > Save and test. Then Settings > Update now here.</div></div>`;return;}
@@ -1340,9 +1348,9 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
   const t=todayKey(),price=parseFloat(String(prem.price||'').replace(/[^0-9.]/g,''))||0;const all=(prem.members||[]).slice().sort((a,b)=>(a.until||'')<(b.until||'')?-1:1);
   const isExp=m=>m.until<t,isDue=m=>m.until>=t&&m.until<=addDays(t,7);const active=all.filter(m=>!isExp(m)).length,due=all.filter(isDue).length,exp=all.filter(isExp).length;let body='';
   if(eliteView==='post'){const ds=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=ds.filter(x=>x.date>=t).sort((a,b)=>a.date<b.date?-1:1)[0]||ds[0];
-    let w=0,n=0,w7=0,n7=0;for(const x of ds)for(const g of x.picks||[]){if(g.won==null)continue;n++;if(g.won)w++;if(x.date>addDays(t,-7)){n7++;if(g.won)w7++;}}
+    let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
-    if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 14px">Share this picture (any app)</button>`;
+    if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
     if(td){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=d&&(d.matches||[]).find(x=>x.n===g.n);let s=g.won===true?'w':g.won===false?'l':null,L=null;
         if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
         return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
@@ -1375,7 +1383,7 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
   el.innerHTML=head+`<div class="elite-tabs">${[['members','Members'],['post','Post'],['money','Money']].map(([k,l])=>`<button data-ev="${k}" class="${eliteView===k?'on':''}">${l}</button>`).join('')}</div>`+body;}
 $('p-elite').addEventListener('click',async e=>{const md=e.target.closest('[data-mdel]');if(md){if(confirm('Remove this entry?')){MONEY=MONEY.filter(x=>String(x.id)!==md.dataset.mdel);saveMoney();renderElite();}return;}const b=e.target.closest('button');if(!b)return;
   if(b.dataset.ev){eliteView=b.dataset.ev;renderElite();return;}
-  if(b.dataset.mr){monRange=b.dataset.mr;renderElite();return;}if(b.dataset.mt){monTab=b.dataset.mt;renderElite();return;}if(b.dataset.cardshare){shareCard('prem');return;}
+  if(b.dataset.mr){monRange=b.dataset.mr;renderElite();return;}if(b.dataset.mt){monTab=b.dataset.mt;renderElite();return;}if(b.dataset.cardshare){shareCard(b.dataset.cardshare==='premwon'?'premwon':'prem');return;}
   if(b.dataset.money){const kind=b.dataset.money;editField(kind==='in'?'Add money (GH₵)':'Take out money (GH₵)','',v=>{const a=parseFloat(String(v||'').replace(/[^0-9.]/g,''));if(!a){toast('Type an amount');return;}
       const note=prompt(kind==='in'?'What is it for? (optional)':'What was it for? (optional)')||'';MONEY.push({id:Date.now(),d:todayKey(),a,type:kind,note:note.trim()});saveMoney();monTab=kind==='in'?'add':'out';renderElite();toast(kind==='in'?`+ GH₵ ${a} added`:`− GH₵ ${a} taken out`);},{type:'number',note:'Kept on this phone.'});return;}if(b.dataset.mf){memFilter=b.dataset.mf;renderElite();return;}
   if(b.dataset.tog){openMem.has(b.dataset.tog)?openMem.delete(b.dataset.tog):openMem.add(b.dataset.tog);renderElite();return;}
@@ -1585,8 +1593,8 @@ async function fitFile(file,app){try{if(!file||!/^image\//.test(file.type))retur
 
 // ---------- the big match card (tap the small picture) ----------
 function bigCard(d,m){const n=(d.matches||[]).length;
-  openSheet(`<div class="bigcard">${mvCard(m,d,n)}</div><div class="btn-row"><button class="btn-half" data-a="copy">📋 Copy the picks</button><button class="btn-half" data-a="more">Live details</button></div><div class="btn-row" style="margin-top:8px"><button class="btn-half w100" data-a="no">Close</button></div>`,
-  e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='copy'){const t=`${m.home} vs ${m.away}${m.score?' · Correct score '+m.score:''}\n`+(m.picks||[]).slice(0,3).map((p,i)=>`${i+1}. ${p.text}${p.odds?' @'+Number(p.odds).toFixed(2):''}`).join('\n');toast(copyText(t)?'Copied ✓':'Copy failed');return;}
+  openSheet(`<div class="bigcard">${mvCard(m,d,n)}</div><div class="btn-row"><button class="btn-half" data-a="copy">📋 Copy the picks</button><button class="btn-half" data-a="more">Live details</button></div><div class="btn-row" style="margin-top:8px"><button class="btn-save w100" data-a="share">↗ Share this result (picture + text)</button></div><div class="btn-row" style="margin-top:8px"><button class="btn-half w100" data-a="no">Close</button></div>`,
+  e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='share'){window.__matchShare={d,m};closeSheet();setTimeout(()=>shareCard('match',d),250);return;}if(b.dataset.a==='copy'){const t=`${m.home} vs ${m.away}${m.score?' · Correct score '+m.score:''}\n`+(m.picks||[]).slice(0,3).map((p,i)=>`${i+1}. ${p.text}${p.odds?' @'+Number(p.odds).toFixed(2):''}`).join('\n');toast(copyText(t)?'Copied ✓':'Copy failed');return;}
     if(b.dataset.a==='more'){closeSheet();setTimeout(()=>legSheet(d,m),250);return;}closeSheet();});}
 
 // ---------- Ask the bot (the same bot as on Telegram) ----------
@@ -1720,11 +1728,21 @@ async function cardCanvas(o){const W=1080,H=1350,c=document.createElement('canva
     x.textAlign='left';x.textBaseline='alphabetic';const tx=X+112+cs*2+40,oddsW=r.odds?150:20,tw=X+Wd-oddsW-tx-10;
     x.fillStyle='#fff';x.font=`900 40px ${fam}`;x.fillText(fitT(x,String(r.pick).toUpperCase(),tw,40,900,fam),tx,cy-6);
     x.fillStyle='#A9A9A9';x.font=`500 27px ${fam}`;x.fillText(fitT(x,`${r.h} vs ${r.a}${r.ko?' · '+r.ko:''}`,tw,27,500,fam),tx,cy+34);
-    if(r.odds){x.fillStyle=A;x.font=`900 46px ${fam}`;x.textAlign='right';x.textBaseline='middle';x.fillText(Number(r.odds).toFixed(2),X+Wd-30,cy+2);x.textAlign='left';x.textBaseline='alphabetic';}});
+    if(o.ticks&&r.won!=null){const tx2=X+Wd-60;x.beginPath();x.arc(tx2,cy,30,0,7);x.fillStyle=r.won?'#22C55E':'#3a3a3a';x.fill();x.strokeStyle='#fff';x.lineWidth=7;x.lineCap='round';x.beginPath();if(r.won){x.moveTo(tx2-13,cy+1);x.lineTo(tx2-3,cy+11);x.lineTo(tx2+14,cy-10);}else{x.moveTo(tx2-10,cy-10);x.lineTo(tx2+10,cy+10);x.moveTo(tx2+10,cy-10);x.lineTo(tx2-10,cy+10);}x.stroke();}
+    else if(r.odds){x.fillStyle=A;x.font=`900 46px ${fam}`;x.textAlign='right';x.textBaseline='middle';x.fillText(Number(r.odds).toFixed(2),X+Wd-30,cy+2);x.textAlign='left';x.textBaseline='alphabetic';}});
   const fy=H-125;x.fillStyle='#BDBDBD';x.font=`600 34px ${fam}`;x.fillText(`${rows.length} pick${rows.length===1?'':'s'}`,80,fy);
   if(o.total>1){x.textAlign='right';x.fillStyle='#BDBDBD';x.font=`600 34px ${fam}`;const tv=o.total.toFixed(2);x.font=`900 58px ${fam}`;const tw2=x.measureText(tv).width;x.fillStyle=A;x.fillText(tv,W-80,fy+4);x.font=`600 34px ${fam}`;x.fillStyle='#BDBDBD';x.fillText('Combined odds ',W-90-tw2,fy);x.textAlign='left';}
   x.fillStyle=A2;x.font=`800 26px ${fam}`;x.textAlign='center';x.fillText(o.foot,W/2,H-62);x.textAlign='left';return c;}
+const MARKW=s=>s==='w'?true:s==='l'?false:null;
 function cardData(kind,d){const t=todayKey();
+  if(kind==='match'){const ms=window.__matchShare;if(!ms)return null;const dd=ms.d,m=ms.m;const L=liveOf(m,dd);
+    const rows=(m.picks||[]).slice(0,3).map((p,i)=>({h:shortTeam(m.home),a:shortTeam(m.away),hc:m.hc,ac:m.ac,pick:shortPick(p.text),full:p.text,odds:p.odds,won:MARKW(pickState(p,i,m,dd,L))}));
+    const w=rows.filter(r=>r.won===true).length,dec=rows.filter(r=>r.won!=null).length;const sc=L&&L.gh!=null?`${L.gh}-${L.ga}`:'';
+    const txt=`${w&&w===dec?'✅ ':''}${m.home} ${sc||'vs'} ${m.away}\nMatch Vision\n\n`+rows.map(r=>`${r.won===true?'✅':r.won===false?'❌':'⏳'} ${r.full}`).join('\n')+(dec?`\n\n🔥 ${w} Of ${dec} Won`:'');
+    return {o:{kind,title:sc?`FULL TIME ${sc}`:'TODAY\'S PICKS',sub:`${shortTeam(m.home)} vs ${shortTeam(m.away)} · ${m.league||''}`,rows,total:1,acc:'#DFFB51',accDark:'#8EA334',glow:'rgba(34,197,94,.20)',foot:dec?`${w} OF ${dec} WON · MATCH VISION`:'MATCH VISION',ticks:true},txt,name:`Match Vision ${m.home} vs ${m.away} ${dd.date}`};}
+  if(kind==='premwon'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);const rows=(td.picks||[]).map(g=>{const m=dd&&(dd.matches||[]).find(x=>x.n===g.n);return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,won:premWon(g,dd)};}).filter(r=>r.won===true);
+    if(!rows.length)return null;const txt=`✅ VISION PREMIUM WINS\n${longDate(td.date)}\n\n`+rows.map(r=>`✅ ${r.h} vs ${r.a}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+`\n\nMembers Had These Picks Before Kick-Off.`;
+    return {o:{kind:'prem',title:'PREMIUM WINS',sub:`${longDate(td.date)} · These picks won`,rows,total:1,acc:'#ECC462',accDark:'#9C8240',glow:'rgba(236,196,98,.22)',foot:'MATCH VISION · VISION PREMIUM',ticks:true},txt,name:`Vision Premium wins ${td.date}`};}
   if(kind==='prem'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map(g=>{const m=dd&&(dd.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,ko:g.kickoff};});
     const txt=`👑 VISION PREMIUM\n${longDate(td.date)}\n\nToday's Strongest Picks Are In. 💪\n\n`+rows.map((r,i)=>`${i+1}. ${r.h} vs ${r.a}${r.ko?` (${r.ko})`:''}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+(tot>1?`\n\n📊 Combined odds: ${tot.toFixed(2)}`:'')+`\n\nGood Luck, Members. Let's Win Today!\nWe Meet After The Games. 🙏`;
     return {o:{kind,title:'VISION PREMIUM',sub:`${longDate(td.date)} · Today's strongest picks`,rows,total:tot,acc:'#ECC462',accDark:'#9C8240',glow:'rgba(236,196,98,.22)',foot:'MATCH VISION · VISION PREMIUM'},txt,name:`Vision Premium ${td.date}`};}
@@ -1740,7 +1758,7 @@ function cardData(kind,d){const t=todayKey();
 async function shareCard(kind,d){const cd=cardData(kind,d);if(!cd){toast(kind==='banker'?'No banker for this day':'Nothing to show for this day yet');return;}toast('Making the picture…',1500);
   const c=await cardCanvas(cd.o);const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.93));const file=new File([blob],cd.name+'.jpg',{type:'image/jpeg'});const url=URL.createObjectURL(blob);const text=cd.txt;
   openSheet(`<div class="cshare"><img src="${url}" alt=""><button class="btn-save ${kind==='prem'?'gold':''} w100" data-cs="any">Share picture and text (pick any app)</button>
-    <div class="cs-apps">${['wa','tg','tt','ig','x','th','yt'].map(p=>`<button data-cs="${p}">${SVG[p]||''}<span>${PNAME[p]}</span></button>`).join('')}<button data-cs="copy">${SVG.copy||''}<span>Copy text</span></button></div>
+    <div class="cs-apps">${['wa','tg','tt','ig','x','yt'].map(p=>`<button data-cs="${p}">${SVG[p]||''}<span>${PNAME[p]}</span></button>`).join('')}<button data-cs="copy">${SVG.copy||''}<span>Copy text</span></button></div>
     <div class="btn-row"><button class="btn-half" data-cs="save">Save picture</button><button class="btn-half" data-close="1">Close</button></div><textarea class="cs-text" readonly>${esc(text)}</textarea></div>`,
     async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.close){closeSheet();return;}const k=b.dataset.cs;if(!k)return;
       if(k==='copy'){toast(copyText(text)?'Text copied':'Copy failed');return;}
