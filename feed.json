@@ -1,70 +1,71 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-17T17:36:17",
+ "updated": "2026-10-17T17:42:27",
  "builder": {
-  "busy": true,
-  "step": "Long video: 100% drawn",
-  "done": 0.8
+  "busy": false,
+  "step": "Finished: 2026-10-18 Sunday",
+  "done": 1.0
  },
  "days": [
   {
    "date": "2026-10-18",
    "where": "Ready to Upload",
-   "title": "Football Predictions Today | 18 October 2026 | Goals & BTTS | Football",
+   "title": "Football Predictions Today | 18 October 2026 | 18 Matches | Football & More",
    "matches": [
     {
      "n": 1,
-     "league": "Premier League",
-     "kickoff": "15:30",
-     "home": "Nottingham Forest",
-     "away": "Arsenal",
+     "league": "LaLiga",
+     "kickoff": "19:00",
+     "home": "Real Madrid",
+     "away": "Sevilla",
      "score": "2-1",
      "date": "2026-10-18",
      "odds": [
-      null,
-      null,
-      null
+      1.22,
+      7.0,
+      10.0
      ],
      "labels": [
       "SAFEST PICK",
       "TEAM GOALS",
-      "BTTS"
+      "GOALS"
      ],
-     "hc": "media/crests/nottingham-forest.png",
-     "ac": "media/crests/arsenal.png",
+     "hc": "media/crests/real-madrid.png",
+     "ac": "media/crests/sevilla.png",
      "live": null,
      "picks": [
       {
-       "text": "Under 3.5 goals",
-       "odds": null,
-       "chance": 0.75,
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.22,
+       "chance": 0.77,
        "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Arsenal to score",
-       "odds": null,
-       "chance": 0.71,
-       "rule": {
-        "t": "ts",
-        "s": "a",
+        "t": "g1",
+        "o": "o",
         "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
+       "text": "Real Madrid over 1.5 goals",
        "odds": null,
-       "chance": 0.51,
+       "chance": 0.71,
        "rule": {
-        "t": "btts",
-        "y": 1
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.8,
+       "chance": 0.56,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
        },
        "live": null,
        "mine": false
@@ -74,88 +75,29 @@
     {
      "n": 2,
      "league": "Premier League",
-     "kickoff": "13:00",
-     "home": "Leeds United",
-     "away": "Manchester United",
-     "score": "2-1",
+     "kickoff": "15:30",
+     "home": "Nottingham Forest",
+     "away": "Arsenal",
+     "score": "0-2",
      "date": "2026-10-18",
      "odds": [
-      null,
-      null,
-      null
+      5.75,
+      3.9,
+      1.62
      ],
      "labels": [
       "SAFEST PICK",
       "BTTS",
-      "TEAM GOALS"
+      "FIRST HALF"
      ],
-     "hc": "media/crests/leeds-united.png",
-     "ac": "media/crests/manchester-united.png",
-     "live": null,
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": null,
-       "chance": 0.72,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": null,
-       "chance": 0.5,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Manchester United to score",
-       "odds": null,
-       "chance": 0.64,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": null,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 3,
-     "league": "Serie A",
-     "kickoff": "18:45",
-     "home": "Juventus",
-     "away": "Lazio",
-     "score": "2-1",
-     "date": "2026-10-18",
-     "odds": [
-      null,
-      null,
-      null
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "TEAM GOALS"
-     ],
-     "hc": "media/crests/juventus.png",
-     "ac": "media/crests/lazio.png",
+     "hc": "media/crests/nottingham-forest.png",
+     "ac": "media/crests/arsenal.png",
      "live": null,
      "picks": [
       {
        "text": "Under 3.5 goals",
-       "odds": null,
-       "chance": 0.75,
+       "odds": 1.33,
+       "chance": 0.79,
        "rule": {
         "t": "g",
         "o": "u",
@@ -165,20 +107,80 @@
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": null,
-       "chance": 0.51,
+       "text": "BTTS - No",
+       "odds": 1.91,
+       "chance": 0.57,
        "rule": {
         "t": "btts",
-        "y": 1
+        "y": 0
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Lazio to score",
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.36,
+       "chance": 0.69,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "league": "Premier League",
+     "kickoff": "13:00",
+     "home": "Leeds United",
+     "away": "Manchester United",
+     "score": "2-1",
+     "date": "2026-10-18",
+     "odds": [
+      2.35,
+      3.6,
+      2.88
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "FIRST HALF",
+      "TEAM GOALS"
+     ],
+     "hc": "media/crests/leeds-united.png",
+     "ac": "media/crests/manchester-united.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.2,
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.3,
+       "chance": 0.72,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Manchester United to score",
        "odds": null,
-       "chance": 0.7,
+       "chance": 0.72,
        "rule": {
         "t": "ts",
         "s": "a",
@@ -192,29 +194,29 @@
     {
      "n": 4,
      "league": "Serie A",
-     "kickoff": "16:00",
-     "home": "AC Milan",
-     "away": "Atalanta",
-     "score": "2-1",
+     "kickoff": "18:45",
+     "home": "Juventus",
+     "away": "Lazio",
+     "score": "2-0",
      "date": "2026-10-18",
      "odds": [
-      null,
-      null,
-      null
+      1.67,
+      3.8,
+      5.25
      ],
      "labels": [
       "SAFEST PICK",
       "BTTS",
-      "TEAM GOALS"
+      "CORNERS"
      ],
-     "hc": "media/crests/ac-milan.png",
-     "ac": "media/crests/atalanta.png",
+     "hc": "media/crests/juventus.png",
+     "ac": "media/crests/lazio.png",
      "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
-       "odds": null,
-       "chance": 0.73,
+       "odds": 1.3,
+       "chance": 0.7,
        "rule": {
         "t": "g",
         "o": "o",
@@ -224,24 +226,22 @@
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": null,
-       "chance": 0.5,
+       "text": "BTTS - No",
+       "odds": 1.91,
+       "chance": 0.53,
        "rule": {
         "t": "btts",
-        "y": 1
+        "y": 0
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Atalanta to score",
-       "odds": null,
-       "chance": 0.62,
+       "text": "Over 9.5 corners",
+       "odds": 1.83,
+       "chance": 0.5,
        "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -250,6 +250,64 @@
     },
     {
      "n": 5,
+     "league": "Serie A",
+     "kickoff": "16:00",
+     "home": "AC Milan",
+     "away": "Atalanta",
+     "score": "2-1",
+     "date": "2026-10-18",
+     "odds": [
+      1.75,
+      3.8,
+      4.5
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "CORNERS"
+     ],
+     "hc": "media/crests/ac-milan.png",
+     "ac": "media/crests/atalanta.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.22,
+       "chance": 0.76,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Atalanta to score",
+       "odds": null,
+       "chance": 0.59,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 9.5 corners",
+       "odds": 1.67,
+       "chance": 0.56,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 6,
      "league": "Bundesliga",
      "kickoff": "13:30",
      "home": "Bayer Leverkusen",
@@ -257,9 +315,9 @@
      "score": "2-1",
      "date": "2026-10-18",
      "odds": [
-      null,
-      null,
-      null
+      1.67,
+      4.33,
+      4.5
      ],
      "labels": [
       "SAFEST PICK",
@@ -271,24 +329,24 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": null,
-       "chance": 0.72,
+       "text": "Over 2.5 goals",
+       "odds": 1.5,
+       "chance": 0.66,
        "rule": {
         "t": "g",
         "o": "o",
-        "v": 1.5
+        "v": 2.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Bayer Leverkusen to score",
+       "text": "SC Freiburg to score",
        "odds": null,
-       "chance": 0.76,
+       "chance": 0.72,
        "rule": {
         "t": "ts",
-        "s": "h",
+        "s": "a",
         "v": 0.5
        },
        "live": null,
@@ -296,8 +354,8 @@
       },
       {
        "text": "BTTS - Yes",
-       "odds": null,
-       "chance": 0.51,
+       "odds": 1.5,
+       "chance": 0.63,
        "rule": {
         "t": "btts",
         "y": 1
@@ -308,17 +366,17 @@
      ]
     },
     {
-     "n": 6,
+     "n": 7,
      "league": "Premier League",
      "kickoff": "13:00",
      "home": "Brighton",
      "away": "Crystal Palace",
-     "score": "2-0",
+     "score": "2-1",
      "date": "2026-10-18",
      "odds": [
-      null,
-      null,
-      null
+      1.5,
+      4.5,
+      5.75
      ],
      "labels": [
       "SAFEST PICK",
@@ -330,95 +388,36 @@
      "live": null,
      "picks": [
       {
-       "text": "Under 3.5 goals",
-       "odds": null,
-       "chance": 0.74,
+       "text": "Over 1.5 goals",
+       "odds": 1.17,
+       "chance": 0.83,
        "rule": {
         "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Brighton over 1.5 goals",
-       "odds": null,
-       "chance": 0.5,
-       "rule": {
-        "t": "ts",
-        "s": "h",
+        "o": "o",
         "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - No",
+       "text": "Crystal Palace to score",
        "odds": null,
-       "chance": 0.52,
+       "chance": 0.63,
        "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": null,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 7,
-     "league": "Ligue 1",
-     "kickoff": "13:00",
-     "home": "Angers",
-     "away": "Marseille",
-     "score": "2-1",
-     "date": "2026-10-18",
-     "odds": [
-      null,
-      null,
-      null
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "TEAM GOALS"
-     ],
-     "hc": "media/crests/angers.png",
-     "ac": "media/crests/marseille.png",
-     "live": null,
-     "picks": [
-      {
-       "text": "Under 3.5 goals",
-       "odds": null,
-       "chance": 0.74,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "BTTS - Yes",
-       "odds": null,
-       "chance": 0.5,
+       "odds": 1.67,
+       "chance": 0.56,
        "rule": {
         "t": "btts",
         "y": 1
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Angers over 1.5 goals",
-       "odds": null,
-       "chance": 0.48,
-       "rule": {
-        "t": "ts",
-        "s": "h",
-        "v": 1.5
        },
        "live": null,
        "mine": false
@@ -427,30 +426,30 @@
     },
     {
      "n": 8,
-     "league": "Ligue 1",
-     "kickoff": "15:15",
-     "home": "Lorient",
-     "away": "Monaco",
+     "league": "Premier League",
+     "kickoff": "13:00",
+     "home": "Bournemouth",
+     "away": "Sunderland",
      "score": "2-1",
      "date": "2026-10-18",
      "odds": [
-      null,
-      null,
-      null
+      2.1,
+      3.4,
+      3.6
      ],
      "labels": [
       "SAFEST PICK",
       "BTTS",
-      "TEAM GOALS"
+      "CORNERS"
      ],
-     "hc": "media/crests/lorient.png",
-     "ac": "media/crests/monaco.png",
+     "hc": "media/crests/bournemouth.png",
+     "ac": "media/crests/sunderland.png",
      "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
-       "odds": null,
-       "chance": 0.72,
+       "odds": 1.25,
+       "chance": 0.77,
        "rule": {
         "t": "g",
         "o": "o",
@@ -461,8 +460,8 @@
       },
       {
        "text": "BTTS - Yes",
-       "odds": null,
-       "chance": 0.51,
+       "odds": 1.7,
+       "chance": 0.56,
        "rule": {
         "t": "btts",
         "y": 1
@@ -471,13 +470,11 @@
        "mine": false
       },
       {
-       "text": "Monaco to score",
-       "odds": null,
-       "chance": 0.71,
+       "text": "Over 9.5 corners",
+       "odds": 1.8,
+       "chance": 0.52,
        "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -486,11 +483,355 @@
     },
     {
      "n": 9,
+     "league": "LaLiga",
+     "kickoff": "16:30",
+     "home": "Malaga",
+     "away": "Real Sociedad",
+     "score": "1-2",
+     "date": "2026-10-18",
+     "odds": [
+      3.4,
+      3.5,
+      2.15
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CORNERS"
+     ],
+     "hc": "media/crests/malaga.png",
+     "ac": "media/crests/real-sociedad.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.4,
+       "chance": 0.72,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.67,
+       "chance": 0.54,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 9.5 corners",
+       "odds": 1.91,
+       "chance": 0.48,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "Ligue 1",
+     "kickoff": "13:00",
+     "home": "Angers",
+     "away": "Marseille",
+     "score": "1-2",
+     "date": "2026-10-18",
+     "odds": [
+      3.4,
+      3.8,
+      2.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CORNERS"
+     ],
+     "hc": "media/crests/angers.png",
+     "ac": "media/crests/marseille.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.2,
+       "chance": 0.79,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.53,
+       "chance": 0.58,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 9.5 corners",
+       "odds": 1.98,
+       "chance": 0.48,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "Ligue 1",
+     "kickoff": "15:15",
+     "home": "Lorient",
+     "away": "Monaco",
+     "score": "1-2",
+     "date": "2026-10-18",
+     "odds": [
+      3.6,
+      3.5,
+      2.05
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CORNERS"
+     ],
+     "hc": "media/crests/lorient.png",
+     "ac": "media/crests/monaco.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.33,
+       "chance": 0.71,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.75,
+       "chance": 0.54,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 9 corners",
+       "odds": 1.95,
+       "chance": 0.49,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 12,
      "league": "Ligue 1",
      "kickoff": "18:45",
      "home": "Lyon",
      "away": "Nice",
      "score": "2-1",
+     "date": "2026-10-18",
+     "odds": [
+      1.73,
+      4.1,
+      4.33
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "CORNERS",
+      "BTTS"
+     ],
+     "hc": "media/crests/lyon.png",
+     "ac": "media/crests/nice.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.2,
+       "chance": 0.78,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 10.5 corners",
+       "odds": 1.83,
+       "chance": 0.5,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.62,
+       "chance": 0.53,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "league": "Eredivisie",
+     "kickoff": "14:45",
+     "home": "Groningen",
+     "away": "Ajax",
+     "score": "1-2",
+     "date": "2026-10-18",
+     "odds": [
+      3.6,
+      4.0,
+      1.91
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "CORNERS",
+      "BTTS"
+     ],
+     "hc": "media/crests/groningen.png",
+     "ac": "media/crests/ajax.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.36,
+       "chance": 0.73,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 10 corners",
+       "odds": 1.82,
+       "chance": 0.52,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.36,
+       "chance": 0.71,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "league": "Premier League",
+     "kickoff": "15:00",
+     "home": "Asante Kotoko",
+     "away": "Young Apostles",
+     "score": "1-0",
+     "date": "2026-10-18",
+     "odds": [
+      null,
+      null,
+      null
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "TEAM GOALS"
+     ],
+     "hc": "media/crests/asante-kotoko.png",
+     "ac": "media/crests/young-apostles.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 2.5 goals",
+       "odds": null,
+       "chance": 0.76,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - No",
+       "odds": null,
+       "chance": 0.74,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Asante Kotoko to score",
+       "odds": null,
+       "chance": 0.71,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "CAF Champions League",
+     "kickoff": "13:00",
+     "home": "Enugu Rangers",
+     "away": "MC Alger",
+     "score": "0-1",
      "date": "2026-10-18",
      "odds": [
       null,
@@ -502,41 +843,41 @@
       "TEAM GOALS",
       "BTTS"
      ],
-     "hc": "media/crests/lyon.png",
-     "ac": "media/crests/nice.png",
+     "hc": "media/crests/enugu-rangers.png",
+     "ac": "media/crests/mc-alger.png",
      "live": null,
      "picks": [
       {
-       "text": "Under 3.5 goals",
+       "text": "Under 1.5 goals",
        "odds": null,
-       "chance": 0.74,
+       "chance": 0.62,
        "rule": {
         "t": "g",
         "o": "u",
-        "v": 3.5
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Lyon to score",
+       "text": "MC Alger to score",
        "odds": null,
-       "chance": 0.79,
+       "chance": 0.64,
        "rule": {
         "t": "ts",
-        "s": "h",
+        "s": "a",
         "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
+       "text": "BTTS - No",
        "odds": null,
-       "chance": 0.5,
+       "chance": 0.83,
        "rule": {
         "t": "btts",
-        "y": 1
+        "y": 0
        },
        "live": null,
        "mine": false
@@ -544,12 +885,12 @@
      ]
     },
     {
-     "n": 10,
-     "league": "Premier League",
+     "n": 16,
+     "league": "CAF Champions League",
      "kickoff": "13:00",
-     "home": "AFC Bournemouth",
-     "away": "Sunderland",
-     "score": "2-1",
+     "home": "Scotland Mabvuku",
+     "away": "Petro de Luanda",
+     "score": "0-0",
      "date": "2026-10-18",
      "odds": [
       null,
@@ -558,44 +899,123 @@
      ],
      "labels": [
       "SAFEST PICK",
-      "BTTS",
-      "TEAM GOALS"
+      "BTTS"
      ],
-     "hc": "media/crests/afc-bournemouth.png",
-     "ac": "media/crests/sunderland.png",
+     "hc": "media/crests/scotland-mabvuku.png",
+     "ac": "media/crests/petro-de-luanda.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
+       "text": "Under 2.5 goals",
        "odds": null,
-       "chance": 0.72,
+       "chance": 0.96,
        "rule": {
         "t": "g",
-        "o": "o",
-        "v": 1.5
+        "o": "u",
+        "v": 2.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
+       "text": "BTTS - No",
        "odds": null,
-       "chance": 0.51,
+       "chance": 0.9,
        "rule": {
         "t": "btts",
-        "y": 1
+        "y": 0
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "league": "CAF Champions League",
+     "kickoff": "13:00",
+     "home": "Sidama Bunna",
+     "away": "Al Hilal Omdurman",
+     "score": "0-0",
+     "date": "2026-10-18",
+     "odds": [
+      null,
+      null,
+      null
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS"
+     ],
+     "hc": "media/crests/sidama-bunna.png",
+     "ac": "media/crests/al-hilal-omdurman.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 1.5 goals",
+       "odds": null,
+       "chance": 0.74,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "AFC Bournemouth over 1.5 goals",
+       "text": "BTTS - No",
        "odds": null,
-       "chance": 0.44,
+       "chance": 0.85,
        "rule": {
-        "t": "ts",
-        "s": "h",
+        "t": "btts",
+        "y": 0
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "league": "CAF Champions League",
+     "kickoff": "15:00",
+     "home": "Wiliete",
+     "away": "Mamelodi Sundowns",
+     "score": "0-0",
+     "date": "2026-10-18",
+     "odds": [
+      null,
+      null,
+      null
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS"
+     ],
+     "hc": "media/crests/wiliete.png",
+     "ac": "media/crests/mamelodi-sundowns.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 1.5 goals",
+       "odds": null,
+       "chance": 0.75,
+       "rule": {
+        "t": "g",
+        "o": "u",
         "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - No",
+       "odds": null,
+       "chance": 0.9,
+       "rule": {
+        "t": "btts",
+        "y": 0
        },
        "live": null,
        "mine": false
@@ -603,7 +1023,31 @@
      ]
     }
    ],
-   "banker": null,
+   "banker": {
+    "total": 2.0,
+    "games": [
+     {
+      "n": 2,
+      "pick": {
+       "market": "GOALS",
+       "text": "Under 3.5 goals",
+       "odds": 1.33,
+       "p": 0.79
+      },
+      "odds": 1.33
+     },
+     {
+      "n": 6,
+      "pick": {
+       "market": "GOALS",
+       "text": "Over 2.5 goals",
+       "odds": 1.5,
+       "p": 0.66
+      },
+      "odds": 1.5
+     }
+    ]
+   },
    "checklist": {
     "YouTube": false,
     "TikTok": false,
@@ -949,9 +1393,9 @@
       "media/2026-10-18/Games-2026-10-18.jpg"
      ],
      "texts": {
-      "tg": "Sunday Predictions | 18 October\nMatch Vision\n\n10 Matches Predicted Today\n\nPremier League\n13:00  Leeds United vs Manchester United\n13:00  Brighton vs Crystal Palace\n13:00  AFC Bournemouth vs Sunderland\n15:30  Nottingham Forest vs Arsenal\n\nSerie A\n16:00  AC Milan vs Atalanta\n18:45  Juventus vs Lazio\n\nBundesliga\n13:30  Bayer Leverkusen vs SC Freiburg\n\nLigue 1\n13:00  Angers vs Marseille\n15:15  Lorient vs Monaco\n18:45  Lyon vs Nice\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n👉 Watch All Predictions: https://www.youtube.com/@MatchVision707",
-      "wa": "Sunday Predictions | 18 October\nMatch Vision\n\n10 Matches Predicted Today\n\nPremier League\n13:00  Leeds United vs Manchester United\n13:00  Brighton vs Crystal Palace\n13:00  AFC Bournemouth vs Sunderland\n15:30  Nottingham Forest vs Arsenal\n\nSerie A\n16:00  AC Milan vs Atalanta\n18:45  Juventus vs Lazio\n\nBundesliga\n13:30  Bayer Leverkusen vs SC Freiburg\n\nLigue 1\n13:00  Angers vs Marseille\n15:15  Lorient vs Monaco\n18:45  Lyon vs Nice\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n👉 Watch All Predictions: https://www.youtube.com/@MatchVision707",
-      "x": "Sunday Predictions | 18 October\nMatch Vision\n\n10 Matches Predicted Today\n\n#MatchVision #PremierLeague #EPL #SerieA #FootballPredictions\n\n--- reply ---\n\nPremier League\n13:00  Leeds United vs Manchester United\n13:00  Brighton vs Crystal Palace\n13:00  AFC Bournemouth vs Sunderland\n15:30  Nottingham Forest vs Arsenal\n\nSerie A\n16:00  AC Milan vs Atalanta\n18:45  Juventus vs Lazio\n\nBundesliga\n13:30  Bayer Leverkusen vs SC Freiburg\n\n--- reply ---\n\nLigue 1\n13:00  Angers vs Marseille\n15:15  Lorient vs Monaco\n18:45  Lyon vs Nice\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n👉 Watch All Predictions: https://www.youtube.com/@MatchVision707"
+      "tg": "Sunday Predictions | 18 October\nMatch Vision\n\n18 Matches Predicted Today\n\nCAF Champions League\n13:00  Enugu Rangers vs MC Alger\n13:00  Scotland Mabvuku vs Petro De Luanda\n13:00  Sidama Bunna vs Al Hilal Omdurman\n15:00  Wiliete vs Mamelodi Sundowns\n\nPremier League\n13:00  Leeds United vs Manchester United\n13:00  Brighton vs Crystal Palace\n13:00  Bournemouth vs Sunderland\n15:00  Asante Kotoko vs Young Apostles\n15:30  Nottingham Forest vs Arsenal\n\nLaLiga\n16:30  Malaga vs Real Sociedad\n19:00  Real Madrid vs Sevilla\n\nSerie A\n16:00  AC Milan vs Atalanta\n18:45  Juventus vs Lazio\n\nBundesliga\n13:30  Bayer Leverkusen vs SC Freiburg\n\nLigue 1\n13:00  Angers vs Marseille\n15:15  Lorient vs Monaco\n18:45  Lyon vs Nice\n\nEredivisie\n14:45  Groningen vs Ajax\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Sunday Predictions | 18 October\nMatch Vision\n\n18 Matches Predicted Today\n\nCAF Champions League\n13:00  Enugu Rangers vs MC Alger\n13:00  Scotland Mabvuku vs Petro De Luanda\n13:00  Sidama Bunna vs Al Hilal Omdurman\n15:00  Wiliete vs Mamelodi Sundowns\n\nPremier League\n13:00  Leeds United vs Manchester United\n13:00  Brighton vs Crystal Palace\n13:00  Bournemouth vs Sunderland\n15:00  Asante Kotoko vs Young Apostles\n15:30  Nottingham Forest vs Arsenal\n\nLaLiga\n16:30  Malaga vs Real Sociedad\n19:00  Real Madrid vs Sevilla\n\nSerie A\n16:00  AC Milan vs Atalanta\n18:45  Juventus vs Lazio\n\nBundesliga\n13:30  Bayer Leverkusen vs SC Freiburg\n\nLigue 1\n13:00  Angers vs Marseille\n15:15  Lorient vs Monaco\n18:45  Lyon vs Nice\n\nEredivisie\n14:45  Groningen vs Ajax\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n👇 *Watch All Predictions:*\nhttps://www.youtube.com/@MatchVision707",
+      "x": "Sunday Predictions | 18 October\nMatch Vision\n\n18 Matches Predicted Today\n\n#MatchVision #ChampionsLeague #PremierLeague #EPL #FootballPredictions\n\n--- reply ---\n\nCAF Champions League\n13:00  Enugu Rangers vs MC Alger\n13:00  Scotland Mabvuku vs Petro De Luanda\n13:00  Sidama Bunna vs Al Hilal Omdurman\n15:00  Wiliete vs Mamelodi Sundowns\n\n--- reply ---\n\nPremier League\n13:00  Leeds United vs Manchester United\n13:00  Brighton vs Crystal Palace\n13:00  Bournemouth vs Sunderland\n15:00  Asante Kotoko vs Young Apostles\n15:30  Nottingham Forest vs Arsenal\n\nLaLiga\n16:30  Malaga vs Real Sociedad\n19:00  Real Madrid vs Sevilla\n\n--- reply ---\n\nSerie A\n16:00  AC Milan vs Atalanta\n18:45  Juventus vs Lazio\n\nBundesliga\n13:30  Bayer Leverkusen vs SC Freiburg\n\nLigue 1\n13:00  Angers vs Marseille\n15:15  Lorient vs Monaco\n18:45  Lyon vs Nice\n\nEredivisie\n14:45  Groningen vs Ajax\n\n--- reply ---\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707"
      },
      "auto": {
       "tg": true
@@ -970,7 +1414,26 @@
      "texts": {
       "tg": "Sunday Top Picks | 18 October\nMatch Vision\n\nOur Strongest Picks For Today.",
       "wa": "Sunday Top Picks | 18 October\nMatch Vision\n\nOur Strongest Picks For Today.",
-      "x": "Sunday Top Picks | 18 October\nMatch Vision\n\nOur Strongest Picks For Today.\n\n#MatchVision #PremierLeague #EPL #SerieA #FootballPredictions"
+      "x": "Sunday Top Picks | 18 October\nMatch Vision\n\nOur Strongest Picks For Today.\n\n#MatchVision #ChampionsLeague #PremierLeague #EPL #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true
+    },
+    {
+     "id": "banker",
+     "group": "morning",
+     "title": "Banker",
+     "when": "07:00",
+     "images": [
+      "media/2026-10-18/2-Odds-Banker-2026-10-18.jpg"
+     ],
+     "texts": {
+      "tg": "Sunday Banker | 18 October\nMatch Vision\n\nToday's 2 Odds Banker.",
+      "wa": "Sunday Banker | 18 October\nMatch Vision\n\nToday's 2 Odds Banker.",
+      "x": "Sunday Banker | 18 October\nMatch Vision\n\nToday's 2 Odds Banker.\n\n#MatchVision #ChampionsLeague #PremierLeague #EPL #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -984,12 +1447,12 @@
      "title": "Video post",
      "when": "07:30",
      "images": [
-      "media/2026-10-18/Thumbnail-1-style-2-.jpg"
+      "media/2026-10-18/Thumbnail-1-style-9-.jpg"
      ],
      "texts": {
-      "tg": "Sunday Predictions | 18 October\nMatch Vision\n10 Matches Predicted Today\n\n🎥 The Full Predictions Video Is Out Now.\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n▶ Watch Now: {VIDEO_LINK}",
-      "wa": "Sunday Predictions | 18 October\nMatch Vision\n10 Matches Predicted Today\n\n🎥 The Full Predictions Video Is Out Now.\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n▶ Watch Now: {VIDEO_LINK}",
-      "x": "Sunday Predictions | 18 October 🎥\nFull Video Out Now: {VIDEO_LINK}\n\n10 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #PremierLeague #EPL #SerieA #FootballPredictions"
+      "tg": "Sunday Predictions | 18 October\nMatch Vision\n18 Matches Predicted Today\n\n🎥 The Full Predictions Video Is Out Now.\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Sunday Predictions | 18 October\nMatch Vision\n18 Matches Predicted Today\n\n🎥 The Full Predictions Video Is Out Now.\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n👇 *Watch Now:*\n{VIDEO_LINK}",
+      "x": "Sunday Predictions | 18 October 🎥\nFull Video Out Now: {VIDEO_LINK}\n\n18 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #ChampionsLeague #PremierLeague #EPL #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -1005,14 +1468,15 @@
      "images": [
       "media/2026-10-18/slide-1.jpg",
       "media/2026-10-18/slide-2.jpg",
-      "media/2026-10-18/slide-3.jpg"
+      "media/2026-10-18/slide-3.jpg",
+      "media/2026-10-18/slide-4.jpg"
      ],
      "texts": {
-      "ig": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea #footballpredictions #footballreels #instagram",
-      "tt": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea #footballpredictions #footballtiktok #fyp",
-      "x": "Football Predictions | Sunday 18 October\n\n#MatchVision #PremierLeague #EPL #SerieA #FootballPredictions",
-      "th": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea #football",
-      "yt": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea"
+      "ig": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl #footballpredictions #footballreels #instagram",
+      "tt": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl #footballpredictions #footballtiktok #fyp",
+      "x": "Football Correct Score Predictions | Sunday 18 October\n\n#MatchVision #ChampionsLeague #PremierLeague #EPL #FootballPredictions",
+      "th": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl #football",
+      "yt": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl"
      },
      "auto": {},
      "note": "",
@@ -1027,13 +1491,13 @@
       "media/2026-10-18/short-1.jpg"
      ],
      "video": "media/2026-10-18/short-1.mp4",
-     "file": "Ready to Upload\\2026-10-18 Sunday\\Shorts\\Short 1 - 5 matches (Nottingham Forest vs Arsenal and more).mp4",
+     "file": "Ready to Upload\\2026-10-18 Sunday\\Shorts\\Short 1 - 5 matches (Real Madrid vs Sevilla and more).mp4",
      "texts": {
-      "tt": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea #footballpredictions #footballtiktok #fyp",
-      "ig": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea #footballpredictions #footballreels #instagram",
-      "x": "Football Predictions | Sunday 18 October\n\n#MatchVision #PremierLeague #EPL #SerieA #FootballPredictions",
-      "tg": "Football Predictions | Sunday 18 October",
-      "wa": "Football Predictions | Sunday 18 October"
+      "tt": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl #footballpredictions #footballtiktok #fyp",
+      "ig": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl #footballpredictions #footballreels #instagram",
+      "x": "Football Correct Score Predictions | Sunday 18 October\n\n#MatchVision #ChampionsLeague #PremierLeague #EPL #FootballPredictions",
+      "tg": "Football Correct Score Predictions | Sunday 18 October",
+      "wa": "Football Correct Score Predictions | Sunday 18 October"
      },
      "auto": {},
      "note": "",
@@ -1048,13 +1512,13 @@
       "media/2026-10-18/short-2.jpg"
      ],
      "video": "media/2026-10-18/short-2.mp4",
-     "file": "Ready to Upload\\2026-10-18 Sunday\\Shorts\\Short 2 - 5 matches (Brighton vs Crystal Palace and more).mp4",
+     "file": "Ready to Upload\\2026-10-18 Sunday\\Shorts\\Short 2 - 5 matches (Bayer Leverkusen vs SC Freiburg and more).mp4",
      "texts": {
-      "tt": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea #footballpredictions #footballtiktok #fyp",
-      "ig": "Football Predictions | Sunday 18 October\n\n#matchvision #premierleague #epl #seriea #footballpredictions #footballreels #instagram",
-      "x": "Football Predictions | Sunday 18 October\n\n#MatchVision #PremierLeague #EPL #SerieA #FootballPredictions",
-      "tg": "Football Predictions | Sunday 18 October",
-      "wa": "Football Predictions | Sunday 18 October"
+      "tt": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl #footballpredictions #footballtiktok #fyp",
+      "ig": "Football Correct Score Predictions | Sunday 18 October\n\n#matchvision #championsleague #premierleague #epl #footballpredictions #footballreels #instagram",
+      "x": "Football Correct Score Predictions | Sunday 18 October\n\n#MatchVision #ChampionsLeague #PremierLeague #EPL #FootballPredictions",
+      "tg": "Football Correct Score Predictions | Sunday 18 October",
+      "wa": "Football Correct Score Predictions | Sunday 18 October"
      },
      "auto": {},
      "note": "",
@@ -1374,15 +1838,15 @@
      "hc": "media/crests/bayern-munich.png",
      "ac": "media/crests/rb-leipzig.png",
      "live": {
-      "st": "HT",
-      "min": null,
-      "gh": 3,
+      "st": "LIVE",
+      "min": 51,
+      "gh": 4,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401884772",
       "src": "ESPN",
-      "at": "2026-10-17T17:20:24"
+      "at": "2026-10-17T17:41:22"
      },
      "picks": [
       {
@@ -1516,14 +1980,14 @@
      "ac": "media/crests/inter-milan.png",
      "live": {
       "st": "LIVE",
-      "min": 75,
+      "min": 81,
       "gh": 1,
       "ga": 2,
       "hh": null,
       "ha": null,
       "espn": "401874953",
       "src": "ESPN",
-      "at": "2026-10-17T17:34:51"
+      "at": "2026-10-17T17:41:22"
      },
      "picks": [
       {
@@ -1727,14 +2191,14 @@
      "ac": "media/crests/aston-villa.png",
      "live": {
       "st": "LIVE",
-      "min": 47,
+      "min": 53,
       "gh": 0,
       "ga": 1,
       "hh": null,
       "ha": null,
       "espn": "401879258",
       "src": "ESPN",
-      "at": "2026-10-17T17:34:51"
+      "at": "2026-10-17T17:41:22"
      },
      "picks": [
       {
@@ -9376,9 +9840,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "D5o7i21Wxlqtl6uZlCTV1Q==",
-  "nonce": "WPfTI8XKF64EscXBRAngug==",
-  "ct": "1ulmNEQdWCvYvhEJm7ifBQsJmRFIoJO5QxXYeYKvdcu3O5IBVm1+4dPcUi5Fx5Hifg/r4UekWrKC39YZVnwBib5VoClr4qUu12zgHZqUetpW8NYj2a/h8YNb9Ju/RBa0Hvl2DvTchxdZRYuYyI3JKoHmvsGtxCqketJ43MVLxnpIknIZaDOHsL+vkW8s+L48a+1cBJeXCDelQFDFylvfacL74iCZjzn/3TwvJmNsAAbmHFfeO7ZLZ8uQAWBVkkd/ZF0xuS4FtWfGkavtyRay2+OsZDuOQ2ALF8SjU95wvmqxv3tvYAmjWdDd1fABcYUvs6LqHHH/+GqaT8milHHL47Spu6HttpKWqzQwZJpQj5VBwtvgUamr9Ec01eQqcKBSW4HycUIE0MGzh639lbupEyi6YV3kA/zTbb7outJSrvVzsrcLPAHspvjgnGNK1jpwJIkyfqWsckWgn8+0H5uKqP6LdRRUD+WGEu0lYx8nDaYyhID0l5iCJ/UEtMZOTg9n9dyWLtnMppkHuj2bV7i4DfYDHii/ev+chhRVPwPs/kbB9B1nHoysid7VPqfjkBfFXDuZm/X3ySOYDX9On4maLT86Yi7BfLKQ7BofbK0s6xRFU98G58bGk5oKbLFQ9y495eJakA40cDYx4g3F4qwOdzX8tith9rhpasNwzub8yFZiqpzWA4FC4NLetgfmYytj2Xwd2QBIrlF2e7UJ5r6XgwAptnvN0+t3IB1R8tpL8yq36H+dmhBb9TozGHhom6FaZAfOcTssvtIDAoTnWFNmlUXDXlBZkaYlPl4SlLbp7etx6Ypsajfbb+DhKhP9US+E1y+4mf8OMQb/QU8JDkqYE+glPNxRqyq3vhoEvgs7/JXPbCfd8DTlAX1h9ZoUqJxbQQMoYKkWryvy6KJeFCh/4FaxiBX2FeV9nh5yzH8MtrVPe9Oa8SKYp+hukvaP4ZFK0AvZ3JVe01K/IfB/Eln+EF2lkv/4NCYC9TCbS4Qg4QHUhwkLCBCpI1XYEv3rzzi/XyWlD196hWRLS0DLFx/bGNSzs8VJpA3gQl3sno2NALu2DG9sKHiQkNdFQooR/1bOAJGItiVJXc6qhR3i2qw5cE8RTYsZICBcNtEt/+xss6Q1tcKMboUS1asrz0bb8A9W75qH4nSdXKavg29KVDY4ZyUX6Pz082YUuz1yjx0/MAzc78nAOEfpuk0cn5ri+V5wgz9FgWFqzO7Cjs7l6rgH+GaiXfqI87McJGWK6eDA4EkVxRGIwr24QO0J0We0o8RsFSVXDnE/Sy9LJkYTV/NDnNrcK595c9UIC3ONxdUmeHDLqju9WjfbD0Ih3ud0aN9mlqHY1jvz3wOZMgLmHUE3iYEce/ME4Wm6ddZcAphT2r12tVBYF+z4leUa1DMpdO1uxZtlVPNyIyXkm4+d/unN6NVthjI/B5ch0nUhcjll1jE8nuOn8Lu3IsuGkXISzQPQ6T1rPVxnfYGoEXgmOahUV2BmXhbgcS0QZfcJ1bbL8k2QzVkq9vgTYGZYzFrua5uxJq7+n+mBPntMVk1ThgEGkW0OfTOrM/0EpW3LYuvIsaD3KY4naTHHmuagqORltAc5ywie/4jJ7jbhZDUnjK9Ydnt/uoiXRTnVL/KfaHPsbaX541/WD+UyqU8Hl1XvnZUltVTB2fgDaKpVQO7/bfSm0c/bNkuK+R0miwyEcgo3nok06iu7ZnIgeZxu6JNCczZsw3poSU9CrA0umM6up8RaTGy70gdv4gSIvnMoAourccopjIr01ces1+lYbujeHy9BvqVVkVAoEnTz0wq/a52VMnKhYZ7lZzwTLRVQ1mdP7CPUABQDeyUvbp1RHupDH6YZF9DzyZXqnJr8Vf0kTZW8a8Y4qrU/ec2HAx7kfT2JHe5kqsHDeavSnnzjIGc5oUM65JUAn3b4S0aE8d8vzzEs10bD0o4n6dDsBrYTfOrB3vaL4JfpLAZWMDJ1D9TzCOMdoR3XQxBLOLtXKonhMdi/qcoFxlCa1NxGCZRUQ86Av1SyiT4rxbOHLS005LtLt+RBH6fKOSVmMOxX1mzb/N3NLFxaTjp3MgwWNQM4UiLzQbT79cCCGvR+NgfnH5tpn3j3QV/hujMI3v5Rfiu327Kk/Omt2GoKeXy6KPWuBmW5BGxrY3tDCEbj2Rv5mbTKq4TpxUHXPDAsd4ZoVyV5XeSA+shVmqQlHOUnMzLDQsDD47QolFmPfStDPQDOcFhCHEZ/2uFOYd8HocML1j6iQTSQDKUD/UahOdqqJmx71c4gNAk+pqgq4RZKOhdxeCbyUlKjvSmFES4I/rGIykE2rthQqj7w2/47zOmkVTU2N2zPZWlsvvEj9uuCQkK2GZNvzdwCP7QSW8bpCa8VlXEb1dPCrHah4QbaPkycePIwWuHCOs5IhsAWJYqEvK1he0aUUedJZ7qGokYlyodDjprFSpeLv0lqdYxFQ5JpvAwwVAWdW47XknIBiMZ1u0Ai/FLCBUv8WOf4TGua18F+Vi22XjhCXWwWDvsxtJfCtOYDHz/wIULCFpUFmKP0QIUHvMFxHz44tWVUYkz6STbKqTdkX7mhGU5D9Oxf1IY/vW0RiZbQ78DvvftIvnduxdPbMqjEh5Ds/sGyBho17V3Pn36lyAeAdriPmTuHuxhqMNnDZCN72w/2sFCvsxAyQCrZG14pGNWIVJJ926l4yjMcWu2pWYImDII0112+piy9thKLwnr319tiHaxqZvfKHlTIsfkC6yOlNKenDXynWVJKjgl78m1ymTdkV7Wshap8dXtS0i1me3Hj+DbFZDw5gXX4cIU=",
-  "mac": "CT0UI1JCMPApRvq3zchjv2R8plvjfF6AVKd+7csFAuE="
+  "salt": "Q3KwbOqmNnXES6MaQpBlDg==",
+  "nonce": "NPCl4VCdZdJd8XkhIVNcsQ==",
+  "ct": "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",
+  "mac": "CPBogKj7x0lQy3lVIK03Whnm/G97PYjbJy5U/GtLjgk="
  }
 }
