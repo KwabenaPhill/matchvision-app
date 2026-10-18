@@ -590,3 +590,145 @@ def banker(day, now, root, tg, log=print):
     except Exception as ex:
         log(f'Banker win not posted ({ex}). Next run tries again.')
     return True
+
+
+# ------------------------------------------------------------------------------------------------ 3.10: weekly recap
+WEEK_STYLES = ['1  Classic', '2  Scoreboard', '3  Percent', '4  Short', '5  Big wins']
+
+
+def _pc(w, n):
+    return f'{round(w * 100 / n)}%' if n else '-'
+
+
+def weekly_text(st, style='1', link='', vip=False, vip_name='Vision Premium'):
+    """The weekly recap words. st: {week, all_w, all_n, safe_w, safe_n, cs, bw, bn, pw, pn}. *stars* = bold."""
+    s = str(style or '1').strip()[:1]
+    wk = st.get('week', '')
+    if vip:
+        lines = [f'👑 *{vip_name} · This Week*', wk, '',
+                 f'✅ *{st.get("pw", 0)} Of {st.get("pn", 0)} Premium Picks Won* ({_pc(st.get("pw", 0), st.get("pn", 0))})']
+        if st.get('cs'):
+            lines.append(f'🎯 Correct Scores: *{st["cs"]}*')
+        if st.get('bn'):
+            lines.append(f'💰 Bankers: *{st["bw"]} Of {st["bn"]} Won*')
+        lines += ['', 'Thank You, Members. New Week, Same Discipline. 💪']
+        return '\n'.join(lines)
+    cs = f'🎯 Correct Scores: *{st.get("cs", 0)}*' if st.get('cs') else ''
+    pr = f'✅ Predictions: *{st.get("all_w", 0)} Of {st.get("all_n", 0)} Won*'
+    sf = f'🔒 Safest Picks: *{st.get("safe_w", 0)} Of {st.get("safe_n", 0)} Won*'
+    bk = f'💰 Bankers: *{st.get("bw", 0)} Of {st.get("bn", 0)} Won*' if st.get('bn') else ''
+    end = ['', "👇 Get Tomorrow's Games:", link] if link else []
+    if s == '2':
+        rows = [f'🎯 Correct Scores ....... *{st.get("cs", 0)}*', f'✅ Predictions .......... *{st.get("all_w", 0)}/{st.get("all_n", 0)}*',
+                f'🔒 Safest Picks ......... *{st.get("safe_w", 0)}/{st.get("safe_n", 0)}*']
+        if st.get('bn'):
+            rows.append(f'💰 Bankers .............. *{st["bw"]}/{st["bn"]}*')
+        body = ['🏆 *WEEKLY SCOREBOARD*', wk, ''] + rows
+    elif s == '3':
+        body = ['📈 *This Week In Numbers*', wk, '',
+                f'✅ Predictions: *{_pc(st.get("all_w", 0), st.get("all_n", 0))}* ({st.get("all_w", 0)}/{st.get("all_n", 0)})',
+                f'🔒 Safest Picks: *{_pc(st.get("safe_w", 0), st.get("safe_n", 0))}* ({st.get("safe_w", 0)}/{st.get("safe_n", 0)})']
+        if st.get('cs'):
+            body.append(f'🎯 Correct Scores: *{st["cs"]}*')
+        if st.get('bn'):
+            body.append(f'💰 Bankers: *{st["bw"]}/{st["bn"]}*')
+    elif s == '4':
+        body = [f'📊 *Week {wk}*', '', f'✅ *{st.get("all_w", 0)}/{st.get("all_n", 0)}* Predictions · 🔒 *{st.get("safe_w", 0)}/{st.get("safe_n", 0)}* Safest'] + \
+               ([f'🎯 *{st["cs"]}* Correct Scores' + (f' · 💰 *{st["bw"]}/{st["bn"]}* Bankers' if st.get('bn') else '')]
+                if st.get('cs') or st.get('bn') else [])
+    elif s == '5':
+        body = ['🔥 *ANOTHER WINNING WEEK* 🔥', wk, ''] + [x for x in (cs, bk, pr, sf) if x]
+    else:
+        body = ["📊 *This Week's Results*", wk, ''] + [x for x in (cs, pr, sf, bk) if x]
+    return '\n'.join(body + end).strip()
+
+
+def day_stats(day, now):
+    """Once every match of a day is over: its numbers for the weekly recap (stored in the day file)."""
+    wins = day.get('wins') or []
+    if not wins or day.get('stats'):
+        return False
+    try:
+        last = max(datetime.datetime.fromisoformat(m['ko']) for m in wins)
+    except Exception:
+        return False
+    if now < last + datetime.timedelta(minutes=150):
+        return False
+    games = {}
+    st = {'all_w': 0, 'all_n': 0, 'safe_w': 0, 'safe_n': 0, 'cs': 0, 'bw': 0, 'bn': 0}
+    for m in wins:
+        d = m['ko'][:10]
+        if d not in games:
+            try:
+                games[d] = espn_day(d)
+            except Exception:
+                return False
+        g = find(games[d], m)
+        if not g or not g['done'] or g['gh'] is None:
+            continue
+        for i, p in enumerate(m.get('picks') or []):
+            r = won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha'])
+            if r is None:
+                continue
+            st['all_n'] += 1
+            st['all_w'] += 1 if r else 0
+            if i == 0:
+                st['safe_n'] += 1
+                st['safe_w'] += 1 if r else 0
+        if m.get('score') and m['score'] == f'{g["gh"]}-{g["ga"]}':
+            st['cs'] += 1
+    bk = day.get('banker') or {}
+    if bk.get('posted') in ('cloud', 'laptop', 'lost'):
+        st['bn'] = 1
+        st['bw'] = 0 if bk['posted'] == 'lost' else 1
+    day['stats'] = st
+    return True
+
+
+def weekly(root, now, tg, log=print):
+    """Sunday, after the day's games: the weekly recap on the channel when the laptop did not post it."""
+    if now.weekday() != 6:
+        return False
+    sunday = now.date().isoformat()
+    mark = os.path.join(root, 'cloud', f'week-{sunday}.json')
+    if os.path.isfile(mark):
+        return False
+    p = os.path.join(root, 'cloud', f'{sunday}.json')
+    try:
+        with open(p, encoding='utf-8') as f:
+            today = json.load(f)
+    except Exception:
+        return False
+    cfg = today.get('weekly') or {}
+    if not cfg.get('on', True) or not today.get('stats'):
+        return False
+    try:
+        hh, mm = (int(x) for x in str(cfg.get('time', '21:00')).split(':'))
+    except Exception:
+        hh, mm = 21, 0
+    if now < now.replace(hour=hh, minute=mm, second=0, microsecond=0) + datetime.timedelta(minutes=int(cfg.get('wait', 30))):
+        return False
+    mon = now.date() - datetime.timedelta(days=6)
+    tot = {'all_w': 0, 'all_n': 0, 'safe_w': 0, 'safe_n': 0, 'cs': 0, 'bw': 0, 'bn': 0}
+    for i in range(7):
+        q = os.path.join(root, 'cloud', f'{(mon + datetime.timedelta(days=i)).isoformat()}.json')
+        try:
+            with open(q, encoding='utf-8') as f:
+                s = json.load(f).get('stats') or {}
+        except Exception:
+            continue
+        for k in tot:
+            tot[k] += int(s.get(k) or 0)
+    if not tot['all_n']:
+        return False
+    tot['week'] = f'{mon.day} {MONTHS[mon.month - 1][:3]} - {now.day} {MONTHS[now.month - 1][:3]}'
+    txt = weekly_text(tot, cfg.get('style', '1'), cfg.get('link', ''))
+    try:
+        tg('sendMessage', {'chat_id': today['win_chat'], 'parse_mode': 'HTML', 'disable_web_page_preview': 'true',
+                           'text': to_html(txt)})
+        with open(mark, 'w', encoding='utf-8') as f:
+            json.dump({'posted': 'cloud', 'at': now.isoformat(timespec='minutes')}, f)
+        log('WEEKLY RECAP POSTED by the cloud.')
+    except Exception as ex:
+        log(f'Weekly recap not posted ({ex}).')
+    return True
