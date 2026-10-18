@@ -311,7 +311,7 @@ def results(day, now, tg, log=print):
             p = next((q for q in (m or {}).get('picks') or [] if q.get('text') == bg.get('text')), None)
             g = find(games.get(m['ko'][:10]) or [], m) if m else None
             rs.append(won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha']) if (p and g and g['done']) else None)
-        if all(r is True for r in rs):
+        if all(r is True for r in rs) and not str(bk.get('posted') or '').startswith(('cloud', 'laptop')):
             bk_line = f'💰 *{float(bk.get("total") or 0):.2f} Odds Banker WON* ✅'
     if not won_list and not bk_line:
         day['results_posted'] = 'cloud: no full wins'
@@ -437,3 +437,156 @@ def draw_cs(m, gh, ga, root, out, fonts=FONTS, style='gold', brand='MATCH VISION
     os.makedirs(os.path.dirname(out), exist_ok=True)
     im.save(out, quality=92)
     return out
+
+
+# ------------------------------------------------------------------------------------------------ 3.9.3: banker win at once
+def banker_caption(legs, total, c=None):
+    """legs: [{home, away, gh, ga, text, odds}]. Bold only the WON line and the total."""
+    c = c or {}
+    T = f'{float(total or 0):.2f}'
+    head = str(c.get('banker_head') or '💰 *{ODDS} ODDS BANKER WON* 💰').replace('{ODDS}', T)
+    lines = [head, '']
+    for g in legs:
+        lines.append(f'✅ {g["home"]} {g["gh"]}-{g["ga"]} {g["away"]}')
+        lines.append(f'✔️ {g["text"]}' + (f' @ {float(g["odds"]):.2f}' if g.get('odds') else ''))
+        lines.append('')
+    lines.append(str(c.get('banker_end') or '🔥 *Total Odds {ODDS}*').replace('{ODDS}', T))
+    return '\n'.join(lines)
+
+
+def to_html(txt):
+    return re.sub(r'\*([^*\n]+)\*', lambda x: f'<b>{x.group(1)}</b>', html.escape(txt, quote=False))
+
+
+def draw_banker(legs, total, date_label, root, out, fonts=FONTS, brand='MATCH VISION'):
+    """The old card for the banker: MV badge, 2.00 ODDS BANKER WON, each leg with crests, score and a green tick."""
+    from PIL import Image, ImageDraw, ImageFont
+    W, rh, gap, top = 1080, 165, 22, 265
+    H = min(1350, top + len(legs) * (rh + gap) + 178)
+    A, A2 = (236, 196, 98), (156, 130, 64)
+    im = Image.new('RGB', (W, H), (6, 6, 6))
+    d = ImageDraw.Draw(im)
+    for y in range(H):
+        k = y / (H - 1)
+        d.line([(0, y), (W, y)], fill=(int(21 + (6 - 21) * k), int(18 + (6 - 18) * k), int(10 + (6 - 10) * k)))
+
+    def F(names, px):
+        for n in names:
+            p = os.path.join(fonts, n)
+            if os.path.isfile(p):
+                return ImageFont.truetype(p, px)
+        return ImageFont.load_default()
+    BLK, MED = ('InterDisplay-Black.otf', 'Inter-Black.otf'), ('Inter-Medium.otf',)
+
+    def fit(t, names, px, maxw):
+        while px > 14 and d.textlength(t, font=F(names, px)) > maxw:
+            px -= 2
+        return F(names, px)
+    d.rounded_rectangle((30, 30, W - 30, H - 30), radius=46, outline=A, width=4)
+    d.ellipse((100, 105, 188, 193), fill=A)
+    f = F(BLK, 38)
+    d.text((144 - d.textlength('MV', font=f) / 2, 128), 'MV', font=f, fill=(11, 11, 11))
+    title = f'{float(total or 0):.2f} ODDS BANKER WON'
+    d.text((215, 92), title, font=fit(title, BLK, 62, 780), fill=A)
+    d.text((217, 172), date_label, font=fit(date_label, MED, 32, 780), fill=(189, 189, 189))
+
+    def crest(path, cx, cy, s, name):
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            cc = Image.open(p).convert('RGBA')
+            cc.thumbnail((s, s))
+            im.paste(cc, (int(cx + (s - cc.width) / 2), int(cy - cc.height / 2)), cc)
+        else:
+            d.ellipse((cx, cy - s / 2, cx + s, cy + s / 2), fill=(38, 38, 38))
+    for i, g in enumerate(legs):
+        y, X, Wd = top + i * (rh + gap), 70, W - 140
+        cy = y + rh / 2
+        d.rounded_rectangle((X, y, X + Wd, y + rh), radius=26, fill=(22, 20, 14), outline=(90, 76, 40), width=2)
+        d.rounded_rectangle((X, y, X + 10, y + rh), radius=5, fill=A)
+        d.ellipse((X + 32, cy - 30, X + 92, cy + 30), fill=A)
+        ff = F(BLK, 32)
+        d.text((X + 62 - d.textlength(str(i + 1), font=ff) / 2, cy - 20), str(i + 1), font=ff, fill=(17, 17, 17))
+        cs = 78
+        crest(g.get('hc'), X + 112, cy, cs, g['home'])
+        crest(g.get('ac'), X + 112 + cs + 12, cy, cs, g['away'])
+        tx = X + 112 + cs * 2 + 40
+        tw = X + Wd - 200 - tx
+        t = str(g['text']).upper()
+        d.text((tx, cy - 50), t, font=fit(t, BLK, 40, tw), fill=(255, 255, 255))
+        vs = f'{g["home"]} {g["gh"]}-{g["ga"]} {g["away"]}'
+        d.text((tx, cy + 10), vs, font=fit(vs, MED, 27, tw), fill=(169, 169, 169))
+        if g.get('odds'):
+            o = f'{float(g["odds"]):.2f}'
+            fo = F(BLK, 40)
+            d.text((X + Wd - 110 - d.textlength(o, font=fo), cy - 24), o, font=fo, fill=A)
+        t2 = X + Wd - 50
+        d.ellipse((t2 - 28, cy - 28, t2 + 28, cy + 28), fill=(34, 197, 94))
+        d.line([(t2 - 12, cy + 1), (t2 - 3, cy + 10), (t2 + 13, cy - 9)], fill=(255, 255, 255), width=7, joint='curve')
+    foot = f'TOTAL ODDS {float(total or 0):.2f}' + (f' · {brand}' if brand else '')
+    ff = F(BLK, 30)
+    d.text((W / 2 - d.textlength(foot, font=ff) / 2, H - 82), foot, font=ff, fill=A2)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
+
+
+def banker(day, now, root, tg, log=print):
+    """The banker win on the channel as soon as its last game is over and every leg won (when the laptop did not)."""
+    bk = day.get('banker') or {}
+    if not bk.get('games') or bk.get('posted') or day.get('paused') or not day.get('banker_on', True):
+        return False
+    wins = day.get('wins') or []
+    legs, kos = [], []
+    for bg in bk['games']:
+        m = next((x for x in wins if x.get('n') == bg.get('n')), None)
+        if not m:
+            return False
+        kos.append(datetime.datetime.fromisoformat(m['ko']))
+        legs.append((m, next((q for q in m.get('picks') or [] if q.get('text') == bg.get('text')), None), bg))
+    wait = datetime.timedelta(minutes=int(day.get('win_cloud_wait', 25)))
+    if now < max(kos) + datetime.timedelta(minutes=105) + wait:
+        return False
+    if now > max(kos) + datetime.timedelta(hours=10):
+        bk['posted'] = 'missed'
+        return True
+    games, out = {}, []
+    for m, p, bg in legs:
+        dd = m['ko'][:10]
+        if dd not in games:
+            try:
+                games[dd] = espn_day(dd)
+            except Exception:
+                return False
+        g = find(games[dd], m)
+        if not g or not g['done'] or not p:
+            return False
+        r = won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha'])
+        if r is False:
+            bk['posted'] = 'lost'
+            return True
+        if r is not True:
+            return False
+        out.append({'home': m['home'], 'away': m['away'], 'gh': g['gh'], 'ga': g['ga'], 'text': p['text'],
+                    'odds': bg.get('odds'), 'hc': m.get('hc'), 'ac': m.get('ac')})
+    c = day.get('win_caption') or {}
+    txt = banker_caption(out, bk.get('total'), c)
+    dd = datetime.date.fromisoformat(day['date'])
+    pic = None
+    try:
+        pic = draw_banker(out, bk.get('total'), f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', root,
+                          os.path.join(root, 'cloud', 'wins', f'{day["date"]}-banker.jpg'), brand=c.get('brand', 'MATCH VISION'))
+    except Exception as ex:
+        log(f'Banker picture not drawn ({ex}).')
+    try:
+        bold = c.get('bold', True)
+        body = to_html(txt) if bold else txt.replace('*', '')
+        extra = {'parse_mode': 'HTML'} if bold else {}
+        if pic:
+            tg('sendPhoto', {'chat_id': day['win_chat'], 'caption': body[:1024], **extra}, {'photo': pic})
+        else:
+            tg('sendMessage', {'chat_id': day['win_chat'], 'text': body, **extra})
+        bk['posted'] = 'cloud'
+        log(f'{day["date"]}: BANKER WIN POSTED by the cloud.')
+    except Exception as ex:
+        log(f'Banker win not posted ({ex}). Next run tries again.')
+    return True
