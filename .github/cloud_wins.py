@@ -601,41 +601,32 @@ def _pc(w, n):
 
 
 def weekly_text(st, style='1', link='', vip=False, vip_name='Vision Premium'):
-    """The weekly recap words. st: {week, all_w, all_n, safe_w, safe_n, cs, bw, bn, pw, pn}. *stars* = bold."""
+    """The weekly recap words. st: {week, all_w, all_n, safe_w, safe_n, cs, bw, bn, pw, pn}. *stars* = bold.
+    3.10.2 (Philip): every line with the same black tick ✔️, nothing else."""
     s = str(style or '1').strip()[:1]
     wk = st.get('week', '')
     if vip:
-        lines = [f'👑 *{vip_name} · This Week*', wk, '',
-                 f'✅ *{st.get("pw", 0)} Of {st.get("pn", 0)} Premium Picks Won* ({_pc(st.get("pw", 0), st.get("pn", 0))})']
-        if st.get('cs'):
-            lines.append(f'🎯 Correct Scores: *{st["cs"]}*')
-        if st.get('bn'):
-            lines.append(f'💰 Bankers: *{st["bw"]} Of {st["bn"]} Won*')
-        lines += ['', 'Thank You, Members. New Week, Same Discipline. 💪']
-        return '\n'.join(lines)
-    cs = f'🎯 Correct Scores: *{st.get("cs", 0)}*' if st.get('cs') else ''
-    pr = f'✅ Predictions: *{st.get("all_w", 0)} Of {st.get("all_n", 0)} Won*'
-    sf = f'🔒 Safest Picks: *{st.get("safe_w", 0)} Of {st.get("safe_n", 0)} Won*'
-    bk = f'💰 Bankers: *{st.get("bw", 0)} Of {st.get("bn", 0)} Won*' if st.get('bn') else ''
+        rows = [f'✔️ Premium Picks: *{st.get("pw", 0)} Of {st.get("pn", 0)} Won*',
+                f'✔️ Win Rate: *{_pc(st.get("pw", 0), st.get("pn", 0))}*']
+        return '\n'.join([f"👑 *{vip_name} · This Week's Results*", wk, ''] + rows)
+    cs = f'✔️ Correct Scores: *{st.get("cs", 0)}*' if st.get('cs') else ''
+    pr = f'✔️ Predictions: *{st.get("all_w", 0)} Of {st.get("all_n", 0)} Won*'
+    sf = f'✔️ Safest Picks: *{st.get("safe_w", 0)} Of {st.get("safe_n", 0)} Won*'
+    bk = f'✔️ Bankers: *{st.get("bw", 0)} Of {st.get("bn", 0)} Won*' if st.get('bn') else ''
     end = ['', "👇 Get Tomorrow's Games:", link] if link else []
     if s == '2':
-        rows = [f'🎯 Correct Scores ....... *{st.get("cs", 0)}*', f'✅ Predictions .......... *{st.get("all_w", 0)}/{st.get("all_n", 0)}*',
-                f'🔒 Safest Picks ......... *{st.get("safe_w", 0)}/{st.get("safe_n", 0)}*']
-        if st.get('bn'):
-            rows.append(f'💰 Bankers .............. *{st["bw"]}/{st["bn"]}*')
-        body = ['🏆 *WEEKLY SCOREBOARD*', wk, ''] + rows
+        body = ['🏆 *WEEKLY SCOREBOARD*', wk, ''] + [x for x in (cs, pr, sf, bk) if x]
     elif s == '3':
         body = ['📈 *This Week In Numbers*', wk, '',
-                f'✅ Predictions: *{_pc(st.get("all_w", 0), st.get("all_n", 0))}* ({st.get("all_w", 0)}/{st.get("all_n", 0)})',
-                f'🔒 Safest Picks: *{_pc(st.get("safe_w", 0), st.get("safe_n", 0))}* ({st.get("safe_w", 0)}/{st.get("safe_n", 0)})']
+                f'✔️ Predictions: *{_pc(st.get("all_w", 0), st.get("all_n", 0))}* ({st.get("all_w", 0)}/{st.get("all_n", 0)})',
+                f'✔️ Safest Picks: *{_pc(st.get("safe_w", 0), st.get("safe_n", 0))}* ({st.get("safe_w", 0)}/{st.get("safe_n", 0)})']
         if st.get('cs'):
-            body.append(f'🎯 Correct Scores: *{st["cs"]}*')
+            body.append(f'✔️ Correct Scores: *{st["cs"]}*')
         if st.get('bn'):
-            body.append(f'💰 Bankers: *{st["bw"]}/{st["bn"]}*')
+            body.append(f'✔️ Bankers: *{st["bw"]}/{st["bn"]}*')
     elif s == '4':
-        body = [f'📊 *Week {wk}*', '', f'✅ *{st.get("all_w", 0)}/{st.get("all_n", 0)}* Predictions · 🔒 *{st.get("safe_w", 0)}/{st.get("safe_n", 0)}* Safest'] + \
-               ([f'🎯 *{st["cs"]}* Correct Scores' + (f' · 💰 *{st["bw"]}/{st["bn"]}* Bankers' if st.get('bn') else '')]
-                if st.get('cs') or st.get('bn') else [])
+        body = [f'📊 *Week {wk}*', '', f'✔️ *{st.get("all_w", 0)}/{st.get("all_n", 0)}* Predictions', f'✔️ *{st.get("safe_w", 0)}/{st.get("safe_n", 0)}* Safest'] + \
+               ([f'✔️ *{st["cs"]}* Correct Scores'] if st.get('cs') else []) + ([f'✔️ *{st["bw"]}/{st["bn"]}* Bankers'] if st.get('bn') else [])
     elif s == '5':
         body = ['🔥 *ANOTHER WINNING WEEK* 🔥', wk, ''] + [x for x in (cs, bk, pr, sf) if x]
     else:
