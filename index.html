@@ -893,7 +893,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.9.1</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.9.2</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -920,7 +920,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.9.1';   // APP_VERSION = '3.9.1' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.9.2';   // APP_VERSION = '3.9.2' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1864,7 +1864,7 @@ function cardData(kind,d){const t=todayKey();
     const rows=(m.picks||[]).slice(0,3).map((p,i)=>({h:shortTeam(m.home),a:shortTeam(m.away),hc:m.hc,ac:m.ac,pick:shortPick(p.text),full:p.text,odds:p.odds,won:MARKW(pickState(p,i,m,dd,L))}));
     const w=rows.filter(r=>r.won===true).length,dec=rows.filter(r=>r.won!=null).length;const sc=L&&L.gh!=null?`${L.gh}-${L.ga}`:'';
     const csW=!!(sc&&m.score&&m.score===sc);const W2=w+(csW?1:0),N2=dec+(csW?1:0);
-    const txt=(csW?`${SET.csHead||'💰 **CORRECT SCORE WIN · BIG WIN** 💰'}\n\n`:'')+`${w&&w===dec?(SET.winTop??'✅')+' ':''}**${m.home} ${sc||'vs'} ${m.away}**\n`+(csW?`🎯 **Correct Score: ${sc}**\n`:'')+'\n'+rows.map(r=>`${r.won===true?'✔️':r.won===false?'❌':'⏳'} ${r.full}`).join('\n')+(dec?`\n\n${String(SET.winEnd||'🔥 **{W} Of {N} Won**').replace('{W}',W2).replace('{N}',N2)}`:'')+(SET.winExtra?`\n\n${SET.winExtra}`:'');
+    const txt=(csW?`${SET.csHead||'💰 **CORRECT SCORE WIN · BIG WIN** 💰'}\n\n`:'')+`${w&&w===dec?(SET.winTop??'✅')+' ':''}${csW?'':'**'}${m.home} ${sc||'vs'} ${m.away}${csW?'':'**'}\n`+(csW?`🎯 **Correct Score: ${sc}**\n`:'')+'\n'+rows.map(r=>`${r.won===true?'✔️':r.won===false?'❌':'⏳'} ${r.full}`).join('\n')+(dec?`\n\n${String(SET.winEnd||'🔥 **{W} Of {N} Won**').replace('{W}',W2).replace('{N}',N2)}`:'')+(SET.winExtra?`\n\n${SET.winExtra}`:'');
     return {o:{kind,title:sc?`FULL TIME ${sc}`:'TODAY\'S PICKS',sub:`${shortTeam(m.home)} vs ${shortTeam(m.away)} · ${m.league||''}`,rows,total:1,acc:'#DFFB51',accDark:'#8EA334',glow:'rgba(34,197,94,.20)',foot:dec?`${w} OF ${dec} WON · MATCH VISION`:'MATCH VISION',ticks:true,h:Math.min(1350,265+rows.length*187+178),hc:m.hc,ac:m.ac,won:W2,of:N2,score:sc,home:m.home,away:m.away,league:m.league||'',big:csW},txt,name:`Match Vision ${m.home} vs ${m.away} ${dd.date}`};}
   if(kind==='premwon'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);const rows=(td.picks||[]).map(g=>{const m=findM(dd,g);return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,won:premWon(g,dd)};}).filter(r=>r.won===true);
     if(!rows.length)return null;const txt=`✅ VISION PREMIUM WINS\n${longDate(td.date)}\n\n`+rows.map(r=>`✅ ${r.h} vs ${r.a}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+`\n\nMembers Had These Picks Before Kick-Off.`;
@@ -1876,7 +1876,7 @@ function cardData(kind,d){const t=todayKey();
   if(kind==='bankerwon'){const bk=d.banker;if(!bk||!(bk.games||[]).length||bankerState(d)!=='w')return null;let tot2=1;
     const rws=bk.games.map(gm=>{const m=(d.matches||[]).find(x=>x.n===gm.n)||{};const p=gm.pick||{};if(gm.odds)tot2*=gm.odds;return {h:shortTeam(m.home||''),a:shortTeam(m.away||''),hc:m.hc,ac:m.ac,pick:shortPick(p.text||''),full:p.text||'',odds:gm.odds||p.odds,won:true,sc:(()=>{const L=m.n?liveOf(m,d):null;return L&&L.gh!=null?`${L.gh}-${L.ga}`:'';})(),home:m.home,away:m.away};});
     const T=Number(bk.total||tot2).toFixed(2);const BS=PWSTY[SET.bankerWinStyle]||PWSTY.gold;
-    const txt=(SET.bankerHead?SET.bankerHead.replace('{ODDS}',T):`💰 **${T} ODDS BANKER WON** 💰`)+'\n\n'+rws.map(r=>`✅ **${r.home} ${r.sc||'vs'} ${r.away}**\n✔️ ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+`\n\n🔥 **Total Odds ${T}**`;
+    const txt=(SET.bankerHead?SET.bankerHead.replace('{ODDS}',T):`💰 **${T} ODDS BANKER WON** 💰`)+'\n\n'+rws.map(r=>`✅ ${r.home} ${r.sc||'vs'} ${r.away}\n✔️ ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+`\n\n🔥 **Total Odds ${T}**`;
     return {o:{kind:'bankerwon',title:`${T} ODDS BANKER WON`,sub:`${longDate(d.date)} · The banker of the day`,rows:rws,total:tot2,acc:BS[0],accDark:BS[1],glow:'rgba(236,196,98,.22)',foot:`BANKER WON${SET.winBrand===''?'':' · '+(SET.winBrand||'MATCH VISION')}`,ticks:true,h:Math.min(1350,265+rws.length*187+178)},txt,name:`Banker won ${d.date}`};}
   if(kind==='banker'){const bk=d.banker;if(!bk||!(bk.games||[]).length)return null;rows=bk.games.map(gm=>{const m=(d.matches||[]).find(x=>x.n===gm.n)||{};const p=gm.pick||{};if(gm.odds)tot*=gm.odds;return {h:shortTeam(m.home||''),a:shortTeam(m.away||''),hc:m.hc,ac:m.ac,pick:shortPick(p.text||''),full:p.text||'',odds:gm.odds||p.odds,ko:m.kickoff};});
     title=`${Math.round(bk.total||tot)} ODDS BANKER`;sub=`${longDate(d.date)} · The banker of the day`;}
