@@ -106,7 +106,7 @@ def caption(m, gh, ga, cs_won, c):
     n = len(m['picks']) + (1 if cs_won else 0)
     lines = []
     if cs_won:
-        lines += [c.get('cs_head') or '💰 *CORRECT SCORE WIN · BIG WIN* 💰', '']
+        lines += [(c.get('cs_head') or '*CORRECT SCORE WIN · BIG WIN*').replace('💰', '').strip(), '']
     lines.append(f'✅ {m["home"]} {gh}-{ga} {m["away"]}' if cs_won else f'✅ *{m["home"]} {gh}-{ga} {m["away"]}*')
     if cs_won:
         lines.append(f'🎯 *Correct Score: {gh}-{ga}*')
