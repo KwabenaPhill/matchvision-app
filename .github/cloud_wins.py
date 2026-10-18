@@ -105,12 +105,13 @@ def won(rule, gh, ga, hh, ha):
 def caption(m, gh, ga, cs_won, c):
     n = len(m['picks']) + (1 if cs_won else 0)
     lines = []
-    if cs_won and c.get('big'):
-        lines += [c['big'], '']
-    lines += [f'✅ *{m["home"]} {gh}-{ga} {m["away"]}*', '']
-    lines += [f'✔️ {p["text"]}' for p in m['picks']]
     if cs_won:
-        lines.append(f'🎯 Correct score {gh}-{ga} ✔️')
+        lines += [c.get('cs_head') or '💰 *CORRECT SCORE WIN · BIG WIN* 💰', '']
+    lines.append(f'✅ *{m["home"]} {gh}-{ga} {m["away"]}*')
+    if cs_won:
+        lines.append(f'🎯 *Correct Score: {gh}-{ga}*')
+    lines.append('')
+    lines += [f'✔️ {p["text"]}' for p in m['picks']]
     lines += ['', str(c.get('end') or '🔥 *{WON} Of {TOTAL} Won*').replace('{WON}', str(n)).replace('{TOTAL}', str(n))]
     if c.get('extra'):
         lines += ['', c['extra']]
@@ -243,8 +244,11 @@ def run(day, now, root, tg, log=print):
         text, is_html = caption(m, g['gh'], g['ga'], cs_won, c)
         pic = None
         try:
-            pic = draw(m, g['gh'], g['ga'], cs_won, root, os.path.join(root, 'cloud', 'wins', f'{d}-{m["n"]}.jpg'),
-                       brand=c.get('brand', 'MATCH VISION'))
+            out = os.path.join(root, 'cloud', 'wins', f'{d}-{m["n"]}.jpg')
+            if cs_won:
+                pic = draw_cs(m, g['gh'], g['ga'], root, out, style=c.get('cs_style', 'gold'), brand=c.get('brand', 'MATCH VISION'))
+            else:
+                pic = draw(m, g['gh'], g['ga'], cs_won, root, out, brand=c.get('brand', 'MATCH VISION'))
         except Exception as ex:
             log(f'Win ticket picture not drawn ({ex}); the text goes alone.')
         try:
@@ -319,3 +323,105 @@ def results(day, now, tg, log=print):
     except Exception as ex:
         log(f'{day["date"]}: results not posted ({ex}). Next run tries again.')
     return True
+
+
+# ------------------------------------------------------------------------------------------------ 3.9: correct score win card
+CS_STYLES = {'gold': ((236, 196, 98), (29, 22, 7), (7, 6, 5)), 'diamond': ((125, 211, 252), (7, 24, 39), (4, 8, 13)),
+             'emerald': ((52, 211, 153), (5, 36, 26), (3, 10, 7)), 'royal': ((192, 132, 252), (26, 12, 43), (7, 4, 12)),
+             'fire': ((251, 146, 60), (42, 17, 5), (10, 5, 3))}
+
+
+def draw_cs(m, gh, ga, root, out, fonts=FONTS, style='gold', brand='MATCH VISION'):
+    """CORRECT SCORE WIN - a big VIP-like card: crown, BIG WIN, both crests and the score big, then the picks."""
+    from PIL import Image, ImageDraw, ImageFont, ImageFilter
+    A, B1, B2 = CS_STYLES.get(str(style).split()[-1].lower(), CS_STYLES['gold'])
+    picks = [p['text'] for p in m['picks']][:3]
+    W = 1080
+    H = 640 + len(picks) * 130 + 120
+    im = Image.new('RGB', (W, H), B2)
+    d = ImageDraw.Draw(im)
+    for y in range(H):
+        k = y / (H - 1)
+        d.line([(0, y), (W, y)], fill=tuple(int(B1[i] + (B2[i] - B1[i]) * k) for i in range(3)))
+    glow = Image.new('L', (W, H), 0)
+    ImageDraw.Draw(glow).ellipse((W / 2 - 420, 120, W / 2 + 420, 640), fill=90)
+    glow = glow.filter(ImageFilter.GaussianBlur(90))
+    im.paste(Image.new('RGB', (W, H), A), (0, 0), glow)
+    d = ImageDraw.Draw(im)
+
+    def F(names, px):
+        for n in names:
+            p = os.path.join(fonts, n)
+            if os.path.isfile(p):
+                return ImageFont.truetype(p, px)
+        return ImageFont.load_default()
+    BLK, MED = ('InterDisplay-Black.otf', 'Inter-Black.otf'), ('Inter-Medium.otf',)
+
+    def ctext(t, y, f, fill, maxw=W - 160):
+        px = f.size if hasattr(f, 'size') else 30
+        ff = f
+        while px > 14 and d.textlength(t, font=ff) > maxw:
+            px -= 2
+            ff = F(BLK, px)
+        d.text((W / 2 - d.textlength(t, font=ff) / 2, y), t, font=ff, fill=fill)
+    d.rounded_rectangle((26, 26, W - 26, H - 26), radius=48, outline=A, width=6)
+    d.rounded_rectangle((44, 44, W - 44, H - 44), radius=38, outline=tuple(int(v * .45) for v in A), width=2)
+    cx = W / 2
+    d.polygon([(cx - 43, 148), (cx - 49, 88), (cx - 21, 116), (cx, 78), (cx + 21, 116), (cx + 49, 88), (cx + 43, 148)], fill=A)
+    d.rectangle((cx - 43, 154, cx + 43, 166), fill=A)
+    ctext('CORRECT SCORE WIN', 176, F(BLK, 64), A)
+    d.rounded_rectangle((cx - 120, 256, cx + 120, 318), radius=31, fill=A)
+    ctext('BIG WIN', 266, F(BLK, 36), (17, 17, 17))
+
+    def crest(path, x, name):
+        s, cy = 170, 440
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((s, s))
+            im.paste(c, (int(x - c.width / 2), int(cy - c.height / 2)), c)
+        else:
+            d.ellipse((x - s / 2, cy - s / 2, x + s / 2, cy + s / 2), fill=(38, 38, 38))
+            ini = ''.join(w[0] for w in str(name).split()[:2]).upper()
+            f = F(BLK, 56)
+            d.text((x - d.textlength(ini, font=f) / 2, cy - 34), ini, font=f, fill=(221, 221, 221))
+        nm = str(name).upper()
+        f = F(BLK, 30)
+        while d.textlength(nm, font=f) > 280 and f.size > 16:
+            f = F(BLK, f.size - 2)
+        d.text((x - d.textlength(nm, font=f) / 2, 545), nm, font=f, fill=(255, 255, 255))
+    crest(m.get('hc'), 210, m['home'])
+    crest(m.get('ac'), W - 210, m['away'])
+    sc = f'{gh}-{ga}'
+    f = F(BLK, 150)
+    d.text((cx - d.textlength(sc, font=f) / 2, 350), sc, font=f, fill=(255, 255, 255))
+    f = F(BLK, 24)
+    t = 'FULL TIME · PREDICTED RIGHT'
+    d.text((cx - d.textlength(t, font=f) / 2, 518), t, font=f, fill=A)
+    lg = str(m.get('league') or '')
+    if lg:
+        f = F(MED, 26)
+        d.text((cx - d.textlength(lg, font=f) / 2, 585), lg, font=f, fill=(189, 189, 189))
+    for i, pk in enumerate(picks):
+        y, X, Wd, rh = 630 + i * 130, 80, W - 160, 112
+        cy = y + rh / 2
+        d.rounded_rectangle((X, y, X + Wd, y + rh), radius=24, fill=tuple(int(v * .55) + 10 for v in B1),
+                            outline=tuple(int(v * .5) for v in A), width=2)
+        d.ellipse((X + 24, cy - 26, X + 76, cy + 26), fill=A)
+        f = F(BLK, 28)
+        d.text((X + 50 - d.textlength(str(i + 1), font=f) / 2, cy - 18), str(i + 1), font=f, fill=(17, 17, 17))
+        t = pk.upper()
+        f = F(BLK, 36)
+        while d.textlength(t, font=f) > Wd - 200 and f.size > 16:
+            f = F(BLK, f.size - 2)
+        d.text((X + 100, cy - 22), t, font=f, fill=(255, 255, 255))
+        t2 = X + Wd - 50
+        d.ellipse((t2 - 26, cy - 26, t2 + 26, cy + 26), fill=(34, 197, 94))
+        d.line([(t2 - 11, cy + 1), (t2 - 2, cy + 10), (t2 + 12, cy - 9)], fill=(255, 255, 255), width=6, joint='curve')
+    n = len(picks) + 1
+    foot = f'{n} OF {n} WON' + (f' · {brand}' if brand else '')
+    f = F(BLK, 32)
+    d.text((cx - d.textlength(foot, font=f) / 2, H - 100), foot, font=f, fill=A)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
