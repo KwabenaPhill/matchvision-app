@@ -502,6 +502,7 @@ details.rpost pre{white-space:pre-wrap;font-family:var(--f);font-size:13.5px;bac
 .datepick{display:flex;gap:8px;margin-top:8px}.datepick input{flex:1;min-width:0}.datepick .btn-save{flex:none;padding:12px 18px}
 .daystat{margin-bottom:12px}
 .savedline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:16px;margin-bottom:8px}
+.cw{color:#30D158!important}.cl2{color:#FF453A!important}.lostsep{font-size:11px;font-weight:800;letter-spacing:.08em;color:#FF453A;margin:10px 0 4px;padding-top:8px;border-top:1px dashed rgba(255,69,58,.45)}.pklost{opacity:.75}.wint{padding:10px}
 </style>
 <style id="design-midnight-red">
 /* v36 DESIGN: Midnight Red. One accent colour (#DFFB51) on deep black. Visual layer only: no features, data or markup changed. Keep this block last in <head>. */
@@ -914,7 +915,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.5';   // APP_VERSION = '3.5' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.7';   // APP_VERSION = '3.7' (the laptop reads this line for its "APP UPDATED" message)
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let toastT;function toast(t,ms=2600){const el=$('toast');el.textContent=t;el.classList.remove('on');void el.offsetWidth;el.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),ms);}
@@ -939,7 +940,7 @@ const DEF={live:true,every:2,bot:'MatchVision707Bot',channel:'https://t.me/match
   bold:true,boldTitle:true,boldBrand:true,boldLeague:false,boldWatch:true,uniBold:true,tags:true,hand:true,tgBold:'letters',tagsOff:{tg:true},
   showOdds:true,showChance:false,showPred:true,showFin:true,sort:'time',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
   vidCards:true,recRange:'week',premMembers:true};
-let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
+let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
 const saveSet=()=>store.set(K.set,JSON.stringify(SET));
 let POSTED=jget(K.posted,{});   // date -> item id -> app -> true  (what YOU sent from this phone)
 const savePosted=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(POSTED))if(k<keep)delete POSTED[k];store.set(K.posted,JSON.stringify(POSTED));};
@@ -1170,8 +1171,9 @@ function statePill(L,m){if(!L||L.st==='NS')return `<span class="pill wait">${esc
 function premSetOf(d){if(!prem)return [];const x=(prem.days||[]).find(p=>p.date===d.date);return x?x.picks||[]:[];}
 function matchCard(m,d){const L=liveOf(m,d),live=L&&['LIVE','HT'].includes(L.st);const pr=premSetOf(d);
   const sc=L&&L.gh!=null?`<div class="mscore ${live?'live':''}">${L.gh}-${L.ga}${SET.showPred&&m.score?`<small>Predicted ${esc(m.score)}</small>`:''}</div>`:(SET.showPred&&m.score?`<div class="mscore pred">${esc(m.score)}<small>Correct score</small></div>`:'');
-  const picks=(m.picks||[]).slice(0,3).map((p,i)=>{const s=pickState(p,i,m,d,L);const isP=pr.some(x=>x.n===m.n&&x.text===p.text);
-    return `<div class="game pkrow"><span class="pnum ${i===0?'first':''}">${i+1}</span><div class="gm"><b>${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(p.text)}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}<div class="tm" style="width:auto">${legMark(s)}</div></div>`;}).join('');
+  const ord=(m.picks||[]).slice(0,3).map((p,i)=>({p,i,s:pickState(p,i,m,d,L)}));const lostN=ord.filter(x=>x.s==='l').length;if(lostN)ord.sort((a,b)=>(a.s==='l')-(b.s==='l')||a.i-b.i);
+  const picks=ord.map(({p,i,s},j)=>{const isP=pr.some(x=>x.n===m.n&&x.text===p.text);
+    return (lostN&&lostN<ord.length&&j===ord.length-lostN?'<div class="lostsep">✘ LOST</div>':'')+`<div class="game pkrow ${s==='l'?'pklost':''}"><span class="pnum ${i===0?'first':''}">${i+1}</span><div class="gm"><b>${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(p.text)}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}<div class="tm" style="width:auto">${legMark(s)}</div></div>`;}).join('');
   const ht=L&&L.hh!=null&&L.st!=='NS'?` · HT ${L.hh}-${L.ha}`:'';
   return `<div class="card slipc" data-m="${m.n}" data-dk="${d.date}" style="padding:14px"><div class="sliphd" style="margin-bottom:8px"><div class="sn"><b class="lgname">${esc(m.league||'')}</b><span>Match ${m.n} · ${esc(m.kickoff||'')}${m.date&&m.date!==d.date?' · '+shortDate(m.date):''}${ht}</span></div><div style="flex:none;margin-left:auto">${statePill(L,m)}</div></div>
     <div class="mrow2"><button class="minicard" data-big="${m.n}" data-dk="${d.date}" aria-label="The match card">${mvCard(m,d,(d.matches||[]).length,true)}</button><div class="mright"><div class="mrow"><div class="tms"><b>${esc(m.home)}</b><b>${esc(m.away)}</b></div>${sc}</div></div></div><div class="glist" style="margin-top:10px">${picks}</div></div>`;}
@@ -1182,7 +1184,7 @@ function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Matc
   else if(fk&&fk>now&&d.date===todayKey()){const left=Math.ceil((fk-now)/60000);banner=`<div class="kick ${left<=30?'hot':''}"><span>${clockSm}First kick-off ${fmtT(fk)}</span><span>${inMins(left)} left</span></div>`;}
   const has=k=>ms.filter((m,i)=>k==='all'||st[i]===k);
   const chips=`<div class="chips scroll" style="margin-bottom:10px">${[['all','All'],['live','Live'],['up','Upcoming'],['fin','Finished']].map(([k,l])=>`<button class="chip ${matchFilter===k?'on':''}" data-mf="${k}">${l} ${has(k).length}</button>`).join('')}</div>`;
-  const list=has(matchFilter).filter((m,i)=>SET.showFin||matchFilter==='fin'||mState(m,d)!=='fin');
+  const list=has(matchFilter).filter((m,i)=>SET.showFin===true||matchFilter==='fin'||mState(m,d)!=='fin');
   return banner+chips+(list.length?list.map(m=>matchCard(m,d)).join(''):`<div class="card"><p class="empty">No matches here.</p></div>`)+`<button class="btn-half w100" data-act="copypicks" style="margin-top:2px">📋 Copy the picks</button>`;}
 function legSheet(d,m){
   // 3.3: like Sure Stake - tap Won or Lost on any pick; your tap always wins. "Send to the laptop" puts it in the results and posts.
@@ -1206,12 +1208,19 @@ function copyPicks(d){const t=['MATCH VISION · '+longDate(d.date),''].concat((d
 // ---------- Results view ----------
 function resultsView(d){if(!d)return `<div class="card"><p class="empty">No results yet.</p></div>`;const c=dayCount(d),s=safestCount(d),bk=bankerState(d);
   const wins=(d.posts||[]).filter(it=>it.group==='results'&&SET.groups.results!==false);
-  let h=`<div class="card"><div class="ct">${longDate(d.date)}</div><div class="statrow"><span>Safest picks</span><b>${s.n?`${s.w} of ${s.n} won`:'Waiting'}</b></div><div class="statrow"><span>All predictions</span><b>${c.w+c.l?`${c.w} won · ${c.l} lost`:'Waiting'}${c.p?` · ${c.p} to play`:''}</b></div>
+  let h=`<div class="card"><div class="ct">${longDate(d.date)}</div><div class="statrow"><span>Safest picks</span><b>${s.n?`${s.w} of ${s.n} won`:'Waiting'}</b></div><div class="statrow"><span>All predictions</span><b>${c.w+c.l?`<span class="cw">${c.w} won</span> · <span class="cl2">${c.l} lost</span>`:'Waiting'}${c.p?` · ${c.p} to play`:''}</b></div>
     ${d.banker&&d.banker.games?`<div class="statrow"><span>${Number(d.banker.total||0).toFixed(2)} odds banker</span><b>${bk==='w'?'✔ WON':bk==='l'?'✘ LOST':'Waiting'}</b></div>`:''}
     ${d.results&&d.results.correct_scores!=null?`<div class="statrow"><span>Correct scores right</span><b>${esc(d.results.correct_scores)}</b></div>`:''}</div>`;
   if(wins.length)h+=`<div class="card"><div class="ct">Ready to send</div><div class="cs">Winning pictures from the laptop. Tap a button to post.</div>${wins.map(it=>todoRow(d,it,false)).join('')}</div>`;
-  const ms=(d.matches||[]).filter(m=>mState(m,d)==='fin');if(ms.length)h+=`<div class="sect">Finished</div>`+ms.map(m=>matchCard(m,d)).join('');
+  const ms=(d.matches||[]).filter(m=>mState(m,d)==='fin');const won=[],lost=[];
+  for(const m of ms){const L=liveOf(m,d);const st=(m.picks||[]).slice(0,3).map((p,i)=>pickState(p,i,m,d,L));(st.some(x=>x==='l')?lost:won).push(m);}
+  if(won.length)h+=`<div class="sect cw">✅ Won (${won.length})</div>`+won.map(m=>winTicket(m,d)+matchCard(m,d)).join('');
+  if(lost.length)h+=`<div class="sect cl2" style="margin-top:14px">✘ Lost (${lost.length})</div>`+lost.map(m=>matchCard(m,d)).join('');
+  // 3.7: the Vision Premium slip is pinned at the very top
+  if(prem&&SET.premRecords!==false){const td=(prem.days||[]).find(x=>x.date===d.date);if(td)h=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium slip · pinned</span></div>`+premPicture(td)+'<div style="height:12px"></div>'+h;}
   return h;}
+function winTicket(m,d){if(!m.win||!m.win.img)return '';return `<div class="card wint"><img src="${esc(media(m.win.img))}" alt="Win ticket" loading="lazy" style="width:100%;border-radius:14px;display:block"><div class="btn-row" style="margin-top:8px"><button class="btn-save" data-winshare="${m.n}" data-dk="${d.date}" data-wp="wa">Share to WhatsApp</button><button class="btn-half" data-winshare="${m.n}" data-dk="${d.date}" data-wp="tg">Telegram / other</button></div></div>`;}
+async function shareWin(d,n,p){const m=(d.matches||[]).find(x=>String(x.n)===String(n));if(!m||!m.win)return;toast('Getting the picture…',1400);const f=await fileOf(m.win.img,`win-${d.date}-${n}`);await shareTo(p==='wa'?'wa':'ig',styled(m.win.text||'',p==='wa'?'wa':'tg'),f?[f]:[]);}
 
 // ---------- HOME ----------
 let homeView=SET.homeView||'posts';
@@ -1254,6 +1263,7 @@ function renderHome(quiet){const el=$('p-home');el.classList.toggle('noanim',!!q
   const d=todayDay();let body;if(homeView==='matches')body=matchesView(d);else if(homeView==='results')body=resultsView(d);else body=postsView(d)+upcomingCard();
   el.innerHTML=summaryBoxes(d)+body;}
 function homeClick(e,getDay,after){const b=e.target.closest('button,[data-m]');if(!b)return false;
+  if(b.dataset.winshare){const d=dayOf(b.dataset.dk);if(d)shareWin(d,b.dataset.winshare,b.dataset.wp);return true;}
   if(b.dataset.big){const d=dayOf(b.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===b.dataset.big);if(m)bigCard(d,m);return true;}
   if(b.dataset.act==='alltexts'){const d=getDay();if(d)textsSheet(d);return true;}
   if(b.dataset.view){homeView=b.dataset.view;after();return true;}
@@ -1288,7 +1298,7 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
   const wr=Object.entries(feed.win_rate||{}).filter(([k,v])=>v.of>0).sort((a,b)=>b[1].of-a[1].of);
   let premTop='';if(prem&&SET.premRecords!==false){const pd=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=pd.find(x=>x.date===t)||pd.find(x=>x.date<t);if(td)premTop=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium results · live</span></div>`+premPicture(td)+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
   el.innerHTML=premTop+`<div class="sechd rec-head"><span class="sect" style="margin:0">Win rate</span><div class="seg2 rec-range">${[['week','This week'],['month','Month'],['all','All time']].map(([k,l])=>`<button data-rr="${k}" class="${recRange===k?'on':''}">${l}</button>`).join('')}</div></div>
-  <div class="summary-grid">${box('Safest',pct(sw,sn),`${sw} of ${sn}`,0)}${box('All picks',pct(aw,an),`${aw} of ${an}`,1)}${box('Banker',bn?`${bw}/${bn}`:'-',bn?'won':'no banker',2)}</div>
+  <div class="summary-grid">${box('Safest',pct(sw,sn),`${sw} of ${sn}`,0)}${box('All picks',pct(aw,an),`<span class="cw">${aw} won</span> · <span class="cl2">${an-aw} lost</span>`,1)}${box('Banker',bn?`${bw}/${bn}`:'-',bn?'won':'no banker',2)}</div>
   <div class="pltotal"><span>Correct scores right<small>${recRange==='week'?'This week':recRange==='month'?'This month':'All time'} · from the 23:45 results</small></span><b class="${cs?'up':'flat'}">${cs||'-'}</b></div>
   <div class="streak32"><span><span class="ct">Banker streak</span><small>Bankers won in a row</small></span><b>${feed.banker_streak||0}</b></div>
   <div class="card" style="padding:4px 16px"><button class="trow" data-act="recap"><span class="tn"><b>${recRange==='week'?'Weekly':recRange==='month'?'Monthly':'All time'} results post</b><small>Tap to see it and send it</small></span><span class="ch">›</span></button></div>
@@ -1297,7 +1307,7 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
   ${groups.length?groups.map(g=>{const name=g.w===tw?'This week':g.w===addDays(tw,-7)?'Last week':`Week of ${shortDate(g.w).slice(4)}`;
     return `<div class="wk"><span>${name}</span></div><div class="card" style="padding:4px 16px">${g.ds.map(d=>{const s=safestCount(d),c=dayCount(d),b=bankerState(d);const its=itemsOf(d),n=its.filter(it=>isDone(d,it)).length;
       return `<button class="hrow ${d.date===t?'today':''}" data-day="${d.date}"><div class="a"><span class="dname">${d.date===t?'Today · ':''}${longDate(d.date)}</span><span class="hr-r"><span class="pl ${s.n?(s.w/s.n>=.5?'up':'down'):'flat'}">${s.n?pct(s.w,s.n):''}</span><span class="ch">›</span></span></div>
-        <div class="dpills"><span class="dpill ${s.n?'won':''}">SAFEST ${s.n?`${s.w}/${s.n}`:'WAITING'}</span><span class="dpill">ALL ${c.w}/${c.w+c.l}</span>${d.banker&&d.banker.games?`<span class="dpill ${b==='w'?'won':b==='l'?'lost':''}">BANKER ${b==='w'?'WON':b==='l'?'LOST':'WAITING'}</span>`:''}</div>
+        <div class="dpills"><span class="dpill ${s.n?'won':''}">SAFEST ${s.n?`${s.w}/${s.n}`:'WAITING'}</span><span class="dpill"><span class="cw">${c.w} won</span> · <span class="cl2">${c.l} lost</span></span>${d.banker&&d.banker.games?`<span class="dpill ${b==='w'?'won':b==='l'?'lost':''}">BANKER ${b==='w'?'WON':b==='l'?'LOST':'WAITING'}</span>`:''}</div>
         ${its.length?`<div class="bar"><i style="width:${Math.round(n/its.length*100)}%"></i></div><div class="b">${n} of ${its.length} posts sent</div>`:''}</button>`;}).join('')}</div>`;}).join(''):'<div class="card"><p class="empty">Days show here after their results.</p></div>'}
   ${wr.length?`<div class="sect">Win rate by kind of pick</div><div class="card">${wr.map(([k,v])=>`<div class="statrow"><span>${esc(kindName(k))}<br><small class="muted">${v.won} of ${v.of}</small></span><b class="acc">${pct(v.won,v.of)}</b></div>`).join('')}</div>`:''}
   `;}
