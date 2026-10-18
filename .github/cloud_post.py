@@ -114,6 +114,8 @@ def main():
             import cloud_wins
             if cloud_wins.run(day, now, ROOT, tg, print):
                 dirty = True
+            if cloud_wins.results(day, now, tg, print):     # 3.8.1: the end-of-day results too
+                dirty = True
         except Exception as ex:
             print(f'{name}: win tickets problem ({ex}).')
         if dirty:
