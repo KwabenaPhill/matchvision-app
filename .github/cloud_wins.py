@@ -260,3 +260,62 @@ def run(day, now, root, tg, log=print):
             log(f'{m["home"]} vs {m["away"]}: could not post ({ex}). Next run tries again.')
         dirty = True
     return dirty
+
+
+# ------------------------------------------------------------------------------------------------ 3.8.1: end of day
+DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November',
+          'December']
+
+
+def results(day, now, tg, log=print):
+    """When every match is over and the laptop did not post the results: one post with every slip that won today."""
+    wins = day.get('wins') or []
+    if not wins or day.get('paused') or day.get('results_posted') or not day.get('results_on', True):
+        return False
+    kos = []
+    for m in wins:
+        try:
+            kos.append(datetime.datetime.fromisoformat(m['ko']))
+        except Exception:
+            pass
+    if not kos or now < max(kos) + datetime.timedelta(minutes=105 + int(day.get('results_cloud_wait', 60))):
+        return False
+    games, won_list, w, n = {}, [], 0, 0
+    for m in wins:
+        d = m['ko'][:10]
+        if d not in games:
+            try:
+                games[d] = espn_day(d)
+            except Exception as ex:
+                log(f'ESPN did not answer ({ex}).')
+                return False
+        g = find(games[d], m)
+        if not g or not g['done'] or g['gh'] is None:
+            continue
+        res = [won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha']) for p in m['picks']]
+        w += sum(1 for r in res if r is True)
+        n += sum(1 for r in res if r is not None)
+        if res and all(r is True for r in res):
+            won_list.append(f'✅ {m["home"]} {g["gh"]}-{g["ga"]} {m["away"]}')
+    if not won_list:
+        day['results_posted'] = 'cloud: no full wins'
+        return True
+    dd = datetime.date.fromisoformat(day['date'])
+    c = day.get('results_caption') or {}
+    head = str(c.get('head') or "🔥 *Today's Winning Slips*")
+    end = str(c.get('end') or '📊 *{WON} Of {TOTAL} Predictions Won*').replace('{WON}', str(w)).replace('{TOTAL}', str(n))
+    txt = '\n'.join([head, f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', ''] + won_list + ['', end] +
+                    ([f'\n{c["extra"]}'] if c.get('extra') else []))
+    try:
+        if (day.get('win_caption') or {}).get('bold', True):
+            tg('sendMessage', {'chat_id': day['win_chat'], 'parse_mode': 'HTML', 'disable_web_page_preview': 'true',
+                               'text': re.sub(r'\*([^*\n]+)\*', lambda x: f'<b>{x.group(1)}</b>', html.escape(txt, quote=False))})
+        else:
+            tg('sendMessage', {'chat_id': day['win_chat'], 'text': txt.replace('*', '')})
+        day['results_posted'] = 'cloud'
+        day['results_posted_at'] = now.isoformat(timespec='minutes')
+        log(f'{day["date"]}: END OF DAY RESULTS POSTED by the cloud.')
+    except Exception as ex:
+        log(f'{day["date"]}: results not posted ({ex}). Next run tries again.')
+    return True
