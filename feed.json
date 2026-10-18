@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-18T15:12:19",
+ "updated": "2026-10-18T15:16:51",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-18 Sunday",
@@ -92,7 +92,17 @@
      ],
      "hc": "media/crests/nottingham-forest.png",
      "ac": "media/crests/arsenal.png",
-     "live": null,
+     "live": {
+      "st": "NS",
+      "min": null,
+      "gh": null,
+      "ga": null,
+      "hh": null,
+      "ha": null,
+      "espn": "401878769",
+      "src": "ESPN",
+      "at": "2026-10-18T15:16:11"
+     },
      "picks": [
       {
        "text": "Under 3.5 goals",
@@ -342,14 +352,14 @@
      "ac": "media/crests/sc-freiburg.png",
      "live": {
       "st": "LIVE",
-      "min": 79,
+      "min": 84,
       "gh": 2,
       "ga": 1,
       "hh": null,
       "ha": null,
       "espn": "401884771",
       "src": "ESPN",
-      "at": "2026-10-18T15:11:27"
+      "at": "2026-10-18T15:16:11"
      },
      "picks": [
       {
@@ -682,15 +692,15 @@
      "hc": "media/crests/lorient.png",
      "ac": "media/crests/monaco.png",
      "live": {
-      "st": "NS",
-      "min": null,
-      "gh": null,
-      "ga": null,
+      "st": "LIVE",
+      "min": 1,
+      "gh": 0,
+      "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401876435",
       "src": "ESPN",
-      "at": "2026-10-18T15:01:58"
+      "at": "2026-10-18T15:16:11"
      },
      "picks": [
       {
@@ -807,14 +817,14 @@
      "ac": "media/crests/ajax.png",
      "live": {
       "st": "LIVE",
-      "min": 25,
+      "min": 29,
       "gh": 0,
-      "ga": 0,
+      "ga": 1,
       "hh": null,
       "ha": null,
       "espn": "401875575",
       "src": "ESPN",
-      "at": "2026-10-18T15:11:27"
+      "at": "2026-10-18T15:16:11"
      },
      "picks": [
       {
@@ -942,15 +952,17 @@
      "hc": "media/crests/enugu-rangers.png",
      "ac": "media/crests/mc-alger.png",
      "live": {
-      "st": "NS",
+      "st": "FT",
       "min": null,
-      "gh": null,
-      "ga": null,
-      "hh": null,
-      "ha": null,
+      "gh": 2,
+      "ga": 0,
+      "hh": 0,
+      "ha": 0,
       "espn": "401914241",
       "src": "ESPN",
-      "at": "2026-10-18T12:50:01"
+      "at": "2026-10-18T15:16:11",
+      "dtries": 1,
+      "done_details": true
      },
      "picks": [
       {
@@ -962,7 +974,7 @@
         "o": "u",
         "v": 1.5
        },
-       "live": null,
+       "live": false,
        "mine": false
       },
       {
@@ -974,7 +986,7 @@
         "s": "a",
         "v": 0.5
        },
-       "live": null,
+       "live": false,
        "mine": false
       },
       {
@@ -985,7 +997,7 @@
         "t": "btts",
         "y": 0
        },
-       "live": null,
+       "live": true,
        "mine": false
       }
      ]
@@ -1010,15 +1022,17 @@
      "hc": "media/crests/scotland-mabvuku.png",
      "ac": "media/crests/petro-de-luanda.png",
      "live": {
-      "st": "NS",
+      "st": "FT",
       "min": null,
-      "gh": null,
-      "ga": null,
-      "hh": null,
-      "ha": null,
+      "gh": 2,
+      "ga": 0,
+      "hh": 0,
+      "ha": 0,
       "espn": "401914220",
       "src": "ESPN",
-      "at": "2026-10-18T12:50:01"
+      "at": "2026-10-18T15:16:11",
+      "dtries": 1,
+      "done_details": true
      },
      "picks": [
       {
@@ -1030,7 +1044,7 @@
         "o": "u",
         "v": 2.5
        },
-       "live": null,
+       "live": true,
        "mine": false
       },
       {
@@ -1041,7 +1055,7 @@
         "t": "btts",
         "y": 0
        },
-       "live": null,
+       "live": true,
        "mine": false
       }
      ]
@@ -1066,15 +1080,17 @@
      "hc": "media/crests/sidama-bunna.png",
      "ac": "media/crests/al-hilal-omdurman.png",
      "live": {
-      "st": "NS",
+      "st": "FT",
       "min": null,
-      "gh": null,
-      "ga": null,
-      "hh": null,
-      "ha": null,
+      "gh": 0,
+      "ga": 2,
+      "hh": 0,
+      "ha": 0,
       "espn": "401914245",
       "src": "ESPN",
-      "at": "2026-10-18T12:50:01"
+      "at": "2026-10-18T15:16:11",
+      "dtries": 1,
+      "done_details": true
      },
      "picks": [
       {
@@ -1086,7 +1102,7 @@
         "o": "u",
         "v": 1.5
        },
-       "live": null,
+       "live": false,
        "mine": false
       },
       {
@@ -1097,7 +1113,7 @@
         "t": "btts",
         "y": 0
        },
-       "live": null,
+       "live": true,
        "mine": false
       }
      ]
@@ -8484,7 +8500,7 @@
   {
    "k": "VIDEO_MIN_MINUTES",
    "tab": "Long video",
-   "v": 8.0,
+   "v": 7.0,
    "d": "The video is never shorter than this many minutes (when there are at least VIDEO MIN MATCHES matches).",
    "kind": "float",
    "c": null
@@ -8524,7 +8540,7 @@
   {
    "k": "MATCH_MIN_SECONDS",
    "tab": "Long video",
-   "v": 15.0,
+   "v": 20.0,
    "d": "Shortest normal time a match stays on screen (seconds).",
    "kind": "float",
    "c": null
@@ -8532,7 +8548,7 @@
   {
    "k": "MATCH_MAX_SECONDS",
    "tab": "Long video",
-   "v": 20.0,
+   "v": 30.0,
    "d": "Usual longest time for a match card (seconds). When the video needs more time, the card may stretch up to MATCH LONGEST SECONDS.",
    "kind": "float",
    "c": null
@@ -8552,7 +8568,7 @@
   {
    "k": "FIRST_PICK_AT",
    "tab": "Long video",
-   "v": 5.0,
+   "v": 4.5,
    "d": "Wait this many seconds after a match starts, then prediction 1 appears.",
    "kind": "float",
    "c": null
@@ -8571,7 +8587,7 @@
   {
    "k": "PICK_GAP",
    "tab": "Long video",
-   "v": 4.0,
+   "v": 5.0,
    "d": "Shortest space between prediction 1, 2 and 3 (seconds). It can grow as needed, up to the longest space below.",
    "kind": "float",
    "c": null
@@ -8579,7 +8595,7 @@
   {
    "k": "PICK_GAP_MAX",
    "tab": "Long video",
-   "v": 4.0,
+   "v": 7.0,
    "d": "Longest space between predictions (seconds). The builder uses this only when a longer video needs to give each pick more time.",
    "kind": "float",
    "c": null
@@ -8595,7 +8611,7 @@
   {
    "k": "TYPE_SPEED",
    "tab": "Long video",
-   "v": 12.0,
+   "v": 15.0,
    "d": "How fast the prediction words type in (letters a second). Lower = slower.",
    "kind": "float",
    "c": null
@@ -8994,7 +9010,7 @@
   {
    "k": "CARD_STYLE",
    "tab": "Long video",
-   "v": "App card - Pitch",
+   "v": "Full screen - Blue glow",
    "d": "3.2: the look of each match card. \"Match Vision (Frankfurt card)\" is the approved card (default). The App cards look like the cards in your phone app (big, clear, easy to read).",
    "kind": "choice",
    "c": [
@@ -9078,7 +9094,7 @@
   {
    "k": "MUSIC_VOLUME",
    "tab": "Music",
-   "v": 0.4,
+   "v": 0.3,
    "d": "Music loudness, 0.1 (quiet) to 1.0 (full).",
    "kind": "float",
    "c": null
@@ -11017,9 +11033,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "874gBDQdg5pbnesv72G4tQ==",
-  "nonce": "jvK28hsZ4jziCMLSKyRpYQ==",
-  "ct": "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",
-  "mac": "rIIGSPlS5Ia/BL8Xe9tv/r/xMcVDmDeMp1ExoG1a7Ik="
+  "salt": "54zc68zoVCpZnnN9UjqiJw==",
+  "nonce": "+23WaVS+thzNADhN0wcOyw==",
+  "ct": "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",
+  "mac": "65zONubh1W6aZjz74M37zSmwcT6j2aaaAIntNM9qEl4="
  }
 }
