@@ -114,6 +114,8 @@ def main():
             import cloud_wins
             if cloud_wins.run(day, now, ROOT, tg, print):
                 dirty = True
+            if cloud_wins.banker(day, now, ROOT, tg, print):  # 3.9.3: the banker win at once
+                dirty = True
             if cloud_wins.results(day, now, tg, print):     # 3.8.1: the end-of-day results too
                 dirty = True
         except Exception as ex:
