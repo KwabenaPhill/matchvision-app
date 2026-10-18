@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """CLOUD POSTER (Sure Stake 707 and Match Vision) - runs on GitHub, not on the laptop.
 
-Every 10 minutes in the morning GitHub runs this file (.github/workflows/post.yml runs .github/cloud_post.py). It reads cloud/<today>.json,
+Every 5 minutes GitHub runs this file (3.8: also the win tickets, cloud_wins.py) (.github/workflows/post.yml runs .github/cloud_post.py). It reads cloud/<today>.json,
 written by the laptop bot, and posts every item that is due and not posted yet, CLOUD GRACE minutes after its time
 (so the laptop always goes first when it is on). Then it writes "posted": "cloud" into the file, so the laptop never
 posts it again. The bot token is a GitHub SECRET called TG_TOKEN: nobody can read it, not even this file's readers.
@@ -109,6 +109,13 @@ def main():
             except Exception as ex:
                 print(f'{name} {it["id"]}: could not post ({ex}). Next run tries again.')
             dirty = True
+        try:                                           # 3.8: win tickets when a match is over (laptop off too)
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            import cloud_wins
+            if cloud_wins.run(day, now, ROOT, tg, print):
+                dirty = True
+        except Exception as ex:
+            print(f'{name}: win tickets problem ({ex}).')
         if dirty:
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump(day, f, ensure_ascii=False, indent=1, sort_keys=True)
