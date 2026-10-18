@@ -302,14 +302,26 @@ def results(day, now, tg, log=print):
         n += sum(1 for r in res if r is not None)
         if res and all(r is True for r in res):
             won_list.append(f'✅ {m["home"]} {g["gh"]}-{g["ga"]} {m["away"]}')
-    if not won_list:
+    bk_line = ''
+    bk = day.get('banker') or {}
+    if bk.get('games'):                                  # 3.9.1: the 2 odds banker in the results post
+        rs = []
+        for bg in bk['games']:
+            m = next((x for x in wins if x.get('n') == bg.get('n')), None)
+            p = next((q for q in (m or {}).get('picks') or [] if q.get('text') == bg.get('text')), None)
+            g = find(games.get(m['ko'][:10]) or [], m) if m else None
+            rs.append(won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha']) if (p and g and g['done']) else None)
+        if all(r is True for r in rs):
+            bk_line = f'💰 *{float(bk.get("total") or 0):.2f} Odds Banker WON* ✅'
+    if not won_list and not bk_line:
         day['results_posted'] = 'cloud: no full wins'
         return True
     dd = datetime.date.fromisoformat(day['date'])
     c = day.get('results_caption') or {}
     head = str(c.get('head') or "🔥 *Today's Winning Slips*")
     end = str(c.get('end') or '📊 *{WON} Of {TOTAL} Predictions Won*').replace('{WON}', str(w)).replace('{TOTAL}', str(n))
-    txt = '\n'.join([head, f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', ''] + won_list + ['', end] +
+    txt = '\n'.join([head, f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', ''] + won_list +
+                    (['', bk_line] if bk_line else []) + ['', end] +
                     ([f'\n{c["extra"]}'] if c.get('extra') else []))
     try:
         if (day.get('win_caption') or {}).get('bold', True):
