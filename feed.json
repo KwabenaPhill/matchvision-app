@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-18T21:03:06",
+ "updated": "2026-10-18T21:04:05",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-19 Monday",
@@ -2109,324 +2109,555 @@
     "matches": [
      {
       "n": 1,
-      "home": "Nottingham Forest",
-      "away": "Arsenal",
-      "status": "NS",
-      "score": "",
+      "home": "Real Madrid",
+      "away": "Sevilla",
+      "status": "FT",
+      "score": "4-1",
       "predicted": "2-1",
       "picks": [
        {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": null,
-        "p": 0.75,
-        "won": null
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.22,
+        "p": 0.77,
+        "won": true
        },
        {
-        "text": "Arsenal to score",
+        "text": "Real Madrid over 1.5 goals",
         "market": "TEAM GOALS",
         "odds": null,
         "p": 0.71,
-        "won": null
+        "won": true
        },
        {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": null,
-        "p": 0.51,
-        "won": null
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.8,
+        "p": 0.56,
+        "won": false
        }
       ]
      },
      {
       "n": 2,
-      "home": "Leeds United",
-      "away": "Manchester United",
-      "status": "NS",
-      "score": "",
-      "predicted": "2-1",
+      "home": "Nottingham Forest",
+      "away": "Arsenal",
+      "status": "FT",
+      "score": "0-1",
+      "predicted": "0-2",
       "picks": [
        {
-        "text": "Over 1.5 goals",
+        "text": "Under 3.5 goals",
         "market": "GOALS",
-        "odds": null,
-        "p": 0.72,
-        "won": null
+        "odds": 1.33,
+        "p": 0.79,
+        "won": true
        },
        {
-        "text": "BTTS - Yes",
+        "text": "BTTS - No",
         "market": "BTTS",
-        "odds": null,
-        "p": 0.5,
-        "won": null
+        "odds": 1.91,
+        "p": 0.57,
+        "won": true
        },
        {
-        "text": "Manchester United to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.64,
-        "won": null
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.36,
+        "p": 0.69,
+        "won": false
        }
       ]
      },
      {
       "n": 3,
-      "home": "Juventus",
-      "away": "Lazio",
-      "status": "NS",
-      "score": "",
+      "home": "Leeds United",
+      "away": "Manchester United",
+      "status": "FT",
+      "score": "1-1",
       "predicted": "2-1",
       "picks": [
        {
-        "text": "Under 3.5 goals",
+        "text": "Over 1.5 goals",
         "market": "GOALS",
-        "odds": null,
+        "odds": 1.2,
         "p": 0.75,
-        "won": null
+        "won": true
        },
        {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": null,
-        "p": 0.51,
-        "won": null
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.3,
+        "p": 0.72,
+        "won": true
        },
        {
-        "text": "Lazio to score",
+        "text": "Manchester United to score",
         "market": "TEAM GOALS",
         "odds": null,
-        "p": 0.7,
-        "won": null
+        "p": 0.72,
+        "won": true
        }
       ]
      },
      {
       "n": 4,
-      "home": "AC Milan",
-      "away": "Atalanta",
-      "status": "NS",
-      "score": "",
-      "predicted": "2-1",
+      "home": "Juventus",
+      "away": "Lazio",
+      "status": "FT",
+      "score": "0-3",
+      "predicted": "2-0",
       "picks": [
        {
         "text": "Over 1.5 goals",
         "market": "GOALS",
-        "odds": null,
-        "p": 0.73,
-        "won": null
+        "odds": 1.3,
+        "p": 0.7,
+        "won": true
        },
        {
-        "text": "BTTS - Yes",
+        "text": "BTTS - No",
         "market": "BTTS",
-        "odds": null,
-        "p": 0.5,
-        "won": null
+        "odds": 1.91,
+        "p": 0.53,
+        "won": true
        },
        {
-        "text": "Atalanta to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.62,
-        "won": null
+        "text": "Over 9.5 corners",
+        "market": "CORNERS",
+        "odds": 1.83,
+        "p": 0.5,
+        "won": true
        }
       ]
      },
      {
       "n": 5,
-      "home": "Bayer Leverkusen",
-      "away": "SC Freiburg",
-      "status": "NS",
-      "score": "",
+      "home": "AC Milan",
+      "away": "Atalanta",
+      "status": "FT",
+      "score": "3-2",
       "predicted": "2-1",
       "picks": [
        {
         "text": "Over 1.5 goals",
         "market": "GOALS",
-        "odds": null,
-        "p": 0.72,
-        "won": null
+        "odds": 1.22,
+        "p": 0.76,
+        "won": true
        },
        {
-        "text": "Bayer Leverkusen to score",
+        "text": "Atalanta to score",
         "market": "TEAM GOALS",
         "odds": null,
-        "p": 0.76,
-        "won": null
+        "p": 0.59,
+        "won": true
        },
        {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": null,
-        "p": 0.51,
-        "won": null
+        "text": "Under 9.5 corners",
+        "market": "CORNERS",
+        "odds": 1.67,
+        "p": 0.56,
+        "won": true
        }
       ]
      },
      {
       "n": 6,
-      "home": "Brighton",
-      "away": "Crystal Palace",
-      "status": "NS",
-      "score": "",
-      "predicted": "2-0",
+      "home": "Bayer Leverkusen",
+      "away": "SC Freiburg",
+      "status": "FT",
+      "score": "2-1",
+      "predicted": "2-1",
       "picks": [
        {
-        "text": "Under 3.5 goals",
+        "text": "Over 2.5 goals",
         "market": "GOALS",
-        "odds": null,
-        "p": 0.74,
-        "won": null
+        "odds": 1.5,
+        "p": 0.66,
+        "won": true
        },
        {
-        "text": "Brighton over 1.5 goals",
+        "text": "SC Freiburg to score",
         "market": "TEAM GOALS",
         "odds": null,
-        "p": 0.5,
-        "won": null
+        "p": 0.72,
+        "won": true
        },
        {
-        "text": "BTTS - No",
+        "text": "BTTS - Yes",
         "market": "BTTS",
-        "odds": null,
-        "p": 0.52,
-        "won": null
+        "odds": 1.5,
+        "p": 0.63,
+        "won": true
        }
       ]
      },
      {
       "n": 7,
-      "home": "Angers",
-      "away": "Marseille",
-      "status": "NS",
-      "score": "",
+      "home": "Brighton",
+      "away": "Crystal Palace",
+      "status": "FT",
+      "score": "5-0",
       "predicted": "2-1",
       "picks": [
        {
-        "text": "Under 3.5 goals",
+        "text": "Over 1.5 goals",
         "market": "GOALS",
+        "odds": 1.17,
+        "p": 0.83,
+        "won": true
+       },
+       {
+        "text": "Crystal Palace to score",
+        "market": "TEAM GOALS",
         "odds": null,
-        "p": 0.74,
-        "won": null
+        "p": 0.63,
+        "won": false
        },
        {
         "text": "BTTS - Yes",
         "market": "BTTS",
-        "odds": null,
-        "p": 0.5,
-        "won": null
-       },
-       {
-        "text": "Angers over 1.5 goals",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.48,
-        "won": null
+        "odds": 1.67,
+        "p": 0.56,
+        "won": false
        }
       ]
      },
      {
       "n": 8,
-      "home": "Lorient",
-      "away": "Monaco",
-      "status": "NS",
-      "score": "",
+      "home": "Bournemouth",
+      "away": "Sunderland",
+      "status": "FT",
+      "score": "2-0",
       "predicted": "2-1",
       "picks": [
        {
         "text": "Over 1.5 goals",
         "market": "GOALS",
-        "odds": null,
-        "p": 0.72,
-        "won": null
+        "odds": 1.25,
+        "p": 0.77,
+        "won": true
        },
        {
         "text": "BTTS - Yes",
         "market": "BTTS",
-        "odds": null,
-        "p": 0.51,
-        "won": null
+        "odds": 1.7,
+        "p": 0.56,
+        "won": false
        },
        {
-        "text": "Monaco to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.71,
-        "won": null
+        "text": "Over 9.5 corners",
+        "market": "CORNERS",
+        "odds": 1.8,
+        "p": 0.52,
+        "won": false
        }
       ]
      },
      {
       "n": 9,
-      "home": "Lyon",
-      "away": "Nice",
-      "status": "NS",
-      "score": "",
-      "predicted": "2-1",
+      "home": "Malaga",
+      "away": "Real Sociedad",
+      "status": "FT",
+      "score": "2-5",
+      "predicted": "1-2",
       "picks": [
        {
         "text": "Under 3.5 goals",
         "market": "GOALS",
-        "odds": null,
-        "p": 0.74,
-        "won": null
-       },
-       {
-        "text": "Lyon to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.79,
-        "won": null
+        "odds": 1.4,
+        "p": 0.72,
+        "won": false
        },
        {
         "text": "BTTS - Yes",
         "market": "BTTS",
-        "odds": null,
-        "p": 0.5,
-        "won": null
+        "odds": 1.67,
+        "p": 0.54,
+        "won": true
+       },
+       {
+        "text": "Under 9.5 corners",
+        "market": "CORNERS",
+        "odds": 1.91,
+        "p": 0.48,
+        "won": true
        }
       ]
      },
      {
       "n": 10,
-      "home": "AFC Bournemouth",
-      "away": "Sunderland",
-      "status": "NS",
-      "score": "",
+      "home": "Angers",
+      "away": "Marseille",
+      "status": "FT",
+      "score": "2-5",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.2,
+        "p": 0.79,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.53,
+        "p": 0.58,
+        "won": true
+       },
+       {
+        "text": "Over 9.5 corners",
+        "market": "CORNERS",
+        "odds": 1.98,
+        "p": 0.48,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 11,
+      "home": "Lorient",
+      "away": "Monaco",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.33,
+        "p": 0.71,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.75,
+        "p": 0.54,
+        "won": false
+       },
+       {
+        "text": "Under 9 corners",
+        "market": "CORNERS",
+        "odds": 1.95,
+        "p": 0.49,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 12,
+      "home": "Lyon",
+      "away": "Nice",
+      "status": "FT",
+      "score": "2-1",
       "predicted": "2-1",
       "picks": [
        {
         "text": "Over 1.5 goals",
         "market": "GOALS",
-        "odds": null,
-        "p": 0.72,
-        "won": null
+        "odds": 1.2,
+        "p": 0.78,
+        "won": true
+       },
+       {
+        "text": "Over 10.5 corners",
+        "market": "CORNERS",
+        "odds": 1.83,
+        "p": 0.5,
+        "won": false
        },
        {
         "text": "BTTS - Yes",
         "market": "BTTS",
-        "odds": null,
-        "p": 0.51,
-        "won": null
+        "odds": 1.62,
+        "p": 0.53,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 13,
+      "home": "Groningen",
+      "away": "Ajax",
+      "status": "FT",
+      "score": "2-5",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.36,
+        "p": 0.73,
+        "won": true
        },
        {
-        "text": "AFC Bournemouth over 1.5 goals",
+        "text": "Under 10 corners",
+        "market": "CORNERS",
+        "odds": 1.82,
+        "p": 0.52,
+        "won": false
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.36,
+        "p": 0.71,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 14,
+      "home": "Asante Kotoko",
+      "away": "Young Apostles",
+      "status": "FT",
+      "score": "2-1",
+      "predicted": "1-0",
+      "picks": [
+       {
+        "text": "Under 2.5 goals",
+        "market": "GOALS",
+        "odds": null,
+        "p": 0.76,
+        "won": false
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": null,
+        "p": 0.74,
+        "won": false
+       },
+       {
+        "text": "Asante Kotoko to score",
         "market": "TEAM GOALS",
         "odds": null,
-        "p": 0.44,
-        "won": null
+        "p": 0.71,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 15,
+      "home": "Enugu Rangers",
+      "away": "MC Alger",
+      "status": "FT",
+      "score": "2-0",
+      "predicted": "0-1",
+      "picks": [
+       {
+        "text": "Under 1.5 goals",
+        "market": "GOALS",
+        "odds": null,
+        "p": 0.62,
+        "won": false
+       },
+       {
+        "text": "MC Alger to score",
+        "market": "TEAM GOALS",
+        "odds": null,
+        "p": 0.64,
+        "won": false
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": null,
+        "p": 0.83,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 16,
+      "home": "Scotland Mabvuku",
+      "away": "Petro de Luanda",
+      "status": "FT",
+      "score": "2-0",
+      "predicted": "0-0",
+      "picks": [
+       {
+        "text": "Under 2.5 goals",
+        "market": "GOALS",
+        "odds": null,
+        "p": 0.96,
+        "won": true
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": null,
+        "p": 0.9,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 17,
+      "home": "Sidama Bunna",
+      "away": "Al Hilal Omdurman",
+      "status": "FT",
+      "score": "0-2",
+      "predicted": "0-0",
+      "picks": [
+       {
+        "text": "Under 1.5 goals",
+        "market": "GOALS",
+        "odds": null,
+        "p": 0.74,
+        "won": false
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": null,
+        "p": 0.85,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 18,
+      "home": "Wiliete",
+      "away": "Mamelodi Sundowns",
+      "status": "FT",
+      "score": "0-0",
+      "predicted": "0-0",
+      "picks": [
+       {
+        "text": "Under 1.5 goals",
+        "market": "GOALS",
+        "odds": null,
+        "p": 0.75,
+        "won": true
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": null,
+        "p": 0.9,
+        "won": true
        }
       ]
      }
     ],
-    "checked": "2026-10-16T23:28:19",
-    "won": 0,
-    "lost": 0,
-    "waiting": 30,
+    "checked": "2026-10-18T21:03:19",
+    "banker": {
+     "total": 2.0,
+     "won": true
+    },
+    "won": 35,
+    "lost": 16,
+    "waiting": 0,
     "pick1": [
-     0,
-     0
+     14,
+     18
     ],
-    "correct_scores": 0
+    "correct_scores": 3
    },
    "video_link": "https://youtu.be/-xyX9fT-0AM",
    "posts": [
@@ -2576,6 +2807,72 @@
      "note": "",
      "ready": true,
      "at": "2026-10-18T13:00"
+    },
+    {
+     "id": "win1",
+     "group": "results",
+     "title": "14/18 results (style 1)",
+     "when": "23:45",
+     "images": [
+      "media/2026-10-18/win-1.jpg"
+     ],
+     "texts": {
+      "tg": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Sunday Results | 18 October*\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "x": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballreels #instagram",
+      "th": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707"
+     },
+     "auto": {
+      "tg": true
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-18T23:45"
+    },
+    {
+     "id": "win2",
+     "group": "results",
+     "title": "7 safest picks won (1/2)",
+     "when": "23:45",
+     "images": [
+      "media/2026-10-18/win-2.jpg"
+     ],
+     "texts": {
+      "tg": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\nReal Madrid 4 - 1 Sevilla | Over 0.5 Goals 1st Half ✅\nNottingham Forest 0 - 1 Arsenal | Under 3.5 Goals ✅\nLeeds United 1 - 1 Manchester United | Over 1.5 Goals ✅\nJuventus 0 - 3 Lazio | Over 1.5 Goals ✅\nAC Milan 3 - 2 Atalanta | Over 1.5 Goals ✅\nBayer Leverkusen 2 - 1 SC Freiburg | Over 2.5 Goals ✅\nBrighton 5 - 0 Crystal Palace | Over 1.5 Goals ✅",
+      "wa": "🏆 *Sunday Safest Picks Won | 18 October*\nMatch Vision\n\nReal Madrid 4 - 1 Sevilla | Over 0.5 Goals 1st Half ✅\nNottingham Forest 0 - 1 Arsenal | Under 3.5 Goals ✅\nLeeds United 1 - 1 Manchester United | Over 1.5 Goals ✅\nJuventus 0 - 3 Lazio | Over 1.5 Goals ✅\nAC Milan 3 - 2 Atalanta | Over 1.5 Goals ✅\nBayer Leverkusen 2 - 1 SC Freiburg | Over 2.5 Goals ✅\nBrighton 5 - 0 Crystal Palace | Over 1.5 Goals ✅",
+      "x": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions\n\n--- reply ---\n\nReal Madrid 4 - 1 Sevilla | Over 0.5 Goals 1st Half ✅\nNottingham Forest 0 - 1 Arsenal | Under 3.5 Goals ✅\nLeeds United 1 - 1 Manchester United | Over 1.5 Goals ✅\nJuventus 0 - 3 Lazio | Over 1.5 Goals ✅\nAC Milan 3 - 2 Atalanta | Over 1.5 Goals ✅\n\n--- reply ---\n\nBayer Leverkusen 2 - 1 SC Freiburg | Over 2.5 Goals ✅\nBrighton 5 - 0 Crystal Palace | Over 1.5 Goals ✅",
+      "ig": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\nReal Madrid 4 - 1 Sevilla | Over 0.5 Goals 1st Half ✅\nNottingham Forest 0 - 1 Arsenal | Under 3.5 Goals ✅\nLeeds United 1 - 1 Manchester United | Over 1.5 Goals ✅\nJuventus 0 - 3 Lazio | Over 1.5 Goals ✅\nAC Milan 3 - 2 Atalanta | Over 1.5 Goals ✅\nBayer Leverkusen 2 - 1 SC Freiburg | Over 2.5 Goals ✅\nBrighton 5 - 0 Crystal Palace | Over 1.5 Goals ✅\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballreels #instagram",
+      "th": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\nReal Madrid 4 - 1 Sevilla | Over 0.5 Goals 1st Half ✅\nNottingham Forest 0 - 1 Arsenal | Under 3.5 Goals ✅\nLeeds United 1 - 1 Manchester United | Over 1.5 Goals ✅\nJuventus 0 - 3 Lazio | Over 1.5 Goals ✅\nAC Milan 3 - 2 Atalanta | Over 1.5 Goals ✅\nBayer Leverkusen 2 - 1 SC Freiburg | Over 2.5 Goals ✅\nBrighton 5 - 0 Crystal Palace | Over 1.5 Goals ✅"
+     },
+     "auto": {
+      "tg": true
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-18T23:45"
+    },
+    {
+     "id": "win3",
+     "group": "results",
+     "title": "7 safest picks won (2/2)",
+     "when": "23:45",
+     "images": [
+      "media/2026-10-18/win-3.jpg"
+     ],
+     "texts": {
+      "tg": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\nBournemouth 2 - 0 Sunderland | Over 1.5 Goals ✅\nAngers 2 - 5 Marseille | Over 1.5 Goals ✅\nLorient 1 - 0 Monaco | Under 3.5 Goals ✅\nLyon 2 - 1 Nice | Over 1.5 Goals ✅\nGroningen 2 - 5 Ajax | Over 2.5 Goals ✅\nScotland Mabvuku 2 - 0 Petro De Luanda | Under 2.5 Goals ✅\nWiliete 0 - 0 Mamelodi Sundowns | Under 1.5 Goals ✅",
+      "wa": "🏆 *Sunday Safest Picks Won | 18 October*\nMatch Vision\n\nBournemouth 2 - 0 Sunderland | Over 1.5 Goals ✅\nAngers 2 - 5 Marseille | Over 1.5 Goals ✅\nLorient 1 - 0 Monaco | Under 3.5 Goals ✅\nLyon 2 - 1 Nice | Over 1.5 Goals ✅\nGroningen 2 - 5 Ajax | Over 2.5 Goals ✅\nScotland Mabvuku 2 - 0 Petro De Luanda | Under 2.5 Goals ✅\nWiliete 0 - 0 Mamelodi Sundowns | Under 1.5 Goals ✅",
+      "x": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions\n\n--- reply ---\n\nBournemouth 2 - 0 Sunderland | Over 1.5 Goals ✅\nAngers 2 - 5 Marseille | Over 1.5 Goals ✅\nLorient 1 - 0 Monaco | Under 3.5 Goals ✅\nLyon 2 - 1 Nice | Over 1.5 Goals ✅\nGroningen 2 - 5 Ajax | Over 2.5 Goals ✅\nScotland Mabvuku 2 - 0 Petro De Luanda | Under 2.5 Goals ✅\n\n--- reply ---\n\nWiliete 0 - 0 Mamelodi Sundowns | Under 1.5 Goals ✅",
+      "ig": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\nBournemouth 2 - 0 Sunderland | Over 1.5 Goals ✅\nAngers 2 - 5 Marseille | Over 1.5 Goals ✅\nLorient 1 - 0 Monaco | Under 3.5 Goals ✅\nLyon 2 - 1 Nice | Over 1.5 Goals ✅\nGroningen 2 - 5 Ajax | Over 2.5 Goals ✅\nScotland Mabvuku 2 - 0 Petro De Luanda | Under 2.5 Goals ✅\nWiliete 0 - 0 Mamelodi Sundowns | Under 1.5 Goals ✅\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballreels #instagram",
+      "th": "🏆 Sunday Safest Picks Won | 18 October\nMatch Vision\n\nBournemouth 2 - 0 Sunderland | Over 1.5 Goals ✅\nAngers 2 - 5 Marseille | Over 1.5 Goals ✅\nLorient 1 - 0 Monaco | Under 3.5 Goals ✅\nLyon 2 - 1 Nice | Over 1.5 Goals ✅\nGroningen 2 - 5 Ajax | Over 2.5 Goals ✅\nScotland Mabvuku 2 - 0 Petro De Luanda | Under 2.5 Goals ✅\nWiliete 0 - 0 Mamelodi Sundowns | Under 1.5 Goals ✅"
+     },
+     "auto": {
+      "tg": true
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-18T23:45"
     }
    ]
   },
@@ -9294,40 +9591,40 @@
    "of": 5
   },
   "U3.5": {
-   "won": 9,
-   "of": 17
+   "won": 11,
+   "of": 21
   },
   "TEAM": {
-   "won": 17,
-   "of": 24
+   "won": 22,
+   "of": 31
   },
   "BTTS-Y": {
-   "won": 11,
-   "of": 24
+   "won": 16,
+   "of": 32
   },
   "WIN": {
    "won": 3,
    "of": 3
   },
   "O2.5": {
-   "won": 8,
-   "of": 13
+   "won": 10,
+   "of": 15
   },
   "O1.5": {
-   "won": 17,
-   "of": 21
+   "won": 24,
+   "of": 28
   },
   "BTTS-N": {
-   "won": 7,
-   "of": 14
+   "won": 13,
+   "of": 21
   },
   "O0.5 1st half": {
-   "won": 13,
-   "of": 18
+   "won": 15,
+   "of": 21
   },
   "U9.5 corners": {
-   "won": 2,
-   "of": 3
+   "won": 4,
+   "of": 5
   },
   "O1.5 1st half": {
    "won": 2,
@@ -9338,12 +9635,12 @@
    "of": 2
   },
   "U1.5": {
-   "won": 2,
-   "of": 2
+   "won": 3,
+   "of": 5
   },
   "O9.5 corners": {
-   "won": 2,
-   "of": 4
+   "won": 3,
+   "of": 7
   },
   "O9 corners": {
    "won": 1,
@@ -9354,8 +9651,8 @@
    "of": 1
   },
   "U9 corners": {
-   "won": 2,
-   "of": 3
+   "won": 3,
+   "of": 4
   },
   "O8.5 corners": {
    "won": 1,
@@ -9363,10 +9660,18 @@
   },
   "U10 corners": {
    "won": 0,
+   "of": 2
+  },
+  "O10.5 corners": {
+   "won": 0,
    "of": 1
+  },
+  "U2.5": {
+   "won": 1,
+   "of": 2
   }
  },
- "banker_streak": 0,
+ "banker_streak": 1,
  "version": "3.10.1",
  "short_names": {
   "Manchester City": "Man City",
@@ -12296,9 +12601,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "RnSoggh3I4e3TREb6yFBow==",
-  "nonce": "PbDQ/vL2jP9e99hNzvJhnA==",
-  "ct": "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",
-  "mac": "oZ5eJiE9ZjCbLI8mtOu7Xu3BO3QzVTmJ6x7+W3gzeGM="
+  "salt": "dA9jnsLnkqwb7Tq/oAUdnw==",
+  "nonce": "mcRBNvGR9bC+NxOwxQmMnQ==",
+  "ct": "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",
+  "mac": "pSPp2LWDyfhRxkG/Sr/pOWSqE0ZqgQe2+iyKldxUrC8="
  }
 }
