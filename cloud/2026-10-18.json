@@ -3,15 +3,19 @@
   "games": [
    {
     "n": 2,
+    "odds": 1.33,
     "text": "Under 3.5 goals"
    },
    {
     "n": 6,
+    "odds": 1.5,
     "text": "Over 2.5 goals"
    }
   ],
+  "posted": "laptop",
   "total": 2.0
  },
+ "banker_on": true,
  "date": "2026-10-18",
  "grace_minutes": 10,
  "paused": false,
@@ -51,6 +55,8 @@
  "results_posted": null,
  "v": 1,
  "win_caption": {
+  "banker_end": "🔥 *Total Odds {ODDS}*",
+  "banker_head": "💰 *{ODDS} ODDS BANKER WON* 💰",
   "big": "💰 *BIG WIN* 💰",
   "bold": true,
   "brand": "MATCH VISION",
