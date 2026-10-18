@@ -507,6 +507,7 @@ details.rpost pre{white-space:pre-wrap;font-family:var(--f);font-size:13.5px;bac
 .bkcard{border-radius:18px;padding:14px;margin:0 0 14px;background:linear-gradient(180deg,#15120A,#0B0A07);border:1px solid #6B5520}.bkcard.won{border:2px solid #30D158;box-shadow:0 0 16px rgba(48,209,88,.25)}.bkcard.lost{border-color:#FF453A}
 .bkcard .bkh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.bkcard .bkh b{color:#ECC462;font-weight:900;letter-spacing:.08em}
 .bkcard .bkr{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);border-left:3px solid #ECC462;border-radius:12px;padding:8px 10px;margin-top:7px}.bkcard .bkr .t{flex:1;min-width:0}.bkcard .bkr .t b{display:block;font-size:14px}.bkcard .bkr .t small{color:#aaa;font-size:12px}.bkcard .bkr .o{color:#ECC462;font-weight:800}
+.lsc{color:#FF453A!important;font-weight:800}
 .sbox .sm2{white-space:nowrap;font-size:clamp(10px,3vw,13px)}.mvw{color:#30D158!important}.mvl{color:#FF453A!important}.pklost{opacity:.75}.wint{padding:10px}.secbar{display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:12px 16px;margin:6px 0 10px;font-size:15px;font-weight:900;letter-spacing:.12em;color:#06140A;background:#30D158}.secbar.lost{background:#FF453A;color:#fff;margin-top:18px}.secbar b{font-size:20px}.pst-lime .pcard{border-color:#5d6b22;background:radial-gradient(120% 60% at 50% 0%,rgba(223,251,81,.16),rgba(0,0,0,0) 60%),linear-gradient(180deg,#0f1408,#080a06)}.pst-lime .pcard .ph b{color:#DFFB51}.pst-lime .pcard .pr{border-left-color:#DFFB51;border-color:rgba(223,251,81,.18)}.pst-lime .pcard .pr .n{background:#DFFB51}.pst-dark .pcard{border-color:#333;background:#0c0c0e}.pst-dark .pcard .ph b{color:#fff}.pst-dark .pcard .pr{border-left-color:#fff;border-color:#2a2a2a}.pst-dark .pcard .pr .n{background:#fff}.pst-blue .pcard{border-color:#1f3d7a;background:radial-gradient(120% 60% at 50% 0%,rgba(64,140,255,.22),rgba(0,0,0,0) 60%),linear-gradient(180deg,#07112a,#050814)}.pst-blue .pcard .ph b{color:#8EC5FF}.pst-blue .pcard .pr{border-left-color:#4A9BFF;border-color:rgba(74,155,255,.2)}.pst-blue .pcard .pr .n{background:#4A9BFF}.pst-red .pcard{border-color:#6b1f1f;background:radial-gradient(120% 60% at 50% 0%,rgba(255,69,58,.2),rgba(0,0,0,0) 60%),linear-gradient(180deg,#160808,#0a0505)}.pst-red .pcard .ph b{color:#FF8A80}.pst-red .pcard .pr{border-left-color:#FF453A;border-color:rgba(255,69,58,.2)}.pst-red .pcard .pr .n{background:#FF453A;color:#fff}
 </style>
 <style id="design-midnight-red">
@@ -893,7 +894,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.9.2</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -920,7 +921,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.9.2';   // APP_VERSION = '3.9.2' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.10';   // APP_VERSION = '3.10' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1109,7 +1110,7 @@ function prepText(t,app){let s=String(t||'');
   return s;}
 function styled(t,app){const s=prepText(String(t||'').replace(/\*\*([^*\n]+)\*\*/g,'$1'),app);if(!SET.bold)return s;
   if(app==='tg'&&SET.tgBold==='none')return s;
-  const mode=app==='wa'?'wa':app==='tg'?(SET.tgBold==='stars'?'tg':'uni'):(['x','ig','tt','th','yt'].includes(app)&&SET.uniBold)?'uni':'';if(!mode)return s;
+  const mode=app==='wa'?'wa':(app==='any'||app==='copy')?'uni':app==='tg'?(SET.tgBold==='stars'?'tg':'uni'):(['x','ig','tt','th','yt'].includes(app)&&SET.uniBold)?'uni':'';if(!mode)return s;
   const B=x=>{const m=x.match(/^(\s*)(.*?)(\s*)$/);if(!m[2])return x;if(mode==='uni'){return m[1]+m[2].replace(/[A-Za-z0-9]+/g,w=>uniBold(w))+m[3];}const st=mode==='wa'?'*':'**';
     const e=m[2].match(/^([^\w\s]+\s*)?(.*?)$/u);const lead=e&&e[1]?e[1]:'';return m[1]+lead+st+m[2].slice(lead.length)+st+m[3];};
   const L=s.split('\n');const firstIdx=L.findIndex(l=>l.trim());
@@ -1328,16 +1329,24 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
         ${its.length?`<div class="bar"><i style="width:${Math.round(n/its.length*100)}%"></i></div><div class="b">${n} of ${its.length} posts sent</div>`:''}</button>`;}).join('')}</div>`;}).join(''):'<div class="card"><p class="empty">Days show here after their results.</p></div>'}
   ${wr.length?`<div class="sect">Win rate by kind of pick</div><div class="card">${wr.map(([k,v])=>`<div class="statrow"><span>${esc(kindName(k))}<br><small class="muted">${v.won} of ${v.of}</small></span><b class="acc">${pct(v.won,v.of)}</b></div>`).join('')}</div>`:''}
   `;}
-function recapText(){const ds=days().filter(d=>inRange(d.date));let sw=0,sn=0,aw=0,an=0;for(const d of ds){const s=safestCount(d);sw+=s.w;sn+=s.n;const c=dayCount(d);aw+=c.w;an+=c.w+c.l;}if(!sn)return '';
+function recapText(){const ds=days().filter(d=>inRange(d.date));let sw=0,sn=0,aw=0,an=0,cs=0,bw=0,bn=0;for(const d of ds){const s=safestCount(d);sw+=s.w;sn+=s.n;const c=dayCount(d);aw+=c.w;an+=c.w+c.l;if(d.results&&typeof d.results.correct_scores==='number')cs+=d.results.correct_scores;const b=bankerState(d);if(b){bn++;if(b==='w')bw++;}}if(!sn)return '';
   const head=recRange==='week'?"This Week's Results":recRange==='month'?`${MONTHS[new Date().getMonth()]} Results`:'All Time Results';
-  return `${head}\nMatch Vision\n\n✅ ${aw} Of ${an} Predictions Won\n🎯 Safest Picks: ${sw} Of ${sn} Won\n\n👇 Get Tomorrow's Games:\n${SET.channel}`;}
+  const pc=(w,n)=>n?Math.round(w*100/n)+'%':'-';const link=SET.recapLink===false?'':(SET.youtube||'');const end=link?`\n\n👇 Get Tomorrow's Games:\n${link}`:'';
+  const CS=cs?`🎯 Correct Scores: **${cs}**`:'',PR=`✅ Predictions: **${aw} Of ${an} Won**`,SF=`🔒 Safest Picks: **${sw} Of ${sn} Won**`,BK=bn?`💰 Bankers: **${bw} Of ${bn} Won**`:'';
+  const st=String(SET.recapStyle||'1');let body;
+  if(st==='2')body=[`🏆 **${head.toUpperCase()}**`,'',`🎯 Correct Scores ....... **${cs}**`,`✅ Predictions .......... **${aw}/${an}**`,`🔒 Safest Picks ......... **${sw}/${sn}**`].concat(bn?[`💰 Bankers .............. **${bw}/${bn}**`]:[]);
+  else if(st==='3')body=[`📈 **${head} In Numbers**`,'',`✅ Predictions: **${pc(aw,an)}** (${aw}/${an})`,`🔒 Safest Picks: **${pc(sw,sn)}** (${sw}/${sn})`].concat(cs?[`🎯 Correct Scores: **${cs}**`]:[]).concat(bn?[`💰 Bankers: **${bw}/${bn}**`]:[]);
+  else if(st==='4')body=[`📊 **${head}**`,'',`✅ **${aw}/${an}** Predictions · 🔒 **${sw}/${sn}** Safest`].concat(cs||bn?[[cs?`🎯 **${cs}** Correct Scores`:'',bn?`💰 **${bw}/${bn}** Bankers`:''].filter(Boolean).join(' · ')]:[]);
+  else if(st==='5')body=['🔥 **ANOTHER WINNING WEEK** 🔥','',...[CS,BK,PR,SF].filter(Boolean)];
+  else body=[`📊 **${head}**`,'',...[CS,PR,SF,BK].filter(Boolean)];
+  return body.join('\n')+end;}
 $('p-history').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   if(b.dataset.rr){recRange=b.dataset.rr;SET.recRange=recRange;saveSet();renderHistory();return;}
   if(b.dataset.day){openDay(b.dataset.day);return;}
   if(b.dataset.act==='open'){const v=$('recDate').value;if(v&&dayOf(v))openDay(v);else toast('No Match Vision day on that date');return;}
   if(b.dataset.act==='recap'){const r=recapText();if(!r){toast('Results come after the matches.');return;}const it={id:'recap',title:'Results post',texts:{wa:r,x:r,tg:r,ig:r,th:r},images:[]};
-    openSheet(`<div class="modal-title">${recRange==='week'?'Weekly':recRange==='month'?'Monthly':'All time'} results post</div><div class="post"><pre>${previewHTML(styled(r,'wa'))}</pre><div class="mini">${['wa','x','th','tg','copy'].map(p=>btnHTML(p,false)).join('')}</div></div><div class="btn-row"><button class="btn-half" data-close="1">Close</button></div>`,
-      async ev=>{const bb=ev.target.closest('button');if(!bb)return;if(bb.dataset.close){closeSheet();return;}const p=bb.dataset.p;if(!p)return;const ok=await shareTo(p,p==='copy'?styled(r,'wa'):styled(r,p),[]);if(ok&&p!=='copy')bb.classList.add('done');});}});
+    openSheet(`<div class="modal-title">${recRange==='week'?'Weekly':recRange==='month'?'Monthly':'All time'} results post</div><div class="post"><pre>${previewHTML(winFmt(r,'wa'))}</pre><div class="mini">${['wa','x','th','tg','copy'].map(p=>btnHTML(p,false)).join('')}</div></div><div class="btn-row"><button class="btn-half" data-close="1">Close</button></div>`,
+      async ev=>{const bb=ev.target.closest('button');if(!bb)return;if(bb.dataset.close){closeSheet();return;}const p=bb.dataset.p;if(!p)return;const ok=await shareTo(p,winFmt(r,p),[]);if(ok&&p!=='copy')bb.classList.add('done');});}});
 
 // ---------- VIDEO (the Match Vision video look) ----------
 let vday=null;
@@ -1366,7 +1375,7 @@ function renderVideo(){const el=$('p-video');if(!feed){el.innerHTML='<div class=
 $('p-video').addEventListener('click',async e=>{const b=e.target.closest('button,[data-m]');if(!b)return;
   if(b.dataset.vd){vday=b.dataset.vd;renderVideo();return;}
   if(b.dataset.open){const d=dayOf(b.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===b.dataset.open);if(it)openPostSheet(d,it);return;}
-  if(b.dataset.p&&b.closest('[data-vlink]')){const d=dayOf(vday);const link=d&&d.video_link;const t=`${longDate(d.date)} Predictions\nMatch Vision\n\n🎥 The Full Predictions Video Is Out Now.\n\n👇 Watch Now:\n${link}`;await shareTo(b.dataset.p,b.dataset.p==='copy'?link:styled(t,b.dataset.p),[]);return;}
+  if(b.dataset.p&&b.closest('[data-vlink]')){const d=dayOf(vday);const link=d&&d.video_link;const t=`${longDate(d.date)} Predictions\nMatch Vision\n\n👇 Watch Now:\n${link}`;await shareTo(b.dataset.p,b.dataset.p==='copy'?link:styled(t,b.dataset.p),[]);return;}
   const card=b.closest('[data-m]');if(card){const d=dayOf(card.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===card.dataset.m);if(m)legSheet(d,m);}});
 
 // ---------- VISION PREMIUM (Sure Stake's Elite page, in gold) ----------
@@ -1381,7 +1390,7 @@ function findM(d,g){const ms=(d&&d.matches)||[];const n=x=>String(x||'').toLower
 function premState(g,d){const m=findM(d,g);if(!m)return g.won===true?'w':g.won===false?'l':null;const i=(m.picks||[]).findIndex(p=>p.text===g.text);if(g.won===true)return 'w';if(g.won===false)return 'l';if(i<0)return null;return pickState(m.picks[i],i,m,d,liveOf(m,d));}
 function premWon(g,d){return MARKW(premState(g,d));}
 function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
-    return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
+    return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · <span class="lsc">${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}</span>`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
   return `<div class="pcard"><div class="ph"><span class="cw">${G.crown}</span><span><b>VISION PREMIUM</b><small>${longDate(td.date)} · Today's strongest picks</small></span></div>${rows}<div class="pf"><span>${(td.picks||[]).length} picks</span>${tot>1?`<span>Combined odds <b>${tot.toFixed(2)}</b></span>`:''}</div></div>`;}
 function renderElite(){const el=$('p-elite');const head=`<div class="sechd" style="margin:0 0 10px"><span class="sect goldc" style="margin:0;display:flex;align-items:center;gap:8px"><span class="eliteimg crown">👑</span>Vision Premium</span>${prem?'<button class="link" data-act="lock" style="color:var(--gold)!important;padding:0">Lock</button>':''}</div>`;
   if(!feed||!feed.premium_lock){el.innerHTML=head+`<div class="card goldb"><div class="ct goldc">Not in the app yet</div><div class="cs" style="margin:0">On the laptop: Connect > "4. Connect the app (GitHub)" > type a PIN in the Vision Premium PIN box > Save and test. Then Settings > Update now here.</div></div>`;return;}
@@ -1392,7 +1401,7 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
     if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
-    if(td){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
+    if(td&&SET.premList===true){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
         if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
         return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
     else body+='<div class="card"><p class="empty">No Vision Premium picks yet.</p></div>';
@@ -1467,6 +1476,8 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
     srow('winInResults','Win tickets in Results','The picture with Share buttons',SET.winInResults!==false,gi('gallery'))+
     srow('csstyle','Correct score win style',{gold:'1 Gold',diamond:'2 Diamond',emerald:'3 Emerald',royal:'4 Royal',fire:'5 Fire'}[SET.csStyle||'gold'],'',gi('crown'))+
     srow('premwinstyle','Premium wins picture',{gold:'1 Gold',lime:'2 Lime',emerald:'3 Emerald',diamond:'4 Diamond',royal:'5 Royal'}[SET.premWinStyle||'gold'],'',gi('crown'))+
+    srow('recapstyle','Weekly recap style',['','1 Classic','2 Scoreboard','3 Percent','4 Short','5 Big wins'][+(SET.recapStyle||1)],'',gi('textbold'))+
+    srow('recapLink','Weekly recap: YouTube link',"Get Tomorrow's Games + your YouTube link",SET.recapLink!==false,gi('ticket'))+
     srow('bankerInResults','Banker in Results','The 2 odds banker with Won / Lost and Share',SET.bankerInResults!==false,gi('ticket'))+
     srow('bankerwinstyle','Banker win picture',{gold:'1 Gold',lime:'2 Lime',emerald:'3 Emerald',diamond:'4 Diamond',royal:'5 Royal'}[SET.bankerWinStyle||'gold'],'',gi('ticket'))+
     srow('tapShare','Tap a finished match = share','Live or upcoming: Won / Lost buttons',SET.tapShare!==false,gi('phone'))+
@@ -1505,6 +1516,8 @@ async function settingsClick(e){const b=e.target.closest('button');if(!b)return;
   if(s==='winInResults'){SET.winInResults=SET.winInResults===false;saveSet();renderSettings();return;}
   if(s==='premPin'){SET.premPin=SET.premPin===false;saveSet();renderSettings();return;}
   if(s==='winstyle'){choose('Win ticket style',[['lime','1 Lime'],['gold','2 Gold'],['green','3 Green'],['blue','4 Blue'],['white','5 White']],SET.winStyle||'lime',v=>{SET.winStyle=v;choose('Win ticket shape',[['portrait','My old card (default)'],['wide','Wide (picks left, 3/3 WON right)']],SET.winShape||'portrait',v2=>{SET.winShape=v2;saveSet();renderSettings();});});return;}
+  if(s==='recapLink'){SET.recapLink=SET.recapLink===false;saveSet();renderSettings();return;}
+  if(s==='recapstyle'){choose('Weekly recap style',[['1','1 Classic'],['2','2 Scoreboard'],['3','3 Percent'],['4','4 Short'],['5','5 Big wins']],String(SET.recapStyle||'1'),v=>{SET.recapStyle=v;saveSet();renderSettings();});return;}
   if(s==='bankerInResults'){SET.bankerInResults=SET.bankerInResults===false;saveSet();renderSettings();return;}
   if(s==='bankerwinstyle'){choose('Banker win picture',[['gold','1 Gold'],['lime','2 Lime'],['emerald','3 Emerald'],['diamond','4 Diamond'],['royal','5 Royal']],SET.bankerWinStyle||'gold',v=>{SET.bankerWinStyle=v;saveSet();renderSettings();});return;}
   if(s==='tapShare'){SET.tapShare=SET.tapShare===false;saveSet();renderSettings();return;}
@@ -1893,9 +1906,9 @@ async function shareCard(kind,d){const cd=cardData(kind,d);if(!cd){toast(kind===
     <div class="btn-row"><button class="btn-half" data-cs="save">Save picture</button><button class="btn-half" data-close="1">Close</button></div><div class="muted" style="margin:10px 2px 4px;font-size:12px">Edit the text here first if you want. Each app gets its own bold and hashtags (Settings &gt; Posting).</div><textarea class="cs-text" id="csText" style="min-height:220px">${esc(text)}</textarea></div>`,
     async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.close){closeSheet();return;}const k=b.dataset.cs;if(!k)return;
       const ta=document.getElementById('csText');const text=ta?ta.value:cd.txt;
-      if(k==='copy'){toast(copyText(FM(text,'wa'))?'Text copied':'Copy failed');return;}
+      if(k==='copy'){toast(copyText(FM(text,'any'))?'Text copied':'Copy failed');return;}
       if(k==='save'){const a=document.createElement('a');a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();toast('Picture saved to Downloads');return;}
-      if(k==='any'){const tx=(kind==='match'||kind==='bankerwon')?winFmt(text,'any'):styled(text,'wa');copyText(tx);if(canShareFiles([file])){try{await navigator.share({files:[file],text:tx});toast('Text copied too: if it is not under the picture, long-press and Paste.',4000);}catch(err){}}else toast('Sharing pictures is not possible here. Tap Save picture.');return;}
+      if(k==='any'){const tx=(kind==='match'||kind==='bankerwon')?winFmt(text,'any'):styled(text,'any');copyText(tx);if(canShareFiles([file])){try{await navigator.share({files:[file],text:tx});toast('Text copied too: if it is not under the picture, long-press and Paste.',4000);}catch(err){}}else toast('Sharing pictures is not possible here. Tap Save picture.');return;}
       const f2=await fitFile(file,k);await shareTo(k,FM(text,k),[f2]);});}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-card]');if(b){e.stopPropagation();e.preventDefault();shareCard(b.dataset.card,dayOf(b.dataset.dk));return;}
   const hs=e.target.closest('#p-history [data-cardshare]');if(hs){e.stopPropagation();e.preventDefault();shareCard('premwon');return;}
