@@ -894,7 +894,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.1</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.2</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -921,7 +921,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.10.1';   // APP_VERSION = '3.10.1' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.10.2';   // APP_VERSION = '3.10.2' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1228,10 +1228,10 @@ function resultsView(d){if(!d)return `<div class="card"><p class="empty">No resu
   if(won.length)h+=`<div class="secbar"><span>✅ WON</span><b>${won.length}</b></div>`+won.map(m=>csOf(m)?`<div class="cswin"><div class="csh">🎯 CORRECT SCORE WIN · BIG WIN</div>${matchCard(m,d)}<button class="btn-save w100 csbtn" data-winshare2="${m.n}" data-dk="${d.date}">↗ Share this correct score win</button></div>`:matchCard(m,d)+(SET.winInResults!==false?winTicket(m,d):'')).join('');
   if(lost.length)h+=`<div class="secbar lost"><span>✘ LOST</span><b>${lost.length}</b></div>`+lost.map(m=>matchCard(m,d)).join('');
   // 3.7.1: the Vision Premium slip goes to Results (pinned at the top) only when ALL its games are done
-  const td=premDay(d);if(td&&premDone(td))h=premBlock(td,true)+h;
+  const td=premDay(d);if(td&&premDone(td)){const lostP=(td.picks||[]).some(g=>premWon(g,d)===false);h=lostP?h+`<div class="secbar lost"><span>👑 VIP LOST</span><b></b></div>`+premBlock(td,true):premBlock(td,true)+h;}   // 3.10.2: won = top, lost = bottom
   return h;}
 function premDay(d){if(!prem||SET.premPin===false)return null;return (prem.days||[]).find(x=>x.date===d.date)||null;}
-function premDone(td){const dd=dayOf(td.date);return (td.picks||[]).length>0&&(td.picks||[]).every(g=>premWon(g,dd)!=null);}
+function premDone(td){const dd=dayOf(td.date);return (td.picks||[]).length>0&&(td.picks||[]).every(g=>{const m=findM(dd,g);return premWon(g,dd)!=null||(m&&mState(m,dd)==='fin');});}
 function premBlock(td,done){return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium slip · ${done?'finished':'pinned'}</span></div><div class="pst-${esc(SET.premStyle||'gold')}">${premPicture(td)}</div>`+(done&&(td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-card="premwon" data-dk="${td.date}" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
 function winTicket(m,d){return `<button class="btn-save w100" data-winshare2="${m.n}" data-dk="${d.date}" style="margin:-4px 0 14px">↗ Share this win (picture + text)</button>`;}
 function bankerBlock(d,st){const bk=d.banker;const rows=bk.games.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n)||{};const i=(m.picks||[]).findIndex(p=>p.text===(g.pick&&g.pick.text));const s=i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));const L=m.n?liveOf(m,d):null;
@@ -1387,7 +1387,16 @@ async function botWord(kind,name){let w='';
   else w=kind;
   toast(copyText(w)?`Copied "${w}". Paste it in the bot chat and send.`:`Send this to your bot: ${w}`,3500);setTimeout(()=>{location.href='https://t.me/'+((prem&&prem.bot)||SET.bot);},900);}
 function findM(d,g){const ms=(d&&d.matches)||[];const n=x=>String(x||'').toLowerCase().replace(/[^a-z0-9]/g,'');return ms.find(x=>n(x.home)===n(g.home)&&n(x.away)===n(g.away))||ms.find(x=>(n(x.home).includes(n(g.home))||n(g.home).includes(n(x.home)))&&n(g.home))||ms.find(x=>x.n===g.n&&!g.home);}
-function premState(g,d){const m=findM(d,g);if(!m)return g.won===true?'w':g.won===false?'l':null;const i=(m.picks||[]).findIndex(p=>p.text===g.text);if(g.won===true)return 'w';if(g.won===false)return 'l';if(i<0)return null;return pickState(m.picks[i],i,m,d,liveOf(m,d));}
+function premState(g,d){const m=findM(d,g);if(!m)return g.won===true?'w':g.won===false?'l':null;const i=(m.picks||[]).findIndex(p=>p.text===g.text);if(g.won===true)return 'w';if(g.won===false)return 'l';if(i<0)return judgeText(g.text,m.home,m.away,liveOf(m,d));return pickState(m.picks[i],i,m,d,liveOf(m,d));}
+// 3.10.2: a Premium pick that is not one of the 3 match picks ("Leverkusen to score") is judged from the final score
+function judgeText(t,home,away,L){if(!L||L.st!=='FT'||L.gh==null)return null;const q=String(t||'').toLowerCase().trim(),gh=+L.gh,ga=+L.ga,tot=gh+ga,h=String(home||'').toLowerCase(),a=String(away||'').toLowerCase();let m;
+  if((m=q.match(/^(over|under) (\d+(?:\.\d)?) goals 1st half$/))){if(L.hh==null)return null;const t1=(+L.hh)+(+L.ha);return (m[1]==='over'?t1>+m[2]:t1<+m[2])?'w':'l';}
+  if((m=q.match(/^(over|under) (\d+(?:\.\d)?) goals$/)))return (m[1]==='over'?tot>+m[2]:tot<+m[2])?'w':'l';
+  if(/^(btts|both teams to score|gg)\s*-?\s*(yes)?$/.test(q)&&!/no$/.test(q))return gh>0&&ga>0?'w':'l';
+  if(/^(btts|both teams to score|ng)\s*-?\s*no$/.test(q)||q==='ng')return gh>0&&ga>0?'l':'w';
+  if(q===h+' to score')return gh>0?'w':'l';if(q===a+' to score')return ga>0?'w':'l';
+  if(q===h+' to win')return gh>ga?'w':'l';if(q===a+' to win')return ga>gh?'w':'l';
+  if(q===h+' or draw')return gh>=ga?'w':'l';if(q===a+' or draw')return ga>=gh?'w':'l';if(q==='draw')return gh===ga?'w':'l';return null;}
 function premWon(g,d){return MARKW(premState(g,d));}
 function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
     return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · <span class="${L.st==='FT'?'fsc':'lsc'}">${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}</span>`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
