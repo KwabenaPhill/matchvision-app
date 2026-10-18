@@ -886,7 +886,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.5</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.6</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -935,10 +935,10 @@ const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},
 const jget=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d:v;}catch(e){return d;}};
 const DEF={live:true,every:2,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
   apps:{wa:true,x:true,ig:true,tt:true,th:true,yt:true,tg:false},
-  bold:true,boldTitle:true,boldBrand:true,boldLeague:true,boldWatch:true,uniBold:true,tags:true,hand:true,
+  bold:true,boldTitle:true,boldBrand:true,boldLeague:false,boldWatch:true,uniBold:true,tags:true,hand:true,tgBold:'letters',tagsOff:{tg:true},
   showOdds:true,showChance:false,showPred:true,showFin:true,sort:'time',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
   vidCards:true,recRange:'week',premMembers:true};
-let SET=Object.assign({},DEF,jget(K.set,{}));SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
+let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
 const saveSet=()=>store.set(K.set,JSON.stringify(SET));
 let POSTED=jget(K.posted,{});   // date -> item id -> app -> true  (what YOU sent from this phone)
 const savePosted=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(POSTED))if(k<keep)delete POSTED[k];store.set(K.posted,JSON.stringify(POSTED));};
@@ -1094,12 +1094,13 @@ const btnHTML=(p,done,label)=>`<button data-p="${p}" class="${p!=='copy'&&done?'
 function uniBold(s){return [...String(s)].map(ch=>{const c=ch.codePointAt(0);if(c>=65&&c<=90)return String.fromCodePoint(0x1D5D4+c-65);if(c>=97&&c<=122)return String.fromCodePoint(0x1D5EE+c-97);if(c>=48&&c<=57)return String.fromCodePoint(0x1D7EC+c-48);return ch;}).join('');}
 const isTime=l=>/^\s*\d{1,2}:\d{2}\b/.test(l);
 const isTags=l=>/^\s*(#\w+\s*)+$/.test(l);
-function prepText(t){let s=String(t||'');
+function prepText(t,app){let s=String(t||'');
   if(SET.hand)s=s.replace(/^[ \t]*(?:▶️?|👉|🎥|👇)?[ \t]*(Watch [^:\n]*:)[ \t]*(https?:\/\/\S+)[ \t]*$/gim,'👇 $1\n$2');
-  if(!SET.tags)s=s.split('\n').filter(l=>!isTags(l)).join('\n').replace(/\n{3,}/g,'\n\n').trim();
+  if(!SET.tags||(app&&SET.tagsOff&&SET.tagsOff[app]))s=s.split('\n').filter(l=>!isTags(l)).join('\n').replace(/\n{3,}/g,'\n\n').trim();
   return s;}
-function styled(t,app){const s=prepText(t);if(!SET.bold)return s;
-  const mode=app==='wa'?'wa':app==='tg'?'tg':(['x','ig','tt','th','yt'].includes(app)&&SET.uniBold)?'uni':'';if(!mode)return s;
+function styled(t,app){const s=prepText(String(t||'').replace(/\*\*([^*\n]+)\*\*/g,'$1'),app);if(!SET.bold)return s;
+  if(app==='tg'&&SET.tgBold==='none')return s;
+  const mode=app==='wa'?'wa':app==='tg'?(SET.tgBold==='stars'?'tg':'uni'):(['x','ig','tt','th','yt'].includes(app)&&SET.uniBold)?'uni':'';if(!mode)return s;
   const B=x=>{const m=x.match(/^(\s*)(.*?)(\s*)$/);if(!m[2])return x;if(mode==='uni'){return m[1]+m[2].replace(/[A-Za-z0-9]+/g,w=>uniBold(w))+m[3];}const st=mode==='wa'?'*':'**';
     const e=m[2].match(/^([^\w\s]+\s*)?(.*?)$/u);const lead=e&&e[1]?e[1]:'';return m[1]+lead+st+m[2].slice(lead.length)+st+m[3];};
   const L=s.split('\n');const firstIdx=L.findIndex(l=>l.trim());
@@ -1274,7 +1275,8 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
   const box=(lab,v,sub,i)=>`<div class="sbox" style="animation-delay:${i*.04}s"><div class="bl">${lab}</div><div class="big">${v}</div><div class="sm2">${sub}</div></div>`;
   const groups=[];for(const d of days().filter(x=>x.date<=t).sort((a,b)=>a.date<b.date?1:-1)){const w=weekStart(d.date);let g=groups.find(x=>x.w===w);if(!g){g={w,ds:[]};groups.push(g);}g.ds.push(d);}const tw=weekStart(t);
   const wr=Object.entries(feed.win_rate||{}).filter(([k,v])=>v.of>0).sort((a,b)=>b[1].of-a[1].of);
-  el.innerHTML=`<div class="sechd rec-head"><span class="sect" style="margin:0">Win rate</span><div class="seg2 rec-range">${[['week','This week'],['month','Month'],['all','All time']].map(([k,l])=>`<button data-rr="${k}" class="${recRange===k?'on':''}">${l}</button>`).join('')}</div></div>
+  let premTop='';if(prem&&SET.premRecords!==false){const pd=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=pd.find(x=>x.date===t)||pd.find(x=>x.date<t);if(td)premTop=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium results · live</span></div>`+premPicture(td)+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
+  el.innerHTML=premTop+`<div class="sechd rec-head"><span class="sect" style="margin:0">Win rate</span><div class="seg2 rec-range">${[['week','This week'],['month','Month'],['all','All time']].map(([k,l])=>`<button data-rr="${k}" class="${recRange===k?'on':''}">${l}</button>`).join('')}</div></div>
   <div class="summary-grid">${box('Safest',pct(sw,sn),`${sw} of ${sn}`,0)}${box('All picks',pct(aw,an),`${aw} of ${an}`,1)}${box('Banker',bn?`${bw}/${bn}`:'-',bn?'won':'no banker',2)}</div>
   <div class="pltotal"><span>Correct scores right<small>${recRange==='week'?'This week':recRange==='month'?'This month':'All time'} · from the 23:45 results</small></span><b class="${cs?'up':'flat'}">${cs||'-'}</b></div>
   <div class="streak32"><span><span class="ct">Banker streak</span><small>Bankers won in a row</small></span><b>${feed.banker_streak||0}</b></div>
@@ -1337,9 +1339,10 @@ async function botWord(kind,name){let w='';
   else if(kind==='remove'){if(!confirm(`Remove ${name} from the room? The bot asks you once more.`))return;w=`remove ${name}`;}
   else w=kind;
   toast(copyText(w)?`Copied "${w}". Paste it in the bot chat and send.`:`Send this to your bot: ${w}`,3500);setTimeout(()=>{location.href='https://t.me/'+((prem&&prem.bot)||SET.bot);},900);}
-function premState(g,d){const m=d&&(d.matches||[]).find(x=>x.n===g.n);if(!m)return g.won===true?'w':g.won===false?'l':null;const i=(m.picks||[]).findIndex(p=>p.text===g.text);if(g.won===true)return 'w';if(g.won===false)return 'l';if(i<0)return null;return pickState(m.picks[i],i,m,d,liveOf(m,d));}
+function findM(d,g){const ms=(d&&d.matches)||[];const n=x=>String(x||'').toLowerCase().replace(/[^a-z0-9]/g,'');return ms.find(x=>n(x.home)===n(g.home)&&n(x.away)===n(g.away))||ms.find(x=>(n(x.home).includes(n(g.home))||n(g.home).includes(n(x.home)))&&n(g.home))||ms.find(x=>x.n===g.n&&!g.home);}
+function premState(g,d){const m=findM(d,g);if(!m)return g.won===true?'w':g.won===false?'l':null;const i=(m.picks||[]).findIndex(p=>p.text===g.text);if(g.won===true)return 'w';if(g.won===false)return 'l';if(i<0)return null;return pickState(m.picks[i],i,m,d,liveOf(m,d));}
 function premWon(g,d){return MARKW(premState(g,d));}
-function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=d&&(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
+function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
     return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
   return `<div class="pcard"><div class="ph"><span class="cw">${G.crown}</span><span><b>VISION PREMIUM</b><small>${longDate(td.date)} · Today's strongest picks</small></span></div>${rows}<div class="pf"><span>${(td.picks||[]).length} picks</span>${tot>1?`<span>Combined odds <b>${tot.toFixed(2)}</b></span>`:''}</div></div>`;}
 function renderElite(){const el=$('p-elite');const head=`<div class="sechd" style="margin:0 0 10px"><span class="sect goldc" style="margin:0;display:flex;align-items:center;gap:8px"><span class="eliteimg crown">👑</span>Vision Premium</span>${prem?'<button class="link" data-act="lock" style="color:var(--gold)!important;padding:0">Lock</button>':''}</div>`;
@@ -1351,7 +1354,7 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
     if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
-    if(td){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=d&&(d.matches||[]).find(x=>x.n===g.n);let s=g.won===true?'w':g.won===false?'l':null,L=null;
+    if(td){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
         if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
         return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
     else body+='<div class="card"><p class="empty">No Vision Premium picks yet.</p></div>';
@@ -1407,7 +1410,10 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
     srow('boldparts','Which words are bold',[SET.boldTitle&&'Title',SET.boldBrand&&'Match Vision',SET.boldLeague&&'Leagues',SET.boldWatch&&'Watch line'].filter(Boolean).join(', ')||'None','',gi('highlighter'))+
     srow('boldUni','Bold on X, Instagram, TikTok, Threads','Special bold letters (𝗟𝗶𝗸𝗲 𝘁𝗵𝗶𝘀)',SET.uniBold,gi('stack4'))+
     srow('hand','Hand points down to the link','The link on the next line',SET.hand,gi('hand'))+
-    srow('tags','Hashtags in the posts','Keep the hashtag line',SET.tags,gi('tag'));
+    srow('tags','Hashtags in the posts','Keep the hashtag line',SET.tags,gi('tag'))+
+    srow('tgbold','Telegram bold','How bold looks when you share to Telegram',SET.tgBold==='stars'?'**stars**':SET.tgBold==='none'?'No bold':'Bold letters',gi('textbold'))+
+    srow('tagsoff','Hashtags per app','Apps that never get the hashtag line',APPS.filter(p=>SET.tagsOff&&SET.tagsOff[p]).map(p=>PNAME[p]).join(', ')||'None',gi('tag'))+
+    srow('premRecords','Premium results in Records','Vision Premium live at the top of Records',SET.premRecords!==false,gi('gallery'));
   if(f==='texts')return srow('daytexts','Today\'s texts','Edit one post, or copy all and paste all back','',gi('notepad'))+
     srow('templates','Texts and captions (laptop)','Titles, captions, channel posts, Vision Premium',feed&&feed.templates?Object.keys(feed.templates).length+' parts':'',gi('textbold'));
   if(f==='matches')return srow('livepage','Live scores',`ESPN ${SET.live?'on':'off'} · every ${SET.every} min`,'',gi('ball'))+
@@ -1443,6 +1449,9 @@ const TOGGLES=['bold','uniBold','hand','tags','live','showPred','showOdds','show
 async function settingsClick(e){const b=e.target.closest('button');if(!b)return;if(b.dataset.fold){openFolder(b.dataset.fold);return;}const s=b.dataset.s;
   if(b.id==='clearAll'){if(!confirm('Clear Match Vision app data on this phone (saved picks, sent ticks, settings, PIN)? Nothing on the laptop changes.'))return;Object.values(K).forEach(k=>store.del(k));POSTED={};SET=Object.assign({},DEF);prem=null;ESPN={};toast('Cleared');loadFeed(true);return;}
   const tk=s==='boldUni'?'uniBold':s;if(TOGGLES.includes(tk)){SET[tk]=!SET[tk];saveSet();renderSettings();if(tk==='live'&&SET.live)liveTick(true);return;}
+  if(s==='tgbold'){const o=['letters','stars','none'];SET.tgBold=o[(o.indexOf(SET.tgBold)+1)%3];saveSet();renderSettings();toast('Telegram bold: '+(SET.tgBold==='stars'?'**stars**':SET.tgBold==='none'?'no bold':'bold letters'));return;}
+  if(s==='premRecords'){SET.premRecords=SET.premRecords===false;saveSet();renderSettings();return;}
+  if(s==='tagsoff'){const on=APPS.filter(p=>SET.tagsOff&&SET.tagsOff[p]);const ans=prompt('Apps with NO hashtags. Type the letters, separated by commas:\nwa = WhatsApp, tg = Telegram, x = X, ig = Instagram, tt = TikTok, yt = YouTube, th = Threads',on.join(', '));if(ans!==null){SET.tagsOff={};ans.split(/[ ,]+/).map(x=>x.trim().toLowerCase()).filter(x=>APPS.includes(x)).forEach(x=>SET.tagsOff[x]=true);saveSet();renderSettings();}return;}
   if(s==='apps')openApps();else if(s==='groups')openGroups();else if(s==='boldparts')openBoldParts();
   else if(s==='every')choose('Check live scores every',[['1','1 minute'],['2','2 minutes'],['3','3 minutes'],['5','5 minutes']],SET.every,v=>{SET.every=+v;saveSet();renderSettings();});
   else if(s==='sort')choose('Order of matches',[['time','By kick-off time'],['league','By league']],SET.sort,v=>{SET.sort=v;saveSet();renderSettings();});
@@ -1740,10 +1749,10 @@ function cardData(kind,d){const t=todayKey();
     const w=rows.filter(r=>r.won===true).length,dec=rows.filter(r=>r.won!=null).length;const sc=L&&L.gh!=null?`${L.gh}-${L.ga}`:'';
     const txt=`${w&&w===dec?'✅ ':''}${m.home} ${sc||'vs'} ${m.away}\nMatch Vision\n\n`+rows.map(r=>`${r.won===true?'✅':r.won===false?'❌':'⏳'} ${r.full}`).join('\n')+(dec?`\n\n🔥 ${w} Of ${dec} Won`:'');
     return {o:{kind,title:sc?`FULL TIME ${sc}`:'TODAY\'S PICKS',sub:`${shortTeam(m.home)} vs ${shortTeam(m.away)} · ${m.league||''}`,rows,total:1,acc:'#DFFB51',accDark:'#8EA334',glow:'rgba(34,197,94,.20)',foot:dec?`${w} OF ${dec} WON · MATCH VISION`:'MATCH VISION',ticks:true},txt,name:`Match Vision ${m.home} vs ${m.away} ${dd.date}`};}
-  if(kind==='premwon'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);const rows=(td.picks||[]).map(g=>{const m=dd&&(dd.matches||[]).find(x=>x.n===g.n);return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,won:premWon(g,dd)};}).filter(r=>r.won===true);
+  if(kind==='premwon'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);const rows=(td.picks||[]).map(g=>{const m=findM(dd,g);return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,won:premWon(g,dd)};}).filter(r=>r.won===true);
     if(!rows.length)return null;const txt=`✅ VISION PREMIUM WINS\n${longDate(td.date)}\n\n`+rows.map(r=>`✅ ${r.h} vs ${r.a}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+`\n\nMembers Had These Picks Before Kick-Off.`;
     return {o:{kind:'prem',title:'PREMIUM WINS',sub:`${longDate(td.date)} · These picks won`,rows,total:1,acc:'#ECC462',accDark:'#9C8240',glow:'rgba(236,196,98,.22)',foot:'MATCH VISION · VISION PREMIUM',ticks:true},txt,name:`Vision Premium wins ${td.date}`};}
-  if(kind==='prem'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map(g=>{const m=dd&&(dd.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,ko:g.kickoff};});
+  if(kind==='prem'){const td=window.__premTd;if(!td)return null;const dd=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map(g=>{const m=findM(dd,g);if(g.odds)tot*=g.odds;return {h:shortTeam(g.home),a:shortTeam(g.away),hc:m&&m.hc,ac:m&&m.ac,pick:shortPick(g.text),full:g.text,odds:g.odds,ko:g.kickoff};});
     const txt=`👑 VISION PREMIUM\n${longDate(td.date)}\n\nToday's Strongest Picks Are In. 💪\n\n`+rows.map((r,i)=>`${i+1}. ${r.h} vs ${r.a}${r.ko?` (${r.ko})`:''}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+(tot>1?`\n\n📊 Combined odds: ${tot.toFixed(2)}`:'')+`\n\nGood Luck, Members. Let's Win Today!\nWe Meet After The Games. 🙏`;
     return {o:{kind,title:'VISION PREMIUM',sub:`${longDate(td.date)} · Today's strongest picks`,rows,total:tot,acc:'#ECC462',accDark:'#9C8240',glow:'rgba(236,196,98,.22)',foot:'MATCH VISION · VISION PREMIUM'},txt,name:`Vision Premium ${td.date}`};}
   if(!d)return null;let rows=[],tot=1,title,sub;
@@ -1759,13 +1768,15 @@ async function shareCard(kind,d){const cd=cardData(kind,d);if(!cd){toast(kind===
   const c=await cardCanvas(cd.o);const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.93));const file=new File([blob],cd.name+'.jpg',{type:'image/jpeg'});const url=URL.createObjectURL(blob);const text=cd.txt;
   openSheet(`<div class="cshare"><img src="${url}" alt=""><button class="btn-save ${kind==='prem'?'gold':''} w100" data-cs="any">Share picture and text (pick any app)</button>
     <div class="cs-apps">${['wa','tg','tt','ig','x','yt'].map(p=>`<button data-cs="${p}">${SVG[p]||''}<span>${PNAME[p]}</span></button>`).join('')}<button data-cs="copy">${SVG.copy||''}<span>Copy text</span></button></div>
-    <div class="btn-row"><button class="btn-half" data-cs="save">Save picture</button><button class="btn-half" data-close="1">Close</button></div><textarea class="cs-text" readonly>${esc(text)}</textarea></div>`,
+    <div class="btn-row"><button class="btn-half" data-cs="save">Save picture</button><button class="btn-half" data-close="1">Close</button></div><div class="muted" style="margin:10px 2px 4px;font-size:12px">Edit the text here first if you want. Each app gets its own bold and hashtags (Settings &gt; Posting).</div><textarea class="cs-text" id="csText" style="min-height:220px">${esc(text)}</textarea></div>`,
     async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.close){closeSheet();return;}const k=b.dataset.cs;if(!k)return;
-      if(k==='copy'){toast(copyText(text)?'Text copied':'Copy failed');return;}
+      const ta=document.getElementById('csText');const text=ta?ta.value:cd.txt;
+      if(k==='copy'){toast(copyText(styled(text,'wa'))?'Text copied':'Copy failed');return;}
       if(k==='save'){const a=document.createElement('a');a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();toast('Picture saved to Downloads');return;}
-      if(k==='any'){copyText(text);if(canShareFiles([file])){try{await navigator.share({files:[file],text});toast('Text copied too: if it is not under the picture, long-press and Paste.',4000);}catch(err){}}else toast('Sharing pictures is not possible here. Tap Save picture.');return;}
+      if(k==='any'){const tx=styled(text,'wa');copyText(tx);if(canShareFiles([file])){try{await navigator.share({files:[file],text:tx});toast('Text copied too: if it is not under the picture, long-press and Paste.',4000);}catch(err){}}else toast('Sharing pictures is not possible here. Tap Save picture.');return;}
       const f2=await fitFile(file,k);await shareTo(k,styled(text,k),[f2]);});}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-card]');if(b){e.stopPropagation();e.preventDefault();shareCard(b.dataset.card,dayOf(b.dataset.dk));return;}
+  const hs=e.target.closest('#p-history [data-cardshare]');if(hs){e.stopPropagation();e.preventDefault();shareCard('premwon');return;}
   const pc=e.target.closest('#p-elite .pcard');if(pc){e.stopPropagation();shareCard('prem');}},true);
 {const _mv=matchesView;matchesView=function(d){const h=_mv(d);if(!d)return h;return `<div class="cardbtns"><button data-card="picks" data-dk="${d.date}">Top picks picture<small>Tap: share to any app</small></button><button data-card="banker" data-dk="${d.date}">Banker picture<small>Tap: share to any app</small></button></div>`+h;};}
 window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,openBuilder,openTemplates,openLivePage,askBot,textsSheet};
