@@ -883,10 +883,11 @@ html,body{max-width:100%;overflow-x:hidden}
 .summary-box .bv{font-size:clamp(17px,5.6vw,24px)!important;letter-spacing:-.4px;text-overflow:clip!important}
 .dots{max-height:none!important}
 .dots i{width:8px!important;height:8px!important}
+.tchip{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle;white-space:nowrap}.t-late{background:#FF453A;color:#fff}.t-soon{background:#FFD60A;color:#000}.t-wait{background:#2C2C2E;color:#EBEBF5;border:1px solid #48484A}.t-done{background:rgba(48,209,88,.18);color:#30D158}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.6.1</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.6.2</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -1117,7 +1118,14 @@ function xParts(t){return String(t||'').split(/\n*---\s*reply\s*---\n*/i).map(x=
 // ---------- Posts (what the builder sent for each day) ----------
 const GROUP={morning:'Morning posts',video:'Video post',swipe:'Swipe post',shorts:'Shorts',results:'Results'};
 const ICON_APP={games:'wa',picks:'wa',banker:'wa',video:'yt',swipe:'ig',results:'wa'};
-function itemsOf(d){if(!d||!Array.isArray(d.posts))return [];return d.posts.filter(it=>SET.groups[it.group]!==false&&appsOf(it).length);}
+function itemsOf(d){if(!d||!Array.isArray(d.posts))return [];const L=d.posts.filter(it=>SET.groups[it.group]!==false&&appsOf(it).length);
+  if(SET.sortByTime===false)return L;return L.map((it,i)=>[it,i]).sort((a,b)=>{const x=itAt(d,a[0]),y=itAt(d,b[0]);if(x&&y&&x!==y)return x<y?-1:1;if(!x!==!y)return x?-1:1;return a[1]-b[1];}).map(z=>z[0]);}
+// 3.6.2: the time each post should go out (laptop Settings), with a colour: red = late, yellow = soon, green = sent
+function itAt(d,it){if(it.at)return it.at;if(it.when&&/^\d{1,2}:\d{2}$/.test(it.when))return d.date+'T'+it.when.padStart(5,'0');return null;}
+function timeLabel(at){const t=todayKey(),dd=at.slice(0,10),hm=at.slice(11,16);if(dd===t)return hm+' today';if(dd===addDays(t,1))return hm+' tomorrow';if(dd===addDays(t,-1))return hm+' yesterday';const x=new Date(dd+'T12:00:00');return hm+' '+x.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});}
+function timeState(d,it){const at=itAt(d,it);if(!at)return null;if(isDone(d,it))return 'done';const ms=new Date(at)-new Date();if(ms<0)return 'late';if(ms<=(SET.soonMin||30)*60000)return 'soon';return 'wait';}
+function timeChip(d,it){const at=itAt(d,it);if(!at)return '';const s=timeState(d,it);const lab=s==='late'?'LATE · '+timeLabel(at):s==='done'?'✓ '+timeLabel(at):'⏰ '+timeLabel(at);return `<span class="tchip t-${s}" data-at="${at}" data-dk="${d.date}" data-iid="${esc(it.id)}">${esc(lab)}</span>`;}
+setInterval(()=>{document.querySelectorAll('.tchip').forEach(el=>{const d=dayOf(el.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===el.dataset.iid);if(!it)return;const tmp=document.createElement('div');tmp.innerHTML=timeChip(d,it);const c=tmp.firstChild;if(c){el.className=c.className;el.textContent=c.textContent;}});},30000);
 function appsOf(it){const allow=GROUP_APPS[it.group]||APPS;return APPS.filter(p=>allow.includes(p)&&SET.apps[p]&&it.texts&&it.texts[p]&&!(p==='tg'&&it.auto&&it.auto.tg));}
 const postedOf=(d,id)=>((POSTED[d.date]||{})[id])||{};
 function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return need.length>0&&need.every(x=>p[x]);}
@@ -1132,7 +1140,7 @@ function rowIcon(it){const img=(it.images||[])[0];const main=img?`<img src="${es
 function sentLine(d,it){const p=postedOf(d,it.id);const to=Object.keys(p).filter(x=>p[x]).map(x=>PNAME[x]);const auto=it.auto&&it.auto.tg?'Telegram channel: posted by the bot':'';return [to.length?'Sent to '+to.join(', '):'',auto].filter(Boolean).join(' · ');}
 function postCard(d,it){const p=postedOf(d,it.id);const ap=appsOf(it);const show=ap[0]||'wa';const txt=textFor(it,show==='x'&&ap.length>1?ap.find(a=>a!=='x'):show);const imgs=it.images||[];
   const xs=it.texts&&it.texts.x?xParts(styled(it.texts.x,'x')):[];const sl=sentLine(d,it);
-  return `<div class="post" data-post="${esc(it.id)}" data-dk="${d.date}"><div class="ph"><span style="display:flex;align-items:center;font-size:13.5px;color:#fff">${bi(ICON_APP[it.group]||'wa')}${esc(it.title)}</span><span class="phr">${it.when?`<span>${esc(it.when)}</span>`:''}${isDone(d,it)?'<span class="pill won">SENT</span>':'<span class="pill st-notsent">NOT SENT</span>'}</span></div>
+  return `<div class="post" data-post="${esc(it.id)}" data-dk="${d.date}"><div class="ph"><span style="display:flex;align-items:center;font-size:13.5px;color:#fff">${bi(ICON_APP[it.group]||'wa')}${esc(it.title)}</span><span class="phr">${itAt(d,it)?timeChip(d,it):(it.when?`<span>${esc(it.when)}</span>`:'')}${isDone(d,it)?'<span class="pill won">SENT</span>':'<span class="pill st-notsent">NOT SENT</span>'}</span></div>
     ${imgs.length?`<div class="pimgs-row ${imgs.length===1?'one':''}">${imgs.map(u=>`<img src="${esc(media(u))}" alt="" loading="lazy">`).join('')}</div>`:''}
     ${imgs.length&&it.group!=='shorts'?`<div class="btn-row" style="margin:6px 0"><button class="btn-half" data-p="imgsave">📥 Save ${imgs.length>1?'the '+imgs.length+' pictures':'the picture'} to gallery</button></div>`:''}
     ${it.note?`<div class="warnbox">${esc(it.note)}</div>`:''}
@@ -1205,7 +1213,7 @@ function resultsView(d){if(!d)return `<div class="card"><p class="empty">No resu
 
 // ---------- HOME ----------
 let homeView=SET.homeView||'posts';
-function todoRow(d,it,next){const p=postedOf(d,it.id);return `<div class="todo" data-item="${esc(it.id)}" data-dk="${d.date}">${rowIcon(it)}<div class="tx"><button class="tt" data-open="${esc(it.id)}" data-dk="${d.date}">${esc(it.title)}${next?'<span class="nx">NEXT</span>':''}${isDone(d,it)?' <span class="nx" style="background:#30D158">SENT</span>':''}</button>
+function todoRow(d,it,next){const p=postedOf(d,it.id);return `<div class="todo" data-item="${esc(it.id)}" data-dk="${d.date}">${rowIcon(it)}<div class="tx"><button class="tt" data-open="${esc(it.id)}" data-dk="${d.date}">${esc(it.title)}${next?'<span class="nx">NEXT</span>':''}${itAt(d,it)?' '+timeChip(d,it):''}${isDone(d,it)?' <span class="nx" style="background:#30D158">SENT</span>':''}</button>
   <div class="pv">${esc((textFor(it,appsOf(it).find(a=>a!=='x')||'wa')||'').split('\n').find(l=>l.trim())||'')}</div><div class="mini">${appsOf(it).map(x=>btnHTML(x,p[x])).join('')}</div></div></div>`;}
 function reminders(d){const out=[],t=todayKey();
   if(feed&&feed.builder&&feed.builder.busy)out.push(['⚙️',`The laptop is building: ${feed.builder.step||''} (${Math.round((feed.builder.done||0)*100)}%)`]);
@@ -1229,11 +1237,11 @@ function postsView(d){if(!d)return `<div class="card tint"><div class="ct">No Ma
   const its=itemsOf(d);const todo=its.filter(it=>!isDone(d,it)),done=its.filter(it=>isDone(d,it));let h='';
   if(!Array.isArray(d.posts))h+=`<div class="card tint"><div class="ct">Posts are on the way</div><div class="cs" style="margin:0">This day was made before the laptop sent posts to the app. The next build sends every post here with its picture.</div></div>`;
   else if(!its.length)h+=`<div class="card"><p class="empty">No posts for the apps you picked. Settings > Apps I post to.</p></div>`;
-  if(todo.length){let g='';h+=`<div class="card"><div class="ct">To do now</div>${todo.map((it,i)=>{const hd=it.group!==g?(g=it.group,`<div class="sect" style="margin:${i?14:6}px 0 2px">${esc(GROUP[it.group]||it.group)}</div>`):'';return hd+todoRow(d,it,i===0);}).join('')}</div>`;}
+  if(todo.length){let g='';h+=`<div class="card"><div class="ct">To do now</div>${todo.map((it,i)=>{const hd=(SET.sortByTime===false&&it.group!==g)?(g=it.group,`<div class="sect" style="margin:${i?14:6}px 0 2px">${esc(GROUP[it.group]||it.group)}</div>`):'';return hd+todoRow(d,it,i===0);}).join('')}</div>`;}
   else if(its.length)h+=`<div class="card" style="text-align:center"><div class="ct" style="color:#30D158">All sent for today ✓</div><div class="cs" style="margin:0">Results come after the matches.</div></div>`;
   const rs=reminders(d);if(rs.length)h+=`<div class="card"><div class="ct">Reminders</div>${rs.map(r=>`<div class="rem"><span class="ri">${REMI_()[r[0]]||r[0]}</span><span>${esc(r[1])}</span></div>`).join('')}</div>`;
   if(its.length)h+=`<button class="btn-half w100" data-act="alltexts" style="margin:0 0 12px">📝 Copy all texts / Paste all texts</button>`;
-  if(done.length)h+=`<div class="card"><div class="ct" style="color:#30D158;margin-bottom:6px">✓ Done today (${done.length})</div><div class="cs" style="margin-bottom:4px">Tap one to send it again.</div>${done.map(it=>`<button class="drow" data-open="${esc(it.id)}" data-dk="${d.date}">${bi(ICON_APP[it.group]||'wa')}<span class="dt">${esc(it.title)}<small>${esc(sentLine(d,it))}</small></span><span class="ch">›</span></button>`).join('')}</div>`;
+  if(done.length)h+=`<div class="card"><div class="ct" style="color:#30D158;margin-bottom:6px">✓ Done today (${done.length})</div><div class="cs" style="margin-bottom:4px">Tap one to send it again.</div>${done.map(it=>`<button class="drow" data-open="${esc(it.id)}" data-dk="${d.date}">${bi(ICON_APP[it.group]||'wa')}<span class="dt">${esc(it.title)}${itAt(d,it)?' '+timeChip(d,it):''}<small>${esc(sentLine(d,it))}</small></span><span class="ch">›</span></button>`).join('')}</div>`;
   return h;}
 function upCard(d){const it=(d.posts||[]).find(x=>(x.images||[]).length);const img=it?media(it.images[0]):'';const n=(d.matches||[]).length;const dd=dateOf(d.date);
   const its=itemsOf(d);const done=its.filter(x=>isDone(d,x)).length;
@@ -1414,6 +1422,8 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
     srow('tags','Hashtags in the posts','Keep the hashtag line',SET.tags,gi('tag'))+
     srow('tgbold','Telegram bold','How bold looks when you share to Telegram',SET.tgBold==='stars'?'**stars**':SET.tgBold==='none'?'No bold':'Bold letters',gi('textbold'))+
     srow('tagsoff','Hashtags per app','Apps that never get the hashtag line',APPS.filter(p=>SET.tagsOff&&SET.tagsOff[p]).map(p=>PNAME[p]).join(', ')||'None',gi('tag'))+
+    srow('sortByTime','Posts in time order','Each post shows its time: red = late, yellow = soon, green = sent. Times come from the laptop Settings',SET.sortByTime!==false,gi('notepad'))+
+    srow('soonMin','Yellow before the time','Minutes before a post turns yellow',(SET.soonMin||30)+' min',gi('notepad'))+
     srow('originalFiles','Share the original files','Videos and pictures go out exactly as made (best quality). Off = pictures resized for Instagram/TikTok',SET.originalFiles!==false,gi('phone'))+
     srow('premRecords','Premium results in Records','Vision Premium live at the top of Records',SET.premRecords!==false,gi('gallery'));
   if(f==='texts')return srow('daytexts','Today\'s texts','Edit one post, or copy all and paste all back','',gi('notepad'))+
@@ -1453,6 +1463,8 @@ async function settingsClick(e){const b=e.target.closest('button');if(!b)return;
   const tk=s==='boldUni'?'uniBold':s;if(TOGGLES.includes(tk)){SET[tk]=!SET[tk];saveSet();renderSettings();if(tk==='live'&&SET.live)liveTick(true);return;}
   if(s==='tgbold'){const o=['letters','stars','none'];SET.tgBold=o[(o.indexOf(SET.tgBold)+1)%3];saveSet();renderSettings();toast('Telegram bold: '+(SET.tgBold==='stars'?'**stars**':SET.tgBold==='none'?'no bold':'bold letters'));return;}
   if(s==='premRecords'){SET.premRecords=SET.premRecords===false;saveSet();renderSettings();return;}
+  if(s==='sortByTime'){SET.sortByTime=SET.sortByTime===false;saveSet();renderSettings();return;}
+  if(s==='soonMin'){const v=prompt('Minutes before a post turns yellow:',SET.soonMin||30);const n=parseInt(v,10);if(n>0&&n<600){SET.soonMin=n;saveSet();renderSettings();}return;}
   if(s==='originalFiles'){SET.originalFiles=SET.originalFiles===false;saveSet();renderSettings();toast(SET.originalFiles!==false?'Original files ✓':'Pictures resized per app');return;}
   if(s==='tagsoff'){const on=APPS.filter(p=>SET.tagsOff&&SET.tagsOff[p]);const ans=prompt('Apps with NO hashtags. Type the letters, separated by commas:\nwa = WhatsApp, tg = Telegram, x = X, ig = Instagram, tt = TikTok, yt = YouTube, th = Threads',on.join(', '));if(ans!==null){SET.tagsOff={};ans.split(/[ ,]+/).map(x=>x.trim().toLowerCase()).filter(x=>APPS.includes(x)).forEach(x=>SET.tagsOff[x]=true);saveSet();renderSettings();}return;}
   if(s==='apps')openApps();else if(s==='groups')openGroups();else if(s==='boldparts')openBoldParts();
