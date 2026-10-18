@@ -118,12 +118,21 @@ def main():
                 dirty = True
             if cloud_wins.results(day, now, tg, print):     # 3.8.1: the end-of-day results too
                 dirty = True
+            if cloud_wins.day_stats(day, now):               # 3.10: numbers for the weekly recap
+                dirty = True
         except Exception as ex:
             print(f'{name}: win tickets problem ({ex}).')
         if dirty:
             with open(path, 'w', encoding='utf-8') as f:
                 json.dump(day, f, ensure_ascii=False, indent=1, sort_keys=True)
             changed.append(path)
+    try:                                               # 3.10: Sunday weekly recap (laptop off)
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import cloud_wins
+        if cloud_wins.weekly(ROOT, now, tg, print):
+            changed.append('weekly')
+    except Exception as ex:
+        print(f'Weekly recap problem ({ex}).')
     print('Changed:', changed or 'nothing')
     return 0
 
