@@ -894,7 +894,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.5</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.6</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -921,7 +921,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.10.5';   // APP_VERSION = '3.10.5' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.10.6';   // APP_VERSION = '3.10.6' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1068,7 +1068,7 @@ function canShareFiles(files){try{return !!(files.length&&navigator.canShare&&na
 const PNAME={wa:'WhatsApp',x:'X',ig:'Instagram',tt:'TikTok',th:'Threads',yt:'YouTube',tg:'Telegram',copy:'Copy'};
 const APPS=['wa','x','ig','tt','yt','tg'];
 // 3.5: the apps each kind of post goes to. Nothing is shown for an app you do not post that kind on.
-const GROUP_APPS={shorts:['tt','ig'],swipe:['tt','ig','yt'],morning:['wa','x','tg'],video:['wa','x','tg'],results:['wa','x','tg','ig']};
+const GROUP_APPS={shorts:['tt','ig'],swipe:['tt','ig','yt'],morning:['wa','x','tg'],video:['wa','x','tg'],results:['wa','x','tg','ig','yt']};   // 3.10.6: results on YouTube too
 function saveFile(f,label){if(!f)return false;try{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},4000);toast((label||'Saved')+' ✓ In your Gallery (Downloads album). iPhone: in Files > Downloads.',3800);return true;}catch(e){toast('Could not save here');return false;}}
 const fileCache=new Map();
 // 3.6.1: always the WHOLE original file (never a part the video player loaded, never a cached half file)
@@ -1112,18 +1112,21 @@ function prepText(t,app){let s=String(t||'');
   if(!SET.tags||(app&&SET.tagsOff&&SET.tagsOff[app]))s=s.split('\n').filter(l=>!isTags(l)).join('\n').replace(/\n{3,}/g,'\n\n').trim();
   if(app==='ig'){const mx=parseInt(SET.igTags);if(mx>0){let c=0;const seen={};s=s.split('\n').map(l=>isTags(l)?l.replace(/#\w+/g,m=>{const k=m.toLowerCase();if(seen[k])return '';seen[k]=1;return ++c<=mx?m:'';}).replace(/\s+/g,' ').trim():l).filter((l,i,a)=>l!==''||true).join('\n').replace(/\n{3,}/g,'\n\n').trim();}}   // 3.10.5: Instagram allows 5 hashtags
   return s;}
-function styled(t,app){const s=prepText(String(t||'').replace(/\*\*([^*\n]+)\*\*/g,'$1'),app);if(!SET.bold)return s;
-  if(app==='tg'&&SET.tgBold==='none')return s;
-  const mode=app==='wa'?'wa':(app==='any'||app==='copy')?'uni':app==='tg'?(SET.tgBold==='stars'?'tg':'uni'):(['x','ig','tt','th','yt'].includes(app)&&SET.uniBold)?'uni':'';if(!mode)return s;
+function styled(t,app){const Q=[];const s=prepText(String(t||'').replace(/\*\*([^*\n]+)\*\*/g,'*$1*'),app).replace(/\*([^*\n]+)\*/g,(m,x)=>{Q.push(x);return '\u0001'+(Q.length-1)+'\u0002';});
+  const plain=x=>x.replace(/\u0001(\d+)\u0002/g,(m,i)=>Q[+i]);if(!SET.bold)return plain(s);
+  if(app==='tg'&&SET.tgBold==='none')return plain(s);
+  const mode=app==='wa'?'wa':(app==='any'||app==='copy')?'uni':app==='tg'?(SET.tgBold==='stars'?'tg':'uni'):(['x','ig','tt','th','yt'].includes(app)&&SET.uniBold)?'uni':'';if(!mode)return plain(s);
+  const fin=x=>x.replace(/\u0001(\d+)\u0002/g,(m,i)=>{const w=Q[+i];return mode==='uni'?w.replace(/[A-Za-z0-9]+/g,y=>uniBold(y)):mode==='wa'?`*${w}*`:`**${w}**`;});
   const B=x=>{const m=x.match(/^(\s*)(.*?)(\s*)$/);if(!m[2])return x;if(mode==='uni'){return m[1]+m[2].replace(/[A-Za-z0-9]+/g,w=>uniBold(w))+m[3];}const st=mode==='wa'?'*':'**';
     const e=m[2].match(/^([^\w\s]+\s*)?(.*?)$/u);const lead=e&&e[1]?e[1]:'';return m[1]+lead+st+m[2].slice(lead.length)+st+m[3];};
   const L=s.split('\n');const firstIdx=L.findIndex(l=>l.trim());
-  return L.map((l,i)=>{const tr=l.trim();if(!tr||isTags(tr)||/^https?:\/\//.test(tr)||tr==='--- reply ---')return l;
+  return fin(L.map((l,i)=>{const tr=l.trim();if(!tr||isTags(tr)||/^https?:\/\//.test(tr)||tr==='--- reply ---'||l.includes('\u0001'))return l;
     if(SET.boldTitle&&i===firstIdx)return B(l);
+    if(SET.boldWatch&&/👇\s*$/.test(tr))return B(l);
     if(SET.boldBrand&&/^match vision$/i.test(tr))return B(l);
     if(SET.boldWatch&&/Watch [^:]*:/i.test(tr)){return l.replace(/(Watch [^:]*:)/i,w=>mode==='uni'?w.replace(/[A-Za-z0-9]+/g,x=>uniBold(x)):(mode==='wa'?`*${w}*`:`**${w}**`));}
     if(SET.boldLeague&&!isTime(tr)&&!/[.!?]$/.test(tr)&&tr.length<40){let j=i+1;while(j<L.length&&!L[j].trim())j++;if(j<L.length&&j===i+1&&isTime(L[j]))return B(l);}
-    return l;}).join('\n');}
+    return l;}).join('\n'));}
 function previewHTML(t){return esc(t).replace(/\*\*([^*\n]+)\*\*/g,'<b>$1</b>').replace(/\*([^*\n]+)\*/g,'<b>$1</b>');}
 function xParts(t){return String(t||'').split(/\n*---\s*reply\s*---\n*/i).map(x=>x.trim()).filter(Boolean);}
 
@@ -1140,10 +1143,13 @@ function timeChip(d,it){const at=itAt(d,it);if(!at)return '';const s=timeState(d
 setInterval(()=>{document.querySelectorAll('.tchip').forEach(el=>{const d=dayOf(el.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===el.dataset.iid);if(!it)return;const tmp=document.createElement('div');tmp.innerHTML=timeChip(d,it);const c=tmp.firstChild;if(c){el.className=c.className;el.textContent=c.textContent;}});},30000);
 const kindOf=it=>/^short/.test(it.id)?'shorts':/^win/.test(it.id)?'results':it.id;
 const KINDS=[['games',"Today's games"],['picks','Top picks'],['banker','Banker'],['video','Video post'],['swipe','Swipe post'],['shorts','Shorts'],['results','Results']];
-function appsOf(it){const allow=GROUP_APPS[it.group]||APPS;const off=SET.postOff||{};const k=kindOf(it);return APPS.filter(p=>allow.includes(p)&&SET.apps[p]&&!off[k+':'+p]&&it.texts&&it.texts[p]&&!(p==='tg'&&it.auto&&it.auto.tg));}
+function appsOf(it){const allow=GROUP_APPS[it.group]||APPS;const off=SET.postOff||{};const k=kindOf(it);return APPS.filter(p=>allow.includes(p)&&SET.apps[p]&&!off[k+':'+p]&&it.texts&&(it.texts[p]||(p==='yt'&&it.group==='results'&&(it.texts.tg||it.texts.wa)))&&!(p==='tg'&&it.auto&&it.auto.tg));}
 const postedOf=(d,id)=>((POSTED[d.date]||{})[id])||{};
 function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return need.length>0&&need.every(x=>p[x]);}
-function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||'');const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
+// 3.10.6: YouTube results: no channel link, a subscribe line instead (a different one each day)
+const YT_END=['More winning picks coming tomorrow. Subscribe and turn on the bell 🔔','Tomorrow\'s predictions drop soon. Subscribe so you never miss them 🔔','Want tomorrow\'s games? Subscribe and tap the bell 🔔','New predictions every day. Subscribe for tomorrow\'s picks ⚽','More games coming tomorrow. Follow and subscribe 🔥'];
+function ytResults(t,key){const L=String(t||'').split('\n').filter(l=>!/https?:\/\//.test(l)&&!/👇\s*\**\s*$/.test(l.trim()));let h=0;for(const c of String(key||''))h=(h*31+c.charCodeAt(0))>>>0;return (L.join('\n').replace(/\n{3,}/g,'\n\n').trim()+'\n\n'+YT_END[h%YT_END.length]).trim();}
+function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:(p==='yt'&&it.group==='results'?ytResults(it.texts.tg||it.texts.wa,(it.id||'')+(it.title||'')):((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||''));const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
 async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return null;}const imgs=it.images||[];for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
 async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);if(files===null)return;const ok=await shareTo(p,textFor(it,p),files);
   if(ok&&p!=='copy'){POSTED[d.date]=POSTED[d.date]||{};const o=POSTED[d.date][it.id]=POSTED[d.date][it.id]||{};o[p]=true;savePosted();
