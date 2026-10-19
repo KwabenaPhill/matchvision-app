@@ -122,19 +122,27 @@ def caption(m, gh, ga, cs_won, c):
 
 
 # ------------------------------------------------------------------------------------------------ the picture (old card)
-def draw(m, gh, ga, cs_won, root, out, fonts=FONTS, brand='MATCH VISION'):
+# 3.16.2: the card in 4 colours (Philip: "make 3 more different types"). (accent, footer, top tint, frame, row, row edge)
+CARD_STYLES = {'lime': ((223, 251, 81), (142, 163, 52), (16, 20, 10), (110, 125, 45), (20, 22, 18), (70, 80, 35)),
+               'gold': ((236, 196, 98), (170, 140, 70), (22, 17, 6), (130, 105, 45), (24, 21, 14), (85, 70, 35)),
+               'green': ((34, 197, 94), (30, 140, 70), (6, 20, 11), (35, 120, 65), (15, 24, 18), (30, 85, 50)),
+               'white': ((245, 245, 245), (160, 160, 160), (20, 20, 22), (120, 120, 125), (24, 24, 26), (80, 80, 85))}
+
+
+def draw(m, gh, ga, cs_won, root, out, fonts=FONTS, brand='MATCH VISION', style='lime'):
     """Philip's old card (the app's share card), short: MV badge, FULL TIME 1-1, the 3 picks with crests and green ticks,
     "3 OF 3 WON · MATCH VISION" at the bottom."""
     from PIL import Image, ImageDraw
     rows = [p['text'] for p in m['picks']] + ([f'CORRECT SCORE {gh}-{ga}'] if cs_won else [])
     W, rh, gap, top = 1080, 165, 22, 265
     H = min(1350, top + len(rows) * (rh + gap) + 178)
-    A, A2 = (223, 251, 81), (142, 163, 52)
+    key = next((k for k in CARD_STYLES if k in str(style or '').lower()), 'lime')
+    A, A2, TT, FR, RF, RE = CARD_STYLES[key]
     im = Image.new('RGB', (W, H), (6, 6, 6))
     d = ImageDraw.Draw(im)
     for y in range(H):
         k = y / (H - 1)
-        d.line([(0, y), (W, y)], fill=(int(16 + (6 - 16) * k), int(20 + (6 - 20) * k), int(10 + (6 - 10) * k)))
+        d.line([(0, y), (W, y)], fill=tuple(int(TT[i] + (6 - TT[i]) * k) for i in range(3)))
 
     def F(name, px):
         from PIL import ImageFont
@@ -149,7 +157,7 @@ def draw(m, gh, ga, cs_won, root, out, fonts=FONTS, brand='MATCH VISION'):
         while px > 14 and d.textlength(t, font=F(name, px)) > maxw:
             px -= 2
         return F(name, px)
-    d.rounded_rectangle((30, 30, W - 30, H - 30), radius=46, outline=(110, 125, 45), width=4)
+    d.rounded_rectangle((30, 30, W - 30, H - 30), radius=46, outline=FR, width=4)
     d.ellipse((100, 105, 188, 193), fill=A)
     f = F(BLK, 38)
     d.text((144 - d.textlength('MV', font=f) / 2, 128), 'MV', font=f, fill=(11, 11, 11))
@@ -173,7 +181,7 @@ def draw(m, gh, ga, cs_won, root, out, fonts=FONTS, brand='MATCH VISION'):
         is_cs = cs_won and i == len(rows) - 1
         y, X, Wd = top + i * (rh + gap), 70, W - 140
         cy = y + rh / 2
-        d.rounded_rectangle((X, y, X + Wd, y + rh), radius=26, fill=(20, 22, 18), outline=(70, 80, 35), width=2)
+        d.rounded_rectangle((X, y, X + Wd, y + rh), radius=26, fill=RF, outline=RE, width=2)
         d.rounded_rectangle((X, y, X + 10, y + rh), radius=5, fill=(236, 196, 98) if is_cs else A)
         d.ellipse((X + 32, cy - 30, X + 92, cy + 30), fill=(236, 196, 98) if is_cs else A)
         ff = F(BLK, 32)
