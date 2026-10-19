@@ -1,21 +1,432 @@
 {
+ "banker": {
+  "games": [
+   {
+    "n": 3,
+    "odds": 1.28,
+    "text": "Under 3.5 goals"
+   },
+   {
+    "n": 7,
+    "odds": 1.5,
+    "text": "Over 2.5 goals"
+   }
+  ],
+  "posted": null,
+  "total": 1.92
+ },
+ "banker_on": true,
  "date": "2026-10-19",
  "grace_minutes": 10,
  "paused": false,
  "posts": [
   {
-   "at": "2026-10-19T06:00",
+   "at": "2026-10-19T10:56",
    "chat": "@matchvision707",
    "html": true,
-   "id": "games",
+   "id": "video",
    "images": [
-    "media/2026-10-19/Games-2026-10-19.jpg"
+    "media/2026-10-19/Thumbnail-1-style-2-.jpg"
    ],
-   "latest": "2026-10-19T15:05",
-   "posted": "cloud",
-   "posted_at": "2026-10-19T06:17",
-   "text": "<b>Monday Predictions | 19 October</b>\n<b>Match Vision</b>\n\n10 Matches Predicted Today\n\nPremier League\n19:00  Tottenham Hotspur vs Coventry\n\nLaLiga\n19:00  Getafe vs Rayo Vallecano\n\nSerie A\n16:30  Monza vs Cagliari\n18:45  Parma vs Torino\n\nPrimeira Liga\n19:15  SC Braga vs GIL Vicente\n\nSaudi-Arabia Pro League\n15:05  Al-Fayha vs Al-Ahli Jeddah\n15:20  Abha vs Al Kholood\n18:00  Al Hilal vs Al-Hazm\n18:00  Al Shabab vs Al-Faisaly FC\n\nTurkey Süper Lig\n17:00  Trabzonspor vs Beşiktaş\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n👇 <b>Watch All Predictions:</b>\nhttps://www.youtube.com/@MatchVision707"
+   "latest": null,
+   "posted": "laptop",
+   "text": "<b>Monday Predictions | 19 October</b>\n<b>Match Vision</b>\n10 Matches Predicted Today\n\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n👇 <b>Watch Now:</b>\nhttps://youtu.be/ZAw1NGR1pW8"
   }
  ],
- "v": 1
+ "results_caption": {
+  "end": "📊 *{WON} Of {TOTAL} Predictions Won*",
+  "extra": "",
+  "head": "🔥 *Today's Winning Slips*"
+ },
+ "results_cloud_wait": 60,
+ "results_on": true,
+ "results_posted": null,
+ "v": 1,
+ "weekly": {
+  "link": "https://www.youtube.com/@MatchVision707",
+  "on": true,
+  "style": "1  Classic",
+  "time": "21:00",
+  "wait": 30
+ },
+ "win_caption": {
+  "banker_end": "🔥 *Total Odds {ODDS}*",
+  "banker_head": "💰 *{ODDS} ODDS BANKER WON* 💰",
+  "big": "💰 *BIG WIN* 💰",
+  "bold": true,
+  "brand": "MATCH VISION",
+  "cs_head": "*CORRECT SCORE WIN · BIG WIN*",
+  "cs_style": "1  Gold",
+  "end": "🔥 *{WON} Of {TOTAL} Won*",
+  "extra": ""
+ },
+ "win_chat": "@matchvision707",
+ "win_cloud_wait": 25,
+ "wins": [
+  {
+   "ac": "media/crests/coventry.png",
+   "away": "Coventry",
+   "espn": null,
+   "hc": "media/crests/tottenham-hotspur.png",
+   "home": "Tottenham Hotspur",
+   "ko": "2026-10-19T19:00",
+   "league": "Premier League",
+   "n": 1,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "Coventry to score"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g1",
+      "v": 0.5
+     },
+     "text": "Over 0.5 goals 1st half"
+    }
+   ],
+   "posted": null,
+   "score": "2-1"
+  },
+  {
+   "ac": "media/crests/rayo-vallecano.png",
+   "away": "Rayo Vallecano",
+   "espn": null,
+   "hc": "media/crests/getafe.png",
+   "home": "Getafe",
+   "ko": "2026-10-19T19:00",
+   "league": "LaLiga",
+   "n": 2,
+   "picks": [
+    {
+     "rule": {
+      "o": "u",
+      "t": "g",
+      "v": 3.5
+     },
+     "text": "Under 3.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 0
+     },
+     "text": "BTTS - No"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g1",
+      "v": 0.5
+     },
+     "text": "Over 0.5 goals 1st half"
+    }
+   ],
+   "posted": null,
+   "score": "0-1"
+  },
+  {
+   "ac": "media/crests/cagliari.png",
+   "away": "Cagliari",
+   "espn": null,
+   "hc": "media/crests/monza.png",
+   "home": "Monza",
+   "ko": "2026-10-19T16:30",
+   "league": "Serie A",
+   "n": 3,
+   "picks": [
+    {
+     "rule": {
+      "o": "u",
+      "t": "g",
+      "v": 3.5
+     },
+     "text": "Under 3.5 goals"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g1",
+      "v": 0.5
+     },
+     "text": "Over 0.5 goals 1st half"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "Cagliari to score"
+    }
+   ],
+   "posted": null,
+   "score": "1-2"
+  },
+  {
+   "ac": "media/crests/torino.png",
+   "away": "Torino",
+   "espn": null,
+   "hc": "media/crests/parma.png",
+   "home": "Parma",
+   "ko": "2026-10-19T18:45",
+   "league": "Serie A",
+   "n": 4,
+   "picks": [
+    {
+     "rule": {
+      "o": "u",
+      "t": "g",
+      "v": 3.5
+     },
+     "text": "Under 3.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 0
+     },
+     "text": "BTTS - No"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "Torino to score"
+    }
+   ],
+   "posted": null,
+   "score": "0-2"
+  },
+  {
+   "ac": "media/crests/gil-vicente.png",
+   "away": "GIL Vicente",
+   "espn": null,
+   "hc": "media/crests/sc-braga.png",
+   "home": "SC Braga",
+   "ko": "2026-10-19T19:15",
+   "league": "Primeira Liga",
+   "n": 5,
+   "picks": [
+    {
+     "rule": {
+      "o": "u",
+      "t": "g",
+      "v": 3.5
+     },
+     "text": "Under 3.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 0
+     },
+     "text": "BTTS - No"
+    },
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Over 8.5 corners"
+    }
+   ],
+   "posted": null,
+   "score": "2-0"
+  },
+  {
+   "ac": "media/crests/al-hazm.png",
+   "away": "Al-Hazm",
+   "espn": null,
+   "hc": "media/crests/al-hilal.png",
+   "home": "Al Hilal",
+   "ko": "2026-10-19T18:00",
+   "league": "Saudi-Arabia Pro League",
+   "n": 6,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 0
+     },
+     "text": "BTTS - No"
+    },
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Under 10.5 corners"
+    }
+   ],
+   "posted": null,
+   "score": "4-0"
+  },
+  {
+   "ac": "media/crests/al-ahli-jeddah.png",
+   "away": "Al-Ahli Jeddah",
+   "espn": null,
+   "hc": "media/crests/al-fayha.png",
+   "home": "Al-Fayha",
+   "ko": "2026-10-19T15:05",
+   "league": "Saudi-Arabia Pro League",
+   "n": 7,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
+    },
+    {
+     "rule": {
+      "s": "h",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "Al-Fayha to score"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    }
+   ],
+   "posted": null,
+   "score": "1-2"
+  },
+  {
+   "ac": "media/crests/al-kholood.png",
+   "away": "Al Kholood",
+   "espn": null,
+   "hc": "media/crests/abha.png",
+   "home": "Abha",
+   "ko": "2026-10-19T15:20",
+   "league": "Saudi-Arabia Pro League",
+   "n": 8,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
+    },
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Over 8.5 corners"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "Al Kholood to score"
+    }
+   ],
+   "posted": null,
+   "score": "1-2"
+  },
+  {
+   "ac": "media/crests/be-ikta.png",
+   "away": "Beşiktaş",
+   "espn": null,
+   "hc": "media/crests/trabzonspor.png",
+   "home": "Trabzonspor",
+   "ko": "2026-10-19T17:00",
+   "league": "Turkey Süper Lig",
+   "n": 9,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Under 9.5 corners"
+    }
+   ],
+   "posted": null,
+   "score": "2-1"
+  },
+  {
+   "ac": "media/crests/al-faisaly-fc.png",
+   "away": "Al-Faisaly FC",
+   "espn": null,
+   "hc": "media/crests/al-shabab.png",
+   "home": "Al Shabab",
+   "ko": "2026-10-19T18:00",
+   "league": "Saudi-Arabia Pro League",
+   "n": 10,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "s": "h",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "Al Shabab to score"
+    }
+   ],
+   "posted": null,
+   "score": "2-1"
+  }
+ ]
 }
