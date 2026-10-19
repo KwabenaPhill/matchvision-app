@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-19T21:25:26",
+ "updated": "2026-10-19T22:41:42",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-20 Tuesday",
@@ -1985,11 +1985,11 @@
       "media/2026-10-19/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Monday Results | 19 October*\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "x": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707"
+      "tg": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *7 Of 9 Won | Monday 19 October*\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "x": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707"
      },
      "auto": {
       "tg": true
@@ -4030,11 +4030,11 @@
       "media/2026-10-18/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *14 Of 18 Won | Sunday 18 October*\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "x": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707"
+      "tg": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "x": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707"
      },
      "auto": {
       "tg": true
@@ -10885,7 +10885,7 @@
   }
  },
  "banker_streak": 0,
- "version": "3.16.1",
+ "version": "3.16.2",
  "short_names": {
   "Manchester City": "Man City",
   "Manchester United": "Man Utd",
@@ -13552,6 +13552,20 @@
    ]
   },
   {
+   "k": "WIN_CARD_COLOUR",
+   "tab": "Pictures",
+   "v": "1  Lime",
+   "d": "3.16.2: the colour of the FULL TIME win card (each match whose 3 predictions all won): 1 Lime (as before), 2 Gold, 3 Green, 4 White, or a different one every match.",
+   "kind": "choice",
+   "c": [
+    "1  Lime",
+    "2  Gold",
+    "3  Green",
+    "4  White",
+    "Change every match"
+   ]
+  },
+  {
    "k": "WIN_TICKET_BRAND",
    "tab": "Channel",
    "v": "MATCH VISION",
@@ -14382,7 +14396,7 @@
   "PREMIUM RENEWED": "Hi {NAME}, Thank You ✓\nYour {PREMIUM} Membership Now Runs Until {UNTIL}.",
   "PREMIUM REFUND": "📌 {PREMIUM_UP} REFUND TERMS\n1. Membership Is {PRICE} Per Month, Paid By MoMo.\n2. If You Leave, Unused Full Months Are Refunded.\n3. The Current Month Is Not Refunded Once It Starts.\n4. Every Payment Is Recorded With Its MoMo Reference.\n5. Football Results Carry Risk. No Pick Is Guaranteed.\nQuestions? Message {HANDLE}",
   "PREMIUM DAILY": "👑 {PREMIUM} | {DATE_WORDS}\nToday's Strongest Picks Are In. 💪\n\nGood Luck, Members. Let's Win Today!\nWe Meet After The Games. 🙏\n---\n👑 {PREMIUM} | {DATE_WORDS}\nToday's Picks Are Ready. Good Luck, Members! 💪\n---\n👑 Members, Your Picks Are In | {DATE_WORDS}\nWe Meet After The Games. 🙏",
-  "PREMIUM WIN": "👑 *{PREMIUM} Wins* 👑\n{DATE_WORDS}\n\n✅ *{WON} Of {TOTAL} Premium Picks Won*\n\nMembers Had These Picks Before Kick-Off.\n---\n👑 {PREMIUM} Won ✅ | {DATE_WORDS}\n{WON_LIST}\n---\n✅ Our Members Won Again | {DATE_WORDS}\n{WON_LIST}\n\nWant In? Message Us.",
+  "PREMIUM WIN": "👑 *{PREMIUM} Wins* | {DATE_WORDS}\n\n{WON_LIST}\n\nMore Premium Picks Coming Tomorrow 👑\n---\n👑 *{PREMIUM} Wins* | {DATE_WORDS}\n\n{WON_LIST}\n\nMembers Had These Picks Before Kick-Off. More Tomorrow 🔥\n---\n✅ *Our Members Won Again* | {DATE_WORDS}\n\n{WON_LIST}\n\nMore Winning Picks Coming Tomorrow 👑",
   "X VIDEO": "{DAY_WORD} Predictions | {DATE_SHORT}\n{VIDEO_LINK}\n\n{N_WORDS}. Correct Scores, Top Picks And Our 2 Odds Banker.",
   "X WINNINGS": "{WIN_TITLE} | {DATE_SHORT}\n✅ {WON} Of {TOTAL} Predictions Won Today\n⚽ Tomorrow's Games: {LINK}",
   "SHORT EXACT": "{SHORT_TITLE} | {DATE_WORDS}\n{SHORT_LIST}\n\n🎯 All {N} Predictions Are In Today's Video On YouTube.\n---\n{SHORT_TITLE} | {DATE_SHORT}\n{SHORT_LIST}\n\n🎯 More In Today's Video On YouTube.\n---\n{SHORT_TITLE}\n{SHORT_LIST}"
@@ -14406,9 +14420,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "Fmhtjc1rBGRVh70RajVyKQ==",
-  "nonce": "YJmtm6ZjZ8spxl7t1pMryg==",
-  "ct": "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",
-  "mac": "vgeo8OVrNzcQ905a+N9tOHf/frHYfSVFntzmPMRLX1o="
+  "salt": "yEygC2zUe22SP52S7nRz+w==",
+  "nonce": "Ih0LxNVjDt1krq7LGD5qdA==",
+  "ct": "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",
+  "mac": "Aac0FC6h2X9FAxGhT9dtQdbuOC9IFcb91pteMAIalv0="
  }
 }
