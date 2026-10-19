@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-19T10:33:36",
+ "updated": "2026-10-19T10:51:18",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-19 Monday",
@@ -9672,7 +9672,7 @@
   }
  },
  "banker_streak": 1,
- "version": "3.10.8",
+ "version": "3.11",
  "short_names": {
   "Manchester City": "Man City",
   "Manchester United": "Man Utd",
@@ -10021,6 +10021,60 @@
    "c": null
   },
   {
+   "k": "SUBSCRIBE_BELL_STYLE",
+   "tab": "Long video",
+   "v": "1  Big ringing bell",
+   "d": "3.11: after the click on SUBSCRIBE, a \"TURN ON THE BELL\" moment so people get the notification of every new video (we post every day). Pick the look you like best. Tip: make SUBSCRIBE SECONDS 8 or more so it has time.",
+   "kind": "choice",
+   "c": [
+    "Off (as before)",
+    "1  Big ringing bell",
+    "2  Yellow pill",
+    "3  Phone notification",
+    "4  Bell menu: All",
+    "5  Red badge bell"
+   ]
+  },
+  {
+   "k": "SUBSCRIBE_BELL_TEXT",
+   "tab": "Long video",
+   "v": "TURN ON NOTIFICATIONS",
+   "d": "3.11: the big words of the bell moment.",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "SUBSCRIBE_BELL_LINE",
+   "tab": "Long video",
+   "v": "NEW PICKS EVERY DAY",
+   "d": "3.11: the small line under them (empty = none).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "END_BELL_ICON",
+   "tab": "Long video",
+   "v": true,
+   "d": "3.11: a small ringing bell next to \"& TAP THE BELL\" on the end screen.",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "SAFE_PICK_STYLE",
+   "tab": "Long video",
+   "v": "1  Yellow (my colour)",
+   "d": "3.11: the colour of prediction 1 (SAFEST PICK) so it stands out from the other two: on the video, the Shorts, the App cards and the pictures. 0 = green like the others.",
+   "kind": "choice",
+   "c": [
+    "0  Green like the others (as before)",
+    "1  Yellow (my colour)",
+    "2  Gold",
+    "3  Orange",
+    "4  Electric blue",
+    "5  Hot pink"
+   ]
+  },
+  {
    "k": "SUBSCRIBE_OVER_NEXT",
    "tab": "Long video",
    "v": true,
@@ -10293,6 +10347,11 @@
     "Full screen - Derby Crowd",
     "Full screen - Golden Stadium",
     "Full screen - My picture",
+    "Score only - Blue",
+    "Score only - Black and lime",
+    "Score only - Red",
+    "Score only - Purple",
+    "Score only - Pitch green",
     "Change every day"
    ]
   },
@@ -10427,7 +10486,12 @@
     "23  Matches predicted (lime band)",
     "24  Matches predicted (grid)",
     "25  Number of matches (big crests)",
-    "26  Number of matches (crest cards)"
+    "26  Number of matches (crest cards)",
+    "27  Pairs in cards (lime)",
+    "28  Pairs, two rows (big crests)",
+    "29  Pairs in cards (yellow)",
+    "30  Top 3 pairs huge",
+    "31  Pairs with red VS"
    ]
   },
   {
@@ -10463,7 +10527,12 @@
     "23  Matches predicted (lime band)",
     "24  Matches predicted (grid)",
     "25  Number of matches (big crests)",
-    "26  Number of matches (crest cards)"
+    "26  Number of matches (crest cards)",
+    "27  Pairs in cards (lime)",
+    "28  Pairs, two rows (big crests)",
+    "29  Pairs in cards (yellow)",
+    "30  Top 3 pairs huge",
+    "31  Pairs with red VS"
    ]
   },
   {
@@ -10499,7 +10568,12 @@
     "23  Matches predicted (lime band)",
     "24  Matches predicted (grid)",
     "25  Number of matches (big crests)",
-    "26  Number of matches (crest cards)"
+    "26  Number of matches (crest cards)",
+    "27  Pairs in cards (lime)",
+    "28  Pairs, two rows (big crests)",
+    "29  Pairs in cards (yellow)",
+    "30  Top 3 pairs huge",
+    "31  Pairs with red VS"
    ]
   },
   {
@@ -10707,8 +10781,29 @@
     "Full screen - Cup Floodlights",
     "Full screen - Derby Crowd",
     "Full screen - Golden Stadium",
-    "Full screen - My picture"
+    "Full screen - My picture",
+    "Score only - Blue",
+    "Score only - Black and lime",
+    "Score only - Red",
+    "Score only - Purple",
+    "Score only - Pitch green"
    ]
+  },
+  {
+   "k": "SCORE_CARD_TITLE",
+   "tab": "Shorts",
+   "v": "CORRECT SCORE",
+   "d": "3.11: the title on top of the \"Score only\" cards.",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "SCORE_CARD_LINE",
+   "tab": "Shorts",
+   "v": "GET MORE PICKS ON YOUTUBE  ·  LINK IN BIO",
+   "d": "3.11: the small line at the bottom of the \"Score only\" cards (empty = none).",
+   "kind": "text",
+   "c": null
   },
   {
    "k": "PICKS_STYLE",
@@ -11342,6 +11437,14 @@
     "As soon as you send the link",
     "At its time"
    ]
+  },
+  {
+   "k": "VIDEO_POST_EVEN_IF_OFF",
+   "tab": "Channel",
+   "v": true,
+   "d": "3.11: when you share the YouTube link (or tap Post now / a time) the video post goes out even on a day you set to \"Not this day\". Off: nothing at all is posted on such a day.",
+   "kind": "bool",
+   "c": null
   },
   {
    "k": "POST_VIDEO_GAP",
@@ -12648,9 +12751,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "NniMQgmKTmpi9EtDya2qqg==",
-  "nonce": "a2mYI45iHpnlZUiknO89jw==",
-  "ct": "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",
-  "mac": "edv+DAWLnhNnCXyFpjABHdUOcd1Uq35fE09FZrfpFNk="
+  "salt": "LNIY/22mz6+h3VbPCMZngA==",
+  "nonce": "WOvc+njU5o2IPOdq7tkMkA==",
+  "ct": "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",
+  "mac": "lCj4VHrmKBrDg+TZ3VjygIFWcgx+Bjy/YgABH3PMEsc="
  }
 }
