@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-19T17:12:21",
+ "updated": "2026-10-19T17:14:02",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-19 Monday",
@@ -156,14 +156,14 @@
      "ac": "media/crests/cagliari.png",
      "live": {
       "st": "LIVE",
-      "min": 40,
-      "gh": 0,
+      "min": 41,
+      "gh": 1,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401874762",
       "src": "ESPN",
-      "at": "2026-10-19T17:11:30"
+      "at": "2026-10-19T17:12:55"
      },
      "picks": [
       {
@@ -549,14 +549,14 @@
      "ac": "media/crests/be-ikta.png",
      "live": {
       "st": "LIVE",
-      "min": 10,
+      "min": 12,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401888277",
       "src": "ESPN",
-      "at": "2026-10-19T17:11:30"
+      "at": "2026-10-19T17:12:55"
      },
      "picks": [
       {
@@ -9719,7 +9719,7 @@
   }
  },
  "banker_streak": 1,
- "version": "3.14.2",
+ "version": "3.15",
  "short_names": {
   "Manchester City": "Man City",
   "Manchester United": "Man Utd",
@@ -10507,6 +10507,78 @@
    "tab": "Music",
    "v": false,
    "d": "Music on the Shorts (off: you add a sound in TikTok or Instagram).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "VOICE_ON",
+   "tab": "Music",
+   "v": true,
+   "d": "VOICES: play your own voice files from the Voices folder (Intro, Middle, Banker, End) in the long video. Several files in one folder = a different one each day. Empty folder = no voice there.",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "VOICE_INTRO_ON",
+   "tab": "Music",
+   "v": true,
+   "d": "Voice at the start of the video (Voices\\Intro).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "VOICE_MIDDLE_ON",
+   "tab": "Music",
+   "v": true,
+   "d": "Voice at the subscribe bell moment in the middle (Voices\\Middle).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "VOICE_BANKER_ON",
+   "tab": "Music",
+   "v": true,
+   "d": "Voice when BANKER ODDS FOR TODAY comes (Voices\\Banker).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "VOICE_END_ON",
+   "tab": "Music",
+   "v": true,
+   "d": "Voice on the end screen (Voices\\End).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "VOICE_VOLUME",
+   "tab": "Music",
+   "v": 1.0,
+   "d": "Voice loudness, 0.5 (soft) to 2.0 (very loud). 1.0 = as recorded.",
+   "kind": "float",
+   "c": null
+  },
+  {
+   "k": "MUSIC_UNDER_VOICE",
+   "tab": "Music",
+   "v": 0.25,
+   "d": "While a voice talks, the music goes down to this part of its normal loudness (0.25 = 25%). 1.0 = the music does not go down.",
+   "kind": "float",
+   "c": null
+  },
+  {
+   "k": "VOICE_STRETCH",
+   "tab": "Music",
+   "v": true,
+   "d": "When a voice is longer than its moment (intro, bell, banker, end), the moment stays on screen until the voice ends, so the voice is never cut.",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "VOICE_ON_SHORTS",
+   "tab": "Music",
+   "v": false,
+   "d": "Voices on the Shorts too: the Intro voice at the start and the End voice on the ending card. Off by default.",
    "kind": "bool",
    "c": null
   },
@@ -13123,9 +13195,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "I1POru3XHcGSsmgthUq8ew==",
-  "nonce": "ThE9oi/rg1cChgiANWD6wA==",
-  "ct": "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",
-  "mac": "AooQQLiAf5Q2LHjm9dcbUTicSjk/m55XLq5k8bM0/UM="
+  "salt": "Qv1aw268D6dlJOMRlRSfSg==",
+  "nonce": "apptJKLzAUZ7STUJgcCDyQ==",
+  "ct": "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",
+  "mac": "IeaJtow+tnuRWCfAkkRtD4WGHCLnOk9BAsg8NWGUmBk="
  }
 }
