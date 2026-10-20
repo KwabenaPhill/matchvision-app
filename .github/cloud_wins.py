@@ -638,13 +638,17 @@ def banker_caption(legs, total, c=None):
     """legs: [{home, away, gh, ga, text, odds}]. Bold only the WON line and the total."""
     c = c or {}
     T = f'{float(total or 0):.2f}'
-    head = str(c.get('banker_head') or '💰 *{ODDS} ODDS BANKER WON* 💰').replace('{ODDS}', T)
+    n = str(len(legs))
+    head = str(c.get('banker_head') or '✅ *{ODDS} Odds Banker Won*').replace('{ODDS}', T)
+    if '💰' in head and 'BANKER WON' in head:          # 3.17.4: the old head -> Philip's simple style (option 1)
+        head = f'✅ *{T} Odds Banker Won*'
     lines = [head, '']
-    for g in legs:
-        lines.append(f'✅ {g["home"]} {g["gh"]}-{g["ga"]} {g["away"]}')
-        lines.append(f'✔️ {g["text"]}' + (f' @ {float(g["odds"]):.2f}' if g.get('odds') else ''))
-        lines.append('')
-    lines.append(str(c.get('banker_end') or '🔥 *Total Odds {ODDS}*').replace('{ODDS}', T))
+    for g in legs:                                    # 3.17.4 (Philip, 20 Oct): only the picks, simple and clean
+        lines.append(f'✔️ {g["text"]}')
+    end = str(c.get('banker_end') or '🔥 *{WON} Of {TOTAL} Won · Total Odds {ODDS}*')
+    if end.strip() == '🔥 *Total Odds {ODDS}*':
+        end = '🔥 *{WON} Of {TOTAL} Won · Total Odds {ODDS}*'
+    lines += ['', end.replace('{ODDS}', T).replace('{WON}', n).replace('{TOTAL}', n)]
     return '\n'.join(lines)
 
 
