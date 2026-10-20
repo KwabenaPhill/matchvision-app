@@ -105,11 +105,15 @@ def won(rule, gh, ga, hh, ha):
 def caption(m, gh, ga, cs_won, c):
     n = len(m['picks']) + (1 if cs_won else 0)
     lines = []
-    if cs_won:
-        lines += [(c.get('cs_head') or '*CORRECT SCORE WIN · BIG WIN*').replace('💰', '').strip(), '']
-    lines.append(f'✅ {m["home"]} {gh}-{ga} {m["away"]}' if cs_won else f'✅ *{m["home"]} {gh}-{ga} {m["away"]}*')
-    if cs_won:
-        lines.append(f'🎯 *Correct Score: {gh}-{ga}*')
+    one = str(c.get('cs_line') or '').strip() if cs_won else ''
+    if one:                                       # 3.17: one line (Philip, 20 Oct)
+        lines.append(one.replace('{HOME}', m['home']).replace('{AWAY}', m['away']).replace('{SCORE}', f'{gh}-{ga}'))
+    else:
+        if cs_won:
+            lines += [(c.get('cs_head') or '*CORRECT SCORE WIN · BIG WIN*').replace('💰', '').strip(), '']
+        lines.append(f'✅ {m["home"]} {gh}-{ga} {m["away"]}' if cs_won else f'✅ *{m["home"]} {gh}-{ga} {m["away"]}*')
+        if cs_won:
+            lines.append(f'🎯 *Correct Score: {gh}-{ga}*')
     lines.append('')
     lines += [f'✔️ {p["text"]}' for p in m['picks']]
     lines += ['', str(c.get('end') or '🔥 *{WON} Of {TOTAL} Won*').replace('{WON}', str(n)).replace('{TOTAL}', str(n))]
