@@ -126,7 +126,8 @@ def caption(m, gh, ga, cs_won, c):
 CARD_STYLES = {'lime': ((223, 251, 81), (142, 163, 52), (16, 20, 10), (110, 125, 45), (20, 22, 18), (70, 80, 35)),
                'gold': ((236, 196, 98), (170, 140, 70), (22, 17, 6), (130, 105, 45), (24, 21, 14), (85, 70, 35)),
                'green': ((34, 197, 94), (30, 140, 70), (6, 20, 11), (35, 120, 65), (15, 24, 18), (30, 85, 50)),
-               'white': ((245, 245, 245), (160, 160, 160), (20, 20, 22), (120, 120, 125), (24, 24, 26), (80, 80, 85))}
+               'white': ((245, 245, 245), (160, 160, 160), (20, 20, 22), (120, 120, 125), (24, 24, 26), (80, 80, 85)),
+               'blue': ((0, 200, 255), (40, 130, 180), (4, 14, 30), (30, 100, 150), (14, 20, 30), (30, 70, 110))}
 
 
 def draw(m, gh, ga, cs_won, root, out, fonts=FONTS, brand='MATCH VISION', style='lime'):
@@ -136,7 +137,11 @@ def draw(m, gh, ga, cs_won, root, out, fonts=FONTS, brand='MATCH VISION', style=
     rows = [p['text'] for p in m['picks']] + ([f'CORRECT SCORE {gh}-{ga}'] if cs_won else [])
     W, rh, gap, top = 1080, 165, 22, 265
     H = min(1350, top + len(rows) * (rh + gap) + 178)
-    key = next((k for k in CARD_STYLES if k in str(style or '').lower()), 'lime')
+    sl = str(style or '').lower()
+    dk = next((k for k in DESIGNS if k in sl), None)
+    if dk:                                            # 3.16.3: one of the 5 new designs
+        return _draw_design(dk, m, gh, ga, cs_won, root, out, fonts, brand)
+    key = next((k for k in CARD_STYLES if k in sl), 'lime')
     A, A2, TT, FR, RF, RE = CARD_STYLES[key]
     im = Image.new('RGB', (W, H), (6, 6, 6))
     d = ImageDraw.Draw(im)
@@ -203,6 +208,183 @@ def draw(m, gh, ga, cs_won, root, out, fonts=FONTS, brand='MATCH VISION', style=
     foot = f'{n} OF {n} WON' + (f' · {brand}' if brand else '')
     ff = F(BLK, 30)
     d.text((W / 2 - d.textlength(foot, font=ff) / 2, H - 82), foot, font=ff, fill=A2)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
+
+
+# ------------------------------------------------------------------------------------------------ 3.16.3: 5 new designs
+# Philip (20 Oct): "make 5 different types, very good ones". WIN TICKET STYLE 6 to 10 (1 to 5 = the card in 5 colours).
+DESIGNS = ('scoreboard', 'banner', 'ticket', 'stamp', 'split')
+
+
+def _font(fonts, names, px):
+    from PIL import ImageFont
+    for n in names:
+        p = os.path.join(fonts, n)
+        if os.path.isfile(p):
+            return ImageFont.truetype(p, int(px))
+    return ImageFont.load_default()
+
+
+def _draw_design(kind, m, gh, ga, cs_won, root, out, fonts, brand):
+    from PIL import Image, ImageDraw, ImageFilter
+    BLK, MED = ('InterDisplay-Black.otf', 'Inter-Black.otf'), ('Inter-SemiBold.otf', 'Inter-Medium.otf')
+    LIME, GOLD, GREEN, WHITE, BLACK = (223, 251, 81), (236, 196, 98), (34, 197, 94), (255, 255, 255), (8, 8, 8)
+    rows = [str(p['text']).upper() for p in m['picks']] + ([f'CORRECT SCORE {gh}-{ga}'] if cs_won else [])
+    n = len(rows)
+    W = 1080
+    rh, gap = 128, 18
+    head = {'scoreboard': 560, 'banner': 520, 'ticket': 470, 'stamp': 560, 'split': 470}[kind]
+    H = min(1350, head + n * (rh + gap) + 150)
+    im = Image.new('RGB', (W, H), BLACK)
+    d = ImageDraw.Draw(im, 'RGBA')
+
+    def F(names, px):
+        return _font(fonts, names, px)
+
+    def fit(t, names, px, maxw):
+        while px > 14 and d.textlength(t, font=F(names, px)) > maxw:
+            px -= 2
+        return F(names, px)
+
+    def ct(t, y, names, px, fill, maxw=W - 120, cx=W / 2):
+        f = fit(t, names, px, maxw)
+        d.text((cx - d.textlength(t, font=f) / 2, y), t, font=f, fill=fill)
+
+    def crest(path, cx, cy, s, name, card=False):
+        if card:
+            d.ellipse((cx - s * 0.62, cy - s * 0.62, cx + s * 0.62, cy + s * 0.62), fill=(255, 255, 255, 235))
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((int(s), int(s)))
+            im.paste(c, (int(cx - c.width / 2), int(cy - c.height / 2)), c)
+        else:
+            d.ellipse((cx - s / 2, cy - s / 2, cx + s / 2, cy + s / 2), fill=(45, 45, 45))
+            ini = ''.join(w[0] for w in str(name).split()[:2]).upper()
+            ct(ini, cy - s * 0.2, BLK, s * 0.34, (230, 230, 230), s, cx)
+
+    def tick(cx, cy, r, col=GREEN, mark=WHITE):
+        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col)
+        d.line([(cx - r * 0.45, cy + r * 0.02), (cx - r * 0.12, cy + r * 0.35), (cx + r * 0.48, cy - r * 0.33)],
+               fill=mark, width=max(4, int(r * 0.24)), joint='curve')
+
+    def glow(col, box, a=90, blur=140):
+        g = Image.new('L', im.size, 0)
+        ImageDraw.Draw(g).ellipse(box, fill=a)
+        im.paste(Image.new('RGB', im.size, col), (0, 0), g.filter(ImageFilter.GaussianBlur(blur)))
+
+    def pick_rows(y0, x0=70, x1=W - 70, fill=(22, 24, 20, 255), edge=(255, 255, 255, 30), txt=WHITE, bar=None,
+                  tick_col=GREEN, mark=WHITE, sub=(165, 165, 165)):
+        dd = ImageDraw.Draw(im, 'RGBA')
+        for i, r in enumerate(rows):
+            y = y0 + i * (rh + gap)
+            cy = y + rh / 2
+            is_cs = cs_won and i == n - 1
+            dd.rounded_rectangle((x0, y, x1, y + rh), radius=26, fill=fill, outline=edge, width=2)
+            if bar:
+                dd.rounded_rectangle((x0, y, x0 + 12, y + rh), radius=6, fill=GOLD if is_cs else bar)
+            tx = x0 + 44
+            tw = x1 - tx - 110
+            f = fit(r, BLK, 46, tw)
+            dd.text((tx, cy - f.size * 0.62), r, font=f, fill=GOLD if is_cs else txt)
+            tick(x1 - 62, cy, 32, GOLD if is_cs else tick_col, mark)
+
+    title = f'{"BIG WIN" if cs_won else "FULL TIME"} {gh}-{ga}'
+    match = f'{m["home"]} vs {m["away"]}'
+    lg = str(m.get('league') or '')
+    won = f'{n}/{n} WON'
+    foot = (brand or '').upper()
+    if kind == 'scoreboard':                          # 6: a scoreboard: big crests, the score in the middle
+        glow(LIME, (W * 0.1, -H * 0.15, W * 0.9, H * 0.35), 60)
+        d = ImageDraw.Draw(im, 'RGBA')
+        if foot:
+            f = F(BLK, 30)
+            w_ = d.textlength(foot, font=f)
+            d.rounded_rectangle((W / 2 - w_ / 2 - 26, 44, W / 2 + w_ / 2 + 26, 96), radius=26, fill=LIME)
+            d.text((W / 2 - w_ / 2, 52), foot, font=f, fill=BLACK)
+        crest(m.get('hc'), 220, 250, 190, m['home'])
+        crest(m.get('ac'), W - 220, 250, 190, m['away'])
+        ct(f'{gh} - {ga}', 175, BLK, 150, WHITE, 360)
+        ct('FULL TIME' if not cs_won else 'BIG WIN', 140, BLK, 34, LIME, 300)
+        ct(m['home'].upper(), 365, BLK, 32, WHITE, 340, 220)
+        ct(m['away'].upper(), 365, BLK, 32, WHITE, 340, W - 220)
+        if lg:
+            ct(lg, 412, MED, 28, (170, 170, 170))
+        f = F(BLK, 44)
+        w_ = d.textlength(won, font=f)
+        d.rounded_rectangle((W / 2 - w_ / 2 - 40, 462, W / 2 + w_ / 2 + 40, 528), radius=33, fill=GREEN)
+        d.text((W / 2 - w_ / 2, 470), won, font=f, fill=WHITE)
+        pick_rows(head)
+    elif kind == 'banner':                            # 7: a lime banner on top: 3 OF 3 WON
+        d.rectangle((0, 0, W, 250), fill=LIME)
+        ct(f'{n} OF {n} WON', 40, BLK, 120, BLACK)
+        ct(title + (f'  ·  {lg}' if lg else ''), 185, BLK, 36, BLACK)
+        crest(m.get('hc'), W / 2 - 150, 375, 150, m['home'])
+        crest(m.get('ac'), W / 2 + 150, 375, 150, m['away'])
+        ct('VS', 350, BLK, 46, LIME, 120)
+        ct(match.upper(), 462, BLK, 30, (200, 200, 200))
+        pick_rows(head, bar=LIME)
+        if foot:
+            ct(foot, H - 92, BLK, 34, LIME)
+    elif kind == 'ticket':                            # 8: a paper ticket with a WON stamp
+        im.paste((14, 14, 16), (0, 0, W, H))
+        d = ImageDraw.Draw(im, 'RGBA')
+        d.rounded_rectangle((40, 40, W - 40, H - 40), radius=34, fill=(246, 244, 236))
+        for y in (300, H - 130):                      # the notches and the torn line
+            d.ellipse((14, y - 26, 66, y + 26), fill=(14, 14, 16))
+            d.ellipse((W - 66, y - 26, W - 14, y + 26), fill=(14, 14, 16))
+            for x in range(90, W - 90, 34):
+                d.line([(x, y), (x + 16, y)], fill=(170, 165, 150), width=4)
+        ct('WINNING TICKET', 80, BLK, 40, (120, 115, 100))
+        ct(title, 128, BLK, 84, (20, 20, 20))
+        ct(match + (f' · {lg}' if lg else ''), 232, MED, 30, (90, 90, 90))
+        crest(m.get('hc'), 210, 385, 110, m['home'])
+        crest(m.get('ac'), 360, 385, 110, m['away'])
+        pick_rows(head, x0=90, x1=W - 90, fill=(255, 255, 255, 255), edge=(0, 0, 0, 40), txt=(20, 20, 20))
+        st = Image.new('RGBA', (420, 170), (0, 0, 0, 0))
+        sd = ImageDraw.Draw(st)
+        sd.rounded_rectangle((6, 6, 414, 164), radius=22, outline=GREEN + (230,), width=10)
+        fs = _font(fonts, BLK, 96)
+        sd.text((210 - sd.textlength('WON', font=fs) / 2, 26), 'WON', font=fs, fill=GREEN + (230,))
+        st = st.rotate(-14, expand=True, resample=Image.BICUBIC)
+        im.paste(st, (W - st.width - 90, 312), st)
+        d = ImageDraw.Draw(im, 'RGBA')
+        if foot:
+            ct(f'{won} · {foot}', H - 108, BLK, 34, (60, 60, 60))
+    elif kind == 'stamp':                             # 9: deep green, a huge WON with a tick
+        for y in range(H):
+            k = y / H
+            d.line([(0, y), (W, y)], fill=(int(4 + 8 * (1 - k)), int(40 + 40 * (1 - k)), int(18 + 14 * (1 - k))))
+        glow(GREEN, (W * 0.15, 0, W * 0.85, H * 0.45), 70)
+        d = ImageDraw.Draw(im, 'RGBA')
+        tick(W / 2 - 230, 175, 70, WHITE, (12, 90, 40))
+        f = F(BLK, 190)
+        d.text((W / 2 - 140, 70), 'WON', font=f, fill=WHITE)
+        ct(f'{title}  ·  {n}/{n} PREDICTIONS', 300, BLK, 40, (210, 255, 220))
+        crest(m.get('hc'), W / 2 - 100, 420, 100, m['home'], card=True)
+        crest(m.get('ac'), W / 2 + 100, 420, 100, m['away'], card=True)
+        ct(match.upper() + (f'  ·  {lg.upper()}' if lg else ''), 495, BLK, 26, (190, 230, 200))
+        pick_rows(head, fill=(0, 0, 0, 120), edge=(255, 255, 255, 50), tick_col=WHITE, mark=(12, 120, 50))
+        if foot:
+            ct(foot, H - 92, BLK, 34, WHITE)
+    else:                                             # 10: split: a lime panel on the left
+        d.rectangle((0, 0, 300, H), fill=LIME)
+        f = F(BLK, 170)
+        t = f'{n}/{n}'
+        d.text((150 - d.textlength(t, font=f) / 2, H / 2 - 190), t, font=fit(t, BLK, 170, 270), fill=BLACK)
+        ct('WON', H / 2 + 10, BLK, 90, BLACK, 270, 150)
+        if foot:
+            ct(foot, H - 110, BLK, 26, BLACK, 260, 150)
+        cx = 300 + (W - 300) / 2
+        ct(title, 70, BLK, 80, LIME, W - 380, cx)
+        ct(lg or match, 170, MED, 30, (180, 180, 180), W - 380, cx)
+        crest(m.get('hc'), cx - 110, 320, 140, m['home'])
+        crest(m.get('ac'), cx + 110, 320, 140, m['away'])
+        ct('VS', 296, BLK, 40, WHITE, 100, cx)
+        ct(match.upper(), 405, BLK, 26, (200, 200, 200), W - 380, cx)
+        pick_rows(head, x0=340, x1=W - 40, bar=LIME)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     im.save(out, quality=92)
     return out
