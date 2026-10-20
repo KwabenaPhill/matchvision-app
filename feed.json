@@ -1,12 +1,899 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-20T19:51:17",
+ "updated": "2026-10-20T19:57:51",
  "builder": {
-  "busy": true,
-  "step": "Long video: 41% drawn",
-  "done": 0.335
+  "busy": false,
+  "step": "Finished: 2026-10-21 Wednesday",
+  "done": 1.0
  },
  "days": [
+  {
+   "date": "2026-10-21",
+   "where": "Ready to Upload",
+   "title": "Football Predictions Today | 21 October 2026 | 12 Matches | Football & More",
+   "matches": [
+    {
+     "n": 1,
+     "league": "Champions League",
+     "kickoff": "19:00",
+     "home": "Real Madrid",
+     "away": "RB Leipzig",
+     "score": "3-1",
+     "date": "2026-10-21",
+     "odds": [
+      1.25,
+      6.75,
+      9.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/real-madrid.png",
+     "ac": "media/crests/rb-leipzig.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Real Madrid to win",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.36,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.65,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "league": "Champions League",
+     "kickoff": "19:00",
+     "home": "Bayern Munich",
+     "away": "Arsenal",
+     "score": "2-1",
+     "date": "2026-10-21",
+     "odds": [
+      2.05,
+      3.75,
+      3.3
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/bayern-munich.png",
+     "ac": "media/crests/arsenal.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.2,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "league": "Champions League",
+     "kickoff": "16:45",
+     "home": "Como",
+     "away": "Manchester United",
+     "score": "2-1",
+     "date": "2026-10-21",
+     "odds": [
+      2.2,
+      3.6,
+      3.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "WIN OR DRAW",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/como.png",
+     "ac": "media/crests/manchester-united.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Como to score",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Como or draw",
+       "odds": 1.38,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "league": "Champions League",
+     "kickoff": "19:00",
+     "home": "Inter Milan",
+     "away": "Shakhtar Donetsk",
+     "score": "3-1",
+     "date": "2026-10-21",
+     "odds": [
+      1.2,
+      7.0,
+      13.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "FIRST HALF"
+     ],
+     "win": null,
+     "hc": "media/crests/inter-milan.png",
+     "ac": "media/crests/shakhtar-donetsk.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Inter Milan to win",
+       "odds": 1.2,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.3,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "league": "Champions League",
+     "kickoff": "16:45",
+     "home": "Lille",
+     "away": "Galatasaray",
+     "score": "2-1",
+     "date": "2026-10-21",
+     "odds": [
+      2.16,
+      3.62,
+      3.22
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CARDS"
+     ],
+     "win": null,
+     "hc": "media/crests/lille.png",
+     "ac": "media/crests/galatasaray.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.57,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 3.5 cards",
+       "odds": 1.65,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "league": "Champions League",
+     "kickoff": "19:00",
+     "home": "Real Betis",
+     "away": "Feyenoord",
+     "score": "2-1",
+     "date": "2026-10-21",
+     "odds": [
+      1.58,
+      4.54,
+      5.04
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "FIRST HALF"
+     ],
+     "win": null,
+     "hc": "media/crests/real-betis.png",
+     "ac": "media/crests/feyenoord.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Real Betis or draw",
+       "odds": 1.18,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.3,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "league": "Champions League",
+     "kickoff": "19:00",
+     "home": "Aston Villa",
+     "away": "Viking",
+     "score": "3-1",
+     "date": "2026-10-21",
+     "odds": [
+      1.21,
+      6.5,
+      12.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/aston-villa.png",
+     "ac": "media/crests/viking.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Aston Villa to win",
+       "odds": 1.21,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Aston Villa over 1.5 goals",
+       "odds": 1.3,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "league": "Champions League",
+     "kickoff": "19:00",
+     "home": "Club Brugge",
+     "away": "Lens",
+     "score": "2-1",
+     "date": "2026-10-21",
+     "odds": [
+      2.0,
+      4.2,
+      3.2
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/club-brugge.png",
+     "ac": "media/crests/lens.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Club Brugge or draw",
+       "odds": 1.33,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.5,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.6,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "league": "Champions League",
+     "kickoff": "19:00",
+     "home": "Sporting CP",
+     "away": "LASK",
+     "score": "3-1",
+     "date": "2026-10-21",
+     "odds": [
+      1.21,
+      7.0,
+      12.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "HANDICAP"
+     ],
+     "win": null,
+     "hc": "media/crests/sporting-cp.png",
+     "ac": "media/crests/lask.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Sporting CP over 1.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.4,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Sporting CP -1.5",
+       "odds": 1.68,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "LaLiga",
+     "kickoff": "18:00",
+     "home": "Levante",
+     "away": "Athletic Club",
+     "score": "0-1",
+     "date": "2026-10-21",
+     "odds": [
+      3.3,
+      3.4,
+      2.05
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "DRAW NO BET"
+     ],
+     "win": null,
+     "hc": "media/crests/levante.png",
+     "ac": "media/crests/athletic-club.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Athletic Bilbao or draw",
+       "odds": 1.3,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.32,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Athletic Bilbao draw no bet",
+       "odds": 1.55,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "USA MLS",
+     "kickoff": "23:00",
+     "home": "FC Cincinnati",
+     "away": "D.C. United",
+     "score": "2-1",
+     "date": "2026-10-21",
+     "odds": [
+      1.57,
+      4.5,
+      4.75
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "RESULT",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/fc-cincinnati.png",
+     "ac": "media/crests/d-c-united.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.2,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "FC Cincinnati to win",
+       "odds": 1.57,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.44,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "league": "England League One",
+     "kickoff": "19:00",
+     "home": "Reading",
+     "away": "Leyton Orient",
+     "score": "2-1",
+     "date": "2026-10-21",
+     "odds": [
+      1.5,
+      4.2,
+      5.5
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "DRAW NO BET",
+      "FIRST HALF"
+     ],
+     "win": null,
+     "hc": "media/crests/reading.png",
+     "ac": "media/crests/leyton-orient.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Reading to score",
+       "odds": 1.18,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Reading draw no bet",
+       "odds": 1.25,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.36,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "banker": {
+    "total": 2.0,
+    "games": [
+     {
+      "n": 2,
+      "pick": {
+       "market": "GOALS",
+       "text": "Over 1.5 goals",
+       "odds": 1.2
+      },
+      "odds": 1.2
+     },
+     {
+      "n": 9,
+      "pick": {
+       "market": "TEAM GOALS",
+       "text": "Sporting CP over 1.5 goals",
+       "odds": 1.28
+      },
+      "odds": 1.28
+     },
+     {
+      "n": 10,
+      "pick": {
+       "market": "DOUBLE CHANCE",
+       "text": "Athletic Bilbao or draw",
+       "odds": 1.3
+      },
+      "odds": 1.3
+     }
+    ]
+   },
+   "checklist": {
+    "YouTube": false,
+    "TikTok": false,
+    "Instagram": false,
+    "X": false,
+    "Threads": false,
+    "Telegram": false,
+    "WhatsApp": false,
+    "Community": false
+   },
+   "results": {},
+   "video_link": "",
+   "posts": [
+    {
+     "id": "games",
+     "group": "morning",
+     "title": "Today's games",
+     "when": "06:00",
+     "images": [
+      "media/2026-10-21/Games-2026-10-21.jpg"
+     ],
+     "texts": {
+      "tg": "⚽ 12 Matches Predicted Today | Wednesday 21 October\nMatch Vision\n\nChampions League\n16:45  Como vs Manchester United\n16:45  Lille vs Galatasaray\n19:00  Real Madrid vs RB Leipzig\n19:00  Bayern Munich vs Arsenal\n19:00  Inter Milan vs Shakhtar Donetsk\n19:00  Real Betis vs Feyenoord\n19:00  Aston Villa vs Viking\n19:00  Club Brugge vs Lens\n19:00  Sporting CP vs LASK\n\nLaLiga\n18:00  Levante vs Athletic Club\n\nUSA MLS\n23:00  FC Cincinnati vs D.C. United\n\nEngland League One\n19:00  Reading vs Leyton Orient\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "⚽ *12 Matches Predicted Today | Wednesday 21 October*\nMatch Vision\n\nChampions League\n16:45  Como vs Manchester United\n16:45  Lille vs Galatasaray\n19:00  Real Madrid vs RB Leipzig\n19:00  Bayern Munich vs Arsenal\n19:00  Inter Milan vs Shakhtar Donetsk\n19:00  Real Betis vs Feyenoord\n19:00  Aston Villa vs Viking\n19:00  Club Brugge vs Lens\n19:00  Sporting CP vs LASK\n\nLaLiga\n18:00  Levante vs Athletic Club\n\nUSA MLS\n23:00  FC Cincinnati vs D.C. United\n\nEngland League One\n19:00  Reading vs Leyton Orient\n\n👇 *Watch All Predictions:*\nhttps://www.youtube.com/@MatchVision707",
+      "x": "⚽ 12 Matches Predicted Today | Wednesday 21 October\nMatch Vision\n\n#MatchVision #UCL #ChampionsLeague #LaLiga #FootballPredictions\n\n--- reply ---\n\nChampions League\n16:45  Como vs Manchester United\n16:45  Lille vs Galatasaray\n19:00  Real Madrid vs RB Leipzig\n19:00  Bayern Munich vs Arsenal\n19:00  Inter Milan vs Shakhtar Donetsk\n19:00  Real Betis vs Feyenoord\n19:00  Aston Villa vs Viking\n19:00  Club Brugge vs Lens\n\n--- reply ---\n\n19:00  Sporting CP vs LASK\n\nLaLiga\n18:00  Levante vs Athletic Club\n\nUSA MLS\n23:00  FC Cincinnati vs D.C. United\n\nEngland League One\n19:00  Reading vs Leyton Orient\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-21T06:00"
+    },
+    {
+     "id": "picks",
+     "group": "morning",
+     "title": "Top picks",
+     "when": "06:30",
+     "images": [
+      "media/2026-10-21/Picks-2026-10-21.jpg"
+     ],
+     "texts": {
+      "tg": "Today's Safest Picks 🏆\nWednesday 21 October | Match Vision",
+      "wa": "Today's Safest Picks 🏆\nWednesday 21 October | Match Vision",
+      "x": "Today's Safest Picks 🏆\nWednesday 21 October | Match Vision\n\n#MatchVision #UCL #ChampionsLeague #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-21T06:30"
+    },
+    {
+     "id": "banker",
+     "group": "morning",
+     "title": "Banker",
+     "when": "07:00",
+     "images": [
+      "media/2026-10-21/2-Odds-Banker-2026-10-21.jpg"
+     ],
+     "texts": {
+      "tg": "Today's Banker 💰\nWednesday 21 October | Match Vision",
+      "wa": "Today's Banker 💰\nWednesday 21 October | Match Vision",
+      "x": "Today's Banker 💰\nWednesday 21 October | Match Vision\n\n#MatchVision #UCL #ChampionsLeague #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-21T07:00"
+    },
+    {
+     "id": "video",
+     "group": "video",
+     "title": "Video post",
+     "when": "08:00",
+     "images": [
+      "media/2026-10-21/Thumbnail-1-style-42-.jpg"
+     ],
+     "texts": {
+      "tg": "Wednesday Predictions | 21 October\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Wednesday Predictions | 21 October\n\n👇 *Watch Now:*\n{VIDEO_LINK}",
+      "x": "Wednesday Predictions | 21 October\n{VIDEO_LINK}\n\n12 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #UCL #ChampionsLeague #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "Share the YouTube video to the bot first: the link goes in by itself.",
+     "ready": false,
+     "at": "2026-10-21T08:00"
+    },
+    {
+     "id": "swipe",
+     "group": "swipe",
+     "title": "Swipe post",
+     "when": "09:00",
+     "images": [
+      "media/2026-10-21/slide-1.jpg",
+      "media/2026-10-21/slide-2.jpg",
+      "media/2026-10-21/slide-3.jpg",
+      "media/2026-10-21/slide-4.jpg"
+     ],
+     "texts": {
+      "ig": "Football Correct Score Predictions | Wednesday 21 October\n\n#matchvision #ucl #championsleague #laliga #footballpredictions",
+      "tt": "Football Correct Score Predictions | Wednesday 21 October\n\n#matchvision #ucl #championsleague #laliga #footballpredictions #footballtiktok #fyp",
+      "yt": "Football Correct Score Predictions | Wednesday 21 October\n\n#matchvision #ucl #championsleague #laliga"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-21T09:00"
+    },
+    {
+     "id": "short1",
+     "group": "shorts",
+     "title": "Short 1",
+     "when": "10:00",
+     "images": [
+      "media/2026-10-21/short-1.jpg"
+     ],
+     "video": "media/2026-10-21/short-1-4102475.mp4",
+     "file": "Ready to Upload\\2026-10-21 Wednesday\\Shorts\\Short 1 - 5 matches (Real Madrid vs RB Leipzig and more).mp4",
+     "texts": {
+      "tt": "Football Correct Score Predictions | Wednesday 21 October\n\n#matchvision #ucl #championsleague #laliga #footballpredictions #footballtiktok #fyp",
+      "ig": "Football Correct Score Predictions | Wednesday 21 October\n\n#matchvision #ucl #championsleague #laliga #footballpredictions"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-21T10:00"
+    },
+    {
+     "id": "short2",
+     "group": "shorts",
+     "title": "Short 2",
+     "when": "13:00",
+     "images": [
+      "media/2026-10-21/short-2.jpg"
+     ],
+     "video": "media/2026-10-21/short-2-3828893.mp4",
+     "file": "Ready to Upload\\2026-10-21 Wednesday\\Shorts\\Short 2 - 5 matches (Real Betis vs Feyenoord and more).mp4",
+     "texts": {
+      "tt": "Football Correct Score Predictions | Wednesday 21 October\n\n#matchvision #ucl #championsleague #laliga #footballpredictions #footballtiktok #fyp",
+      "ig": "Football Correct Score Predictions | Wednesday 21 October\n\n#matchvision #ucl #championsleague #laliga #footballpredictions"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-21T13:00"
+    }
+   ]
+  },
   {
    "date": "2026-10-20",
    "where": "Ready to Upload",
@@ -34,15 +921,15 @@
      "hc": "media/crests/paris-saint-germain.png",
      "ac": "media/crests/barcelona.png",
      "live": {
-      "st": "LIVE",
-      "min": 45,
+      "st": "HT",
+      "min": null,
       "gh": 1,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915399",
       "src": "ESPN",
-      "at": "2026-10-20T19:48:12"
+      "at": "2026-10-20T19:52:37"
      },
      "picks": [
       {
@@ -2089,11 +2976,11 @@
       "media/2026-10-19/win-1.jpg"
      ],
      "texts": {
-      "tg": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "x": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707"
+      "tg": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Monday Results | 19 October*\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "x": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ Monday Results | 19 October\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707"
      },
      "auto": {
       "tg": true
@@ -4134,11 +5021,11 @@
       "media/2026-10-18/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Sunday Results | 18 October*\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "x": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707"
+      "tg": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *14 Of 18 Won | Sunday 18 October*\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "x": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ 14 Of 18 Won | Sunday 18 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707"
      },
      "auto": {
       "tg": true
@@ -14652,9 +15539,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "MSuIrDiWSUZ+71V2N2heJg==",
-  "nonce": "8WmFdu9aT3Z1N4dfZVfdaQ==",
-  "ct": "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",
-  "mac": "1BOHhO1lt+/oedsuaNXxzowj6Ma/lM7/op56QVHqoWE="
+  "salt": "lFmlCGK4equpCSK+5Gdwjg==",
+  "nonce": "ZMUidImYvrf4Jwzou9FOOA==",
+  "ct": "U6Xc9U4qKWzHYyTPpR//rKvjU6lOaFyKgqiiAionx47RBAUhhkifDg60J4zBubo9w9seJpGQKC0srgrn1m0s8s/JES7Q57jc553/T0wCebwPgxiCWkOr3XTNrBTLmwldEN3qT7kk6q4I74WCQpw24KJU11cnfGrvYarh2NZLLy7XBCRjOiifzUR6MF1P1cmbisi7LPKRrobrnv6YbIhBtKgCQQ6KPKp049k1WpaFUSDQhq2vm0XT/e5H0A5Wtnp9SHQ4xGY+eNOpoQKWrLiJnyjYw3h4jxUYiAU4M/3bBW/RbHsAMIC6ALcvr26p80TBO1sKsYibuC6/LARItTS0FYkf6nz1kAqvZtZUAicKzAjf0sWMI6hOdgQV/AAhpH4xANykfP3Lp3daUP6ZNcnaN57+uotLmAp5irCBKTvHMM/1x7r+f1rkcB2/8K/OkCANoUM378eN+Yd2UDYgnLZtLFypo8gUez9JGpZkL+IItPFaG8y1pPWmay1i0usmiCiJ3HEMof8HsA7e5SAw5Qqq0b7EcoLOzBoYbVwXi9QHO8xw9JxRPRlaRJGk9ZAJFlTdY2/1JBLiuzfayclTxDUUMo/coDozntB4lAVCWCBenKsIu7ot635H6TeH3hKmkOfPRdqPxnG10umSKJ4xMnew4xD7TGwyQdVyA+7bMwhTgC9s2rMvLkn1TSv5xw50JUN/wVYELpcG4HMkRfGbm/nH7CwGMJHyA2W/H3bHqA0yjswE4tQ04DHjrJn2wTUB7a6RJmerDQLAYEmPiraUpFEoROKtihXIh2kx2t79zysR5Vr0fxpdUosTEUBo1ayzJI5CcjI5jWOghEUZJMQj3gx/rt0GqiTGOKj2OAi2FKhpJYvP1HXkObXQ/u1DXQCrWvhx0Fx61FJ4WjXAaa89jzzqz+MLmAWAVnOZcGide3oM6i8TsChWYHVs+iIbxc65KuGE0SB7VmNims02kH/nW9zNzIluF2fRKqqsu1Xu+43zxOGD8WEYrDOPzdE2FlmDOxgYGW/IGfbm0LnRxC8QKwgiAYNPwG5VoyGnOKjxqiHieTgZdHSTOX+QR8QlbmVzgVWFG4k9dV3vnI8EJIMUTReJ+OS6AVxp9ia3e9/RunhvN0o0lwzoM/7q6qWzvIR/AKW19TpOIobmfC3YoSBtRnZbboVa2rrMtzbbQcpvHo2M7WdO2L4oiD/tuprnwkck8i0n+KKnr+iczYCVzVq8oGS9MEtBvbxGOKoTOKBJ+HjvcD1jcb4ZtY/1PckF7wGGCiKzcJfBpNmOc+KNkNxTITmGB03vQQuwLOLGPT/1u2eC87xceCnf7JHdKG4Pw+xL7pGOEMpsYy9UcDmWXBwLM+WRcLRkveISC31v5/cF9Wz1fMEIypZpJft4KhgnTq4n07VapGNzNRIYA5m3P5rRI6wk1xxfhKVqS7sECN3y7Jh2XkRnHuI6uf7BVCJMb3cmEpcsqbIazvXtpTT7QDYs9mMn7eLL/TpaC0zuv3ECpdn4+gZYv5nBl+CjT8r8kNBEoqVo1I/gwB1yD6mM5WprdGXsVo+BnhZJWeKMO8LM4elrt8G7VWlbPHF5w57gWypqVNVdgXx/n/Ux011wLHi5yGdFRMYLO0FaaqDU/aKM1uRSPzPP1EkuLgZPzz3237nnrz8L9gvpapCmvyaeP7nq0GQnjoSSa3GETxUSCe4oVZcS9+rB8Tgz4SvyGfx+SGI0TFFVusiG92qZqD/ADXy8EEviehIZolIYOb+dPJWcsbycRGVjFBtnggOXHNaQN7vgm9nh3m+O2I6MooBmWKWWZb/LhglGsNGgZ8XxL+ll3Z8OQL7gpZisPih/sjM5mQCU13NjRJ3hNnc4KsN54Qz63zkpqXVGpXbqbVKr/t5a6b5tdClTWw62slrkmBX3LllF473VwPbmlZZ0nYAnAFzI+ti613GTxa69An4UVzZDoxXnuW38FzIIY1MDgywDXG13xoi61HtAHlpDjp0W75vKJ6DBqOzS4POS1ZYEsFOOerMAGCiGGhIcMA5BcW7psh2kiifnAukuCFYbCDhlhAZa2WrBF3v+NjxlgOOb16r2aZqCb0i3HWMrRDwNsFf8ev49ef6KGsLKvUZGnBy7kPaiH5YgqrDbVjWhg+q4Q/NtlrlrWVUjR/sauVrSx5V6oFUksxA6CEUAfBiAj5WC9tfPeupvNNRUXg5nZdLwYfz3PEy9HPr0s3bgzceQlnw0gmbWtsW/nyVJ5fLVaFku+zptm1GKyOKXhRDiR1up616fDGPOyiHlfAbXu5QfTM3E3LJ6e73d2YEct+8RjK9poMRlQgb/a/1cEzfED89/xky5B7a6yt1b8ZG97DjjuN1BY8rolH5Fihj8hdi1SXjCspLlgXdSz3sr1wm9T5tfb1e+gkTTnAbqzi0q99qGSJqmlqSkNI7FKH1oBQvykW6vyoORhlfdfBMpKEN3IYVgBmehk+s90hfy0k+LzHLONRCxUZuKf1ivkbV30QGw8Rj3Tpk8AtAbQAthq38AfSqKzBcnBl2lKhcaSwz3XkGmQjZVsvD9a2pxXMVKrViPjqT2YUohf+81vQSIWylJq6avU3ACbmev7fVNJ1VxS1AslTkuXhEPRIcgZjuoaFdQDjIawUyzPBeMmj48IsMJmk9aHXBMBHGPvfI17U1GJZaybMO1/9UhFnPm/3jyQHTxLnF2B/vUPGlcv65f1NnQB3rBz1hTlyBijft/CFLJiXbLjl8Ulr7BhtL28+CAav/vs1Vuo6vZD+F0zs75PICv7ayFf7Nqx50qVXd+kMrc5SpjIVB6tNbcddqIOsp7I1qBR85+GkWY/sNpk9fY7lqPXQxAsfYtmi2T+Ji59hO9rx1BGICc262XNsib0RDhnc+ZRn9VzK52kRwOeBZxEP2KnjImehKjF93YRKUArKyq4yIyFJ10SbKhxVTQ5/3DMKITLlOg2iUsa4SEJ2bUkH6DMaOIayoayguO9hbqxgd3jwfCiIO+2qAJIo/iNa9vpj/XNW16NnkrKwzXTHHr51/0mHaQHM8pwfA9WPNyoVZNyzjH7i65XkmynflKAa5GwYgYlbn0ljt/QKuNEA8ao6HX90BbQZKiJOLmuBeSmCBQ545GsgkBJYn5JMt1koPVCpgQeD8L8Oq8BbSt+w3teI5X4ygVKyKQj59Ol9kUNaib5XwuMmZ0jqXNV0nWTb0A8xxTYUiKt/cpvFp0lfCqu2zguE4Qeu2SREwTETaMit9czlo7FMvzhsmrD1Rez6WfMIKqaRb4aS76ZBi/gCtJ3DPsB7A7+Eg38DgtJHSFp3sjy9tOWca6zdOgXgxpZaGwkMdyV8ln9czcax5aPSt0IHyqLiOKIM2bFLkuATU//hejCQopJRuV5r5t4mjCeMMtO1r67enLPdy4GWiBSC5MntUUzCtZ2iCnWwY2L1VgPkxc4OXTZQ5CKs/vTn2k5r9VrhnNomWYYbiwfVCTglglL134ef2JqSWW8eRsGSwIwH62RrHHpXCv6Yjn9xRDk5QOIUTzp1162KTPWTuleslVlmX+OH5VabbJqrLY0L/8zkKkgX8zHlJlY5bfSx7aSgkKm/dqHvjmVooIPfjoGLHqMrc19P///5Z7HRKh5cCxHlUiMzQ9hnqwbiDarmYF9zI8jr5i6tGZzHpCh4y4bpyrDpS/r6g9uOKs0Df/dQ84IfClVt8fWRJ/fX8Re6i6l/SBMnei9j67UDTqLsuTlL8Qr1R9i5o1NaYrw2woRczYqZePUcP5wvweeD2WjqjPOmwoDKfZS6gLI/bFmJ1RGMh52e9jLQni0g/wSkZylGJeoA7Y9ZUuwASLqsRMIDVIQmk6F75/zaZEHqHXroaPt8VvJ00p05g6Q+MyskFM8MfsSNdcX2Ihj1miFLNF8oB2BBotqBRyNBoMPk9aI/oTCGSLW1HFWYFlaKHLOHA8iKTXFFysiSEIUyF5+paJEz3/LakIWY2V9vFWN8eXNcP+HkgJnDssTTPCmQkBea8cSVxloIeM1ZhDDDQRqACWnsSYpTUllphkvYqsxaeKKpXBtq5R2oWomRC8HeX7+LwU0LjrMhYzwEQLlaBgV38GtWqXOE3XfUywgqxOGnLZybprtlBefheSbGtJYfTeU4SN2qVL6Te2VlqzR+uqrS9G2+bmwJPwZBFWFBJdIkLNFAYLfXfn4yWvmtCzBx40HTt9O7TiuIRfMZCY4ldABgAPfRgaZ2pMJWvy3B+es3bYH2bnT2opHqZW8MwdG1QAOruwVPrH2TZrA6SqzEfUq7OW6G89Z3gaYW9UJzG3AG2jrq5YX53dR5W0AQRnDMhGarFuuLbwnSfvMoM4L8/ulQpP+tRoFCWwL5d5eRyLbGsyV8o1dlg6iLUzDyIlNPXYJyms8PMAptpQx7nd0ZdKjx9fyBIKRYGqvZlk5QaFMxrz3VHWfUdBuJEIbQdke+yq+91S64pYXZz3pN4M6qRLLEr5O8HlMMwgobKiQvRhDZ1BrBxSrYH5QC/FHP3k4YB0jDzlDoYwmJLlnj5Q+1pLKuzHx0s+kEqjFnAK5067X/XJ2uNm2HJ/glNMOA32x1UHJo7ITfPJ50vZ/Fmfa06n",
+  "mac": "Gq6QyCmDUftTAxbrxadAOXAX93sSTZJ8+2FlegsD3Us="
  }
 }
