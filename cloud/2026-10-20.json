@@ -58,15 +58,6 @@
  "results_cloud_wait": 60,
  "results_on": true,
  "results_posted": "laptop",
- "stats": {
-  "all_n": 21,
-  "all_w": 18,
-  "bn": 0,
-  "bw": 0,
-  "cs": 1,
-  "safe_n": 8,
-  "safe_w": 7
- },
  "v": 1,
  "weekly": {
   "link": "https://www.youtube.com/@MatchVision707",
@@ -83,7 +74,7 @@
   "brand": "MATCH VISION",
   "cs_head": "*CORRECT SCORE WIN · BIG WIN*",
   "cs_line": "🏆 *Correct Score Win: {HOME} {SCORE} {AWAY}*",
-  "cs_style": "8  Wide Lime",
+  "cs_style": "6  Wide VIP gold",
   "end": "🔥 *{WON} Of {TOTAL} Won*",
   "extra": ""
  },
@@ -352,7 +343,10 @@
    "n": 8,
    "picks": [
     {
-     "rule": null,
+     "rule": {
+      "s": "h",
+      "t": "win"
+     },
      "text": "Roma to win"
     },
     {
