@@ -509,6 +509,7 @@ details.rpost pre{white-space:pre-wrap;font-family:var(--f);font-size:13.5px;bac
 .bkcard .bkr{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);border-left:3px solid #ECC462;border-radius:12px;padding:8px 10px;margin-top:7px}.bkcard .bkr .t{flex:1;min-width:0}.bkcard .bkr .t b{display:block;font-size:14px}.bkcard .bkr .t small{color:#aaa;font-size:12px}.bkcard .bkr .o{color:#ECC462;font-weight:800}
 .lsc{color:#FF453A!important;font-weight:800}.fsc{color:#C9B27A!important;font-weight:700}
 .sbox .sm2{white-space:nowrap;font-size:clamp(10px,3vw,13px)}.mvw{color:#30D158!important}.mvl{color:#FF453A!important}.pklost{opacity:.75}.wint{padding:10px}.secbar{display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:12px 16px;margin:6px 0 10px;font-size:15px;font-weight:900;letter-spacing:.12em;color:#06140A;background:#30D158}.secbar.lost{background:#FF453A;color:#fff;margin-top:18px}.secbar b{font-size:20px}.pst-lime .pcard{border-color:#5d6b22;background:radial-gradient(120% 60% at 50% 0%,rgba(223,251,81,.16),rgba(0,0,0,0) 60%),linear-gradient(180deg,#0f1408,#080a06)}.pst-lime .pcard .ph b{color:#DFFB51}.pst-lime .pcard .pr{border-left-color:#DFFB51;border-color:rgba(223,251,81,.18)}.pst-lime .pcard .pr .n{background:#DFFB51}.pst-dark .pcard{border-color:#333;background:#0c0c0e}.pst-dark .pcard .ph b{color:#fff}.pst-dark .pcard .pr{border-left-color:#fff;border-color:#2a2a2a}.pst-dark .pcard .pr .n{background:#fff}.pst-blue .pcard{border-color:#1f3d7a;background:radial-gradient(120% 60% at 50% 0%,rgba(64,140,255,.22),rgba(0,0,0,0) 60%),linear-gradient(180deg,#07112a,#050814)}.pst-blue .pcard .ph b{color:#8EC5FF}.pst-blue .pcard .pr{border-left-color:#4A9BFF;border-color:rgba(74,155,255,.2)}.pst-blue .pcard .pr .n{background:#4A9BFF}.pst-red .pcard{border-color:#6b1f1f;background:radial-gradient(120% 60% at 50% 0%,rgba(255,69,58,.2),rgba(0,0,0,0) 60%),linear-gradient(180deg,#160808,#0a0505)}.pst-red .pcard .ph b{color:#FF8A80}.pst-red .pcard .pr{border-left-color:#FF453A;border-color:rgba(255,69,58,.2)}.pst-red .pcard .pr .n{background:#FF453A;color:#fff}
+.qmk{display:inline-flex;gap:6px}.qmb{width:34px;height:30px;border-radius:9px;border:1px solid #333;background:#151515;color:#ddd;font-weight:800;font-size:15px}.qmb.w{color:#22c55e;border-color:#22c55e55}.qmb.l{color:#ef4444;border-color:#ef444455}
 </style>
 <style id="design-midnight-red">
 /* v36 DESIGN: Midnight Red. One accent colour (#DFFB51) on deep black. Visual layer only: no features, data or markup changed. Keep this block last in <head>. */
@@ -894,7 +895,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.6</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.7</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -921,7 +922,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.10.6';   // APP_VERSION = '3.10.6' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.10.7';   // APP_VERSION = '3.10.7' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1112,7 +1113,11 @@ function prepText(t,app){let s=String(t||'');
   if(!SET.tags||(app&&SET.tagsOff&&SET.tagsOff[app]))s=s.split('\n').filter(l=>!isTags(l)).join('\n').replace(/\n{3,}/g,'\n\n').trim();
   if(app==='ig'){const mx=parseInt(SET.igTags);if(mx>0){let c=0;const seen={};s=s.split('\n').map(l=>isTags(l)?l.replace(/#\w+/g,m=>{const k=m.toLowerCase();if(seen[k])return '';seen[k]=1;return ++c<=mx?m:'';}).replace(/\s+/g,' ').trim():l).filter((l,i,a)=>l!==''||true).join('\n').replace(/\n{3,}/g,'\n\n').trim();}}   // 3.10.5: Instagram allows 5 hashtags
   return s;}
-function styled(t,app){const Q=[];const s=prepText(String(t||'').replace(/\*\*([^*\n]+)\*\*/g,'*$1*'),app).replace(/\*([^*\n]+)\*/g,(m,x)=>{Q.push(x);return '\u0001'+(Q.length-1)+'\u0002';});
+const _UIT={};for(let i=0;i<26;i++){_UIT[String.fromCharCode(65+i)]=String.fromCodePoint(0x1D608+i);_UIT[String.fromCharCode(97+i)]=String.fromCodePoint(0x1D622+i);}
+function italicFix(t,app){   // 3.10.7: _words_ = italic: WhatsApp keeps _x_, every other app gets slanted letters
+  return String(t||'').replace(/(^|[^\w\/@.:])_([^_\n]+?)_(?![\w])/g,(m,a,x)=>a+(app==='wa'?`_${x}_`:x.replace(/[A-Za-z]/g,c=>_UIT[c]||c)));}
+function styled(t,app){return italicFix(styled0(t,app),app);}
+function styled0(t,app){const Q=[];const s=prepText(String(t||'').replace(/\*\*([^*\n]+)\*\*/g,'*$1*'),app).replace(/\*([^*\n]+)\*/g,(m,x)=>{Q.push(x);return '\u0001'+(Q.length-1)+'\u0002';});
   const plain=x=>x.replace(/\u0001(\d+)\u0002/g,(m,i)=>Q[+i]);if(!SET.bold)return plain(s);
   if(app==='tg'&&SET.tgBold==='none')return plain(s);
   const mode=app==='wa'?'wa':(app==='any'||app==='copy')?'uni':app==='tg'?(SET.tgBold==='stars'?'tg':'uni'):(['x','ig','tt','th','yt'].includes(app)&&SET.uniBold)?'uni':'';if(!mode)return plain(s);
@@ -1186,11 +1191,13 @@ let openMatch=new Set(),matchFilter='all';
 function legMark(s){return s==='w'?'<span class="leg won">✔</span>':s==='l'?'<span class="leg lost">✘</span>':s==='up'?'<span class="leg up">↑</span>':s==='dn'?'<span class="leg dn">↓</span>':'<span class="leg wait">•</span>';}
 function statePill(L,m){if(!L||L.st==='NS')return `<span class="pill wait">${esc(m.kickoff||'--:--')}</span>`;if(L.st==='LIVE')return `<span class="pill live">LIVE ${L.min?L.min+"'":''}</span>`;if(L.st==='HT')return '<span class="pill live">HT</span>';if(L.st==='PST')return '<span class="pill wait">POSTPONED</span>';if(L.st==='CANC')return '<span class="pill wait">CANCELLED</span>';if(L.st==='NF')return '<span class="pill wait">CHECK</span>';return '<span class="pill wait">FT</span>';}
 function premSetOf(d){if(!prem)return [];const x=(prem.days||[]).find(p=>p.date===d.date);return x?x.picks||[]:[];}
+// 3.10.7 (Philip, 20 Oct): a finished match with a pick nobody could decide: two small buttons right on the pick
+function quickMark(d,m,i){const k=`${d.date}|${m.n}.${i+1}`;return `<span class="qmk"><button class="qmb w" data-qmk="w" data-k="${k}" aria-label="Won">✓</button><button class="qmb l" data-qmk="l" data-k="${k}" aria-label="Lost">✕</button></span>`;}
 function matchCard(m,d){const L=liveOf(m,d),live=L&&['LIVE','HT'].includes(L.st);const pr=premSetOf(d);
   const sc=L&&L.gh!=null?`<div class="mscore ${live?'live':''}">${L.gh}-${L.ga}${SET.showPred&&m.score?`<small>Predicted ${esc(m.score)}</small>`:''}</div>`:(SET.showPred&&m.score?`<div class="mscore pred">${esc(m.score)}<small>Correct score</small></div>`:'');
   const ord=(m.picks||[]).slice(0,3).map((p,i)=>({p,i,s:pickState(p,i,m,d,L)}));const lostN=ord.filter(x=>x.s==='l').length;if(lostN)ord.sort((a,b)=>(a.s==='l')-(b.s==='l')||a.i-b.i);
   const picks=ord.map(({p,i,s},j)=>{const isP=pr.some(x=>x.n===m.n&&x.text===p.text);
-    return `<div class="game pkrow ${s==='l'?'pklost':''}"><span class="pnum ${i===0?'first':''}">${i+1}</span><div class="gm"><b>${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(p.text)}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}<div class="tm" style="width:auto">${legMark(s)}</div></div>`;}).join('');
+    return `<div class="game pkrow ${s==='l'?'pklost':''}"><span class="pnum ${i===0?'first':''}">${i+1}</span><div class="gm"><b>${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(p.text)}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}<div class="tm" style="width:auto">${(!s&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div></div>`;}).join('');
   const ht=L&&L.hh!=null&&L.st!=='NS'?` · HT ${L.hh}-${L.ha}`:'';
   return `<div class="card slipc" data-m="${m.n}" data-dk="${d.date}" style="padding:14px"><div class="sliphd" style="margin-bottom:8px"><div class="sn"><b class="lgname">${esc(m.league||'')}</b><span>Match ${m.n} · ${esc(m.kickoff||'')}${m.date&&m.date!==d.date?' · '+shortDate(m.date):''}${ht}</span></div><div style="flex:none;margin-left:auto">${statePill(L,m)}</div></div>
     <div class="mrow2"><button class="minicard" data-big="${m.n}" data-dk="${d.date}" aria-label="The match card">${mvCard(m,d,(d.matches||[]).length,true)}</button><div class="mright"><div class="mrow"><div class="tms"><b>${esc(m.home)}</b><b>${esc(m.away)}</b></div>${sc}</div></div></div><div class="glist" style="margin-top:10px">${picks}</div></div>`;}
@@ -1290,6 +1297,7 @@ function renderHome(quiet){const el=$('p-home');el.classList.toggle('noanim',!!q
   const d=todayDay();let body;if(homeView==='matches')body=matchesView(d);else if(homeView==='results')body=resultsView(d);else body=postsView(d)+upcomingCard();
   el.innerHTML=summaryBoxes(d)+body;}
 function homeClick(e,getDay,after){const b=e.target.closest('button,[data-m]');if(!b)return false;
+  if(b.dataset.qmk){MARKS[b.dataset.k]={v:b.dataset.qmk,sent:false};saveMarks();refresh(true);return true;}   // 3.10.7
   if(b.dataset.winshare){const d=dayOf(b.dataset.dk);if(d)shareWin(d,b.dataset.winshare,b.dataset.wp);return true;}
   if(b.dataset.winshare2){const d=dayOf(b.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===b.dataset.winshare2);if(m){window.__matchShare={d,m};shareCard('match',d);}return true;}
   if(b.dataset.big){const d=dayOf(b.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===b.dataset.big);if(m)bigCard(d,m);return true;}
