@@ -72,6 +72,23 @@ def post(item):
     return tg('sendMessage', {'chat_id': chat, 'text': text[:4000], 'disable_web_page_preview': 'true', **extra})
 
 
+def sticker(day, kind, chat):
+    """3.20.1: the TODAY'S GAMES / NEW VIDEO / RESULTS sticker just before that post, once a day (laptop off too)."""
+    path = (day.get('stickers') or {}).get(kind)
+    sent = day.setdefault('stickers_sent', [])
+    if not path or kind in sent or not chat:
+        return
+    full = os.path.join(ROOT, path)
+    if not os.path.isfile(full):
+        return
+    try:
+        tg('sendSticker', {'chat_id': chat}, {'sticker': full})
+        sent.append(kind)
+        print(f'{day.get("date")}: {kind} sticker sent by the cloud.')
+    except Exception as ex:
+        print(f'{day.get("date")}: {kind} sticker not sent ({ex}).')
+
+
 def main():
     if not TOKEN:
         print('No TG_TOKEN secret: nothing posted (see GUIDE.txt, one-time setup).')
@@ -102,6 +119,8 @@ def main():
                 dirty = True
                 continue
             try:
+                if it.get('id') in ('games', 'video'):
+                    sticker(day, it['id'], it.get('chat'))
                 post(it)
                 it['posted'] = 'cloud'
                 it['posted_at'] = now.isoformat(timespec='minutes')
@@ -112,11 +131,18 @@ def main():
         try:                                           # 3.8: win tickets when a match is over (laptop off too)
             sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
             import cloud_wins
-            if cloud_wins.run(day, now, ROOT, tg, print):
+            chat_w = day.get('win_chat') or ''
+
+            def tg_r(method, params, files=None):      # 3.20.1: the RESULTS sticker before the first result
+                if method in ('sendPhoto', 'sendMediaGroup', 'sendMessage') and str(params.get('chat_id')) == str(chat_w):
+                    sticker(day, 'results', chat_w)
+                return tg(method, params, files)
+            tg_w = tg_r
+            if cloud_wins.run(day, now, ROOT, tg_w, print):
                 dirty = True
-            if cloud_wins.banker(day, now, ROOT, tg, print):  # 3.9.3: the banker win at once
+            if cloud_wins.banker(day, now, ROOT, tg_w, print):  # 3.9.3: the banker win at once
                 dirty = True
-            if cloud_wins.results(day, now, tg, print):     # 3.8.1: the end-of-day results too
+            if cloud_wins.results(day, now, tg_w, print):     # 3.8.1: the end-of-day results too
                 dirty = True
             if cloud_wins.day_stats(day, now):               # 3.10: numbers for the weekly recap
                 dirty = True
