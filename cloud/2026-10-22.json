@@ -3,17 +3,22 @@
   "games": [
    {
     "n": 1,
-    "odds": 1.3,
-    "text": "Over 0.5 goals 1st half"
+    "odds": 1.28,
+    "text": "Over 1.5 goals"
    },
    {
-    "n": 5,
-    "odds": 1.5,
-    "text": "Under 3.5 goals"
+    "n": 4,
+    "odds": 1.25,
+    "text": "Benfica draw no bet"
+   },
+   {
+    "n": 7,
+    "odds": 1.25,
+    "text": "Over 1.5 goals"
    }
   ],
   "posted": null,
-  "total": 1.95
+  "total": 2.0
  },
  "banker_on": true,
  "date": "2026-10-22",
@@ -28,9 +33,9 @@
    "images": [
     "media/2026-10-22/Games-2026-10-22.jpg"
    ],
-   "latest": "2026-10-22T16:45",
+   "latest": "2026-10-22T14:30",
    "posted": null,
-   "text": "<b>Thursday Games | 22 October</b>\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Ararat-Armenia vs AZ Alkmaar\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ferencvarosi TC vs Torreense\n16:45  Union St. Gilloise vs Hapoel Beer Sheva\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n19:00  Celtic vs Celta Vigo\n19:00  1899 Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Beşiktaş vs Crystal Palace\n19:00  Viktoria Plzen vs Levski Sofia\n\n🎯 All Predictions In Today's Video.\n👇 <b>Watch All Predictions:</b>\nhttps://www.youtube.com/@MatchVision707"
+   "text": "<b>Thursday Games | 22 October</b>\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI Crete vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ararat-Armenia vs AZ Alkmaar\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n19:00  Besiktas vs Crystal Palace\n19:00  Celtic vs Celta Vigo\n19:00  Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Olympiacos vs Sparta Prague\n19:00  Jagiellonia Bialystok vs Anderlecht\n19:00  NK Celje vs RB Salzburg\n\nConference League\n14:30  Kairat Almaty vs Panathinaikos\n16:45  Jablonec vs Brighton\n16:45  Trabzonspor vs Hearts Of Oak\n16:45  Getafe vs Lugano\n16:45  Crvena Zvezda vs FC Copenhagen\n19:00  Ajax vs Atalanta\n19:00  Monaco vs Freiburg\n19:00  Braga vs Gent\n19:00  Lincoln Red Imps vs FC Twente\n19:00  FC Midtjylland vs Sint-Truiden\n\n🎯 All Predictions In Today's Video.\n👇 <b>Watch All Predictions:</b>\nhttps://www.youtube.com/@MatchVision707"
   }
  ],
  "results_caption": {
@@ -76,30 +81,28 @@
    "picks": [
     {
      "rule": {
-      "o": "u",
-      "t": "g",
-      "v": 3.5
+      "s": "h",
+      "t": "win"
      },
-     "text": "Under 3.5 goals"
+     "text": "Juventus to win"
     },
     {
      "rule": {
       "o": "o",
-      "t": "g1",
-      "v": 0.5
+      "t": "g",
+      "v": 1.5
      },
-     "text": "Over 0.5 goals 1st half"
+     "text": "Over 1.5 goals"
     },
     {
      "rule": {
-      "t": "btts",
-      "y": 0
+      "t": "stat"
      },
-     "text": "BTTS - No"
+     "text": "Over 8.5 corners"
     }
    ],
    "posted": null,
-   "score": "2-0"
+   "score": "2-1"
   },
   {
    "ac": "media/crests/ac-milan.png",
@@ -113,19 +116,10 @@
    "picks": [
     {
      "rule": {
-      "o": "o",
-      "t": "g",
-      "v": 1.5
+      "s": "a",
+      "t": "dc"
      },
-     "text": "Over 1.5 goals"
-    },
-    {
-     "rule": {
-      "o": "o",
-      "t": "g1",
-      "v": 0.5
-     },
-     "text": "Over 0.5 goals 1st half"
+     "text": "AC Milan or draw"
     },
     {
      "rule": {
@@ -133,167 +127,36 @@
       "y": 1
      },
      "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
     }
    ],
    "posted": null,
-   "score": "2-1"
+   "score": "1-2"
   },
   {
    "ac": "media/crests/bayer-leverkusen.png",
    "away": "Bayer Leverkusen",
    "espn": null,
-   "hc": "media/crests/ofi.png",
-   "home": "OFI",
+   "hc": "media/crests/ofi-crete.png",
+   "home": "OFI Crete",
    "ko": "2026-10-22T16:45",
    "league": "Europa League",
    "n": 3,
    "picks": [
     {
      "rule": {
-      "o": "o",
-      "t": "g1",
-      "v": 0.5
-     },
-     "text": "Over 0.5 goals 1st half"
-    },
-    {
-     "rule": {
       "s": "a",
-      "t": "ts",
-      "v": 1.5
+      "t": "win"
      },
-     "text": "Bayer Leverkusen over 1.5 goals"
+     "text": "Bayer Leverkusen to win"
     },
-    {
-     "rule": {
-      "o": "u",
-      "t": "g",
-      "v": 3.5
-     },
-     "text": "Under 3.5 goals"
-    }
-   ],
-   "posted": null,
-   "score": "0-3"
-  },
-  {
-   "ac": "media/crests/benfica.png",
-   "away": "Benfica",
-   "espn": null,
-   "hc": "media/crests/omonia-nicosia.png",
-   "home": "Omonia Nicosia",
-   "ko": "2026-10-22T19:00",
-   "league": "Europa League",
-   "n": 4,
-   "picks": [
-    {
-     "rule": {
-      "o": "o",
-      "t": "g",
-      "v": 1.5
-     },
-     "text": "Over 1.5 goals"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Under 10 corners"
-    },
-    {
-     "rule": {
-      "s": "a",
-      "t": "ts",
-      "v": 1.5
-     },
-     "text": "Benfica over 1.5 goals"
-    }
-   ],
-   "posted": null,
-   "score": "1-2"
-  },
-  {
-   "ac": "media/crests/marseille.png",
-   "away": "Marseille",
-   "espn": null,
-   "hc": "media/crests/sturm-graz.png",
-   "home": "Sturm Graz",
-   "ko": "2026-10-22T16:45",
-   "league": "Europa League",
-   "n": 5,
-   "picks": [
-    {
-     "rule": {
-      "o": "u",
-      "t": "g",
-      "v": 3.5
-     },
-     "text": "Under 3.5 goals"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Over 9.5 corners"
-    },
-    {
-     "rule": {
-      "s": "a",
-      "t": "ts",
-      "v": 0.5
-     },
-     "text": "Marseille to score"
-    }
-   ],
-   "posted": null,
-   "score": "1-2"
-  },
-  {
-   "ac": "media/crests/celta-vigo.png",
-   "away": "Celta Vigo",
-   "espn": null,
-   "hc": "media/crests/celtic.png",
-   "home": "Celtic",
-   "ko": "2026-10-22T19:00",
-   "league": "Europa League",
-   "n": 6,
-   "picks": [
-    {
-     "rule": {
-      "o": "o",
-      "t": "g",
-      "v": 1.5
-     },
-     "text": "Over 1.5 goals"
-    },
-    {
-     "rule": {
-      "s": "h",
-      "t": "ts",
-      "v": 0.5
-     },
-     "text": "Celtic to score"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Under 10 corners"
-    }
-   ],
-   "posted": null,
-   "score": "2-1"
-  },
-  {
-   "ac": "media/crests/lyon.png",
-   "away": "Lyon",
-   "espn": null,
-   "hc": "media/crests/1899-hoffenheim.png",
-   "home": "1899 Hoffenheim",
-   "ko": "2026-10-22T19:00",
-   "league": "Europa League",
-   "n": 7,
-   "picks": [
     {
      "rule": {
       "o": "o",
@@ -308,6 +171,32 @@
       "y": 1
      },
      "text": "BTTS - Yes"
+    }
+   ],
+   "posted": null,
+   "score": "1-3"
+  },
+  {
+   "ac": "media/crests/benfica.png",
+   "away": "Benfica",
+   "espn": null,
+   "hc": "media/crests/omonia-nicosia.png",
+   "home": "Omonia Nicosia",
+   "ko": "2026-10-22T19:00",
+   "league": "Europa League",
+   "n": 4,
+   "picks": [
+    {
+     "rule": null,
+     "text": "Benfica draw no bet"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
     },
     {
      "rule": {
@@ -315,18 +204,124 @@
       "t": "ts",
       "v": 1.5
      },
-     "text": "Lyon over 1.5 goals"
+     "text": "Benfica over 1.5 goals"
     }
    ],
    "posted": null,
    "score": "1-2"
   },
   {
-   "ac": "media/crests/real-sociedad.png",
-   "away": "Real Sociedad",
+   "ac": "media/crests/crystal-palace.png",
+   "away": "Crystal Palace",
    "espn": null,
-   "hc": "media/crests/lillestrom.png",
-   "home": "Lillestrom",
+   "hc": "media/crests/besiktas.png",
+   "home": "Besiktas",
+   "ko": "2026-10-22T19:00",
+   "league": "Europa League",
+   "n": 5,
+   "picks": [
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "s": "h",
+      "t": "dc"
+     },
+     "text": "Besiktas or draw"
+    },
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Over 3.5 cards"
+    }
+   ],
+   "posted": null,
+   "score": "2-1"
+  },
+  {
+   "ac": "media/crests/marseille.png",
+   "away": "Marseille",
+   "espn": null,
+   "hc": "media/crests/sturm-graz.png",
+   "home": "Sturm Graz",
+   "ko": "2026-10-22T16:45",
+   "league": "Europa League",
+   "n": 6,
+   "picks": [
+    {
+     "rule": {
+      "s": "a",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "Marseille to score"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "dc"
+     },
+     "text": "Marseille or draw"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
+    }
+   ],
+   "posted": null,
+   "score": "1-2"
+  },
+  {
+   "ac": "media/crests/celta-vigo.png",
+   "away": "Celta Vigo",
+   "espn": null,
+   "hc": "media/crests/celtic.png",
+   "home": "Celtic",
+   "ko": "2026-10-22T19:00",
+   "league": "Europa League",
+   "n": 7,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Over 8.5 corners"
+    }
+   ],
+   "posted": null,
+   "score": "2-2"
+  },
+  {
+   "ac": "media/crests/lyon.png",
+   "away": "Lyon",
+   "espn": null,
+   "hc": "media/crests/hoffenheim.png",
+   "home": "Hoffenheim",
    "ko": "2026-10-22T19:00",
    "league": "Europa League",
    "n": 8,
@@ -348,6 +343,38 @@
     },
     {
      "rule": {
+      "s": "a",
+      "t": "dc"
+     },
+     "text": "Lyon or draw"
+    }
+   ],
+   "posted": null,
+   "score": "1-2"
+  },
+  {
+   "ac": "media/crests/real-sociedad.png",
+   "away": "Real Sociedad",
+   "espn": null,
+   "hc": "media/crests/lillestrom.png",
+   "home": "Lillestrom",
+   "ko": "2026-10-22T19:00",
+   "league": "Europa League",
+   "n": 9,
+   "picks": [
+    {
+     "rule": null,
+     "text": "Real Sociedad draw no bet"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "win"
+     },
+     "text": "Real Sociedad to win"
+    },
+    {
+     "rule": {
       "t": "stat"
      },
      "text": "Over 9.5 corners"
@@ -355,41 +382,6 @@
    ],
    "posted": null,
    "score": "1-2"
-  },
-  {
-   "ac": "media/crests/crystal-palace.png",
-   "away": "Crystal Palace",
-   "espn": null,
-   "hc": "media/crests/be-ikta.png",
-   "home": "Beşiktaş",
-   "ko": "2026-10-22T19:00",
-   "league": "Europa League",
-   "n": 9,
-   "picks": [
-    {
-     "rule": {
-      "o": "o",
-      "t": "g",
-      "v": 1.5
-     },
-     "text": "Over 1.5 goals"
-    },
-    {
-     "rule": {
-      "t": "btts",
-      "y": 1
-     },
-     "text": "BTTS - Yes"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Under 9.5 corners"
-    }
-   ],
-   "posted": null,
-   "score": "2-1"
   },
   {
    "ac": "media/crests/sunderland.png",
@@ -403,6 +395,13 @@
    "picks": [
     {
      "rule": {
+      "s": "a",
+      "t": "dc"
+     },
+     "text": "Sunderland or draw"
+    },
+    {
+     "rule": {
       "o": "o",
       "t": "g",
       "v": 1.5
@@ -411,51 +410,47 @@
     },
     {
      "rule": {
-      "t": "btts",
-      "y": 1
+      "s": "a",
+      "t": "ts",
+      "v": 1.5
      },
-     "text": "BTTS - Yes"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Over 9.5 corners"
+     "text": "Sunderland over 1.5 goals"
     }
    ],
    "posted": null,
    "score": "1-2"
   },
   {
-   "ac": "media/crests/levski-sofia.png",
-   "away": "Levski Sofia",
+   "ac": "media/crests/nec-nijmegen.png",
+   "away": "NEC Nijmegen",
    "espn": null,
-   "hc": "media/crests/viktoria-plzen.png",
-   "home": "Viktoria Plzen",
-   "ko": "2026-10-22T19:00",
+   "hc": "media/crests/dinamo-zagreb.png",
+   "home": "Dinamo Zagreb",
+   "ko": "2026-10-22T16:45",
    "league": "Europa League",
    "n": 11,
    "picks": [
     {
      "rule": {
+      "s": "h",
+      "t": "dc"
+     },
+     "text": "Dinamo Zagreb or draw"
+    },
+    {
+     "rule": {
+      "s": "h",
+      "t": "win"
+     },
+     "text": "Dinamo Zagreb to win"
+    },
+    {
+     "rule": {
       "o": "o",
-      "t": "g",
-      "v": 1.5
+      "t": "g1",
+      "v": 0.5
      },
-     "text": "Over 1.5 goals"
-    },
-    {
-     "rule": {
-      "t": "btts",
-      "y": 1
-     },
-     "text": "BTTS - Yes"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Under 9.5 corners"
+     "text": "Over 0.5 goals 1st half"
     }
    ],
    "posted": null,
@@ -473,109 +468,45 @@
    "picks": [
     {
      "rule": {
+      "s": "a",
+      "t": "ts",
+      "v": 0.5
+     },
+     "text": "AZ Alkmaar to score"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "win"
+     },
+     "text": "AZ Alkmaar to win"
+    },
+    {
+     "rule": {
       "o": "o",
       "t": "g",
-      "v": 1.5
+      "v": 2.5
      },
-     "text": "Over 1.5 goals"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Over 9.5 corners"
-    },
-    {
-     "rule": {
-      "t": "btts",
-      "y": 1
-     },
-     "text": "BTTS - Yes"
+     "text": "Over 2.5 goals"
     }
    ],
    "posted": null,
    "score": "1-2"
   },
   {
-   "ac": "media/crests/nec-nijmegen.png",
-   "away": "NEC Nijmegen",
+   "ac": "media/crests/sparta-prague.png",
+   "away": "Sparta Prague",
    "espn": null,
-   "hc": "media/crests/dinamo-zagreb.png",
-   "home": "Dinamo Zagreb",
-   "ko": "2026-10-22T16:45",
+   "hc": "media/crests/olympiacos.png",
+   "home": "Olympiacos",
+   "ko": "2026-10-22T19:00",
    "league": "Europa League",
    "n": 13,
    "picks": [
     {
-     "rule": {
-      "o": "o",
-      "t": "g",
-      "v": 1.5
-     },
-     "text": "Over 1.5 goals"
+     "rule": null,
+     "text": "Sparta Prague +1.5"
     },
-    {
-     "rule": {
-      "t": "btts",
-      "y": 1
-     },
-     "text": "BTTS - Yes"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Over 9.5 corners"
-    }
-   ],
-   "posted": null,
-   "score": "2-1"
-  },
-  {
-   "ac": "media/crests/torreense.png",
-   "away": "Torreense",
-   "espn": null,
-   "hc": "media/crests/ferencvarosi-tc.png",
-   "home": "Ferencvarosi TC",
-   "ko": "2026-10-22T16:45",
-   "league": "Europa League",
-   "n": 14,
-   "picks": [
-    {
-     "rule": {
-      "o": "o",
-      "t": "g",
-      "v": 1.5
-     },
-     "text": "Over 1.5 goals"
-    },
-    {
-     "rule": {
-      "t": "stat"
-     },
-     "text": "Under 9 corners"
-    },
-    {
-     "rule": {
-      "t": "btts",
-      "y": 1
-     },
-     "text": "BTTS - Yes"
-    }
-   ],
-   "posted": null,
-   "score": "2-1"
-  },
-  {
-   "ac": "media/crests/hapoel-beer-sheva.png",
-   "away": "Hapoel Beer Sheva",
-   "espn": null,
-   "hc": "media/crests/union-st-gilloise.png",
-   "home": "Union St. Gilloise",
-   "ko": "2026-10-22T16:45",
-   "league": "Europa League",
-   "n": 15,
-   "picks": [
     {
      "rule": {
       "o": "u",
@@ -590,12 +521,410 @@
       "y": 1
      },
      "text": "BTTS - Yes"
+    }
+   ],
+   "posted": null,
+   "score": "1-1"
+  },
+  {
+   "ac": "media/crests/anderlecht.png",
+   "away": "Anderlecht",
+   "espn": null,
+   "hc": "media/crests/jagiellonia-bialystok.png",
+   "home": "Jagiellonia Bialystok",
+   "ko": "2026-10-22T19:00",
+   "league": "Europa League",
+   "n": 14,
+   "picks": [
+    {
+     "rule": null,
+     "text": "Anderlecht +1.5"
+    },
+    {
+     "rule": null,
+     "text": "Anderlecht draw no bet"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
+    }
+   ],
+   "posted": null,
+   "score": "1-2"
+  },
+  {
+   "ac": "media/crests/rb-salzburg.png",
+   "away": "RB Salzburg",
+   "espn": null,
+   "hc": "media/crests/nk-celje.png",
+   "home": "NK Celje",
+   "ko": "2026-10-22T19:00",
+   "league": "Europa League",
+   "n": 15,
+   "picks": [
+    {
+     "rule": null,
+     "text": "RB Salzburg draw no bet"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "win"
+     },
+     "text": "RB Salzburg to win"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "ts",
+      "v": 1.5
+     },
+     "text": "RB Salzburg over 1.5 goals"
+    }
+   ],
+   "posted": null,
+   "score": "0-2"
+  },
+  {
+   "ac": "media/crests/atalanta.png",
+   "away": "Atalanta",
+   "espn": null,
+   "hc": "media/crests/ajax.png",
+   "home": "Ajax",
+   "ko": "2026-10-22T19:00",
+   "league": "Conference League",
+   "n": 16,
+   "picks": [
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "dc"
+     },
+     "text": "Atalanta or draw"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
+    }
+   ],
+   "posted": null,
+   "score": "1-2"
+  },
+  {
+   "ac": "media/crests/freiburg.png",
+   "away": "Freiburg",
+   "espn": null,
+   "hc": "media/crests/monaco.png",
+   "home": "Monaco",
+   "ko": "2026-10-22T19:00",
+   "league": "Conference League",
+   "n": 17,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g1",
+      "v": 0.5
+     },
+     "text": "Over 0.5 goals 1st half"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "s": "h",
+      "t": "dc"
+     },
+     "text": "Monaco or draw"
+    }
+   ],
+   "posted": null,
+   "score": "2-1"
+  },
+  {
+   "ac": "media/crests/brighton.png",
+   "away": "Brighton",
+   "espn": null,
+   "hc": "media/crests/jablonec.png",
+   "home": "Jablonec",
+   "ko": "2026-10-22T16:45",
+   "league": "Conference League",
+   "n": 18,
+   "picks": [
+    {
+     "rule": null,
+     "text": "Brighton & Hove Albion to win"
+    },
+    {
+     "rule": null,
+     "text": "Brighton & Hove Albion over 1.5 goals"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
+    }
+   ],
+   "posted": null,
+   "score": "1-3"
+  },
+  {
+   "ac": "media/crests/hearts-of-oak.png",
+   "away": "Hearts of Oak",
+   "espn": null,
+   "hc": "media/crests/trabzonspor.png",
+   "home": "Trabzonspor",
+   "ko": "2026-10-22T16:45",
+   "league": "Conference League",
+   "n": 19,
+   "picks": [
+    {
+     "rule": {
+      "s": "h",
+      "t": "ts",
+      "v": 1.5
+     },
+     "text": "Trabzonspor over 1.5 goals"
+    },
+    {
+     "rule": {
+      "s": "h",
+      "t": "win"
+     },
+     "text": "Trabzonspor to win"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
+    }
+   ],
+   "posted": null,
+   "score": "3-1"
+  },
+  {
+   "ac": "media/crests/panathinaikos.png",
+   "away": "Panathinaikos",
+   "espn": null,
+   "hc": "media/crests/kairat-almaty.png",
+   "home": "Kairat Almaty",
+   "ko": "2026-10-22T14:30",
+   "league": "Conference League",
+   "n": 20,
+   "picks": [
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Over 8.5 corners"
+    },
+    {
+     "rule": {
+      "s": "a",
+      "t": "dc"
+     },
+     "text": "Panathinaikos or draw"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    }
+   ],
+   "posted": null,
+   "score": "1-1"
+  },
+  {
+   "ac": "media/crests/lugano.png",
+   "away": "Lugano",
+   "espn": null,
+   "hc": "media/crests/getafe.png",
+   "home": "Getafe",
+   "ko": "2026-10-22T16:45",
+   "league": "Conference League",
+   "n": 21,
+   "picks": [
+    {
+     "rule": {
+      "t": "stat"
+     },
+     "text": "Over 3.5 cards"
+    },
+    {
+     "rule": null,
+     "text": "Lugano +1.5"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    }
+   ],
+   "posted": null,
+   "score": "1-1"
+  },
+  {
+   "ac": "media/crests/fc-copenhagen.png",
+   "away": "FC Copenhagen",
+   "espn": null,
+   "hc": "media/crests/crvena-zvezda.png",
+   "home": "Crvena Zvezda",
+   "ko": "2026-10-22T16:45",
+   "league": "Conference League",
+   "n": 22,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 1.5
+     },
+     "text": "Over 1.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
     },
     {
      "rule": {
       "t": "stat"
      },
-     "text": "Over 9 corners"
+     "text": "Over 8.5 corners"
+    }
+   ],
+   "posted": null,
+   "score": "2-2"
+  },
+  {
+   "ac": "media/crests/gent.png",
+   "away": "Gent",
+   "espn": null,
+   "hc": "media/crests/braga.png",
+   "home": "Braga",
+   "ko": "2026-10-22T19:00",
+   "league": "Conference League",
+   "n": 23,
+   "picks": [
+    {
+     "rule": null,
+     "text": "Gent +1.5"
+    },
+    {
+     "rule": {
+      "o": "u",
+      "t": "g",
+      "v": 3.5
+     },
+     "text": "Under 3.5 goals"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    }
+   ],
+   "posted": null,
+   "score": "1-1"
+  },
+  {
+   "ac": "media/crests/fc-twente.png",
+   "away": "FC Twente",
+   "espn": null,
+   "hc": "media/crests/lincoln-red-imps.png",
+   "home": "Lincoln Red Imps",
+   "ko": "2026-10-22T19:00",
+   "league": "Conference League",
+   "n": 24,
+   "picks": [
+    {
+     "rule": {
+      "o": "o",
+      "t": "g1",
+      "v": 0.5
+     },
+     "text": "Over 0.5 goals 1st half"
+    },
+    {
+     "rule": null,
+     "text": "FC Twente -1.5"
+    },
+    {
+     "rule": {
+      "t": "btts",
+      "y": 0
+     },
+     "text": "BTTS - No"
+    }
+   ],
+   "posted": null,
+   "score": "0-3"
+  },
+  {
+   "ac": "media/crests/sint-truiden.png",
+   "away": "Sint-Truiden",
+   "espn": null,
+   "hc": "media/crests/fc-midtjylland.png",
+   "home": "FC Midtjylland",
+   "ko": "2026-10-22T19:00",
+   "league": "Conference League",
+   "n": 25,
+   "picks": [
+    {
+     "rule": {
+      "t": "btts",
+      "y": 1
+     },
+     "text": "BTTS - Yes"
+    },
+    {
+     "rule": {
+      "s": "h",
+      "t": "dc"
+     },
+     "text": "FC Midtjylland or draw"
+    },
+    {
+     "rule": {
+      "o": "o",
+      "t": "g",
+      "v": 2.5
+     },
+     "text": "Over 2.5 goals"
     }
    ],
    "posted": null,
