@@ -1,6 +1,6 @@
 // Match Vision app 3.3 - online first, with the last saved copy when there is no internet.
 // feed.json is always fetched fresh. Only files of this app are kept (never other websites).
-const VERSION = '3.10.9';
+const VERSION = '3.10.10';
 const CACHE = 'mv-app-' + VERSION;
 const FILES = ['./', 'index.html', 'manifest.json', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png'];
 self.addEventListener('message', event => {
