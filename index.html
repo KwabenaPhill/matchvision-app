@@ -895,7 +895,7 @@ html,body{max-width:100%;overflow-x:hidden}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.9</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.10</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -922,7 +922,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.10.9';   // APP_VERSION = '3.10.9' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.10.10';   // APP_VERSION = '3.10.10' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -948,10 +948,10 @@ const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},
 const jget=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d:v;}catch(e){return d;}};
 const DEF={live:true,every:2,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
   apps:{wa:true,x:true,ig:true,tt:true,th:true,yt:true,tg:false},
-  bold:true,boldTitle:true,boldBrand:true,boldLeague:false,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
+  bold:true,boldTitle:true,boldBrand:false,boldLeague:false,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
   showOdds:true,showChance:false,showPred:true,showFin:true,sort:'time',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
   vidCards:true,recRange:'week',premMembers:true};
-let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
+let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
 const saveSet=()=>store.set(K.set,JSON.stringify(SET));
 let POSTED=jget(K.posted,{});   // date -> item id -> app -> true  (what YOU sent from this phone)
 const savePosted=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(POSTED))if(k<keep)delete POSTED[k];store.set(K.posted,JSON.stringify(POSTED));};
@@ -1126,7 +1126,7 @@ function styled0(t,app){const Q=[];const s=prepText(String(t||'').replace(/\*\*(
     const e=m[2].match(/^([^\w\s]+\s*)?(.*?)$/u);const lead=e&&e[1]?e[1]:'';return m[1]+lead+st+m[2].slice(lead.length)+st+m[3];};
   const L=s.split('\n');const firstIdx=L.findIndex(l=>l.trim());
   return fin(L.map((l,i)=>{const tr=l.trim();if(!tr||isTags(tr)||/^https?:\/\//.test(tr)||tr==='--- reply ---'||l.includes('\u0001'))return l;
-    if(SET.boldTitle&&i===firstIdx&&!/\bmatch(es)? predicted\b/i.test(tr))return B(l);   // 3.10.8: "9 Matches Predicted Today" never bold
+    if(SET.boldTitle&&i===firstIdx)return B(l);   // 3.10.10: the first line bold again (9 Matches Predicted Today too)
     if(SET.boldWatch&&/👇\s*$/.test(tr))return B(l);
     if(SET.boldBrand&&/^match vision$/i.test(tr))return B(l);
     if(SET.boldWatch&&/Watch [^:]*:/i.test(tr)){return l.replace(/(Watch [^:]*:)/i,w=>mode==='uni'?w.replace(/[A-Za-z0-9]+/g,x=>uniBold(x)):(mode==='wa'?`*${w}*`:`**${w}**`));}
