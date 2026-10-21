@@ -1,16 +1,16 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-21T19:09:10",
+ "updated": "2026-10-21T19:22:11",
  "builder": {
-  "busy": true,
-  "step": "Long video: 62% drawn",
-  "done": 0.501
+  "busy": false,
+  "step": "Finished: 2026-10-22 Thursday",
+  "done": 1.0
  },
  "days": [
   {
    "date": "2026-10-22",
    "where": "Ready to Upload",
-   "title": "FOOTBALL PREDICTIONS TODAY | 22 October | Over 1.5, BTTS & Corners | Europa League",
+   "title": "FOOTBALL PREDICTIONS TODAY | 22 October | BTTS, Over 1.5 & Over 2.5 | Europa League",
    "matches": [
     {
      "n": 1,
@@ -18,17 +18,17 @@
      "kickoff": "16:45",
      "home": "Juventus",
      "away": "Rennes",
-     "score": "2-0",
+     "score": "2-1",
      "date": "2026-10-22",
      "odds": [
-      1.55,
+      1.52,
       4.2,
       6.0
      ],
      "labels": [
       "SAFEST PICK",
-      "FIRST HALF",
-      "BTTS"
+      "GOALS",
+      "CORNERS"
      ],
      "win": null,
      "hc": "media/crests/juventus.png",
@@ -36,36 +36,34 @@
      "live": null,
      "picks": [
       {
-       "text": "Under 3.5 goals",
-       "odds": 1.44,
-       "chance": 0.76,
+       "text": "Juventus to win",
+       "odds": 1.52,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.28,
+       "chance": null,
        "rule": {
         "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.3,
-       "chance": 0.72,
-       "rule": {
-        "t": "g1",
         "o": "o",
-        "v": 0.5
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - No",
-       "odds": 2.0,
-       "chance": 0.57,
+       "text": "Over 8.5 corners",
+       "odds": 1.68,
+       "chance": null,
        "rule": {
-        "t": "btts",
-        "y": 0
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -78,17 +76,17 @@
      "kickoff": "19:00",
      "home": "Bournemouth",
      "away": "AC Milan",
-     "score": "2-1",
+     "score": "1-2",
      "date": "2026-10-22",
      "odds": [
-      2.1,
-      3.6,
-      3.3
+      2.9,
+      3.5,
+      2.35
      ],
      "labels": [
       "SAFEST PICK",
-      "FIRST HALF",
-      "BTTS"
+      "BTTS",
+      "GOALS"
      ],
      "win": null,
      "hc": "media/crests/bournemouth.png",
@@ -96,25 +94,12 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.22,
-       "chance": 0.76,
+       "text": "AC Milan or draw",
+       "odds": 1.35,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.3,
-       "chance": 0.72,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
+        "t": "dc",
+        "s": "a"
        },
        "live": null,
        "mine": false
@@ -122,10 +107,22 @@
       {
        "text": "BTTS - Yes",
        "odds": 1.62,
-       "chance": 0.55,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.75,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
        },
        "live": null,
        "mine": false
@@ -136,57 +133,55 @@
      "n": 3,
      "league": "Europa League",
      "kickoff": "16:45",
-     "home": "OFI",
+     "home": "OFI Crete",
      "away": "Bayer Leverkusen",
-     "score": "0-3",
+     "score": "1-3",
      "date": "2026-10-22",
      "odds": [
-      12.0,
-      7.0,
-      1.2
+      7.5,
+      5.0,
+      1.32
      ],
      "labels": [
       "SAFEST PICK",
-      "TEAM GOALS",
-      "GOALS"
+      "GOALS",
+      "BTTS"
      ],
      "win": null,
-     "hc": "media/crests/ofi.png",
+     "hc": "media/crests/ofi-crete.png",
      "ac": "media/crests/bayer-leverkusen.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.18,
-       "chance": 0.79,
+       "text": "Bayer Leverkusen to win",
+       "odds": 1.32,
+       "chance": null,
        "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
+        "t": "win",
+        "s": "a"
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Bayer Leverkusen over 1.5 goals",
-       "odds": null,
-       "chance": 0.69,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.91,
-       "chance": 0.62,
+       "text": "Over 2.5 goals",
+       "odds": 1.58,
+       "chance": null,
        "rule": {
         "t": "g",
-        "o": "u",
-        "v": 3.5
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.72,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
        },
        "live": null,
        "mine": false
@@ -202,13 +197,13 @@
      "score": "1-2",
      "date": "2026-10-22",
      "odds": [
-      7.5,
-      4.75,
-      1.38
+      5.2,
+      4.1,
+      1.6
      ],
      "labels": [
       "SAFEST PICK",
-      "CORNERS",
+      "GOALS",
       "TEAM GOALS"
      ],
      "win": null,
@@ -217,9 +212,17 @@
      "live": null,
      "picks": [
       {
+       "text": "Benfica draw no bet",
+       "odds": 1.25,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.8,
+       "odds": 1.26,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -229,19 +232,9 @@
        "mine": false
       },
       {
-       "text": "Under 10 corners",
-       "odds": 1.8,
-       "chance": 0.53,
-       "rule": {
-        "t": "stat"
-       },
-       "live": null,
-       "mine": false
-      },
-      {
        "text": "Benfica over 1.5 goals",
-       "odds": null,
-       "chance": 0.6,
+       "odds": 1.65,
+       "chance": null,
        "rule": {
         "t": "ts",
         "s": "a",
@@ -255,56 +248,54 @@
     {
      "n": 5,
      "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Sturm Graz",
-     "away": "Marseille",
-     "score": "1-2",
+     "kickoff": "19:00",
+     "home": "Besiktas",
+     "away": "Crystal Palace",
+     "score": "2-1",
      "date": "2026-10-22",
      "odds": [
-      3.7,
-      3.6,
-      2.0
+      2.25,
+      3.5,
+      3.05
      ],
      "labels": [
       "SAFEST PICK",
-      "CORNERS",
-      "TEAM GOALS"
+      "WIN OR DRAW",
+      "CARDS"
      ],
      "win": null,
-     "hc": "media/crests/sturm-graz.png",
-     "ac": "media/crests/marseille.png",
+     "hc": "media/crests/besiktas.png",
+     "ac": "media/crests/crystal-palace.png",
      "live": null,
      "picks": [
       {
-       "text": "Under 3.5 goals",
-       "odds": 1.5,
-       "chance": 0.76,
+       "text": "BTTS - Yes",
+       "odds": 1.58,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
+        "t": "btts",
+        "y": 1
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Over 9.5 corners",
-       "odds": 1.83,
-       "chance": 0.5,
+       "text": "Besiktas or draw",
+       "odds": 1.38,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 3.5 cards",
+       "odds": 1.65,
+       "chance": null,
        "rule": {
         "t": "stat"
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Marseille to score",
-       "odds": null,
-       "chance": 0.75,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
        },
        "live": null,
        "mine": false
@@ -314,56 +305,57 @@
     {
      "n": 6,
      "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Celtic",
-     "away": "Celta Vigo",
-     "score": "2-1",
+     "kickoff": "16:45",
+     "home": "Sturm Graz",
+     "away": "Marseille",
+     "score": "1-2",
      "date": "2026-10-22",
      "odds": [
-      2.7,
-      3.5,
-      2.55
+      3.8,
+      3.7,
+      1.92
      ],
      "labels": [
       "SAFEST PICK",
-      "TEAM GOALS",
-      "CORNERS"
+      "WIN OR DRAW",
+      "GOALS"
      ],
      "win": null,
-     "hc": "media/crests/celtic.png",
-     "ac": "media/crests/celta-vigo.png",
+     "hc": "media/crests/sturm-graz.png",
+     "ac": "media/crests/marseille.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.25,
-       "chance": 0.73,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Celtic to score",
-       "odds": null,
-       "chance": 0.73,
+       "text": "Marseille to score",
+       "odds": 1.18,
+       "chance": null,
        "rule": {
         "t": "ts",
-        "s": "h",
+        "s": "a",
         "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Under 10 corners",
-       "odds": 1.8,
-       "chance": 0.53,
+       "text": "Marseille or draw",
+       "odds": 1.28,
+       "chance": null,
        "rule": {
-        "t": "stat"
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.7,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
        },
        "live": null,
        "mine": false
@@ -374,41 +366,41 @@
      "n": 7,
      "league": "Europa League",
      "kickoff": "19:00",
-     "home": "1899 Hoffenheim",
-     "away": "Lyon",
-     "score": "1-2",
+     "home": "Celtic",
+     "away": "Celta Vigo",
+     "score": "2-2",
      "date": "2026-10-22",
      "odds": [
-      1.95,
-      4.0,
-      3.4
+      2.5,
+      3.5,
+      2.7
      ],
      "labels": [
       "SAFEST PICK",
       "BTTS",
-      "TEAM GOALS"
+      "CORNERS"
      ],
      "win": null,
-     "hc": "media/crests/1899-hoffenheim.png",
-     "ac": "media/crests/lyon.png",
+     "hc": "media/crests/celtic.png",
+     "ac": "media/crests/celta-vigo.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 2.5 goals",
-       "odds": 1.5,
-       "chance": 0.71,
+       "text": "Over 1.5 goals",
+       "odds": 1.25,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
-        "v": 2.5
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "BTTS - Yes",
-       "odds": 1.44,
-       "chance": 0.71,
+       "odds": 1.6,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -417,13 +409,11 @@
        "mine": false
       },
       {
-       "text": "Lyon over 1.5 goals",
-       "odds": null,
-       "chance": 0.56,
+       "text": "Over 8.5 corners",
+       "odds": 1.62,
+       "chance": null,
        "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 1.5
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -434,29 +424,29 @@
      "n": 8,
      "league": "Europa League",
      "kickoff": "19:00",
-     "home": "Lillestrom",
-     "away": "Real Sociedad",
+     "home": "Hoffenheim",
+     "away": "Lyon",
      "score": "1-2",
      "date": "2026-10-22",
      "odds": [
-      5.5,
-      4.5,
-      1.53
+      2.55,
+      3.6,
+      2.6
      ],
      "labels": [
       "SAFEST PICK",
       "BTTS",
-      "CORNERS"
+      "WIN OR DRAW"
      ],
      "win": null,
-     "hc": "media/crests/lillestrom.png",
-     "ac": "media/crests/real-sociedad.png",
+     "hc": "media/crests/hoffenheim.png",
+     "ac": "media/crests/lyon.png",
      "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
-       "odds": 1.2,
-       "chance": 0.77,
+       "odds": 1.22,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -467,8 +457,8 @@
       },
       {
        "text": "BTTS - Yes",
-       "odds": 1.7,
-       "chance": 0.53,
+       "odds": 1.55,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -477,11 +467,12 @@
        "mine": false
       },
       {
-       "text": "Over 9.5 corners",
-       "odds": 1.67,
-       "chance": 0.56,
+       "text": "Lyon or draw",
+       "odds": 1.48,
+       "chance": null,
        "rule": {
-        "t": "stat"
+        "t": "dc",
+        "s": "a"
        },
        "live": null,
        "mine": false
@@ -492,52 +483,48 @@
      "n": 9,
      "league": "Europa League",
      "kickoff": "19:00",
-     "home": "Beşiktaş",
-     "away": "Crystal Palace",
-     "score": "2-1",
+     "home": "Lillestrom",
+     "away": "Real Sociedad",
+     "score": "1-2",
      "date": "2026-10-22",
      "odds": [
-      2.1,
-      3.7,
-      3.25
+      5.5,
+      4.1,
+      1.55
      ],
      "labels": [
       "SAFEST PICK",
-      "BTTS",
+      "RESULT",
       "CORNERS"
      ],
      "win": null,
-     "hc": "media/crests/be-ikta.png",
-     "ac": "media/crests/crystal-palace.png",
+     "hc": "media/crests/lillestrom.png",
+     "ac": "media/crests/real-sociedad.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.84,
+       "text": "Real Sociedad draw no bet",
+       "odds": 1.24,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Real Sociedad to win",
+       "odds": 1.55,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
+        "t": "win",
+        "s": "a"
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.5,
-       "chance": 0.64,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Under 9.5 corners",
-       "odds": 1.8,
-       "chance": 0.52,
+       "text": "Over 9.5 corners",
+       "odds": 1.75,
+       "chance": null,
        "rule": {
         "t": "stat"
        },
@@ -555,14 +542,14 @@
      "score": "1-2",
      "date": "2026-10-22",
      "odds": [
-      4.75,
-      4.0,
-      1.67
+      3.1,
+      3.45,
+      2.25
      ],
      "labels": [
       "SAFEST PICK",
-      "BTTS",
-      "CORNERS"
+      "GOALS",
+      "TEAM GOALS"
      ],
      "win": null,
      "hc": "media/crests/lech-poznan.png",
@@ -570,9 +557,20 @@
      "live": null,
      "picks": [
       {
+       "text": "Sunderland or draw",
+       "odds": 1.34,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Over 1.5 goals",
-       "odds": 1.25,
-       "chance": 0.79,
+       "odds": 1.29,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -582,22 +580,13 @@
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.8,
-       "chance": 0.56,
+       "text": "Sunderland over 1.5 goals",
+       "odds": 1.85,
+       "chance": null,
        "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Over 9.5 corners",
-       "odds": 1.83,
-       "chance": 0.5,
-       "rule": {
-        "t": "stat"
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
        },
        "live": null,
        "mine": false
@@ -607,55 +596,56 @@
     {
      "n": 11,
      "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Viktoria Plzen",
-     "away": "Levski Sofia",
+     "kickoff": "16:45",
+     "home": "Dinamo Zagreb",
+     "away": "NEC Nijmegen",
      "score": "2-1",
      "date": "2026-10-22",
      "odds": [
       1.75,
-      3.8,
+      3.75,
       4.5
      ],
      "labels": [
       "SAFEST PICK",
-      "BTTS",
-      "CORNERS"
+      "RESULT",
+      "FIRST HALF"
      ],
      "win": null,
-     "hc": "media/crests/viktoria-plzen.png",
-     "ac": "media/crests/levski-sofia.png",
+     "hc": "media/crests/dinamo-zagreb.png",
+     "ac": "media/crests/nec-nijmegen.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.22,
-       "chance": 0.77,
+       "text": "Dinamo Zagreb or draw",
+       "odds": 1.24,
+       "chance": null,
        "rule": {
-        "t": "g",
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Dinamo Zagreb to win",
+       "odds": 1.75,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.36,
+       "chance": null,
+       "rule": {
+        "t": "g1",
         "o": "o",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.67,
-       "chance": 0.54,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Under 9.5 corners",
-       "odds": 1.8,
-       "chance": 0.53,
-       "rule": {
-        "t": "stat"
+        "v": 0.5
        },
        "live": null,
        "mine": false
@@ -671,14 +661,14 @@
      "score": "1-2",
      "date": "2026-10-22",
      "odds": [
-      5.75,
-      4.33,
-      1.53
+      5.0,
+      4.0,
+      1.62
      ],
      "labels": [
       "SAFEST PICK",
-      "CORNERS",
-      "BTTS"
+      "RESULT",
+      "GOALS"
      ],
      "win": null,
      "hc": "media/crests/ararat-armenia.png",
@@ -686,31 +676,89 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.77,
+       "text": "AZ Alkmaar to score",
+       "odds": 1.16,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Over 9.5 corners",
-       "odds": 1.83,
-       "chance": 0.5,
+       "text": "AZ Alkmaar to win",
+       "odds": 1.62,
+       "chance": null,
        "rule": {
-        "t": "stat"
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.72,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "league": "Europa League",
+     "kickoff": "19:00",
+     "home": "Olympiacos",
+     "away": "Sparta Prague",
+     "score": "1-1",
+     "date": "2026-10-22",
+     "odds": [
+      1.95,
+      3.5,
+      3.8
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/olympiacos.png",
+     "ac": "media/crests/sparta-prague.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Sparta Prague +1.5",
+       "odds": 1.28,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.32,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "BTTS - Yes",
-       "odds": 1.67,
-       "chance": 0.53,
+       "odds": 1.78,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -721,17 +769,468 @@
      ]
     },
     {
-     "n": 13,
+     "n": 14,
      "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Dinamo Zagreb",
-     "away": "NEC Nijmegen",
+     "kickoff": "19:00",
+     "home": "Jagiellonia Bialystok",
+     "away": "Anderlecht",
+     "score": "1-2",
+     "date": "2026-10-22",
+     "odds": [
+      3.2,
+      3.5,
+      2.2
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "DRAW NO BET",
+      "GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/jagiellonia-bialystok.png",
+     "ac": "media/crests/anderlecht.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Anderlecht +1.5",
+       "odds": 1.18,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Anderlecht draw no bet",
+       "odds": 1.58,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "Europa League",
+     "kickoff": "19:00",
+     "home": "NK Celje",
+     "away": "RB Salzburg",
+     "score": "0-2",
+     "date": "2026-10-22",
+     "odds": [
+      4.1,
+      3.75,
+      1.83
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "RESULT",
+      "TEAM GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/nk-celje.png",
+     "ac": "media/crests/rb-salzburg.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "RB Salzburg draw no bet",
+       "odds": 1.36,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "RB Salzburg to win",
+       "odds": 1.83,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "RB Salzburg over 1.5 goals",
+       "odds": 1.78,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "league": "Conference League",
+     "kickoff": "19:00",
+     "home": "Ajax",
+     "away": "Atalanta",
+     "score": "1-2",
+     "date": "2026-10-22",
+     "odds": [
+      3.0,
+      3.5,
+      2.25
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "WIN OR DRAW",
+      "GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/ajax.png",
+     "ac": "media/crests/atalanta.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.54,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Atalanta or draw",
+       "odds": 1.36,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.65,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "league": "Conference League",
+     "kickoff": "19:00",
+     "home": "Monaco",
+     "away": "Freiburg",
      "score": "2-1",
      "date": "2026-10-22",
      "odds": [
-      1.62,
-      4.2,
-      5.0
+      2.05,
+      3.55,
+      3.45
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "WIN OR DRAW"
+     ],
+     "win": null,
+     "hc": "media/crests/monaco.png",
+     "ac": "media/crests/freiburg.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.34,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.6,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Monaco or draw",
+       "odds": 1.3,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "league": "Conference League",
+     "kickoff": "16:45",
+     "home": "Jablonec",
+     "away": "Brighton",
+     "score": "1-3",
+     "date": "2026-10-22",
+     "odds": [
+      7.5,
+      4.8,
+      1.35
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/jablonec.png",
+     "ac": "media/crests/brighton.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Brighton & Hove Albion to win",
+       "odds": 1.35,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Brighton & Hove Albion over 1.5 goals",
+       "odds": 1.48,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 19,
+     "league": "Conference League",
+     "kickoff": "16:45",
+     "home": "Trabzonspor",
+     "away": "Hearts of Oak",
+     "score": "3-1",
+     "date": "2026-10-22",
+     "odds": [
+      1.42,
+      4.5,
+      7.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "RESULT",
+      "GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/trabzonspor.png",
+     "ac": "media/crests/hearts-of-oak.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Trabzonspor over 1.5 goals",
+       "odds": 1.48,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Trabzonspor to win",
+       "odds": 1.42,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.68,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 20,
+     "league": "Conference League",
+     "kickoff": "14:30",
+     "home": "Kairat Almaty",
+     "away": "Panathinaikos",
+     "score": "1-1",
+     "date": "2026-10-22",
+     "odds": [
+      3.6,
+      3.4,
+      2.05
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "WIN OR DRAW",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/kairat-almaty.png",
+     "ac": "media/crests/panathinaikos.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.45,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Panathinaikos or draw",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.76,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 21,
+     "league": "Conference League",
+     "kickoff": "16:45",
+     "home": "Getafe",
+     "away": "Lugano",
+     "score": "1-1",
+     "date": "2026-10-22",
+     "odds": [
+      1.95,
+      3.4,
+      3.9
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "HANDICAP",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/getafe.png",
+     "ac": "media/crests/lugano.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 3.5 cards",
+       "odds": 1.45,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Lugano +1.5",
+       "odds": 1.32,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.88,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 22,
+     "league": "Conference League",
+     "kickoff": "16:45",
+     "home": "Crvena Zvezda",
+     "away": "FC Copenhagen",
+     "score": "2-2",
+     "date": "2026-10-22",
+     "odds": [
+      2.3,
+      3.4,
+      3.0
      ],
      "labels": [
       "SAFEST PICK",
@@ -739,14 +1238,14 @@
       "CORNERS"
      ],
      "win": null,
-     "hc": "media/crests/dinamo-zagreb.png",
-     "ac": "media/crests/nec-nijmegen.png",
+     "hc": "media/crests/crvena-zvezda.png",
+     "ac": "media/crests/fc-copenhagen.png",
      "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.78,
+       "odds": 1.26,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -758,7 +1257,7 @@
       {
        "text": "BTTS - Yes",
        "odds": 1.62,
-       "chance": 0.49,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -767,9 +1266,9 @@
        "mine": false
       },
       {
-       "text": "Over 9.5 corners",
-       "odds": 1.83,
-       "chance": 0.5,
+       "text": "Over 8.5 corners",
+       "odds": 1.68,
+       "chance": null,
        "rule": {
         "t": "stat"
        },
@@ -779,90 +1278,40 @@
      ]
     },
     {
-     "n": 14,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Ferencvarosi TC",
-     "away": "Torreense",
-     "score": "2-1",
+     "n": 23,
+     "league": "Conference League",
+     "kickoff": "19:00",
+     "home": "Braga",
+     "away": "Gent",
+     "score": "1-1",
      "date": "2026-10-22",
      "odds": [
-      1.33,
-      5.0,
-      9.0
+      1.9,
+      3.6,
+      3.85
      ],
      "labels": [
       "SAFEST PICK",
-      "CORNERS",
+      "GOALS",
       "BTTS"
      ],
      "win": null,
-     "hc": "media/crests/ferencvarosi-tc.png",
-     "ac": "media/crests/torreense.png",
+     "hc": "media/crests/braga.png",
+     "ac": "media/crests/gent.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.81,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
+       "text": "Gent +1.5",
+       "odds": 1.3,
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       },
-      {
-       "text": "Under 9 corners",
-       "odds": 1.88,
-       "chance": 0.5,
-       "rule": {
-        "t": "stat"
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.95,
-       "chance": 0.51,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": null,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 15,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Union St. Gilloise",
-     "away": "Hapoel Beer Sheva",
-     "score": "2-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.33,
-      5.75,
-      8.0
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "CORNERS"
-     ],
-     "win": null,
-     "hc": "media/crests/union-st-gilloise.png",
-     "ac": "media/crests/hapoel-beer-sheva.png",
-     "live": null,
-     "picks": [
       {
        "text": "Under 3.5 goals",
-       "odds": 1.67,
-       "chance": 0.65,
+       "odds": 1.35,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "u",
@@ -873,8 +1322,100 @@
       },
       {
        "text": "BTTS - Yes",
-       "odds": 1.8,
-       "chance": 0.49,
+       "odds": 1.74,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 24,
+     "league": "Conference League",
+     "kickoff": "19:00",
+     "home": "Lincoln Red Imps",
+     "away": "FC Twente",
+     "score": "0-3",
+     "date": "2026-10-22",
+     "odds": [
+      11.0,
+      5.8,
+      1.22
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "HANDICAP",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/lincoln-red-imps.png",
+     "ac": "media/crests/fc-twente.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "FC Twente -1.5",
+       "odds": 1.55,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - No",
+       "odds": 1.65,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 25,
+     "league": "Conference League",
+     "kickoff": "19:00",
+     "home": "FC Midtjylland",
+     "away": "Sint-Truiden",
+     "score": "2-1",
+     "date": "2026-10-22",
+     "odds": [
+      1.85,
+      3.65,
+      4.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "WIN OR DRAW",
+      "GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/fc-midtjylland.png",
+     "ac": "media/crests/sint-truiden.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.56,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -883,11 +1424,24 @@
        "mine": false
       },
       {
-       "text": "Over 9 corners",
-       "odds": 1.92,
-       "chance": 0.5,
+       "text": "FC Midtjylland or draw",
+       "odds": 1.25,
+       "chance": null,
        "rule": {
-        "t": "stat"
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.66,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
        },
        "live": null,
        "mine": false
@@ -896,27 +1450,34 @@
     }
    ],
    "banker": {
-    "total": 1.95,
+    "total": 2.0,
     "games": [
      {
       "n": 1,
       "pick": {
-       "market": "FIRST HALF",
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.3,
-       "p": 0.72
+       "market": "GOALS",
+       "text": "Over 1.5 goals",
+       "odds": 1.28
       },
-      "odds": 1.3
+      "odds": 1.28
      },
      {
-      "n": 5,
+      "n": 4,
+      "pick": {
+       "market": "DRAW NO BET",
+       "text": "Benfica draw no bet",
+       "odds": 1.25
+      },
+      "odds": 1.25
+     },
+     {
+      "n": 7,
       "pick": {
        "market": "GOALS",
-       "text": "Under 3.5 goals",
-       "odds": 1.5,
-       "p": 0.76
+       "text": "Over 1.5 goals",
+       "odds": 1.25
       },
-      "odds": 1.5
+      "odds": 1.25
      }
     ]
    },
@@ -942,9 +1503,9 @@
       "media/2026-10-22/Games-2026-10-22.jpg"
      ],
      "texts": {
-      "tg": "Thursday Games | 22 October\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Ararat-Armenia vs AZ Alkmaar\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ferencvarosi TC vs Torreense\n16:45  Union St. Gilloise vs Hapoel Beer Sheva\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n19:00  Celtic vs Celta Vigo\n19:00  1899 Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Beşiktaş vs Crystal Palace\n19:00  Viktoria Plzen vs Levski Sofia\n\n🎯 All Predictions In Today's Video.\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Thursday Games | 22 October\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Ararat-Armenia vs AZ Alkmaar\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ferencvarosi TC vs Torreense\n16:45  Union St. Gilloise vs Hapoel Beer Sheva\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n19:00  Celtic vs Celta Vigo\n19:00  1899 Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Beşiktaş vs Crystal Palace\n19:00  Viktoria Plzen vs Levski Sofia\n\n🎯 All Predictions In Today's Video.\n👇 *Watch All Predictions:*\nhttps://t.me/matchvision707",
-      "x": "Thursday Games | 22 October\n\n#MatchVision #UEL #EuropaLeague #FootballPredictions\n\n--- reply ---\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Ararat-Armenia vs AZ Alkmaar\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ferencvarosi TC vs Torreense\n\n--- reply ---\n\n16:45  Union St. Gilloise vs Hapoel Beer Sheva\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n19:00  Celtic vs Celta Vigo\n19:00  1899 Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Beşiktaş vs Crystal Palace\n19:00  Viktoria Plzen vs Levski Sofia\n\n--- reply ---\n\n🎯 All Predictions In Today's Video.\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
+      "tg": "Thursday Games | 22 October\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI Crete vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ararat-Armenia vs AZ Alkmaar\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n19:00  Besiktas vs Crystal Palace\n19:00  Celtic vs Celta Vigo\n19:00  Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Olympiacos vs Sparta Prague\n19:00  Jagiellonia Bialystok vs Anderlecht\n19:00  NK Celje vs RB Salzburg\n\nConference League\n14:30  Kairat Almaty vs Panathinaikos\n16:45  Jablonec vs Brighton\n16:45  Trabzonspor vs Hearts Of Oak\n16:45  Getafe vs Lugano\n16:45  Crvena Zvezda vs FC Copenhagen\n19:00  Ajax vs Atalanta\n19:00  Monaco vs Freiburg\n19:00  Braga vs Gent\n19:00  Lincoln Red Imps vs FC Twente\n19:00  FC Midtjylland vs Sint-Truiden\n\n🎯 All Predictions In Today's Video.\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Thursday Games | 22 October\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI Crete vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ararat-Armenia vs AZ Alkmaar\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n19:00  Besiktas vs Crystal Palace\n19:00  Celtic vs Celta Vigo\n19:00  Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Olympiacos vs Sparta Prague\n19:00  Jagiellonia Bialystok vs Anderlecht\n19:00  NK Celje vs RB Salzburg\n\nConference League\n14:30  Kairat Almaty vs Panathinaikos\n16:45  Jablonec vs Brighton\n16:45  Trabzonspor vs Hearts Of Oak\n16:45  Getafe vs Lugano\n16:45  Crvena Zvezda vs FC Copenhagen\n19:00  Ajax vs Atalanta\n19:00  Monaco vs Freiburg\n19:00  Braga vs Gent\n19:00  Lincoln Red Imps vs FC Twente\n19:00  FC Midtjylland vs Sint-Truiden\n\n🎯 All Predictions In Today's Video.\n👇 *Watch All Predictions:*\nhttps://t.me/matchvision707",
+      "x": "Thursday Games | 22 October\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions\n\n--- reply ---\n\nEuropa League\n16:45  Juventus vs Rennes\n16:45  OFI Crete vs Bayer Leverkusen\n16:45  Sturm Graz vs Marseille\n16:45  Lech Poznan vs Sunderland\n16:45  Dinamo Zagreb vs NEC Nijmegen\n16:45  Ararat-Armenia vs AZ Alkmaar\n19:00  Bournemouth vs AC Milan\n19:00  Omonia Nicosia vs Benfica\n\n--- reply ---\n\n19:00  Besiktas vs Crystal Palace\n19:00  Celtic vs Celta Vigo\n19:00  Hoffenheim vs Lyon\n19:00  Lillestrom vs Real Sociedad\n19:00  Olympiacos vs Sparta Prague\n19:00  Jagiellonia Bialystok vs Anderlecht\n19:00  NK Celje vs RB Salzburg\nConference League\n\n--- reply ---\n\n14:30  Kairat Almaty vs Panathinaikos\n16:45  Jablonec vs Brighton\n16:45  Trabzonspor vs Hearts Of Oak\n16:45  Getafe vs Lugano\n16:45  Crvena Zvezda vs FC Copenhagen\n19:00  Ajax vs Atalanta\n19:00  Monaco vs Freiburg\n19:00  Braga vs Gent\n19:00  Lincoln Red Imps vs FC Twente\n\n--- reply ---\n\n19:00  FC Midtjylland vs Sint-Truiden\n\n🎯 All Predictions In Today's Video.\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
      },
      "auto": {
       "tg": false
@@ -964,7 +1525,7 @@
      "texts": {
       "tg": "Thursday Top Picks | 22 October\nMatch Vision\n\nOur Strongest Picks For Today.",
       "wa": "Thursday Top Picks | 22 October\nMatch Vision\n\nOur Strongest Picks For Today.",
-      "x": "Thursday Top Picks | 22 October\nMatch Vision\n\nOur Strongest Picks For Today.\n\n#MatchVision #UEL #EuropaLeague #FootballPredictions"
+      "x": "Thursday Top Picks | 22 October\nMatch Vision\n\nOur Strongest Picks For Today.\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -984,7 +1545,7 @@
      "texts": {
       "tg": "Thursday Banker | 22 October\nMatch Vision\n\nToday's 2 Odds Banker.",
       "wa": "Thursday Banker | 22 October\nMatch Vision\n\nToday's 2 Odds Banker.",
-      "x": "Thursday Banker | 22 October\nMatch Vision\n\nToday's 2 Odds Banker.\n\n#MatchVision #UEL #EuropaLeague #FootballPredictions"
+      "x": "Thursday Banker | 22 October\nMatch Vision\n\nToday's 2 Odds Banker.\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -999,12 +1560,12 @@
      "title": "Video post",
      "when": "08:00",
      "images": [
-      "media/2026-10-22/Thumbnail-1-style-123-.jpg"
+      "media/2026-10-22/Thumbnail-1-style-114-.jpg"
      ],
      "texts": {
-      "tg": "Thursday Predictions | 22 October\nMatch Vision\n15 Matches Predicted Today\n\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
-      "wa": "Thursday Predictions | 22 October\nMatch Vision\n15 Matches Predicted Today\n\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n👇 *Watch Now:*\n{VIDEO_LINK}",
-      "x": "Thursday Predictions | 22 October\n{VIDEO_LINK}\n\n15 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #UEL #EuropaLeague #FootballPredictions"
+      "tg": "Thursday Predictions | 22 October\nMatch Vision\n\n25 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Thursday Predictions | 22 October\nMatch Vision\n\n25 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now:*\n{VIDEO_LINK}",
+      "x": "Thursday Predictions | 22 October\n{VIDEO_LINK}\n\n25 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -1025,9 +1586,9 @@
       "media/2026-10-22/slide-4.jpg"
      ],
      "texts": {
-      "ig": "EUROPA LEAGUE PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #footballreels #footballpredictions",
-      "tt": "EUROPA LEAGUE PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #footballpredictions #footballtiktok #fyp",
-      "yt": "EUROPA LEAGUE PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague"
+      "ig": "FOOTBALL PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #uecl #footballpredictions",
+      "tt": "FOOTBALL PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #uecl #conferenceleague #footballpredictions #footballtiktok #fyp",
+      "yt": "FOOTBALL PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #uecl #conferenceleague"
      },
      "auto": {},
      "note": "",
@@ -1042,11 +1603,11 @@
      "images": [
       "media/2026-10-22/short-1.jpg"
      ],
-     "video": "media/2026-10-22/short-1-4948802.mp4",
+     "video": "media/2026-10-22/short-1-3488863.mp4",
      "file": "Ready to Upload\\2026-10-22 Thursday\\Shorts\\Short 1 - 5 matches (Juventus vs Rennes and more).mp4",
      "texts": {
-      "tt": "EUROPA LEAGUE PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #footballpredictions #footballtiktok #fyp",
-      "ig": "EUROPA LEAGUE PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #footballreels #footballpredictions"
+      "tt": "FOOTBALL PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #uecl #conferenceleague #footballpredictions #footballtiktok #fyp",
+      "ig": "FOOTBALL PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #uecl #footballpredictions"
      },
      "auto": {},
      "note": "",
@@ -1061,11 +1622,11 @@
      "images": [
       "media/2026-10-22/short-2.jpg"
      ],
-     "video": "media/2026-10-22/short-2-4971778.mp4",
-     "file": "Ready to Upload\\2026-10-22 Thursday\\Shorts\\Short 2 - 5 matches (Celtic vs Celta Vigo and more).mp4",
+     "video": "media/2026-10-22/short-2-3740221.mp4",
+     "file": "Ready to Upload\\2026-10-22 Thursday\\Shorts\\Short 2 - 5 matches (Sturm Graz vs Marseille and more).mp4",
      "texts": {
-      "tt": "EUROPA LEAGUE PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #footballpredictions #footballtiktok #fyp",
-      "ig": "EUROPA LEAGUE PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #footballreels #footballpredictions"
+      "tt": "FOOTBALL PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #uecl #conferenceleague #footballpredictions #footballtiktok #fyp",
+      "ig": "FOOTBALL PREDICTIONS | Thursday 22 October\n\n#matchvision #uel #europaleague #uecl #footballpredictions"
      },
      "auto": {},
      "note": "",
@@ -1102,14 +1663,14 @@
      "ac": "media/crests/rb-leipzig.png",
      "live": {
       "st": "LIVE",
-      "min": 7,
+      "min": 20,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915313",
       "src": "ESPN",
-      "at": "2026-10-21T19:08:36"
+      "at": "2026-10-21T19:21:40"
      },
      "picks": [
       {
@@ -1170,14 +1731,14 @@
      "ac": "media/crests/arsenal.png",
      "live": {
       "st": "LIVE",
-      "min": 8,
+      "min": 21,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915312",
       "src": "ESPN",
-      "at": "2026-10-21T19:08:36"
+      "at": "2026-10-21T19:21:40"
      },
      "picks": [
       {
@@ -1314,14 +1875,14 @@
      "ac": "media/crests/shakhtar-donetsk.png",
      "live": {
       "st": "LIVE",
-      "min": 7,
+      "min": 20,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915390",
       "src": "ESPN",
-      "at": "2026-10-21T19:08:36"
+      "at": "2026-10-21T19:21:40"
      },
      "picks": [
       {
@@ -1459,14 +2020,14 @@
      "ac": "media/crests/feyenoord.png",
      "live": {
       "st": "LIVE",
-      "min": 8,
+      "min": 22,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915389",
       "src": "ESPN",
-      "at": "2026-10-21T19:08:36"
+      "at": "2026-10-21T19:21:40"
      },
      "picks": [
       {
@@ -1529,14 +2090,14 @@
      "ac": "media/crests/viking.png",
      "live": {
       "st": "LIVE",
-      "min": 8,
+      "min": 21,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915394",
       "src": "ESPN",
-      "at": "2026-10-21T19:08:36"
+      "at": "2026-10-21T19:21:40"
      },
      "picks": [
       {
@@ -1598,14 +2159,14 @@
      "ac": "media/crests/lens.png",
      "live": {
       "st": "LIVE",
-      "min": 7,
+      "min": 20,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915388",
       "src": "ESPN",
-      "at": "2026-10-21T19:08:36"
+      "at": "2026-10-21T19:21:40"
      },
      "picks": [
       {
@@ -1665,14 +2226,14 @@
      "ac": "media/crests/lask.png",
      "live": {
       "st": "LIVE",
-      "min": 7,
+      "min": 19,
       "gh": 1,
-      "ga": 0,
+      "ga": 1,
       "hh": null,
       "ha": null,
       "espn": "401915391",
       "src": "ESPN",
-      "at": "2026-10-21T19:08:36"
+      "at": "2026-10-21T19:21:40"
      },
      "picks": [
       {
@@ -17869,9 +18430,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "hsc9yz1uvvZpPIbj3o+z2g==",
-  "nonce": "bbcc1ynF/UL1axOztwH5UQ==",
-  "ct": "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",
-  "mac": "PWGoW1gK+m/tddgFqDOSWrluWFYvD25stYbxCqTGGpQ="
+  "salt": "JgN9GlBJ79RpnpnLi0loAA==",
+  "nonce": "ZxUnLetInicOhOUMoHxrsA==",
+  "ct": "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",
+  "mac": "AipMOYXtQtjIyUr0ryCbr2OhVFBpnblBsAQilwKKIJI="
  }
 }
