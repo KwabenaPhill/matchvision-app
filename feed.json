@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-21T18:26:56",
+ "updated": "2026-10-21T18:32:27",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-10-22 Thursday",
@@ -1218,14 +1218,14 @@
      "ac": "media/crests/manchester-united.png",
      "live": {
       "st": "LIVE",
-      "min": 82,
+      "min": 87,
       "gh": 4,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401915395",
       "src": "ESPN",
-      "at": "2026-10-21T18:25:58"
+      "at": "2026-10-21T18:31:26"
      },
      "picks": [
       {
@@ -1347,14 +1347,14 @@
      "ac": "media/crests/galatasaray.png",
      "live": {
       "st": "LIVE",
-      "min": 83,
+      "min": 89,
       "gh": 2,
       "ga": 4,
       "hh": null,
       "ha": null,
       "espn": "401915396",
       "src": "ESPN",
-      "at": "2026-10-21T18:25:58"
+      "at": "2026-10-21T18:31:26"
      },
      "picks": [
       {
@@ -13154,7 +13154,7 @@
   }
  },
  "banker_streak": 0,
- "version": "3.18.3",
+ "version": "3.19",
  "short_names": {
   "Manchester City": "Man City",
   "Manchester United": "Man Utd",
@@ -13434,6 +13434,14 @@
    ]
   },
   {
+   "k": "MIX_COMPETITIONS",
+   "tab": "Long video",
+   "v": true,
+   "d": "A day with two big competitions (Europa League and Conference League) takes games from BOTH, one from each in turn. Off = the biggest competition fills the video first.",
+   "kind": "bool",
+   "c": null
+  },
+  {
    "k": "CARD_STYLE",
    "tab": "Match card",
    "v": "App card - Minimal",
@@ -13486,6 +13494,20 @@
     "App card - White, green safe pick",
     "App card - Champions League",
     "App card - Champions League, no border",
+    "App card - Premier League",
+    "App card - Premier League, no border",
+    "App card - LaLiga",
+    "App card - LaLiga, no border",
+    "App card - Serie A",
+    "App card - Serie A, no border",
+    "App card - Bundesliga",
+    "App card - Bundesliga, no border",
+    "App card - Ligue 1",
+    "App card - Ligue 1, no border",
+    "App card - Europa League",
+    "App card - Europa League, no border",
+    "App card - Conference League",
+    "App card - Conference League, no border",
     "Full screen - UCL Deep Blue",
     "Full screen - UCL Navy Stars",
     "Full screen - UCL Royal Sides",
@@ -14118,6 +14140,20 @@
     "App card - White, green safe pick",
     "App card - Champions League",
     "App card - Champions League, no border",
+    "App card - Premier League",
+    "App card - Premier League, no border",
+    "App card - LaLiga",
+    "App card - LaLiga, no border",
+    "App card - Serie A",
+    "App card - Serie A, no border",
+    "App card - Bundesliga",
+    "App card - Bundesliga, no border",
+    "App card - Ligue 1",
+    "App card - Ligue 1, no border",
+    "App card - Europa League",
+    "App card - Europa League, no border",
+    "App card - Conference League",
+    "App card - Conference League, no border",
     "Full screen - UCL Deep Blue",
     "Full screen - UCL Navy Stars",
     "Full screen - UCL Royal Sides",
@@ -14248,6 +14284,35 @@
     "I  3 big pairs, no MV logo",
     "J  Big match in the middle, no MV logo"
    ]
+  },
+  {
+   "k": "THUMB_BG_PICK",
+   "tab": "Thumbnails",
+   "v": "Auto (from the day)",
+   "d": "Choose the thumbnail background yourself. Auto = it picks itself from the day's competition. Pick Europa League, Conference League, LaLiga or any other to use that one every day until you set Auto again. The styles are the 3 letters above.",
+   "kind": "choice",
+   "c": [
+    "Auto (from the day)",
+    "Premier League",
+    "LaLiga",
+    "Champions League",
+    "Bundesliga",
+    "Serie A",
+    "Ligue 1",
+    "Europa League",
+    "International",
+    "Dark",
+    "MV logo",
+    "Conference League"
+   ]
+  },
+  {
+   "k": "TWO_COMP_THUMBS_ON",
+   "tab": "Thumbnails",
+   "v": true,
+   "d": "A day with two competitions (Europa + Conference, LaLiga + Premier League): BOTH competition logos on the left, the right side dark. Off = your normal day background.",
+   "kind": "bool",
+   "c": null
   },
   {
    "k": "NORMAL_DAY_BG",
@@ -14438,7 +14503,17 @@
     "149  MV logo G (4 pairs VS, no MV logo)",
     "150  MV logo H (4 pairs in cards, no MV logo)",
     "151  MV logo I (3 big pairs, no MV logo)",
-    "152  MV logo J (big match in the middle, no MV logo)"
+    "152  MV logo J (big match in the middle, no MV logo)",
+    "153  Conference League A (big crests, MV logo)",
+    "154  Conference League B (big crests, no MV logo)",
+    "155  Conference League C (4 pairs VS)",
+    "156  Conference League D (4 pairs in cards)",
+    "157  Conference League E (3 big pairs)",
+    "158  Conference League F (big match in the middle)",
+    "159  Conference League G (4 pairs VS, no MV logo)",
+    "160  Conference League H (4 pairs in cards, no MV logo)",
+    "161  Conference League I (3 big pairs, no MV logo)",
+    "162  Conference League J (big match in the middle, no MV logo)"
    ]
   },
   {
@@ -14599,7 +14674,17 @@
     "149  MV logo G (4 pairs VS, no MV logo)",
     "150  MV logo H (4 pairs in cards, no MV logo)",
     "151  MV logo I (3 big pairs, no MV logo)",
-    "152  MV logo J (big match in the middle, no MV logo)"
+    "152  MV logo J (big match in the middle, no MV logo)",
+    "153  Conference League A (big crests, MV logo)",
+    "154  Conference League B (big crests, no MV logo)",
+    "155  Conference League C (4 pairs VS)",
+    "156  Conference League D (4 pairs in cards)",
+    "157  Conference League E (3 big pairs)",
+    "158  Conference League F (big match in the middle)",
+    "159  Conference League G (4 pairs VS, no MV logo)",
+    "160  Conference League H (4 pairs in cards, no MV logo)",
+    "161  Conference League I (3 big pairs, no MV logo)",
+    "162  Conference League J (big match in the middle, no MV logo)"
    ]
   },
   {
@@ -14761,7 +14846,17 @@
     "149  MV logo G (4 pairs VS, no MV logo)",
     "150  MV logo H (4 pairs in cards, no MV logo)",
     "151  MV logo I (3 big pairs, no MV logo)",
-    "152  MV logo J (big match in the middle, no MV logo)"
+    "152  MV logo J (big match in the middle, no MV logo)",
+    "153  Conference League A (big crests, MV logo)",
+    "154  Conference League B (big crests, no MV logo)",
+    "155  Conference League C (4 pairs VS)",
+    "156  Conference League D (4 pairs in cards)",
+    "157  Conference League E (3 big pairs)",
+    "158  Conference League F (big match in the middle)",
+    "159  Conference League G (4 pairs VS, no MV logo)",
+    "160  Conference League H (4 pairs in cards, no MV logo)",
+    "161  Conference League I (3 big pairs, no MV logo)",
+    "162  Conference League J (big match in the middle, no MV logo)"
    ]
   },
   {
@@ -14923,7 +15018,29 @@
     "149  MV logo G (4 pairs VS, no MV logo)",
     "150  MV logo H (4 pairs in cards, no MV logo)",
     "151  MV logo I (3 big pairs, no MV logo)",
-    "152  MV logo J (big match in the middle, no MV logo)"
+    "152  MV logo J (big match in the middle, no MV logo)",
+    "153  Conference League A (big crests, MV logo)",
+    "154  Conference League B (big crests, no MV logo)",
+    "155  Conference League C (4 pairs VS)",
+    "156  Conference League D (4 pairs in cards)",
+    "157  Conference League E (3 big pairs)",
+    "158  Conference League F (big match in the middle)",
+    "159  Conference League G (4 pairs VS, no MV logo)",
+    "160  Conference League H (4 pairs in cards, no MV logo)",
+    "161  Conference League I (3 big pairs, no MV logo)",
+    "162  Conference League J (big match in the middle, no MV logo)"
+   ]
+  },
+  {
+   "k": "LEAGUE_CARD_AUTO",
+   "tab": "Thumbnails",
+   "v": "Off",
+   "d": "The match card in the day's competition colours by itself (Premier League, LaLiga, Serie A, Bundesliga, Ligue 1, Europa League, Conference League). Off = your CARD STYLE. You can also pick any of them yourself in CARD STYLE (\"App card - LaLiga\" ...).",
+   "kind": "choice",
+   "c": [
+    "Off",
+    "App card",
+    "App card, no border"
    ]
   },
   {
@@ -15085,7 +15202,17 @@
     "149  MV logo G (4 pairs VS, no MV logo)",
     "150  MV logo H (4 pairs in cards, no MV logo)",
     "151  MV logo I (3 big pairs, no MV logo)",
-    "152  MV logo J (big match in the middle, no MV logo)"
+    "152  MV logo J (big match in the middle, no MV logo)",
+    "153  Conference League A (big crests, MV logo)",
+    "154  Conference League B (big crests, no MV logo)",
+    "155  Conference League C (4 pairs VS)",
+    "156  Conference League D (4 pairs in cards)",
+    "157  Conference League E (3 big pairs)",
+    "158  Conference League F (big match in the middle)",
+    "159  Conference League G (4 pairs VS, no MV logo)",
+    "160  Conference League H (4 pairs in cards, no MV logo)",
+    "161  Conference League I (3 big pairs, no MV logo)",
+    "162  Conference League J (big match in the middle, no MV logo)"
    ]
   },
   {
@@ -15247,7 +15374,17 @@
     "149  MV logo G (4 pairs VS, no MV logo)",
     "150  MV logo H (4 pairs in cards, no MV logo)",
     "151  MV logo I (3 big pairs, no MV logo)",
-    "152  MV logo J (big match in the middle, no MV logo)"
+    "152  MV logo J (big match in the middle, no MV logo)",
+    "153  Conference League A (big crests, MV logo)",
+    "154  Conference League B (big crests, no MV logo)",
+    "155  Conference League C (4 pairs VS)",
+    "156  Conference League D (4 pairs in cards)",
+    "157  Conference League E (3 big pairs)",
+    "158  Conference League F (big match in the middle)",
+    "159  Conference League G (4 pairs VS, no MV logo)",
+    "160  Conference League H (4 pairs in cards, no MV logo)",
+    "161  Conference League I (3 big pairs, no MV logo)",
+    "162  Conference League J (big match in the middle, no MV logo)"
    ]
   },
   {
@@ -17605,7 +17742,7 @@
   "PREMIUM RENEWAL": "Hi {NAME} 👋\nYour {PREMIUM} Membership Ends On {UNTIL}.\nRenew With {PRICE} To Keep Your Seat In The Room.",
   "PREMIUM RENEWED": "Hi {NAME}, Thank You ✓\nYour {PREMIUM} Membership Now Runs Until {UNTIL}.",
   "PREMIUM REFUND": "📌 {PREMIUM_UP} REFUND TERMS\n1. Membership Is {PRICE} Per Month, Paid By MoMo.\n2. If You Leave, Unused Full Months Are Refunded.\n3. The Current Month Is Not Refunded Once It Starts.\n4. Every Payment Is Recorded With Its MoMo Reference.\n5. Football Results Carry Risk. No Pick Is Guaranteed.\nQuestions? Message {HANDLE}",
-  "PREMIUM DAILY": "👑 {PREMIUM} | {DATE_WORDS}\nToday's Strongest Picks Are In. 💪\n\nGood Luck, Members. Let's Win Today!\nWe Meet After The Games. 🙏\n---\n👑 {PREMIUM} | {DATE_WORDS}\nToday's Picks Are Ready. Good Luck, Members! 💪\n---\n👑 Members, Your Picks Are In | {DATE_WORDS}\nWe Meet After The Games. 🙏",
+  "PREMIUM DAILY": "👑 {PREMIUM} | {DATE_WORDS}\nToday's Strongest Picks Are In. 💪\n\nGood Luck, Members. Let's Win Today!\nWe Meet After The Games. 🙏\n---\n👑 {PREMIUM} | {DATE_WORDS}\nToday's Picks Are Ready. Good Luck, Members! 💪\n---\n👑 Members, Your Picks Are In | {DATE_WORDS}\nWe Meet After The Games. 🙏\n---\n👑 *VISION PREMIUM PICKS TODAY* 👑\n{DATE_WORDS}\n\n📊 {P_COUNT} Safest Picks 👉 Combined Odds {P_ODDS}\n\n_Same team, same mission_ 💪🙌",
   "PREMIUM WIN": "👑 *VISION PREMIUM WON AGAIN* 👑\n{DATE_WORDS}\n\n✅ All VIP Picks Won Successfully\n\n_More Premium Picks Coming Tomorrow_ 👑\n---\n👑 *VISION PREMIUM WON AGAIN* 👑\n{DATE_WORDS}\n\n✅ Our Members Cashed In Again\n\n_More Premium Picks Coming Tomorrow_ 👑\n---\n👑 *VISION PREMIUM WON AGAIN* 👑\n{DATE_WORDS}\n\n✅ Another Winning Day For Our Members\n\n_More Premium Picks Coming Tomorrow_ 👑",
   "X VIDEO": "{DAY_WORD} Predictions | {DATE_SHORT}\n{VIDEO_LINK}\n\n{N_WORDS}. Correct Scores, Top Picks And Our 2 Odds Banker.",
   "X WINNINGS": "{WIN_TITLE} | {DATE_SHORT}\n✅ {WON} Of {TOTAL} Predictions Won Today\n⚽ Tomorrow's Games: {LINK}",
@@ -17636,9 +17773,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "HrtCQGXHvr+MRU6uPW085A==",
-  "nonce": "5dYgcp6yGK/V2QisjUU9oQ==",
-  "ct": "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",
-  "mac": "wtafV9xf18BkT+j5Syb1fkqOgD/6AfUcSTtpYUVJFJY="
+  "salt": "c0JdYEKcLZgENWneZ/2XEw==",
+  "nonce": "1knNcxN9KdWfskkjyj1kWg==",
+  "ct": "85hXBo+GznBxO8mH0ixdc38QBP7C0osm9jz4cKUtzfFIoI9a7QLHcVH+4RbPHbt9UQARdWY+g4UeVqmG0jszBPLsfTPR217CaDAowKcFNINQAY2tm7CrdHz75JtOBtoVOcWNn0epOTjiRTltla31EtRe4A6f6ZM63eH8e2fdzyABWYs5NcdWhrYG2hvauwM/c7rRIUjURil2vT33xfdZTByOx1sG/zHKbesrUnrczgcZv57degSKVk9hLpnLX6XA9k9WCjJ2YiawtpfTsA4P1MSjP38iAC3/pUjhA2Dda2x8expd+QVOn+CoYNl3KDd8sK73f/2joh7t2KwbRBkwzeGzhPv8Xw8+e4Tph+yzPMkgvSnVgjUrL2rIBv/QUEl9f4q/hArot07KI4Zm8sUq8zv/r0aruhrqRDk2XR4zMPTjIn1W17ggtBg5FH7636jc2Y74Ja63FK9A1oGT+37ful4Cog3aSPCC1DjsvVH9inFb6vRfNRjII0/sU505XoozYJkgarf+ngrSMQ0H3e1BdChc9hgsykgj5pe6GfajtBNII3mgTcFIrtyb7w95/JdWGO3xpEISz6PKqXgsRdpUiA1fq4xQmF4o/SI5arwlNc1HPDtBQQPOikMzf7iKYNItmmAQQbYluNHxO2Wr8ov1e/saeQB1uwGwXuALwF2U0W4VyzTbi/Kl5rtqmmFtm6DB2LLZeQyR/oPgy2qSfGzsmjp8vMRPN5g2BCnEVCcrNS/za79Q7VizHszuhLj4r+Svqj42hmaryp9pcG/Fb052S24wNOc3o/ny6lsH/+x2UUBptPyRgOPiiMQaDPkc46IwuHX62FvI+I1tWs0oT6vmQglk9A1GwxptSDxTE91SJZ1QdxeOAiXqWhZLhv/J5Eh/3bMH7zn3ZzEHn82ImYzdYxw5ZbPWeCX19C3VYlfK5VW3hVyx76aeB7erXF5rjHY8es4elnfkDOdLdxXL+EBrBqwPK72UyUmRxQooro3b8/EQD9fuUTljcmtHJ9k46At5C8sU181pOwFvTyC1X1vxoTfyXO8cI8+3kA3ejeIj8G9UmXbcgJE4P2slisxvQ7O0R3RgrCWWL1wsfbWtoO+UUGkv7NZJuOYGRu12xgm5lLU3+FHF8nlbx5IxP3CHqwOgFH+iWWDYVeHA8FBKBqL95CIsJZfU7XQclcsRajHfDrcQC72uQ8uJKYSiT8AVhEjmzR3xVGHgEU/kpxbm7rFt8xFRvJv11AF0D4EuSiClCXzbMjsdN7t4mJ4gh7cwgIXbk/+g54BJ1bzThhC2ECiIM/FP0KfnBQWTJ9DOpe2tt/sI4QL185FY2+6g932/OqPMM2HjApXl2Wr3z8OmoTSTFZG9jjvS7VJYUJQK+MFRkSeLOrQau3kxFrmhe0OSBPV+YEQg1SaKcqoyqV1KnT24//BNQI9R8zFaegrb6S3FxadmLZxmFerqKLvfPdgCvKxLUQ4uj0Lx7z0WAEywKFtIk1TD0KED/RXVhxawMurjuDQGotNr11sINha9iOfs1lOTBrs+vmEqWgcOjSkOWYa1ImU6FjgoduFfSlr9KwRKeGCDePfZOnrZvBF52LMZ14fbXrKts8JzKXlXO8MKccXISA6nULLHaH2tYz40tnLQ/Ak6w20cVsHdVTnKu4ECYr9Ias3Y4ukOcfoJAHL7wxBP6PHLlJWFHVoc6OGT4oFV+JQg4bPBCzSjedFlGhqlJcOGzXqmL6jVZMK6BOgwEXDhoGGX9Odwwf8L2tLWMHQSU+RqD4B3NUCJuvKKCaXTVwhiD5CEagF9LhXv9LB74pdrXBbZ0rgRZdNNtDLSv00MG/tgeILG0IgfufQ7RGH+rg0FXTrkdn3KPLe7l/SkMM6/HSJeOuR4aiMp95PAlR+o0WvrT8+hcBorgJBHT2gc9E8zdQ0qk4D/Mped14jgdPJ6oTNOqXcc0+jBDTfpiFYcSzdyrSFhPT+RNosMSVqUbQGjGe6bsMorqHiPXF5erHx2zaVPGiQ2SV5HUnWU+zK6mLBLobNYj4FnfLVHjBBJ3FSUjtv320Q2H6aoWXqAe4DEjtpTZwjJvEuhftHCFL2SCiMba/HdlPv9TpyUPSKWlF43OMdgLR6sRZ9Z1saWuMq3ixvkTrAqCYkOZsaLb1ppiTc5mnjcCPeOxitJWwKgnhyeib/vxCz/Wk6+vL0TAgkORbJ/NfXaeXQIUE/yJL5SkTcO+fpXSu07RXtmOoCwWK1GNl9oRbsuyKFXezwksGRFhjRij7WTa37/We4GDTr1UCXMq8jdyHiufdquAVOr3Wsf9zlHJHZAAyqmkKq1YAceF40p5YV5eqNgYTQzUjn3ViilL38vMi7Ssr3zIsrPYqsv5o0OhtfvUnzvvGTQavZjWAPPIdhvmlICotAXvjfWq0i0BZdGw/b6pd9gCxeiDHtOYHNpfxYt5i7jGowURPcdZUZP8Ca6QYUMwRvjZ/Q2mKB/3ds+UW+bhfBmM7JxAPcnsu8at12iCGGaiFJw22y9mp2j5ldxbPW83wspFM0TjcIzamdqeUxLLQt5SxleY3RDjHCYrRMFML9wwyhIGW8nRT0cLJz7kpUjBRMjTXSrMMqisiB9z0xs3MzoxO+r1a4GASHFHhMok4LyMND00XLudIT0/0UeUBH3dm9Wn0/S71A3DmRx8Wbq9yjSDX8msAXGI/v11M9sAbkBZVRK36gK2LXVCNMp3hzMlPg7GUmpvUw9RNiylB1o9qR3fcR/hE7Ig64SBdEIdrCs5N69mpHWw5G8sQLIxHebT0WkO2UmHmlT3b39F9LWI5/fBQ069vS8jBEwcNM1XsfYH6JgAafdjSf7CaB3CS2ZHUQqq5PqmHt7sXtmP94z3P0m0p8sVXejAMiL7XK5SWTswzCN0qK10fXoZUInEi+4GEm4jBMeGuYLTta5/OnGGjI1wTH0bPWWUgqZtC53+TJ/Y4JNV/qN8yKSpqeXeVBtXucJh786QJJhTEOO9t82x2wxMehBgSCqAji+RgClT1lRv56KGAGesimXBkN0iLnGLXt1vc5ysm7N6q9fOzDvUOp8aU+4U6+IesN5cKBz4oCaMHw/gY6DrxxlpXxIT5mEdSZ4NKHUmVlO6JrB7+UHN+jA9C9Qrlz8W+IR/Lwt28GoIL2ym3BLU4dzv2lvj1rRVxr4Qpt1bGlCy+47xjT3w/gACp5vzd+ConoY7H3+56cKljeyJhAAclU/ZJPAMHxClpjcOgPmldCT1VWdHtgTeRd1GkAhnw2Vjnf/bSkXx4jSQDGNfwd+3tOGJ2aouMtwuEsI1ZvZSyYpUO2er8CIJ4ClyYPlzuYmU4hstgL7xTbF1loBI08Zm6kCq1+PlS1YUINlSSXDq+v2UmrD/smIGz+Eeq7oesL3lVNqERMw78vOEJWWSG8KBBKQUhpzZs0H3esRG7J6O3TiJ35ajgBfEke7OaAM9Up72PJCaki9bxTuqtidoWLOMuN4WUEat6w3FYzKZ0MMgPP0BvyF4hxSyUTYW6XTOtLf61zY/xoas8I5SyYZmQPLZ9xd15KGA02eICmFZTXrCRU9iU1tD/AtWLaF9l9X1h2Hu4+6T8w0ftCbFpCuHu+Vmvi3Hq7ALcOw7v/iizfi+8llGyQtQ58x/bMCLYs9+mS1FM1cG/9bkWb3WY4dY7Y3EvCXYNAn1D0KRcK3wTeOewkhGQPM9SGsEwyuSr4yriuSsE5oT17OuBgR6mSHCFCS3pgCD2TSHzlcAafGCn4UNiYXryZPtN6z8hIPYjwZiaOoHbZWvNpWhcRUWmtML4DxRgadxipcniFcI4djw8glhQqCzuMENUldKLQTwxqjvfErYkRmSavDXi1tbvKFlJv6b333WWHVPrybp8G6pMDX/GbDOhZ1ROde2B0NeE805TKRtDDX+3nDKm4q1kPBfMmqx6hYAEO1XQ4w3cPQCqLatEeVOpWxtdKFQI1BNmvrKf+zCjD9xGwEG11d4Sf/YatpsGl84hN3wYDK9/A3AXLOYf3UUrxOC7XX8sBh9gtdsiwhldA9h4k5xZC5vfaDYqzeqYGsLuOnZ+988tlHQiv5ZzHJPb7FfDRQqRVfZWewYWEeuauQKimRUM+pQJeFU5mK2JNzOEZoHm/HNyxZ2vD5RJK8vHysicYrU00TTJ5HG9AnheBMzDrPzREKYACgFM1Hy4tMS5tsiApRFIIl9OEnKKIApfM17wZ04gIxocxRM6MRv3/U55Exo7PLaQ2w9WWrvLSOP2NuocPwqZ02rtTnXwUjv6ZkO5jVgzFiQTYv7XMYngEEQirqQ3aPBBN6XjU+oMnVOWSwrSETc1b5631JVYddeG7LhasiOqH+PXbfqJNFtFNN5RrMFAeQA2x6J0EPW431QhtrUT097vnv5438SHeh3gcb+uMdbN1cYBqSskbNQ8i/UNZ8m8sH6eHOpM9cJi3u/wOO7FJmMf4vi0gLNL2VWCDiSXF9N/4T9BI42TmwjpZg7RbKfCdiQD1ugdUWmL+JqDothSprW/BSArcNK3Oc6STorMOkPRwonn2qlI4ALhz4Yx6Fk5KWUJguwZfDr62GQou3GWlJGyvQCn3r9Yyy5KsJOMpHPeziYW9KocwMBRTcJmVZen80OJgEGu8SvCbObB43i3s8TfOCInGsBexkzRj+fsHd2uXGOOTUvOeKeXc2onx0tycS/KZTKPtMEJoA06NBrvFG8SigN7VQercRaMChKBg3/XidBedKvoj7FltyVJKj3kEAjLm27+uMOsk20f04JUOP5DE1KqE86htvFkwNRZGGJm2Y2ch2IeNQ/Z36WWIt+3ZGt7zY7N9Uq45DVtQvciF3FucGtLlVNVoQUeuE4kDrB+D4NNGfBd8GtCjMCJQR56kz/kAo01CHKQLC0ikWQdxbjdGBL8UA7QDNq2INzUzjmZ/kbDkadcWCKS084XrJ5qijsix6H0DX9Ojy7K1TsgPqMz1dMuafTqxOC36y4PSbOUgH5ivwnVpYQTFsta8fxRwP6TrWDhmgvudKIWkt7M6q4PhNN2j5YRap7e7/NfRfsserxZ1NiANl/0gQMRpN+iTIz8+o9sQvbfi+gYZEebaA2+E9J2RnwhRT5Z9rnawFcG172UpgxWmJGdv7fkkFROxTYpCdzoBBUnl0+OU19Oxq0Zi/XTJzrX7C31D7p4AY/6xCPGZf+3R+1kToWjlK5KiL0UAYwqKZuKWpARPiONfNeBRqfk+6f9YRmFIyW5uM0ysfUUdSqEz90OPW49isG+yOn5utg5M8ntm+g+W4zekn1tzA69KRT7ch1Yw93OQyRUahfnv8vXny8o4JrudQ5AQGsCyumDs0oim2g3RwSH5ZXL+ue5SINDFIivC58qBOoHPBeTgJmNZbynq81fLU0o5ElZUNlP4rfYYvLSaePpqSHER46VaHsS9g0QV2rCDJmqXMlSYnOTi3DaNwxIe0092EG+5+mETWHI5WWQPWYJtArojUKZzT6uaUn3xVbXPTwQ==",
+  "mac": "yyLDplql6X4/zMkP9TvhLZrapin9XRPOvfe/oGX+LkY="
  }
 }
