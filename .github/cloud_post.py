@@ -17,6 +17,8 @@ import urllib.request
 import urllib.parse
 import uuid
 import mimetypes
+import time
+import subprocess
 
 TOKEN = os.environ.get('TG_TOKEN', '').strip()
 BASE = os.environ.get('TG_BASE', 'https://api.telegram.org')
@@ -54,6 +56,12 @@ def tg(method, params, files=None):
 
 def post(item):
     chat, text, html = item['chat'], item.get('text') or '', bool(item.get('html'))
+    anim = os.path.join(ROOT, item['animation']) if item.get('animation') else ''
+    if anim and os.path.isfile(anim):                 # 3.21: the morning GIF (or short video) with its words
+        extra = {'parse_mode': 'HTML'} if html else {}
+        if anim.lower().endswith('.gif'):
+            return tg('sendAnimation', {'chat_id': chat, 'caption': text[:1000], **extra}, {'animation': anim})
+        return tg('sendVideo', {'chat_id': chat, 'caption': text[:1000], **extra}, {'video': anim})
     pics = [os.path.join(ROOT, p) for p in item.get('images') or []]
     pics = [p for p in pics if os.path.isfile(p)]
     extra = {'parse_mode': 'HTML'} if html else {}
@@ -128,6 +136,15 @@ def main():
             except Exception as ex:
                 print(f'{name} {it["id"]}: could not post ({ex}). Next run tries again.')
             dirty = True
+        if day.get('morning_sent') is None and any(x.get('id') == 'morning' and x.get('posted') for x in day.get('posts') or []):
+            day['morning_sent'] = True
+            dirty = True
+        if os.environ.get('CLOUD_WINS', '1') == '0':
+            if dirty:
+                with open(path, 'w', encoding='utf-8') as f:
+                    json.dump(day, f, ensure_ascii=False, indent=1, sort_keys=True)
+                changed.append(path)
+            continue
         try:                                           # 3.8: win tickets when a match is over (laptop off too)
             sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
             import cloud_wins
@@ -163,5 +180,41 @@ def main():
     return 0
 
 
+def _git(*args):
+    return subprocess.run(['git'] + list(args), cwd=ROOT, capture_output=True, text=True)
+
+
+def wait_loop(minutes):
+    """3.21 (Philip: "it posted at 8:40, it should be 7:00"): GitHub starts timed jobs late (often 30 to 60 minutes), so
+    ONE job now stays awake for hours and looks every minute: every post goes out on its minute. The next job starts
+    as soon as this one ends (one at a time, never two posting together)."""
+    end = time.time() + minutes * 60
+    _git('config', 'user.name', 'cloud-poster')
+    _git('config', 'user.email', 'cloud-poster@users.noreply.github.com')
+    loops = 0
+    while True:
+        _git('pull', '--rebase', '-X', 'theirs', '-q')
+        os.environ['CLOUD_WINS'] = '1' if loops % 3 == 0 else '0'    # the scoreboards every 3 minutes
+        try:
+            main()
+        except Exception as ex:
+            print(f'Round problem: {ex}')
+        if _git('status', '--porcelain', 'cloud').stdout.strip():
+            _git('add', 'cloud')
+            _git('commit', '-q', '-m', 'cloud: posted')
+            for _i in range(5):
+                if _git('push', '-q').returncode == 0:
+                    break
+                _git('pull', '--rebase', '-X', 'theirs', '-q')
+                time.sleep(4)
+        loops += 1
+        if time.time() > end:
+            break
+        time.sleep(max(5, 60 - time.time() % 60))     # on the minute
+
+
 if __name__ == '__main__':
+    if len(sys.argv) > 2 and sys.argv[1] == '--wait':
+        wait_loop(float(sys.argv[2]))
+        sys.exit(0)
     sys.exit(main())
