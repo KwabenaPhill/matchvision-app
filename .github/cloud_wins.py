@@ -728,6 +728,89 @@ def draw_banker(legs, total, date_label, root, out, fonts=FONTS, brand='MATCH VI
     return out
 
 
+def draw_banker_ticket(legs, total, date_label, root, out, fonts=FONTS, brand='MATCH VISION'):
+    """3.21 (Philip, 22 Oct): the banker win in the SAME look as the normal FULL TIME win card (wide, lime edge, the
+    picks on the left, "3/3 WON" on the right) with smaller words than the old gold card."""
+    from PIL import Image, ImageDraw, ImageFont
+    LIME, WHITE, GREY, GREEN = (223, 251, 81), (255, 255, 255), (170, 170, 178), (34, 197, 94)
+    K = 2
+    WW, LW, rh, gap, top = 1280, 880, 112, 14, 150
+    n = len(legs)
+    h = max(470, top + n * (rh + gap) + 20)
+    im = Image.new('RGB', (WW * K, h * K), (6, 6, 6))
+    d = ImageDraw.Draw(im)
+    for y in range(h * K):
+        k = y / max(1, h * K - 1)
+        d.line([(0, y), (WW * K, y)], fill=(int(16 + (6 - 16) * k), int(20 + (6 - 20) * k), int(10 + (6 - 10) * k)))
+
+    def F(names, px):
+        return _font(fonts, names, int(px * K))
+    BLK, MED = ('InterDisplay-Black.otf', 'Inter-Black.otf'), ('Inter-Medium.otf', 'Inter-SemiBold.otf')
+
+    def fit(t, names, px, maxw):
+        while px > 12 and d.textlength(t, font=F(names, px)) > maxw * K:
+            px -= 1
+        return F(names, px)
+
+    def ct(t, cx, y, f, fill):
+        d.text((cx * K - d.textlength(t, font=f) / 2, y * K), t, font=f, fill=fill)
+
+    def crest(path, cx, cy, s, name):
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((int(s * K), int(s * K)))
+            im.paste(c, (int(cx * K - c.width / 2), int(cy * K - c.height / 2)), c)
+        else:
+            d.ellipse(((cx - s / 2) * K, (cy - s / 2) * K, (cx + s / 2) * K, (cy + s / 2) * K), fill=(45, 45, 48))
+            ini = ''.join(w[0] for w in str(name).split()[:2]).upper()
+            f = F(BLK, s * 0.32)
+            ct(ini, cx, cy - s * 0.2, f, (230, 230, 230))
+    d.rounded_rectangle((16 * K, 16 * K, (WW - 16) * K, (h - 16) * K), radius=34 * K, outline=LIME, width=3 * K)
+    T = f'{float(total or 0):.2f}'
+    title = f'{T} ODDS BANKER WON'
+    d.text((56 * K, 40 * K), title, font=fit(title, BLK, 50, LW - 100), fill=LIME)
+    d.text((58 * K, 104 * K), date_label, font=fit(date_label, MED, 24, LW - 100), fill=GREY)
+    for i, g in enumerate(legs):
+        y = top + i * (rh + gap)
+        cy = y + rh / 2
+        d.rounded_rectangle((40 * K, y * K, LW * K, (y + rh) * K), radius=22 * K, fill=(22, 24, 22), outline=(60, 60, 64),
+                            width=2 * K)
+        d.rectangle((40 * K, (y + 16) * K, 48 * K, (y + rh - 16) * K), fill=LIME)
+        d.ellipse((68 * K, (cy - 22) * K, 112 * K, (cy + 22) * K), fill=LIME)
+        ct(str(i + 1), 90, cy - 16, F(BLK, 24), (0, 0, 0))
+        crest(g.get('hc'), 160, cy, 54, g['home'])
+        crest(g.get('ac'), 214, cy, 54, g['away'])
+        d = ImageDraw.Draw(im)
+        t = str(g['text']).upper()
+        tx = 262
+        right = LW - 190
+        d.text((tx * K, (y + 22) * K), t, font=fit(t, BLK, 30, right - tx), fill=WHITE)
+        vs = f'{g["home"]} {g["gh"]}-{g["ga"]} {g["away"]}'
+        d.text(((tx + 2) * K, (y + 68) * K), vs, font=fit(vs, MED, 21, right - tx), fill=GREY)
+        if g.get('odds'):
+            o = f'{float(g["odds"]):.2f}'
+            fo = F(BLK, 30)
+            d.text(((LW - 100) * K - d.textlength(o, font=fo), (cy - 19) * K), o, font=fo, fill=LIME)
+        tx2 = LW - 56
+        d.ellipse(((tx2 - 24) * K, (cy - 24) * K, (tx2 + 24) * K, (cy + 24) * K), fill=GREEN)
+        d.line([((tx2 - 10) * K, (cy + 1) * K), ((tx2 - 2) * K, (cy + 9) * K), ((tx2 + 11) * K, (cy - 8) * K)],
+               fill=WHITE, width=6 * K, joint='curve')
+    rx = LW + (WW - LW) / 2
+    pw = WW - LW - 60
+    if brand:
+        ct(brand, rx, h / 2 - 118, fit(brand, BLK, 32, pw), LIME)
+    ct(f'{n}/{n}', rx, h / 2 - 76, F(BLK, 100), WHITE)
+    d.rounded_rectangle(((rx - 100) * K, (h / 2 + 50) * K, (rx + 100) * K, (h / 2 + 106) * K), radius=28 * K, fill=LIME)
+    ct('WON', rx, h / 2 + 58, F(BLK, 32), (10, 10, 10))
+    tt = f'TOTAL ODDS {T}'
+    ct(tt, rx, h / 2 + 124, fit(tt, BLK, 22, pw), GREY)
+    im = im.resize((WW, h), Image.LANCZOS)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
+
+
 def banker(day, now, root, tg, log=print):
     """The banker win on the channel as soon as its last game is over and every leg won (when the laptop did not)."""
     bk = day.get('banker') or {}
@@ -771,7 +854,8 @@ def banker(day, now, root, tg, log=print):
     dd = datetime.date.fromisoformat(day['date'])
     pic = None
     try:
-        pic = draw_banker(out, bk.get('total'), f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', root,
+        pic = (draw_banker if str(c.get('banker_card', '')).startswith('Old') else draw_banker_ticket)(
+            out, bk.get('total'), f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', root,
                           os.path.join(root, 'cloud', 'wins', f'{day["date"]}-banker.jpg'), brand=c.get('brand', 'MATCH VISION'))
     except Exception as ex:
         log(f'Banker picture not drawn ({ex}).')
