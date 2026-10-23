@@ -1,12 +1,1231 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-23T17:11:42",
+ "updated": "2026-10-23T17:18:03",
  "builder": {
-  "busy": true,
-  "step": "Long video: 100% drawn",
-  "done": 0.8
+  "busy": false,
+  "step": "Finished: 2026-10-24 Saturday",
+  "done": 1.0
  },
  "days": [
+  {
+   "date": "2026-10-24",
+   "where": "Ready to Upload",
+   "title": "FOOTBALL PREDICTIONS TODAY | 24 October | Over 1.5, BTTS & Over 2.5 | Premier League",
+   "matches": [
+    {
+     "n": 1,
+     "league": "Premier League",
+     "kickoff": "11:30",
+     "home": "Aston Villa",
+     "away": "Manchester City",
+     "score": "1-2",
+     "date": "2026-10-24",
+     "odds": [
+      4.83,
+      4.33,
+      1.66
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/aston-villa.png",
+     "ac": "media/crests/manchester-city.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Manchester City or draw",
+       "odds": 1.18,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.65,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "league": "Premier League",
+     "kickoff": "14:00",
+     "home": "Arsenal",
+     "away": "Everton",
+     "score": "2-0",
+     "date": "2026-10-24",
+     "odds": [
+      1.46,
+      4.53,
+      7.53
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/arsenal.png",
+     "ac": "media/crests/everton.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Arsenal to win",
+       "odds": 1.46,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Arsenal over 1.5 goals",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 9.5 corners",
+       "odds": 1.75,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "league": "Premier League",
+     "kickoff": "16:30",
+     "home": "Chelsea",
+     "away": "Tottenham Hotspur",
+     "score": "2-1",
+     "date": "2026-10-24",
+     "odds": [
+      1.72,
+      4.28,
+      4.44
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "CARDS",
+      "RESULT"
+     ],
+     "win": null,
+     "hc": "media/crests/chelsea.png",
+     "ac": "media/crests/tottenham-hotspur.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 4.5 cards",
+       "odds": 1.72,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Chelsea to win",
+       "odds": 1.72,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "league": "LaLiga",
+     "kickoff": "19:00",
+     "home": "Atletico Madrid",
+     "away": "Deportivo La Coruna",
+     "score": "2-0",
+     "date": "2026-10-24",
+     "odds": [
+      1.31,
+      5.2,
+      9.5
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "HANDICAP"
+     ],
+     "win": null,
+     "hc": "media/crests/atletico-madrid.png",
+     "ac": "media/crests/deportivo-la-coruna.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Atletico Madrid to win",
+       "odds": 1.31,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - No",
+       "odds": 1.75,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Atletico Madrid -1.5",
+       "odds": 1.92,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "league": "Bundesliga",
+     "kickoff": "16:30",
+     "home": "Borussia Dortmund",
+     "away": "Eintracht Frankfurt",
+     "score": "3-1",
+     "date": "2026-10-24",
+     "odds": [
+      1.48,
+      5.15,
+      5.91
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "FIRST HALF"
+     ],
+     "win": null,
+     "hc": "media/crests/borussia-dortmund.png",
+     "ac": "media/crests/eintracht-frankfurt.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Borussia Dortmund to win",
+       "odds": 1.48,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.52,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "league": "Serie A",
+     "kickoff": "16:00",
+     "home": "Napoli",
+     "away": "AS Roma",
+     "score": "1-1",
+     "date": "2026-10-24",
+     "odds": [
+      2.4,
+      3.25,
+      2.95
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "WIN OR DRAW",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/napoli.png",
+     "ac": "media/crests/as-roma.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.3,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Roma or draw",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.8,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "league": "LaLiga",
+     "kickoff": "16:30",
+     "home": "Valencia",
+     "away": "Villarreal",
+     "score": "1-1",
+     "date": "2026-10-24",
+     "odds": [
+      2.75,
+      3.3,
+      2.55
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CARDS"
+     ],
+     "win": null,
+     "hc": "media/crests/valencia.png",
+     "ac": "media/crests/villarreal.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.32,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.75,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 4.5 cards",
+       "odds": 1.68,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "league": "Bundesliga",
+     "kickoff": "13:30",
+     "home": "RB Leipzig",
+     "away": "SV Elversberg",
+     "score": "3-1",
+     "date": "2026-10-24",
+     "odds": [
+      1.44,
+      5.28,
+      6.31
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "FIRST HALF"
+     ],
+     "win": null,
+     "hc": "media/crests/rb-leipzig.png",
+     "ac": "media/crests/sv-elversberg.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "RB Leipzig to win",
+       "odds": 1.44,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "RB Leipzig over 1.5 goals",
+       "odds": 1.45,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals 1st half",
+       "odds": 2.1,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "league": "Serie A",
+     "kickoff": "18:45",
+     "home": "Lazio",
+     "away": "Parma",
+     "score": "2-0",
+     "date": "2026-10-24",
+     "odds": [
+      1.45,
+      4.4,
+      7.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/lazio.png",
+     "ac": "media/crests/parma.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Lazio to win",
+       "odds": 1.45,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Lazio over 1.5 goals",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - No",
+       "odds": 1.8,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "Premier League",
+     "kickoff": "14:00",
+     "home": "Coventry City",
+     "away": "Fulham",
+     "score": "1-2",
+     "date": "2026-10-24",
+     "odds": [
+      3.14,
+      3.53,
+      2.28
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "DRAW NO BET"
+     ],
+     "win": null,
+     "hc": "media/crests/coventry-city.png",
+     "ac": "media/crests/fulham.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Fulham or draw",
+       "odds": 1.38,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.7,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Fulham draw no bet",
+       "odds": 1.65,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "LaLiga",
+     "kickoff": "12:00",
+     "home": "Rayo Vallecano",
+     "away": "Elche",
+     "score": "1-0",
+     "date": "2026-10-24",
+     "odds": [
+      1.95,
+      3.4,
+      4.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "DRAW NO BET"
+     ],
+     "win": null,
+     "hc": "media/crests/rayo-vallecano.png",
+     "ac": "media/crests/elche.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Rayo Vallecano or draw",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Rayo Vallecano draw no bet",
+       "odds": 1.48,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "league": "LaLiga",
+     "kickoff": "14:15",
+     "home": "Racing Santander",
+     "away": "Espanyol",
+     "score": "2-1",
+     "date": "2026-10-24",
+     "odds": [
+      2.3,
+      3.35,
+      3.1
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/racing-santander.png",
+     "ac": "media/crests/espanyol.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Racing Santander to score",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.35,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.8,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "league": "Serie A",
+     "kickoff": "13:00",
+     "home": "Cagliari",
+     "away": "Bologna",
+     "score": "1-0",
+     "date": "2026-10-24",
+     "odds": [
+      2.5,
+      3.25,
+      2.85
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "TEAM GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/cagliari.png",
+     "ac": "media/crests/bologna.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Cagliari or draw",
+       "odds": 1.42,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Cagliari to score",
+       "odds": 1.38,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "league": "Serie A",
+     "kickoff": "13:00",
+     "home": "Como",
+     "away": "Sassuolo",
+     "score": "2-0",
+     "date": "2026-10-24",
+     "odds": [
+      1.85,
+      3.6,
+      4.1
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "DRAW NO BET",
+      "RESULT"
+     ],
+     "win": null,
+     "hc": "media/crests/como.png",
+     "ac": "media/crests/sassuolo.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Como or draw",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Como draw no bet",
+       "odds": 1.38,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Como to win",
+       "odds": 1.85,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "Bundesliga",
+     "kickoff": "13:30",
+     "home": "Mainz 05",
+     "away": "Werder Bremen",
+     "score": "2-1",
+     "date": "2026-10-24",
+     "odds": [
+      1.75,
+      4.17,
+      4.33
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "DRAW NO BET"
+     ],
+     "win": null,
+     "hc": "media/crests/mainz-05.png",
+     "ac": "media/crests/werder-bremen.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.24,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Mainz 05 draw no bet",
+       "odds": 1.35,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "league": "Bundesliga",
+     "kickoff": "13:30",
+     "home": "FC Augsburg",
+     "away": "Union Berlin",
+     "score": "2-0",
+     "date": "2026-10-24",
+     "odds": [
+      1.86,
+      4.04,
+      3.95
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "RESULT"
+     ],
+     "win": null,
+     "hc": "media/crests/fc-augsburg.png",
+     "ac": "media/crests/union-berlin.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "FC Augsburg or draw",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "FC Augsburg over 1.5 goals",
+       "odds": 1.85,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "FC Augsburg to win",
+       "odds": 1.86,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "league": "Ligue 1",
+     "kickoff": "18:45",
+     "home": "RC Lens",
+     "away": "Paris FC",
+     "score": "2-1",
+     "date": "2026-10-24",
+     "odds": [
+      2.41,
+      3.66,
+      2.81
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "DRAW NO BET",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/rc-lens.png",
+     "ac": "media/crests/paris-fc.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "RC Lens to score",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "RC Lens draw no bet",
+       "odds": 1.72,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.75,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "league": "Primeira Liga",
+     "kickoff": "19:30",
+     "home": "Gil Vicente",
+     "away": "Porto",
+     "score": "1-2",
+     "date": "2026-10-24",
+     "odds": [
+      6.5,
+      4.2,
+      1.42
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "TEAM GOALS",
+      "GOALS"
+     ],
+     "win": null,
+     "hc": "media/crests/gil-vicente.png",
+     "ac": "media/crests/porto.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "FC Porto to win",
+       "odds": 1.42,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "FC Porto over 1.5 goals",
+       "odds": 1.62,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.75,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "banker": {
+    "total": 2.0,
+    "games": [
+     {
+      "n": 9,
+      "pick": {
+       "market": "RESULT",
+       "text": "Lazio to win",
+       "odds": 1.45
+      },
+      "odds": 1.45
+     },
+     {
+      "n": 10,
+      "pick": {
+       "market": "DOUBLE CHANCE",
+       "text": "Fulham or draw",
+       "odds": 1.38
+      },
+      "odds": 1.38
+     }
+    ]
+   },
+   "checklist": {
+    "YouTube": false,
+    "TikTok": false,
+    "Instagram": false,
+    "X": false,
+    "Threads": false,
+    "Telegram": false,
+    "WhatsApp": false,
+    "Community": false
+   },
+   "results": {},
+   "video_link": "",
+   "posts": [
+    {
+     "id": "games",
+     "group": "morning",
+     "title": "Today's games",
+     "when": "06:00",
+     "images": [
+      "media/2026-10-24/Games-2026-10-24.jpg"
+     ],
+     "texts": {
+      "tg": "⚽ 18 Matches Predicted Today | Saturday 24 October\nMatch Vision\n\nPremier League\n11:30  Aston Villa vs Manchester City\n14:00  Arsenal vs Everton\n14:00  Coventry City vs Fulham\n16:30  Chelsea vs Tottenham Hotspur\n\nLaLiga\n12:00  Rayo Vallecano vs Elche\n14:15  Racing Santander vs Espanyol\n16:30  Valencia vs Villarreal\n19:00  Atletico Madrid vs Deportivo La Coruna\n\nBundesliga\n13:30  RB Leipzig vs SV Elversberg\n13:30  Mainz 05 vs Werder Bremen\n13:30  FC Augsburg vs Union Berlin\n16:30  Borussia Dortmund vs Eintracht Frankfurt\n\nSerie A\n13:00  Cagliari vs Bologna\n13:00  Como vs Sassuolo\n16:00  Napoli vs AS Roma\n18:45  Lazio vs Parma\n\nLigue 1\n18:45  RC Lens vs Paris FC\n\nPrimeira Liga\n19:30  Gil Vicente vs Porto\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "⚽ *18 Matches Predicted Today | Saturday 24 October*\nMatch Vision\n\nPremier League\n11:30  Aston Villa vs Manchester City\n14:00  Arsenal vs Everton\n14:00  Coventry City vs Fulham\n16:30  Chelsea vs Tottenham Hotspur\n\nLaLiga\n12:00  Rayo Vallecano vs Elche\n14:15  Racing Santander vs Espanyol\n16:30  Valencia vs Villarreal\n19:00  Atletico Madrid vs Deportivo La Coruna\n\nBundesliga\n13:30  RB Leipzig vs SV Elversberg\n13:30  Mainz 05 vs Werder Bremen\n13:30  FC Augsburg vs Union Berlin\n16:30  Borussia Dortmund vs Eintracht Frankfurt\n\nSerie A\n13:00  Cagliari vs Bologna\n13:00  Como vs Sassuolo\n16:00  Napoli vs AS Roma\n18:45  Lazio vs Parma\n\nLigue 1\n18:45  RC Lens vs Paris FC\n\nPrimeira Liga\n19:30  Gil Vicente vs Porto\n\n👇 *Watch All Predictions*:\nhttps://t.me/matchvision707",
+      "x": "⚽ 18 Matches Predicted Today | Saturday 24 October\nMatch Vision\n\nPremier League\n11:30  Aston Villa vs Manchester City\n14:00  Arsenal vs Everton\n14:00  Coventry City vs Fulham\n16:30  Chelsea vs Tottenham Hotspur\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions\n\n--- reply ---\n\nLaLiga\n12:00  Rayo Vallecano vs Elche\n14:15  Racing Santander vs Espanyol\n16:30  Valencia vs Villarreal\n19:00  Atletico Madrid vs Deportivo La Coruna\n\n--- reply ---\n\nBundesliga\n13:30  RB Leipzig vs SV Elversberg\n13:30  Mainz 05 vs Werder Bremen\n13:30  FC Augsburg vs Union Berlin\n16:30  Borussia Dortmund vs Eintracht Frankfurt\n\nSerie A\n13:00  Cagliari vs Bologna\n13:00  Como vs Sassuolo\n16:00  Napoli vs AS Roma\n18:45  Lazio vs Parma\n\n--- reply ---\n\nLigue 1\n18:45  RC Lens vs Paris FC\n\nPrimeira Liga\n19:30  Gil Vicente vs Porto\n\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-24T06:00"
+    },
+    {
+     "id": "picks",
+     "group": "morning",
+     "title": "Top picks",
+     "when": "06:30",
+     "images": [
+      "media/2026-10-24/Picks-2026-10-24.jpg"
+     ],
+     "texts": {
+      "tg": "Today's Safest Picks 🏆\nSaturday 24 October | Match Vision",
+      "wa": "Today's Safest Picks 🏆\nSaturday 24 October | Match Vision",
+      "x": "Today's Safest Picks 🏆\nSaturday 24 October | Match Vision\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-24T06:30"
+    },
+    {
+     "id": "banker",
+     "group": "morning",
+     "title": "Banker",
+     "when": "07:00",
+     "images": [
+      "media/2026-10-24/2-Odds-Banker-2026-10-24.jpg"
+     ],
+     "texts": {
+      "tg": "Today's Banker 💰\nSaturday 24 October | Match Vision",
+      "wa": "Today's Banker 💰\nSaturday 24 October | Match Vision",
+      "x": "Today's Banker 💰\nSaturday 24 October | Match Vision\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-24T07:00"
+    },
+    {
+     "id": "video",
+     "group": "video",
+     "title": "Video post",
+     "when": "07:00",
+     "images": [
+      "media/2026-10-24/Thumbnail-1-style-134-.jpg"
+     ],
+     "texts": {
+      "tg": "Saturday Predictions | 24 October\nMatch Vision\n\n18 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Saturday Predictions | 24 October\nMatch Vision\n\n18 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now*:\n{VIDEO_LINK}",
+      "x": "Saturday Predictions | 24 October\n{VIDEO_LINK}\n\n18 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "Share the YouTube video to the bot first: the link goes in by itself.",
+     "ready": false,
+     "at": "2026-10-24T07:00"
+    },
+    {
+     "id": "swipe",
+     "group": "swipe",
+     "title": "Swipe post",
+     "when": "09:00",
+     "images": [
+      "media/2026-10-24/slide-1.jpg",
+      "media/2026-10-24/slide-2.jpg",
+      "media/2026-10-24/slide-3.jpg",
+      "media/2026-10-24/slide-4.jpg"
+     ],
+     "texts": {
+      "ig": "FOOTBALL PREDICTIONS | Saturday 24 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "tt": "FOOTBALL PREDICTIONS | Saturday 24 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
+      "yt": "FOOTBALL PREDICTIONS | Saturday 24 October\n\n#matchvision #premierleague #epl #laliga"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-24T09:00"
+    },
+    {
+     "id": "short1",
+     "group": "shorts",
+     "title": "Short 1",
+     "when": "10:00",
+     "images": [
+      "media/2026-10-24/short-1.jpg"
+     ],
+     "video": "media/2026-10-24/short-1-5193814.mp4",
+     "file": "Ready to Upload\\2026-10-24 Saturday\\Shorts\\Short 1 - 5 matches (Aston Villa vs Manchester City and more).mp4",
+     "texts": {
+      "tt": "FOOTBALL PREDICTIONS | Saturday 24 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
+      "ig": "FOOTBALL PREDICTIONS | Saturday 24 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-24T10:00"
+    },
+    {
+     "id": "short2",
+     "group": "shorts",
+     "title": "Short 2",
+     "when": "13:00",
+     "images": [
+      "media/2026-10-24/short-2.jpg"
+     ],
+     "video": "media/2026-10-24/short-2-4834399.mp4",
+     "file": "Ready to Upload\\2026-10-24 Saturday\\Shorts\\Short 2 - 5 matches (Napoli vs AS Roma and more).mp4",
+     "texts": {
+      "tt": "FOOTBALL PREDICTIONS | Saturday 24 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
+      "ig": "FOOTBALL PREDICTIONS | Saturday 24 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-24T13:00"
+    }
+   ]
+  },
   {
    "date": "2026-10-23",
    "where": "Ready to Upload",
@@ -624,14 +1843,14 @@
      "ac": "media/crests/diriyah.png",
      "live": {
       "st": "LIVE",
-      "min": 79,
+      "min": 86,
       "gh": 2,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401900890",
       "src": "ESPN",
-      "at": "2026-10-23T17:10:35"
+      "at": "2026-10-23T17:17:10"
      },
      "picks": [
       {
@@ -693,14 +1912,14 @@
      "ac": "media/crests/kocaelispor.png",
      "live": {
       "st": "LIVE",
-      "min": 10,
+      "min": 17,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401888268",
       "src": "ESPN",
-      "at": "2026-10-23T17:10:35"
+      "at": "2026-10-23T17:17:10"
      },
      "picks": [
       {
@@ -761,14 +1980,14 @@
      "ac": "media/crests/vfl-wolfsburg.png",
      "live": {
       "st": "LIVE",
-      "min": 40,
+      "min": 45,
       "gh": 0,
       "ga": 1,
       "hh": null,
       "ha": null,
       "espn": "401885079",
       "src": "ESPN",
-      "at": "2026-10-23T17:10:35"
+      "at": "2026-10-23T17:16:05"
      },
      "picks": [
       {
@@ -831,14 +2050,14 @@
      "ac": "media/crests/fc-st-pauli.png",
      "live": {
       "st": "LIVE",
-      "min": 37,
+      "min": 43,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401885082",
       "src": "ESPN",
-      "at": "2026-10-23T17:10:35"
+      "at": "2026-10-23T17:17:10"
      },
      "picks": [
       {
@@ -3842,11 +5061,11 @@
       "media/2026-10-22/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ 16 Of 24 Won | Thursday 22 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *16 Of 24 Won | Thursday 22 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 16 Of 24 Won | Thursday 22 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions",
-      "ig": "✅ 16 Of 24 Won | Thursday 22 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #uel #europaleague #uecl #footballpredictions",
-      "th": "✅ 16 Of 24 Won | Thursday 22 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions",
+      "ig": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #uel #europaleague #uecl #footballpredictions",
+      "th": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Thursday Results | 22 October*\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nWant Tomorrow's Games? Subscribe And Tap The Bell 🔔"
      },
      "auto": {
@@ -5015,11 +6234,11 @@
       "media/2026-10-21/win-1.jpg"
      ],
      "texts": {
-      "tg": "Wednesday Results ✅\n9/9 Safest Picks Won | 21 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Wednesday Results ✅\n9/9 Safest Picks Won | 21 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Wednesday Results ✅\n9/9 Safest Picks Won | 21 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions",
-      "ig": "Wednesday Results ✅\n9/9 Safest Picks Won | 21 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #footballreels #footballpredictions",
-      "th": "Wednesday Results ✅\n9/9 Safest Picks Won | 21 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Wednesday Results | 21 October*\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions",
+      "ig": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #footballreels #footballpredictions",
+      "th": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Wednesday Results | 21 October*\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nWant Tomorrow's Games? Subscribe And Tap The Bell 🔔"
      },
      "auto": {
@@ -6191,11 +7410,11 @@
       "media/2026-10-20/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Tuesday Results | 20 October\nMatch Vision\n\n🔥 7 Of 8 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Tuesday Results | 20 October*\nMatch Vision\n\n🔥 7 Of 8 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Tuesday Results | 20 October\nMatch Vision\n\n🔥 7 Of 8 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions",
-      "ig": "✅ Tuesday Results | 20 October\nMatch Vision\n\n🔥 7 Of 8 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #footballreels #footballpredictions",
-      "th": "✅ Tuesday Results | 20 October\nMatch Vision\n\n🔥 7 Of 8 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ 7 Of 8 Won | Tuesday 20 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *7 Of 8 Won | Tuesday 20 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ 7 Of 8 Won | Tuesday 20 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions",
+      "ig": "✅ 7 Of 8 Won | Tuesday 20 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #footballreels #footballpredictions",
+      "th": "✅ 7 Of 8 Won | Tuesday 20 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Tuesday Results | 20 October*\nMatch Vision\n\n🔥 7 Of 8 Safest Picks Won\n\nWant Tomorrow's Games? Subscribe And Tap The Bell 🔔"
      },
      "auto": {
@@ -7469,11 +8688,11 @@
       "media/2026-10-19/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *7 Of 9 Won | Monday 19 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ 7 Of 9 Won | Monday 19 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "Monday Results ✅\n7/9 Safest Picks Won | 19 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Monday Results | 19 October*\nMatch Vision\n\n🔥 7 Of 9 Safest Picks Won\n\nWant Tomorrow's Games? Subscribe And Tap The Bell 🔔"
      },
      "auto": {
@@ -9515,11 +10734,11 @@
       "media/2026-10-18/win-1.jpg"
      ],
      "texts": {
-      "tg": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "Sunday Results ✅\n14/18 Safest Picks Won | 18 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Sunday Results | 18 October*\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ Sunday Results | 18 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Sunday Results | 18 October*\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nWant Tomorrow's Games? Subscribe And Tap The Bell 🔔"
      },
      "auto": {
@@ -14865,972 +16084,6 @@
     "correct_scores": 3
    },
    "video_link": "https://youtu.be/ZnXloSaZGIc",
-   "posts": null
-  },
-  {
-   "date": "2026-10-14",
-   "where": "Ready to Upload",
-   "title": "Football Predictions Today | 14 October 2026 | Over 2.5 Goals & BTTS | Champions League",
-   "matches": [
-    {
-     "n": 1,
-     "league": "Champions League",
-     "kickoff": "19:00",
-     "home": "AS Roma",
-     "away": "Real Madrid",
-     "score": "1-2",
-     "date": "2026-10-14",
-     "odds": [
-      3.6,
-      4.0,
-      1.91
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "GOALS",
-      "TEAM GOALS"
-     ],
-     "win": null,
-     "hc": "media/crests/as-roma.png",
-     "ac": "media/crests/real-madrid.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 4,
-      "hh": null,
-      "ha": null,
-      "espn": "401915414",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Real Madrid or draw",
-       "odds": 1.28,
-       "chance": 0.74,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.8,
-       "chance": 0.72,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "AS Roma to score",
-       "odds": null,
-       "chance": 0.66,
-       "rule": {
-        "t": "ts",
-        "s": "h",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 2,
-     "league": "Champions League",
-     "kickoff": "19:00",
-     "home": "Manchester City",
-     "away": "Paris Saint-Germain",
-     "score": "2-1",
-     "date": "2026-10-14",
-     "odds": [
-      2.15,
-      3.9,
-      3.0
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "WIN OR DRAW",
-      "BTTS"
-     ],
-     "win": null,
-     "hc": "media/crests/manchester-city.png",
-     "ac": "media/crests/paris-saint-germain.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 4,
-      "hh": null,
-      "ha": null,
-      "espn": "401915407",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.73,
-       "chance": 0.68,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Manchester City or draw",
-       "odds": 1.36,
-       "chance": 0.68,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.4,
-       "chance": 0.57,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 3,
-     "league": "Champions League",
-     "kickoff": "16:45",
-     "home": "Lask Linz",
-     "away": "Liverpool",
-     "score": "1-2",
-     "date": "2026-10-14",
-     "odds": [
-      9.5,
-      5.5,
-      1.3
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "GOALS",
-      "BTTS"
-     ],
-     "win": null,
-     "hc": "media/crests/lask-linz.png",
-     "ac": "media/crests/liverpool.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 6,
-      "hh": null,
-      "ha": null,
-      "espn": "401915415",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Liverpool to win",
-       "odds": 1.3,
-       "chance": 0.66,
-       "rule": {
-        "t": "win",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.4,
-       "chance": 0.64,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.67,
-       "chance": 0.57,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 4,
-     "league": "Champions League",
-     "kickoff": "19:00",
-     "home": "Bodo/Glimt",
-     "away": "Borussia Dortmund",
-     "score": "1-2",
-     "date": "2026-10-14",
-     "odds": [
-      3.0,
-      4.1,
-      2.1
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "WIN OR DRAW"
-     ],
-     "win": null,
-     "hc": "media/crests/bodoglimt.png",
-     "ac": "media/crests/borussia-dortmund.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 0,
-      "hh": null,
-      "ha": null,
-      "espn": "401915393",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.4,
-       "chance": 0.69,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.36,
-       "chance": 0.69,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Borussia Dortmund or draw",
-       "odds": 1.36,
-       "chance": 0.64,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 5,
-     "league": "Champions League",
-     "kickoff": "19:00",
-     "home": "Real Betis",
-     "away": "Porto",
-     "score": "2-0",
-     "date": "2026-10-14",
-     "odds": [
-      2.0,
-      3.75,
-      3.4
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "WIN OR DRAW",
-      "BTTS"
-     ],
-     "win": null,
-     "hc": "media/crests/real-betis.png",
-     "ac": "media/crests/porto.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 2,
-      "hh": null,
-      "ha": null,
-      "espn": "401915408",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.22,
-       "chance": 0.7,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Real Betis or draw",
-       "odds": 1.3,
-       "chance": 0.75,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 2.2,
-       "chance": 0.52,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 6,
-     "league": "Champions League",
-     "kickoff": "19:00",
-     "home": "Aston Villa",
-     "away": "Fenerbahçe",
-     "score": "2-1",
-     "date": "2026-10-14",
-     "odds": [
-      1.62,
-      4.2,
-      5.0
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "TEAM GOALS",
-      "RESULT"
-     ],
-     "win": null,
-     "hc": "media/crests/aston-villa.png",
-     "ac": "media/crests/fenerbah-e.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 6,
-      "ga": 0,
-      "hh": null,
-      "ha": null,
-      "espn": "401915409",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.2,
-       "chance": 0.76,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Fenerbahçe to score",
-       "odds": null,
-       "chance": 0.64,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Aston Villa to win",
-       "odds": 1.62,
-       "chance": 0.55,
-       "rule": {
-        "t": "win",
-        "s": "h"
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 7,
-     "league": "Champions League",
-     "kickoff": "16:45",
-     "home": "Feyenoord",
-     "away": "Como",
-     "score": "1-2",
-     "date": "2026-10-14",
-     "odds": [
-      3.6,
-      4.1,
-      1.85
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "GOALS",
-      "TEAM GOALS"
-     ],
-     "win": null,
-     "hc": "media/crests/feyenoord.png",
-     "ac": "media/crests/como.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 2,
-      "hh": null,
-      "ha": null,
-      "espn": "401915416",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Como or draw",
-       "odds": 1.28,
-       "chance": 0.82,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.73,
-       "chance": 0.58,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Feyenoord to score",
-       "odds": null,
-       "chance": 0.67,
-       "rule": {
-        "t": "ts",
-        "s": "h",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 8,
-     "league": "Champions League",
-     "kickoff": "19:00",
-     "home": "Slovan Bratislava",
-     "away": "VfB Stuttgart",
-     "score": "1-2",
-     "date": "2026-10-14",
-     "odds": [
-      8.5,
-      6.0,
-      1.3
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "GOALS",
-      "BTTS"
-     ],
-     "win": null,
-     "hc": "media/crests/slovan-bratislava.png",
-     "ac": "media/crests/vfb-stuttgart.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 3,
-      "hh": null,
-      "ha": null,
-      "espn": "401915405",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "VfB Stuttgart to win",
-       "odds": 1.3,
-       "chance": 0.69,
-       "rule": {
-        "t": "win",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.91,
-       "chance": 0.57,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.62,
-       "chance": 0.56,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 9,
-     "league": "Champions League",
-     "kickoff": "19:00",
-     "home": "Shakhtar Donetsk",
-     "away": "AEK Athens FC",
-     "score": "0-2",
-     "date": "2026-10-14",
-     "odds": [
-      2.62,
-      3.5,
-      2.6
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "TEAM GOALS"
-     ],
-     "win": null,
-     "hc": "media/crests/shakhtar-donetsk.png",
-     "ac": "media/crests/aek-athens-fc.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 1,
-      "hh": null,
-      "ha": null,
-      "espn": "401915406",
-      "at": "2026-10-14T21:15:58"
-     },
-     "picks": [
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.36,
-       "chance": 0.82,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 2.1,
-       "chance": 0.55,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "AEK Athens FC to score",
-       "odds": null,
-       "chance": 0.68,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    }
-   ],
-   "banker": {
-    "total": 2.0,
-    "games": [
-     {
-      "n": 1,
-      "pick": {
-       "market": "DOUBLE CHANCE",
-       "text": "Real Madrid or draw",
-       "odds": 1.28,
-       "p": 0.74
-      },
-      "odds": 1.28
-     },
-     {
-      "n": 5,
-      "pick": {
-       "market": "GOALS",
-       "text": "Over 1.5 goals",
-       "odds": 1.22,
-       "p": 0.7
-      },
-      "odds": 1.22
-     },
-     {
-      "n": 7,
-      "pick": {
-       "market": "DOUBLE CHANCE",
-       "text": "Como or draw",
-       "odds": 1.28,
-       "p": 0.82
-      },
-      "odds": 1.28
-     }
-    ]
-   },
-   "checklist": {
-    "YouTube": true,
-    "TikTok": false,
-    "Instagram": false,
-    "Threads": false,
-    "Telegram": true,
-    "WhatsApp": false,
-    "Community": false
-   },
-   "results": {
-    "date": "2026-10-14",
-    "matches": [
-     {
-      "n": 1,
-      "home": "AS Roma",
-      "away": "Real Madrid",
-      "status": "FT",
-      "score": "3-4",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Real Madrid or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.28,
-        "p": 0.74,
-        "won": true
-       },
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.8,
-        "p": 0.72,
-        "won": false
-       },
-       {
-        "text": "AS Roma to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.66,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 2,
-      "home": "Manchester City",
-      "away": "Paris Saint-Germain",
-      "status": "FT",
-      "score": "2-4",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.73,
-        "p": 0.68,
-        "won": false
-       },
-       {
-        "text": "Manchester City or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.36,
-        "p": 0.68,
-        "won": false
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.4,
-        "p": 0.57,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 3,
-      "home": "Lask Linz",
-      "away": "Liverpool",
-      "status": "FT",
-      "score": "3-6",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Liverpool to win",
-        "market": "RESULT",
-        "odds": 1.3,
-        "p": 0.66,
-        "won": true
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.4,
-        "p": 0.64,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.67,
-        "p": 0.57,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 4,
-      "home": "Bodo/Glimt",
-      "away": "Borussia Dortmund",
-      "status": "FT",
-      "score": "1-0",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.4,
-        "p": 0.69,
-        "won": false
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.36,
-        "p": 0.69,
-        "won": false
-       },
-       {
-        "text": "Borussia Dortmund or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.36,
-        "p": 0.64,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 5,
-      "home": "Real Betis",
-      "away": "Porto",
-      "status": "FT",
-      "score": "3-2",
-      "predicted": "2-0",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.22,
-        "p": 0.7,
-        "won": true
-       },
-       {
-        "text": "Real Betis or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.3,
-        "p": 0.75,
-        "won": true
-       },
-       {
-        "text": "BTTS - No",
-        "market": "BTTS",
-        "odds": 2.2,
-        "p": 0.52,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 6,
-      "home": "Aston Villa",
-      "away": "Fenerbahçe",
-      "status": "FT",
-      "score": "6-0",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.2,
-        "p": 0.76,
-        "won": true
-       },
-       {
-        "text": "Fenerbahçe to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.64,
-        "won": false
-       },
-       {
-        "text": "Aston Villa to win",
-        "market": "RESULT",
-        "odds": 1.62,
-        "p": 0.55,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 7,
-      "home": "Feyenoord",
-      "away": "Como",
-      "status": "FT",
-      "score": "3-2",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Como or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.28,
-        "p": 0.82,
-        "won": false
-       },
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.73,
-        "p": 0.58,
-        "won": false
-       },
-       {
-        "text": "Feyenoord to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.67,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 8,
-      "home": "Slovan Bratislava",
-      "away": "VfB Stuttgart",
-      "status": "FT",
-      "score": "0-3",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "VfB Stuttgart to win",
-        "market": "RESULT",
-        "odds": 1.3,
-        "p": 0.69,
-        "won": true
-       },
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.91,
-        "p": 0.57,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.62,
-        "p": 0.56,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 9,
-      "home": "Shakhtar Donetsk",
-      "away": "AEK Athens FC",
-      "status": "FT",
-      "score": "3-1",
-      "predicted": "0-2",
-      "picks": [
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.36,
-        "p": 0.82,
-        "won": false
-       },
-       {
-        "text": "BTTS - No",
-        "market": "BTTS",
-        "odds": 2.1,
-        "p": 0.55,
-        "won": false
-       },
-       {
-        "text": "AEK Athens FC to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.68,
-        "won": true
-       }
-      ]
-     }
-    ],
-    "checked": "2026-10-14T23:45:03",
-    "banker": {
-     "total": 2.0,
-     "won": false
-    },
-    "won": 14,
-    "lost": 13,
-    "waiting": 0,
-    "pick1": [
-     5,
-     9
-    ],
-    "correct_scores": 0
-   },
-   "video_link": "https://www.youtube.com/@MatchVision707",
    "posts": null
   }
  ],
