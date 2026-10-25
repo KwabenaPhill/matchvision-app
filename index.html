@@ -922,7 +922,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.10.10';   // APP_VERSION = '3.10.10' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.23';   // APP_VERSION = '3.10.10' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -949,9 +949,9 @@ const jget=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d
 const DEF={live:true,every:2,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
   apps:{wa:true,x:true,ig:true,tt:true,th:true,yt:true,tg:false},
   bold:true,boldTitle:true,boldBrand:false,boldLeague:false,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
-  showOdds:true,showChance:false,showPred:true,showFin:true,sort:'time',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
+  showOdds:true,showChance:false,showPred:true,showFin:true,sort:'video',pickOrder:'video',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
   vidCards:true,recRange:'week',premMembers:true};
-let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
+let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v323){SET.v323=1;SET.sort='video';SET.pickOrder='video';}if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
 const saveSet=()=>store.set(K.set,JSON.stringify(SET));
 let POSTED=jget(K.posted,{});   // date -> item id -> app -> true  (what YOU sent from this phone)
 const savePosted=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(POSTED))if(k<keep)delete POSTED[k];store.set(K.posted,JSON.stringify(POSTED));};
@@ -1195,14 +1195,14 @@ function premSetOf(d){if(!prem)return [];const x=(prem.days||[]).find(p=>p.date=
 function quickMark(d,m,i){const k=`${d.date}|${m.n}.${i+1}`;return `<span class="qmk"><button class="qmb w" data-qmk="w" data-k="${k}" aria-label="Won">✓</button><button class="qmb l" data-qmk="l" data-k="${k}" aria-label="Lost">✕</button></span>`;}
 function matchCard(m,d){const L=liveOf(m,d),live=L&&['LIVE','HT'].includes(L.st);const pr=premSetOf(d);
   const sc=L&&L.gh!=null?`<div class="mscore ${live?'live':''}">${L.gh}-${L.ga}${SET.showPred&&m.score?`<small>Predicted ${esc(m.score)}</small>`:''}</div>`:(SET.showPred&&m.score?`<div class="mscore pred">${esc(m.score)}<small>Correct score</small></div>`:'');
-  const ord=(m.picks||[]).slice(0,3).map((p,i)=>({p,i,s:pickState(p,i,m,d,L)}));const lostN=ord.filter(x=>x.s==='l').length;if(lostN)ord.sort((a,b)=>(a.s==='l')-(b.s==='l')||a.i-b.i);
+  const ord=(m.picks||[]).slice(0,3).map((p,i)=>({p,i,s:pickState(p,i,m,d,L)}));const lostN=ord.filter(x=>x.s==='l').length;if(lostN&&SET.pickOrder==='won')ord.sort((a,b)=>(a.s==='l')-(b.s==='l')||a.i-b.i);
   const picks=ord.map(({p,i,s},j)=>{const isP=pr.some(x=>x.n===m.n&&x.text===p.text);
     return `<div class="game pkrow ${s==='l'?'pklost':''}"><span class="pnum ${i===0?'first':''}">${i+1}</span><div class="gm"><b>${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(p.text)}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}<div class="tm" style="width:auto">${(!s&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div></div>`;}).join('');
   const ht=L&&L.hh!=null&&L.st!=='NS'?` · HT ${L.hh}-${L.ha}`:'';
   return `<div class="card slipc" data-m="${m.n}" data-dk="${d.date}" style="padding:14px"><div class="sliphd" style="margin-bottom:8px"><div class="sn"><b class="lgname">${esc(m.league||'')}</b><span>Match ${m.n} · ${esc(m.kickoff||'')}${m.date&&m.date!==d.date?' · '+shortDate(m.date):''}${ht}</span></div><div style="flex:none;margin-left:auto">${statePill(L,m)}</div></div>
     <div class="mrow2"><button class="minicard" data-big="${m.n}" data-dk="${d.date}" aria-label="The match card">${mvCard(m,d,(d.matches||[]).length,true)}</button><div class="mright"><div class="mrow"><div class="tms"><b>${esc(m.home)}</b><b>${esc(m.away)}</b></div>${sc}</div></div></div><div class="glist" style="margin-top:10px">${picks}</div></div>`;}
 function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Match Vision games for this day.</p></div>`;const now=new Date();const fk=firstKick(d);let banner='';
-  const ms=(d.matches||[]).slice().sort((a,b)=>SET.sort==='league'?String(a.league).localeCompare(String(b.league))||String(a.kickoff).localeCompare(String(b.kickoff)):String(a.kickoff||'99').localeCompare(String(b.kickoff||'99'))||a.n-b.n);
+  const ms=(d.matches||[]).slice().sort((a,b)=>SET.sort==='video'?((a.n||0)-(b.n||0)):SET.sort==='league'?String(a.league).localeCompare(String(b.league))||String(a.kickoff).localeCompare(String(b.kickoff)):String(a.kickoff||'99').localeCompare(String(b.kickoff||'99'))||a.n-b.n);
   const st=ms.map(m=>mState(m,d));const nLive=st.filter(x=>x==='live').length;
   if(nLive)banner=`<div class="kick live"><span><span class="cl">${G.ball}</span>${nLive} match${nLive>1?'es':''} live now</span><span>${SET.live?'Live scores on':'Live scores off'}</span></div>`;
   else if(fk&&fk>now&&d.date===todayKey()){const left=Math.ceil((fk-now)/60000);banner=`<div class="kick ${left<=30?'hot':''}"><span>${clockSm}First kick-off ${fmtT(fk)}</span><span>${inMins(left)} left</span></div>`;}
@@ -1498,7 +1498,7 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
   if(f==='matches')return srow('livepage','Live scores',`ESPN ${SET.live?'on':'off'} · every ${SET.every} min`,'',gi('ball'))+
     srow('showPred','Show the correct score','',SET.showPred,gi('scoreboard'))+srow('showOdds','Show odds','',SET.showOdds,gi('ticket'))+
     srow('showChance','Show the chance (%)','From the builder',SET.showChance,gi('pie'))+srow('shortNames','Short team names','So everything fits',SET.shortNames,gi('badge'))+
-    srow('showFin','Show finished matches','In the All list',SET.showFin,gi('flag'))+srow('sort','Order of matches',SET.sort==='league'?'By league':'By kick-off time','',gi('sort'))+
+    srow('showFin','Show finished matches','In the All list',SET.showFin,gi('flag'))+srow('sort','Order of matches',SET.sort==='video'?'Like the video':SET.sort==='league'?'By league':'By kick-off time','',gi('sort'))+srow('pickOrder','Order of picks',SET.pickOrder==='won'?'Won first':'Like the video (1, 2, 3)','',gi('sort'))+
     srow('winstyle','Win ticket style',{lime:'1 Lime',gold:'2 Gold',green:'3 Green',blue:'4 Blue',white:'5 White'}[SET.winStyle||'lime']+(SET.winShape==='wide'?' · wide':' · my old card'),'',gi('ticket'))+
     srow('wintext','Win ticket text','First mark, last line, BIG WIN line, extra line, brand','',gi('textbold'))+
     srow('winInResults','Win tickets in Results','The picture with Share buttons',SET.winInResults!==false,gi('gallery'))+
@@ -1564,7 +1564,8 @@ async function settingsClick(e){const b=e.target.closest('button');if(!b)return;
   if(s==='tagsoff'){const on=APPS.filter(p=>SET.tagsOff&&SET.tagsOff[p]);const ans=prompt('Apps with NO hashtags. Type the letters, separated by commas:\nwa = WhatsApp, tg = Telegram, x = X, ig = Instagram, tt = TikTok, yt = YouTube, th = Threads',on.join(', '));if(ans!==null){SET.tagsOff={};ans.split(/[ ,]+/).map(x=>x.trim().toLowerCase()).filter(x=>APPS.includes(x)).forEach(x=>SET.tagsOff[x]=true);saveSet();renderSettings();}return;}
   if(s==='apps')openApps();else if(s==='groups')openGroups();else if(s==='boldparts')openBoldParts();
   else if(s==='every')choose('Check live scores every',[['1','1 minute'],['2','2 minutes'],['3','3 minutes'],['5','5 minutes']],SET.every,v=>{SET.every=+v;saveSet();renderSettings();});
-  else if(s==='sort')choose('Order of matches',[['time','By kick-off time'],['league','By league']],SET.sort,v=>{SET.sort=v;saveSet();renderSettings();});
+  else if(s==='sort')choose('Order of matches',[['video','Like the video'],['time','By kick-off time'],['league','By league']],SET.sort,v=>{SET.sort=v;saveSet();renderSettings();});
+  else if(s==='pickOrder')choose('Order of picks',[['video','Like the video (1, 2, 3)'],['won','Won first']],SET.pickOrder,v=>{SET.pickOrder=v;saveSet();renderSettings();});
   else if(s==='homeView')choose('Home opens on',[['posts','Posts'],['matches','Matches'],['results','Results']],SET.homeView,v=>{SET.homeView=v;homeView=v;saveSet();renderSettings();});
   else if(s==='lock'){if(prem){store.del(K.pin);prem=null;toast('Vision Premium locked');renderSettings();}else showTab('elite');}
   else if(s==='channel')editField('Telegram channel link',SET.channel,v=>{if(v&&v.trim()){SET.channel=v.trim();saveSet();renderSettings();toast('Saved ✓');}});
@@ -1946,6 +1947,88 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-card]');if
 window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,openBuilder,openTemplates,openLivePage,askBot,textsSheet};
 })();
 
+</script>
+
+<!-- 3.23 (Philip, 25 Oct 2026): FIX NOTES - save fixes and ideas with pictures and voice, then send them all to Claude in one go -->
+<style>
+#fxBtn{position:fixed;left:14px;bottom:150px;z-index:9998;width:52px;height:52px;border-radius:26px;border:1px solid rgba(255,255,255,.18);background:#1b1c1f;color:#fff;font-size:24px;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+#fxBtn b{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:10px;background:#e5484d;color:#fff;font:700 12px/20px system-ui;padding:0 5px}
+#fxSheet{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:none}
+#fxSheet .in{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:#141517;border-radius:22px 22px 0 0;padding:16px 16px 28px;color:#fff;font:15px/1.4 system-ui,sans-serif}
+#fxSheet h3{margin:0 0 10px;font-size:19px}
+#fxSheet textarea{width:100%;min-height:96px;box-sizing:border-box;border-radius:14px;border:1px solid #333;background:#0c0c0d;color:#fff;padding:12px;font:15px/1.4 system-ui}
+#fxSheet .row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+#fxSheet button.b{flex:1;min-width:120px;padding:12px;border-radius:14px;border:1px solid #333;background:#222326;color:#fff;font:600 15px system-ui}
+#fxSheet button.main{background:#dffb51;color:#111;border:0}
+#fxSheet button.rec{background:#e5484d;border:0}
+#fxSheet .note{border:1px solid #2a2b2f;border-radius:14px;padding:10px 12px;margin:8px 0;background:#1b1c1f}
+#fxSheet .note small{color:#999}
+#fxSheet .pics{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+#fxSheet .pics img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+#fxSheet .note .x{float:right;background:none;border:0;color:#999;font-size:18px}
+#fxSheet .muted{color:#9a9a9a;font-size:13px}
+</style>
+<button id="fxBtn" title="Fix notes">📝<b id="fxCount" style="display:none"></b></button>
+<div id="fxSheet"><div class="in">
+  <h3>📝 Fix notes · <span id="fxApp"></span></h3>
+  <div class="muted">Write or speak a fix or idea, add screenshots, save. When you are ready, tap <b>Send all to Claude</b>: every note and picture goes in one share.</div>
+  <textarea id="fxText" placeholder="What should change? (tap 🎤 to speak)"></textarea>
+  <div class="row">
+    <button class="b" id="fxMic">🎤 Speak</button>
+    <button class="b" id="fxPic">🖼️ Add pictures</button>
+    <input type="file" id="fxFile" accept="image/*" multiple style="display:none">
+  </div>
+  <div class="pics" id="fxNewPics"></div>
+  <div class="row"><button class="b main" id="fxSave">Save note</button></div>
+  <div class="row">
+    <button class="b main" id="fxSend">📤 Send all to Claude</button>
+    <button class="b" id="fxCopy">📋 Copy all text</button>
+  </div>
+  <div class="row"><button class="b" id="fxDone">✓ Clear sent notes</button><button class="b" id="fxClose">Close</button></div>
+  <div id="fxList"></div>
+</div></div>
+<script>
+(function(){
+  const APP='Match Vision';
+  const DB='fixnotes_'+APP.replace(/\s+/g,'_').toLowerCase();
+  let newPics=[];const $=id=>document.getElementById(id);$('fxApp').textContent=APP;
+  function idb(){return new Promise((ok,no)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore('n',{keyPath:'id'});r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error);});}
+  async function all(){try{const d=await idb();return await new Promise(ok=>{const q=d.transaction('n').objectStore('n').getAll();q.onsuccess=()=>ok(q.result.sort((a,b)=>a.id-b.id));q.onerror=()=>ok([]);});}catch(e){return[];}}
+  async function put(n){const d=await idb();return new Promise(ok=>{const t=d.transaction('n','readwrite');t.objectStore('n').put(n);t.oncomplete=ok;});}
+  async function del(id){const d=await idb();return new Promise(ok=>{const t=d.transaction('n','readwrite');t.objectStore('n').delete(id);t.oncomplete=ok;});}
+  function shrink(file){return new Promise(ok=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1400/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',0.82));};im.onerror=()=>ok(null);im.src=r.result;};r.readAsDataURL(file);});}
+  function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+  async function draw(){const L=await all();const open=L.filter(n=>!n.sent);const c=$('fxCount');c.style.display=open.length?'block':'none';c.textContent=open.length;
+    $('fxList').innerHTML=L.length?L.slice().reverse().map(n=>`<div class="note"><button class="x" data-del="${n.id}">✕</button><small>${new Date(n.id).toLocaleString()}${n.sent?' · sent ✓':''}</small><div>${esc(n.text||'(picture only)').replace(/\n/g,'<br>')}</div>${(n.pics||[]).length?`<div class="pics">${n.pics.map(p=>`<img src="${p}">`).join('')}</div>`:''}</div>`).join(''):'<div class="muted" style="margin-top:12px">No notes yet.</div>';}
+  function drawNew(){$('fxNewPics').innerHTML=newPics.map(p=>`<img src="${p}">`).join('');}
+  $('fxBtn').onclick=()=>{$('fxSheet').style.display='block';draw();};
+  $('fxClose').onclick=()=>{$('fxSheet').style.display='none';};
+  $('fxSheet').onclick=e=>{if(e.target.id==='fxSheet')$('fxSheet').style.display='none';const d=e.target.closest('[data-del]');if(d&&confirm('Delete this note?')){del(+d.dataset.del).then(draw);}};
+  $('fxPic').onclick=()=>$('fxFile').click();
+  $('fxFile').onchange=async e=>{for(const f of e.target.files){const p=await shrink(f);if(p)newPics.push(p);}e.target.value='';drawNew();};
+  let rec=null;
+  $('fxMic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(!SR){alert('Voice typing is not in this browser. Tap the box and use the 🎤 on your keyboard instead.');$('fxText').focus();return;}
+    if(rec){rec.stop();return;}
+    rec=new SR();rec.lang='en-GB';rec.continuous=true;rec.interimResults=false;const base=$('fxText').value;let got='';
+    rec.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++)if(e.results[i].isFinal)got+=e.results[i][0].transcript+' ';$('fxText').value=(base?base+' ':'')+got.trim();};
+    rec.onend=()=>{rec=null;$('fxMic').textContent='🎤 Speak';$('fxMic').classList.remove('rec');};
+    rec.onerror=()=>{};rec.start();$('fxMic').textContent='⏹ Stop';$('fxMic').classList.add('rec');};
+  $('fxSave').onclick=async()=>{const t=$('fxText').value.trim();if(!t&&!newPics.length){alert('Write something or add a picture first.');return;}
+    await put({id:Date.now(),text:t,pics:newPics,sent:false});$('fxText').value='';newPics=[];drawNew();draw();};
+  function bundle(L){return `FIXES FOR ${APP.toUpperCase()} (${L.length} notes, ${new Date().toLocaleDateString()})\n\n`+L.map((n,i)=>`${i+1}. ${n.text||'(see picture)'}${(n.pics||[]).length?`  [pictures: ${n.pics.map((_,k)=>`note${i+1}-${k+1}.jpg`).join(', ')}]`:''}`).join('\n\n');}
+  async function toFile(data,name){const b=await (await fetch(data)).blob();return new File([b],name,{type:'image/jpeg'});}
+  $('fxCopy').onclick=async()=>{const L=(await all()).filter(n=>!n.sent);try{await navigator.clipboard.writeText(bundle(L));alert('Copied ✓');}catch(e){prompt('Copy this:',bundle(L));}};
+  $('fxSend').onclick=async()=>{const L=(await all()).filter(n=>!n.sent);if(!L.length){alert('No new notes to send.');return;}
+    const txt=bundle(L);const files=[new File([txt],'fixes.txt',{type:'text/plain'})];
+    for(let i=0;i<L.length;i++)for(let k=0;k<(L[i].pics||[]).length;k++)files.push(await toFile(L[i].pics[k],`note${i+1}-${k+1}.jpg`));
+    try{if(navigator.canShare&&navigator.canShare({files})){await navigator.share({files,text:txt,title:'Fixes for '+APP});}
+        else{await navigator.share({text:txt,title:'Fixes for '+APP});}
+        if(confirm('Did it send? Mark these notes as sent?')){for(const n of L){n.sent=true;await put(n);}draw();}}
+    catch(e){if(e&&e.name==='AbortError')return;try{await navigator.clipboard.writeText(txt);alert('Sharing is not available here: the text is copied. Add the pictures by hand.');}catch(_){prompt('Copy this:',txt);}}};
+  $('fxDone').onclick=async()=>{const L=(await all()).filter(n=>n.sent);if(!L.length){alert('Nothing sent yet.');return;}if(confirm(`Delete ${L.length} sent note(s)?`)){for(const n of L)await del(n.id);draw();}};
+  draw();
+})();
 </script>
 </body>
 </html>
