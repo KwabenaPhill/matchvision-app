@@ -59,7 +59,7 @@ def post(item):
     anim = os.path.join(ROOT, item['animation']) if item.get('animation') else ''
     if anim and os.path.isfile(anim):                 # 3.21: the morning GIF (or short video) with its words
         extra = {'parse_mode': 'HTML'} if html else {}
-        if anim.lower().endswith('.gif'):
+        if anim.lower().endswith(('.gif', '.mp4')):   # 3.24: a silent mp4 plays like a GIF
             return tg('sendAnimation', {'chat_id': chat, 'caption': text[:1000], **extra}, {'animation': anim})
         return tg('sendVideo', {'chat_id': chat, 'caption': text[:1000], **extra}, {'video': anim})
     pics = [os.path.join(ROOT, p) for p in item.get('images') or []]
