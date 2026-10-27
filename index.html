@@ -838,6 +838,12 @@ textarea{width:100%;background:#0E0E10;color:#fff;border:1px solid #333;border-r
 .mlist .mi .ic2{width:38px;height:38px;border-radius:11px;background:#1F1F23;display:grid;place-items:center;flex:none}.mlist .mi .ic2 svg{width:28px;height:28px}
 .mlist .mi .tt{flex:1;min-width:0}.mlist .mi .tt b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.mlist .mi .tt small{color:var(--dim);font-size:12.5px;white-space:nowrap}
 .mlist .mi .am{font-weight:900;white-space:nowrap}.mlist .am.plus{color:#30D158}.mlist .am.minus{color:#FF453A}
+/* 3.25 (Philip, 27 Oct): the amount on the NAME line, never touching the small line under it */
+.mlist .mi{align-items:flex-start}.mlist .mi .ic2{margin-top:2px}.mlist .mi .tt{padding-right:6px}
+.mlist .mi .tt small{display:block;overflow:hidden;text-overflow:ellipsis}.mlist .mi .am{align-self:flex-start;margin-top:1px;flex:none}
+/* 3.25: Active = green badge, white words; days left in colours */
+#p-elite .tag.ok{background:#16A34A!important;border-color:#16A34A!important;color:#fff!important}
+.dl-g{color:#30D158;font-weight:800}.dl-y{color:#FACC15;font-weight:800}.dl-r{color:#FF453A;font-weight:800}
 .mlist .hd{display:flex;justify-content:space-between;font-weight:800;font-size:16px;margin-bottom:4px}
 
 /* 3.2.2 */
@@ -922,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.23';   // APP_VERSION = '3.10.10' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.25';   // APP_VERSION = '3.25' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1025,7 +1031,47 @@ function evalRule(r,L){if(!r||!L||L.gh==null||L.ga==null||['NS','PST','CANC'].in
     case 'btts':return r.y?out(h>0&&a>0,h>0&&a>0,false):out(!(h>0&&a>0),false,h>0&&a>0);
     case 'ts':{const g=r.s==='h'?h:a;return out(g>r.v,g>r.v,false);}default:return null;}}
 function pickState(p,i,m,d,L){const mk=markOf(d,m,i);if(mk)return mk;const res=(d.results&&d.results.matches||[]).find(x=>x.n===m.n);const off=res&&res.picks&&res.picks[i]&&res.picks[i].won;
-  if(off===true)return 'w';if(off===false)return 'l';const e=evalRule(p.rule,L);if(e)return e;if(p.live===true)return 'w';if(p.live===false)return 'l';return null;}
+  if(off===true)return 'w';if(off===false)return 'l';const e=evalRule(p.rule,L);if(e)return e;if(p.live===true)return 'w';if(p.live===false)return 'l';
+  if(L&&L.st==='FT'&&L.gh!=null){const j=settleAny(p.text,m.home,m.away,L);if(j)return j;}return null;}
+// 3.25 (Philip, 27 Oct): every kind of pick is read from its words, the same rules as the laptop (mv_settle.py):
+// "Benfica -1" (win by 2+ = won, by exactly 1 = money back, shown as won), draw no bet, combos, correct score, halves ...
+function settleAny(text,home,away,L){const gh=+L.gh,ga=+L.ga,hh=L.hh!=null?+L.hh:null,ha=L.ha!=null?+L.ha:null;
+  const COMMON=new Set('fc cf sc ac as afc club de la le the real city united utd sporting athletic atletico inter cd ud rc sv vfb vfl fk sk if bk town county rovers wanderers albion hotspur olympique stade saint st san santa deportivo racing dynamo dinamo young boys and of al el cp ss'.split(' '));
+  const pl=x=>String(x||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,' ').trim();
+  const esc=x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  let q=pl(text);const h=pl(home),a=pl(away);const ws=n=>(n.match(/[a-z0-9]+/g)||[]).filter(w=>w.length>=3&&!COMMON.has(w));const hw=ws(h),aw=ws(a);
+  const names=[[h,'home'],[a,'away']].concat(hw.filter(w=>!aw.includes(w)).map(w=>[w,'home']),aw.filter(w=>!hw.includes(w)).map(w=>[w,'away'])).sort((x,y)=>y[0].length-x[0].length);
+  q=q.replace(/@\s*\d+(?:\.\d+)?/g,' ').replace(/\(\s*\d+\.\d+\s*\)/g,' ').replace(/[()]/g,' ');
+  for(const [n,t] of names)if(n.length>=3)q=q.replace(new RegExp('(^|[^a-z0-9])'+esc(n)+'(?![a-z0-9])','g'),'$1'+t);
+  q=q.replace(/\b(?:as|fc|ac|sc|cf|afc)\s+(home|away)\b/g,'$1').replace(/\b(asian handicap|european handicap|handicap|hcap|ah)\b/g,' ')
+   .replace(/\b(goals?|full ?time|ft|match result|1x2|total|the match|in the match)\b/g,' ').replace(/\bboth teams to score\b|\bboth teams score\b|\bgg\b/g,' btts ')
+   .replace(/\bbtts\s*[-:]?\s*yes\b/g,'btts').replace(/\bbtts\s*[-:]?\s*no\b|\bng\b/g,'btts_no').replace(/\b(home|away) team\b/g,'$1')
+   .replace(/\bto win\b|\bwins?\b|\bvictory\b/g,' win ').replace(/\bdraw no bet\b|\bdnb\b/g,' dnb ').replace(/[|:;,]/g,' ').replace(/\s+/g,' ').trim();
+  const ah=(mg,l)=>{const one=x=>{const v=mg+x;return v>0?'w':v<0?'l':'v';};if(Math.abs(((l*4)%2+2)%2-1)<1e-9){const x=one(l-.25),y=one(l+.25);return x===y?x:(x==='w'||y==='w'?'w':'l');}return one(l);};
+  const one=(q,gh,ga,hh,ha)=>{q=q.trim();const tot=gh+ga;let m;if(!q||/corner|card|booking|offside|shot|foul|throw/.test(q))return null;
+    if(/\b(2nd half|second half|2h)\b/.test(q)){if(hh==null)return null;return one(q.replace(/\b(2nd half|second half|2h)\b/g,' '),gh-hh,ga-ha,null,null);}
+    if(/\b(1st half|first half|half ?time|ht|1h)\b/.test(q)&&!/\bht ?\/ ?ft\b/.test(q)){if(hh==null)return null;return one(q.replace(/\b(1st half|first half|half ?time|ht|1h)\b/g,' '),hh,ha,null,null);}
+    if((m=q.match(/^(?:correct score\s*)?(\d{1,2})\s*[-:]\s*(\d{1,2})$/))||(/correct score/.test(q)&&(m=q.match(/(\d{1,2})\s*[-:]\s*(\d{1,2})/))))return gh===+m[1]&&ga===+m[2]?'w':'l';
+    if((m=q.match(/\b(home|away)\s*dnb\b|\bdnb\s*(home|away)\b/))){const s=m[1]||m[2];if(gh===ga)return 'v';return (gh>ga)===(s==='home')?'w':'l';}
+    if((m=q.match(/\b(home|away)\s*([+-]\s*\d+(?:\.\d+)?)/)))return ah(m[1]==='home'?gh-ga:ga-gh,parseFloat(m[2].replace(/\s/g,'')));
+    if((m=q.match(/([+-]\s*\d+(?:\.\d+)?)\s*(home|away)\b/)))return ah(m[2]==='home'?gh-ga:ga-gh,parseFloat(m[1].replace(/\s/g,'')));
+    if((m=q.match(/\b(home|away)\s*win to nil\b/))){const x=m[1]==='home'?[gh,ga]:[ga,gh];return x[0]>x[1]&&x[1]===0?'w':'l';}
+    if((m=q.match(/\b(home|away)\s*clean sheet\b/)))return (m[1]==='home'?ga:gh)===0?'w':'l';
+    if((m=q.match(/\b(home|away)\s*(?:not to score|no score)\b/)))return (m[1]==='home'?gh:ga)===0?'w':'l';
+    if((m=q.match(/\b(home|away)\s*(?:to )?score\b/)))return (m[1]==='home'?gh:ga)>0?'w':'l';
+    if((m=q.match(/\b(home|away)\s*(over|under)\s*(\d+(?:\.\d+)?)/))){const tg=m[1]==='home'?gh:ga;return m[2]==='over'?(tg>+m[3]?'w':'l'):(tg<+m[3]?'w':'l');}
+    if((m=q.match(/\b(home|away)\s*win (either|any|both) halv?f?e?s?\b/))){if(hh==null)return null;const s1=m[1]==='home'?hh-ha:ha-hh,s2=m[1]==='home'?(gh-hh)-(ga-ha):(ga-ha)-(gh-hh);return (m[2]==='both'?(s1>0&&s2>0):(s1>0||s2>0))?'w':'l';}
+    if((m=q.match(/\b(over|under)\s*(\d+(?:\.\d+)?)/)))return m[1]==='over'?(tot>+m[2]?'w':'l'):(tot<+m[2]?'w':'l');
+    if(/\bodd\b/.test(q))return tot%2===1?'w':'l';if(/\beven\b/.test(q))return tot%2===0?'w':'l';
+    if(/btts_no/.test(q))return gh>0&&ga>0?'l':'w';if(/\bbtts\b/.test(q))return gh>0&&ga>0?'w':'l';
+    if(/\b(1x|home or draw|draw or home)\b/.test(q))return gh>=ga?'w':'l';if(/\b(x2|draw or away|away or draw)\b/.test(q))return ga>=gh?'w':'l';
+    if(/\b(12|home or away|away or home|no draw)\b/.test(q))return gh!==ga?'w':'l';if(/^(draw|x)$/.test(q))return gh===ga?'w':'l';
+    if(/^(home|1)( win)?$/.test(q)||(/\bhome\b/.test(q)&&/\bwin\b/.test(q)))return gh>ga?'w':'l';
+    if(/^(away|2)( win)?$/.test(q)||(/\baway\b/.test(q)&&/\bwin\b/.test(q)))return ga>gh?'w':'l';return null;};
+  const parts=(' '+q+' ').split(/\s(?:&|and|\+|with)\s/).map(x=>x.trim()).filter(Boolean);let r;
+  if(parts.length>1&&!/win both halves/.test(q)){const rs=parts.map(x=>one(x,gh,ga,hh,ha));if(rs.includes('l'))return 'l';if(rs.includes(null))return null;return 'w';}
+  if(/\bor\b/.test(q)&&!/(home or draw|draw or home|draw or away|away or draw|home or away|away or home)/.test(q)){const rs=q.split(/\bor\b/).filter(x=>x.trim()).map(x=>one(x,gh,ga,hh,ha));if(rs.includes('w'))return 'w';if(rs.length&&rs.every(x=>x==='l'))return 'l';return null;}
+  r=one(q,gh,ga,hh,ha);return r==='v'?'w':r;}
 function dayCount(d){let w=0,l=0,p=0;for(const m of d.matches||[]){const L=liveOf(m,d);(m.picks||[]).slice(0,3).forEach((pk,i)=>{const s=pickState(pk,i,m,d,L);if(s==='w')w++;else if(s==='l')l++;else p++;});}return {w,l,p};}
 function safestCount(d){let w=0,n=0;for(const m of d.matches||[]){const p=(m.picks||[])[0];if(!p)continue;const s=pickState(p,0,m,d,liveOf(m,d));if(s==='w'){w++;n++;}else if(s==='l')n++;}return {w,n};}
 function bankerState(d){if(!d.banker||!d.banker.games)return null;if(d.results&&d.results.banker&&d.results.banker.won!=null)return d.results.banker.won?'w':'l';
@@ -1414,7 +1460,7 @@ function judgeText(t,home,away,L){if(!L||L.st!=='FT'||L.gh==null)return null;con
   if(/^(btts|both teams to score|ng)\s*-?\s*no$/.test(q)||q==='ng')return gh>0&&ga>0?'l':'w';
   if(q===h+' to score')return gh>0?'w':'l';if(q===a+' to score')return ga>0?'w':'l';
   if(q===h+' to win')return gh>ga?'w':'l';if(q===a+' to win')return ga>gh?'w':'l';
-  if(q===h+' or draw')return gh>=ga?'w':'l';if(q===a+' or draw')return ga>=gh?'w':'l';if(q==='draw')return gh===ga?'w':'l';return null;}
+  if(q===h+' or draw')return gh>=ga?'w':'l';if(q===a+' or draw')return ga>=gh?'w':'l';if(q==='draw')return gh===ga?'w':'l';return settleAny(t,home,away,L);}
 function premWon(g,d){return MARKW(premState(g,d));}
 function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
     return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · <span class="${L.st==='FT'?'fsc':'lsc'}">${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}</span>`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
@@ -1439,7 +1485,7 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
   else if(eliteView==='members'){const list=memFilter==='due'?all.filter(isDue):memFilter==='exp'?all.filter(isExp):all;const mon=t.slice(0,7);let paid=0;for(const m of all)for(const p of m.payments||[])if((p.date||'').slice(0,7)===mon)paid+=price*(Number(p.months)||1);
     body=`<div class="member-count"><strong>${all.length} Member${all.length===1?'':'s'}</strong><span>${active} active · ${Math.max(0,(prem.seats||0)-active)} seats left${price?` · GH₵ ${Math.round(paid)} this month`:''}</span></div><div class="member-filter">${[['all',`All ${all.length}`],['due',`Due soon ${due}`],['exp',`Ended ${exp}`]].map(([k,l])=>`<button data-mf="${k}" class="${memFilter===k?'on':''}">${l}</button>`).join('')}</div>
       <button class="btn-save gold w100" data-bw="add" style="margin-bottom:12px">+ Add member (through the bot)</button><div class="card">${list.length?list.map(m=>{const cls=isExp(m)?'exp':isDue(m)?'due':'ok',op=openMem.has(m.name),dl=daysBetween(t,m.until);
-        return `<div class="mem"><button class="memhd" data-tog="${esc(m.name)}"><strong>${esc(m.name)}</strong><span class="tag ${cls}">${cls==='exp'?'Ended':cls==='due'?'Due soon':'Active'}</span><span class="ch">${op?'▴':'▾'}</span></button>${op?`<div class="s">${cls==='exp'?'Ended':'Ends'} ${longDate(m.until)}${dl>=0?` · ${dl} days left`:''}</div><div class="s">${m.months||0} month${m.months===1?'':'s'} paid since ${longDate(m.since)}</div><div class="btn-row"><button class="btn-half" data-bw="renew" data-n="${esc(m.name)}">Renew</button><button class="btn-half" data-bw="remove" data-n="${esc(m.name)}">Remove</button></div>`:''}</div>`;}).join(''):'<p class="empty">No members here.</p>'}</div>
+        return `<div class="mem"><button class="memhd" data-tog="${esc(m.name)}"><strong>${esc(m.name)}</strong><span class="tag ${cls}">${cls==='exp'?'Ended':cls==='due'?'Due soon':'Active'}</span><span class="ch">${op?'▴':'▾'}</span></button>${op?`<div class="s">${cls==='exp'?'Ended':'Ends'} ${longDate(m.until)}${dl>=0?` · <span class="${dl>=16?'dl-g':dl>=4?'dl-y':'dl-r'}">${dl} days left</span>`:''}</div><div class="s">${m.months||0} month${m.months===1?'':'s'} paid since ${longDate(m.since)}</div><div class="btn-row"><button class="btn-half" data-bw="renew" data-n="${esc(m.name)}">Renew</button><button class="btn-half" data-bw="remove" data-n="${esc(m.name)}">Remove</button></div>`:''}</div>`;}).join(''):'<p class="empty">No members here.</p>'}</div>
       <p class="muted" style="margin-top:4px">Members are changed only by the bot, so the bot and the app never disagree. The buttons copy the bot word and open your bot: paste and send.</p>`;}
   else{const inR=k=>{if(!k)return false;if(monRange==='month')return k.slice(0,7)===t.slice(0,7);if(monRange==='year')return k.slice(0,4)===t.slice(0,4);return true;};
     const vip=[];for(const m of all)for(const p of m.payments||[]){const mo=Number(p.months)||1;const amt=Number(p.amount)||price*Math.abs(mo);vip.push({d:p.date||m.since,n:m.name,a:Math.abs(amt),mo:Math.abs(mo),ref:p.ref||'',out:!!(p.refund||mo<0||amt<0)});}
