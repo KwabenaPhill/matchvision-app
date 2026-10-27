@@ -101,6 +101,20 @@ def won(rule, gh, ga, hh, ha):
     return None
 
 
+def wonp(p, m, g):
+    """3.25: the pick's small rule first; any other kind ("Benfica -1", "win & over 1.5", draw no bet) is read from its
+    words with mv_settle (a VOID counts as won: the slip goes on). None = corners or cards: the laptop decides."""
+    r = won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha'])
+    if r is not None:
+        return r
+    try:
+        import mv_settle
+        return mv_settle.won_bool(p.get('text') or '', g['gh'], g['ga'], m.get('home') or '', m.get('away') or '',
+                                  g.get('hh'), g.get('ha'))
+    except Exception:
+        return None
+
+
 # ------------------------------------------------------------------------------------------------ caption
 def caption(m, gh, ga, cs_won, c):
     n = len(m['picks']) + (1 if cs_won else 0)
@@ -427,14 +441,18 @@ def run(day, now, root, tg, log=print):
         g = find(games[d], m)
         if not g or not g['done'] or g['gh'] is None or g['ga'] is None:
             continue
-        res = [won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha']) for p in m['picks']]
-        if any(r is False for r in res):
+        res = [wonp(p, m, g) for p in m['picks']]
+        cs_won = bool(m.get('score')) and m['score'] == f'{g["gh"]}-{g["ga"]}'
+        if day.get('cs_only') and not cs_won:          # 3.25 (Philip): win posts only for a correct score
+            m['posted'] = 'not cs'
+            dirty = True
+            continue
+        if any(r is False for r in res) and not (day.get('cs_only') and cs_won):
             m['posted'] = 'lost'
             dirty = True
             continue
-        if not res or not all(r is True for r in res):
+        if not res or (not all(r is True for r in res) and not (day.get('cs_only') and cs_won)):
             continue                                   # corners or cards: the laptop decides
-        cs_won = bool(m.get('score')) and m['score'] == f'{g["gh"]}-{g["ga"]}'
         text, is_html = caption(m, g['gh'], g['ga'], cs_won, c)
         pic = None
         try:
@@ -491,7 +509,7 @@ def results(day, now, tg, log=print):
         g = find(games[d], m)
         if not g or not g['done'] or g['gh'] is None:
             continue
-        res = [won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha']) for p in m['picks']]
+        res = [wonp(p, m, g) for p in m['picks']]
         w += sum(1 for r in res if r is True)
         n += sum(1 for r in res if r is not None)
         if res and all(r is True for r in res):
@@ -504,12 +522,14 @@ def results(day, now, tg, log=print):
             m = next((x for x in wins if x.get('n') == bg.get('n')), None)
             p = next((q for q in (m or {}).get('picks') or [] if q.get('text') == bg.get('text')), None)
             g = find(games.get(m['ko'][:10]) or [], m) if m else None
-            rs.append(won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha']) if (p and g and g['done']) else None)
+            rs.append(wonp(p, m, g) if (p and g and g['done']) else None)
         if all(r is True for r in rs) and not str(bk.get('posted') or '').startswith(('cloud', 'laptop')):
             bk_line = f'💰 *{float(bk.get("total") or 0):.2f} Odds Banker WON* ✅'
-    if not won_list and not bk_line:
+    if not won_list and not bk_line and not day.get('results_always'):
         day['results_posted'] = 'cloud: no full wins'
         return True
+    if not n:
+        return False
     dd = datetime.date.fromisoformat(day['date'])
     c = day.get('results_caption') or {}
     head = str(c.get('head') or "🔥 *Today's Winning Slips*")
@@ -841,7 +861,7 @@ def banker(day, now, root, tg, log=print):
         g = find(games[dd], m)
         if not g or not g['done'] or not p:
             return False
-        r = won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha'])
+        r = wonp(p, m, g)
         if r is False:
             bk['posted'] = 'lost'
             return True
@@ -940,7 +960,7 @@ def day_stats(day, now):
         if not g or not g['done'] or g['gh'] is None:
             continue
         for i, p in enumerate(m.get('picks') or []):
-            r = won(p.get('rule'), g['gh'], g['ga'], g['hh'], g['ha'])
+            r = wonp(p, m, g)
             if r is None:
                 continue
             st['all_n'] += 1
@@ -975,6 +995,17 @@ def weekly(root, now, tg, log=print):
     cfg = today.get('weekly') or {}
     if not cfg.get('on', True) or not today.get('stats'):
         return False
+    rp = str(today.get('results_posted') or '')          # 3.25 (Philip): the day's results FIRST, then the week
+    if cfg.get('after_results') is not None:
+        if not rp:
+            return False
+        if today.get('results_posted_at'):
+            try:
+                if now < datetime.datetime.fromisoformat(today['results_posted_at']) + \
+                        datetime.timedelta(minutes=int(cfg.get('after_results') or 30)):
+                    return False
+            except ValueError:
+                pass
     try:
         hh, mm = (int(x) for x in str(cfg.get('time', '21:00')).split(':'))
     except Exception:
