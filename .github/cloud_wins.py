@@ -458,7 +458,11 @@ def run(day, now, root, tg, log=print):
         try:
             out = os.path.join(root, 'cloud', 'wins', f'{d}-{m["n"]}.jpg')
             if cs_won:
-                pic = draw_cs(m, g['gh'], g['ga'], root, out, style=c.get('cs_style', 'gold'), brand=c.get('brand', 'MATCH VISION'))
+                if str(c.get('cs_style', '')).startswith('12'):      # 3.25.8: the lime correct score card
+                    _dd = datetime.date.fromisoformat(str(d)[:10])
+                    pic = draw_cs_lime(m, g['gh'], g['ga'], root, out, date_label=f'{DAYS[_dd.weekday()]} · {_dd.day} {MONTHS[_dd.month - 1]}')
+                else:
+                    pic = draw_cs(m, g['gh'], g['ga'], root, out, style=c.get('cs_style', 'gold'), brand=c.get('brand', 'MATCH VISION'))
             else:
                 pic = draw(m, g['gh'], g['ga'], cs_won, root, out, brand=c.get('brand', 'MATCH VISION'))
         except Exception as ex:
@@ -874,7 +878,8 @@ def banker(day, now, root, tg, log=print):
     dd = datetime.date.fromisoformat(day['date'])
     pic = None
     try:
-        pic = (draw_banker if str(c.get('banker_card', '')).startswith('Old') else draw_banker_ticket)(
+        pic = (draw_banker_lime if str(c.get('banker_card', '')).startswith('Lime') else
+               draw_banker if str(c.get('banker_card', '')).startswith('Old') else draw_banker_ticket)(
             out, bk.get('total'), f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', root,
                           os.path.join(root, 'cloud', 'wins', f'{day["date"]}-banker.jpg'), brand=c.get('brand', 'MATCH VISION'))
     except Exception as ex:
@@ -1036,3 +1041,129 @@ def weekly(root, now, tg, log=print):
     except Exception as ex:
         log(f'Weekly recap not posted ({ex}).')
     return True
+
+
+# ---- 3.25.8 (Philip, 27 Oct): the LIME banker card (Banker C) and the LIME correct score card (Score 3) ----
+def draw_banker_lime(legs, total, date_label, root, out, fonts=FONTS, brand='MATCH VISION'):
+    """Lime header "2.00 ODDS BANKER WON" (no date), one row per pick: crests, pick, score, odds, tick; TOTAL ODDS big."""
+    from PIL import Image, ImageDraw
+    LIME, WH, GR, GREEN, DK = (223, 251, 81), (255, 255, 255), (150, 155, 165), (34, 197, 94), (10, 10, 12)
+    BLK, SEMI = ('Inter-Black.otf', 'InterDisplay-Black.otf'), ('Inter-SemiBold.otf', 'Inter-Medium.otf')
+    n = max(1, len(legs))
+    rh = 150
+    W, H = 1600, max(900, 230 + n * rh + 160)
+    im = Image.new('RGB', (W, H), (10, 10, 12))
+    d = ImageDraw.Draw(im)
+    for y in range(H):
+        k = y / (H - 1)
+        d.line([(0, y), (W, y)], fill=(int(16 - 10 * k), int(17 - 11 * k), int(20 - 12 * k)))
+
+    def F(names, px):
+        return _font(fonts, names, px)
+
+    def fit(t, names, px, maxw):
+        while px > 14 and d.textlength(t, font=F(names, px)) > maxw:
+            px -= 2
+        return F(names, px)
+
+    def tick(cx, cy, r, col=GREEN, fg=WH):
+        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col)
+        d.line([(cx - r * .45, cy), (cx - r * .1, cy + r * .38), (cx + r * .5, cy - r * .35)], fill=fg, width=max(3, int(r * .22)), joint='curve')
+
+    def crest(path, cx, cy, s, name):
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((s, s))
+            im.paste(c, (int(cx - c.width / 2), int(cy - c.height / 2)), c)
+        else:
+            d.ellipse((cx - s / 2, cy - s / 2, cx + s / 2, cy + s / 2), fill=(45, 45, 48))
+    T = f'{float(total or 0):.2f}'
+    d.rounded_rectangle((60, 50, W - 60, 190), radius=28, fill=LIME)
+    title = f'{T} ODDS BANKER WON'
+    d.text((100, 78), title, font=fit(title, BLK, 70, W - 330), fill=DK)
+    tick(W - 140, 120, 44, DK, LIME)
+    for i, g in enumerate(legs):
+        y = 230 + i * rh
+        cy = y + (rh - 20) / 2
+        d.rounded_rectangle((60, y, W - 60, y + rh - 20), radius=24, fill=(24, 26, 30))
+        crest(g.get('hc'), 150, cy, 92, g.get('home', ''))
+        crest(g.get('ac'), 265, cy, 92, g.get('away', ''))
+        pick = str(g.get('text', '')).upper()
+        d.text((345, cy - 28), pick, font=fit(pick, BLK, 46, 640), fill=WH)
+        if g.get('gh') is not None and g.get('ga') is not None:
+            s = f'{g["gh"]}-{g["ga"]}'
+            f = F(BLK, 46)
+            d.text((1050 - d.textlength(s, font=f), cy - 28), s, font=f, fill=GR)
+        o = g.get('odds')
+        if o:
+            o = f'{float(o):.2f}'
+            f = F(BLK, 54)
+            d.text((W - 200 - d.textlength(o, font=f), cy - 34), o, font=f, fill=LIME)
+        tick(W - 130, cy, 36)
+    y = 230 + n * rh + 20
+    d.rounded_rectangle((60, y, W - 60, y + 100), radius=24, fill=(24, 26, 30))
+    f1, f2 = F(BLK, 60), F(BLK, 76)
+    w = d.textlength('TOTAL ODDS  ', font=f1) + d.textlength(T, font=f2)
+    x = W / 2 - w / 2
+    d.text((x, y + 18), 'TOTAL ODDS  ', font=f1, fill=WH)
+    d.text((x + d.textlength('TOTAL ODDS  ', font=f1), y + 6), T, font=f2, fill=LIME)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
+
+
+def draw_cs_lime(m, gh, ga, root, out, fonts=FONTS, style='', brand='MATCH VISION', date_label='', odds=None):
+    """Like the Vision Premium WON card, in lime: tick, CORRECT SCORE, big WON, date, crests + score, lime bar."""
+    from PIL import Image, ImageDraw
+    LIME, WH, DK = (223, 251, 81), (255, 255, 255), (10, 10, 12)
+    BLK = ('Inter-Black.otf', 'InterDisplay-Black.otf')
+    W = H = 1080
+    im = Image.new('RGB', (W, H), (6, 6, 8))
+    d = ImageDraw.Draw(im)
+
+    def F(px):
+        return _font(fonts, BLK, px)
+
+    def ct(t, cx, y, f, fill):
+        d.text((cx - d.textlength(t, font=f) / 2, y), t, font=f, fill=fill)
+
+    def fit(t, px, maxw):
+        while px > 14 and d.textlength(t, font=F(px)) > maxw:
+            px -= 2
+        return F(px)
+
+    def crest(path, cx, cy, s):
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((s, s))
+            im.paste(c, (int(cx - c.width / 2), int(cy - c.height / 2)), c)
+        else:
+            d.ellipse((cx - s / 2, cy - s / 2, cx + s / 2, cy + s / 2), fill=(45, 45, 48))
+    d.rounded_rectangle((24, 24, W - 24, H - 24), radius=40, outline=LIME, width=6, fill=(10, 11, 14))
+    d.ellipse((W / 2 - 50, 70, W / 2 + 50, 170), fill=LIME)
+    d.line([(W / 2 - 22, 120), (W / 2 - 5, 140), (W / 2 + 26, 102)], fill=DK, width=11)
+    ct('CORRECT SCORE', W / 2, 200, F(64), WH)
+    ct('WON', W / 2, 270, F(150), LIME)
+    if not date_label:
+        dd = datetime.date.today()
+        date_label = f'{DAYS[dd.weekday()]} · {dd.day} {MONTHS[dd.month - 1]}'
+    ct(str(date_label).upper(), W / 2, 445, F(34), LIME)
+    y = 530
+    d.rounded_rectangle((80, y, W - 80, y + 260), radius=26, fill=(20, 22, 26), outline=LIME, width=3)
+    crest(m.get('hc'), 230, y + 110, 150)
+    crest(m.get('ac'), W - 230, y + 110, 150)
+    ct(f'{gh} - {ga}', W / 2, y + 60, F(120), WH)
+    for nm, cx in ((m.get('home', ''), 230), (m.get('away', ''), W - 230)):
+        t = str(nm).upper()
+        ct(t, cx, y + 200, fit(t, 30, 300), WH)
+    bar = f'CORRECT SCORE {gh}-{ga}' + (f'  @ {float(odds):.2f}' if odds else '')
+    d.rounded_rectangle((80, y + 300, W - 80, y + 400), radius=14, fill=LIME)
+    ct(bar, W / 2, y + 318, fit(bar, 48, W - 220), DK)
+    f = _font(fonts, ('InterDisplay-BlackItalic.otf', 'Inter-Black.otf'), 48)
+    d.text((W / 2 - 50, H - 110), 'MV', font=f, fill=LIME)
+    d.ellipse((W / 2 + 30, H - 78, W / 2 + 44, H - 64), fill=WH)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
