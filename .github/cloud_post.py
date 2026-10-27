@@ -80,6 +80,46 @@ def post(item):
     return tg('sendMessage', {'chat_id': chat, 'text': text[:4000], 'disable_web_page_preview': 'true', **extra})
 
 
+def unlock(enc):
+    """3.25: the Vision Premium post is locked in the public file with the bot key; only this job can open it."""
+    import base64
+    import hashlib
+    import hmac
+    data = base64.b64decode(enc)
+    nonce, tag, ct = data[:16], data[16:48], data[48:]
+    key = hashlib.sha256(('mv-premium|' + TOKEN).encode()).digest()
+    if not hmac.compare_digest(tag, hmac.new(key, nonce + ct, hashlib.sha256).digest()):
+        raise RuntimeError('the Premium post could not be opened (another bot key?)')
+    out = bytearray()
+    i = 0
+    while len(out) < len(ct):
+        out += hashlib.sha256(key + nonce + i.to_bytes(8, 'big')).digest()
+        i += 1
+    return json.loads(bytes(a ^ b for a, b in zip(ct, out)).decode('utf-8'))
+
+
+def post_locked(item):
+    import base64
+    import tempfile
+    sec = unlock(item['enc'])
+    tmp = None
+    if sec.get('img'):
+        fd, tmp = tempfile.mkstemp(suffix='.jpg')
+        with os.fdopen(fd, 'wb') as f:
+            f.write(base64.b64decode(sec['img']))
+    try:
+        extra = {'parse_mode': 'HTML'} if sec.get('html') else {}
+        if tmp:
+            return tg('sendPhoto', {'chat_id': sec['chat'], 'caption': (sec.get('text') or '')[:1000], **extra}, {'photo': tmp})
+        return tg('sendMessage', {'chat_id': sec['chat'], 'text': sec.get('text') or '', **extra})
+    finally:
+        if tmp:
+            try:
+                os.remove(tmp)
+            except OSError:
+                pass
+
+
 def sticker(day, kind, chat):
     """3.20.1: the TODAY'S GAMES / NEW VIDEO / RESULTS sticker just before that post, once a day (laptop off too)."""
     path = (day.get('stickers') or {}).get(kind)
@@ -95,6 +135,21 @@ def sticker(day, kind, chat):
         print(f'{day.get("date")}: {kind} sticker sent by the cloud.')
     except Exception as ex:
         print(f'{day.get("date")}: {kind} sticker not sent ({ex}).')
+
+
+def gap_wait(day, chat, now):
+    """3.25 (Philip): never two channel posts closer than POST GAP minutes (10)."""
+    last = (day.get('last_post') or {}).get(str(chat))
+    if not last:
+        return False
+    try:
+        return now < datetime.datetime.fromisoformat(last) + datetime.timedelta(minutes=int(day.get('post_gap', 0) or 0))
+    except ValueError:
+        return False
+
+
+def gap_mark(day, chat, now):
+    day.setdefault('last_post', {})[str(chat)] = now.isoformat(timespec='seconds')
 
 
 def main():
@@ -126,10 +181,17 @@ def main():
                 it['posted'] = 'missed'
                 dirty = True
                 continue
+            if gap_wait(day, it.get('chat'), now):
+                continue                               # 3.25: 10 minutes after the last post on this channel
             try:
-                if it.get('id') in ('games', 'video'):
-                    sticker(day, it['id'], it.get('chat'))
-                post(it)
+                if it.get('enc'):                      # 3.25: Vision Premium (locked)
+                    post_locked(it)
+                else:
+                    if it.get('id') in ('games', 'video'):
+                        sticker(day, it['id'], it.get('chat'))
+                    post(it)
+                    gap_mark(day, it.get('chat'), now)
+                it.pop('enc', None)                    # opened and posted: the locked words leave the file
                 it['posted'] = 'cloud'
                 it['posted_at'] = now.isoformat(timespec='minutes')
                 print(f'{name} {it["id"]}: POSTED by the cloud.')
@@ -152,7 +214,12 @@ def main():
 
             def tg_r(method, params, files=None):      # 3.20.1: the RESULTS sticker before the first result
                 if method in ('sendPhoto', 'sendMediaGroup', 'sendMessage') and str(params.get('chat_id')) == str(chat_w):
+                    if gap_wait(day, chat_w, now):         # 3.25: the gap: the next round posts it
+                        raise RuntimeError('waiting for the gap between posts')
                     sticker(day, 'results', chat_w)
+                    r = tg(method, params, files)
+                    gap_mark(day, chat_w, now)
+                    return r
                 return tg(method, params, files)
             tg_w = tg_r
             if cloud_wins.run(day, now, ROOT, tg_w, print):
