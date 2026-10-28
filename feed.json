@@ -1,12 +1,1066 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-28T18:36:55",
+ "updated": "2026-10-28T18:43:14",
  "builder": {
-  "busy": true,
-  "step": "Pictures",
-  "done": 0.92
+  "busy": false,
+  "step": "Finished: 2026-10-29 Thursday",
+  "done": 1.0
  },
  "days": [
+  {
+   "date": "2026-10-29",
+   "where": "Ready to Upload",
+   "title": "THURSDAY'S FOOTBALL PREDICTIONS TODAY | 29 OCTOBER | EVERTON vs NEWCASTLE, OVER 2.5 & OVER 1.5",
+   "matches": [
+    {
+     "n": 1,
+     "league": "EFL Cup",
+     "kickoff": "19:45",
+     "home": "Everton",
+     "away": "Newcastle United",
+     "score": "1-1",
+     "date": "2026-10-29",
+     "odds": [
+      2.1,
+      3.4,
+      2.88
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "WIN OR DRAW",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/everton.png",
+     "ac": "media/crests/newcastle-united.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Newcastle United or draw",
+       "odds": 1.48,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "league": "Serie A",
+     "kickoff": "19:45",
+     "home": "Fiorentina",
+     "away": "Atalanta",
+     "score": "1-2",
+     "date": "2026-10-29",
+     "odds": [
+      2.2,
+      3.75,
+      3.1
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "BTTS",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/fiorentina.png",
+     "ac": "media/crests/atalanta.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.2,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.53,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.65,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "league": "Serie A",
+     "kickoff": "17:30",
+     "home": "Frosinone",
+     "away": "Lecce",
+     "score": "2-1",
+     "date": "2026-10-29",
+     "odds": [
+      1.7,
+      4.2,
+      5.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "RESULT",
+      "CARDS"
+     ],
+     "win": null,
+     "hc": "media/crests/frosinone.png",
+     "ac": "media/crests/lecce.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.15,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Frosinone to win",
+       "odds": 1.7,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 3.5 cards",
+       "odds": 1.68,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "league": "Copa del Rey",
+     "kickoff": "20:00",
+     "home": "Sporting Hortaleza",
+     "away": "Sevilla",
+     "score": "0-3",
+     "date": "2026-10-29",
+     "odds": [
+      17.0,
+      7.5,
+      1.12
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "HANDICAP"
+     ],
+     "win": null,
+     "hc": "media/crests/sporting-hortaleza.png",
+     "ac": "media/crests/sevilla.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Sevilla over 1.5 goals",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.45,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Sevilla -1.5",
+       "odds": 1.55,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "league": "Copa del Rey",
+     "kickoff": "20:00",
+     "home": "AE Prat",
+     "away": "Athletic Club",
+     "score": "0-2",
+     "date": "2026-10-29",
+     "odds": [
+      13.0,
+      6.0,
+      1.2
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "FIRST HALF",
+      "HANDICAP"
+     ],
+     "win": null,
+     "hc": "media/crests/ae-prat.png",
+     "ac": "media/crests/athletic-club.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Athletic Club to win",
+       "odds": 1.2,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Athletic Club -1.5",
+       "odds": 1.6,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "league": "Copa del Rey",
+     "kickoff": "18:00",
+     "home": "UB Lebrijana",
+     "away": "Getafe",
+     "score": "0-2",
+     "date": "2026-10-29",
+     "odds": [
+      12.0,
+      5.5,
+      1.22
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "HANDICAP"
+     ],
+     "win": null,
+     "hc": "media/crests/ub-lebrijana.png",
+     "ac": "media/crests/getafe.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Getafe to win",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.4,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Getafe -1.5",
+       "odds": 1.68,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "league": "Copa del Rey",
+     "kickoff": "18:00",
+     "home": "Atletico Calatayud",
+     "away": "Osasuna",
+     "score": "0-3",
+     "date": "2026-10-29",
+     "odds": [
+      19.0,
+      8.0,
+      1.1
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "HANDICAP"
+     ],
+     "win": null,
+     "hc": "media/crests/atletico-calatayud.png",
+     "ac": "media/crests/osasuna.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Osasuna over 1.5 goals",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.5,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Osasuna -1.5",
+       "odds": 1.62,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "league": "Portugal Taca da Liga",
+     "kickoff": "20:45",
+     "home": "Benfica",
+     "away": "Gil Vicente",
+     "score": "3-0",
+     "date": "2026-10-29",
+     "odds": [
+      1.25,
+      5.5,
+      10.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "CORNERS",
+      "HANDICAP"
+     ],
+     "win": null,
+     "hc": "media/crests/benfica.png",
+     "ac": "media/crests/gil-vicente.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Benfica to win",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Benfica -1.5",
+       "odds": 1.75,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "league": "Portugal Taca da Liga",
+     "kickoff": "18:45",
+     "home": "Sporting Braga",
+     "away": "Famalicao",
+     "score": "2-1",
+     "date": "2026-10-29",
+     "odds": [
+      1.91,
+      3.5,
+      3.8
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/sporting-braga.png",
+     "ac": "media/crests/famalicao.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Sporting Braga or draw",
+       "odds": 1.24,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.3,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.8,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "Brazil Serie A",
+     "kickoff": "23:00",
+     "home": "Vasco da Gama",
+     "away": "Flamengo",
+     "score": "1-2",
+     "date": "2026-10-29",
+     "odds": [
+      3.8,
+      3.5,
+      1.73
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "RESULT",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/vasco-da-gama.png",
+     "ac": "media/crests/flamengo.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Flamengo or draw",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Flamengo to win",
+       "odds": 1.73,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.6,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "Brazil Serie A",
+     "kickoff": "22:30",
+     "home": "Atletico Mineiro",
+     "away": "Cruzeiro",
+     "score": "2-1",
+     "date": "2026-10-29",
+     "odds": [
+      2.38,
+      3.25,
+      2.5
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "CORNERS",
+      "CARDS"
+     ],
+     "win": null,
+     "hc": "media/crests/atletico-mineiro.png",
+     "ac": "media/crests/cruzeiro.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Atletico Mineiro or draw",
+       "odds": 1.35,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 9.5 corners",
+       "odds": 1.65,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 4.5 cards",
+       "odds": 1.6,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "league": "Saudi Arabia Pro League",
+     "kickoff": "18:00",
+     "home": "Al Nassr",
+     "away": "Al Kholood",
+     "score": "3-0",
+     "date": "2026-10-29",
+     "odds": [
+      1.16,
+      7.7,
+      13.3
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "FIRST HALF"
+     ],
+     "win": null,
+     "hc": "media/crests/al-nassr.png",
+     "ac": "media/crests/al-kholood.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Al Nassr to win",
+       "odds": 1.16,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.38,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals 1st half",
+       "odds": 1.95,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "league": "Saudi Arabia Pro League",
+     "kickoff": "14:35",
+     "home": "Al Khaleej",
+     "away": "Al Hazem",
+     "score": "2-1",
+     "date": "2026-10-29",
+     "odds": [
+      2.15,
+      3.4,
+      3.2
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/al-khaleej.png",
+     "ac": "media/crests/al-hazem.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Al Khaleej or draw",
+       "odds": 1.32,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.7,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "league": "Saudi Arabia Pro League",
+     "kickoff": "18:00",
+     "home": "Al Riyadh",
+     "away": "Al Qadsiah",
+     "score": "1-3",
+     "date": "2026-10-29",
+     "odds": [
+      7.7,
+      4.7,
+      1.29
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "GOALS",
+      "BTTS"
+     ],
+     "win": null,
+     "hc": "media/crests/al-riyadh.png",
+     "ac": "media/crests/al-qadsiah.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Al Qadsiah to win",
+       "odds": 1.29,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.52,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.7,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "Sweden Allsvenskan",
+     "kickoff": "17:30",
+     "home": "Hammarby",
+     "away": "IK Sirius",
+     "score": "2-1",
+     "date": "2026-10-29",
+     "odds": [
+      1.5,
+      4.33,
+      5.75
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "RESULT",
+      "CORNERS"
+     ],
+     "win": null,
+     "hc": "media/crests/hammarby.png",
+     "ac": "media/crests/ik-sirius.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Hammarby to win",
+       "odds": 1.5,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 9.5 corners",
+       "odds": 1.68,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "banker": {
+    "total": 2.0,
+    "games": [
+     {
+      "n": 1,
+      "pick": {
+       "market": "GOALS",
+       "text": "Under 3.5 goals",
+       "odds": 1.28
+      },
+      "odds": 1.28
+     },
+     {
+      "n": 7,
+      "pick": {
+       "market": "TEAM GOALS",
+       "text": "Osasuna over 1.5 goals",
+       "odds": 1.25
+      },
+      "odds": 1.25
+     },
+     {
+      "n": 8,
+      "pick": {
+       "market": "RESULT",
+       "text": "Benfica to win",
+       "odds": 1.25
+      },
+      "odds": 1.25
+     }
+    ]
+   },
+   "checklist": {
+    "YouTube": false,
+    "TikTok": false,
+    "Instagram": false,
+    "X": false,
+    "Threads": false,
+    "Telegram": false,
+    "WhatsApp": false,
+    "Community": false
+   },
+   "results": {},
+   "video_link": "",
+   "posts": [
+    {
+     "id": "games",
+     "group": "morning",
+     "title": "Today's games",
+     "when": "06:00",
+     "images": [
+      "media/2026-10-29/Games-2026-10-29.jpg"
+     ],
+     "texts": {
+      "tg": "Thursday Games | 29 October\n\nSerie A\n17:30  Frosinone vs Lecce\n19:45  Fiorentina vs Atalanta\n\nCopa Del Rey\n18:00  UB Lebrijana vs Getafe\n18:00  Atletico Calatayud vs Osasuna\n20:00  Sporting Hortaleza vs Sevilla\n20:00  AE Prat vs Athletic Club\n\nEFL Cup\n19:45  Everton vs Newcastle United\n\nSaudi Arabia Pro League\n14:35  Al Khaleej vs Al Hazem\n18:00  Al Nassr vs Al Kholood\n18:00  Al Riyadh vs Al Qadsiah\n\nBrazil Serie A\n22:30  Atletico Mineiro vs Cruzeiro\n23:00  Vasco Da Gama vs Flamengo\n\nPortugal Taca Da Liga\n18:45  Sporting Braga vs Famalicao\n20:45  Benfica vs Gil Vicente\n\nSweden Allsvenskan\n17:30  Hammarby vs IK Sirius\n\n🎯 All Predictions In Today's Video.\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Thursday Games | 29 October\n\nSerie A\n17:30  Frosinone vs Lecce\n19:45  Fiorentina vs Atalanta\n\nCopa Del Rey\n18:00  UB Lebrijana vs Getafe\n18:00  Atletico Calatayud vs Osasuna\n20:00  Sporting Hortaleza vs Sevilla\n20:00  AE Prat vs Athletic Club\n\nEFL Cup\n19:45  Everton vs Newcastle United\n\nSaudi Arabia Pro League\n14:35  Al Khaleej vs Al Hazem\n18:00  Al Nassr vs Al Kholood\n18:00  Al Riyadh vs Al Qadsiah\n\nBrazil Serie A\n22:30  Atletico Mineiro vs Cruzeiro\n23:00  Vasco Da Gama vs Flamengo\n\nPortugal Taca Da Liga\n18:45  Sporting Braga vs Famalicao\n20:45  Benfica vs Gil Vicente\n\nSweden Allsvenskan\n17:30  Hammarby vs IK Sirius\n\n🎯 All Predictions In Today's Video.\n👇 *Watch All Predictions*:\nhttps://t.me/matchvision707",
+      "x": "Thursday Games | 29 October\n\nSerie A\n17:30  Frosinone vs Lecce\n19:45  Fiorentina vs Atalanta\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions\n\n--- reply ---\n\nCopa Del Rey\n18:00  UB Lebrijana vs Getafe\n18:00  Atletico Calatayud vs Osasuna\n20:00  Sporting Hortaleza vs Sevilla\n20:00  AE Prat vs Athletic Club\n\nEFL Cup\n19:45  Everton vs Newcastle United\n\n--- reply ---\n\nSaudi Arabia Pro League\n14:35  Al Khaleej vs Al Hazem\n18:00  Al Nassr vs Al Kholood\n18:00  Al Riyadh vs Al Qadsiah\n\nBrazil Serie A\n22:30  Atletico Mineiro vs Cruzeiro\n23:00  Vasco Da Gama vs Flamengo\n\n--- reply ---\n\nPortugal Taca Da Liga\n18:45  Sporting Braga vs Famalicao\n20:45  Benfica vs Gil Vicente\n\nSweden Allsvenskan\n17:30  Hammarby vs IK Sirius\n\n🎯 All Predictions In Today's Video.\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-29T06:00"
+    },
+    {
+     "id": "picks",
+     "group": "morning",
+     "title": "Top picks",
+     "when": "06:30",
+     "images": [
+      "media/2026-10-29/Picks-2026-10-29.jpg"
+     ],
+     "texts": {
+      "tg": "🏆 Thursday Top Picks | 29 October\nMatch Vision",
+      "wa": "🏆 *Thursday Top Picks | 29 October*\nMatch Vision",
+      "x": "🏆 Thursday Top Picks | 29 October\nMatch Vision\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-29T06:30"
+    },
+    {
+     "id": "banker",
+     "group": "morning",
+     "title": "Banker",
+     "when": "07:00",
+     "images": [
+      "media/2026-10-29/2-Odds-Banker-2026-10-29.jpg"
+     ],
+     "texts": {
+      "tg": "💰 Thursday 2 Odds Banker | 29 October\nMatch Vision",
+      "wa": "💰 *Thursday 2 Odds Banker | 29 October*\nMatch Vision",
+      "x": "💰 Thursday 2 Odds Banker | 29 October\nMatch Vision\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-10-29T07:00"
+    },
+    {
+     "id": "video",
+     "group": "video",
+     "title": "Video post",
+     "when": "07:00",
+     "images": [
+      "media/2026-10-29/Thumbnail-1-style-359-.jpg"
+     ],
+     "texts": {
+      "tg": "Thursday Predictions | 29 October\nMatch Vision\n\n15 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Thursday Predictions | 29 October\nMatch Vision\n\n15 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now*:\n{VIDEO_LINK}",
+      "x": "Thursday Predictions | 29 October\n{VIDEO_LINK}\n\n15 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "Share the YouTube video to the bot first: the link goes in by itself.",
+     "ready": false,
+     "at": "2026-10-29T07:00"
+    },
+    {
+     "id": "swipe",
+     "group": "swipe",
+     "title": "Swipe post",
+     "when": "09:00",
+     "images": [
+      "media/2026-10-29/slide-1.jpg",
+      "media/2026-10-29/slide-2.jpg",
+      "media/2026-10-29/slide-3.jpg",
+      "media/2026-10-29/slide-4.jpg"
+     ],
+     "texts": {
+      "ig": "FOOTBALL PREDICTIONS | Thursday 29 October\n\n#matchvision #seriea #copadelrey #footballreels #footballpredictions",
+      "tt": "FOOTBALL PREDICTIONS | Thursday 29 October\n\n#matchvision #seriea #copadelrey #footballpredictions #footballtiktok #fyp",
+      "yt": "FOOTBALL PREDICTIONS | Thursday 29 October\n\n#matchvision #seriea #copadelrey"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-29T09:00"
+    },
+    {
+     "id": "short1",
+     "group": "shorts",
+     "title": "Short 1",
+     "when": "10:00",
+     "images": [
+      "media/2026-10-29/short-1.jpg"
+     ],
+     "video": "media/2026-10-29/short-1-1941731.mp4",
+     "file": "Ready to Upload\\2026-10-29 Thursday\\Shorts\\Short 1 - 5 matches (Everton vs Newcastle United and more).mp4",
+     "texts": {
+      "tt": "THURSDAY FOOTBALL PREDICTIONS | 29 OCTOBER\n\n#footballpredictions #football #matchvision #correctscore",
+      "ig": "THURSDAY FOOTBALL PREDICTIONS | 29 OCTOBER\n\n#footballpredictions #football #matchvision #correctscore"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-29T10:00"
+    },
+    {
+     "id": "short2",
+     "group": "shorts",
+     "title": "Short 2",
+     "when": "13:00",
+     "images": [
+      "media/2026-10-29/short-2.jpg"
+     ],
+     "video": "media/2026-10-29/short-2-2093316.mp4",
+     "file": "Ready to Upload\\2026-10-29 Thursday\\Shorts\\Short 2 - 5 matches (UB Lebrijana vs Getafe and more).mp4",
+     "texts": {
+      "tt": "THURSDAY FOOTBALL PREDICTIONS | 29 OCTOBER\n\n#footballpredictions #football #matchvision #correctscore",
+      "ig": "THURSDAY FOOTBALL PREDICTIONS | 29 OCTOBER\n\n#footballpredictions #football #matchvision #correctscore"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-10-29T13:00"
+    }
+   ]
+  },
   {
    "date": "2026-10-28",
    "where": "Ready to Upload",
@@ -35,14 +1089,14 @@
      "ac": "media/crests/inter-milan.png",
      "live": {
       "st": "LIVE",
-      "min": 49,
+      "min": 56,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401874773",
       "src": "ESPN",
-      "at": "2026-10-28T18:36:11"
+      "at": "2026-10-28T18:42:58"
      },
      "picks": [
       {
@@ -162,14 +1216,14 @@
      "ac": "media/crests/bologna.png",
      "live": {
       "st": "LIVE",
-      "min": 46,
+      "min": 53,
       "gh": 2,
       "ga": 1,
       "hh": null,
       "ha": null,
       "espn": "401874993",
       "src": "ESPN",
-      "at": "2026-10-28T18:36:11"
+      "at": "2026-10-28T18:42:58"
      },
      "picks": [
       {
@@ -290,14 +1344,14 @@
      "ac": "media/crests/udinese.png",
      "live": {
       "st": "LIVE",
-      "min": 49,
+      "min": 56,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401874965",
       "src": "ESPN",
-      "at": "2026-10-28T18:36:11"
+      "at": "2026-10-28T18:42:58"
      },
      "picks": [
       {
@@ -871,14 +1925,14 @@
      "ac": "media/crests/vfb-stuttgart.png",
      "live": {
       "st": "LIVE",
-      "min": 75,
+      "min": 81,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401917032",
       "src": "ESPN",
-      "at": "2026-10-28T18:36:11"
+      "at": "2026-10-28T18:42:58"
      },
      "picks": [
       {
@@ -1000,14 +2054,14 @@
      "ac": "media/crests/vfl-wolfsburg.png",
      "live": {
       "st": "LIVE",
-      "min": 76,
-      "gh": 1,
+      "min": 82,
+      "gh": 2,
       "ga": 2,
       "hh": null,
       "ha": null,
       "espn": "401917036",
       "src": "ESPN",
-      "at": "2026-10-28T18:36:11"
+      "at": "2026-10-28T18:42:58"
      },
      "picks": [
       {
@@ -3051,11 +4105,11 @@
       "media/2026-10-27/win-1.jpg"
      ],
      "texts": {
-      "tg": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #eflcup #FootballPredictions",
-      "ig": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #eflcup #footballreels #footballpredictions",
-      "th": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Tuesday Results | 27 October*\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #eflcup #FootballPredictions",
+      "ig": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #eflcup #footballreels #footballpredictions",
+      "th": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Tuesday Results | 27 October*\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -8618,11 +9672,11 @@
       "media/2026-10-24/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Saturday Results | 24 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Saturday Results | 24 October*\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Saturday Results | 24 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ Saturday Results | 24 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ Saturday Results | 24 October\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ 14 Of 18 Won | Saturday 24 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *14 Of 18 Won | Saturday 24 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ 14 Of 18 Won | Saturday 24 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ 14 Of 18 Won | Saturday 24 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ 14 Of 18 Won | Saturday 24 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Saturday Results | 24 October*\nMatch Vision\n\n🔥 14 Of 18 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -10291,11 +11345,11 @@
       "media/2026-10-23/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ 10 Of 14 Won | Friday 23 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *10 Of 14 Won | Friday 23 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 10 Of 14 Won | Friday 23 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ 10 Of 14 Won | Friday 23 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ 10 Of 14 Won | Friday 23 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Friday Results ✅\n10/14 Safest Picks Won | 23 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Friday Results ✅\n10/14 Safest Picks Won | 23 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Friday Results ✅\n10/14 Safest Picks Won | 23 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "Friday Results ✅\n10/14 Safest Picks Won | 23 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "Friday Results ✅\n10/14 Safest Picks Won | 23 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Friday Results | 23 October*\nMatch Vision\n\n🔥 10 Of 14 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -13085,11 +14139,11 @@
       "media/2026-10-22/win-1.jpg"
      ],
      "texts": {
-      "tg": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions",
-      "ig": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #uel #europaleague #uecl #footballpredictions",
-      "th": "Thursday Results ✅\n16/24 Safest Picks Won | 22 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Thursday Results | 22 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Thursday Results | 22 October*\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Thursday Results | 22 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UEL #EuropaLeague #UECL #ConferenceLeague #FootballPredictions",
+      "ig": "✅ Thursday Results | 22 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #uel #europaleague #uecl #footballpredictions",
+      "th": "✅ Thursday Results | 22 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Thursday Results | 22 October*\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -14258,11 +15312,11 @@
       "media/2026-10-21/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Wednesday Results | 21 October*\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions",
-      "ig": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #footballreels #footballpredictions",
-      "th": "✅ Wednesday Results | 21 October\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ 9 Of 9 Won | Wednesday 21 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *9 Of 9 Won | Wednesday 21 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ 9 Of 9 Won | Wednesday 21 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions",
+      "ig": "✅ 9 Of 9 Won | Wednesday 21 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #footballreels #footballpredictions",
+      "th": "✅ 9 Of 9 Won | Wednesday 21 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Wednesday Results | 21 October*\nMatch Vision\n\n🔥 9 Of 9 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -15285,1121 +16339,6 @@
     "correct_scores": 1
    },
    "video_link": "https://youtu.be/RU7-vk7m1e8",
-   "posts": null
-  },
-  {
-   "date": "2026-10-19",
-   "where": "Ready to Upload",
-   "title": "Football Predictions Today | 19 October 2026 | Over 2.5 Goals & BTTS | Football",
-   "matches": [
-    {
-     "n": 1,
-     "league": "Premier League",
-     "kickoff": "19:00",
-     "home": "Tottenham Hotspur",
-     "away": "Coventry",
-     "score": "2-1",
-     "date": "2026-10-19",
-     "odds": [
-      1.45,
-      4.5,
-      7.0
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "TEAM GOALS",
-      "FIRST HALF"
-     ],
-     "win": {
-      "img": "media/wins/2026-10-19-1.jpg",
-      "text": "✅ *Tottenham Hotspur 3-1 Coventry*\n\n✔️ Over 1.5 goals\n✔️ Coventry to score\n✔️ Over 0.5 goals 1st half\n\n🔥 *3 Of 3 Won*"
-     },
-     "hc": "media/crests/tottenham-hotspur.png",
-     "ac": "media/crests/coventry.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 1,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401879257",
-      "src": "ESPN",
-      "at": "2026-10-19T20:59:44",
-      "corners": 8,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.76,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Coventry to score",
-       "odds": null,
-       "chance": 0.59,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.25,
-       "chance": 0.75,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 2,
-     "league": "LaLiga",
-     "kickoff": "19:00",
-     "home": "Getafe",
-     "away": "Rayo Vallecano",
-     "score": "0-1",
-     "date": "2026-10-19",
-     "odds": [
-      3.0,
-      3.0,
-      2.62
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "FIRST HALF"
-     ],
-     "win": null,
-     "hc": "media/crests/getafe.png",
-     "ac": "media/crests/rayo-vallecano.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 1,
-      "hh": 0,
-      "ha": 1,
-      "espn": "401882842",
-      "src": "ESPN",
-      "at": "2026-10-19T20:56:41",
-      "corners": 16,
-      "cards": 10,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.17,
-       "chance": 0.82,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 1.67,
-       "chance": 0.56,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.53,
-       "chance": 0.61,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 3,
-     "league": "Serie A",
-     "kickoff": "16:30",
-     "home": "Monza",
-     "away": "Cagliari",
-     "score": "1-2",
-     "date": "2026-10-19",
-     "odds": [
-      2.38,
-      3.1,
-      3.1
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "FIRST HALF",
-      "TEAM GOALS"
-     ],
-     "win": null,
-     "hc": "media/crests/monza.png",
-     "ac": "media/crests/cagliari.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 4,
-      "ga": 0,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401874762",
-      "src": "ESPN",
-      "at": "2026-10-19T18:24:00",
-      "corners": 9,
-      "cards": 3,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.28,
-       "chance": 0.77,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.4,
-       "chance": 0.66,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Cagliari to score",
-       "odds": null,
-       "chance": 0.71,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 4,
-     "league": "Serie A",
-     "kickoff": "18:45",
-     "home": "Parma",
-     "away": "Torino",
-     "score": "0-2",
-     "date": "2026-10-19",
-     "odds": [
-      3.3,
-      3.1,
-      2.35
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "TEAM GOALS"
-     ],
-     "win": {
-      "img": "media/wins/2026-10-19-4.jpg",
-      "text": "✅ *Parma 0-3 Torino*\n\n✔️ Under 3.5 goals\n✔️ BTTS - No\n✔️ Torino to score\n\n🔥 *3 Of 3 Won*"
-     },
-     "hc": "media/crests/parma.png",
-     "ac": "media/crests/torino.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 3,
-      "hh": 0,
-      "ha": 2,
-      "espn": "401874784",
-      "src": "ESPN",
-      "at": "2026-10-19T20:38:49",
-      "corners": 8,
-      "cards": 5,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.2,
-       "chance": 0.81,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 1.75,
-       "chance": 0.55,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Torino to score",
-       "odds": null,
-       "chance": 0.72,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 5,
-     "league": "Primeira Liga",
-     "kickoff": "19:15",
-     "home": "SC Braga",
-     "away": "GIL Vicente",
-     "score": "2-0",
-     "date": "2026-10-19",
-     "odds": [
-      1.57,
-      3.75,
-      6.0
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "CORNERS"
-     ],
-     "win": null,
-     "hc": "media/crests/sc-braga.png",
-     "ac": "media/crests/gil-vicente.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 2,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401885480",
-      "src": "ESPN",
-      "at": "2026-10-19T21:18:56",
-      "corners": 5,
-      "cards": 6,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.25,
-       "chance": 0.79,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 1.7,
-       "chance": 0.57,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 8.5 corners",
-       "odds": 1.67,
-       "chance": 0.56,
-       "rule": {
-        "t": "stat"
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 6,
-     "league": "Saudi-Arabia Pro League",
-     "kickoff": "18:00",
-     "home": "Al Hilal",
-     "away": "Al-Hazm",
-     "score": "4-0",
-     "date": "2026-10-19",
-     "odds": [
-      1.07,
-      10.0,
-      23.0
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "CORNERS"
-     ],
-     "win": null,
-     "hc": "media/crests/al-hilal.png",
-     "ac": "media/crests/al-hazm.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 0,
-      "hh": 0,
-      "ha": 0,
-      "espn": "401900896",
-      "src": "ESPN",
-      "at": "2026-10-19T20:00:54",
-      "corners": 10,
-      "cards": 3,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.28,
-       "chance": 0.74,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 1.57,
-       "chance": 0.49,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Under 10.5 corners",
-       "odds": 1.67,
-       "chance": 0.56,
-       "rule": {
-        "t": "stat"
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 7,
-     "league": "Saudi-Arabia Pro League",
-     "kickoff": "15:05",
-     "home": "Al-Fayha",
-     "away": "Al-Ahli Jeddah",
-     "score": "1-2",
-     "date": "2026-10-19",
-     "odds": [
-      7.0,
-      4.5,
-      1.33
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "TEAM GOALS",
-      "BTTS"
-     ],
-     "win": {
-      "img": "media/wins/2026-10-19-7.jpg",
-      "text": "✅ *Al-Fayha 2-3 Al-Ahli Jeddah*\n\n✔️ Over 2.5 goals\n✔️ Al-Fayha to score\n✔️ BTTS - Yes\n\n🔥 *3 Of 3 Won*"
-     },
-     "hc": "media/crests/al-fayha.png",
-     "ac": "media/crests/al-ahli-jeddah.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 3,
-      "hh": 1,
-      "ha": 1,
-      "espn": "401900897",
-      "src": "ESPN",
-      "at": "2026-10-19T17:07:07",
-      "corners": 3,
-      "cards": 1,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.5,
-       "chance": 0.64,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Al-Fayha to score",
-       "odds": null,
-       "chance": 0.64,
-       "rule": {
-        "t": "ts",
-        "s": "h",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.8,
-       "chance": 0.58,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 8,
-     "league": "Saudi-Arabia Pro League",
-     "kickoff": "15:20",
-     "home": "Abha",
-     "away": "Al Kholood",
-     "score": "1-2",
-     "date": "2026-10-19",
-     "odds": [
-      2.62,
-      3.2,
-      2.35
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "CORNERS",
-      "TEAM GOALS"
-     ],
-     "win": null,
-     "hc": "media/crests/abha.png",
-     "ac": "media/crests/al-kholood.png",
-     "live": {
-      "st": "PST",
-      "min": null,
-      "gh": null,
-      "ga": null,
-      "hh": null,
-      "ha": null,
-      "espn": "1603053",
-      "src": "API-Football",
-      "at": "2026-10-19T17:49:43"
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.25,
-       "chance": 0.71,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Over 8.5 corners",
-       "odds": 1.8,
-       "chance": 0.52,
-       "rule": {
-        "t": "stat"
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Al Kholood to score",
-       "odds": null,
-       "chance": 0.72,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": null,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 9,
-     "league": "Turkey Süper Lig",
-     "kickoff": "17:00",
-     "home": "Trabzonspor",
-     "away": "Beşiktaş",
-     "score": "2-1",
-     "date": "2026-10-19",
-     "odds": [
-      2.55,
-      3.5,
-      2.4
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "CORNERS"
-     ],
-     "win": null,
-     "hc": "media/crests/trabzonspor.png",
-     "ac": "media/crests/be-ikta.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 0,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401888277",
-      "src": "ESPN",
-      "at": "2026-10-19T18:55:17",
-      "corners": 10,
-      "cards": 5,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.84,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.44,
-       "chance": 0.65,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Under 9.5 corners",
-       "odds": 1.83,
-       "chance": 0.5,
-       "rule": {
-        "t": "stat"
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 10,
-     "league": "Saudi-Arabia Pro League",
-     "kickoff": "18:00",
-     "home": "Al Shabab",
-     "away": "Al-Faisaly FC",
-     "score": "2-1",
-     "date": "2026-10-19",
-     "odds": [
-      null,
-      null,
-      null
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "BTTS",
-      "TEAM GOALS"
-     ],
-     "win": {
-      "img": "media/wins/2026-10-19-10.jpg",
-      "text": "✅ *Al Shabab 2-2 Al-Faisaly FC*\n\n✔️ Over 1.5 goals\n✔️ BTTS - Yes\n✔️ Al Shabab to score\n\n🔥 *3 Of 3 Won*"
-     },
-     "hc": "media/crests/al-shabab.png",
-     "ac": "media/crests/al-faisaly-fc.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 2,
-      "hh": 2,
-      "ha": 1,
-      "espn": "401900895",
-      "src": "ESPN",
-      "at": "2026-10-19T19:59:17",
-      "corners": 9,
-      "cards": 5,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": null,
-       "chance": 0.74,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": null,
-       "chance": 0.51,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Al Shabab to score",
-       "odds": null,
-       "chance": 0.81,
-       "rule": {
-        "t": "ts",
-        "s": "h",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    }
-   ],
-   "banker": {
-    "total": 1.92,
-    "games": [
-     {
-      "n": 3,
-      "pick": {
-       "market": "GOALS",
-       "text": "Under 3.5 goals",
-       "odds": 1.28,
-       "p": 0.77
-      },
-      "odds": 1.28
-     },
-     {
-      "n": 7,
-      "pick": {
-       "market": "GOALS",
-       "text": "Over 2.5 goals",
-       "odds": 1.5,
-       "p": 0.64
-      },
-      "odds": 1.5
-     }
-    ]
-   },
-   "checklist": {
-    "YouTube": true,
-    "TikTok": false,
-    "Instagram": false,
-    "X": false,
-    "Threads": false,
-    "Telegram": false,
-    "WhatsApp": false,
-    "Community": false
-   },
-   "results": {
-    "date": "2026-10-19",
-    "matches": [
-     {
-      "n": 1,
-      "home": "Tottenham Hotspur",
-      "away": "Coventry",
-      "status": "FT",
-      "score": "3-1",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.17,
-        "p": 0.76,
-        "won": true
-       },
-       {
-        "text": "Coventry to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.59,
-        "won": true
-       },
-       {
-        "text": "Over 0.5 goals 1st half",
-        "market": "FIRST HALF",
-        "odds": 1.25,
-        "p": 0.75,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 2,
-      "home": "Getafe",
-      "away": "Rayo Vallecano",
-      "status": "FT",
-      "score": "1-1",
-      "predicted": "0-1",
-      "picks": [
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.17,
-        "p": 0.82,
-        "won": true
-       },
-       {
-        "text": "BTTS - No",
-        "market": "BTTS",
-        "odds": 1.67,
-        "p": 0.56,
-        "won": false
-       },
-       {
-        "text": "Over 0.5 goals 1st half",
-        "market": "FIRST HALF",
-        "odds": 1.53,
-        "p": 0.61,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 3,
-      "home": "Monza",
-      "away": "Cagliari",
-      "status": "FT",
-      "score": "4-0",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.28,
-        "p": 0.77,
-        "won": false
-       },
-       {
-        "text": "Over 0.5 goals 1st half",
-        "market": "FIRST HALF",
-        "odds": 1.4,
-        "p": 0.66,
-        "won": true
-       },
-       {
-        "text": "Cagliari to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.71,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 4,
-      "home": "Parma",
-      "away": "Torino",
-      "status": "FT",
-      "score": "0-3",
-      "predicted": "0-2",
-      "picks": [
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.2,
-        "p": 0.81,
-        "won": true
-       },
-       {
-        "text": "BTTS - No",
-        "market": "BTTS",
-        "odds": 1.75,
-        "p": 0.55,
-        "won": true
-       },
-       {
-        "text": "Torino to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.72,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 5,
-      "home": "SC Braga",
-      "away": "GIL Vicente",
-      "status": "FT",
-      "score": "1-2",
-      "predicted": "2-0",
-      "picks": [
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.25,
-        "p": 0.79,
-        "won": true
-       },
-       {
-        "text": "BTTS - No",
-        "market": "BTTS",
-        "odds": 1.7,
-        "p": 0.57,
-        "won": false
-       },
-       {
-        "text": "Over 8.5 corners",
-        "market": "CORNERS",
-        "odds": 1.67,
-        "p": 0.56,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 6,
-      "home": "Al Hilal",
-      "away": "Al-Hazm",
-      "status": "FT",
-      "score": "1-0",
-      "predicted": "4-0",
-      "picks": [
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.28,
-        "p": 0.74,
-        "won": false
-       },
-       {
-        "text": "BTTS - No",
-        "market": "BTTS",
-        "odds": 1.57,
-        "p": 0.49,
-        "won": true
-       },
-       {
-        "text": "Under 10.5 corners",
-        "market": "CORNERS",
-        "odds": 1.67,
-        "p": 0.56,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 7,
-      "home": "Al-Fayha",
-      "away": "Al-Ahli Jeddah",
-      "status": "FT",
-      "score": "2-3",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.5,
-        "p": 0.64,
-        "won": true
-       },
-       {
-        "text": "Al-Fayha to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.64,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.8,
-        "p": 0.58,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 8,
-      "home": "Abha",
-      "away": "Al Kholood",
-      "status": "PST",
-      "score": "",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.25,
-        "p": 0.71,
-        "won": null
-       },
-       {
-        "text": "Over 8.5 corners",
-        "market": "CORNERS",
-        "odds": 1.8,
-        "p": 0.52,
-        "won": null
-       },
-       {
-        "text": "Al Kholood to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.72,
-        "won": null
-       }
-      ]
-     },
-     {
-      "n": 9,
-      "home": "Trabzonspor",
-      "away": "Beşiktaş",
-      "status": "FT",
-      "score": "2-0",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.17,
-        "p": 0.84,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.44,
-        "p": 0.65,
-        "won": false
-       },
-       {
-        "text": "Under 9.5 corners",
-        "market": "CORNERS",
-        "odds": 1.83,
-        "p": 0.5,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 10,
-      "home": "Al Shabab",
-      "away": "Al-Faisaly FC",
-      "status": "FT",
-      "score": "2-2",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": null,
-        "p": 0.74,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": null,
-        "p": 0.51,
-        "won": true
-       },
-       {
-        "text": "Al Shabab to score",
-        "market": "TEAM GOALS",
-        "odds": null,
-        "p": 0.81,
-        "won": true
-       }
-      ]
-     }
-    ],
-    "checked": "2026-10-19T21:25:10",
-    "banker": {
-     "total": 1.92,
-     "won": false
-    },
-    "won": 19,
-    "lost": 8,
-    "waiting": 0,
-    "pick1": [
-     7,
-     9
-    ],
-    "correct_scores": 0
-   },
-   "video_link": "https://youtu.be/ZAw1NGR1pW8",
    "posts": null
   }
  ],
@@ -23850,9 +23789,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "uND812W8XWyJP4BfcEUu1w==",
-  "nonce": "utHdvSzbbi7/bx/xzkjicA==",
-  "ct": "UhGgGMJ70qI8Z8UIF9qvoywjf5TSTnmbs7TV0cxtx4u5FWVfNHeZsc5nVDRWAOVzVF/43DlINerS1epgwCmLrCzk8IiJTJqseXrpAsYiATnuCD5ag4PIbhxbgNrNEVvltMqxWltmYYgkUhnSxpUfsb0xULkT+bGltTm2eCqH0VJ98Kn0KGMuSHAymNepRbULlUNfo6gyo3VDLRVbD6dubnQVHoBZp4xfD6FYEtA4JdRWnRHgg1CutxKJp9Vsx0nZHW7wBgoqhdaoxmCYQFWcuMVU3eGnTbfhcjFM1whyWGMnrHdI5APq+Scybit73786JKsC8GSKbZoMhUl3Xv/pWeG5oHAE38h8h+K/RZDWiYFnyJjcT3XSzArxaSF/yF0TvNnzPUX5DLLqGQTcg9RB+XrjCpNe3THTeELd3wh/Akz3nkk9gQerAS4knrxXKnD/Q+NRPuIw5BIqh3fF6V46uBixAK1F7O+nwrA4d0b1e1kefKgBQWCAqLLYM6YmB1FNWdZMqNhOPFHk3XejW9lZwDxBkaIht0CMRpJKMhtXLEUpo467aYuGEJKXBJo2ZhxTNsVYjJ2qs2JNayW5fZOrcBMZgZcc/nJo4avxyYfc6zVdS1lvYJ485QkiITD9jc6iUICTF3cGcKBcvAP/vSc946ZRzJXV16eKC+JKVZa88KcQpON5efMaa7zrIadO7f3mlVDv92+YfM0bQAIE/HKcuZShLL6wnDNF0+0KlJa4G7/iP0iIhI+1n+EDMlRlsklXuDmx7iPvd8V8v4fHX0drADmhLpgfX62pMNJ7S4a7J6dIK0/LTTrDUolla3K4rt1JJM6cH5aJQEZBw3aPWzHJ7a3VYpCUcodVj0S4o9K8WOuJILS7Sqp1CMsluxxYG900epTB2RDjO7CQh3FwOtHrzymNWmgWaoWeW3vVKipcT0qSnXtLoNZlWypUF3WHo4nkwAtfXUaawCA63JOvshC0pFxwkvajf0jKc87yu34Tnx53owF9baa8w6Hxir62x3Xb3WGS1IbRuk29Ihc6Th9BTOxsaJMvMcMe5GGoEnFhs0FqpAFaR6KrIY12gacwwu+IQhZdpc7ute3guQhqcUF7Pl6p+O+iBmPOjDQefb9sgHZXJN23kamJzH4r44sr7esye7ucZSDVJWqSE98hYEec+GmXs14mVg2fUTPxaXhi6gxo8lmCrqN3em10Gh/KBT3XlwovMDroqwjPDFJpWLQcD/SqiGpt7EILl+EVoX5vBBdsXV5Wxup7I4xgkiqxGmUI2sgsnOuz7beU71m5AMQ8YSfW9W3tyByNC67d1jjdtG/Kow6+hw5KrZxQ5FVW5OxvPKV2EEZsdUToKFZ/Xo+PpYmjlDfBFb97YgZAY5138WOwtxFmGAs6tZ8xWsvDdR3Y2iVjBOTo/N/opX6rtchLF+h2yRoyDFgxXElHfqmXYSPnk2IPyZoeQoqM+jSxBO8OQbmcYo1o47uRu/Tk8ok7AgPCUaUQEbrFfWSf7n11T2gFMX2L6KvHQ9CuvdyvQB2rK/leu6+Utq11cNFftdwNlHbCphCJb1SlNf+fZ38E4tG0Z3YqhS6KQtM3nyuG9D/2FlNhYp1kVQeZQqKLzHYjk6qtCEB4PZqPon6wDtSBTXVHcXw6/3VuSszeT7+WDrB+ggTDVsAywzwK7ksDBPy/QH1WvJ1vcGyoWfHVdqsjXtG6zXECWjD4ZIiMfvQy/E37k9Or10FRVAvCczcpg6+YYD37av+HlZ1YSnwyqUo6fxVyw2PRKvWoa5mGoThHjHhOAKVlW9LtQM4duFhT3VfTRjiFZSk+aFrgh6C9rKWbiyZzDx8KO6rM4oMr6wpJ8LBh6lv2EdHBruJSDSeARkquiP+mtRGJuQTOSE8Drv9I70R0/3z8QnqW0L9rWZTDWPEw+/3uziHGqHp1YA8QepWCT3pd9vFTO2jV4toQxVmIMVngBzeWfondFhKDr2zOrdaRAwtbIvL1jKNZ3OP6hofPtukZnlpkzSscvPp+52GcHKq/1F6QrsLPu1ythp2tSQ7Oog74U5ARQt0M/8F+Pmg4N6x5K80Z3D7XsNqHsrP3wIfTe64fL1jdJUfe9U6cB6LTfHcvWoPecnubBFtkzOiGa7q6g567tJNKRt9s6LneNKrvpYoItGa/B3pvqycrkdzScDRs2/P1WJkKxzxPBVaHqfYqqt9YY6dFoWMxoI7vFwqXAxLDzeRu8gvdp2AoD8QI6a8xu1NLfbARAogaRcT2VPJAvBxg87fjCXuP8SKmau529qVwy/3mysqU0PCMztDAcCgo/eEV90oh4c5Qmsp3kRzfttHALdRBmBhxEdVAU1yJsnM+2dvpaHETh9QCnm5GZVMv93j37FcC9gJGXs/h3Jy6q5Ak39EJgggunSSj1J7SaR4d4lf+Mk6nF7X+9ozy7MgmAdyGEz/4Sb8MUj5CWGLMry+lu49JqTr1LcBzKxW68apcco15vTosuVCkJVY43a2mxhHFxex8Bu8CiyFRGi4LaTgF90gA/UrF35Pk5c5HDc7rFoa81g05jVIBL6mQSwDcXBsCTp3wnLH2gfQPTww0teH9l2EEfP9ZQuk0G7661byP4reKHwcPvOsybh2LpfJH4Ztij72yePAMoANpw/Cc0fMJrzkaqXW9pSoxbwZqz2tzdB7ORq/zNbQyWVk6/dEsxhtMsjZhXdnN776JbqGp9wrg3AQZHpTxf4vZbeBdmF+D5VFY7vhLxNeSI9loLs1Im+rru8xarwdyOhqt9BLSkaeFdej7aLUHFlTMAEcdwS5oKxiSkqDw2l5qxJWgMGfSHgqpKkb0D1FOhg8KJDJNgE3M0qUf5ZVujF+gLWDS0zXIyl786fDBS8JudhaskzPPCKlaspGyEWij5A7tAkv/EomWail4AnLFo0y7j01T18iMKxVV5009romsS5V74TsgVJuxTguUhJ85DgiAN2dJNknccXC4xr7ziw9+sXSBwo3MROrmlGuTxX57KXZW6GAzvYMAldp6tLegNztLRGDA67BsDVzJZf6wZ7DIY7XATB1QHkGMkkQRGFYv5HPnfRNp+U1zhV/OdLFixsdDkSpBEyA7Bsl7K4cbvG04hIyxP/+M9s8N/6jYCrhyVgV8cEpDkd/CZK5NW23WDQLxZ9VcDN8GKgtf8S42RWY4Ehtbme517qNUWaiv1jAhD4R77szFZx/+vF9hUO7+oNuGwWtfaGphMrSDQS4/g0grvySTsNLVOwv5v+tRZ+74zpwJilFBZFL9R9lB1eiqIcYZnXVleRAeuiJSSgzhJB5DzxCtj+42QSstb3CNHdTTOU2uw1G+CNjGWz7YWYPodvoKUWAgIUvkaONDaQ1aGYVMvFbzCmQd6J7nF7M9cH+2KsYl0td0qCypduFRGwyCzT32HEf8bV+MXZQF1m8IUjwgx2zyRjJimsfIvJ7kJsc/UPFhn9fuF5vc+TCm2ua4jKCH9PzKfFNNwDpF0+O5Ibvp8LV1AAuj/rfezfyBR4+LjUtE1Zatgx5Adp5TdZhaK8r2lGHCEoK2dy2jdwCEB5bvwyeTamIfn1+WO//0IMpoSMxwow4DWI12LRqyl+KW8ep7PJbKPOt3DmRygL+1dyS9PybeYR6IhwS2OV43vaX8q9Ia6KU1w7W6EU5HalHHOjCOkgU0MRvbGd7pSlDYR3Cq4GuXWuDOt7k2NOLtZ89NeTsNrNXfsKgMIcA5f0qHwMIT9chILYKfQmtxfDxW1sv2MdUJKgtFnm+ZA9tZWGemjllH8flsX1dwtBI808xkkMCfZ7t3eYMslHYT/FSY+fUDezf6ubNF/A7OpnHxFr2x5SpG1wGq6YpnU4DPxmhiBp+jVOByM+WimoyZKWc7bwhNxVQHN63qbq4cgEPpd2iZDx0riYXO20Fp1faHbYAnTB4c+T0AZQj4rt0NIC2uOCglPi2yn8CqcX8DvuzZbbca2xJCPkFPSHOnlKCyBHg5lDAAOT3dFMx9WzqpzuVT+CObtSgR+pq4t4QwwJZhMBc0uBq9AlRRPvSTE6s6ojpi2LBtDJ4aRIO8TuhlW3D5k1awSLRRO1+TsQ4i45PGQTQlB/H4+3raOdeym9ONAkUI2d0u0VIN0XQ7ZIDYt26vyB/zKAwjqA31uvearQY7l2PGMvGN7tR0gcYtcVpfgHDGqf+oT96Lcn/d8FVLGIlgBXNLvzLHaiGR87896HwFwxV1mp34KGpmL3dap9bHhy9pxFrC7y1RyDGiQXQmroVa4sf+zILVmfDdwXJb5ZSHH1sRt/fGy7ZwIjelp1Mv9ebDnhP/Fbtdik3rN/VbcM8A08r5kvc9GnmA0tqBPdpiHTZFYVE93AzJxfQ1NrR2snCaN3cBsRWuE3KxpOrNYRKluCw8O4xkN409PHERQxQmQGGKDIjobDUL5pDyT4tvX1iQsA7J6esDpPmYx3XPPhU+zFVm9N8Lqag/qt2djlnOXu+q0aFtjKaarXH/l4GvLc7F7/pl4Es9zCkB3B1yXPOK2uYZWQCZz9qFy64k1KyP00gAaWhiVY8qoNx/MIFGL6/d50FzD5c+CZlY5v1NcKV/QwgWwN5mP+pI1G9vp3QD5ppnoHJM1Lb7ipPoNlx7mvNXdxXyfTRdQNt2xAB2qNouGBpfuF3EVoWh104nVutVrLE5iwFY7F3ludnJOnPN6ze9AHiZEmDStiInYBMyrUBHisTTVSDzfXXb/ofKbHIhh8HCdvGMcwLwXDTMs17D8fXcD8HJvN8Dfh5PH0aP14h/ieXr+P8a2oiqj5MyNCrAoXDp7pN2digoVPM89NvX4sEpHd/ACrpUkh7P3BdTSEeoXx5ukEpX+Fu2pCoRsuEUWD7tfRApHN462LOMV0kqQ/N0jxaVNkEulOhSrLZ5wct4J5fID9hTJWa0asEN/HbpjJO7JZXtLixoObjy/qpsJW+wogUh7d9JoFG9w545C0XKYmvkoFTjmcndvf3UNeN3ZXfFjkmBV9n7ctsGkDHIW4MUYc9LpJUxjvr/AMrphf9MhHdakZVHbJxJ9tBHAUXqcu/O3Wa9T6ouU7Q6LXhChL4N6duaBB6ABoPdAMbri0va8IcAUJItnM40GdJkPp70kAH/sCRlywEi5QcgJqJrPkncDZrseUv7xODsjhjxZcCAQs8jwzzmgUFLnQjrPfORpl3WMKfWsYabBXlIrTDMReBx5Lxd3wQEt0kUyBaVP9BUS3CbHf3qVcQMDvZc0QdQ3VzeaFBDzHCGMUymN94wwFAgNazQqnQkR4oFAat580++35+QpLaoZpMG2S7C+sDY2VQc/z3HZU/7/vQqs56VE2qjDFs2d9fRlRK/YEQQ7q212E9M5uN3dUE027WGR6k6cAzGIp1yCHgHLi0DmN5Sz3rnK7lUt43Kv1p920YAHwd8WmNSYmc/B/CCM//ztnJJWmC9sPB5oQK5A7Pc9+F7zzrBvCns1h+xW5bST1ad++1+o7kREk5G7L2aq2c5RspW/QNf25sU+Qh5g//5BleEnCgJznRUvTMftvV7e9Xs74xP2PYNfg7qz/efnE6IMwfgb7elK12efA6s4/nhHRkmqKTF4gLIB+8xjU2Sxju3kctuD5jjU0jIwOuYXaVd1WAYqcbD3VuusH9XPDD7mTtM2iK2hLh9BEuG7mvLtQUka6GK/3c2jOngiJQSDO2SX4kMdrTDzC9uxTJUSh08GYrOSXplA5S3CWgVGJB2XonswpTWDbCqtNnFzXqKRutiScfItrJW0EnUAAivF2B6vjLUfRDnttSLH3qbQDLDzsXO3+B/WQh8X86+YpUq6HuxQlUIlzdYTAUAAWlLG0pFerfL5CrSVi/Jzyz5RAsCeyi1D/wlNZ9ggdNW0EMud0tb1iEmRHjeAVRYeCIeh8JjdKymDQGygcGCF7onCfh9PKNwseJBrjOmM3Qhh7mUg3MNqLz/bzeByaZ/FuDqw5PHP53w8fc1tZcO4HDn3m5r+naqNJ+ZJKxfOU1CLgICLsBCq5CXoSbjvu8bEyY87b5qVVjDKkk6gI4oN/tTb6JlIA/tL2Gs16l489ky9poY0INbNceN/g6yvlb5pLneUPZjXBkM08ogVvlFaidGruM5qhDdpeXMlODj3smk4CsSn/YvZTGRC5FvGiOp81AkX2U1e1YecYdXfcE9sCt/zh03s1bGBrOEJ50OfDM/9w1T6qbBRvcBmAtgWmtlW0P1G3GKKpLstoKHXaW/LazkNAbCIicVcDxtdNasA7295izSuQoxOF/6+KBYnSEdNk1xLeHCF6PbqwQ8QsVW6R7k5//y65P6zQCSYrl3k5raALZRlD4BRj1X6YyLqw8ollSoVgF6DUEi8Ax/d/6YFxjH60izv9IFPi7VFohjkqav9YvygXj/gOM/4Pbx61hV70JDdSBd5hXlQERQw1JRQc1Etkp/5QUMSAfdy+IQbDXik22b4e3EVrLkK5b4Znygth43tmJvtKz9zo1Qz+5S0NGy76WjeBJVJDqUPJMnQBXoAn/iOqmfUi7chRol22FwTI08gykHXHEloCN0HuFzlnUBnDZMkDRGyr24ifNIS2Yhjc2JmopCs+clMMID+h3mH5FTbXyw5dcfK3EqEhfWpEWyeLq6tbNzuXfqrkI8To4ka6bnc4NuDc24dCt1J9PpMeLtyPD8KgzQixtUFRAXhcUQcCWtAlButDEDc9CJg19f5I3KurYNjN9bWmIKMgeN3i78Eaxhekm6wPKqOb/U98Wewl0mWN4C2rNCfxIgfMq9SIEVt9dq1qcrMwJtCc3RhbHbunQX9qYduzOrodpWYKutizk/wKTdJn3sqZDRSjoP7ouPU7coPgvGllaJMf7yiWBk9cwewWIqbyecqX5bX/K1vJF3lXpQ65+WkYo5RpVNr3YN7d/qBACAApY20tu0u7UQloQVDR7ByKrMB/ESCUj22Ei+Zavij8CY4cYT4HMuyZGJAdFtxXGxDlCK3tLwWN+Qy6+N/kjU461WOrVAPYMJFU73Rncnt4aps0f7RkE5r7G+0Npf8NdD/9J45E3SqbthoJdKeRM1dc1cKH3zqAnP1idCPw3CYM5G1tMfOfZkrQTXzgDDR1b0l6Tb7+VLC73usCUeYRps5Ndiz44cOyayySBMGXhTMgIcOGinbPE7eyhT12D1ClAuDlBiLnvaY7iu/HPFU0pVTL+URW48ii02g+p8bTwNnLeK7ka36qOObW7h9q/hjU8U/zb35zXKjNfb6xoykfv47R5Yzv3iDEUo/bYrEtTiGR8d6i+sPJQLwwSLXcm0omyYo9H0jLSxyxop50eQ3+3rpk2ZWOVZOpLlqu4GsQ50pSmOyhgJeNoGpXcfG81tJjeeDgKTMrn9+5GsCg+6gqx1WS9p2dYXyY5TPtUOTtZu9iR2EUnSM0WaDhKccTzxyL3a28GclZ5vI+lQWNNUZJSz+MPBGwyBh0gPoevx0LE65bmnet7lGT7xayRQBYf/SgrcfkjLlVhIJAQI9dR3EvnuNE2jH8xLTrXFSEB3gt0Eu2jTs6cJwkOgaYfDvdmHc5eKQuF+Sg3G2fPdVJMuG24wXv2n21jTgutPrKea1272SvxdtE3x7E/GLIHKwdRv1WbTEIv6qtH+5BHaZE/lkd10m40sxFEAwoPYNmXAiCYnlrG3HaezV0ZxDZTkhCM/zIsgsa95HGvuPpIbFTJrEqiGNtjxSCdrTomnrkbs0c+q2+FwJ3EZrWAAOyR4S+BjmbfGv2Btbjuv5vZFiN728iObh7cFDz6lbMePm8PhIEeRqhpW1RH5JZ+fxhwXbU9TsgxqlbjXIZW19hTKt9xlQ1WFCdxCw3prDrF44LSM1cIOivhSjx3vTYxjNnxMibmcQWs5UKDaMPwt+qj042Oh4SJvezvgu7+QnNKOWD84dpnJ9LJzOOoDe6AwiXAXC25CAsaKCMJRh4c6T4xkjIZ9LfayM2wWOps4/fkn33x4d9M/Mj9SBOMr16dhggaYkJM3W7glIYmmMsQvDI8nqxW5VLC7/0ImY/XulPPCbfa3cU830hhIBosw7M3IObuXp5mw3HmbgTB0+Axpy+N/RXZw0NqUrgzlF4bfZBRG+pfVdKDRN3AVcpBNmYAmOzxwi+vsda4vNqjf1Q4Xsy70Aqs4msKfbJQST10gQx4d2dWhAEtLuPvpZso0vo9l33BsM/pIeIDYanyhraaX94Oy6SishUcb18lCwCZX+5/rjs9Vrpdlns+fWco7NXsAt2TOVLNknR9dSAoE/D39wR1ZCKgszP738tcgj/Fi126GgVi2BceyvwBAfQLynHA5rm4yHPfMcsO8OpFQUr5/fdPwh364aHsHei5zh5o883rrdNqcyR8yXtZNy8I2vuyKklr5Aw21lW2bqE8bzKEgJA9gE1KQGAjCHmLW0MEF0H4l8kMysHPR05tFuvcxPR5C/XPOH0arlAx83yJUqyeXwkPSANdZh2HhqQKtQxNznPZle5CjVwxaD7tcE9a1aDSTSoG1rTnHPeHr/tZ6YrXzVC8rTQLltugSgajWlNjvQx2gvnXPcCQQOstNLe+fsWtryWzuFo15V92C0YjMcpiB1KaI3gLX6DMZOlaviyfi8R+nVX3LVq1yoZa4FCY4w3xOEDOPCV+a/rcjHfp2LeOjwfnwx9e1LSamGYXos8cdlNKG+rgTr0+FH1PcFYHFkzeIXwbbOeVYT8wUiOGdrUZqd27V3L4LYTOlhOzJQU+wEFiQB3xBBXKYTryRJdVGRxSQmWPPPvgYuIhypDP0aU/XQazGfIFtYYqmZQNfatJKXef2BiI7sBxiBLUyM4OlAC4rLT8pcx4lyEOuVeLDhdQ7YhQ5nKKBvxRIYiEQVK/LdxS/hn81OMz3YALFmILChD1SiOTXGc1/OfEaInsQGVD5bKwNywtu18qJMpFJtoyX0Rk9c/cAX4+M+lnQsl40aaPnSuV3e3Cxl2dyIF9T+gzcVRleC7ZaB/0cxOpkClFba9erPItYdXYIqWeL7bYtXAsR4G10l1If55v3qmloZ4ctSP9hzoaKIdJDSGLw0dsBp/m2Un0sSaTtKBVkt3p2CG0IWjoc8T3duDkFG4o52ZiVBsCF5vV1DTU36OHlWrtf8eay+V8UPmV78aGy7r1bh1AJFVfArQw3HugzS6b0CYn8E/M5lHT9/QfsVnGtC6NVFIkZXzcOZa2tpP53GuGAy/kpP3cu/teDO+LvuL5i4FLYI9Br",
-  "mac": "sWxcjzyyiY6n/9+OCAHgyRCUjDGlTPSAfSzX806QziQ="
+  "salt": "B/MhR63p1KKpd+iQKkfJpQ==",
+  "nonce": "qOuIdUNRJIjnyYwVi+1wKw==",
+  "ct": "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",
+  "mac": "QFlI70qTp+68IATSco3Imky2IY81FpVD8MBqllVNST0="
  }
 }
