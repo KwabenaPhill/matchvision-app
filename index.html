@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.25';   // APP_VERSION = '3.25' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.26';   // APP_VERSION = '3.26' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -2031,25 +2031,34 @@ window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,open
     <button class="b" id="fxCopy">📋 Copy all text</button>
   </div>
   <div class="row"><button class="b" id="fxDone">✓ Clear sent notes</button><button class="b" id="fxClose">Close</button></div>
+  <div class="row"><button class="b" id="fxKey">🔗 Laptop sync</button></div>
+  <div class="muted" id="fxSyncLine" style="margin:2px 0 6px"></div>
   <div id="fxList"></div>
 </div></div>
 <script>
+/* FIX NOTES + FIX HUB SYNC (Philip, 28 Oct 2026): notes go both ways with the laptop Fix Hub through the private
+   mailbox KwabenaPhill/surestake707-sync, folder fixhub/. This app only gets its own category. */
 (function(){
   const APP='Match Vision';
+  const SLUG=APP.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const DB='fixnotes_'+APP.replace(/\s+/g,'_').toLowerCase();
   let newPics=[];const $=id=>document.getElementById(id);$('fxApp').textContent=APP;
   function idb(){return new Promise((ok,no)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore('n',{keyPath:'id'});r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error);});}
   async function all(){try{const d=await idb();return await new Promise(ok=>{const q=d.transaction('n').objectStore('n').getAll();q.onsuccess=()=>ok(q.result.sort((a,b)=>a.id-b.id));q.onerror=()=>ok([]);});}catch(e){return[];}}
   async function put(n){const d=await idb();return new Promise(ok=>{const t=d.transaction('n','readwrite');t.objectStore('n').put(n);t.oncomplete=ok;});}
   async function del(id){const d=await idb();return new Promise(ok=>{const t=d.transaction('n','readwrite');t.objectStore('n').delete(id);t.oncomplete=ok;});}
+  const st=n=>n.status||(n.sent?'sent':'new');
+  async function save(n){n.upd=Date.now();n.sent=st(n)!=='new';await put(n);kick();}
   function shrink(file){return new Promise(ok=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1400/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',0.82));};im.onerror=()=>ok(null);im.src=r.result;};r.readAsDataURL(file);});}
   function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
-  async function draw(){const L=await all();const open=L.filter(n=>!n.sent);const c=$('fxCount');c.style.display=open.length?'block':'none';c.textContent=open.length;
-    $('fxList').innerHTML=L.length?L.slice().reverse().map(n=>`<div class="note"><button class="x" data-del="${n.id}">✕</button><small>${new Date(n.id).toLocaleString()}${n.sent?' · sent ✓':''}</small><div>${esc(n.text||'(picture only)').replace(/\n/g,'<br>')}</div>${(n.pics||[]).length?`<div class="pics">${n.pics.map(p=>`<img src="${p}">`).join('')}</div>`:''}</div>`).join(''):'<div class="muted" style="margin-top:12px">No notes yet.</div>';}
+  async function draw(){const L=(await all()).filter(n=>!n.gone);const open=L.filter(n=>st(n)==='new');const c=$('fxCount');c.style.display=open.length?'block':'none';c.textContent=open.length;
+    $('fxList').innerHTML=L.length?L.slice().reverse().map(n=>`<div class="note"><button class="x" data-del="${n.id}">✕</button><small>${new Date(n.id).toLocaleString()}${st(n)==='sent'?' · sent ✓':st(n)==='fixed'?' · fixed ✅':''}${n.src==='laptop'?' · 💻 from laptop':''}</small><div>${esc(n.text||'(picture only)').replace(/\n/g,'<br>')}</div>${(n.pics||[]).length?`<div class="pics">${n.pics.map(p=>`<img src="${p}">`).join('')}</div>`:''}</div>`).join(''):'<div class="muted">No notes yet.</div>';
+    syncLine();}
   function drawNew(){$('fxNewPics').innerHTML=newPics.map(p=>`<img src="${p}">`).join('');}
-  $('fxBtn').onclick=()=>{$('fxSheet').style.display='block';draw();};
+  $('fxBtn').onclick=()=>{$('fxSheet').style.display='block';draw();kick();};
   $('fxClose').onclick=()=>{$('fxSheet').style.display='none';};
-  $('fxSheet').onclick=e=>{if(e.target.id==='fxSheet')$('fxSheet').style.display='none';const d=e.target.closest('[data-del]');if(d&&confirm('Delete this note?')){del(+d.dataset.del).then(draw);}};
+  $('fxSheet').onclick=async e=>{if(e.target.id==='fxSheet')$('fxSheet').style.display='none';const d=e.target.closest('[data-del]');
+    if(d&&confirm('Delete this note? (also from the laptop Fix Hub)')){const n=(await all()).find(x=>x.id===+d.dataset.del);if(n){n.gone=true;n.pics=[];n.text='';await save(n);}draw();}};
   $('fxPic').onclick=()=>$('fxFile').click();
   $('fxFile').onchange=async e=>{for(const f of e.target.files){const p=await shrink(f);if(p)newPics.push(p);}e.target.value='';drawNew();};
   let rec=null;
@@ -2061,18 +2070,62 @@ window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,open
     rec.onend=()=>{rec=null;$('fxMic').textContent='🎤 Speak';$('fxMic').classList.remove('rec');};
     rec.onerror=()=>{};rec.start();$('fxMic').textContent='⏹ Stop';$('fxMic').classList.add('rec');};
   $('fxSave').onclick=async()=>{const t=$('fxText').value.trim();if(!t&&!newPics.length){alert('Write something or add a picture first.');return;}
-    await put({id:Date.now(),text:t,pics:newPics,sent:false});$('fxText').value='';newPics=[];drawNew();draw();};
+    await save({id:Date.now(),text:t,pics:newPics,status:'new',src:'phone'});$('fxText').value='';newPics=[];drawNew();draw();};
   function bundle(L){return `FIXES FOR ${APP.toUpperCase()} (${L.length} notes, ${new Date().toLocaleDateString()})\n\n`+L.map((n,i)=>`${i+1}. ${n.text||'(see picture)'}${(n.pics||[]).length?`  [pictures: ${n.pics.map((_,k)=>`note${i+1}-${k+1}.jpg`).join(', ')}]`:''}`).join('\n\n');}
   async function toFile(data,name){const b=await (await fetch(data)).blob();return new File([b],name,{type:'image/jpeg'});}
-  $('fxCopy').onclick=async()=>{const L=(await all()).filter(n=>!n.sent);try{await navigator.clipboard.writeText(bundle(L));alert('Copied ✓');}catch(e){prompt('Copy this:',bundle(L));}};
-  $('fxSend').onclick=async()=>{const L=(await all()).filter(n=>!n.sent);if(!L.length){alert('No new notes to send.');return;}
+  const openNotes=async()=>(await all()).filter(n=>!n.gone&&st(n)==='new');
+  $('fxCopy').onclick=async()=>{const L=await openNotes();try{await navigator.clipboard.writeText(bundle(L));alert('Copied ✓');}catch(e){prompt('Copy this:',bundle(L));}};
+  $('fxSend').onclick=async()=>{const L=await openNotes();if(!L.length){alert('No new notes to send.');return;}
     const txt=bundle(L);const files=[new File([txt],'fixes.txt',{type:'text/plain'})];
     for(let i=0;i<L.length;i++)for(let k=0;k<(L[i].pics||[]).length;k++)files.push(await toFile(L[i].pics[k],`note${i+1}-${k+1}.jpg`));
     try{if(navigator.canShare&&navigator.canShare({files})){await navigator.share({files,text:txt,title:'Fixes for '+APP});}
         else{await navigator.share({text:txt,title:'Fixes for '+APP});}
-        if(confirm('Did it send? Mark these notes as sent?')){for(const n of L){n.sent=true;await put(n);}draw();}}
+        if(confirm('Did it send? Mark these notes as sent?')){for(const n of L){n.status='sent';await save(n);}draw();}}
     catch(e){if(e&&e.name==='AbortError')return;try{await navigator.clipboard.writeText(txt);alert('Sharing is not available here: the text is copied. Add the pictures by hand.');}catch(_){prompt('Copy this:',txt);}}};
-  $('fxDone').onclick=async()=>{const L=(await all()).filter(n=>n.sent);if(!L.length){alert('Nothing sent yet.');return;}if(confirm(`Delete ${L.length} sent note(s)?`)){for(const n of L)await del(n.id);draw();}};
+  $('fxDone').onclick=async()=>{const L=(await all()).filter(n=>!n.gone&&st(n)!=='new');if(!L.length){alert('Nothing sent or fixed yet.');return;}if(confirm(`Clear ${L.length} sent or fixed note(s)? (also from the laptop Fix Hub)`)){for(const n of L){n.gone=true;n.pics=[];n.text='';await save(n);}draw();}};
+
+  // ---------- laptop Fix Hub sync (private GitHub mailbox) ----------
+  const REPO='KwabenaPhill/surestake707-sync';
+  function cfg(){let a={},b={};try{a=JSON.parse(localStorage.getItem('fixhub_sync')||'{}');}catch(e){}try{b=JSON.parse(localStorage.getItem('ss707_sync')||'{}');}catch(e){}
+    return {repo:a.repo||b.repo||REPO,token:a.token||b.token||'',on:a.on!==false,own:!!a.token};}
+  const SK='fx_sync_'+SLUG;let ss={sha:{},pushed:{},pics:{}};try{Object.assign(ss,JSON.parse(localStorage.getItem(SK)||'{}'));}catch(e){}
+  const saveSS=()=>{try{localStorage.setItem(SK,JSON.stringify(ss));}catch(e){}};
+  let busy=false,lastErr='',lastOk=0,kt=null;
+  const b64=s=>btoa(unescape(encodeURIComponent(s))),unb64=b=>decodeURIComponent(escape(atob(b.replace(/\s/g,''))));
+  async function gh(method,path,body){const c=cfg();const r=await fetch(`https://api.github.com/repos/${c.repo}/contents/${path}`,{method,cache:'no-store',headers:{Authorization:'Bearer '+c.token,Accept:'application/vnd.github+json',...(body?{'Content-Type':'application/json'}:{})},body:body?JSON.stringify(body):undefined});
+    if(r.status===404)return null;const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error('GitHub '+r.status+' '+(j.message||''));return j;}
+  async function putFile(path,content,msg){for(let t=0;t<2;t++){const body={message:msg,content};if(ss.sha[path])body.sha=ss.sha[path];
+      try{const j=await gh('PUT',path,body);ss.sha[path]=j&&j.content&&j.content.sha;return;}
+      catch(e){if(t===0&&/409|422/.test(e.message)){const cur=await gh('GET',path);ss.sha[path]=cur&&cur.sha;continue;}throw e;}}}
+  async function pull(){const list=await gh('GET','fixhub/notes');if(!Array.isArray(list))return false;let ch=false;const by={};(await all()).forEach(n=>by[n.id]=n);
+    for(const f of list){const m=/^(.+)__(\d+)\.json$/.exec(f.name);if(!m||m[1]!==SLUG)continue;const path='fixhub/notes/'+f.name;if(ss.sha[path]===f.sha)continue;
+      const j=await gh('GET',path);if(!j)continue;ss.sha[path]=j.sha;let r;try{r=JSON.parse(unb64(j.content||''));}catch(e){continue;}
+      const id=+m[2],loc=by[id],lu=loc?(loc.upd||loc.id):0,ru=r.upd||0;
+      if(r.deleted){if(loc&&ru>=lu){await del(id);delete ss.pushed[id];ch=true;}continue;}
+      if(loc&&lu>=ru)continue;
+      let pics=loc&&(loc.pics||[]).length===(r.pics||[]).length?loc.pics:[];
+      if(!pics.length)for(const p of r.pics||[]){const im=await gh('GET',p);if(im&&im.content){pics.push('data:image/jpeg;base64,'+im.content.replace(/\s/g,''));ss.pics[p]=1;}}
+      await put({id,text:r.text||'',pics,status:r.status||'new',sent:(r.status||'new')!=='new',upd:ru,src:r.src||'laptop'});ss.pushed[id]=ru;ch=true;}
+    saveSS();return ch;}
+  async function push(){for(const n of await all()){const u=n.upd||n.id;if((ss.pushed[n.id]||0)>=u)continue;const path=`fixhub/notes/${SLUG}__${n.id}.json`;
+      if(n.gone){await putFile(path,b64(JSON.stringify({id:String(n.id),cat:APP,deleted:true,upd:u,src:n.src||'phone'})),`fix: delete ${APP} #${n.id}`);await del(n.id);delete ss.pushed[n.id];saveSS();continue;}
+      const pp=[];for(let k=0;k<(n.pics||[]).length;k++){const p=`fixhub/pics/${SLUG}__${n.id}-${k+1}.jpg`;if(!ss.pics[p]){await putFile(p,n.pics[k].split(',')[1],`fix: picture ${APP} #${n.id}`);ss.pics[p]=1;saveSS();}pp.push(p);}
+      await putFile(path,b64(JSON.stringify({id:String(n.id),cat:APP,text:n.text||'',status:st(n),upd:u,src:n.src||'phone',pics:pp})),`fix: ${APP} #${n.id}`);ss.pushed[n.id]=u;saveSS();}}
+  async function run(){const c=cfg();if(!c.token||!c.on||busy||!navigator.onLine)return;busy=true;
+    try{const ch=await pull();await push();lastOk=Date.now();lastErr='';if(ch||$('fxSheet').style.display==='block')draw();else draw();}
+    catch(e){lastErr=String(e.message||e).slice(0,80);}finally{busy=false;syncLine();}}
+  function kick(){clearTimeout(kt);kt=setTimeout(run,1200);}
+  function syncLine(){const e=$('fxSyncLine');if(!e)return;const c=cfg();
+    e.textContent=!c.token?'💻 Laptop Fix Hub: off · tap 🔗 Laptop sync to connect':!c.on?'💻 Laptop Fix Hub: turned off':lastErr?'💻 Laptop Fix Hub: problem · '+lastErr:lastOk?'💻 Laptop Fix Hub: in step ✓ '+new Date(lastOk).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):'💻 Laptop Fix Hub: on';}
+  $('fxKey').onclick=()=>{const c=cfg();
+    if(!c.token){const t=prompt('Paste the GitHub key for the private mailbox (surestake707-sync). It stays only on this phone:');if(!t||!t.trim())return;
+      try{localStorage.setItem('fixhub_sync',JSON.stringify({repo:REPO,token:t.trim(),on:true}));}catch(e){}run();return;}
+    if(confirm(c.on?'Laptop sync is on. Sync now? (Cancel = turn it off)':'Laptop sync is off. Turn it on?')){if(!c.on){let a={};try{a=JSON.parse(localStorage.getItem('fixhub_sync')||'{}');}catch(e){}a.on=true;localStorage.setItem('fixhub_sync',JSON.stringify(a));}run();}
+    else if(c.on){let a={};try{a=JSON.parse(localStorage.getItem('fixhub_sync')||'{}');}catch(e){}a.on=false;localStorage.setItem('fixhub_sync',JSON.stringify(a));syncLine();}};
+  setInterval(()=>{if(!document.hidden)run();},45000);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(run,2000);});
+  window.addEventListener('online',()=>run());
+  setTimeout(run,5000);
   draw();
 })();
 </script>
