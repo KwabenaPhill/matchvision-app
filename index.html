@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.26';   // APP_VERSION = '3.26' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.27';   // APP_VERSION = '3.27' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -2061,14 +2061,64 @@ window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,open
     if(d&&confirm('Delete this note? (also from the laptop Fix Hub)')){const n=(await all()).find(x=>x.id===+d.dataset.del);if(n){n.gone=true;n.pics=[];n.text='';await save(n);}draw();}};
   $('fxPic').onclick=()=>$('fxFile').click();
   $('fxFile').onchange=async e=>{for(const f of e.target.files){const p=await shrink(f);if(p)newPics.push(p);}e.target.value='';drawNew();};
-  let rec=null;
-  $('fxMic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-    if(!SR){alert('Voice typing is not in this browser. Tap the box and use the 🎤 on your keyboard instead.');$('fxText').focus();return;}
-    if(rec){rec.stop();return;}
-    rec=new SR();rec.lang='en-GB';rec.continuous=true;rec.interimResults=false;const base=$('fxText').value;let got='';
-    rec.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++)if(e.results[i].isFinal)got+=e.results[i][0].transcript+' ';$('fxText').value=(base?base+' ':'')+got.trim();};
-    rec.onend=()=>{rec=null;$('fxMic').textContent='🎤 Speak';$('fxMic').classList.remove('rec');};
-    rec.onerror=()=>{};rec.start();$('fxMic').textContent='⏹ Stop';$('fxMic').classList.add('rec');};
+  /* VOICE 2 (30 Oct 2026, Philip: "slow, stops by itself, misses words, no auto-correct"):
+     - words show WHILE you speak (live), the final words replace them
+     - never stops by itself: it restarts until you tap Stop (long recordings are fine), the screen stays on
+     - Ghana English first (en-GH), then en-US when the phone does not have it
+     - auto-correct when you tap Stop: your app names, Ballon d'Or, repeated words, capitals, full stops */
+  const VOICE_FIXES=[[/\b(mad|mat|match|magic)\s*vision\b|\bmagician\b|\bmagazine\b/gi,'Match Vision'],
+   [/\bvision\s*(period|premier|premiun|primary)\b/gi,'Vision Premium'],
+   [/\b(sure|shore|show)\s*(stick|stack|steak|stake|state)\b/gi,'Sure Stake'],[/\bsure\s*stake\s*(seven\s*o\s*seven|7\s*0\s*7)\b/gi,'Sure Stake 707'],
+   [/\brank\s*(x|ex|its|eggs)\b/gi,'RankX'],[/\b(fix|fixed|fixe)\s*hub\b/gi,'Fix Hub'],[/\b(face|fix|fixed)\s*lab\b/gi,'FIX LAB'],
+   [/\b(ballon|balloon|balon|bal on)\s*(d\s*'?\s*or|door|d\s*or|dor|the\s*or|d'or)\b/gi,"Ballon d'Or"],
+   [/\b(game\s*(zeus|juice|zeuss))\b/gi,'Game Zeus'],[/\b(velox|velocity|vellox)\b/gi,'Vellox'],
+   [/\b(cine|sin|seen)\s*cascade\b/gi,'Cine Cascade'],[/\bink\s*age\b/gi,'Ink Age'],[/\b(the\s*)?(bolt|vault)\s*app\b/gi,'Vault app'],
+   [/\byou\s*tube\b/gi,'YouTube'],[/\btele\s*gram\b/gi,'Telegram'],[/\bgit\s*hub\b/gi,'GitHub'],[/\bwhats?\s*app\b/gi,'WhatsApp'],
+   [/\bthumb\s*nails?\b/gi,m=>/s$/i.test(m)?'thumbnails':'thumbnail'],[/\bfooling\b/gi,'failing'],[/\bclaude\b/gi,'Claude'],
+   [/\bm\s*bappe\b|\bmbape\b|\bembappe\b/gi,'Mbappe'],[/\bhaland\b|\bhalland\b/gi,'Haaland']];
+  function voiceClean(t){
+    t=' '+String(t||'')+' ';
+    for(const [a,b] of VOICE_FIXES)t=t.replace(a,b);
+    try{const own=JSON.parse(localStorage.getItem('voice_fixes')||'[]');for(const [a,b] of own)t=t.replace(new RegExp('\\b'+a+'\\b','gi'),b);}catch(_){}
+    t=t.replace(/\b(\w+)(\s+\1\b)+/gi,'$1');                       // "the the" -> "the"
+    t=t.replace(/\bi\b/g,'I').replace(/\bi'(m|ve|ll|d)\b/gi,(m,x)=>"I'"+x.toLowerCase());
+    t=t.replace(/\s+([.,!?])/g,'$1').replace(/([.,!?])(?=\w)/g,'$1 ').replace(/\s+/g,' ').trim();
+    t=t.replace(/(^|[.!?]\s+)([a-z])/g,(m,a,b)=>a+b.toUpperCase());
+    if(t&&!/[.!?]$/.test(t))t+='.';
+    return t;}
+  function voiceTyping(btn,box,tell){
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    const st={on:false,rec:null,done:'',live:'',base:'',lang:localStorage.getItem('voice_lang')||'en-GH',t0:0,tick:null,lock:null};
+    const android=/Android/i.test(navigator.userAgent);
+    const label=()=>{const s=Math.floor((Date.now()-st.t0)/1000);btn.textContent=`⏹ Stop ${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;};
+    const show=()=>{box.value=[st.base,st.done,st.live].filter(Boolean).join(' ');box.scrollTop=box.scrollHeight;};
+    const add=seg=>{seg=String(seg||'').trim();if(!seg)return;
+      if(st.done&&!/[.!?]$/.test(st.done))st.done+='.';st.done=(st.done+' '+seg).trim();};
+    function one(){
+      let r;try{r=new SR();}catch(e){stop();return;}
+      st.rec=r;r.lang=st.lang;r.continuous=!android;r.interimResults=true;r.maxAlternatives=1;
+      r.onresult=e=>{let tmp='';for(let i=e.resultIndex;i<e.results.length;i++){const x=e.results[i][0].transcript;
+        if(e.results[i].isFinal)add(x);else tmp+=x;}st.live=tmp.trim();show();};
+      r.onerror=e=>{if(e.error==='language-not-supported'&&st.lang!=='en-US'){st.lang='en-US';localStorage.setItem('voice_lang','en-US');}
+        else if(e.error==='not-allowed'||e.error==='service-not-allowed'){st.on=false;tell&&tell('Allow the microphone for this page, then tap Speak again.');}};
+      r.onend=()=>{if(st.live){add(st.live);st.live='';show();}
+        if(st.on)setTimeout(()=>{if(st.on)one();},120);else end();};
+      try{r.start();}catch(e){setTimeout(()=>{if(st.on)one();},400);}
+    }
+    function end(){clearInterval(st.tick);st.tick=null;btn.textContent='🎤 Speak';btn.classList.remove('rec');
+      try{st.lock&&st.lock.release();}catch(_){}st.lock=null;
+      const said=voiceClean(st.done);box.value=[st.base,said].filter(Boolean).join(' ');st.done='';st.live='';
+      box.dispatchEvent(new Event('input'));}
+    function stop(){st.on=false;try{st.rec&&st.rec.stop();}catch(_){end();}if(!st.rec)end();}
+    btn.onclick=async()=>{
+      if(!SR){tell&&tell('Voice typing is not in this browser. Tap the box and use the 🎤 on your keyboard (or Win+H).');box.focus();return;}
+      if(st.on){stop();return;}
+      st.on=true;st.done='';st.live='';st.base=box.value.trim();st.t0=Date.now();
+      btn.classList.add('rec');label();st.tick=setInterval(label,1000);
+      try{if(navigator.wakeLock)st.lock=await navigator.wakeLock.request('screen');}catch(_){}
+      one();};
+    return st;}
+  voiceTyping($('fxMic'),$('fxText'),m=>alert(m));
   $('fxSave').onclick=async()=>{const t=$('fxText').value.trim();if(!t&&!newPics.length){alert('Write something or add a picture first.');return;}
     await save({id:Date.now(),text:t,pics:newPics,status:'new',src:'phone'});$('fxText').value='';newPics=[];drawNew();draw();};
   function bundle(L){return `FIXES FOR ${APP.toUpperCase()} (${L.length} notes, ${new Date().toLocaleDateString()})\n\n`+L.map((n,i)=>`${i+1}. ${n.text||'(see picture)'}${(n.pics||[]).length?`  [pictures: ${n.pics.map((_,k)=>`note${i+1}-${k+1}.jpg`).join(', ')}]`:''}`).join('\n\n');}
