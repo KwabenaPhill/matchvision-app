@@ -109,6 +109,10 @@ def post_locked(item):
             f.write(base64.b64decode(sec['img']))
     try:
         extra = {'parse_mode': 'HTML'} if sec.get('html') else {}
+        anim = os.path.join(ROOT, sec['anim']) if sec.get('anim') else ''   # 3.28: the VIP morning animation
+        if anim and os.path.isfile(anim):
+            return tg('sendAnimation', {'chat_id': sec['chat'], 'caption': (sec.get('text') or '')[:1000], **extra},
+                      {'animation': anim})
         if tmp:
             return tg('sendPhoto', {'chat_id': sec['chat'], 'caption': (sec.get('text') or '')[:1000], **extra}, {'photo': tmp})
         return tg('sendMessage', {'chat_id': sec['chat'], 'text': sec.get('text') or '', **extra})
