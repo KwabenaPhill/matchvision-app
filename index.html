@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.5</title>
+<title>Match Vision 3.28</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.27';   // APP_VERSION = '3.27' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.28';   // APP_VERSION = '3.28' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -954,10 +954,10 @@ const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},
 const jget=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d:v;}catch(e){return d;}};
 const DEF={live:true,every:2,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
   apps:{wa:true,x:true,ig:true,tt:true,th:true,yt:true,tg:false},
-  bold:true,boldTitle:true,boldBrand:false,boldLeague:false,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
+  bold:true,boldTitle:true,boldBrand:false,boldLeague:false,capWords:true,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
   showOdds:true,showChance:false,showPred:true,showFin:true,sort:'video',pickOrder:'video',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
   vidCards:true,recRange:'week',premMembers:true};
-let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v323){SET.v323=1;SET.sort='video';SET.pickOrder='video';}if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
+let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v323){SET.v323=1;SET.sort='video';SET.pickOrder='video';}if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v328){SET.v328=1;SET.capWords=true;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
 const saveSet=()=>store.set(K.set,JSON.stringify(SET));
 let POSTED=jget(K.posted,{});   // date -> item id -> app -> true  (what YOU sent from this phone)
 const savePosted=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(POSTED))if(k<keep)delete POSTED[k];store.set(K.posted,JSON.stringify(POSTED));};
@@ -1108,7 +1108,9 @@ function choose(title,list,cur,cb,note){openSheet(`<div class="modal-title">${es
   e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.close){closeSheet();return;}if(b.dataset.v!=null){closeSheet();cb(b.dataset.v);}});}
 
 // ---------- Copy and share (Sure Stake shareTo, with Instagram, TikTok, Threads and YouTube added) ----------
-function copyText(t){let ok=false;try{const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:-1000px;opacity:0';document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,t.length);ok=document.execCommand('copy');ta.remove();}catch(e){}
+// 3.28 (Philip, 30 Oct): "every first word should be capital" - like the laptop's title_case
+function capWords(t){if(!t||typeof t!=='string'||SET.capWords===false)return t;return t.split('\n').map(ln=>ln.replace(/\S+/g,w=>{if(/^(#|@|https?:|www\.|t\.me)/i.test(w)||/\d/.test(w)||w.includes('/')||/^(vs|v)$/i.test(w))return w;let k=0;while(k<w.length-1&&'("\'[“‘*_'.includes(w[k]))k++;const c=w[k];if(c&&c.toLowerCase()!==c.toUpperCase()&&c===c.toLowerCase())return w.slice(0,k)+c.toUpperCase()+w.slice(k+1);return w;})).join('\n');}
+function copyText(t){t=capWords(t);let ok=false;try{const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:-1000px;opacity:0';document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,t.length);ok=document.execCommand('copy');ta.remove();}catch(e){}
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).catch(()=>{});ok=true;}return ok;}
 const enc=encodeURIComponent;
 function canShareFiles(files){try{return !!(files.length&&navigator.canShare&&navigator.canShare({files}));}catch(e){return false;}}
@@ -1121,6 +1123,7 @@ const fileCache=new Map();
 // 3.6.1: always the WHOLE original file (never a part the video player loaded, never a cached half file)
 async function fileOf(path,name){const u=media(path);if(fileCache.has(u))return fileCache.get(u);try{let r=null,b=null;for(let t=0;t<2&&!b;t++){r=await fetch(u+(u.includes('?')?'&':'?')+'full='+Date.now(),{cache:'no-store'});if(r.status!==200)continue;const want=parseInt(r.headers.get('content-length')||'0',10);const x=await r.blob();if(x.size>1000&&(!want||x.size>=want))b=x;}if(!b)throw 0;const ext=(b.type.split('/')[1]||'jpg').replace('jpeg','jpg');const f=new File([b],`${name}.${ext}`,{type:b.type||'image/jpeg'});fileCache.set(u,f);return f;}catch(e){return null;}}
 async function shareTo(kind,text,files=[]){
+  text=capWords(text);
   if(kind==='copy'){toast(copyText(text)?'Copied':'Copy failed. Long-press the text instead.');return false;}
   if(text)copyText(text);
   if(kind==='x'&&files.length>4)files=files.slice(0,4);
@@ -1530,6 +1533,7 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
     srow('boldparts','Which words are bold',[SET.boldTitle&&'Title',SET.boldBrand&&'Match Vision',SET.boldLeague&&'Leagues',SET.boldWatch&&'Watch line'].filter(Boolean).join(', ')||'None','',gi('highlighter'))+
     srow('boldUni','Bold on X, Instagram, TikTok, Threads','Special bold letters (𝗟𝗶𝗸𝗲 𝘁𝗵𝗶𝘀)',SET.uniBold,gi('stack4'))+
     srow('hand','Hand points down to the link','The link on the next line',SET.hand,gi('hand'))+
+    srow('capWords','Every word starts with a capital','When you share or copy any text (links, @names and #tags stay as they are)',SET.capWords,gi('hand'))+
     srow('tags','Hashtags in the posts','Keep the hashtag line',SET.tags,gi('tag'))+
     srow('tgbold','Telegram bold','How bold looks when you share to Telegram',SET.tgBold==='stars'?'**stars**':SET.tgBold==='none'?'No bold':'Bold letters',gi('textbold'))+
     srow('igtags','Instagram hashtags','At most this many hashtags on Instagram (Instagram allows 5)',String(SET.igTags||5),gi('tag'))+
@@ -1582,7 +1586,7 @@ function renderSettings(){const pc=pendCount();
   `<div class="set-list">${FOLDERS.map(([k,t,sub,ic])=>`<button class="set-row fold" data-fold="${k}">${gi(ic)}<span class="t">${t}<small>${sub}</small></span><span class="ch">›</span></button>`).join('')}</div>
   <button class="btn-danger" id="clearAll" style="margin-top:16px">Clear this app's data on this phone</button><p class="muted" style="text-align:center;margin-top:8px">Only Match Vision app data. Match Vision app ${VERSION}${feed&&feed.version?` · laptop builder ${esc(feed.version)}`:''}</p>`;
   if(setFolder&&subRender&&$('sub').classList.contains('open'))rerenderSub();}
-const TOGGLES=['bold','uniBold','hand','tags','live','showPred','showOdds','showChance','showFin','vidCards','premMembers','shortNames'];
+const TOGGLES=['bold','uniBold','hand','capWords','tags','live','showPred','showOdds','showChance','showFin','vidCards','premMembers','shortNames'];
 async function settingsClick(e){const b=e.target.closest('button');if(!b)return;if(b.dataset.fold){openFolder(b.dataset.fold);return;}const s=b.dataset.s;
   if(b.id==='clearAll'){if(!confirm('Clear Match Vision app data on this phone (saved picks, sent ticks, settings, PIN)? Nothing on the laptop changes.'))return;Object.values(K).forEach(k=>store.del(k));POSTED={};SET=Object.assign({},DEF);prem=null;ESPN={};toast('Cleared');loadFeed(true);return;}
   const tk=s==='boldUni'?'uniBold':s;if(TOGGLES.includes(tk)){SET[tk]=!SET[tk];saveSet();renderSettings();if(tk==='live'&&SET.live)liveTick(true);return;}
@@ -1984,7 +1988,7 @@ async function shareCard(kind,d){const cd=cardData(kind,d);if(!cd){toast(kind===
       const ta=document.getElementById('csText');const text=ta?ta.value:cd.txt;
       if(k==='copy'){toast(copyText(FM(text,'any'))?'Text copied':'Copy failed');return;}
       if(k==='save'){const a=document.createElement('a');a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();toast('Picture saved to Downloads');return;}
-      if(k==='any'){const tx=(kind==='match'||kind==='bankerwon')?winFmt(text,'any'):styled(text,'any');copyText(tx);if(canShareFiles([file])){try{await navigator.share({files:[file],text:tx});toast('Text copied too: if it is not under the picture, long-press and Paste.',4000);}catch(err){}}else toast('Sharing pictures is not possible here. Tap Save picture.');return;}
+      if(k==='any'){const tx=capWords((kind==='match'||kind==='bankerwon')?winFmt(text,'any'):styled(text,'any'));copyText(tx);if(canShareFiles([file])){try{await navigator.share({files:[file],text:tx});toast('Text copied too: if it is not under the picture, long-press and Paste.',4000);}catch(err){}}else toast('Sharing pictures is not possible here. Tap Save picture.');return;}
       const f2=await fitFile(file,k);await shareTo(k,FM(text,k),[f2]);});}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-card]');if(b){e.stopPropagation();e.preventDefault();shareCard(b.dataset.card,dayOf(b.dataset.dk));return;}
   const hs=e.target.closest('#p-history [data-cardshare]');if(hs){e.stopPropagation();e.preventDefault();shareCard('premwon');return;}
