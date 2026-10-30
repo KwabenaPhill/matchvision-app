@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.28</title>
+<title>Match Vision 3.29</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.28';   // APP_VERSION = '3.28' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.29';   // APP_VERSION = '3.29' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1301,7 +1301,7 @@ function premDone(td){const dd=dayOf(td.date);return (td.picks||[]).length>0&&(t
 function premBlock(td,done){return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium slip · ${done?'finished':'pinned'}</span></div><div class="pst-${esc(SET.premStyle||'gold')}">${premPicture(td)}</div>`+(done&&(td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-card="premwon" data-dk="${td.date}" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
 function winTicket(m,d){return `<button class="btn-save w100" data-winshare2="${m.n}" data-dk="${d.date}" style="margin:-4px 0 14px">↗ Share this win (picture + text)</button>`;}
 function bankerBlock(d,st){const bk=d.banker;const rows=bk.games.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n)||{};const i=(m.picks||[]).findIndex(p=>p.text===(g.pick&&g.pick.text));const s=i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));const L=m.n?liveOf(m,d):null;
-    return `<div class="bkr"><span class="t"><b>${esc((g.pick||{}).text||'')}</b><small>${esc(m.home||'')} vs ${esc(m.away||'')}${L&&L.gh!=null?` · ${L.gh}-${L.ga}`:''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}).join('');
+    return `<div class="bkr"><span class="t"><b>${esc((g.pick||{}).text||'')}</b><small>${esc(m.home||'')} vs ${esc(m.away||'')}${L&&L.gh!=null?` · ${L.gh}-${L.ga}`:''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${(!s&&i>=0&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div>`;}).join('');
   return `<div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh"><b>${Number(bk.total||0).toFixed(2)} ODDS BANKER</b><span class="pill ${st==='w'?'won':'wait'}">${st==='w'?'✔ WON':st==='l'?'✘ LOST':'WAITING'}</span></div>${rows}${st==='w'?`<button class="btn-save w100" data-card="bankerwon" data-dk="${d.date}" style="margin-top:10px">↗ Share the banker WIN</button>`:''}</div>`;}
 async function shareWin(d,n,p){const m=(d.matches||[]).find(x=>String(x.n)===String(n));if(!m||!m.win)return;toast('Getting the picture…',1400);const f=await fileOf(m.win.img,`win-${d.date}-${n}`);await shareTo(p==='wa'?'wa':'ig',winFmt(m.win.text||'',p==='wa'?'wa':'tg'),f?[f]:[]);}
 
@@ -1344,9 +1344,17 @@ function upCard(d){const it=(d.posts||[]).find(x=>(x.images||[]).length);const i
 function upcomingCard(){const L=upcomingDays();return L.length?`<div class="sect" style="margin-top:6px">Coming up</div><div class="uplist">${L.map(upCard).join('')}</div><div style="height:14px"></div>`:'';}
 function renderHome(quiet){const el=$('p-home');el.classList.toggle('noanim',!!quiet);if(!feed){el.innerHTML=`<div class="card tint"><div class="ct">Loading Match Vision…</div><div class="cs" style="margin:0">The picks come from your laptop through GitHub.</div><button class="btn-save w100" data-act="reload">Try again</button></div>`;return;}
   const d=todayDay();let body;if(homeView==='matches')body=matchesView(d);else if(homeView==='results')body=resultsView(d);else body=postsView(d)+upcomingCard();
-  el.innerHTML=summaryBoxes(d)+body;}
+  el.innerHTML=summaryBoxes(d)+marksBar()+body;}
+// 3.29 (Philip, 30 Oct): a pick still waiting after full time -> tap ✓ or ✕ (also in the banker), then ONE button sends
+// every mark to the laptop, so the results, the banker and the posts update at once.
+function unsentMarks(){return Object.entries(MARKS).filter(([k,x])=>x&&!x.sent);}
+function marksBar(){const u=unsentMarks();return u.length?`<div class="card tint"><div class="ct">${u.length} result(s) you marked</div><div class="cs">Send them to the laptop: results, banker and posts update at once.</div><button class="btn-save w100" data-sendmarks="1">📤 Send my marks to the laptop</button></div>`:'';}
+function sendAllMarks(){const by={};for(const [k,x] of unsentMarks()){const [dt,ni]=k.split('|');by[dt]=by[dt]||{w:[],l:[],auto:[]};(x.v==='w'?by[dt].w:x.v==='l'?by[dt].l:by[dt].auto).push(ni);x.sent=true;if(!x.v)delete MARKS[k];}
+  saveMarks();const lines=[];for(const [dt,ws] of Object.entries(by)){if(ws.w.length)lines.push(`won ${dt} ${ws.w.join(' ')}`);if(ws.l.length)lines.push(`lost ${dt} ${ws.l.join(' ')}`);if(ws.auto.length)lines.push(`auto ${dt} ${ws.auto.join(' ')}`);}
+  if(!lines.length)return;toast('Telegram opens with the words typed: tap Send',4000);setTimeout(()=>openBot(lines.join('\n')),300);refresh(true);}
 function homeClick(e,getDay,after){const b=e.target.closest('button,[data-m]');if(!b)return false;
-  if(b.dataset.qmk){MARKS[b.dataset.k]={v:b.dataset.qmk,sent:false};saveMarks();refresh(true);return true;}   // 3.10.7
+  if(b.dataset.qmk){MARKS[b.dataset.k]={v:b.dataset.qmk,sent:false};saveMarks();refresh(true);toast('Marked. Tap "Send my marks to the laptop" at the top.',3500);return true;}   // 3.10.7
+  if(b.dataset.sendmarks){sendAllMarks();return true;}   // 3.29
   if(b.dataset.winshare){const d=dayOf(b.dataset.dk);if(d)shareWin(d,b.dataset.winshare,b.dataset.wp);return true;}
   if(b.dataset.winshare2){const d=dayOf(b.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===b.dataset.winshare2);if(m){window.__matchShare={d,m};shareCard('match',d);}return true;}
   if(b.dataset.big){const d=dayOf(b.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===b.dataset.big);if(m)bigCard(d,m);return true;}
@@ -2056,7 +2064,10 @@ window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,open
   function shrink(file){return new Promise(ok=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,1400/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',0.82));};im.onerror=()=>ok(null);im.src=r.result;};r.readAsDataURL(file);});}
   function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
   async function draw(){const L=(await all()).filter(n=>!n.gone);const open=L.filter(n=>st(n)==='new');const c=$('fxCount');c.style.display=open.length?'block':'none';c.textContent=open.length;
-    $('fxList').innerHTML=L.length?L.slice().reverse().map(n=>`<div class="note"><button class="x" data-del="${n.id}">✕</button><small>${new Date(n.id).toLocaleString()}${st(n)==='sent'?' · sent ✓':st(n)==='fixed'?' · fixed ✅':''}${n.src==='laptop'?' · 💻 from laptop':''}</small><div>${esc(n.text||'(picture only)').replace(/\n/g,'<br>')}</div>${(n.pics||[]).length?`<div class="pics">${n.pics.map(p=>`<img src="${p}">`).join('')}</div>`:''}</div>`).join(''):'<div class="muted">No notes yet.</div>';
+    /* 1.3 (Philip, 30 Oct): grouped like the laptop Fix Hub - New on top, then Sent to Claude, then Fixed */
+    const card=n=>`<div class="note"><button class="x" data-del="${n.id}">✕</button><small>${new Date(n.id).toLocaleString()}${st(n)==='sent'?' · sent ✓':st(n)==='fixed'?' · fixed ✅':''}${n.src==='laptop'?' · 💻 from laptop':''}</small><div>${esc(n.text||'(picture only)').replace(/\n/g,'<br>')}</div>${(n.pics||[]).length?`<div class="pics">${n.pics.map(p=>`<img src="${p}">`).join('')}</div>`:''}</div>`;const R=L.slice().reverse();const gN=R.filter(n=>st(n)==='new'),gS=R.filter(n=>st(n)==='sent'),gF=R.filter(n=>st(n)==='fixed');
+    const grp=(t,a,open)=>a.length?`<details ${open?'open':''} style="margin:10px 0"><summary style="cursor:pointer;font-weight:700;padding:8px 0">${t} (${a.length})</summary>${a.map(card).join('')}</details>`:'';
+    $('fxList').innerHTML=L.length?(`<div style="font-weight:700;margin:10px 0 4px">🆕 New (${gN.length})</div>`+(gN.length?gN.map(card).join(''):'<div class="muted">Nothing new. Sent notes are below.</div>')+grp('📤 Sent to Claude',gS,false)+grp('✅ Fixed',gF,false)):'<div class="muted">No notes yet.</div>';
     syncLine();}
   function drawNew(){$('fxNewPics').innerHTML=newPics.map(p=>`<img src="${p}">`).join('');}
   $('fxBtn').onclick=()=>{$('fxSheet').style.display='block';draw();kick();};
@@ -2065,63 +2076,81 @@ window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,open
     if(d&&confirm('Delete this note? (also from the laptop Fix Hub)')){const n=(await all()).find(x=>x.id===+d.dataset.del);if(n){n.gone=true;n.pics=[];n.text='';await save(n);}draw();}};
   $('fxPic').onclick=()=>$('fxFile').click();
   $('fxFile').onchange=async e=>{for(const f of e.target.files){const p=await shrink(f);if(p)newPics.push(p);}e.target.value='';drawNew();};
-  /* VOICE 2 (30 Oct 2026, Philip: "slow, stops by itself, misses words, no auto-correct"):
-     - words show WHILE you speak (live), the final words replace them
-     - never stops by itself: it restarts until you tap Stop (long recordings are fine), the screen stays on
-     - Ghana English first (en-GH), then en-US when the phone does not have it
-     - auto-correct when you tap Stop: your app names, Ballon d'Or, repeated words, capitals, full stops */
-  const VOICE_FIXES=[[/\b(mad|mat|match|magic)\s*vision\b|\bmagician\b|\bmagazine\b/gi,'Match Vision'],
-   [/\bvision\s*(period|premier|premiun|primary)\b/gi,'Vision Premium'],
-   [/\b(sure|shore|show)\s*(stick|stack|steak|stake|state)\b/gi,'Sure Stake'],[/\bsure\s*stake\s*(seven\s*o\s*seven|7\s*0\s*7)\b/gi,'Sure Stake 707'],
-   [/\brank\s*(x|ex|its|eggs)\b/gi,'RankX'],[/\b(fix|fixed|fixe)\s*hub\b/gi,'Fix Hub'],[/\b(face|fix|fixed)\s*lab\b/gi,'FIX LAB'],
-   [/\b(ballon|balloon|balon|bal on)\s*(d\s*'?\s*or|door|d\s*or|dor|the\s*or|d'or)\b/gi,"Ballon d'Or"],
-   [/\b(game\s*(zeus|juice|zeuss))\b/gi,'Game Zeus'],[/\b(velox|velocity|vellox)\b/gi,'Vellox'],
-   [/\b(cine|sin|seen)\s*cascade\b/gi,'Cine Cascade'],[/\bink\s*age\b/gi,'Ink Age'],[/\b(the\s*)?(bolt|vault)\s*app\b/gi,'Vault app'],
-   [/\byou\s*tube\b/gi,'YouTube'],[/\btele\s*gram\b/gi,'Telegram'],[/\bgit\s*hub\b/gi,'GitHub'],[/\bwhats?\s*app\b/gi,'WhatsApp'],
-   [/\bthumb\s*nails?\b/gi,m=>/s$/i.test(m)?'thumbnails':'thumbnail'],[/\bfooling\b/gi,'failing'],[/\bclaude\b/gi,'Claude'],
-   [/\bm\s*bappe\b|\bmbape\b|\bembappe\b/gi,'Mbappe'],[/\bhaland\b|\bhalland\b/gi,'Haaland']];
-  function voiceClean(t){
-    t=' '+String(t||'')+' ';
-    for(const [a,b] of VOICE_FIXES)t=t.replace(a,b);
-    try{const own=JSON.parse(localStorage.getItem('voice_fixes')||'[]');for(const [a,b] of own)t=t.replace(new RegExp('\\b'+a+'\\b','gi'),b);}catch(_){}
-    t=t.replace(/\b(\w+)(\s+\1\b)+/gi,'$1');                       // "the the" -> "the"
-    t=t.replace(/\bi\b/g,'I').replace(/\bi'(m|ve|ll|d)\b/gi,(m,x)=>"I'"+x.toLowerCase());
-    t=t.replace(/\s+([.,!?])/g,'$1').replace(/([.,!?])(?=\w)/g,'$1 ').replace(/\s+/g,' ').trim();
-    t=t.replace(/(^|[.!?]\s+)([a-z])/g,(m,a,b)=>a+b.toUpperCase());
-    if(t&&!/[.!?]$/.test(t))t+='.';
-    return t;}
-  function voiceTyping(btn,box,tell){
-    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-    const st={on:false,rec:null,done:'',live:'',base:'',lang:localStorage.getItem('voice_lang')||'en-GH',t0:0,tick:null,lock:null};
-    const android=/Android/i.test(navigator.userAgent);
-    const label=()=>{const s=Math.floor((Date.now()-st.t0)/1000);btn.textContent=`⏹ Stop ${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;};
-    const show=()=>{box.value=[st.base,st.done,st.live].filter(Boolean).join(' ');box.scrollTop=box.scrollHeight;};
-    const add=seg=>{seg=String(seg||'').trim();if(!seg)return;
-      if(st.done&&!/[.!?]$/.test(st.done))st.done+='.';st.done=(st.done+' '+seg).trim();};
-    function one(){
-      let r;try{r=new SR();}catch(e){stop();return;}
-      st.rec=r;r.lang=st.lang;r.continuous=!android;r.interimResults=true;r.maxAlternatives=1;
-      r.onresult=e=>{let tmp='';for(let i=e.resultIndex;i<e.results.length;i++){const x=e.results[i][0].transcript;
-        if(e.results[i].isFinal)add(x);else tmp+=x;}st.live=tmp.trim();show();};
-      r.onerror=e=>{if(e.error==='language-not-supported'&&st.lang!=='en-US'){st.lang='en-US';localStorage.setItem('voice_lang','en-US');}
-        else if(e.error==='not-allowed'||e.error==='service-not-allowed'){st.on=false;tell&&tell('Allow the microphone for this page, then tap Speak again.');}};
-      r.onend=()=>{if(st.live){add(st.live);st.live='';show();}
-        if(st.on)setTimeout(()=>{if(st.on)one();},120);else end();};
-      try{r.start();}catch(e){setTimeout(()=>{if(st.on)one();},400);}
-    }
-    function end(){clearInterval(st.tick);st.tick=null;btn.textContent='🎤 Speak';btn.classList.remove('rec');
-      try{st.lock&&st.lock.release();}catch(_){}st.lock=null;
-      const said=voiceClean(st.done);box.value=[st.base,said].filter(Boolean).join(' ');st.done='';st.live='';
-      box.dispatchEvent(new Event('input'));}
-    function stop(){st.on=false;try{st.rec&&st.rec.stop();}catch(_){end();}if(!st.rec)end();}
-    btn.onclick=async()=>{
-      if(!SR){tell&&tell('Voice typing is not in this browser. Tap the box and use the 🎤 on your keyboard (or Win+H).');box.focus();return;}
-      if(st.on){stop();return;}
-      st.on=true;st.done='';st.live='';st.base=box.value.trim();st.t0=Date.now();
-      btn.classList.add('rec');label();st.tick=setInterval(label,1000);
-      try{if(navigator.wakeLock)st.lock=await navigator.wakeLock.request('screen');}catch(_){}
-      one();};
-    return st;}
+/* VOICE 3 (30 Oct 2026, Philip: "auto-correct removes my words, long recordings type, clear and type again"):
+   - it is Google's voice (Chrome sends your voice to Google), now with NOTHING removed:
+     no more "very very" -> "very", no word ever deleted
+   - the box only gets FINAL words; the words still being heard show in a small grey line under the box
+     (no more typing, clearing and typing again)
+   - never stops by itself until you tap Stop; the phone keeps the session open too (no lost words between phrases)
+   - Auto-correct setting next to the Speak button: "Light" (default: app names, I, capitals, one full stop at the end)
+     or "Off" (exactly what Google heard) */
+const VOICE_FIXES=[[/\b(mad|mat|match|magic)\s*vision\b/gi,'Match Vision'],
+ [/\bvision\s*(period|premier|premiun|primary)\b/gi,'Vision Premium'],
+ [/\b(sure|shore|show)\s*(stick|stack|steak|stake|state)\b/gi,'Sure Stake'],[/\bsure\s*stake\s*(seven\s*o\s*seven|7\s*0\s*7)\b/gi,'Sure Stake 707'],
+ [/\brank\s*(x|ex|eggs)\b/gi,'RankX'],[/\b(fix|fixed|fixe)\s*hub\b/gi,'Fix Hub'],[/\b(face|fix|fixed)\s*lab\b/gi,'FIX LAB'],
+ [/\b(ballon|balloon|balon)\s*(d\s*'?\s*or|door|dor|d'or)\b/gi,"Ballon d'Or"],
+ [/\bgame\s*(zeus|juice|zeuss)\b/gi,'Game Zeus'],[/\b(velox|vellox)\b/gi,'Vellox'],
+ [/\b(cine|sin|seen)\s*cascade\b/gi,'Cine Cascade'],[/\bink\s*age\b/gi,'Ink Age'],[/\b(bolt|vault)\s*app\b/gi,'Vault app'],
+ [/\byou\s*tube\b/gi,'YouTube'],[/\btele\s*gram\b/gi,'Telegram'],[/\bgit\s*hub\b/gi,'GitHub'],[/\bwhats\s*app\b/gi,'WhatsApp'],
+ [/\bclaude\b/gi,'Claude'],[/\bm\s*bappe\b|\bmbape\b|\bembappe\b/gi,'Mbappe'],[/\bhaland\b|\bhalland\b/gi,'Haaland']];
+function voiceMode(){try{return localStorage.getItem('voice_clean')||'light';}catch(_){return 'light';}}
+function voiceClean(t){
+  t=String(t||'').replace(/\s+/g,' ').trim();
+  if(!t||voiceMode()==='off')return t;
+  for(const [a,b] of VOICE_FIXES)t=t.replace(a,b);
+  try{const own=JSON.parse(localStorage.getItem('voice_fixes')||'[]');for(const [a,b] of own)t=t.replace(new RegExp('\\b'+a+'\\b','gi'),b);}catch(_){}
+  t=t.replace(/\bi\b/g,'I').replace(/\bi'(m|ve|ll|d)\b/gi,(m,x)=>"I'"+x.toLowerCase());
+  t=t.replace(/\s+([.,!?])/g,'$1').replace(/([.!?])(?=[A-Za-z])/g,'$1 ');
+  t=t.replace(/(^|[.!?]\s+)([a-z])/g,(m,a,b)=>a+b.toUpperCase());
+  if(!/[.!?]$/.test(t))t+='.';
+  return t;}
+function voiceTyping(btn,box,tell){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  const st={on:false,rec:null,done:'',sess:'',live:'',base:'',lang:'',t0:0,tick:null,lock:null};
+  try{st.lang=localStorage.getItem('voice_lang')||'en-GH';}catch(_){st.lang='en-GH';}
+  const android=/Android/i.test(navigator.userAgent);
+  const liveEl=document.createElement('div');
+  liveEl.style.cssText='color:#9a9a9a;font-style:italic;font-size:13px;min-height:0;margin:4px 2px 0;white-space:pre-wrap';
+  box.insertAdjacentElement('afterend',liveEl);
+  const sel=document.createElement('select');
+  sel.title='Auto-correct: Light = names, I and capitals (never removes a word). Off = exactly what Google heard.';
+  sel.style.cssText='margin-left:6px;padding:6px;border-radius:10px;border:1px solid #333;background:#151515;color:#ddd;font-size:13px;max-width:150px';
+  sel.innerHTML='<option value="light">Auto-correct: Light</option><option value="off">Auto-correct: Off</option>';
+  sel.value=voiceMode();sel.onchange=()=>{try{localStorage.setItem('voice_clean',sel.value);}catch(_){}};
+  btn.insertAdjacentElement('afterend',sel);
+  const label=()=>{const s=Math.floor((Date.now()-st.t0)/1000);btn.textContent=`⏹ Stop ${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;};
+  const show=()=>{box.value=[st.base,st.done,st.sess].filter(Boolean).join(' ');box.scrollTop=box.scrollHeight;
+    liveEl.textContent=st.live?'🎤 '+st.live:'';};
+  const keep=()=>{const s=[st.sess,st.live].filter(Boolean).join(' ').trim();st.sess='';st.live='';
+    if(!s)return;if(st.done&&!/[.!?]$/.test(st.done))st.done+='.';st.done=(st.done+' '+s).trim();};
+  function one(){
+    let r;try{r=new SR();}catch(e){stop();return;}
+    st.rec=r;r.lang=st.lang;r.continuous=true;r.interimResults=true;r.maxAlternatives=1;
+    r.onresult=e=>{const fin=[];let tmp='';
+      for(let i=0;i<e.results.length;i++){const x=String(e.results[i][0].transcript||'').trim();if(!x)continue;
+        if(e.results[i].isFinal){const last=fin[fin.length-1];
+          if(android&&last&&x.toLowerCase().startsWith(last.toLowerCase()))fin[fin.length-1]=x;   // phone repeats the words: keep the longest
+          else if(!(android&&last&&last.toLowerCase().startsWith(x.toLowerCase())))fin.push(x);}
+        else tmp+=' '+x;}
+      st.sess=fin.join(' ');st.live=tmp.trim();show();};
+    r.onerror=e=>{if(e.error==='language-not-supported'&&st.lang!=='en-US'){st.lang='en-US';try{localStorage.setItem('voice_lang','en-US');}catch(_){}}
+      else if(e.error==='not-allowed'||e.error==='service-not-allowed'){st.on=false;tell&&tell('Allow the microphone for this page, then tap Speak again.');}};
+    r.onend=()=>{keep();show();if(st.on)one();else end();};
+    try{r.start();}catch(e){setTimeout(()=>{if(st.on)one();},300);}
+  }
+  function end(){clearInterval(st.tick);st.tick=null;btn.textContent='🎤 Speak';btn.classList.remove('rec');
+    try{st.lock&&st.lock.release();}catch(_){}st.lock=null;
+    keep();const said=voiceClean(st.done);box.value=[st.base,said].filter(Boolean).join(' ');st.done='';liveEl.textContent='';
+    box.dispatchEvent(new Event('input',{bubbles:true}));}
+  function stop(){st.on=false;try{if(st.rec)st.rec.stop();else end();}catch(_){end();}}
+  btn.onclick=async()=>{
+    if(!SR){tell&&tell('Voice typing is not in this browser. Tap the box and use the 🎤 on your keyboard (or Win+H).');box.focus();return;}
+    if(st.on){stop();return;}
+    st.on=true;st.done='';st.sess='';st.live='';st.base=box.value.trim();st.t0=Date.now();
+    btn.classList.add('rec');label();st.tick=setInterval(label,1000);
+    try{if(navigator.wakeLock)st.lock=await navigator.wakeLock.request('screen');}catch(_){}
+    one();};
+  return st;}
   voiceTyping($('fxMic'),$('fxText'),m=>alert(m));
   $('fxSave').onclick=async()=>{const t=$('fxText').value.trim();if(!t&&!newPics.length){alert('Write something or add a picture first.');return;}
     await save({id:Date.now(),text:t,pics:newPics,status:'new',src:'phone'});$('fxText').value='';newPics=[];drawNew();draw();};
