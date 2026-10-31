@@ -27,24 +27,24 @@
  "last_post": {
   "@matchvision707": "2026-10-31T19:25:00"
  },
- "morning_sent": true,
  "paused": false,
  "post_gap": 10,
  "posts": [
   {
-   "animation": ".github/morning/Good morning animation wide.mp4",
+   "id": "vip_morning",
+   "posted": "cloud"
+  },
+  {
    "at": "2026-10-31T06:00",
    "chat": "@matchvision707",
    "html": true,
-   "id": "morning",
-   "images": [],
-   "latest": null,
-   "posted": "cloud",
-   "text": "⚽ <b>Good Morning</b>\n\nFootball Day Is Here, 24 Matches Today\n<b>Today's Picks Are Coming Up Next</b> 👇"
-  },
-  {
-   "id": "vip_morning",
-   "posted": "cloud"
+   "id": "games",
+   "images": [
+    "media/2026-10-31/Games-2026-10-31.jpg"
+   ],
+   "latest": "2026-10-31T12:30",
+   "posted": "laptop",
+   "text": "<b>Saturday Predictions | 31 October</b>\nMatch Vision\n\nPremier League\n12:30  Chelsea vs Manchester United\n15:00  Manchester City vs Brighton\n15:00  Brentford vs Nottingham Forest\n15:00  Bournemouth vs Leeds United\n15:00  Coventry City vs Sunderland\n15:00  Hull City vs Ipswich Town\n17:30  Tottenham Hotspur vs Crystal Palace\n20:00  Aston Villa vs Fulham\n\nLaLiga\n13:00  Levante vs Atletico Madrid\n15:15  Rayo Vallecano vs Celta Vigo\n17:30  Real Betis vs Malaga\n20:00  Barcelona vs Deportivo Alaves\n\nBundesliga\n14:30  Bayer Leverkusen vs VfB Stuttgart\n14:30  Schalke 04 vs RB Leipzig\n14:30  Augsburg vs Freiburg\n14:30  Werder Bremen vs Hoffenheim\n14:30  Borussia M'gladbach vs SC Paderborn\n17:30  Bayern Munich vs Borussia Dortmund\n\nSerie A\n14:00  Bologna vs Monza\n17:00  Udinese vs AS Roma\n19:45  AC Milan vs Inter Milan\n\nLigue 1\n19:45  Troyes vs Le Mans\n\nPrimeira Liga\n20:30  Porto vs Estoril\n\nEredivisie\n20:00  Ajax vs AZ Alkmaar\n\n🎯 24 Matches Predicted Today. Correct Scores And Banker In The Video.\n👇 <b>Watch All Predictions</b>:\nhttps://www.youtube.com/@MatchVision707"
   },
   {
    "at": "2026-10-31T07:00",
@@ -74,15 +74,6 @@
  "results_cloud_wait": 10,
  "results_on": false,
  "results_posted": "laptop",
- "stats": {
-  "all_n": 58,
-  "all_w": 37,
-  "bn": 1,
-  "bw": 1,
-  "cs": 4,
-  "safe_n": 19,
-  "safe_w": 13
- },
  "stickers": {
   "results": ".github/stickers/results.webp",
   "video": ".github/stickers/video.webp"
@@ -109,7 +100,7 @@
   "brand": "MATCH VISION",
   "cs_head": "*CORRECT SCORE WIN · BIG WIN*",
   "cs_line": "🏆 *Correct Score Win: {HOME} {SCORE} {AWAY}*",
-  "cs_style": "12  Lime frame",
+  "cs_style": "13  Wide card",
   "end": "🔥 *{WON} Of {TOTAL} Won*",
   "extra": ""
  },
