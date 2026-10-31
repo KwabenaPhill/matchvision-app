@@ -458,7 +458,9 @@ def run(day, now, root, tg, log=print):
         try:
             out = os.path.join(root, 'cloud', 'wins', f'{d}-{m["n"]}.jpg')
             if cs_won:
-                if str(c.get('cs_style', '')).startswith('12'):      # 3.25.8: the lime correct score card
+                if str(c.get('cs_style', '')).startswith('13'):      # 3.31: the wide card (like the laptop)
+                    pic = draw_cs_wide(m, g['gh'], g['ga'], root, out)
+                elif str(c.get('cs_style', '')).startswith('12'):      # 3.25.8: the lime correct score card
                     _dd = datetime.date.fromisoformat(str(d)[:10])
                     pic = draw_cs_lime(m, g['gh'], g['ga'], root, out, date_label=f'{DAYS[_dd.weekday()]} · {_dd.day} {MONTHS[_dd.month - 1]}')
                 else:
@@ -1164,6 +1166,66 @@ def draw_cs_lime(m, gh, ga, root, out, fonts=FONTS, style='', brand='MATCH VISIO
     f = _font(fonts, ('InterDisplay-BlackItalic.otf', 'Inter-Black.otf'), 48)
     d.text((W / 2 - 50, H - 110), 'MV', font=f, fill=LIME)
     d.ellipse((W / 2 + 30, H - 78, W / 2 + 44, H - 64), fill=WH)
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
+
+
+def draw_cs_wide(m, gh, ga, root, out, fonts=FONTS):
+    """3.31 (Philip, 31 Oct 2026): CORRECT SCORE WON, wide 1400 x 580, like the app minimal card (same as mv_cs13.py)."""
+    from PIL import Image, ImageDraw
+    LIME, YEL, GRN, WH, DK = (214, 245, 72), (255, 201, 40), (34, 197, 94), (255, 255, 255), (10, 10, 10)
+    W, H = 1400, 580
+    im = Image.new('RGB', (W, H))
+    d = ImageDraw.Draw(im)
+    for y in range(0, H, 2):
+        for x in range(0, W, 4):
+            dx = (x - W / 2) / (W / 2); dy = (y - H * .3) / H
+            v = int(44 - 34 * min(1, dx * dx * .55 + dy * dy * 2))
+            d.rectangle((x, y, x + 3, y + 1), fill=(v, v, v))
+
+    def F(px):
+        return _font(fonts, ('Inter-Black.otf', 'InterDisplay-Black.otf'), px)
+
+    def tick(cx, cy, r):
+        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=GRN)
+        d.line([(cx - r * .45, cy), (cx - r * .12, cy + r * .36), (cx + r * .5, cy - r * .36)], fill=WH, width=max(5, int(r * .24)))
+
+    def crest(path, cx, cy, s):
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((s, s))
+            im.paste(c, (int(cx - c.width / 2), int(cy - c.height / 2)), c)
+
+    f = F(44)
+    d.text((44, 30), 'CORRECT SCORE ', font=f, fill=WH)
+    w = d.textlength('CORRECT SCORE ', font=f)
+    d.text((44 + w, 30), 'WON', font=f, fill=LIME)
+    tick(44 + w + d.textlength('WON', font=f) + 36, 56, 26)
+    crest(m.get('hc'), 330, 205, 140)
+    crest(m.get('ac'), W - 330, 205, 140)
+    for cx, t in ((330, m.get('home', '')), (W - 330, m.get('away', ''))):
+        t = str(t).upper(); px = 32
+        while px > 20 and d.textlength(t, font=F(px)) > 440:
+            px -= 2
+        d.text((cx - d.textlength(t, font=F(px)) / 2, 292), t, font=F(px), fill=WH)
+    sc = f'{gh} - {ga}'
+    d.text((W / 2 - d.textlength(sc, font=F(150)) / 2, 120), sc, font=F(150), fill=YEL)
+    x0, x1, y0, y1 = 50, W - 50, 400, 530
+    cy = (y0 + y1) / 2
+    d.rounded_rectangle((x0, y0, x1, y1), 20, fill=(16, 16, 18), outline=GRN, width=3)
+    d.ellipse((x0 + 30, cy - 28, x0 + 86, cy + 28), fill=GRN)
+    d.text((x0 + 50, cy - 20), '1', font=F(30), fill=DK)
+    d.text((x0 + 112, cy - 40), 'CORRECT SCORE', font=F(25), fill=GRN)
+    win = m.get('home') if (gh or 0) > (ga or 0) else m.get('away') if (ga or 0) > (gh or 0) else 'DRAW'
+    line = f'{gh}-{ga} {str(win).upper()}'
+    px = 46
+    while px > 26 and d.textlength(line, font=F(px)) > 900:
+        px -= 2
+    d.text((x0 + 112, cy - 6), line, font=F(px), fill=WH)
+    d.text((x1 - 100 - d.textlength('WON', font=F(42)), cy - 24), 'WON', font=F(42), fill=WH)
+    tick(x1 - 58, cy, 28)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     im.save(out, quality=92)
     return out
