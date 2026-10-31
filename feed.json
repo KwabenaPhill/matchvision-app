@@ -1,12 +1,1254 @@
 {
  "app": "Match Vision",
- "updated": "2026-10-31T23:18:37",
+ "updated": "2026-10-31T23:55:00",
  "builder": {
   "busy": false,
-  "step": "Finished: 2026-10-31 Saturday",
+  "step": "Finished: 2026-11-01 Sunday",
   "done": 1.0
  },
  "days": [
+  {
+   "date": "2026-11-01",
+   "where": "Ready to Upload",
+   "title": "SUNDAY'S FOOTBALL PREDICTIONS TODAY | 1 NOVEMBER | LIVERPOOL vs ARSENAL, OVER 1.5 & BTTS",
+   "matches": [
+    {
+     "n": 1,
+     "league": "Premier League",
+     "kickoff": "16:30",
+     "home": "Liverpool",
+     "away": "Arsenal",
+     "score": "1-1",
+     "date": "2026-11-01",
+     "odds": [
+      2.8,
+      3.25,
+      2.45
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/liverpool.png",
+     "ac": "media/crests/arsenal.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Liverpool +1.5",
+       "odds": 1.15,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.38,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Liverpool or draw",
+       "odds": 1.53,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "league": "Serie A",
+     "kickoff": "19:45",
+     "home": "Juventus",
+     "away": "Napoli",
+     "score": "1-1",
+     "date": "2026-11-01",
+     "odds": [
+      2.2,
+      3.1,
+      3.25
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/juventus.png",
+     "ac": "media/crests/napoli.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Juventus +1.5",
+       "odds": 1.14,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.24,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 1.5 goals 1st half",
+       "odds": 1.36,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "u",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "league": "Serie A",
+     "kickoff": "14:00",
+     "home": "Lazio",
+     "away": "Cagliari",
+     "score": "2-0",
+     "date": "2026-11-01",
+     "odds": [
+      1.4,
+      4.6,
+      7.0
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/lazio.png",
+     "ac": "media/crests/cagliari.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Lazio or draw",
+       "odds": 1.1,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Lazio to win",
+       "odds": 1.4,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.6,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "league": "Serie A",
+     "kickoff": "11:30",
+     "home": "Como",
+     "away": "Venezia",
+     "score": "3-0",
+     "date": "2026-11-01",
+     "odds": [
+      1.29,
+      5.75,
+      8.5
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/como.png",
+     "ac": "media/crests/venezia.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Como to score",
+       "odds": 1.08,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Como to win",
+       "odds": 1.29,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Como -1.5",
+       "odds": 1.85,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "league": "Serie A",
+     "kickoff": "14:00",
+     "home": "Frosinone",
+     "away": "Torino",
+     "score": "2-1",
+     "date": "2026-11-01",
+     "odds": [
+      2.1,
+      3.75,
+      3.1
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/frosinone.png",
+     "ac": "media/crests/torino.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Frosinone draw no bet",
+       "odds": 1.55,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "league": "Serie A",
+     "kickoff": "17:00",
+     "home": "Lecce",
+     "away": "Genoa",
+     "score": "0-1",
+     "date": "2026-11-01",
+     "odds": [
+      3.4,
+      2.9,
+      2.3
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/lecce.png",
+     "ac": "media/crests/genoa.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.18,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Genoa or draw",
+       "odds": 1.33,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 1.5 goals 1st half",
+       "odds": 1.32,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "u",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "league": "LaLiga",
+     "kickoff": "15:15",
+     "home": "Racing Santander",
+     "away": "Real Madrid",
+     "score": "1-2",
+     "date": "2026-11-01",
+     "odds": [
+      9.5,
+      7.0,
+      1.2
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/racing-santander.png",
+     "ac": "media/crests/real-madrid.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Real Madrid or draw",
+       "odds": 1.05,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Real Madrid to win",
+       "odds": 1.2,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Real Madrid over 1.5 goals",
+       "odds": 1.33,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "league": "LaLiga",
+     "kickoff": "20:00",
+     "home": "Athletic Club",
+     "away": "Real Sociedad",
+     "score": "2-1",
+     "date": "2026-11-01",
+     "odds": [
+      2.15,
+      3.4,
+      3.2
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/athletic-club.png",
+     "ac": "media/crests/real-sociedad.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Athletic Bilbao +1.5",
+       "odds": 1.14,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Athletic Bilbao to score",
+       "odds": 1.25,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 3.5 cards",
+       "odds": 1.35,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "league": "LaLiga",
+     "kickoff": "13:00",
+     "home": "Getafe",
+     "away": "Sevilla",
+     "score": "0-1",
+     "date": "2026-11-01",
+     "odds": [
+      3.2,
+      2.88,
+      2.45
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/getafe.png",
+     "ac": "media/crests/sevilla.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.16,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Sevilla or draw",
+       "odds": 1.38,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - No",
+       "odds": 1.63,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 0
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "LaLiga",
+     "kickoff": "17:30",
+     "home": "Elche",
+     "away": "Valencia",
+     "score": "1-0",
+     "date": "2026-11-01",
+     "odds": [
+      2.3,
+      3.2,
+      3.1
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/elche.png",
+     "ac": "media/crests/valencia.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Elche +1.5",
+       "odds": 1.12,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Valencia under 1.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Elche or draw",
+       "odds": 1.4,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "Bundesliga",
+     "kickoff": "16:30",
+     "home": "Eintracht Frankfurt",
+     "away": "Hamburger SV",
+     "score": "2-1",
+     "date": "2026-11-01",
+     "odds": [
+      1.53,
+      4.5,
+      5.25
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/eintracht-frankfurt.png",
+     "ac": "media/crests/hamburger-sv.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Eintracht Frankfurt or draw",
+       "odds": 1.15,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Eintracht Frankfurt to win",
+       "odds": 1.53,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.6,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "league": "Bundesliga",
+     "kickoff": "14:30",
+     "home": "Union Berlin",
+     "away": "FC Koln",
+     "score": "1-1",
+     "date": "2026-11-01",
+     "odds": [
+      2.6,
+      3.5,
+      2.5
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/union-berlin.png",
+     "ac": "media/crests/fc-koln.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "FC Koln +1.5",
+       "odds": 1.15,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "FC Koln or draw",
+       "odds": 1.44,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "league": "Ligue 1",
+     "kickoff": "19:45",
+     "home": "Marseille",
+     "away": "Toulouse",
+     "score": "2-1",
+     "date": "2026-11-01",
+     "odds": [
+      1.91,
+      3.75,
+      3.5
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/marseille.png",
+     "ac": "media/crests/toulouse.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.35,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Marseille draw no bet",
+       "odds": 1.4,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "league": "Ligue 1",
+     "kickoff": "16:15",
+     "home": "Paris FC",
+     "away": "Monaco",
+     "score": "1-1",
+     "date": "2026-11-01",
+     "odds": [
+      2.25,
+      3.4,
+      2.9
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/paris-fc.png",
+     "ac": "media/crests/monaco.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Monaco +1.5",
+       "odds": 1.14,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.33,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Monaco or draw",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "Ligue 1",
+     "kickoff": "16:15",
+     "home": "Lyon",
+     "away": "Angers",
+     "score": "2-0",
+     "date": "2026-11-01",
+     "odds": [
+      1.4,
+      4.75,
+      7.0
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/lyon.png",
+     "ac": "media/crests/angers.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Lyon or draw",
+       "odds": 1.11,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Lyon to win",
+       "odds": 1.4,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Lyon over 1.5 goals",
+       "odds": 1.53,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "league": "Ligue 1",
+     "kickoff": "14:00",
+     "home": "Strasbourg",
+     "away": "Auxerre",
+     "score": "2-1",
+     "date": "2026-11-01",
+     "odds": [
+      1.8,
+      3.9,
+      3.8
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/strasbourg.png",
+     "ac": "media/crests/auxerre.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.18,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Strasbourg or draw",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.58,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "league": "Primeira Liga",
+     "kickoff": "20:30",
+     "home": "Braga",
+     "away": "Famalicao",
+     "score": "2-1",
+     "date": "2026-11-01",
+     "odds": [
+      1.8,
+      3.25,
+      4.33
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/braga.png",
+     "ac": "media/crests/famalicao.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Braga or draw",
+       "odds": 1.2,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.28,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 4.5 cards",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "league": "Scotland Scottish League Cup",
+     "kickoff": "15:00",
+     "home": "Hearts",
+     "away": "Hibernian",
+     "score": "2-1",
+     "date": "2026-11-01",
+     "odds": [
+      1.83,
+      3.5,
+      3.5
+     ],
+     "labels": [
+      "FIRST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/hearts.png",
+     "ac": "media/crests/hibernian.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Hearts or draw",
+       "odds": 1.24,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.26,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.7,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "banker": {
+    "total": 2.02,
+    "games": [
+     {
+      "n": 3,
+      "pick": {
+       "market": "RESULT",
+       "text": "Lazio to win",
+       "odds": 1.4
+      },
+      "odds": 1.4
+     },
+     {
+      "n": 5,
+      "pick": {
+       "market": "GOALS",
+       "text": "Over 1.5 goals",
+       "odds": 1.22
+      },
+      "odds": 1.22
+     },
+     {
+      "n": 6,
+      "pick": {
+       "market": "GOALS",
+       "text": "Under 3.5 goals",
+       "odds": 1.18
+      },
+      "odds": 1.18
+     }
+    ]
+   },
+   "checklist": {
+    "YouTube": false,
+    "TikTok": false,
+    "Instagram": false,
+    "X": false,
+    "Threads": false,
+    "Telegram": false,
+    "WhatsApp": false,
+    "Community": false
+   },
+   "results": {},
+   "video_link": "",
+   "posts": [
+    {
+     "id": "games",
+     "group": "morning",
+     "title": "Today's games",
+     "when": "06:00",
+     "images": [
+      "media/2026-11-01/Games-2026-11-01.jpg"
+     ],
+     "texts": {
+      "tg": "⚽ 18 Matches Predicted Today | Sunday 1 November\nMatch Vision\n\nPremier League\n16:30  Liverpool vs Arsenal\n\nLaLiga\n13:00  Getafe vs Sevilla\n15:15  Racing Santander vs Real Madrid\n17:30  Elche vs Valencia\n20:00  Athletic Club vs Real Sociedad\n\nSerie A\n11:30  Como vs Venezia\n14:00  Lazio vs Cagliari\n14:00  Frosinone vs Torino\n17:00  Lecce vs Genoa\n19:45  Juventus vs Napoli\n\nBundesliga\n14:30  Union Berlin vs FC Koln\n16:30  Eintracht Frankfurt vs Hamburger SV\n\nLigue 1\n14:00  Strasbourg vs Auxerre\n16:15  Paris FC vs Monaco\n16:15  Lyon vs Angers\n19:45  Marseille vs Toulouse\n\nPrimeira Liga\n20:30  Braga vs Famalicao\n\nScotland Scottish League Cup\n15:00  Hearts vs Hibernian\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "⚽ *18 Matches Predicted Today | Sunday 1 November*\nMatch Vision\n\nPremier League\n16:30  Liverpool vs Arsenal\n\nLaLiga\n13:00  Getafe vs Sevilla\n15:15  Racing Santander vs Real Madrid\n17:30  Elche vs Valencia\n20:00  Athletic Club vs Real Sociedad\n\nSerie A\n11:30  Como vs Venezia\n14:00  Lazio vs Cagliari\n14:00  Frosinone vs Torino\n17:00  Lecce vs Genoa\n19:45  Juventus vs Napoli\n\nBundesliga\n14:30  Union Berlin vs FC Koln\n16:30  Eintracht Frankfurt vs Hamburger SV\n\nLigue 1\n14:00  Strasbourg vs Auxerre\n16:15  Paris FC vs Monaco\n16:15  Lyon vs Angers\n19:45  Marseille vs Toulouse\n\nPrimeira Liga\n20:30  Braga vs Famalicao\n\nScotland Scottish League Cup\n15:00  Hearts vs Hibernian\n\n👇 *Watch All Predictions*:\nhttps://t.me/matchvision707",
+      "x": "⚽ 18 Matches Predicted Today | Sunday 1 November\nMatch Vision\n\nPremier League\n16:30  Liverpool vs Arsenal\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions\n\n--- reply ---\n\nLaLiga\n13:00  Getafe vs Sevilla\n15:15  Racing Santander vs Real Madrid\n17:30  Elche vs Valencia\n20:00  Athletic Club vs Real Sociedad\n\nSerie A\n11:30  Como vs Venezia\n14:00  Lazio vs Cagliari\n14:00  Frosinone vs Torino\n17:00  Lecce vs Genoa\n19:45  Juventus vs Napoli\n\n--- reply ---\n\nBundesliga\n14:30  Union Berlin vs FC Koln\n16:30  Eintracht Frankfurt vs Hamburger SV\n\nLigue 1\n14:00  Strasbourg vs Auxerre\n16:15  Paris FC vs Monaco\n16:15  Lyon vs Angers\n19:45  Marseille vs Toulouse\n\nPrimeira Liga\n20:30  Braga vs Famalicao\n\n--- reply ---\n\nScotland Scottish League Cup\n15:00  Hearts vs Hibernian\n\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-11-01T06:00"
+    },
+    {
+     "id": "picks",
+     "group": "morning",
+     "title": "Top picks",
+     "when": "06:30",
+     "images": [
+      "media/2026-11-01/Picks-2026-11-01.jpg"
+     ],
+     "texts": {
+      "tg": "🏆 Sunday Top Picks | 1 November\nMatch Vision",
+      "wa": "🏆 *Sunday Top Picks | 1 November*\nMatch Vision",
+      "x": "🏆 Sunday Top Picks | 1 November\nMatch Vision\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-11-01T06:30"
+    },
+    {
+     "id": "banker",
+     "group": "morning",
+     "title": "Banker",
+     "when": "07:00",
+     "images": [
+      "media/2026-11-01/2-Odds-Banker-2026-11-01.jpg"
+     ],
+     "texts": {
+      "tg": "💰 Sunday 2 Odds Banker | 1 November\nMatch Vision",
+      "wa": "💰 *Sunday 2 Odds Banker | 1 November*\nMatch Vision",
+      "x": "💰 Sunday 2 Odds Banker | 1 November\nMatch Vision\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-11-01T07:00"
+    },
+    {
+     "id": "video",
+     "group": "video",
+     "title": "Video post",
+     "when": "07:00",
+     "images": [
+      "media/2026-11-01/Thumbnail-1-style-359-.jpg"
+     ],
+     "texts": {
+      "tg": "Sunday Predictions | 1 November\nMatch Vision\n\n18 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Sunday Predictions | 1 November\nMatch Vision\n\n18 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now*:\n{VIDEO_LINK}",
+      "x": "Sunday Predictions | 1 November\n{VIDEO_LINK}\n\n18 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
+     },
+     "auto": {
+      "tg": false
+     },
+     "note": "Share the YouTube video to the bot first: the link goes in by itself.",
+     "ready": false,
+     "at": "2026-11-01T07:00"
+    },
+    {
+     "id": "swipe",
+     "group": "swipe",
+     "title": "Swipe post",
+     "when": "09:00",
+     "images": [
+      "media/2026-11-01/slide-1.jpg",
+      "media/2026-11-01/slide-2.jpg",
+      "media/2026-11-01/slide-3.jpg",
+      "media/2026-11-01/slide-4.jpg",
+      "media/2026-11-01/slide-5.jpg"
+     ],
+     "texts": {
+      "ig": "FOOTBALL PREDICTIONS | Sunday 1 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "tt": "FOOTBALL PREDICTIONS | Sunday 1 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
+      "yt": "FOOTBALL PREDICTIONS | Sunday 1 November\n\n#matchvision #premierleague #epl #laliga"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-11-01T09:00"
+    },
+    {
+     "id": "short1",
+     "group": "shorts",
+     "title": "Short 1",
+     "when": "10:00",
+     "images": [
+      "media/2026-11-01/short-1.jpg"
+     ],
+     "video": "media/2026-11-01/short-1-1707236.mp4",
+     "file": "Ready to Upload\\2026-11-01 Sunday\\Shorts\\Short 1 - 5 matches (Liverpool vs Arsenal and more).mp4",
+     "texts": {
+      "tt": "SUNDAY FOOTBALL PREDICTIONS | 1 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore",
+      "ig": "SUNDAY FOOTBALL PREDICTIONS | 1 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-11-01T10:00"
+    },
+    {
+     "id": "short2",
+     "group": "shorts",
+     "title": "Short 2",
+     "when": "13:00",
+     "images": [
+      "media/2026-11-01/short-2.jpg"
+     ],
+     "video": "media/2026-11-01/short-2-2051754.mp4",
+     "file": "Ready to Upload\\2026-11-01 Sunday\\Shorts\\Short 2 - 5 matches (Lecce vs Genoa and more).mp4",
+     "texts": {
+      "tt": "SUNDAY FOOTBALL PREDICTIONS | 1 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore",
+      "ig": "SUNDAY FOOTBALL PREDICTIONS | 1 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-11-01T13:00"
+    },
+    {
+     "id": "cs",
+     "group": "swipe",
+     "title": "Correct scores post",
+     "when": "",
+     "images": [
+      "media/2026-11-01/cs-1.jpg",
+      "media/2026-11-01/cs-2.jpg",
+      "media/2026-11-01/cs-3.jpg"
+     ],
+     "texts": {
+      "tt": "SUNDAY FOOTBALL CORRECT SCORES | 1 NOVEMBER\n\nLiverpool vs Arsenal + 17 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga",
+      "ig": "SUNDAY FOOTBALL CORRECT SCORES | 1 NOVEMBER\n\nLiverpool vs Arsenal + 17 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips",
+      "yt": "🎯 Sunday Correct Scores | 1 November\nMatch Vision\n\nLiverpool vs Arsenal + 17 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
+      "tg": "🎯 *Sunday Correct Scores | 1 November*\nMatch Vision\n\nLiverpool vs Arsenal + 17 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
+      "wa": "🎯 *Sunday Correct Scores | 1 November*\nMatch Vision\n\nLiverpool vs Arsenal + 17 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
+      "x": "🎯 Sunday Correct Scores | 1 November\n\nLiverpool vs Arsenal + 17 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
+      "th": "SUNDAY FOOTBALL CORRECT SCORES | 1 NOVEMBER\n\nLiverpool vs Arsenal + 17 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true
+    }
+   ]
+  },
   {
    "date": "2026-10-31",
    "where": "Ready to Upload",
@@ -17114,2637 +18356,6 @@
    },
    "video_link": "https://youtu.be/Xdwab0SGQsc",
    "posts": null
-  },
-  {
-   "date": "2026-10-22",
-   "where": "Ready to Upload",
-   "title": "FOOTBALL PREDICTIONS TODAY | 22 October | BTTS, Over 1.5 & Over 2.5 | Europa League",
-   "matches": [
-    {
-     "n": 1,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Juventus",
-     "away": "Rennes",
-     "score": "2-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.52,
-      4.2,
-      6.0
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/juventus.png",
-     "ac": "media/crests/rennes.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 2,
-      "hh": 1,
-      "ha": 2,
-      "espn": "401915547",
-      "src": "ESPN",
-      "at": "2026-10-22T18:44:46",
-      "corners": 12,
-      "cards": 2,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Juventus to win",
-       "odds": 1.52,
-       "chance": null,
-       "rule": {
-        "t": "win",
-        "s": "h"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.28,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 8.5 corners",
-       "odds": 1.68,
-       "chance": null,
-       "rule": {
-        "t": "stat"
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 2,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Bournemouth",
-     "away": "AC Milan",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      2.9,
-      3.5,
-      2.35
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/bournemouth.png",
-     "ac": "media/crests/ac-milan.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 0,
-      "hh": 2,
-      "ha": 0,
-      "espn": "401915552",
-      "src": "ESPN",
-      "at": "2026-10-22T20:56:37",
-      "corners": 10,
-      "cards": 6,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "AC Milan or draw",
-       "odds": 1.35,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.62,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.75,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 3,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "OFI Crete",
-     "away": "Bayer Leverkusen",
-     "score": "1-3",
-     "date": "2026-10-22",
-     "odds": [
-      7.5,
-      5.0,
-      1.32
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/ofi-crete.png",
-     "ac": "media/crests/bayer-leverkusen.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 2,
-      "hh": 0,
-      "ha": 2,
-      "espn": "401915559",
-      "src": "ESPN",
-      "at": "2026-10-22T18:37:25",
-      "corners": 15,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Bayer Leverkusen to win",
-       "odds": 1.32,
-       "chance": null,
-       "rule": {
-        "t": "win",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.58,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.72,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 4,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Omonia Nicosia",
-     "away": "Benfica",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      5.2,
-      4.1,
-      1.6
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/omonia-nicosia.png",
-     "ac": "media/crests/benfica.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 4,
-      "hh": 1,
-      "ha": 1,
-      "espn": "401915544",
-      "src": "ESPN",
-      "at": "2026-10-22T20:56:37",
-      "corners": 9,
-      "cards": 5,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Benfica draw no bet",
-       "odds": 1.25,
-       "chance": null,
-       "rule": null,
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.26,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Benfica over 1.5 goals",
-       "odds": 1.65,
-       "chance": null,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 5,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Besiktas",
-     "away": "Crystal Palace",
-     "score": "2-1",
-     "date": "2026-10-22",
-     "odds": [
-      2.25,
-      3.5,
-      3.05
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/besiktas.png",
-     "ac": "media/crests/crystal-palace.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 2,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401915553",
-      "src": "ESPN",
-      "at": "2026-10-22T20:58:07",
-      "corners": 4,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.58,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Besiktas or draw",
-       "odds": 1.38,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 3.5 cards",
-       "odds": 1.65,
-       "chance": null,
-       "rule": {
-        "t": "stat"
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 6,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Sturm Graz",
-     "away": "Marseille",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      3.8,
-      3.7,
-      1.92
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/sturm-graz.png",
-     "ac": "media/crests/marseille.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 0,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401915557",
-      "src": "ESPN",
-      "at": "2026-10-22T18:37:25",
-      "corners": 6,
-      "cards": 6,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Marseille to score",
-       "odds": 1.18,
-       "chance": null,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Marseille or draw",
-       "odds": 1.28,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.7,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 7,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Celtic",
-     "away": "Celta Vigo",
-     "score": "2-2",
-     "date": "2026-10-22",
-     "odds": [
-      2.5,
-      3.5,
-      2.7
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/celtic.png",
-     "ac": "media/crests/celta-vigo.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 2,
-      "hh": 0,
-      "ha": 0,
-      "espn": "401915555",
-      "src": "ESPN",
-      "at": "2026-10-22T20:51:52",
-      "corners": 8,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.25,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.6,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 8.5 corners",
-       "odds": 1.62,
-       "chance": null,
-       "rule": {
-        "t": "stat"
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 8,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Hoffenheim",
-     "away": "Lyon",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      2.55,
-      3.6,
-      2.6
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/hoffenheim.png",
-     "ac": "media/crests/lyon.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 0,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401915543",
-      "src": "ESPN",
-      "at": "2026-10-22T20:58:07",
-      "corners": 20,
-      "cards": 3,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.22,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.55,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Lyon or draw",
-       "odds": 1.48,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 9,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Lillestrom",
-     "away": "Real Sociedad",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      5.5,
-      4.1,
-      1.55
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/lillestrom.png",
-     "ac": "media/crests/real-sociedad.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 6,
-      "hh": 0,
-      "ha": 3,
-      "espn": "401915540",
-      "src": "ESPN",
-      "at": "2026-10-22T20:48:52",
-      "corners": 7,
-      "cards": 3,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Real Sociedad draw no bet",
-       "odds": 1.24,
-       "chance": null,
-       "rule": null,
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Real Sociedad to win",
-       "odds": 1.55,
-       "chance": null,
-       "rule": {
-        "t": "win",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 9.5 corners",
-       "odds": 1.75,
-       "chance": null,
-       "rule": {
-        "t": "stat"
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 10,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Lech Poznan",
-     "away": "Sunderland",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      3.1,
-      3.45,
-      2.25
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/lech-poznan.png",
-     "ac": "media/crests/sunderland.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 1,
-      "hh": 0,
-      "ha": 1,
-      "espn": "401915546",
-      "src": "ESPN",
-      "at": "2026-10-22T18:35:59",
-      "corners": 9,
-      "cards": 1,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Sunderland or draw",
-       "odds": 1.34,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.29,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Sunderland over 1.5 goals",
-       "odds": 1.85,
-       "chance": null,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 1.5
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 11,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Dinamo Zagreb",
-     "away": "NEC Nijmegen",
-     "score": "2-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.75,
-      3.75,
-      4.5
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/dinamo-zagreb.png",
-     "ac": "media/crests/nec-nijmegen.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 4,
-      "hh": 2,
-      "ha": 2,
-      "espn": "401915556",
-      "src": "ESPN",
-      "at": "2026-10-22T18:38:54",
-      "corners": 7,
-      "cards": 3,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Dinamo Zagreb or draw",
-       "odds": 1.24,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Dinamo Zagreb to win",
-       "odds": 1.75,
-       "chance": null,
-       "rule": {
-        "t": "win",
-        "s": "h"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.36,
-       "chance": null,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 12,
-     "league": "Europa League",
-     "kickoff": "16:45",
-     "home": "Ararat-Armenia",
-     "away": "AZ Alkmaar",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      5.0,
-      4.0,
-      1.62
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/ararat-armenia.png",
-     "ac": "media/crests/az-alkmaar.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 4,
-      "hh": 0,
-      "ha": 2,
-      "espn": "401915548",
-      "src": "ESPN",
-      "at": "2026-10-22T18:37:25",
-      "corners": 11,
-      "cards": 2,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "AZ Alkmaar to score",
-       "odds": 1.16,
-       "chance": null,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "AZ Alkmaar to win",
-       "odds": 1.62,
-       "chance": null,
-       "rule": {
-        "t": "win",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.72,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 13,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Olympiacos",
-     "away": "Sparta Prague",
-     "score": "1-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.95,
-      3.5,
-      3.8
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/olympiacos.png",
-     "ac": "media/crests/sparta-prague.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 0,
-      "hh": 0,
-      "ha": 0,
-      "espn": "401915554",
-      "src": "ESPN",
-      "at": "2026-10-22T20:51:52",
-      "corners": 17,
-      "cards": 6,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Sparta Prague +1.5",
-       "odds": 1.28,
-       "chance": null,
-       "rule": null,
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.32,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.78,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 14,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "Jagiellonia Bialystok",
-     "away": "Anderlecht",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      3.2,
-      3.5,
-      2.2
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/jagiellonia-bialystok.png",
-     "ac": "media/crests/anderlecht.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 3,
-      "hh": 0,
-      "ha": 1,
-      "espn": "401915542",
-      "src": "ESPN",
-      "at": "2026-10-22T20:55:03",
-      "corners": 8,
-      "cards": 6,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Anderlecht +1.5",
-       "odds": 1.18,
-       "chance": null,
-       "rule": null,
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Anderlecht draw no bet",
-       "odds": 1.58,
-       "chance": null,
-       "rule": null,
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.28,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 15,
-     "league": "Europa League",
-     "kickoff": "19:00",
-     "home": "NK Celje",
-     "away": "RB Salzburg",
-     "score": "0-2",
-     "date": "2026-10-22",
-     "odds": [
-      4.1,
-      3.75,
-      1.83
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/nk-celje.png",
-     "ac": "media/crests/rb-salzburg.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 2,
-      "hh": 0,
-      "ha": 1,
-      "espn": "401915541",
-      "src": "ESPN",
-      "at": "2026-10-22T20:55:03",
-      "corners": 5,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "RB Salzburg draw no bet",
-       "odds": 1.36,
-       "chance": null,
-       "rule": null,
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "RB Salzburg to win",
-       "odds": 1.83,
-       "chance": null,
-       "rule": {
-        "t": "win",
-        "s": "a"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "RB Salzburg over 1.5 goals",
-       "odds": 1.78,
-       "chance": null,
-       "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 16,
-     "league": "Conference League",
-     "kickoff": "19:00",
-     "home": "Ajax",
-     "away": "Atalanta",
-     "score": "1-2",
-     "date": "2026-10-22",
-     "odds": [
-      3.0,
-      3.5,
-      2.25
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/ajax.png",
-     "ac": "media/crests/atalanta.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 0,
-      "hh": 0,
-      "ha": 0,
-      "espn": "401915837",
-      "src": "ESPN",
-      "at": "2026-10-22T20:51:52",
-      "corners": 17,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.54,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Atalanta or draw",
-       "odds": 1.36,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.65,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 17,
-     "league": "Conference League",
-     "kickoff": "19:00",
-     "home": "Monaco",
-     "away": "Freiburg",
-     "score": "2-1",
-     "date": "2026-10-22",
-     "odds": [
-      2.05,
-      3.55,
-      3.45
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/monaco.png",
-     "ac": "media/crests/freiburg.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 3,
-      "ga": 0,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401915836",
-      "src": "ESPN",
-      "at": "2026-10-22T20:56:37",
-      "corners": 17,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.34,
-       "chance": null,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.6,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Monaco or draw",
-       "odds": 1.3,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 18,
-     "league": "Conference League",
-     "kickoff": "16:45",
-     "home": "Jablonec",
-     "away": "Brighton",
-     "score": "1-3",
-     "date": "2026-10-22",
-     "odds": [
-      7.5,
-      4.8,
-      1.35
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/jablonec.png",
-     "ac": "media/crests/brighton.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 0,
-      "hh": 0,
-      "ha": 0,
-      "espn": "401915842",
-      "src": "ESPN",
-      "at": "2026-10-22T18:37:25",
-      "corners": 9,
-      "cards": 5,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Brighton & Hove Albion to win",
-       "odds": 1.35,
-       "chance": null,
-       "rule": null,
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Brighton & Hove Albion over 1.5 goals",
-       "odds": 1.48,
-       "chance": null,
-       "rule": null,
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.62,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 19,
-     "league": "Conference League",
-     "kickoff": "16:45",
-     "home": "Trabzonspor",
-     "away": "Hearts of Oak",
-     "score": "3-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.42,
-      4.5,
-      7.0
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/trabzonspor.png",
-     "ac": "media/crests/hearts-of-oak.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 0,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401915745",
-      "src": "ESPN",
-      "at": "2026-10-22T18:43:17",
-      "corners": 7,
-      "cards": 5,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Trabzonspor over 1.5 goals",
-       "odds": 1.48,
-       "chance": null,
-       "rule": {
-        "t": "ts",
-        "s": "h",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Trabzonspor to win",
-       "odds": 1.42,
-       "chance": null,
-       "rule": {
-        "t": "win",
-        "s": "h"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.68,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 20,
-     "league": "Conference League",
-     "kickoff": "14:30",
-     "home": "Kairat Almaty",
-     "away": "Panathinaikos",
-     "score": "1-1",
-     "date": "2026-10-22",
-     "odds": [
-      3.6,
-      3.4,
-      2.05
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": {
-      "img": "media/wins/2026-10-22-20.jpg",
-      "text": "✅ *Kairat Almaty 1-5 Panathinaikos*\n\n✔️ Over 8.5 corners\n✔️ Panathinaikos or draw\n✔️ BTTS - Yes\n\n🔥 *3 Of 3 Won*"
-     },
-     "hc": "media/crests/kairat-almaty.png",
-     "ac": "media/crests/panathinaikos.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 5,
-      "hh": 0,
-      "ha": 2,
-      "espn": "401915846",
-      "src": "ESPN",
-      "at": "2026-10-22T16:24:53",
-      "corners": 9,
-      "cards": 4,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 8.5 corners",
-       "odds": 1.45,
-       "chance": null,
-       "rule": {
-        "t": "stat"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Panathinaikos or draw",
-       "odds": 1.28,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.76,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 21,
-     "league": "Conference League",
-     "kickoff": "16:45",
-     "home": "Getafe",
-     "away": "Lugano",
-     "score": "1-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.95,
-      3.4,
-      3.9
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/getafe.png",
-     "ac": "media/crests/lugano.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 5,
-      "hh": 1,
-      "ha": 3,
-      "espn": "401915840",
-      "src": "ESPN",
-      "at": "2026-10-22T18:38:54",
-      "corners": 17,
-      "cards": 6,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 3.5 cards",
-       "odds": 1.45,
-       "chance": null,
-       "rule": {
-        "t": "stat"
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Lugano +1.5",
-       "odds": 1.32,
-       "chance": null,
-       "rule": null,
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.88,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 22,
-     "league": "Conference League",
-     "kickoff": "16:45",
-     "home": "Crvena Zvezda",
-     "away": "FC Copenhagen",
-     "score": "2-2",
-     "date": "2026-10-22",
-     "odds": [
-      2.3,
-      3.4,
-      3.0
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/crvena-zvezda.png",
-     "ac": "media/crests/fc-copenhagen.png",
-     "live": {
-      "st": "FT",
-      "min": 90,
-      "gh": 2,
-      "ga": 2,
-      "hh": 2,
-      "ha": 1,
-      "espn": "1636397",
-      "src": "API-Football",
-      "at": "2026-10-22T18:41:51",
-      "dtries": 1,
-      "done_details": false
-     },
-     "picks": [
-      {
-       "text": "Over 1.5 goals",
-       "odds": 1.26,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.62,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "Over 8.5 corners",
-       "odds": 1.68,
-       "chance": null,
-       "rule": {
-        "t": "stat"
-       },
-       "live": null,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 23,
-     "league": "Conference League",
-     "kickoff": "19:00",
-     "home": "Braga",
-     "away": "Gent",
-     "score": "1-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.9,
-      3.6,
-      3.85
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/braga.png",
-     "ac": "media/crests/gent.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 2,
-      "ga": 0,
-      "hh": 1,
-      "ha": 0,
-      "espn": "401915832",
-      "src": "ESPN",
-      "at": "2026-10-22T20:55:03",
-      "corners": 9,
-      "cards": 3,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Gent +1.5",
-       "odds": 1.3,
-       "chance": null,
-       "rule": null,
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.35,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.74,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 24,
-     "league": "Conference League",
-     "kickoff": "19:00",
-     "home": "Lincoln Red Imps",
-     "away": "FC Twente",
-     "score": "0-3",
-     "date": "2026-10-22",
-     "odds": [
-      11.0,
-      5.8,
-      1.22
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/lincoln-red-imps.png",
-     "ac": "media/crests/fc-twente.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 1,
-      "ga": 4,
-      "hh": 1,
-      "ha": 2,
-      "espn": "401915833",
-      "src": "ESPN",
-      "at": "2026-10-22T20:55:03",
-      "corners": 7,
-      "cards": 2,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.25,
-       "chance": null,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "FC Twente -1.5",
-       "odds": 1.55,
-       "chance": null,
-       "rule": null,
-       "live": true,
-       "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 1.65,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 25,
-     "league": "Conference League",
-     "kickoff": "19:00",
-     "home": "FC Midtjylland",
-     "away": "Sint-Truiden",
-     "score": "2-1",
-     "date": "2026-10-22",
-     "odds": [
-      1.85,
-      3.65,
-      4.0
-     ],
-     "labels": [
-      "FIRST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/fc-midtjylland.png",
-     "ac": "media/crests/sint-truiden.png",
-     "live": {
-      "st": "FT",
-      "min": null,
-      "gh": 0,
-      "ga": 1,
-      "hh": 0,
-      "ha": 1,
-      "espn": "401915835",
-      "src": "ESPN",
-      "at": "2026-10-22T20:53:33",
-      "corners": 13,
-      "cards": 3,
-      "dtries": 1,
-      "done_details": true
-     },
-     "picks": [
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.56,
-       "chance": null,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "FC Midtjylland or draw",
-       "odds": 1.25,
-       "chance": null,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": false,
-       "mine": false
-      },
-      {
-       "text": "Over 2.5 goals",
-       "odds": 1.66,
-       "chance": null,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": false,
-       "mine": false
-      }
-     ]
-    }
-   ],
-   "banker": {
-    "total": 2.0,
-    "games": [
-     {
-      "n": 1,
-      "pick": {
-       "market": "GOALS",
-       "text": "Over 1.5 goals",
-       "odds": 1.28
-      },
-      "odds": 1.28
-     },
-     {
-      "n": 4,
-      "pick": {
-       "market": "DRAW NO BET",
-       "text": "Benfica draw no bet",
-       "odds": 1.25
-      },
-      "odds": 1.25
-     },
-     {
-      "n": 7,
-      "pick": {
-       "market": "GOALS",
-       "text": "Over 1.5 goals",
-       "odds": 1.25
-      },
-      "odds": 1.25
-     }
-    ]
-   },
-   "checklist": {
-    "YouTube": true,
-    "TikTok": false,
-    "Instagram": false,
-    "X": false,
-    "Threads": false,
-    "Telegram": false,
-    "WhatsApp": false,
-    "Community": false
-   },
-   "results": {
-    "date": "2026-10-22",
-    "matches": [
-     {
-      "n": 1,
-      "home": "Juventus",
-      "away": "Rennes",
-      "status": "FT",
-      "score": "2-2",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Juventus to win",
-        "market": "RESULT",
-        "odds": 1.52,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.28,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 8.5 corners",
-        "market": "CORNERS",
-        "odds": 1.68,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 2,
-      "home": "Bournemouth",
-      "away": "AC Milan",
-      "status": "FT",
-      "score": "3-0",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "AC Milan or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.35,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.62,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.75,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 3,
-      "home": "OFI Crete",
-      "away": "Bayer Leverkusen",
-      "status": "FT",
-      "score": "0-2",
-      "predicted": "1-3",
-      "picks": [
-       {
-        "text": "Bayer Leverkusen to win",
-        "market": "RESULT",
-        "odds": 1.32,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.58,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.72,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 4,
-      "home": "Omonia Nicosia",
-      "away": "Benfica",
-      "status": "FT",
-      "score": "1-4",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Benfica draw no bet",
-        "market": "DRAW NO BET",
-        "odds": 1.25,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.26,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Benfica over 1.5 goals",
-        "market": "TEAM GOALS",
-        "odds": 1.65,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 5,
-      "home": "Besiktas",
-      "away": "Crystal Palace",
-      "status": "FT",
-      "score": "2-2",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.58,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Besiktas or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.38,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 3.5 cards",
-        "market": "CARDS",
-        "odds": 1.65,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 6,
-      "home": "Sturm Graz",
-      "away": "Marseille",
-      "status": "FT",
-      "score": "1-0",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Marseille to score",
-        "market": "TEAM GOALS",
-        "odds": 1.18,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Marseille or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.28,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.7,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 7,
-      "home": "Celtic",
-      "away": "Celta Vigo",
-      "status": "FT",
-      "score": "1-2",
-      "predicted": "2-2",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.25,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.6,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 8.5 corners",
-        "market": "CORNERS",
-        "odds": 1.62,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 8,
-      "home": "Hoffenheim",
-      "away": "Lyon",
-      "status": "FT",
-      "score": "3-0",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.22,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.55,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Lyon or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.48,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 9,
-      "home": "Lillestrom",
-      "away": "Real Sociedad",
-      "status": "FT",
-      "score": "0-6",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Real Sociedad draw no bet",
-        "market": "DRAW NO BET",
-        "odds": 1.24,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Real Sociedad to win",
-        "market": "RESULT",
-        "odds": 1.55,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 9.5 corners",
-        "market": "CORNERS",
-        "odds": 1.75,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 10,
-      "home": "Lech Poznan",
-      "away": "Sunderland",
-      "status": "FT",
-      "score": "1-1",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Sunderland or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.34,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.29,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Sunderland over 1.5 goals",
-        "market": "TEAM GOALS",
-        "odds": 1.85,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 11,
-      "home": "Dinamo Zagreb",
-      "away": "NEC Nijmegen",
-      "status": "FT",
-      "score": "2-4",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Dinamo Zagreb or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.24,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Dinamo Zagreb to win",
-        "market": "RESULT",
-        "odds": 1.75,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Over 0.5 goals 1st half",
-        "market": "FIRST HALF",
-        "odds": 1.36,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 12,
-      "home": "Ararat-Armenia",
-      "away": "AZ Alkmaar",
-      "status": "FT",
-      "score": "0-4",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "AZ Alkmaar to score",
-        "market": "TEAM GOALS",
-        "odds": 1.16,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "AZ Alkmaar to win",
-        "market": "RESULT",
-        "odds": 1.62,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.72,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 13,
-      "home": "Olympiacos",
-      "away": "Sparta Prague",
-      "status": "FT",
-      "score": "1-0",
-      "predicted": "1-1",
-      "picks": [
-       {
-        "text": "Sparta Prague +1.5",
-        "market": "HANDICAP",
-        "odds": 1.28,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.32,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.78,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 14,
-      "home": "Jagiellonia Bialystok",
-      "away": "Anderlecht",
-      "status": "FT",
-      "score": "0-3",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "Anderlecht +1.5",
-        "market": "HANDICAP",
-        "odds": 1.18,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Anderlecht draw no bet",
-        "market": "DRAW NO BET",
-        "odds": 1.58,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.28,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 15,
-      "home": "NK Celje",
-      "away": "RB Salzburg",
-      "status": "FT",
-      "score": "2-2",
-      "predicted": "0-2",
-      "picks": [
-       {
-        "text": "RB Salzburg draw no bet",
-        "market": "DRAW NO BET",
-        "odds": 1.36,
-        "p": null,
-        "won": null
-       },
-       {
-        "text": "RB Salzburg to win",
-        "market": "RESULT",
-        "odds": 1.83,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "RB Salzburg over 1.5 goals",
-        "market": "TEAM GOALS",
-        "odds": 1.78,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 16,
-      "home": "Ajax",
-      "away": "Atalanta",
-      "status": "FT",
-      "score": "2-0",
-      "predicted": "1-2",
-      "picks": [
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.54,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Atalanta or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.36,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.65,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 17,
-      "home": "Monaco",
-      "away": "Freiburg",
-      "status": "FT",
-      "score": "3-0",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "Over 0.5 goals 1st half",
-        "market": "FIRST HALF",
-        "odds": 1.34,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.6,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Monaco or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.3,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 18,
-      "home": "Jablonec",
-      "away": "Brighton",
-      "status": "FT",
-      "score": "0-0",
-      "predicted": "1-3",
-      "picks": [
-       {
-        "text": "Brighton & Hove Albion to win",
-        "market": "RESULT",
-        "odds": 1.35,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Brighton & Hove Albion over 1.5 goals",
-        "market": "TEAM GOALS",
-        "odds": 1.48,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.62,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 19,
-      "home": "Trabzonspor",
-      "away": "Hearts of Oak",
-      "status": "FT",
-      "score": "2-0",
-      "predicted": "3-1",
-      "picks": [
-       {
-        "text": "Trabzonspor over 1.5 goals",
-        "market": "TEAM GOALS",
-        "odds": 1.48,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Trabzonspor to win",
-        "market": "RESULT",
-        "odds": 1.42,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.68,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 20,
-      "home": "Kairat Almaty",
-      "away": "Panathinaikos",
-      "status": "FT",
-      "score": "1-5",
-      "predicted": "1-1",
-      "picks": [
-       {
-        "text": "Over 8.5 corners",
-        "market": "CORNERS",
-        "odds": 1.45,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Panathinaikos or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.28,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.76,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 21,
-      "home": "Getafe",
-      "away": "Lugano",
-      "status": "FT",
-      "score": "2-5",
-      "predicted": "1-1",
-      "picks": [
-       {
-        "text": "Over 3.5 cards",
-        "market": "CARDS",
-        "odds": 1.45,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Lugano +1.5",
-        "market": "HANDICAP",
-        "odds": 1.32,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.88,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 22,
-      "home": "Crvena Zvezda",
-      "away": "FC Copenhagen",
-      "status": "FT",
-      "score": "2-2",
-      "predicted": "2-2",
-      "picks": [
-       {
-        "text": "Over 1.5 goals",
-        "market": "GOALS",
-        "odds": 1.26,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.62,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "Over 8.5 corners",
-        "market": "CORNERS",
-        "odds": 1.68,
-        "p": null,
-        "won": true
-       }
-      ]
-     },
-     {
-      "n": 23,
-      "home": "Braga",
-      "away": "Gent",
-      "status": "FT",
-      "score": "2-0",
-      "predicted": "1-1",
-      "picks": [
-       {
-        "text": "Gent +1.5",
-        "market": "HANDICAP",
-        "odds": 1.3,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Under 3.5 goals",
-        "market": "GOALS",
-        "odds": 1.35,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.74,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 24,
-      "home": "Lincoln Red Imps",
-      "away": "FC Twente",
-      "status": "FT",
-      "score": "1-4",
-      "predicted": "0-3",
-      "picks": [
-       {
-        "text": "Over 0.5 goals 1st half",
-        "market": "FIRST HALF",
-        "odds": 1.25,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "FC Twente -1.5",
-        "market": "HANDICAP",
-        "odds": 1.55,
-        "p": null,
-        "won": true
-       },
-       {
-        "text": "BTTS - No",
-        "market": "BTTS",
-        "odds": 1.65,
-        "p": null,
-        "won": false
-       }
-      ]
-     },
-     {
-      "n": 25,
-      "home": "FC Midtjylland",
-      "away": "Sint-Truiden",
-      "status": "FT",
-      "score": "0-1",
-      "predicted": "2-1",
-      "picks": [
-       {
-        "text": "BTTS - Yes",
-        "market": "BTTS",
-        "odds": 1.56,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "FC Midtjylland or draw",
-        "market": "DOUBLE CHANCE",
-        "odds": 1.25,
-        "p": null,
-        "won": false
-       },
-       {
-        "text": "Over 2.5 goals",
-        "market": "GOALS",
-        "odds": 1.66,
-        "p": null,
-        "won": false
-       }
-      ]
-     }
-    ],
-    "checked": "2026-10-22T21:08:57",
-    "banker": {
-     "total": 2.0,
-     "won": true
-    },
-    "won": 43,
-    "lost": 31,
-    "waiting": 0,
-    "pick1": [
-     16,
-     24
-    ],
-    "correct_scores": 1
-   },
-   "video_link": "https://youtu.be/YSoPH7RXspg",
-   "posts": null
   }
  ],
  "win_rate": {
@@ -27479,9 +26090,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "DdOTSBGZIHNJCqXqLCmZvg==",
-  "nonce": "f+0XezPgxkfQMG0T/MvUtA==",
-  "ct": "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",
-  "mac": "gaVm3KaZWej1W4FQfLPhWnz+O/3H5YPtfQRXq+k4zf4="
+  "salt": "zt0SNtuxFkv9qZGP46eReg==",
+  "nonce": "mPvMMEajCZysW4fwOCGQqg==",
+  "ct": "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",
+  "mac": "AafVPdJnqlNb7Mzi+1IiNqtNIe9+0lZYAUE2phs0BCI="
  }
 }
