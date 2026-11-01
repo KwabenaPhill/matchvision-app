@@ -98,10 +98,12 @@ def unlock(enc):
     return json.loads(bytes(a ^ b for a, b in zip(ct, out)).decode('utf-8'))
 
 
-def post_locked(item):
+def post_locked(item, day=None):
     import base64
     import tempfile
     sec = unlock(item['enc'])
+    if day is not None:                               # 3.32: the VISION PREMIUM sticker before every Premium post
+        sticker(day, 'premium', sec.get('chat'), tag=item.get('id', ''))
     tmp = None
     if sec.get('img'):
         fd, tmp = tempfile.mkstemp(suffix='.jpg')
@@ -124,18 +126,43 @@ def post_locked(item):
                 pass
 
 
-def sticker(day, kind, chat):
-    """3.20.1: the TODAY'S GAMES / NEW VIDEO / RESULTS sticker just before that post, once a day (laptop off too)."""
+def wide_photo(full):
+    """3.32 (Philip, 1 Nov: "the sticker is small, make it as long as today's picks"): the sticker as a WIDE picture,
+    1280 wide like the posts (a Telegram sticker is never wider than 512)."""
+    try:
+        from PIL import Image
+        sk = Image.open(full).convert('RGBA')
+        k = 1280 / sk.width
+        sk = sk.resize((1280, max(1, int(sk.height * k))), Image.LANCZOS)
+        pad = 6 if sk.height <= 140 else 20
+        bg = Image.new('RGB', (1280, sk.height + 2 * pad), (11, 12, 14))
+        bg.paste(sk, (0, pad), sk)
+        out = os.path.join(ROOT, '.github', '_sticker_wide.jpg')
+        bg.save(out, quality=92)
+        return out
+    except Exception as ex:
+        print(f'Wide sticker not made ({ex}): the small sticker goes.')
+        return None
+
+
+def sticker(day, kind, chat, tag=''):
+    """3.20.1: the TODAY'S GAMES / NEW VIDEO / RESULTS sticker just before that post, once a day (laptop off too).
+    3.32: VISION PREMIUM before every Premium post (tag = which post)."""
     path = (day.get('stickers') or {}).get(kind)
     sent = day.setdefault('stickers_sent', [])
-    if not path or kind in sent or not chat:
+    key = f'{kind} {tag}'.strip()
+    if not path or key in sent or not chat:
         return
     full = os.path.join(ROOT, path)
     if not os.path.isfile(full):
         return
     try:
-        tg('sendSticker', {'chat_id': chat}, {'sticker': full})
-        sent.append(kind)
+        wide = wide_photo(full)
+        if wide:
+            tg('sendPhoto', {'chat_id': chat}, {'photo': wide})
+        else:
+            tg('sendSticker', {'chat_id': chat}, {'sticker': full})
+        sent.append(key)
         print(f'{day.get("date")}: {kind} sticker sent by the cloud.')
     except Exception as ex:
         print(f'{day.get("date")}: {kind} sticker not sent ({ex}).')
@@ -189,7 +216,7 @@ def main():
                 continue                               # 3.25: 10 minutes after the last post on this channel
             try:
                 if it.get('enc'):                      # 3.25: Vision Premium (locked)
-                    post_locked(it)
+                    post_locked(it, day)
                 else:
                     if it.get('id') in ('games', 'video'):
                         sticker(day, it['id'], it.get('chat'))
@@ -264,7 +291,13 @@ def wait_loop(minutes):
     _git('config', 'user.email', 'cloud-poster@users.noreply.github.com')
     loops = 0
     while True:
+        # 3.32 (Philip: "05:00 exactly, not even 1 second more"): get the newest file a few seconds BEFORE the minute,
+        # then wait for second 0 and post at once
+        wait = 60 - time.time() % 60
+        if wait > 8:
+            time.sleep(wait - 8)
         _git('pull', '--rebase', '-X', 'theirs', '-q')
+        time.sleep(max(0.0, 60 - time.time() % 60) if time.time() % 60 > 30 else 0)
         os.environ['CLOUD_WINS'] = '1' if loops % 3 == 0 else '0'    # the scoreboards every 3 minutes
         try:
             main()
@@ -281,7 +314,6 @@ def wait_loop(minutes):
         loops += 1
         if time.time() > end:
             break
-        time.sleep(max(5, 60 - time.time() % 60))     # on the minute
 
 
 if __name__ == '__main__':
