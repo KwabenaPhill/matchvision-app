@@ -157,7 +157,17 @@ def sticker(day, kind, chat, tag=''):
     if not os.path.isfile(full):
         return
     try:
-        wide = wide_photo(full)
+        wide = wide_photo(full) if day.get('sticker_photo', False) else None
+        if not wide:                                  # 3.33.2 (Philip): a real sticker, 512 wide at most
+            try:
+                from PIL import Image
+                sk = Image.open(full).convert('RGBA')
+                if sk.width > 512:
+                    sk = sk.resize((512, max(1, int(sk.height * 512 / sk.width))), Image.LANCZOS)
+                    full = os.path.join(ROOT, '.github', '_sticker_512.webp')
+                    sk.save(full, 'WEBP', lossless=True)
+            except Exception:
+                pass
         if wide:
             tg('sendPhoto', {'chat_id': chat}, {'photo': wide})
         else:
