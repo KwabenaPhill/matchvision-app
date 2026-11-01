@@ -23,7 +23,8 @@
  "banker_on": true,
  "cs_only": true,
  "date": "2026-11-01",
- "grace_minutes": 3,
+ "exact": true,
+ "grace_minutes": 0,
  "last_post": {
   "@matchvision707": "2026-11-01T07:03:00"
  },
@@ -35,7 +36,7 @@
    "posted": "cloud"
   },
   {
-   "at": "2026-11-01T06:00",
+   "at": "2026-11-01T05:00",
    "chat": "@matchvision707",
    "html": true,
    "id": "games",
@@ -53,7 +54,7 @@
    "posted": "cloud"
   },
   {
-   "at": "2026-11-01T07:00",
+   "at": "2026-11-01T06:00",
    "chat": "@matchvision707",
    "html": true,
    "id": "video",
@@ -75,8 +76,10 @@
  "results_on": false,
  "results_posted": null,
  "stickers": {
+  "premium": ".github/stickers/premium.webp",
   "results": ".github/stickers/results.webp",
-  "video": ".github/stickers/video.webp"
+  "video": ".github/stickers/video.webp",
+  "vip": ".github/stickers/vip.webp"
  },
  "stickers_sent": [
   "video"
