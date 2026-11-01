@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.30</title>
+<title>Match Vision 3.31</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.30';   // APP_VERSION = '3.30' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.31';   // APP_VERSION = '3.31' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -2066,9 +2066,12 @@ window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,open
   function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
   async function draw(){const L=(await all()).filter(n=>!n.gone);const open=L.filter(n=>st(n)==='new');const c=$('fxCount');c.style.display=open.length?'block':'none';c.textContent=open.length;
     /* 1.3 (Philip, 30 Oct): grouped like the laptop Fix Hub - New on top, then Sent to Claude, then Fixed */
-    const card=n=>`<div class="note"><button class="x" data-del="${n.id}">✕</button><small>${new Date(n.id).toLocaleString()}${st(n)==='sent'?' · sent ✓':st(n)==='fixed'?' · fixed ✅':''}${n.src==='laptop'?' · 💻 from laptop':''}</small><div>${esc(n.text||'(picture only)').replace(/\n/g,'<br>')}</div>${(n.pics||[]).length?`<div class="pics">${n.pics.map(p=>`<img src="${p}">`).join('')}</div>`:''}</div>`;const R=L.slice().reverse();const gN=R.filter(n=>st(n)==='new'),gS=R.filter(n=>st(n)==='sent'),gF=R.filter(n=>st(n)==='fixed');
-    const grp=(t,a,open)=>a.length?`<details ${open?'open':''} style="margin:10px 0"><summary style="cursor:pointer;font-weight:700;padding:8px 0">${t} (${a.length})</summary>${a.map(card).join('')}</details>`:'';
-    $('fxList').innerHTML=L.length?(`<div style="font-weight:700;margin:10px 0 4px">🆕 New (${gN.length})</div>`+(gN.length?gN.map(card).join(''):'<div class="muted">Nothing new. Sent notes are below.</div>')+grp('📤 Sent to Claude',gS,false)+grp('✅ Fixed',gF,false)):'<div class="muted">No notes yet.</div>';
+    /* 1.4 (Philip, 1 Nov): the notes look like the laptop Fix Hub: status chip, phone/laptop chip, date, colour line */
+    const TG={new:['NEW','#3a1e1f','#ff8a8d','#ff5a5f'],sent:['SENT ✓','#1d2a3d','#6aa8ff','#4b8bf5'],fixed:['FIXED ✅','#173326','#4ade80','#22c55e']};
+    const chip=(t,bg,fg)=>`<span style="display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:800;letter-spacing:.3px;margin:0 5px 5px 0;background:${bg};color:${fg}">${t}</span>`;
+    const card=n=>{const T=TG[st(n)]||TG.new;return `<div class="note" style="border-left:4px solid ${T[3]}${st(n)==='fixed'?';background:#13201a':''}"><button class="x" data-del="${n.id}">✕</button><div>${chip(T[0],T[1],T[2])}${chip(n.src==='laptop'?'💻 Laptop':'📱 Phone','#222226','#bbb')}${chip(new Date(n.id).toLocaleString([],{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}),'#222226','#999')}</div><div style="margin-top:2px;line-height:1.4">${esc(n.text||'(picture only)').replace(/\n/g,'<br>')}</div>${(n.pics||[]).length?`<div class="pics">${n.pics.map(p=>`<img src="${p}">`).join('')}</div>`:''}</div>`;};const R=L.slice().reverse();const gN=R.filter(n=>st(n)==='new'),gS=R.filter(n=>st(n)==='sent'),gF=R.filter(n=>st(n)==='fixed');
+    const grp=(t,a,open,col)=>a.length?`<details ${open?'open':''} style="margin:10px 0"><summary style="cursor:pointer;font-weight:800;padding:11px 14px;border-radius:14px;background:#1b1c1f;border:1px solid #2a2b2f;color:${col||'#fff'}">${t} (${a.length})</summary>${a.map(card).join('')}</details>`:'';
+    $('fxList').innerHTML=L.length?(`<div style="font-weight:700;margin:10px 0 4px">🆕 New (${gN.length})</div>`+(gN.length?gN.map(card).join(''):'<div class="muted">Nothing new. Sent notes are below.</div>')+grp('📤 Sent to Claude',gS,false,'#6aa8ff')+grp('✅ Fixed',gF,false,'#4ade80')):'<div class="muted">No notes yet.</div>';
     syncLine();}
   function drawNew(){$('fxNewPics').innerHTML=newPics.map(p=>`<img src="${p}">`).join('');}
   $('fxBtn').onclick=()=>{$('fxSheet').style.display='block';draw();kick();};
@@ -2182,17 +2185,17 @@ function voiceTyping(btn,box,tell){
       try{const j=await gh('PUT',path,body);ss.sha[path]=j&&j.content&&j.content.sha;return;}
       catch(e){if(t===0&&/409|422/.test(e.message)){const cur=await gh('GET',path);ss.sha[path]=cur&&cur.sha;continue;}throw e;}}}
   async function pull(){const list=await gh('GET','fixhub/notes');if(!Array.isArray(list))return false;let ch=false;const by={};(await all()).forEach(n=>by[n.id]=n);
-    for(const f of list){const m=/^(.+)__(\d+)\.json$/.exec(f.name);if(!m||m[1]!==SLUG)continue;const path='fixhub/notes/'+f.name;if(ss.sha[path]===f.sha)continue;
+    for(const f of list){const m=/^(.+)__(\d+)\.json$/.exec(f.name);if(!m||m[1]!==SLUG)continue;const path='fixhub/notes/'+f.name;if(ss.sha[path]===f.sha&&(by[+m[2]]||(ss.dead||{})[path]))continue;   /* 1.4: a missing note is read again */
       const j=await gh('GET',path);if(!j)continue;ss.sha[path]=j.sha;let r;try{r=JSON.parse(unb64(j.content||''));}catch(e){continue;}
       const id=+m[2],loc=by[id],lu=loc?(loc.upd||loc.id):0,ru=r.upd||0;
-      if(r.deleted){if(loc&&ru>=lu){await del(id);delete ss.pushed[id];ch=true;}continue;}
+      if(r.deleted){(ss.dead=ss.dead||{})[path]=1;if(loc&&ru>=lu){await del(id);delete ss.pushed[id];ch=true;}continue;}
       if(loc&&lu>=ru)continue;
       let pics=loc&&(loc.pics||[]).length===(r.pics||[]).length?loc.pics:[];
       if(!pics.length)for(const p of r.pics||[]){const im=await gh('GET',p);if(im&&im.content){pics.push('data:image/jpeg;base64,'+im.content.replace(/\s/g,''));ss.pics[p]=1;}}
       await put({id,text:r.text||'',pics,status:r.status||'new',sent:(r.status||'new')!=='new',upd:ru,src:r.src||'laptop'});ss.pushed[id]=ru;ch=true;}
     saveSS();return ch;}
   async function push(){for(const n of await all()){const u=n.upd||n.id;if((ss.pushed[n.id]||0)>=u)continue;const path=`fixhub/notes/${SLUG}__${n.id}.json`;
-      if(n.gone){await putFile(path,b64(JSON.stringify({id:String(n.id),cat:APP,deleted:true,upd:u,src:n.src||'phone'})),`fix: delete ${APP} #${n.id}`);await del(n.id);delete ss.pushed[n.id];saveSS();continue;}
+      if(n.gone){await putFile(path,b64(JSON.stringify({id:String(n.id),cat:APP,deleted:true,upd:u,src:n.src||'phone'})),`fix: delete ${APP} #${n.id}`);(ss.dead=ss.dead||{})[path]=1;await del(n.id);delete ss.pushed[n.id];saveSS();continue;}
       const pp=[];for(let k=0;k<(n.pics||[]).length;k++){const p=`fixhub/pics/${SLUG}__${n.id}-${k+1}.jpg`;if(!ss.pics[p]){await putFile(p,n.pics[k].split(',')[1],`fix: picture ${APP} #${n.id}`);ss.pics[p]=1;saveSS();}pp.push(p);}
       await putFile(path,b64(JSON.stringify({id:String(n.id),cat:APP,text:n.text||'',status:st(n),upd:u,src:n.src||'phone',pics:pp})),`fix: ${APP} #${n.id}`);ss.pushed[n.id]=u;saveSS();}}
   async function run(){const c=cfg();if(!c.token||!c.on||busy||!navigator.onLine)return;busy=true;
@@ -2206,7 +2209,7 @@ function voiceTyping(btn,box,tell){
       try{localStorage.setItem('fixhub_sync',JSON.stringify({repo:REPO,token:t.trim(),on:true}));}catch(e){}run();return;}
     if(confirm(c.on?'Laptop sync is on. Sync now? (Cancel = turn it off)':'Laptop sync is off. Turn it on?')){if(!c.on){let a={};try{a=JSON.parse(localStorage.getItem('fixhub_sync')||'{}');}catch(e){}a.on=true;localStorage.setItem('fixhub_sync',JSON.stringify(a));}run();}
     else if(c.on){let a={};try{a=JSON.parse(localStorage.getItem('fixhub_sync')||'{}');}catch(e){}a.on=false;localStorage.setItem('fixhub_sync',JSON.stringify(a));syncLine();}};
-  setInterval(()=>{if(!document.hidden)run();},45000);
+  setInterval(()=>{if(!document.hidden)run();},20000);   /* 1.4: every 20 s */
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(run,2000);});
   window.addEventListener('online',()=>run());
   setTimeout(run,5000);
