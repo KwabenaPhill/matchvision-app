@@ -1,16 +1,16 @@
 {
  "app": "Match Vision",
- "updated": "2026-11-02T22:25:20",
+ "updated": "2026-11-02T22:56:11",
  "builder": {
-  "busy": true,
-  "step": "Long video: 9% drawn",
-  "done": 0.079
+  "busy": false,
+  "step": "Finished: 2026-11-03 Tuesday",
+  "done": 1.0
  },
  "days": [
   {
    "date": "2026-11-03",
    "where": "Ready to Upload",
-   "title": "TUESDAY'S CHAMPIONS LEAGUE PREDICTIONS TODAY | 3 NOVEMBER | ATLETICO vs BAYERN, OVER 2.5 & BTTS",
+   "title": "TUESDAY'S FOOTBALL PREDICTIONS TODAY | 3 NOVEMBER | ATLETICO vs BAYERN, OVER 2.5 & OVER 1.5",
    "matches": [
     {
      "n": 1,
@@ -18,12 +18,12 @@
      "kickoff": "20:00",
      "home": "Atletico Madrid",
      "away": "Bayern Munich",
-     "score": "1-2",
+     "score": "1-1",
      "date": "2026-11-03",
      "odds": [
-      2.7,
-      4.0,
-      2.2
+      2.75,
+      3.9,
+      2.38
      ],
      "labels": [
       "SAFEST PICK",
@@ -36,35 +36,32 @@
      "live": null,
      "picks": [
       {
+       "text": "Atletico Madrid +1.5",
+       "odds": 1.27,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.4,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Under 3.5 goals",
-       "odds": 1.8,
-       "chance": 0.55,
+       "odds": 1.77,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "u",
         "v": 3.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.22,
-       "chance": 0.77,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Under 10 corners",
-       "odds": 1.64,
-       "chance": 0.56,
-       "rule": {
-        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -77,12 +74,12 @@
      "kickoff": "20:00",
      "home": "Barcelona",
      "away": "Aston Villa",
-     "score": "3-2",
+     "score": "3-1",
      "date": "2026-11-03",
      "odds": [
       1.25,
-      7.5,
-      8.0
+      7.0,
+      9.5
      ],
      "labels": [
       "SAFEST PICK",
@@ -95,21 +92,20 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 2.5 goals",
-       "odds": 1.2,
-       "chance": 0.86,
+       "text": "Barcelona to win",
+       "odds": 1.25,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
+        "t": "win",
+        "s": "h"
        },
        "live": null,
        "mine": false
       },
       {
        "text": "BTTS - Yes",
-       "odds": 1.5,
-       "chance": 0.79,
+       "odds": 1.48,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -118,11 +114,13 @@
        "mine": false
       },
       {
-       "text": "Over 9 corners",
-       "odds": 1.56,
-       "chance": 0.59,
+       "text": "Over 1.5 goals 1st half",
+       "odds": 1.62,
+       "chance": null,
        "rule": {
-        "t": "stat"
+        "t": "g1",
+        "o": "o",
+        "v": 1.5
        },
        "live": null,
        "mine": false
@@ -135,12 +133,12 @@
      "kickoff": "20:00",
      "home": "Villarreal",
      "away": "Paris Saint-Germain",
-     "score": "1-3",
+     "score": "1-2",
      "date": "2026-11-03",
      "odds": [
-      5.0,
-      4.5,
-      1.57
+      4.8,
+      4.75,
+      1.6
      ],
      "labels": [
       "SAFEST PICK",
@@ -154,8 +152,8 @@
      "picks": [
       {
        "text": "Over 2.5 goals",
-       "odds": 1.36,
-       "chance": 0.82,
+       "odds": 1.34,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -165,22 +163,24 @@
        "mine": false
       },
       {
-       "text": "Under 11 corners",
-       "odds": 1.4,
-       "chance": 0.65,
+       "text": "Paris Saint-Germain over 1.5 goals",
+       "odds": 1.37,
+       "chance": null,
        "rule": {
-        "t": "stat"
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.4,
-       "chance": 0.77,
+       "text": "Paris Saint-Germain to win",
+       "odds": 1.6,
+       "chance": null,
        "rule": {
-        "t": "btts",
-        "y": 1
+        "t": "win",
+        "s": "a"
        },
        "live": null,
        "mine": false
@@ -193,12 +193,12 @@
      "kickoff": "20:00",
      "home": "Manchester United",
      "away": "AS Roma",
-     "score": "2-1",
+     "score": "1-2",
      "date": "2026-11-03",
      "odds": [
-      2.38,
-      4.0,
-      2.62
+      2.35,
+      3.95,
+      2.65
      ],
      "labels": [
       "SAFEST PICK",
@@ -212,8 +212,8 @@
      "picks": [
       {
        "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.89,
+       "odds": 1.2,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -223,22 +223,22 @@
        "mine": false
       },
       {
-       "text": "Over 8.5 corners",
-       "odds": 1.4,
-       "chance": 0.65,
+       "text": "AS Roma or draw",
+       "odds": 1.57,
+       "chance": null,
        "rule": {
-        "t": "stat"
+        "t": "dc",
+        "s": "a"
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.44,
-       "chance": 0.71,
+       "text": "Over 3.5 cards",
+       "odds": 1.68,
+       "chance": null,
        "rule": {
-        "t": "btts",
-        "y": 1
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -254,9 +254,9 @@
      "score": "1-2",
      "date": "2026-11-03",
      "odds": [
-      3.9,
-      4.33,
-      1.75
+      4.15,
+      4.4,
+      1.73
      ],
      "labels": [
       "SAFEST PICK",
@@ -269,21 +269,17 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 2.5 goals",
-       "odds": 1.4,
-       "chance": 0.7,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
+       "text": "Inter Milan draw no bet",
+       "odds": 1.33,
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       },
       {
        "text": "Inter Milan over 1.5 goals",
-       "odds": null,
-       "chance": 0.62,
+       "odds": 1.5,
+       "chance": null,
        "rule": {
         "t": "ts",
         "s": "a",
@@ -293,13 +289,12 @@
        "mine": false
       },
       {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.22,
-       "chance": 0.77,
+       "text": "Inter Milan to win",
+       "odds": 1.73,
+       "chance": null,
        "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
+        "t": "win",
+        "s": "a"
        },
        "live": null,
        "mine": false
@@ -312,12 +307,12 @@
      "kickoff": "17:45",
      "home": "Galatasaray",
      "away": "VfB Stuttgart",
-     "score": "1-2",
+     "score": "2-1",
      "date": "2026-11-03",
      "odds": [
-      2.2,
+      2.19,
       4.0,
-      2.9
+      2.95
      ],
      "labels": [
       "SAFEST PICK",
@@ -330,9 +325,21 @@
      "live": null,
      "picks": [
       {
+       "text": "Stuttgart to score",
+       "odds": 1.19,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Over 2.5 goals",
-       "odds": 1.4,
-       "chance": 0.7,
+       "odds": 1.41,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -342,25 +349,11 @@
        "mine": false
       },
       {
-       "text": "VfB Stuttgart over 1.5 goals",
-       "odds": null,
-       "chance": 0.61,
+       "text": "Over 8.5 corners",
+       "odds": 1.58,
+       "chance": null,
        "rule": {
-        "t": "ts",
-        "s": "a",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.22,
-       "chance": 0.77,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -373,12 +366,12 @@
      "kickoff": "17:45",
      "home": "Shakhtar Donetsk",
      "away": "Sporting CP",
-     "score": "1-2",
+     "score": "1-1",
      "date": "2026-11-03",
      "odds": [
       3.6,
-      3.7,
-      2.0
+      3.75,
+      1.98
      ],
      "labels": [
       "SAFEST PICK",
@@ -392,8 +385,8 @@
      "picks": [
       {
        "text": "Over 1.5 goals",
-       "odds": 1.22,
-       "chance": 0.78,
+       "odds": 1.21,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -403,12 +396,12 @@
        "mine": false
       },
       {
-       "text": "Shakhtar Donetsk to score",
-       "odds": null,
-       "chance": 0.7,
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.3,
+       "chance": null,
        "rule": {
-        "t": "ts",
-        "s": "h",
+        "t": "g1",
+        "o": "o",
         "v": 0.5
        },
        "live": null,
@@ -416,8 +409,8 @@
       },
       {
        "text": "BTTS - Yes",
-       "odds": 1.62,
-       "chance": 0.56,
+       "odds": 1.59,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -436,9 +429,9 @@
      "score": "2-1",
      "date": "2026-11-03",
      "odds": [
-      1.83,
-      4.0,
-      3.9
+      1.87,
+      4.03,
+      3.95
      ],
      "labels": [
       "SAFEST PICK",
@@ -451,9 +444,20 @@
      "live": null,
      "picks": [
       {
+       "text": "Bodo/Glimt or draw",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Over 2.5 goals",
        "odds": 1.5,
-       "chance": 0.67,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -463,24 +467,13 @@
        "mine": false
       },
       {
-       "text": "Lille to score",
-       "odds": null,
-       "chance": 0.7,
+       "text": "Bodo/Glimt over 1.5 goals",
+       "odds": 1.6,
+       "chance": null,
        "rule": {
         "t": "ts",
-        "s": "a",
-        "v": 0.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.44,
-       "chance": 0.62,
-       "rule": {
-        "t": "btts",
-        "y": 1
+        "s": "h",
+        "v": 1.5
        },
        "live": null,
        "mine": false
@@ -491,13 +484,13 @@
      "n": 9,
      "league": "Champions League",
      "kickoff": "20:00",
-     "home": "Lask Linz",
+     "home": "LASK",
      "away": "Slovan Bratislava",
      "score": "3-1",
      "date": "2026-11-03",
      "odds": [
-      1.44,
-      4.75,
+      1.47,
+      4.9,
       6.5
      ],
      "labels": [
@@ -506,14 +499,25 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/lask-linz.png",
+     "hc": "media/crests/lask.png",
      "ac": "media/crests/slovan-bratislava.png",
      "live": null,
      "picks": [
       {
+       "text": "LASK to win",
+       "odds": 1.47,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Over 2.5 goals",
-       "odds": 1.4,
-       "chance": 0.79,
+       "odds": 1.71,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -523,21 +527,174 @@
        "mine": false
       },
       {
-       "text": "Slovan Bratislava to score",
-       "odds": null,
-       "chance": 0.76,
+       "text": "LASK -1.5",
+       "odds": 2.15,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "league": "Championship",
+     "kickoff": "19:45",
+     "home": "Queens Park Rangers",
+     "away": "Burnley",
+     "score": "2-1",
+     "date": "2026-11-03",
+     "odds": [
+      2.05,
+      3.6,
+      3.4
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/queens-park-rangers.png",
+     "ac": "media/crests/burnley.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Queens Park Rangers to score",
+       "odds": 1.22,
+       "chance": null,
        "rule": {
         "t": "ts",
-        "s": "a",
+        "s": "h",
         "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
+       "text": "Queens Park Rangers draw no bet",
+       "odds": 1.48,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.63,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "league": "Championship",
+     "kickoff": "19:45",
+     "home": "Preston North End",
+     "away": "Sheffield United",
+     "score": "0-2",
+     "date": "2026-11-03",
+     "odds": [
+      3.1,
+      3.6,
+      2.17
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/preston-north-end.png",
+     "ac": "media/crests/sheffield-united.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Sheffield United or draw",
+       "odds": 1.4,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Under 10.5 corners",
+       "odds": 1.88,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Sheffield United to win",
+       "odds": 2.17,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "league": "Championship",
+     "kickoff": "19:45",
+     "home": "Blackburn Rovers",
+     "away": "Stoke City",
+     "score": "1-1",
+     "date": "2026-11-03",
+     "odds": [
+      2.62,
+      3.25,
+      2.62
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/blackburn-rovers.png",
+     "ac": "media/crests/stoke-city.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Stoke City +1.5",
+       "odds": 1.18,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 3.5 cards",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "BTTS - Yes",
-       "odds": 1.57,
-       "chance": 0.71,
+       "odds": 1.8,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -548,17 +705,17 @@
      ]
     },
     {
-     "n": 10,
-     "league": "Copa del Rey",
-     "kickoff": "18:00",
-     "home": "Anaitasuna",
-     "away": "Alaves",
-     "score": "0-3",
+     "n": 13,
+     "league": "Championship",
+     "kickoff": "19:45",
+     "home": "Derby County",
+     "away": "Norwich City",
+     "score": "1-2",
      "date": "2026-11-03",
      "odds": [
-      26.0,
-      19.0,
-      1.03
+      3.2,
+      3.6,
+      2.05
      ],
      "labels": [
       "SAFEST PICK",
@@ -566,14 +723,32 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/anaitasuna.png",
-     "ac": "media/crests/alaves.png",
+     "hc": "media/crests/derby-county.png",
+     "ac": "media/crests/norwich-city.png",
      "live": null,
      "picks": [
       {
+       "text": "Norwich City draw no bet",
+       "odds": 1.48,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 8.5 corners",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Over 2.5 goals",
-       "odds": 1.17,
-       "chance": 0.66,
+       "odds": 1.78,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -581,42 +756,21 @@
        },
        "live": null,
        "mine": false
-      },
-      {
-       "text": "BTTS - No",
-       "odds": 1.3,
-       "chance": 0.54,
-       "rule": {
-        "t": "btts",
-        "y": 0
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Over 9.5 corners",
-       "odds": 1.69,
-       "chance": 0.54,
-       "rule": {
-        "t": "stat"
-       },
-       "live": null,
-       "mine": false
       }
      ]
     },
     {
-     "n": 11,
-     "league": "Copa del Rey",
-     "kickoff": "18:00",
-     "home": "Pamplona",
-     "away": "Eibar",
-     "score": "0-2",
+     "n": 14,
+     "league": "Championship",
+     "kickoff": "20:00",
+     "home": "West Bromwich Albion",
+     "away": "Southampton",
+     "score": "1-1",
      "date": "2026-11-03",
      "odds": [
-      11.0,
-      6.25,
-      1.22
+      2.45,
+      3.5,
+      2.6
      ],
      "labels": [
       "SAFEST PICK",
@@ -624,39 +778,94 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/pamplona.png",
-     "ac": "media/crests/eibar.png",
+     "hc": "media/crests/west-bromwich-albion.png",
+     "ac": "media/crests/southampton.png",
      "live": null,
      "picks": [
       {
-       "text": "Under 3.5 goals",
-       "odds": 1.57,
-       "chance": 0.76,
+       "text": "Southampton +1.5",
+       "odds": 1.16,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 1.5 goals",
+       "odds": 1.25,
+       "chance": null,
        "rule": {
         "t": "g",
-        "o": "u",
-        "v": 3.5
+        "o": "o",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - No",
-       "odds": 1.7,
-       "chance": 0.62,
+       "text": "BTTS - Yes",
+       "odds": 1.54,
+       "chance": null,
        "rule": {
         "t": "btts",
-        "y": 0
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "Championship",
+     "kickoff": "20:00",
+     "home": "Birmingham City",
+     "away": "Millwall",
+     "score": "2-1",
+     "date": "2026-11-03",
+     "odds": [
+      1.95,
+      3.6,
+      3.5
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/birmingham-city.png",
+     "ac": "media/crests/millwall.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Birmingham City or draw",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "h"
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Under 9.5 corners",
-       "odds": 1.84,
-       "chance": 0.5,
+       "text": "Over 8.5 corners",
+       "odds": 1.52,
+       "chance": null,
        "rule": {
         "t": "stat"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Birmingham City to win",
+       "odds": 1.95,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
        },
        "live": null,
        "mine": false
@@ -665,27 +874,34 @@
     }
    ],
    "banker": {
-    "total": 2.02,
+    "total": 1.95,
     "games": [
+     {
+      "n": 2,
+      "pick": {
+       "market": "RESULT",
+       "text": "Barcelona to win",
+       "odds": 1.25
+      },
+      "odds": 1.25
+     },
      {
       "n": 8,
       "pick": {
-       "market": "BTTS",
-       "text": "BTTS - Yes",
-       "odds": 1.44,
-       "p": 0.62
+       "market": "DOUBLE CHANCE",
+       "text": "Bodo/Glimt or draw",
+       "odds": 1.25
       },
-      "odds": 1.44
+      "odds": 1.25
      },
      {
-      "n": 9,
+      "n": 15,
       "pick": {
-       "market": "GOALS",
-       "text": "Over 2.5 goals",
-       "odds": 1.4,
-       "p": 0.79
+       "market": "DOUBLE CHANCE",
+       "text": "Birmingham City or draw",
+       "odds": 1.25
       },
-      "odds": 1.4
+      "odds": 1.25
      }
     ]
    },
@@ -711,9 +927,9 @@
       "media/2026-11-03/Games-2026-11-03.jpg"
      ],
      "texts": {
-      "tg": "⚽ 11 Matches Predicted Today | Tuesday 3 November\nMatch Vision\n\nChampions League\n17:45  Galatasaray vs VfB Stuttgart\n17:45  Shakhtar Donetsk vs Sporting CP\n20:00  Barcelona vs Aston Villa\n20:00  Villarreal vs Paris Saint-Germain\n20:00  Atletico Madrid vs Bayern Munich\n20:00  Manchester United vs AS Roma\n20:00  Feyenoord vs Inter Milan\n20:00  Bodo/Glimt vs Lille\n20:00  Lask Linz vs Slovan Bratislava\n\nCopa Del Rey\n18:00  Anaitasuna vs Alaves\n18:00  Pamplona vs Eibar\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "⚽ *11 Matches Predicted Today | Tuesday 3 November*\nMatch Vision\n\nChampions League\n17:45  Galatasaray vs VfB Stuttgart\n17:45  Shakhtar Donetsk vs Sporting CP\n20:00  Barcelona vs Aston Villa\n20:00  Villarreal vs Paris Saint-Germain\n20:00  Atletico Madrid vs Bayern Munich\n20:00  Manchester United vs AS Roma\n20:00  Feyenoord vs Inter Milan\n20:00  Bodo/Glimt vs Lille\n20:00  Lask Linz vs Slovan Bratislava\n\nCopa Del Rey\n18:00  Anaitasuna vs Alaves\n18:00  Pamplona vs Eibar\n\n👇 *Watch All Predictions*:\nhttps://t.me/matchvision707",
-      "x": "⚽ 11 Matches Predicted Today | Tuesday 3 November\nMatch Vision\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions\n\n--- reply ---\n\nChampions League\n17:45  Galatasaray vs VfB Stuttgart\n17:45  Shakhtar Donetsk vs Sporting CP\n20:00  Barcelona vs Aston Villa\n20:00  Villarreal vs Paris Saint-Germain\n20:00  Atletico Madrid vs Bayern Munich\n20:00  Manchester United vs AS Roma\n20:00  Feyenoord vs Inter Milan\n\n--- reply ---\n\n20:00  Bodo/Glimt vs Lille\n20:00  Lask Linz vs Slovan Bratislava\n\nCopa Del Rey\n18:00  Anaitasuna vs Alaves\n18:00  Pamplona vs Eibar\n\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
+      "tg": "⚽ 15 Matches Predicted Today | Tuesday 3 November\nMatch Vision\n\nChampions League\n17:45  Galatasaray vs VfB Stuttgart\n17:45  Shakhtar Donetsk vs Sporting CP\n20:00  Barcelona vs Aston Villa\n20:00  Villarreal vs Paris Saint-Germain\n20:00  Atletico Madrid vs Bayern Munich\n20:00  Manchester United vs AS Roma\n20:00  Feyenoord vs Inter Milan\n20:00  Bodo/Glimt vs Lille\n20:00  LASK vs Slovan Bratislava\n\nChampionship\n19:45  Queens Park Rangers vs Burnley\n19:45  Preston North End vs Sheffield United\n19:45  Blackburn Rovers vs Stoke City\n19:45  Derby County vs Norwich City\n20:00  West Bromwich Albion vs Southampton\n20:00  Birmingham City vs Millwall\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "⚽ *15 Matches Predicted Today | Tuesday 3 November*\nMatch Vision\n\nChampions League\n17:45  Galatasaray vs VfB Stuttgart\n17:45  Shakhtar Donetsk vs Sporting CP\n20:00  Barcelona vs Aston Villa\n20:00  Villarreal vs Paris Saint-Germain\n20:00  Atletico Madrid vs Bayern Munich\n20:00  Manchester United vs AS Roma\n20:00  Feyenoord vs Inter Milan\n20:00  Bodo/Glimt vs Lille\n20:00  LASK vs Slovan Bratislava\n\nChampionship\n19:45  Queens Park Rangers vs Burnley\n19:45  Preston North End vs Sheffield United\n19:45  Blackburn Rovers vs Stoke City\n19:45  Derby County vs Norwich City\n20:00  West Bromwich Albion vs Southampton\n20:00  Birmingham City vs Millwall\n\n👇 *Watch All Predictions*:\nhttps://t.me/matchvision707",
+      "x": "⚽ 15 Matches Predicted Today | Tuesday 3 November\nMatch Vision\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions\n\n--- reply ---\n\nChampions League\n17:45  Galatasaray vs VfB Stuttgart\n17:45  Shakhtar Donetsk vs Sporting CP\n20:00  Barcelona vs Aston Villa\n20:00  Villarreal vs Paris Saint-Germain\n20:00  Atletico Madrid vs Bayern Munich\n20:00  Manchester United vs AS Roma\n20:00  Feyenoord vs Inter Milan\n\n--- reply ---\n\n20:00  Bodo/Glimt vs Lille\n20:00  LASK vs Slovan Bratislava\n\n--- reply ---\n\nChampionship\n19:45  Queens Park Rangers vs Burnley\n19:45  Preston North End vs Sheffield United\n19:45  Blackburn Rovers vs Stoke City\n19:45  Derby County vs Norwich City\n20:00  West Bromwich Albion vs Southampton\n20:00  Birmingham City vs Millwall\n\n--- reply ---\n\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
      },
      "auto": {
       "tg": false
@@ -733,7 +949,7 @@
      "texts": {
       "tg": "Tuesday Top Picks | 3 November\nMatch Vision\n\nOur Strongest Picks For Today.",
       "wa": "Tuesday Top Picks | 3 November\nMatch Vision\n\nOur Strongest Picks For Today.",
-      "x": "Tuesday Top Picks | 3 November\nMatch Vision\n\nOur Strongest Picks For Today.\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions"
+      "x": "Tuesday Top Picks | 3 November\nMatch Vision\n\nOur Strongest Picks For Today.\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -753,7 +969,7 @@
      "texts": {
       "tg": "Tuesday Banker | 3 November\nMatch Vision\n\nToday's 2 Odds Banker.",
       "wa": "Tuesday Banker | 3 November\nMatch Vision\n\nToday's 2 Odds Banker.",
-      "x": "Tuesday Banker | 3 November\nMatch Vision\n\nToday's 2 Odds Banker.\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions"
+      "x": "Tuesday Banker | 3 November\nMatch Vision\n\nToday's 2 Odds Banker.\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -768,12 +984,12 @@
      "title": "Video post",
      "when": "06:00",
      "images": [
-      "media/2026-11-03/Thumbnail-1-style-359-.jpg"
+      "media/2026-11-03/Thumbnail-1-style-79-.jpg"
      ],
      "texts": {
-      "tg": "Tuesday Predictions | 3 November\nMatch Vision\n\n11 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
-      "wa": "Tuesday Predictions | 3 November\nMatch Vision\n\n11 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now*:\n{VIDEO_LINK}",
-      "x": "Tuesday Predictions | 3 November\n{VIDEO_LINK}\n\n11 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #UCL #ChampionsLeague #FootballPredictions"
+      "tg": "Tuesday Predictions | 3 November\nMatch Vision\n\n15 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Tuesday Predictions | 3 November\nMatch Vision\n\n15 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now*:\n{VIDEO_LINK}",
+      "x": "Tuesday Predictions | 3 November\n{VIDEO_LINK}\n\n15 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -791,12 +1007,13 @@
       "media/2026-11-03/slide-1.jpg",
       "media/2026-11-03/slide-2.jpg",
       "media/2026-11-03/slide-3.jpg",
-      "media/2026-11-03/slide-4.jpg"
+      "media/2026-11-03/slide-4.jpg",
+      "media/2026-11-03/slide-5.jpg"
      ],
      "texts": {
-      "ig": "CHAMPIONS LEAGUE PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #footballreels #footballpredictions",
-      "tt": "CHAMPIONS LEAGUE PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #footballpredictions #footballtiktok #fyp",
-      "yt": "CHAMPIONS LEAGUE PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague"
+      "ig": "FOOTBALL PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #championship #footballpredictions",
+      "tt": "FOOTBALL PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #championship #footballpredictions #footballtiktok #fyp",
+      "yt": "FOOTBALL PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #championship"
      },
      "auto": {},
      "note": "",
@@ -811,11 +1028,11 @@
      "images": [
       "media/2026-11-03/short-1.jpg"
      ],
-     "video": "media/2026-11-03/short-1-2032639.mp4",
+     "video": "media/2026-11-03/short-1-1997458.mp4",
      "file": "Ready to Upload\\2026-11-03 Tuesday\\Shorts\\Short 1 - 5 matches (Atletico Madrid vs Bayern Munich and more).mp4",
      "texts": {
-      "tt": "CHAMPIONS LEAGUE PREDICTIONS | Tuesday 3 November\n\n#footballpredictions #football #matchvision #ucl #championsleague",
-      "ig": "CHAMPIONS LEAGUE PREDICTIONS | Tuesday 3 November\n\n#footballpredictions #football #matchvision #ucl #championsleague"
+      "tt": "TUESDAY FOOTBALL PREDICTIONS | 3 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore",
+      "ig": "TUESDAY FOOTBALL PREDICTIONS | 3 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore"
      },
      "auto": {},
      "note": "",
@@ -830,11 +1047,11 @@
      "images": [
       "media/2026-11-03/short-2.jpg"
      ],
-     "video": "media/2026-11-03/short-2-2001097.mp4",
+     "video": "media/2026-11-03/short-2-2000146.mp4",
      "file": "Ready to Upload\\2026-11-03 Tuesday\\Shorts\\Short 2 - 5 matches (Galatasaray vs VfB Stuttgart and more).mp4",
      "texts": {
-      "tt": "CHAMPIONS LEAGUE PREDICTIONS | Tuesday 3 November\n\n#footballpredictions #football #matchvision #ucl #championsleague",
-      "ig": "CHAMPIONS LEAGUE PREDICTIONS | Tuesday 3 November\n\n#footballpredictions #football #matchvision #ucl #championsleague"
+      "tt": "TUESDAY FOOTBALL PREDICTIONS | 3 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore",
+      "ig": "TUESDAY FOOTBALL PREDICTIONS | 3 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore"
      },
      "auto": {},
      "note": "",
@@ -852,13 +1069,13 @@
       "media/2026-11-03/cs-3.jpg"
      ],
      "texts": {
-      "tt": "CHAMPIONS LEAGUE CORRECT SCORES | Tuesday 3 November\n\nAtletico vs Bayern + 10 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague",
-      "ig": "CHAMPIONS LEAGUE CORRECT SCORES | Tuesday 3 November\n\nAtletico vs Bayern + 10 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #footballtips",
-      "yt": "🎯 Tuesday Correct Scores | 3 November\nMatch Vision\n\nAtletico vs Bayern + 10 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Tuesday Correct Scores | 3 November*\nMatch Vision\n\nAtletico vs Bayern + 10 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Tuesday Correct Scores | 3 November*\nMatch Vision\n\nAtletico vs Bayern + 10 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Tuesday Correct Scores | 3 November\n\nAtletico vs Bayern + 10 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "CHAMPIONS LEAGUE CORRECT SCORES | Tuesday 3 November\n\nAtletico vs Bayern + 10 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #footballtips"
+      "tt": "TUESDAY FOOTBALL CORRECT SCORES | 3 NOVEMBER\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #championship",
+      "ig": "TUESDAY FOOTBALL CORRECT SCORES | 3 NOVEMBER\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #championship #footballtips",
+      "yt": "🎯 Tuesday Correct Scores | 3 November\nMatch Vision\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
+      "tg": "🎯 *Tuesday Correct Scores | 3 November*\nMatch Vision\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
+      "wa": "🎯 *Tuesday Correct Scores | 3 November*\nMatch Vision\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
+      "x": "🎯 Tuesday Correct Scores | 3 November\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
+      "th": "TUESDAY FOOTBALL CORRECT SCORES | 3 NOVEMBER\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #championship #footballtips"
      },
      "auto": {},
      "note": "",
@@ -2339,11 +2556,11 @@
       "media/2026-11-02/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Monday Results | 2 November*\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Monday Results ✅\n9/12 Safest Picks Won | 2 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Monday Results ✅\n9/12 Safest Picks Won | 2 November\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Monday Results ✅\n9/12 Safest Picks Won | 2 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "Monday Results ✅\n9/12 Safest Picks Won | 2 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "Monday Results ✅\n9/12 Safest Picks Won | 2 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Monday Results | 2 November*\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -3991,11 +4208,11 @@
      "when": "23:45",
      "images": [],
      "texts": {
-      "tg": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *14 Of 16 Won | Sunday 1 November*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Sunday Results | 1 November\nMatch Vision\n\n🔥 14 Of 16 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Sunday Results | 1 November*\nMatch Vision\n\n🔥 14 Of 16 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Sunday Results | 1 November\nMatch Vision\n\n🔥 14 Of 16 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ Sunday Results | 1 November\nMatch Vision\n\n🔥 14 Of 16 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ Sunday Results | 1 November\nMatch Vision\n\n🔥 14 Of 16 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Sunday Results | 1 November*\nMatch Vision\n\n🔥 14 Of 16 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -6697,11 +6914,11 @@
       "media/2026-10-31/win-1.jpg"
      ],
      "texts": {
-      "tg": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ 16 Of 24 Won | Saturday 31 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *16 Of 24 Won | Saturday 31 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ 16 Of 24 Won | Saturday 31 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ 16 Of 24 Won | Saturday 31 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ 16 Of 24 Won | Saturday 31 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Saturday Results | 31 October*\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -8285,11 +8502,11 @@
       "media/2026-10-30/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Friday Results | 30 October*\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #LaLiga #Bundesliga #FootballPredictions",
-      "ig": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #laliga #bundesliga #footballreels #footballpredictions",
-      "th": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Friday Results ✅\n10/13 Safest Picks Won | 30 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Friday Results ✅\n10/13 Safest Picks Won | 30 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Friday Results ✅\n10/13 Safest Picks Won | 30 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #LaLiga #Bundesliga #FootballPredictions",
+      "ig": "Friday Results ✅\n10/13 Safest Picks Won | 30 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #laliga #bundesliga #footballreels #footballpredictions",
+      "th": "Friday Results ✅\n10/13 Safest Picks Won | 30 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Friday Results | 30 October*\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -10073,11 +10290,11 @@
       "media/2026-10-29/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ 13 Of 15 Won | Thursday 29 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *13 Of 15 Won | Thursday 29 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 13 Of 15 Won | Thursday 29 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions",
-      "ig": "✅ 13 Of 15 Won | Thursday 29 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #copadelrey #footballreels #footballpredictions",
-      "th": "✅ 13 Of 15 Won | Thursday 29 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Thursday Results | 29 October\nMatch Vision\n\n🔥 13 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Thursday Results | 29 October*\nMatch Vision\n\n🔥 13 Of 15 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Thursday Results | 29 October\nMatch Vision\n\n🔥 13 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions",
+      "ig": "✅ Thursday Results | 29 October\nMatch Vision\n\n🔥 13 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #copadelrey #footballreels #footballpredictions",
+      "th": "✅ Thursday Results | 29 October\nMatch Vision\n\n🔥 13 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Thursday Results | 29 October*\nMatch Vision\n\n🔥 13 Of 15 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -12156,11 +12373,11 @@
       "media/2026-10-28/win-1.jpg"
      ],
      "texts": {
-      "tg": "Wednesday Results ✅\n8/15 Safest Picks Won | 28 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Wednesday Results ✅\n8/15 Safest Picks Won | 28 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Wednesday Results ✅\n8/15 Safest Picks Won | 28 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions",
-      "ig": "Wednesday Results ✅\n8/15 Safest Picks Won | 28 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #copadelrey #footballreels #footballpredictions",
-      "th": "Wednesday Results ✅\n8/15 Safest Picks Won | 28 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ 8 Of 15 Won | Wednesday 28 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *8 Of 15 Won | Wednesday 28 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ 8 Of 15 Won | Wednesday 28 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #CopaDelRey #FootballPredictions",
+      "ig": "✅ 8 Of 15 Won | Wednesday 28 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #copadelrey #footballreels #footballpredictions",
+      "th": "✅ 8 Of 15 Won | Wednesday 28 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Wednesday Results | 28 October*\nMatch Vision\n\n🔥 8 Of 15 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -13953,11 +14170,11 @@
       "media/2026-10-27/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Tuesday Results | 27 October*\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #eflcup #FootballPredictions",
-      "ig": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #eflcup #footballreels #footballpredictions",
-      "th": "✅ Tuesday Results | 27 October\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #SerieA #eflcup #FootballPredictions",
+      "ig": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #seriea #eflcup #footballreels #footballpredictions",
+      "th": "Tuesday Results ✅\n11/15 Safest Picks Won | 27 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Tuesday Results | 27 October*\nMatch Vision\n\n🔥 11 Of 15 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -25387,9 +25604,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "ri7d54BwvaMdtVuG9Bm3ZQ==",
-  "nonce": "xCvGPO4ElSjDIy7ywbySFQ==",
-  "ct": "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",
-  "mac": "j6DTNsuwd4OJP4oRxFewTjJAQ29p6RB0SXDli2uSMVo="
+  "salt": "EIXBRBrJPY1GmF1mL0hd5A==",
+  "nonce": "WghISwA/IGh8XFBl0Ru/GA==",
+  "ct": "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",
+  "mac": "gZ0K0IzONJctgdN33Oh2uglrnzOZXEQX+PwVrhiCVkw="
  }
 }
