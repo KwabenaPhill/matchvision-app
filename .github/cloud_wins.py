@@ -458,7 +458,9 @@ def run(day, now, root, tg, log=print):
         try:
             out = os.path.join(root, 'cloud', 'wins', f'{d}-{m["n"]}.jpg')
             if cs_won:
-                if str(c.get('cs_style', '')).startswith('13'):      # 3.31: the wide card (like the laptop)
+                if str(c.get('cs_style', '')).startswith('14'):      # 3.39.4: "14  Banker look" in the cloud too (was the old tall card)
+                    pic = draw_cs14(m, g['gh'], g['ga'], root, out, look=c.get('cs_look', '2'))
+                elif str(c.get('cs_style', '')).startswith('13'):      # 3.31: the wide card (like the laptop)
                     pic = draw_cs_wide(m, g['gh'], g['ga'], root, out)
                 elif str(c.get('cs_style', '')).startswith('12'):      # 3.25.8: the lime correct score card
                     _dd = datetime.date.fromisoformat(str(d)[:10])
@@ -1228,4 +1230,78 @@ def draw_cs_wide(m, gh, ga, root, out, fonts=FONTS):
     tick(x1 - 58, cy, 28)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     im.save(out, quality=92)
+    return out
+
+
+# ------------------------------------------------------------------------------------------------ 3.39.4: CS win "14  Banker look"
+def draw_cs14(m, gh, ga, root, out, fonts=FONTS, look='2'):
+    """The same card as the laptop's mv_cs14.py (wide 1600 x 640, crests, CORRECT SCORE WON), drawn in the cloud."""
+    from PIL import Image, ImageDraw, ImageFilter, ImageChops
+    GRN = (34, 197, 94); YEL = (250, 204, 21); WH = (255, 255, 255); LIME = (223, 251, 81)
+    LOOKS = {1: ((52, 59, 11), WH, None, YEL, False, (60, 60, 66), GRN),
+             2: ((52, 59, 11), (10, 10, 10), LIME, WH, False, LIME, LIME),
+             3: ((14, 24, 60), (240, 196, 80), None, WH, True, (240, 196, 80), (240, 196, 80)),
+             4: ((60, 12, 12), WH, (34, 197, 94), WH, True, (34, 197, 94), YEL)}
+    try:
+        look = int(str(look or '2').split()[0])
+    except Exception:
+        look = 2
+    glow, tcol, bar, scol, box, rowl, lab = LOOKS.get(look, LOOKS[2])
+    W, H = 1600, 640
+
+    def F(px, bold=True):
+        return _font(fonts, ('InterDisplay-Black.otf', 'Inter-Black.otf') if bold else ('Inter-Bold.otf', 'Inter-Medium.otf',
+                                                                                         'InterDisplay-Black.otf'), px)
+
+    def fit(d, t, px, maxw):
+        while px > 20 and d.textlength(t, font=F(px)) > maxw:
+            px -= 2
+        return F(px)
+
+    img = Image.new('RGB', (W, H), (4, 4, 6))
+    gl = Image.new('RGB', img.size, (0, 0, 0))
+    ImageDraw.Draw(gl).ellipse((W / 2 - 520, H * .40 - 250, W / 2 + 520, H * .40 + 250), fill=glow)
+    img = ImageChops.add(img, gl.filter(ImageFilter.GaussianBlur(170)))
+    d = ImageDraw.Draw(img)
+    tf = F(60)
+    if bar:
+        w = d.textlength('CORRECT SCORE WON', font=tf) + 90
+        d.rounded_rectangle((W / 2 - w / 2, 22, W / 2 + w / 2, 106), 42, fill=bar)
+    d.text((W / 2, 64), 'CORRECT SCORE WON', font=tf, fill=tcol, anchor='mm')
+    cy = 255
+    for cx, key, t in ((300, 'hc', m.get('home', '')), (W - 300, 'ac', m.get('away', ''))):
+        p = os.path.join(root, m[key]) if m.get(key) else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((190, 190), Image.LANCZOS)
+            img.paste(c, (int(cx - c.width / 2), int(cy - 15 - c.height / 2)), c)
+        else:
+            r = 190 * 0.45
+            d.ellipse((cx - r, cy - 15 - r, cx + r, cy - 15 + r), fill=(34, 34, 40), outline=(90, 90, 96), width=4)
+            ini = ''.join(w[0] for w in str(t).split()[:3]).upper()
+            d.text((cx, cy - 15), ini, font=F(r * 0.8), fill=WH, anchor='mm')
+    d = ImageDraw.Draw(img)
+    for cx, t in ((300, m.get('home', '')), (W - 300, m.get('away', ''))):
+        t = str(t).upper()
+        d.text((cx, cy + 115), t, font=fit(d, t, 36, 480), fill=WH, anchor='mm')
+    if box:
+        d.rounded_rectangle((W / 2 - 230, cy - 120, W / 2 + 230, cy + 90), 30, fill=(18, 18, 24), outline=rowl, width=4)
+        d.text((W / 2, cy - 15), f'{gh} - {ga}', font=F(170), fill=scol, anchor='mm')
+    else:
+        d.text((W / 2, cy - 10), f'{gh}-{ga}', font=F(220), fill=scol, anchor='mm', stroke_width=3, stroke_fill=(0, 0, 0))
+    d.text((W / 2, cy + 125), 'FULL TIME', font=F(34), fill=(200, 200, 206), anchor='mm')
+    x0, x1, y0, y1 = 60, W - 60, 450, 580
+    yc = (y0 + y1) / 2
+    d.rounded_rectangle((x0, y0, x1, y1), 26, fill=(22, 22, 28), outline=rowl, width=3)
+    win = m.get('home') if (gh or 0) > (ga or 0) else m.get('away') if (ga or 0) > (gh or 0) else 'DRAW'
+    line = f'{gh}-{ga} ' + ('DRAW' if win == 'DRAW' else str(win).upper() + ' WIN')
+    d.text((x0 + 44, yc - 26), 'CORRECT SCORE', font=F(28, False), fill=lab, anchor='lm')
+    d.text((x0 + 44, yc + 20), line, font=fit(d, line, 56, 1100), fill=WH, anchor='lm')
+    r = 38
+    cx = x1 - 62
+    d.ellipse((cx - r, yc - r, cx + r, yc + r), fill=GRN)
+    d.line([(cx - r * .45, yc), (cx - r * .12, yc + r * .36), (cx + r * .5, yc - r * .36)], fill=WH, width=9, joint='curve')
+    d.text((x1 - 124, yc), 'WON', font=F(56), fill=WH, anchor='rm')
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    img.save(out, quality=94)
     return out
