@@ -1,10 +1,10 @@
 {
  "app": "Match Vision",
- "updated": "2026-11-06T23:11:06",
+ "updated": "2026-11-06T23:26:13",
  "builder": {
-  "busy": true,
-  "step": "Long video: 100% drawn",
-  "done": 0.8
+  "busy": false,
+  "step": "Finished: 2026-11-07 Saturday",
+  "done": 1.0
  },
  "days": [
   {
@@ -18,12 +18,12 @@
      "kickoff": "20:00",
      "home": "Valencia",
      "away": "Real Madrid",
-     "score": "1-2",
+     "score": "0-2",
      "date": "2026-11-07",
      "odds": [
       8.5,
-      6.25,
-      1.28
+      5.2,
+      1.35
      ],
      "labels": [
       "SAFEST PICK",
@@ -36,36 +36,34 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.12,
-       "chance": 0.84,
+       "text": "Real Madrid to win",
+       "odds": 1.35,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Real Madrid over 1.5 goals",
+       "odds": 1.46,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
         "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.22,
-       "chance": 0.77,
+       "text": "Over 8.5 corners",
+       "odds": 1.65,
+       "chance": null,
        "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Real Madrid to win",
-       "odds": 1.28,
-       "chance": 0.72,
-       "rule": {
-        "t": "win",
-        "s": "a"
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -78,12 +76,12 @@
      "kickoff": "17:30",
      "home": "Osasuna",
      "away": "Athletic Club",
-     "score": "0-2",
+     "score": "1-2",
      "date": "2026-11-07",
      "odds": [
-      3.6,
-      3.5,
-      2.05
+      3.4,
+      3.3,
+      2.15
      ],
      "labels": [
       "SAFEST PICK",
@@ -96,21 +94,9 @@
      "live": null,
      "picks": [
       {
-       "text": "Under 3.5 goals",
-       "odds": 1.25,
-       "chance": 0.79,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
        "text": "Athletic Club or draw",
-       "odds": 1.28,
-       "chance": 0.73,
+       "odds": 1.3,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "a"
@@ -119,9 +105,21 @@
        "mine": false
       },
       {
-       "text": "Over 8.5 corners",
-       "odds": 1.67,
-       "chance": 0.56,
+       "text": "Over 1.5 goals",
+       "odds": 1.36,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 4.5 cards",
+       "odds": 1.72,
+       "chance": null,
        "rule": {
         "t": "stat"
        },
@@ -139,9 +137,9 @@
      "score": "2-1",
      "date": "2026-11-07",
      "odds": [
-      2.35,
-      3.6,
-      2.88
+      2.15,
+      3.35,
+      3.4
      ],
      "labels": [
       "SAFEST PICK",
@@ -154,21 +152,21 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.2,
-       "chance": 0.78,
+       "text": "Malaga to score",
+       "odds": 1.24,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
+        "t": "ts",
+        "s": "h",
+        "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "Malaga or draw",
-       "odds": 1.4,
-       "chance": 0.66,
+       "odds": 1.32,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "h"
@@ -177,13 +175,10 @@
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.53,
-       "chance": 0.57,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
+       "text": "Malaga draw no bet",
+       "odds": 1.56,
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       }
@@ -195,12 +190,12 @@
      "kickoff": "15:15",
      "home": "Espanyol",
      "away": "Deportivo La Coruna",
-     "score": "2-1",
+     "score": "1-1",
      "date": "2026-11-07",
      "odds": [
-      2.3,
+      2.45,
       3.25,
-      3.25
+      2.95
      ],
      "labels": [
       "SAFEST PICK",
@@ -214,8 +209,8 @@
      "picks": [
       {
        "text": "Under 3.5 goals",
-       "odds": 1.3,
-       "chance": 0.76,
+       "odds": 1.25,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "u",
@@ -226,8 +221,8 @@
       },
       {
        "text": "Espanyol or draw",
-       "odds": 1.33,
-       "chance": 0.68,
+       "odds": 1.38,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "h"
@@ -236,10 +231,13 @@
        "mine": false
       },
       {
-       "text": "Espanyol over 0.5 goals",
-       "odds": null,
-       "chance": 0.74,
-       "rule": null,
+       "text": "BTTS - Yes",
+       "odds": 1.82,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
        "live": null,
        "mine": false
       }
@@ -251,12 +249,12 @@
      "kickoff": "17:30",
      "home": "Nottingham Forest",
      "away": "Manchester City",
-     "score": "1-2",
+     "score": "1-3",
      "date": "2026-11-07",
      "odds": [
-      4.75,
+      4.6,
       4.0,
-      1.7
+      1.73
      ],
      "labels": [
       "SAFEST PICK",
@@ -269,20 +267,9 @@
      "live": null,
      "picks": [
       {
-       "text": "Manchester City or draw",
-       "odds": 1.18,
-       "chance": 0.81,
-       "rule": {
-        "t": "dc",
-        "s": "a"
-       },
-       "live": null,
-       "mine": false
-      },
-      {
        "text": "Over 1.5 goals",
-       "odds": 1.2,
-       "chance": 0.77,
+       "odds": 1.22,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -292,13 +279,24 @@
        "mine": false
       },
       {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.28,
-       "chance": 0.73,
+       "text": "Manchester City over 1.5 goals",
+       "odds": 1.62,
+       "chance": null,
        "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Manchester City to win",
+       "odds": 1.73,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
        },
        "live": null,
        "mine": false
@@ -314,8 +312,8 @@
      "score": "1-2",
      "date": "2026-11-07",
      "odds": [
-      2.7,
-      3.3,
+      2.88,
+      3.5,
       2.6
      ],
      "labels": [
@@ -331,7 +329,7 @@
       {
        "text": "Under 3.5 goals",
        "odds": 1.33,
-       "chance": 0.75,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "u",
@@ -342,8 +340,8 @@
       },
       {
        "text": "Tottenham Hotspur or draw",
-       "odds": 1.44,
-       "chance": 0.65,
+       "odds": 1.48,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "a"
@@ -352,10 +350,13 @@
        "mine": false
       },
       {
-       "text": "Tottenham Hotspur over 0.5 goals",
-       "odds": null,
-       "chance": 0.73,
-       "rule": null,
+       "text": "BTTS - Yes",
+       "odds": 1.68,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
        "live": null,
        "mine": false
       }
@@ -367,12 +368,12 @@
      "kickoff": "15:00",
      "home": "Arsenal",
      "away": "Hull City",
-     "score": "3-0",
+     "score": "2-0",
      "date": "2026-11-07",
      "odds": [
       1.17,
-      7.5,
-      15.0
+      7.0,
+      17.0
      ],
      "labels": [
       "SAFEST PICK",
@@ -387,7 +388,7 @@
       {
        "text": "Arsenal to win",
        "odds": 1.17,
-       "chance": 0.77,
+       "chance": null,
        "rule": {
         "t": "win",
         "s": "h"
@@ -396,25 +397,22 @@
        "mine": false
       },
       {
-       "text": "BTTS - No",
-       "odds": 1.53,
-       "chance": 0.59,
+       "text": "Arsenal over 1.5 goals",
+       "odds": 1.34,
+       "chance": null,
        "rule": {
-        "t": "btts",
-        "y": 0
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Under 3.5 goals",
+       "text": "Arsenal -1.5",
        "odds": 1.62,
-       "chance": 0.65,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       }
@@ -429,9 +427,9 @@
      "score": "2-1",
      "date": "2026-11-07",
      "odds": [
-      2.0,
+      2.11,
       3.6,
-      3.5
+      3.18
      ],
      "labels": [
       "SAFEST PICK",
@@ -444,21 +442,9 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.2,
-       "chance": 0.78,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
        "text": "Fulham or draw",
-       "odds": 1.3,
-       "chance": 0.73,
+       "odds": 1.34,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "h"
@@ -467,9 +453,17 @@
        "mine": false
       },
       {
+       "text": "Fulham draw no bet",
+       "odds": 1.56,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "BTTS - Yes",
-       "odds": 1.57,
-       "chance": 0.56,
+       "odds": 1.65,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -483,14 +477,14 @@
      "n": 9,
      "league": "Bundesliga",
      "kickoff": "14:30",
-     "home": "FSV Mainz 05",
+     "home": "Mainz 05",
      "away": "Bayern Munich",
      "score": "1-3",
      "date": "2026-11-07",
      "odds": [
-      7.0,
-      6.25,
-      1.33
+      7.2,
+      5.25,
+      1.32
      ],
      "labels": [
       "SAFEST PICK",
@@ -498,14 +492,25 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/fsv-mainz-05.png",
+     "hc": "media/crests/mainz-05.png",
      "ac": "media/crests/bayern-munich.png",
      "live": null,
      "picks": [
       {
+       "text": "Bayern Munich to win",
+       "odds": 1.32,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
        "text": "Over 2.5 goals",
-       "odds": 1.22,
-       "chance": 0.82,
+       "odds": 1.42,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -515,25 +520,10 @@
        "mine": false
       },
       {
-       "text": "Over 0.5 goals 1st half",
-       "odds": 1.14,
-       "chance": 0.83,
-       "rule": {
-        "t": "g1",
-        "o": "o",
-        "v": 0.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.44,
-       "chance": 0.7,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
+       "text": "Bayern Munich -1.5",
+       "odds": 1.84,
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       }
@@ -544,13 +534,13 @@
      "league": "Bundesliga",
      "kickoff": "14:30",
      "home": "Borussia Dortmund",
-     "away": "SV Elversberg",
-     "score": "2-1",
+     "away": "Elversberg",
+     "score": "2-0",
      "date": "2026-11-07",
      "odds": [
-      1.3,
-      5.75,
-      8.5
+      1.35,
+      5.4,
+      7.8
      ],
      "labels": [
       "SAFEST PICK",
@@ -559,13 +549,13 @@
      ],
      "win": null,
      "hc": "media/crests/borussia-dortmund.png",
-     "ac": "media/crests/sv-elversberg.png",
+     "ac": "media/crests/elversberg.png",
      "live": null,
      "picks": [
       {
        "text": "Borussia Dortmund to win",
-       "odds": 1.3,
-       "chance": 0.71,
+       "odds": 1.35,
+       "chance": null,
        "rule": {
         "t": "win",
         "s": "h"
@@ -574,24 +564,23 @@
        "mine": false
       },
       {
-       "text": "Over 2.5 goals",
-       "odds": 1.36,
-       "chance": 0.66,
+       "text": "Borussia Dortmund over 1.5 goals",
+       "odds": 1.44,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.62,
-       "chance": 0.55,
+       "text": "Over 9.5 corners",
+       "odds": 1.68,
+       "chance": null,
        "rule": {
-        "t": "btts",
-        "y": 1
+        "t": "stat"
        },
        "live": null,
        "mine": false
@@ -603,13 +592,13 @@
      "league": "Bundesliga",
      "kickoff": "14:30",
      "home": "RB Leipzig",
-     "away": "FC Augsburg",
+     "away": "Augsburg",
      "score": "3-1",
      "date": "2026-11-07",
      "odds": [
-      1.45,
-      5.0,
-      6.0
+      1.48,
+      4.6,
+      5.8
      ],
      "labels": [
       "SAFEST PICK",
@@ -618,39 +607,40 @@
      ],
      "win": null,
      "hc": "media/crests/rb-leipzig.png",
-     "ac": "media/crests/fc-augsburg.png",
+     "ac": "media/crests/augsburg.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 2.5 goals",
-       "odds": 1.28,
-       "chance": 0.78,
+       "text": "RB Leipzig over 1.5 goals",
+       "odds": 1.42,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 2.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "BTTS - Yes",
-       "odds": 1.4,
-       "chance": 0.69,
-       "rule": {
-        "t": "btts",
-        "y": 1
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "RB Leipzig to win",
-       "odds": 1.45,
-       "chance": 0.68,
+       "odds": 1.48,
+       "chance": null,
        "rule": {
         "t": "win",
         "s": "h"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.52,
+       "chance": null,
+       "rule": {
+        "t": "g",
+        "o": "o",
+        "v": 2.5
        },
        "live": null,
        "mine": false
@@ -661,14 +651,14 @@
      "n": 12,
      "league": "Bundesliga",
      "kickoff": "14:30",
-     "home": "SC Paderborn 07",
+     "home": "SC Paderborn",
      "away": "Eintracht Frankfurt",
      "score": "1-2",
      "date": "2026-11-07",
      "odds": [
-      3.1,
-      3.8,
-      2.15
+      2.9,
+      3.6,
+      2.25
      ],
      "labels": [
       "SAFEST PICK",
@@ -676,26 +666,26 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/sc-paderborn-07.png",
+     "hc": "media/crests/sc-paderborn.png",
      "ac": "media/crests/eintracht-frankfurt.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.14,
-       "chance": 0.83,
+       "text": "Eintracht Frankfurt to score",
+       "odds": 1.22,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "Eintracht Frankfurt or draw",
-       "odds": 1.36,
-       "chance": 0.63,
+       "odds": 1.38,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "a"
@@ -704,13 +694,10 @@
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.4,
-       "chance": 0.64,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
+       "text": "Eintracht Frankfurt draw no bet",
+       "odds": 1.65,
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       }
@@ -722,12 +709,12 @@
      "kickoff": "17:30",
      "home": "VfB Stuttgart",
      "away": "Werder Bremen",
-     "score": "2-1",
+     "score": "2-2",
      "date": "2026-11-07",
      "odds": [
-      1.65,
-      4.5,
-      4.5
+      1.85,
+      4.0,
+      3.8
      ],
      "labels": [
       "SAFEST PICK",
@@ -740,32 +727,33 @@
      "live": null,
      "picks": [
       {
-       "text": "VfB Stuttgart or draw",
+       "text": "Over 1.5 goals",
        "odds": 1.18,
-       "chance": 0.72,
+       "chance": null,
        "rule": {
-        "t": "dc",
-        "s": "h"
+        "t": "g",
+        "o": "o",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Over 2.5 goals",
-       "odds": 1.33,
-       "chance": 0.72,
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.28,
+       "chance": null,
        "rule": {
-        "t": "g",
+        "t": "g1",
         "o": "o",
-        "v": 2.5
+        "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "BTTS - Yes",
-       "odds": 1.4,
-       "chance": 0.7,
+       "odds": 1.52,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 1
@@ -777,6 +765,119 @@
     },
     {
      "n": 14,
+     "league": "Ligue 1",
+     "kickoff": "20:05",
+     "home": "Paris Saint-Germain",
+     "away": "Troyes",
+     "score": "3-0",
+     "date": "2026-11-07",
+     "odds": [
+      1.14,
+      9.5,
+      19.0
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/paris-saint-germain.png",
+     "ac": "media/crests/troyes.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Paris Saint-Germain over 1.5 goals",
+       "odds": 1.22,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.25,
+       "chance": null,
+       "rule": {
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Paris Saint-Germain -1.5",
+       "odds": 1.48,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "league": "Ligue 1",
+     "kickoff": "18:00",
+     "home": "Auxerre",
+     "away": "Paris FC",
+     "score": "0-1",
+     "date": "2026-11-07",
+     "odds": [
+      3.6,
+      3.45,
+      2.05
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/auxerre.png",
+     "ac": "media/crests/paris-fc.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Paris FC to score",
+       "odds": 1.24,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Paris FC or draw",
+       "odds": 1.3,
+       "chance": null,
+       "rule": {
+        "t": "dc",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Paris FC draw no bet",
+       "odds": 1.5,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 16,
      "league": "Serie A",
      "kickoff": "19:45",
      "home": "AS Roma",
@@ -784,9 +885,9 @@
      "score": "3-1",
      "date": "2026-11-07",
      "odds": [
-      1.3,
-      5.75,
-      9.0
+      1.32,
+      6.4,
+      9.75
      ],
      "labels": [
       "SAFEST PICK",
@@ -800,8 +901,8 @@
      "picks": [
       {
        "text": "AS Roma to win",
-       "odds": 1.3,
-       "chance": 0.75,
+       "odds": 1.32,
+       "chance": null,
        "rule": {
         "t": "win",
         "s": "h"
@@ -811,8 +912,8 @@
       },
       {
        "text": "Over 2.5 goals",
-       "odds": 1.36,
-       "chance": 0.73,
+       "odds": 1.42,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -822,12 +923,65 @@
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.67,
-       "chance": 0.6,
+       "text": "AS Roma -1.5",
+       "odds": 1.92,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "league": "Serie A",
+     "kickoff": "14:00",
+     "home": "Torino",
+     "away": "Lecce",
+     "score": "1-0",
+     "date": "2026-11-07",
+     "odds": [
+      1.85,
+      3.45,
+      4.5
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/torino.png",
+     "ac": "media/crests/lecce.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Under 3.5 goals",
+       "odds": 1.24,
+       "chance": null,
        "rule": {
-        "t": "btts",
-        "y": 1
+        "t": "g",
+        "o": "u",
+        "v": 3.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Torino draw no bet",
+       "odds": 1.36,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Torino to win",
+       "odds": 1.85,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "h"
        },
        "live": null,
        "mine": false
@@ -835,7 +989,7 @@
      ]
     },
     {
-     "n": 15,
+     "n": 18,
      "league": "Serie A",
      "kickoff": "14:00",
      "home": "Cagliari",
@@ -844,7 +998,7 @@
      "date": "2026-11-07",
      "odds": [
       2.75,
-      3.5,
+      3.4,
       2.5
      ],
      "labels": [
@@ -858,21 +1012,21 @@
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.17,
-       "chance": 0.84,
+       "text": "Frosinone to score",
+       "odds": 1.26,
+       "chance": null,
        "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
+        "t": "ts",
+        "s": "a",
+        "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "Frosinone or draw",
-       "odds": 1.4,
-       "chance": 0.7,
+       "odds": 1.44,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "a"
@@ -881,68 +1035,9 @@
        "mine": false
       },
       {
-       "text": "BTTS - Yes",
-       "odds": 1.44,
-       "chance": 0.65,
-       "rule": {
-        "t": "btts",
-        "y": 1
-       },
-       "live": null,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 16,
-     "league": "Serie A",
-     "kickoff": "14:00",
-     "home": "Torino",
-     "away": "Lecce",
-     "score": "2-1",
-     "date": "2026-11-07",
-     "odds": [
-      1.8,
-      3.5,
-      4.75
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/torino.png",
-     "ac": "media/crests/lecce.png",
-     "live": null,
-     "picks": [
-      {
-       "text": "Torino or draw",
-       "odds": 1.18,
-       "chance": 0.77,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Under 3.5 goals",
-       "odds": 1.36,
-       "chance": 0.71,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
        "text": "Over 8.5 corners",
-       "odds": 1.67,
-       "chance": 0.56,
+       "odds": 1.62,
+       "chance": null,
        "rule": {
         "t": "stat"
        },
@@ -952,7 +1047,7 @@
      ]
     },
     {
-     "n": 17,
+     "n": 19,
      "league": "Serie A",
      "kickoff": "17:00",
      "home": "Parma",
@@ -960,9 +1055,9 @@
      "score": "0-2",
      "date": "2026-11-07",
      "odds": [
-      4.5,
+      4.2,
       3.5,
-      1.83
+      1.89
      ],
      "labels": [
       "SAFEST PICK",
@@ -976,8 +1071,8 @@
      "picks": [
       {
        "text": "Bologna or draw",
-       "odds": 1.18,
-       "chance": 0.8,
+       "odds": 1.24,
+       "chance": null,
        "rule": {
         "t": "dc",
         "s": "a"
@@ -986,39 +1081,38 @@
        "mine": false
       },
       {
-       "text": "Under 3.5 goals",
-       "odds": 1.25,
-       "chance": 0.78,
-       "rule": {
-        "t": "g",
-        "o": "u",
-        "v": 3.5
-       },
+       "text": "Bologna draw no bet",
+       "odds": 1.4,
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       },
       {
-       "text": "Bologna over 0.5 goals",
-       "odds": null,
-       "chance": 0.79,
-       "rule": null,
+       "text": "Bologna to win",
+       "odds": 1.89,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
        "live": null,
        "mine": false
       }
      ]
     },
     {
-     "n": 18,
-     "league": "FA Cup",
-     "kickoff": "15:00",
-     "home": "Accrington ST",
-     "away": "Wycombe",
-     "score": "0-2",
+     "n": 20,
+     "league": "Primeira Liga",
+     "kickoff": "20:30",
+     "home": "Sporting CP",
+     "away": "Moreirense",
+     "score": "3-0",
      "date": "2026-11-07",
      "odds": [
-      3.6,
-      3.5,
-      2.0
+      1.18,
+      7.5,
+      13.0
      ],
      "labels": [
       "SAFEST PICK",
@@ -1026,37 +1120,142 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/accrington-st.png",
-     "ac": "media/crests/wycombe.png",
+     "hc": "media/crests/sporting-cp.png",
+     "ac": "media/crests/moreirense.png",
      "live": null,
      "picks": [
       {
-       "text": "Wycombe or draw",
-       "odds": 1.28,
-       "chance": 0.73,
+       "text": "Sporting CP to win",
+       "odds": 1.18,
+       "chance": null,
        "rule": {
-        "t": "dc",
-        "s": "a"
+        "t": "win",
+        "s": "h"
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "Under 3.5 goals",
-       "odds": 1.5,
-       "chance": 0.8,
+       "text": "Sporting CP over 1.5 goals",
+       "odds": 1.32,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "h",
+        "v": 1.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Sporting CP -1.5",
+       "odds": 1.58,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 21,
+     "league": "Championship",
+     "kickoff": "15:00",
+     "home": "Blackburn Rovers",
+     "away": "West Ham United",
+     "score": "1-2",
+     "date": "2026-11-07",
+     "odds": [
+      5.5,
+      4.1,
+      1.65
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/blackburn-rovers.png",
+     "ac": "media/crests/west-ham-united.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "West Ham United draw no bet",
+       "odds": 1.28,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Over 2.5 goals",
+       "odds": 1.6,
+       "chance": null,
        "rule": {
         "t": "g",
-        "o": "u",
-        "v": 3.5
+        "o": "o",
+        "v": 2.5
        },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.62,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 22,
+     "league": "Championship",
+     "kickoff": "12:30",
+     "home": "Wrexham",
+     "away": "Wolves",
+     "score": "1-2",
+     "date": "2026-11-07",
+     "odds": [
+      3.1,
+      3.4,
+      2.15
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/wrexham.png",
+     "ac": "media/crests/wolves.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Wolverhampton Wanderers to score",
+       "odds": 1.25,
+       "chance": null,
+       "rule": null,
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Wolverhampton Wanderers or draw",
+       "odds": 1.34,
+       "chance": null,
+       "rule": null,
        "live": null,
        "mine": false
       },
       {
        "text": "Under 10.5 corners",
-       "odds": 1.67,
-       "chance": 0.56,
+       "odds": 1.58,
+       "chance": null,
        "rule": {
         "t": "stat"
        },
@@ -1066,17 +1265,17 @@
      ]
     },
     {
-     "n": 19,
-     "league": "FA Cup",
-     "kickoff": "15:00",
-     "home": "Barnet",
-     "away": "Tranmere",
-     "score": "2-0",
+     "n": 23,
+     "league": "Eredivisie",
+     "kickoff": "20:00",
+     "home": "Excelsior Rotterdam",
+     "away": "Go Ahead Eagles",
+     "score": "2-2",
      "date": "2026-11-07",
      "odds": [
-      1.67,
-      3.9,
-      4.75
+      2.75,
+      3.75,
+      2.4
      ],
      "labels": [
       "SAFEST PICK",
@@ -1084,14 +1283,14 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/barnet.png",
-     "ac": "media/crests/tranmere.png",
+     "hc": "media/crests/excelsior-rotterdam.png",
+     "ac": "media/crests/go-ahead-eagles.png",
      "live": null,
      "picks": [
       {
        "text": "Over 1.5 goals",
-       "odds": 1.18,
-       "chance": 0.65,
+       "odds": 1.16,
+       "chance": null,
        "rule": {
         "t": "g",
         "o": "o",
@@ -1101,23 +1300,24 @@
        "mine": false
       },
       {
-       "text": "Barnet or draw",
-       "odds": 1.18,
-       "chance": 0.78,
+       "text": "Over 0.5 goals 1st half",
+       "odds": 1.28,
+       "chance": null,
        "rule": {
-        "t": "dc",
-        "s": "h"
+        "t": "g1",
+        "o": "o",
+        "v": 0.5
        },
        "live": null,
        "mine": false
       },
       {
-       "text": "BTTS - No",
-       "odds": 2.1,
-       "chance": 0.58,
+       "text": "BTTS - Yes",
+       "odds": 1.41,
+       "chance": null,
        "rule": {
         "t": "btts",
-        "y": 0
+        "y": 1
        },
        "live": null,
        "mine": false
@@ -1125,17 +1325,17 @@
      ]
     },
     {
-     "n": 20,
-     "league": "FA Cup",
-     "kickoff": "15:00",
-     "home": "Boreham Wood",
-     "away": "Wigan",
+     "n": 24,
+     "league": "Turkey Super Lig",
+     "kickoff": "16:00",
+     "home": "Galatasaray",
+     "away": "Amed SK",
      "score": "2-1",
      "date": "2026-11-07",
      "odds": [
-      1.75,
-      4.2,
-      3.9
+      1.43,
+      4.5,
+      6.2
      ],
      "labels": [
       "SAFEST PICK",
@@ -1143,70 +1343,14 @@
       "THIRD PICK"
      ],
      "win": null,
-     "hc": "media/crests/boreham-wood.png",
-     "ac": "media/crests/wigan.png",
+     "hc": "media/crests/galatasaray.png",
+     "ac": "media/crests/amed-sk.png",
      "live": null,
      "picks": [
       {
-       "text": "Over 1.5 goals",
-       "odds": 1.14,
-       "chance": 0.76,
-       "rule": {
-        "t": "g",
-        "o": "o",
-        "v": 1.5
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Boreham Wood or draw",
-       "odds": 1.22,
-       "chance": 0.75,
-       "rule": {
-        "t": "dc",
-        "s": "h"
-       },
-       "live": null,
-       "mine": false
-      },
-      {
-       "text": "Boreham Wood over 0.5 goals",
-       "odds": null,
-       "chance": 0.81,
-       "rule": null,
-       "live": null,
-       "mine": false
-      }
-     ]
-    },
-    {
-     "n": 21,
-     "league": "FA Cup",
-     "kickoff": "15:00",
-     "home": "Bradford",
-     "away": "Marine",
-     "score": "2-0",
-     "date": "2026-11-07",
-     "odds": [
-      1.25,
-      5.5,
-      12.0
-     ],
-     "labels": [
-      "SAFEST PICK",
-      "SECOND PICK",
-      "THIRD PICK"
-     ],
-     "win": null,
-     "hc": "media/crests/bradford.png",
-     "ac": "media/crests/marine.png",
-     "live": null,
-     "picks": [
-      {
-       "text": "Bradford to win",
-       "odds": 1.25,
-       "chance": 0.66,
+       "text": "Galatasaray to win",
+       "odds": 1.43,
+       "chance": null,
        "rule": {
         "t": "win",
         "s": "h"
@@ -1215,21 +1359,80 @@
        "mine": false
       },
       {
-       "text": "Under 3.5 goals",
-       "odds": 1.57,
-       "chance": 0.75,
+       "text": "Over 2.5 goals",
+       "odds": 1.58,
+       "chance": null,
        "rule": {
         "t": "g",
-        "o": "u",
-        "v": 3.5
+        "o": "o",
+        "v": 2.5
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "BTTS - Yes",
+       "odds": 1.66,
+       "chance": null,
+       "rule": {
+        "t": "btts",
+        "y": 1
+       },
+       "live": null,
+       "mine": false
+      }
+     ]
+    },
+    {
+     "n": 25,
+     "league": "Scotland Scottish Premiership",
+     "kickoff": "20:00",
+     "home": "St Mirren",
+     "away": "Rangers",
+     "score": "0-2",
+     "date": "2026-11-07",
+     "odds": [
+      6.5,
+      4.3,
+      1.44
+     ],
+     "labels": [
+      "SAFEST PICK",
+      "SECOND PICK",
+      "THIRD PICK"
+     ],
+     "win": null,
+     "hc": "media/crests/st-mirren.png",
+     "ac": "media/crests/rangers.png",
+     "live": null,
+     "picks": [
+      {
+       "text": "Rangers to win",
+       "odds": 1.44,
+       "chance": null,
+       "rule": {
+        "t": "win",
+        "s": "a"
+       },
+       "live": null,
+       "mine": false
+      },
+      {
+       "text": "Rangers over 1.5 goals",
+       "odds": 1.55,
+       "chance": null,
+       "rule": {
+        "t": "ts",
+        "s": "a",
+        "v": 1.5
        },
        "live": null,
        "mine": false
       },
       {
        "text": "BTTS - No",
-       "odds": 1.75,
-       "chance": 0.59,
+       "odds": 1.78,
+       "chance": null,
        "rule": {
         "t": "btts",
         "y": 0
@@ -1241,37 +1444,34 @@
     }
    ],
    "banker": {
-    "total": 2.0,
+    "total": 2.04,
     "games": [
      {
-      "n": 8,
-      "pick": {
-       "market": "GOALS",
-       "text": "Over 1.5 goals",
-       "odds": 1.2,
-       "p": 0.78
-      },
-      "odds": 1.2
-     },
-     {
-      "n": 10,
+      "n": 7,
       "pick": {
        "market": "RESULT",
-       "text": "Borussia Dortmund to win",
-       "odds": 1.3,
-       "p": 0.71
+       "text": "Arsenal to win",
+       "odds": 1.17
       },
-      "odds": 1.3
+      "odds": 1.17
      },
      {
-      "n": 11,
+      "n": 9,
       "pick": {
-       "market": "GOALS",
-       "text": "Over 2.5 goals",
-       "odds": 1.28,
-       "p": 0.78
+       "market": "RESULT",
+       "text": "Bayern Munich to win",
+       "odds": 1.32
       },
-      "odds": 1.28
+      "odds": 1.32
+     },
+     {
+      "n": 16,
+      "pick": {
+       "market": "RESULT",
+       "text": "AS Roma to win",
+       "odds": 1.32
+      },
+      "odds": 1.32
      }
     ]
    },
@@ -1285,7 +1485,799 @@
     "WhatsApp": false,
     "Community": false
    },
-   "results": {},
+   "results": {
+    "date": "2026-11-07",
+    "matches": [
+     {
+      "n": 1,
+      "home": "Valencia",
+      "away": "Real Madrid",
+      "status": "NS",
+      "score": "",
+      "predicted": "0-2",
+      "picks": [
+       {
+        "text": "Real Madrid to win",
+        "market": "RESULT",
+        "odds": 1.35,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Real Madrid over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.46,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 8.5 corners",
+        "market": "CORNERS",
+        "odds": 1.65,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 2,
+      "home": "Osasuna",
+      "away": "Athletic Club",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Athletic Club or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.3,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.36,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 4.5 cards",
+        "market": "CARDS",
+        "odds": 1.72,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 3,
+      "home": "Malaga",
+      "away": "Racing Santander",
+      "status": "NS",
+      "score": "",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Malaga to score",
+        "market": "TEAM GOALS",
+        "odds": 1.24,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Malaga or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.32,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Malaga draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.56,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 4,
+      "home": "Espanyol",
+      "away": "Deportivo La Coruna",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-1",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.25,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Espanyol or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.38,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.82,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 5,
+      "home": "Nottingham Forest",
+      "away": "Manchester City",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-3",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.22,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Manchester City over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.62,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Manchester City to win",
+        "market": "RESULT",
+        "odds": 1.73,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 6,
+      "home": "Leeds United",
+      "away": "Tottenham Hotspur",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.33,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Tottenham Hotspur or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.48,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.68,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 7,
+      "home": "Arsenal",
+      "away": "Hull City",
+      "status": "NS",
+      "score": "",
+      "predicted": "2-0",
+      "picks": [
+       {
+        "text": "Arsenal to win",
+        "market": "RESULT",
+        "odds": 1.17,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Arsenal over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.34,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Arsenal -1.5",
+        "market": "HANDICAP",
+        "odds": 1.62,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 8,
+      "home": "Fulham",
+      "away": "Newcastle United",
+      "status": "NS",
+      "score": "",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Fulham or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.34,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Fulham draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.56,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.65,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 9,
+      "home": "Mainz 05",
+      "away": "Bayern Munich",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-3",
+      "picks": [
+       {
+        "text": "Bayern Munich to win",
+        "market": "RESULT",
+        "odds": 1.32,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.42,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Bayern Munich -1.5",
+        "market": "HANDICAP",
+        "odds": 1.84,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 10,
+      "home": "Borussia Dortmund",
+      "away": "Elversberg",
+      "status": "NS",
+      "score": "",
+      "predicted": "2-0",
+      "picks": [
+       {
+        "text": "Borussia Dortmund to win",
+        "market": "RESULT",
+        "odds": 1.35,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Borussia Dortmund over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.44,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 9.5 corners",
+        "market": "CORNERS",
+        "odds": 1.68,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 11,
+      "home": "RB Leipzig",
+      "away": "Augsburg",
+      "status": "NS",
+      "score": "",
+      "predicted": "3-1",
+      "picks": [
+       {
+        "text": "RB Leipzig over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.42,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "RB Leipzig to win",
+        "market": "RESULT",
+        "odds": 1.48,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.52,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 12,
+      "home": "SC Paderborn",
+      "away": "Eintracht Frankfurt",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Eintracht Frankfurt to score",
+        "market": "TEAM GOALS",
+        "odds": 1.22,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Eintracht Frankfurt or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.38,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Eintracht Frankfurt draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.65,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 13,
+      "home": "VfB Stuttgart",
+      "away": "Werder Bremen",
+      "status": "NS",
+      "score": "",
+      "predicted": "2-2",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.18,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.28,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.52,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 14,
+      "home": "Paris Saint-Germain",
+      "away": "Troyes",
+      "status": "NS",
+      "score": "",
+      "predicted": "3-0",
+      "picks": [
+       {
+        "text": "Paris Saint-Germain over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.22,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.25,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Paris Saint-Germain -1.5",
+        "market": "HANDICAP",
+        "odds": 1.48,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 15,
+      "home": "Auxerre",
+      "away": "Paris FC",
+      "status": "NS",
+      "score": "",
+      "predicted": "0-1",
+      "picks": [
+       {
+        "text": "Paris FC to score",
+        "market": "TEAM GOALS",
+        "odds": 1.24,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Paris FC or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.3,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Paris FC draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.5,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 16,
+      "home": "AS Roma",
+      "away": "Sassuolo",
+      "status": "NS",
+      "score": "",
+      "predicted": "3-1",
+      "picks": [
+       {
+        "text": "AS Roma to win",
+        "market": "RESULT",
+        "odds": 1.32,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.42,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "AS Roma -1.5",
+        "market": "HANDICAP",
+        "odds": 1.92,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 17,
+      "home": "Torino",
+      "away": "Lecce",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-0",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.24,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Torino draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.36,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Torino to win",
+        "market": "RESULT",
+        "odds": 1.85,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 18,
+      "home": "Cagliari",
+      "away": "Frosinone",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Frosinone to score",
+        "market": "TEAM GOALS",
+        "odds": 1.26,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Frosinone or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.44,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 8.5 corners",
+        "market": "CORNERS",
+        "odds": 1.62,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 19,
+      "home": "Parma",
+      "away": "Bologna",
+      "status": "NS",
+      "score": "",
+      "predicted": "0-2",
+      "picks": [
+       {
+        "text": "Bologna or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.24,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Bologna draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.4,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Bologna to win",
+        "market": "RESULT",
+        "odds": 1.89,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 20,
+      "home": "Sporting CP",
+      "away": "Moreirense",
+      "status": "NS",
+      "score": "",
+      "predicted": "3-0",
+      "picks": [
+       {
+        "text": "Sporting CP to win",
+        "market": "RESULT",
+        "odds": 1.18,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Sporting CP over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.32,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Sporting CP -1.5",
+        "market": "HANDICAP",
+        "odds": 1.58,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 21,
+      "home": "Blackburn Rovers",
+      "away": "West Ham United",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "West Ham United draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.28,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.6,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.62,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 22,
+      "home": "Wrexham",
+      "away": "Wolves",
+      "status": "NS",
+      "score": "",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Wolverhampton Wanderers to score",
+        "market": "TEAM GOALS",
+        "odds": 1.25,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Wolverhampton Wanderers or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.34,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Under 10.5 corners",
+        "market": "CORNERS",
+        "odds": 1.58,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 23,
+      "home": "Excelsior Rotterdam",
+      "away": "Go Ahead Eagles",
+      "status": "NS",
+      "score": "",
+      "predicted": "2-2",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.16,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.28,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.41,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 24,
+      "home": "Galatasaray",
+      "away": "Amed SK",
+      "status": "NS",
+      "score": "",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Galatasaray to win",
+        "market": "RESULT",
+        "odds": 1.43,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.58,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.66,
+        "p": null,
+        "won": null
+       }
+      ]
+     },
+     {
+      "n": 25,
+      "home": "St Mirren",
+      "away": "Rangers",
+      "status": "NS",
+      "score": "",
+      "predicted": "0-2",
+      "picks": [
+       {
+        "text": "Rangers to win",
+        "market": "RESULT",
+        "odds": 1.44,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Rangers over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.55,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": 1.78,
+        "p": null,
+        "won": null
+       }
+      ]
+     }
+    ],
+    "checked": "2026-11-06T23:25:36",
+    "banker": {
+     "total": 2.04,
+     "won": null
+    },
+    "won": 0,
+    "lost": 0,
+    "waiting": 75,
+    "pick1": [
+     0,
+     0
+    ],
+    "correct_scores": 0
+   },
    "video_link": "",
    "posts": [
     {
@@ -1297,9 +2289,9 @@
       "media/2026-11-07/Games-2026-11-07.jpg"
      ],
      "texts": {
-      "tg": "⚽ 21 Matches Predicted Today | Saturday 7 November\nMatch Vision\n\n🎯 Correct Score, Safest Pick And Our 2 Odds Banker For Every Game Are In Today's Video. The Games Are On The Picture.\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "⚽ *21 Matches Predicted Today | Saturday 7 November*\nMatch Vision\n\n🎯 Correct Score, Safest Pick And Our 2 Odds Banker For Every Game Are In Today's Video. The Games Are On The Picture.\n\n👇 *Watch All Predictions*:\nhttps://t.me/matchvision707",
-      "x": "⚽ 21 Matches Predicted Today | Saturday 7 November\nMatch Vision\n\n🎯 Correct Score, Safest Pick And Our 2 Odds Banker For Every Game Are In Today's Video. The Games Are On The Picture.\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions\n\n--- reply ---\n\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
+      "tg": "⚽ 25 Matches Predicted Today | Saturday 7 November\nMatch Vision\n\n🎯 Correct Score, Safest Pick, Top Picks And Our 2 Odds Banker For Every Game Are In Today's Video.\n\n👇 Watch All Predictions:\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "⚽ *25 Matches Predicted Today | Saturday 7 November*\nMatch Vision\n\n🎯 Correct Score, Safest Pick, Top Picks And Our 2 Odds Banker For Every Game Are In Today's Video.\n\n👇 *Watch All Predictions*:\nhttps://t.me/matchvision707",
+      "x": "⚽ 25 Matches Predicted Today | Saturday 7 November\nMatch Vision\n\n🎯 Correct Score, Safest Pick, Top Picks And Our 2 Odds Banker For Every Game Are In Today's Video.\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions\n\n--- reply ---\n\n👇 Watch All Predictions:\nhttps://t.me/matchvision707"
      },
      "auto": {
       "tg": false
@@ -1357,9 +2349,9 @@
       "media/2026-11-07/Thumbnail-1-style-361-.jpg"
      ],
      "texts": {
-      "tg": "Saturday Predictions | 7 November\nMatch Vision\n\n21 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
-      "wa": "Saturday Predictions | 7 November\nMatch Vision\n\n21 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now*:\n{VIDEO_LINK}",
-      "x": "Saturday Predictions | 7 November\n{VIDEO_LINK}\n\n21 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
+      "tg": "Saturday Predictions | 7 November\nMatch Vision\n\n25 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 Watch Now:\n{VIDEO_LINK}",
+      "wa": "Saturday Predictions | 7 November\nMatch Vision\n\n25 Matches Predicted Today. Correct Scores And Our Banker.\n\n👇 *Watch Now*:\n{VIDEO_LINK}",
+      "x": "Saturday Predictions | 7 November\n{VIDEO_LINK}\n\n25 Matches Predicted Today. Correct Scores, Top Picks And Our 2 Odds Banker.\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions"
      },
      "auto": {
       "tg": false
@@ -1450,7 +2442,7 @@
      "images": [
       "media/2026-11-07/short-1.jpg"
      ],
-     "video": "media/2026-11-07/short-1-2142709.mp4",
+     "video": "media/2026-11-07/short-1-2118786.mp4",
      "file": "Ready to Upload\\2026-11-07 Saturday\\Shorts\\Short 1 - 5 matches (Valencia vs Real Madrid and more).mp4",
      "texts": {
       "tt": "SATURDAY FOOTBALL PREDICTIONS | 7 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore",
@@ -1475,7 +2467,7 @@
      "images": [
       "media/2026-11-07/short-2.jpg"
      ],
-     "video": "media/2026-11-07/short-2-2194417.mp4",
+     "video": "media/2026-11-07/short-2-2196545.mp4",
      "file": "Ready to Upload\\2026-11-07 Saturday\\Shorts\\Short 2 - 5 matches (Leeds United vs Tottenham Hotspur and more).mp4",
      "texts": {
       "tt": "SATURDAY FOOTBALL PREDICTIONS | 7 NOVEMBER\n\n#footballpredictions #football #matchvision #correctscore",
@@ -26990,9 +27982,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "b6Y7UXrd8oFCsnEsPUzuLA==",
-  "nonce": "sVmoKEm5u3oa+Bc/CTRj5g==",
-  "ct": "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",
-  "mac": "BsNI7pCMzFIiK2RmeJSy9yFuZ0en2DekRkKlXfUzk60="
+  "salt": "m1pMlIuDdIC5tEm6Expzog==",
+  "nonce": "AZkyUfU+LcUCQvB47XfGRA==",
+  "ct": "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",
+  "mac": "CnonwNUtiSQncB4kv4fgBzyLUfnsgEOmxiDMgiVy6do="
  }
 }
