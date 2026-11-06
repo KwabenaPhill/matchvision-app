@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.31</title>
+<title>Match Vision 3.32</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.31';   // APP_VERSION = '3.31' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.32';   // APP_VERSION = '3.32' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -953,11 +953,12 @@ const K={feed:'mv_app_feed',pin:'mv_app_pin',set:'mv_app_set',tab:'mv_app_tab',e
 const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
 const jget=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d:v;}catch(e){return d;}};
 const DEF={live:true,every:2,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
-  apps:{wa:true,x:true,ig:true,tt:true,th:true,yt:true,tg:false},
+  apps:{wa:true,x:true,ig:true,tt:true,th:true,fb:true,yt:true,tg:false},
   bold:true,boldTitle:true,boldBrand:false,boldLeague:false,capWords:true,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
   showOdds:true,showChance:false,showPred:true,showFin:true,sort:'video',pickOrder:'video',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
   vidCards:true,recRange:'week',premMembers:true};
-let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v323){SET.v323=1;SET.sort='video';SET.pickOrder='video';}if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v328){SET.v328=1;SET.capWords=true;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
+let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v332){SET.v332=1;SET.apps=Object.assign({fb:true},SET.apps||{});}   // 3.32: Facebook Page button
+if(!SET.v323){SET.v323=1;SET.sort='video';SET.pickOrder='video';}if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v328){SET.v328=1;SET.capWords=true;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
 const saveSet=()=>store.set(K.set,JSON.stringify(SET));
 let POSTED=jget(K.posted,{});   // date -> item id -> app -> true  (what YOU sent from this phone)
 const savePosted=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(POSTED))if(k<keep)delete POSTED[k];store.set(K.posted,JSON.stringify(POSTED));};
@@ -1100,7 +1101,7 @@ function openSheet(html,onClick,onClose){const box=$('sheetBox');box.innerHTML=h
 function closeSheet(){popLayer();}
 $('sheet').onclick=e=>{if(e.target.id==='sheet')closeSheet();};
 function editField(title,value,cb,opts={}){
-  openSheet(`<div class="modal-title">${esc(title)}</div>${opts.note?`<p class="muted" style="margin-bottom:10px">${esc(opts.note)}</p>`:''}${opts.multi?`<textarea id="efIn" rows="11">${esc(value)}</textarea>`:`<input id="efIn" type="${opts.type||'text'}" value="${esc(value)}">`}
+  openSheet(`<div class="modal-title">${esc(title)}</div>${opts.img?`<img src="${esc(opts.img)}" alt="" style="width:100%;border-radius:14px;margin-bottom:10px">`:''}${opts.note?`<p class="muted" style="margin-bottom:10px">${esc(opts.note)}</p>`:''}${opts.multi?`<textarea id="efIn" rows="11">${esc(value)}</textarea>`:`<input id="efIn" type="${opts.type||'text'}" value="${esc(value)}">`}
     <div class="btn-row">${opts.reset?`<button class="btn-half" data-a="reset">Reset</button>`:''}<button class="btn-half" data-a="cancel">Cancel</button><button class="btn-save" data-a="ok">Save</button></div>`,
   e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.a==='ok'){const v=$('efIn').value;closeSheet();cb(v);}else if(b.dataset.a==='reset'){closeSheet();cb(null);}else closeSheet();});
   setTimeout(()=>$('efIn')&&$('efIn').focus(),80);}
@@ -1114,8 +1115,10 @@ function copyText(t){t=capWords(t);let ok=false;try{const ta=document.createElem
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).catch(()=>{});ok=true;}return ok;}
 const enc=encodeURIComponent;
 function canShareFiles(files){try{return !!(files.length&&navigator.canShare&&navigator.canShare({files}));}catch(e){return false;}}
-const PNAME={wa:'WhatsApp',x:'X',ig:'Instagram',tt:'TikTok',th:'Threads',yt:'YouTube',tg:'Telegram',copy:'Copy'};
-const APPS=['wa','x','ig','tt','yt','tg'];
+const PNAME={wa:'WhatsApp',x:'X',ig:'Instagram',tt:'TikTok',th:'Threads',fb:'Facebook',yt:'YouTube',tg:'Telegram',copy:'Copy'};
+const APPS=['wa','x','ig','tt','th','fb','yt','tg'];
+// 3.32: account A (videos) / B (pictures): buttons say "TikTok A", "Instagram B"
+const accLabel=(it,p)=>it&&it.acct&&it.acct[p]?PNAME[p]+' '+it.acct[p]:undefined;
 // 3.5: the apps each kind of post goes to. Nothing is shown for an app you do not post that kind on.
 const GROUP_APPS={shorts:['tt','ig'],swipe:['tt','ig','yt'],morning:['wa','x','tg'],video:['wa','x','tg'],results:['wa','x','tg','ig','yt']};   // 3.10.6: results on YouTube too
 function saveFile(f,label){if(!f)return false;try{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},4000);toast((label||'Saved')+' ✓ In your Gallery (Downloads album). iPhone: in Files > Downloads.',3800);return true;}catch(e){toast('Could not save here');return false;}}
@@ -1147,6 +1150,7 @@ ig:'<svg viewBox="0 0 24 24"><defs><linearGradient id="igg" x1="0" y1="1" x2="1"
 tt:'<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#000"/><rect x=".5" y=".5" width="23" height="23" rx="5.5" fill="none" stroke="#444"/><path d="M13.6 5.5v9.2a2.6 2.6 0 1 1-2.3-2.6" fill="none" stroke="#25F4EE" stroke-width="2.2" stroke-linecap="round" transform="translate(-.6 -.4)"/><path d="M13.6 5.5v9.2a2.6 2.6 0 1 1-2.3-2.6" fill="none" stroke="#FE2C55" stroke-width="2.2" stroke-linecap="round" transform="translate(.6 .4)"/><path d="M13.6 5.5v9.2a2.6 2.6 0 1 1-2.3-2.6M13.6 5.5c.4 2 1.8 3.3 3.8 3.4" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>',
 th:'<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#000"/><rect x=".5" y=".5" width="23" height="23" rx="5.5" fill="none" stroke="#444"/><path d="M15.6 11.3c-.3-2-1.6-3-3.6-3-2.2 0-3.6 1.6-3.6 3.9 0 2.4 1.5 4 3.8 4 1.7 0 3-.9 3-2.4 0-1.4-1.2-2.1-2.9-2.1-1.3 0-2.2.6-2.2 1.5s.8 1.4 1.7 1.4c1.5 0 2.5-1.2 2.5-3.3" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg>',
 yt:'<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#FF0000"/><path d="M10 8.3v7.4l6-3.7z" fill="#fff"/></svg>',
+fb:'<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#1877F2"/><path fill="#fff" d="M13.4 20v-6.6h2.2l.3-2.6h-2.5V9.2c0-.7.2-1.3 1.3-1.3h1.3V5.6c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.3v2H8.7v2.6h2.2V20z"/></svg>',
 copy:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg>'};
 const bi=p=>SVG[p]?`<span class="bi">${SVG[p]}</span>`:'';
 const btnHTML=(p,done,label)=>`<button data-p="${p}" class="${p!=='copy'&&done?'done':''}">${bi(p)}${label||PNAME[p]}</button>`;
@@ -1197,14 +1201,14 @@ function timeChip(d,it){const at=itAt(d,it);if(!at)return '';const s=timeState(d
 setInterval(()=>{document.querySelectorAll('.tchip').forEach(el=>{const d=dayOf(el.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===el.dataset.iid);if(!it)return;const tmp=document.createElement('div');tmp.innerHTML=timeChip(d,it);const c=tmp.firstChild;if(c){el.className=c.className;el.textContent=c.textContent;}});},30000);
 const kindOf=it=>/^short/.test(it.id)?'shorts':/^win/.test(it.id)?'results':it.id;
 const KINDS=[['games',"Today's games"],['picks','Top picks'],['banker','Banker'],['video','Video post'],['swipe','Swipe post'],['shorts','Shorts'],['results','Results']];
-function appsOf(it){const allow=GROUP_APPS[it.group]||APPS;const off=SET.postOff||{};const k=kindOf(it);return APPS.filter(p=>allow.includes(p)&&SET.apps[p]&&!off[k+':'+p]&&it.texts&&(it.texts[p]||(p==='yt'&&it.group==='results'&&(it.texts.tg||it.texts.wa)))&&!(p==='tg'&&it.auto&&it.auto.tg));}
+function appsOf(it){const allow=it.apps||GROUP_APPS[it.group]||APPS;const off=SET.postOff||{};const k=kindOf(it);return APPS.filter(p=>allow.includes(p)&&SET.apps[p]&&!off[k+':'+p]&&it.texts&&(it.texts[p]||(p==='yt'&&it.group==='results'&&(it.texts.tg||it.texts.wa)))&&!(p==='tg'&&it.auto&&it.auto.tg));}
 const postedOf=(d,id)=>((POSTED[d.date]||{})[id])||{};
 function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return need.length>0&&need.every(x=>p[x]);}
 // 3.10.6: YouTube results: no channel link, a subscribe line instead (a different one each day)
 const YT_END=['More winning picks coming tomorrow. Subscribe and turn on the bell 🔔','Tomorrow\'s predictions drop soon. Subscribe so you never miss them 🔔','Want tomorrow\'s games? Subscribe and tap the bell 🔔','New predictions every day. Subscribe for tomorrow\'s picks ⚽','More games coming tomorrow. Follow and subscribe 🔥'];
 function ytResults(t,key){const L=String(t||'').split('\n').filter(l=>!/https?:\/\//.test(l)&&!/👇\s*\**\s*$/.test(l.trim()));let h=0;for(const c of String(key||''))h=(h*31+c.charCodeAt(0))>>>0;return (L.join('\n').replace(/\n{3,}/g,'\n\n').trim()+'\n\n'+YT_END[h%YT_END.length]).trim();}
 function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:(p==='yt'&&it.group==='results'?ytResults(it.texts.tg||it.texts.wa,(it.id||'')+(it.title||'')):((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||''));const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
-async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return null;}const imgs=it.images||[];for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
+async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return null;}const imgs=((p==='x'||p==='fb')&&it.images_x)?it.images_x:(it.images||[]);for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${p}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
 async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);if(files===null)return;const ok=await shareTo(p,textFor(it,p),files);
   if(ok&&p!=='copy'){POSTED[d.date]=POSTED[d.date]||{};const o=POSTED[d.date][it.id]=POSTED[d.date][it.id]||{};o[p]=true;savePosted();
     const next=itemsOf(d).find(x=>!isDone(d,x));setTimeout(()=>toast(isDone(d,it)?(next?`Done ✓ Next: ${next.title}`:'Everything for this day is sent ✓'):`Sent to ${PNAME[p]} ✓`,3000),900);}
@@ -1222,7 +1226,7 @@ function postCard(d,it){const p=postedOf(d,it.id);const ap=appsOf(it);const show
     ${xs.length>1?xs.slice(1).map((x,i)=>`<div class="xreply"><span>${bi('x')}X reply ${i+1} (post it under the first one)</span><button data-xr="${i+1}">Copy</button></div>`).join(''):''}
     ${it.group==='shorts'?(it.video?`<video class="vplayer" src="${esc(media(it.video))}" controls playsinline preload="none" poster="${esc(media((it.images||[])[0]||''))}"></video><div class="btn-row"><button class="btn-half" data-p="vid">📥 Save to gallery</button><button class="btn-half" data-p="vidshare">↗ Share the video</button></div>`:`<div class="vnote">🎬 The video is on your laptop, full quality:<br><b>${esc(it.file||'Ready to Upload')}</b><br>Or tap 📥 in the bot's pack to get it on the phone.</div>`):''}
     ${sl?`<div class="pstat">${esc(sl)}</div>`:''}
-    <div class="mini">${ap.map(x=>btnHTML(x,p[x])).join('')}${btnHTML('copy',false)}<button data-edit="1">✏️ Edit text</button></div></div>`;}
+    <div class="mini">${ap.map(x=>btnHTML(x,p[x],accLabel(it,x))).join('')}${btnHTML('copy',false)}<button data-edit="1">✏️ Edit text</button></div></div>`;}
 async function postClick(e,after){const b=e.target.closest('button');if(!b)return;const card=b.closest('[data-post]');if(!card)return;const d=dayOf(card.dataset.dk);if(!d)return;const it=(d.posts||[]).find(x=>x.id===card.dataset.post);if(!it)return;
   if(b.dataset.edit){closeSheet();setTimeout(()=>editPost(d,it),250);return;}
   if(b.dataset.xr){const xs=xParts(styled(it.texts.x,'x'));toast(copyText(xs[+b.dataset.xr]||'')?`Reply ${b.dataset.xr} copied`:'Copy failed');return;}
@@ -1308,7 +1312,7 @@ async function shareWin(d,n,p){const m=(d.matches||[]).find(x=>String(x.n)===Str
 // ---------- HOME ----------
 let homeView=SET.homeView||'posts';
 function todoRow(d,it,next){const p=postedOf(d,it.id);return `<div class="todo" data-item="${esc(it.id)}" data-dk="${d.date}">${rowIcon(it)}<div class="tx"><button class="tt" data-open="${esc(it.id)}" data-dk="${d.date}">${esc(it.title)}${next?'<span class="nx">NEXT</span>':''}${itAt(d,it)?' '+timeChip(d,it):''}${isDone(d,it)?' <span class="nx" style="background:#30D158">SENT</span>':''}</button>
-  <div class="pv">${esc((textFor(it,appsOf(it).find(a=>a!=='x')||'wa')||'').split('\n').find(l=>l.trim())||'')}</div><div class="mini">${appsOf(it).map(x=>btnHTML(x,p[x])).join('')}</div></div></div>`;}
+  <div class="pv">${esc((textFor(it,appsOf(it).find(a=>a!=='x')||'wa')||'').split('\n').find(l=>l.trim())||'')}</div><div class="mini">${appsOf(it).map(x=>btnHTML(x,p[x],accLabel(it,x))).join('')}</div></div></div>`;}
 function reminders(d){const out=[],t=todayKey();
   if(feed&&feed.builder&&feed.builder.busy)out.push(['⚙️',`The laptop is building: ${feed.builder.step||''} (${Math.round((feed.builder.done||0)*100)}%)`]);
   if(prem&&SET.premMembers)for(const m of prem.members||[]){const x=m.until;if(!x)continue;const dl=daysBetween(t,x);if(dl<0&&dl>-15)rems(out,'👑',`${m.name}'s Vision Premium ended ${shortDate(x)}. The bot asks "Remove?"`);else if(dl>=0&&dl<=3)rems(out,'👑',`${m.name} ends ${dl===0?'today':dl===1?'tomorrow':`in ${dl} days`}`);}
@@ -1856,7 +1860,11 @@ function openTemplates(){const T=(feed&&feed.templates)||{};const names=Object.k
     if(b.dataset.a==='paste'){let t='';try{t=await navigator.clipboard.readText();}catch(_){t=prompt('Paste the texts here')||'';}if(!/=== MATCH VISION TEXTS ===/.test(t)){toast('Copy all first, edit, then Paste all');return;}let n=0;
       for(const part of t.split(/^\[([A-Z0-9 ]+)\]\s*$/m).reduce((a,x,i,arr)=>{if(i%2===1)a.push([x,(arr[i+1]||'').replace(/^\n+|\n+$/g,'')]);return a;},[])){const [k,v]=part;if(T[k]!=null&&v.trim()&&v.trim()!==String(T[k]).trim()){PTEXT[k]=v;n++;}}
       savePend();render();toast(n?`${n} text${n>1?'s':''} changed. Tap "Send to the bot".`:'Nothing changed',3500);return;}
-    if(b.dataset.n){const n=b.dataset.n;editField(n,PTEXT[n]!=null?PTEXT[n]:T[n],v=>{if(v==null)return;if(v.trim()===String(T[n]).trim())delete PTEXT[n];else PTEXT[n]=v;savePend();render();toast('Changed ✓ Tap "Send to the bot" when you are done',3000);},{multi:true,note:'Keep the words in { } (the builder fills them in).'});}};}
+    if(b.dataset.n){const n=b.dataset.n;editField(n,PTEXT[n]!=null?PTEXT[n]:T[n],v=>{if(v==null)return;if(v.trim()===String(T[n]).trim())delete PTEXT[n];else PTEXT[n]=v;savePend();render();toast('Changed ✓ Tap "Send to the bot" when you are done',3000);},{multi:true,note:'The picture this text goes with, then the words. Keep the words in { } (the builder fills them in).',img:tplPic(n)});}};}
+// 3.32 (Philip, 6 Nov): each text shown like a real post: the newest picture it goes with on top, the caption under it
+function tplPic(n){try{const d=todayDay()||days()[0];if(!d)return '';const P=d.posts||[];const by=id=>P.find(x=>x.id===id||String(x.id).startsWith(id));
+  const it=/GAMES/.test(n)?by('games'):/TOP PICKS|PICKS/.test(n)?by('picks'):/BANKER/.test(n)?by('banker'):/VIDEO|DESCRIPTION|TITLE|TAGS|PINNED/.test(n)?by('video'):/WIN|RESULT/.test(n)?by('win'):/SHORT|CAPTION|HASHTAG/.test(n)?by('short'):/CORRECT|CS /.test(n)?by('cs'):by('day_safe')||by('swipe');
+  const im=it&&(it.images||[])[0];return im?media(im):'';}catch(e){return '';}}
 
 // ---------- backup of this app (settings, sent ticks, your edits) ----------
 function saveBackup(){const data={app:'Match Vision',version:VERSION,saved:new Date().toISOString(),set:SET,posted:POSTED,edits:EDITS,pending:PEND,pendingTexts:PTEXT,money:MONEY};
