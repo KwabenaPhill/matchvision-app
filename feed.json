@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-11-06T22:09:13",
+ "updated": "2026-11-06T22:16:59",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-11-07 Saturday",
@@ -1369,20 +1369,67 @@
      "at": "2026-11-07T05:00"
     },
     {
-     "id": "swipe",
+     "id": "day_safe",
      "group": "swipe",
-     "title": "Swipe post",
+     "title": "Day post (No odds)",
      "when": "09:00",
      "images": [
-      "media/2026-11-07/slide-1.jpg",
-      "media/2026-11-07/slide-2.jpg",
-      "media/2026-11-07/slide-3.jpg",
-      "media/2026-11-07/slide-4.jpg"
+      "media/2026-11-07/day_safe-1.jpg",
+      "media/2026-11-07/day_safe-2.jpg",
+      "media/2026-11-07/day_safe-3.jpg"
      ],
      "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Saturday 7 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Saturday 7 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Saturday 7 November\n\n#matchvision #premierleague #epl #laliga"
+      "tt": "Top Picks + Pick Of The Day | Sat 7 Nov\nComment Your Pick Below\nMore Games In Bio\n\n#football #predictions #matchvision",
+      "ig": "Top Picks + Pick Of The Day | Sat 7 Nov\nComment Your Pick Below\nMore Games In Bio\n\n#football #predictions #matchvision",
+      "th": "Top Picks + Pick Of The Day | Sat 7 Nov\nComment Your Pick Below\nMore Games In Bio\n\n#football #predictions #matchvision"
+     },
+     "apps": [
+      "tt",
+      "ig",
+      "th"
+     ],
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B"
+     },
+     "acct_names": {
+      "A": "Match Vision",
+      "B": "Score Vision"
+     },
+     "auto": {},
+     "note": "",
+     "ready": true,
+     "at": "2026-11-07T09:00"
+    },
+    {
+     "id": "day_odds",
+     "group": "swipe",
+     "title": "Day post (With odds)",
+     "when": "09:00",
+     "images": [
+      "media/2026-11-07/day_odds-1.jpg",
+      "media/2026-11-07/day_odds-2.jpg",
+      "media/2026-11-07/day_odds-3.jpg"
+     ],
+     "texts": {
+      "fb": "Top Picks + 2 Odds Banker | Sat 7 Nov\nComment Your Pick Below\nSearch Match Vision 707 On Telegram\n\n#football #predictions #matchvision",
+      "x": "Top Picks + 2 Odds Banker | Sat 7 Nov\n\n#football #correctscore",
+      "tg": "Top Picks + 2 Odds Banker | Sat 7 Nov",
+      "wa": "Top Picks + 2 Odds Banker | Sat 7 Nov"
+     },
+     "apps": [
+      "fb",
+      "x",
+      "tg",
+      "wa"
+     ],
+     "acct": {
+      "fb": "B"
+     },
+     "acct_names": {
+      "A": "Match Vision",
+      "B": "Score Vision"
      },
      "auto": {},
      "note": "",
@@ -1393,7 +1440,13 @@
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-07/short-1.jpg"
      ],
@@ -1406,13 +1459,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-07T10:00"
+     "at": "2026-11-06T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-07/short-2.jpg"
      ],
@@ -1425,31 +1484,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-07T13:00"
+     "at": "2026-11-07T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-11-07/cs-1.jpg",
       "media/2026-11-07/cs-2.jpg",
-      "media/2026-11-07/cs-3.jpg",
-      "media/2026-11-07/cs-4.jpg"
+      "media/2026-11-07/cs-3.jpg"
+     ],
+     "images_x": [
+      "media/2026-11-07/cs-x-1.jpg",
+      "media/2026-11-07/cs-x-2.jpg",
+      "media/2026-11-07/cs-x-3.jpg"
      ],
      "texts": {
-      "tt": "SATURDAY FOOTBALL CORRECT SCORES | 7 NOVEMBER\n\nValencia vs Real Madrid + 20 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga",
-      "ig": "SATURDAY FOOTBALL CORRECT SCORES | 7 NOVEMBER\n\nValencia vs Real Madrid + 20 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips",
-      "yt": "🎯 Saturday Correct Scores | 7 November\nMatch Vision\n\nValencia vs Real Madrid + 20 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Saturday Correct Scores | 7 November*\nMatch Vision\n\nValencia vs Real Madrid + 20 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Saturday Correct Scores | 7 November*\nMatch Vision\n\nValencia vs Real Madrid + 20 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Saturday Correct Scores | 7 November\n\nValencia vs Real Madrid + 20 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "SATURDAY FOOTBALL CORRECT SCORES | 7 NOVEMBER\n\nValencia vs Real Madrid + 20 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips"
+      "tt": "Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games\nComment Your Score Below\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games\nComment Your Score Below\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games\nComment Your Score Below",
+      "tg": "🎯 Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games",
+      "x": "Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games\nComment Your Score Below\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Sat 7 Nov\nValencia vs Real Madrid + 13 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-11-06T21:00"
     }
    ]
   },
@@ -2058,14 +2129,14 @@
      "ac": "media/crests/arouca.png",
      "live": {
       "st": "LIVE",
-      "min": 67,
+      "min": 74,
       "gh": 0,
       "ga": 0,
       "hh": null,
       "ha": null,
       "espn": "401885399",
       "src": "ESPN",
-      "at": "2026-11-06T22:08:34"
+      "at": "2026-11-06T22:16:12"
      },
      "picks": [
       {
@@ -2587,32 +2658,16 @@
      "at": "2026-11-06T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-11-06/slide-1.jpg",
-      "media/2026-11-06/slide-2.jpg",
-      "media/2026-11-06/slide-3.jpg",
-      "media/2026-11-06/slide-4.jpg",
-      "media/2026-11-06/slide-5.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Friday 6 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Friday 6 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Friday 6 November\n\n#matchvision #premierleague #epl #laliga"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-11-06T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-06/short-1.jpg"
      ],
@@ -2625,13 +2680,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-06T10:00"
+     "at": "2026-11-05T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-06/short-2.jpg"
      ],
@@ -2644,30 +2705,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-06T13:00"
+     "at": "2026-11-06T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-11-06/cs-1.jpg",
       "media/2026-11-06/cs-2.jpg",
       "media/2026-11-06/cs-3.jpg"
      ],
+     "images_x": [
+      "media/2026-11-06/cs-x-1.jpg",
+      "media/2026-11-06/cs-x-2.jpg",
+      "media/2026-11-06/cs-x-3.jpg"
+     ],
      "texts": {
-      "tt": "FRIDAY FOOTBALL CORRECT SCORES | 6 NOVEMBER\n\nSevilla vs Deportivo Alaves + 13 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga",
-      "ig": "FRIDAY FOOTBALL CORRECT SCORES | 6 NOVEMBER\n\nSevilla vs Deportivo Alaves + 13 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips",
-      "yt": "🎯 Friday Correct Scores | 6 November\nMatch Vision\n\nSevilla vs Deportivo Alaves + 13 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Friday Correct Scores | 6 November*\nMatch Vision\n\nSevilla vs Deportivo Alaves + 13 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Friday Correct Scores | 6 November*\nMatch Vision\n\nSevilla vs Deportivo Alaves + 13 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Friday Correct Scores | 6 November\n\nSevilla vs Deportivo Alaves + 13 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "FRIDAY FOOTBALL CORRECT SCORES | 6 NOVEMBER\n\nSevilla vs Deportivo Alaves + 13 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips"
+      "tt": "Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games\nWhich Score Do You See?\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games\nWhich Score Do You See?\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games\nWhich Score Do You See?",
+      "tg": "🎯 Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games",
+      "x": "Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games\nWhich Score Do You See?\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Fri 6 Nov\nSevilla vs Deportivo Alaves + 13 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-11-05T21:00"
     }
    ]
   },
@@ -5357,31 +5431,16 @@
      "at": "2026-11-05T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-11-05/slide-1.jpg",
-      "media/2026-11-05/slide-2.jpg",
-      "media/2026-11-05/slide-3.jpg",
-      "media/2026-11-05/slide-4.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Thursday 5 November\n\n#matchvision #uel #europaleague #conferenceleague #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Thursday 5 November\n\n#matchvision #uel #europaleague #conferenceleague #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Thursday 5 November\n\n#matchvision #uel #europaleague #conferenceleague"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-11-05T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-05/short-1.jpg"
      ],
@@ -5394,13 +5453,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-05T10:00"
+     "at": "2026-11-04T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-05/short-2.jpg"
      ],
@@ -5413,31 +5478,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-05T13:00"
+     "at": "2026-11-05T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-11-05/cs-1.jpg",
       "media/2026-11-05/cs-2.jpg",
-      "media/2026-11-05/cs-3.jpg",
-      "media/2026-11-05/cs-4.jpg"
+      "media/2026-11-05/cs-3.jpg"
+     ],
+     "images_x": [
+      "media/2026-11-05/cs-x-1.jpg",
+      "media/2026-11-05/cs-x-2.jpg",
+      "media/2026-11-05/cs-x-3.jpg"
      ],
      "texts": {
-      "tt": "EUROPA & CONFERENCE LEAGUE CORRECT SCORES | Thursday 5 November\n\nLeverkusen vs Marseille + 24 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #uel #europaleague #conferenceleague",
-      "ig": "EUROPA & CONFERENCE LEAGUE CORRECT SCORES | Thursday 5 November\n\nLeverkusen vs Marseille + 24 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #uel #europaleague #conferenceleague #footballtips",
-      "yt": "🎯 Thursday Correct Scores | 5 November\nMatch Vision\n\nLeverkusen vs Marseille + 24 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Thursday Correct Scores | 5 November*\nMatch Vision\n\nLeverkusen vs Marseille + 24 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Thursday Correct Scores | 5 November*\nMatch Vision\n\nLeverkusen vs Marseille + 24 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Thursday Correct Scores | 5 November\n\nLeverkusen vs Marseille + 24 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "EUROPA & CONFERENCE LEAGUE CORRECT SCORES | Thursday 5 November\n\nLeverkusen vs Marseille + 24 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #uel #europaleague #conferenceleague #footballtips"
+      "tt": "Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games\nSave This And Check Back After The Games\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games\nSave This And Check Back After The Games\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games\nSave This And Check Back After The Games",
+      "tg": "🎯 Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games",
+      "x": "Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games\nSave This And Check Back After The Games\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Thu 5 Nov\nLeverkusen vs Marseille + 13 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-11-04T21:00"
     },
     {
      "id": "win1",
@@ -5448,11 +5525,11 @@
       "media/2026-11-05/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ *2 Odds Banker Won* | 5 November\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 *Banker Won*",
-      "wa": "✅ *2 Odds Banker Won* | 5 November\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 *Banker Won*",
-      "x": "✅ 2 Odds Banker Won | 5 November\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 Banker Won\n\n#MatchVision #UEL #EuropaLeague #ConferenceLeague #FootballPredictions",
-      "ig": "✅ 2 Odds Banker Won | 5 November\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 Banker Won\n\n#matchvision #uel #europaleague #conferenceleague #footballpredictions",
-      "th": "✅ *2 Odds Banker Won* | 5 November\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 *Banker Won*"
+      "tg": "✅ *2 Odds Banker Won*\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 *All Games Won*",
+      "wa": "✅ *2 Odds Banker Won*\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 *All Games Won*",
+      "x": "✅ 2 Odds Banker Won\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 All Games Won\n\n#MatchVision #UEL #EuropaLeague #ConferenceLeague #FootballPredictions",
+      "ig": "✅ 2 Odds Banker Won\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 All Games Won\n\n#matchvision #uel #europaleague #conferenceleague #footballpredictions",
+      "th": "✅ *2 Odds Banker Won*\n\n✔️ Over 0.5 Goals 1st Half\n✔️ BTTS - Yes\n\n🔥 *All Games Won*"
      },
      "auto": {
       "tg": true
@@ -5470,11 +5547,11 @@
       "media/2026-11-05/win-2.jpg"
      ],
      "texts": {
-      "tg": "✅ 18 Of 25 Won | Thursday 5 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *18 Of 25 Won | Thursday 5 November*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 18 Of 25 Won | Thursday 5 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UEL #EuropaLeague #ConferenceLeague #FootballPredictions",
-      "ig": "✅ 18 Of 25 Won | Thursday 5 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #uel #europaleague #conferenceleague #footballpredictions",
-      "th": "✅ 18 Of 25 Won | Thursday 5 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Thursday Results | 5 November\nMatch Vision\n\n🔥 18 Of 25 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Thursday Results | 5 November*\nMatch Vision\n\n🔥 18 Of 25 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Thursday Results | 5 November\nMatch Vision\n\n🔥 18 Of 25 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UEL #EuropaLeague #ConferenceLeague #FootballPredictions",
+      "ig": "✅ Thursday Results | 5 November\nMatch Vision\n\n🔥 18 Of 25 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #uel #europaleague #conferenceleague #footballpredictions",
+      "th": "✅ Thursday Results | 5 November\nMatch Vision\n\n🔥 18 Of 25 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Thursday Results | 5 November*\nMatch Vision\n\n🔥 18 Of 25 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -7064,32 +7141,16 @@
      "at": "2026-11-04T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-11-04/slide-1.jpg",
-      "media/2026-11-04/slide-2.jpg",
-      "media/2026-11-04/slide-3.jpg",
-      "media/2026-11-04/slide-4.jpg",
-      "media/2026-11-04/slide-5.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Wednesday 4 November\n\n#matchvision #ucl #championsleague #uel #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Wednesday 4 November\n\n#matchvision #ucl #championsleague #uel #europaleague #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Wednesday 4 November\n\n#matchvision #ucl #championsleague #uel #europaleague"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-11-04T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-04/short-1.jpg"
      ],
@@ -7102,13 +7163,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-04T10:00"
+     "at": "2026-11-03T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-04/short-2.jpg"
      ],
@@ -7121,30 +7188,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-04T13:00"
+     "at": "2026-11-04T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-11-04/cs-1.jpg",
       "media/2026-11-04/cs-2.jpg",
       "media/2026-11-04/cs-3.jpg"
      ],
+     "images_x": [
+      "media/2026-11-04/cs-x-1.jpg",
+      "media/2026-11-04/cs-x-2.jpg",
+      "media/2026-11-04/cs-x-3.jpg"
+     ],
      "texts": {
-      "tt": "WEDNESDAY FOOTBALL CORRECT SCORES | 4 NOVEMBER\n\nPorto vs Napoli + 13 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #uel #europaleague",
-      "ig": "WEDNESDAY FOOTBALL CORRECT SCORES | 4 NOVEMBER\n\nPorto vs Napoli + 13 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #uel #europaleague #footballtips",
-      "yt": "🎯 Wednesday Correct Scores | 4 November\nMatch Vision\n\nPorto vs Napoli + 13 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Wednesday Correct Scores | 4 November*\nMatch Vision\n\nPorto vs Napoli + 13 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Wednesday Correct Scores | 4 November*\nMatch Vision\n\nPorto vs Napoli + 13 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Wednesday Correct Scores | 4 November\n\nPorto vs Napoli + 13 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "WEDNESDAY FOOTBALL CORRECT SCORES | 4 NOVEMBER\n\nPorto vs Napoli + 13 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #uel #europaleague #footballtips"
+      "tt": "Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games\nFollow For Tomorrow's Scores\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games\nFollow For Tomorrow's Scores\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games\nFollow For Tomorrow's Scores",
+      "tg": "🎯 Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games",
+      "x": "Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games\nFollow For Tomorrow's Scores\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Wed 4 Nov\nPorto vs Napoli + 13 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-11-03T21:00"
     },
     {
      "id": "win1",
@@ -7155,11 +7235,11 @@
       "media/2026-11-04/win-1.jpg"
      ],
      "texts": {
-      "tg": "Wednesday Results ✅\n12/14 Safest Picks Won | 4 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Wednesday Results ✅\n12/14 Safest Picks Won | 4 November\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Wednesday Results ✅\n12/14 Safest Picks Won | 4 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #UEL #EuropaLeague #FootballPredictions",
-      "ig": "Wednesday Results ✅\n12/14 Safest Picks Won | 4 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #uel #footballpredictions",
-      "th": "Wednesday Results ✅\n12/14 Safest Picks Won | 4 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ 12 Of 14 Won | Wednesday 4 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *12 Of 14 Won | Wednesday 4 November*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ 12 Of 14 Won | Wednesday 4 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #UEL #EuropaLeague #FootballPredictions",
+      "ig": "✅ 12 Of 14 Won | Wednesday 4 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #uel #footballpredictions",
+      "th": "✅ 12 Of 14 Won | Wednesday 4 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Wednesday Results | 4 November*\nMatch Vision\n\n🔥 12 Of 14 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -8855,32 +8935,16 @@
      "at": "2026-11-03T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-11-03/slide-1.jpg",
-      "media/2026-11-03/slide-2.jpg",
-      "media/2026-11-03/slide-3.jpg",
-      "media/2026-11-03/slide-4.jpg",
-      "media/2026-11-03/slide-5.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #championship #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #championship #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Tuesday 3 November\n\n#matchvision #ucl #championsleague #championship"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-11-03T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-03/short-1.jpg"
      ],
@@ -8893,13 +8957,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-03T10:00"
+     "at": "2026-11-02T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-03/short-2.jpg"
      ],
@@ -8912,30 +8982,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-03T13:00"
+     "at": "2026-11-03T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-11-03/cs-1.jpg",
       "media/2026-11-03/cs-2.jpg",
       "media/2026-11-03/cs-3.jpg"
      ],
+     "images_x": [
+      "media/2026-11-03/cs-x-1.jpg",
+      "media/2026-11-03/cs-x-2.jpg",
+      "media/2026-11-03/cs-x-3.jpg"
+     ],
      "texts": {
-      "tt": "TUESDAY FOOTBALL CORRECT SCORES | 3 NOVEMBER\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #championship",
-      "ig": "TUESDAY FOOTBALL CORRECT SCORES | 3 NOVEMBER\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #championship #footballtips",
-      "yt": "🎯 Tuesday Correct Scores | 3 November\nMatch Vision\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Tuesday Correct Scores | 3 November*\nMatch Vision\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Tuesday Correct Scores | 3 November*\nMatch Vision\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Tuesday Correct Scores | 3 November\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "TUESDAY FOOTBALL CORRECT SCORES | 3 NOVEMBER\n\nAtletico vs Bayern + 14 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #ucl #championsleague #championship #footballtips"
+      "tt": "Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games\nShare This With A Football Friend\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games\nShare This With A Football Friend\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games\nShare This With A Football Friend",
+      "tg": "🎯 Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games",
+      "x": "Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games\nShare This With A Football Friend\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Tue 3 Nov\nAtletico vs Bayern + 13 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-11-02T21:00"
     },
     {
      "id": "win1",
@@ -8946,11 +9029,11 @@
       "media/2026-11-03/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Tuesday Results | 3 November\nMatch Vision\n\n🔥 12 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Tuesday Results | 3 November*\nMatch Vision\n\n🔥 12 Of 15 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Tuesday Results | 3 November\nMatch Vision\n\n🔥 12 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions",
-      "ig": "✅ Tuesday Results | 3 November\nMatch Vision\n\n🔥 12 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #championship #footballpredictions",
-      "th": "✅ Tuesday Results | 3 November\nMatch Vision\n\n🔥 12 Of 15 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Tuesday Results ✅\n12/15 Safest Picks Won | 3 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Tuesday Results ✅\n12/15 Safest Picks Won | 3 November\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Tuesday Results ✅\n12/15 Safest Picks Won | 3 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions",
+      "ig": "Tuesday Results ✅\n12/15 Safest Picks Won | 3 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #ucl #championsleague #championship #footballpredictions",
+      "th": "Tuesday Results ✅\n12/15 Safest Picks Won | 3 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Tuesday Results | 3 November*\nMatch Vision\n\n🔥 12 Of 15 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -8969,11 +9052,11 @@
       "media/2026-11-03/win-2.jpg"
      ],
      "texts": {
-      "tg": "✅ *2 Odds Banker Won*\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 *All Games Won*",
-      "wa": "✅ *2 Odds Banker Won*\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 *All Games Won*",
-      "x": "✅ 2 Odds Banker Won\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 All Games Won\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions",
-      "ig": "✅ 2 Odds Banker Won\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 All Games Won\n\n#matchvision #ucl #championsleague #championship #footballpredictions",
-      "th": "✅ *2 Odds Banker Won*\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 *All Games Won*"
+      "tg": "✅ *Banker Won* | Tuesday\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 *Another Banker Won*",
+      "wa": "✅ *Banker Won* | Tuesday\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 *Another Banker Won*",
+      "x": "✅ Banker Won | Tuesday\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 Another Banker Won\n\n#MatchVision #UCL #ChampionsLeague #championship #FootballPredictions",
+      "ig": "✅ Banker Won | Tuesday\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 Another Banker Won\n\n#matchvision #ucl #championsleague #championship #footballpredictions",
+      "th": "✅ *Banker Won* | Tuesday\n\n✔️ Barcelona To Win\n✔️ Bodo/Glimt Or Draw\n✔️ Birmingham City Or Draw\n\n🔥 *Another Banker Won*"
      },
      "auto": {
       "tg": true
@@ -10366,32 +10449,16 @@
      "at": "2026-11-02T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-11-02/slide-1.jpg",
-      "media/2026-11-02/slide-2.jpg",
-      "media/2026-11-02/slide-3.jpg",
-      "media/2026-11-02/slide-4.jpg",
-      "media/2026-11-02/slide-5.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Monday 2 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Monday 2 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Monday 2 November\n\n#matchvision #premierleague #epl #laliga"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-11-02T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-02/short-1.jpg"
      ],
@@ -10404,13 +10471,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-02T10:00"
+     "at": "2026-11-01T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-02/short-2.jpg"
      ],
@@ -10423,30 +10496,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-02T13:00"
+     "at": "2026-11-02T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-11-02/cs-1.jpg",
       "media/2026-11-02/cs-2.jpg",
       "media/2026-11-02/cs-3.jpg"
      ],
+     "images_x": [
+      "media/2026-11-02/cs-x-1.jpg",
+      "media/2026-11-02/cs-x-2.jpg",
+      "media/2026-11-02/cs-x-3.jpg"
+     ],
      "texts": {
-      "tt": "MONDAY FOOTBALL CORRECT SCORES | 2 NOVEMBER\n\nNewcastle vs Everton + 11 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga",
-      "ig": "MONDAY FOOTBALL CORRECT SCORES | 2 NOVEMBER\n\nNewcastle vs Everton + 11 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips",
-      "yt": "🎯 Monday Correct Scores | 2 November\nMatch Vision\n\nNewcastle vs Everton + 11 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Monday Correct Scores | 2 November*\nMatch Vision\n\nNewcastle vs Everton + 11 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Monday Correct Scores | 2 November*\nMatch Vision\n\nNewcastle vs Everton + 11 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Monday Correct Scores | 2 November\n\nNewcastle vs Everton + 11 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "MONDAY FOOTBALL CORRECT SCORES | 2 NOVEMBER\n\nNewcastle vs Everton + 11 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips"
+      "tt": "Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games\nComment Your Score Below\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games\nComment Your Score Below\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games\nComment Your Score Below",
+      "tg": "🎯 Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games",
+      "x": "Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games\nComment Your Score Below\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Mon 2 Nov\nNewcastle vs Everton + 11 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-11-01T21:00"
     },
     {
      "id": "win1",
@@ -10457,11 +10543,11 @@
       "media/2026-11-02/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ 9 Of 12 Won | Monday 2 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *9 Of 12 Won | Monday 2 November*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 9 Of 12 Won | Monday 2 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ 9 Of 12 Won | Monday 2 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ 9 Of 12 Won | Monday 2 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Monday Results | 2 November*\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ Monday Results | 2 November\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Monday Results | 2 November*\nMatch Vision\n\n🔥 9 Of 12 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -12020,32 +12106,16 @@
      "at": "2026-11-01T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-11-01/slide-1.jpg",
-      "media/2026-11-01/slide-2.jpg",
-      "media/2026-11-01/slide-3.jpg",
-      "media/2026-11-01/slide-4.jpg",
-      "media/2026-11-01/slide-5.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Sunday 1 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Sunday 1 November\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Sunday 1 November\n\n#matchvision #premierleague #epl #laliga"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-11-01T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-01/short-1.jpg"
      ],
@@ -12058,13 +12128,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-01T10:00"
+     "at": "2026-10-31T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-11-01/short-2.jpg"
      ],
@@ -12077,30 +12153,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-11-01T13:00"
+     "at": "2026-11-01T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-11-01/cs-1.jpg",
       "media/2026-11-01/cs-2.jpg",
       "media/2026-11-01/cs-3.jpg"
      ],
+     "images_x": [
+      "media/2026-11-01/cs-x-1.jpg",
+      "media/2026-11-01/cs-x-2.jpg",
+      "media/2026-11-01/cs-x-3.jpg"
+     ],
      "texts": {
-      "tt": "SUNDAY FOOTBALL CORRECT SCORES | 1 NOVEMBER\n\nLiverpool vs Arsenal + 15 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga",
-      "ig": "SUNDAY FOOTBALL CORRECT SCORES | 1 NOVEMBER\n\nLiverpool vs Arsenal + 15 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips",
-      "yt": "🎯 Sunday Correct Scores | 1 November\nMatch Vision\n\nLiverpool vs Arsenal + 15 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Sunday Correct Scores | 1 November*\nMatch Vision\n\nLiverpool vs Arsenal + 15 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Sunday Correct Scores | 1 November*\nMatch Vision\n\nLiverpool vs Arsenal + 15 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Sunday Correct Scores | 1 November\n\nLiverpool vs Arsenal + 15 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "SUNDAY FOOTBALL CORRECT SCORES | 1 NOVEMBER\n\nLiverpool vs Arsenal + 15 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips"
+      "tt": "Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games\nWhich Score Do You See?\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games\nWhich Score Do You See?\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games\nWhich Score Do You See?",
+      "tg": "🎯 Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games",
+      "x": "Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games\nWhich Score Do You See?\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Sun 1 Nov\nLiverpool vs Arsenal + 13 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-10-31T21:00"
     },
     {
      "id": "win1",
@@ -12109,11 +12198,11 @@
      "when": "23:45",
      "images": [],
      "texts": {
-      "tg": "Sunday Results ✅\n14/16 Safest Picks Won | 1 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "Sunday Results ✅\n14/16 Safest Picks Won | 1 November\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
-      "x": "Sunday Results ✅\n14/16 Safest Picks Won | 1 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "Sunday Results ✅\n14/16 Safest Picks Won | 1 November\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "Sunday Results ✅\n14/16 Safest Picks Won | 1 November\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *14 Of 16 Won | Sunday 1 November*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ 14 Of 16 Won | Sunday 1 November\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Sunday Results | 1 November*\nMatch Vision\n\n🔥 14 Of 16 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -14723,32 +14812,16 @@
      "at": "2026-10-31T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-10-31/slide-1.jpg",
-      "media/2026-10-31/slide-2.jpg",
-      "media/2026-10-31/slide-3.jpg",
-      "media/2026-10-31/slide-4.jpg",
-      "media/2026-10-31/slide-5.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Saturday 31 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Saturday 31 October\n\n#matchvision #premierleague #epl #laliga #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Saturday 31 October\n\n#matchvision #premierleague #epl #laliga"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-10-31T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-10-31/short-1.jpg"
      ],
@@ -14761,13 +14834,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-10-31T10:00"
+     "at": "2026-10-30T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-10-31/short-2.jpg"
      ],
@@ -14780,31 +14859,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-10-31T13:00"
+     "at": "2026-10-31T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-10-31/cs-1.jpg",
       "media/2026-10-31/cs-2.jpg",
-      "media/2026-10-31/cs-3.jpg",
-      "media/2026-10-31/cs-4.jpg"
+      "media/2026-10-31/cs-3.jpg"
+     ],
+     "images_x": [
+      "media/2026-10-31/cs-x-1.jpg",
+      "media/2026-10-31/cs-x-2.jpg",
+      "media/2026-10-31/cs-x-3.jpg"
      ],
      "texts": {
-      "tt": "SATURDAY FOOTBALL CORRECT SCORES | 31 OCTOBER\n\nChelsea vs Man Utd + 23 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga",
-      "ig": "SATURDAY FOOTBALL CORRECT SCORES | 31 OCTOBER\n\nChelsea vs Man Utd + 23 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips",
-      "yt": "🎯 Saturday Correct Scores | 31 October\nMatch Vision\n\nChelsea vs Man Utd + 23 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Saturday Correct Scores | 31 October*\nMatch Vision\n\nChelsea vs Man Utd + 23 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Saturday Correct Scores | 31 October*\nMatch Vision\n\nChelsea vs Man Utd + 23 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Saturday Correct Scores | 31 October\n\nChelsea vs Man Utd + 23 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "SATURDAY FOOTBALL CORRECT SCORES | 31 OCTOBER\n\nChelsea vs Man Utd + 23 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #premierleague #epl #laliga #footballtips"
+      "tt": "Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games\nSave This And Check Back After The Games\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games\nSave This And Check Back After The Games\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games\nSave This And Check Back After The Games",
+      "tg": "🎯 Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games",
+      "x": "Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games\nSave This And Check Back After The Games\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Sat 31 Oct\nChelsea vs Man Utd + 13 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-10-30T21:00"
     },
     {
      "id": "win1",
@@ -14815,11 +14906,11 @@
       "media/2026-10-31/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ Saturday Results | 31 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *Saturday Results | 31 October*\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ Saturday Results | 31 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
-      "ig": "✅ Saturday Results | 31 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
-      "th": "✅ Saturday Results | 31 October\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\n*Tomorrow's Predictions* 👇\nhttps://t.me/matchvision707",
+      "x": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "Saturday Results ✅\n16/24 Safest Picks Won | 31 October\n\nTomorrow's Predictions 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Saturday Results | 31 October*\nMatch Vision\n\n🔥 16 Of 24 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -16313,31 +16404,16 @@
      "at": "2026-10-30T05:00"
     },
     {
-     "id": "swipe",
-     "group": "swipe",
-     "title": "Swipe post",
-     "when": "09:00",
-     "images": [
-      "media/2026-10-30/slide-1.jpg",
-      "media/2026-10-30/slide-2.jpg",
-      "media/2026-10-30/slide-3.jpg",
-      "media/2026-10-30/slide-4.jpg"
-     ],
-     "texts": {
-      "ig": "FOOTBALL PREDICTIONS | Friday 30 October\n\n#matchvision #laliga #bundesliga #footballreels #footballpredictions",
-      "tt": "FOOTBALL PREDICTIONS | Friday 30 October\n\n#matchvision #laliga #bundesliga #footballpredictions #footballtiktok #fyp",
-      "yt": "FOOTBALL PREDICTIONS | Friday 30 October\n\n#matchvision #laliga #bundesliga"
-     },
-     "auto": {},
-     "note": "",
-     "ready": true,
-     "at": "2026-10-30T09:00"
-    },
-    {
      "id": "short1",
      "group": "shorts",
      "title": "Short 1",
-     "when": "10:00",
+     "when": "Day before 21:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-10-30/short-1.jpg"
      ],
@@ -16350,13 +16426,19 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-10-30T10:00"
+     "at": "2026-10-29T21:00"
     },
     {
      "id": "short2",
      "group": "shorts",
      "title": "Short 2",
-     "when": "13:00",
+     "when": "09:00",
+     "acct": {
+      "tt": "A",
+      "ig": "A",
+      "fb": "A",
+      "yt": "A"
+     },
      "images": [
       "media/2026-10-30/short-2.jpg"
      ],
@@ -16369,30 +16451,43 @@
      "auto": {},
      "note": "",
      "ready": true,
-     "at": "2026-10-30T13:00"
+     "at": "2026-10-30T09:00"
     },
     {
      "id": "cs",
      "group": "swipe",
      "title": "Correct scores post",
-     "when": "",
+     "when": "Day before 21:00",
      "images": [
       "media/2026-10-30/cs-1.jpg",
       "media/2026-10-30/cs-2.jpg",
       "media/2026-10-30/cs-3.jpg"
      ],
+     "images_x": [
+      "media/2026-10-30/cs-x-1.jpg",
+      "media/2026-10-30/cs-x-2.jpg",
+      "media/2026-10-30/cs-x-3.jpg"
+     ],
      "texts": {
-      "tt": "FRIDAY FOOTBALL CORRECT SCORES | 30 OCTOBER\n\nLe Havre vs PSG + 12 More Games, Every Correct Score 🎯\nWhich Score Do You See? 👇\n\n#footballpredictions #football #matchvision #correctscore #laliga #bundesliga",
-      "ig": "FRIDAY FOOTBALL CORRECT SCORES | 30 OCTOBER\n\nLe Havre vs PSG + 12 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #laliga #bundesliga #footballtips",
-      "yt": "🎯 Friday Correct Scores | 30 October\nMatch Vision\n\nLe Havre vs PSG + 12 More Games, Every Correct Score 🎯\n\nFull Predictions In Today's Video 👇\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔",
-      "tg": "🎯 *Friday Correct Scores | 30 October*\nMatch Vision\n\nLe Havre vs PSG + 12 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆",
-      "wa": "🎯 *Friday Correct Scores | 30 October*\nMatch Vision\n\nLe Havre vs PSG + 12 More Games, Every Correct Score 🎯\n\nSwipe Through All The Pictures 👆\n\nMore Every Day 👉 https://t.me/matchvision707",
-      "x": "🎯 Friday Correct Scores | 30 October\n\nLe Havre vs PSG + 12 More Games, Every Correct Score 🎯\n\n#MatchVision #CorrectScore",
-      "th": "FRIDAY FOOTBALL CORRECT SCORES | 30 OCTOBER\n\nLe Havre vs PSG + 12 More Games, Every Correct Score 🎯\nSave This And Check Back After The Games 🔖\n\n#footballpredictions #football #matchvision #correctscore #laliga #bundesliga #footballtips"
+      "tt": "Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games\nFollow For Tomorrow's Scores\n\n#football #correctscore #predictions",
+      "ig": "Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games\nFollow For Tomorrow's Scores\n\n#football #correctscore #predictions",
+      "yt": "Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games\nFollow For Tomorrow's Scores",
+      "tg": "🎯 Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games",
+      "wa": "🎯 Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games",
+      "x": "Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games\n\n#football #correctscore",
+      "th": "Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games\nFollow For Tomorrow's Scores\n\n#football #correctscore #predictions",
+      "fb": "Tomorrow's Correct Scores | Fri 30 Oct\nLe Havre vs PSG + 12 More Games\nSearch Match Vision 707 On Telegram\n\n#football #correctscore #predictions"
      },
      "auto": {},
      "note": "",
-     "ready": true
+     "acct": {
+      "tt": "B",
+      "ig": "B",
+      "th": "B",
+      "fb": "B"
+     },
+     "ready": true,
+     "at": "2026-10-29T21:00"
     },
     {
      "id": "win1",
@@ -16403,11 +16498,11 @@
       "media/2026-10-30/win-1.jpg"
      ],
      "texts": {
-      "tg": "✅ 10 Of 13 Won | Friday 30 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
-      "wa": "✅ *10 Of 13 Won | Friday 30 October*\nMatch Vision\n\n*Get Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
-      "x": "✅ 10 Of 13 Won | Friday 30 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #LaLiga #Bundesliga #FootballPredictions",
-      "ig": "✅ 10 Of 13 Won | Friday 30 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #laliga #bundesliga #footballreels #footballpredictions",
-      "th": "✅ 10 Of 13 Won | Friday 30 October\nMatch Vision\n\nGet Tomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "tg": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Friday Results | 30 October*\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #LaLiga #Bundesliga #FootballPredictions",
+      "ig": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #laliga #bundesliga #footballreels #footballpredictions",
+      "th": "✅ Friday Results | 30 October\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
       "yt": "✅ *Friday Results | 30 October*\nMatch Vision\n\n🔥 10 Of 13 Safest Picks Won\n\nSubscribe And Turn On Notifications For Tomorrow's Games 🔔"
      },
      "auto": {
@@ -18149,7 +18244,7 @@
   }
  },
  "banker_streak": 1,
- "version": "3.39.4",
+ "version": "3.40",
  "short_names": {
   "Manchester City": "Man City",
   "Manchester United": "Man Utd",
@@ -19652,6 +19747,30 @@
    "tab": "Shorts",
    "v": "JOIN OUR TELEGRAM FOR MORE  ·  LINK IN BIO",
    "d": "The small line on the END card of the Short, under LINK IN BIO (empty = none).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "SHORT1_DAY_BEFORE",
+   "tab": "Shorts",
+   "v": true,
+   "d": "Short 1 goes out the day before (SHORT1_TIME), Short 2 on match day (SHORT2_TIME).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "SHORT1_TIME",
+   "tab": "Shorts",
+   "v": "21:00",
+   "d": "Short 1 time (the day before, account A).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "SHORT2_TIME",
+   "tab": "Shorts",
+   "v": "09:00",
+   "d": "Short 2 time (match day, account A).",
    "kind": "text",
    "c": null
   },
@@ -22733,7 +22852,7 @@
   {
    "k": "CS_POST_PER_PICTURE",
    "tab": "Pictures",
-   "v": 10,
+   "v": 7,
    "d": "Up to this many games = one picture. More games are shared evenly over 2 or 3 pictures.",
    "kind": "int",
    "c": null
@@ -22741,7 +22860,7 @@
   {
    "k": "CS_POST_MAX_PICTURES",
    "tab": "Pictures",
-   "v": 3,
+   "v": 2,
    "d": "The most game pictures in one post (the Follow picture comes on top).",
    "kind": "int",
    "c": null
@@ -22802,6 +22921,46 @@
    "v": false,
    "d": "Also post the pictures on your Telegram channel by itself. Off = you post it.",
    "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "DAY_POST_ON",
+   "tab": "Pictures",
+   "v": true,
+   "d": "The day post (Top picks, Banker, end card) in two versions: No odds (TikTok, Instagram, Threads: banker = PICK OF THE DAY) and With odds (Facebook, X, Telegram, WhatsApp). Replaces the swipe post in the app.",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "SOCIAL_NO_GAMES_RESULTS",
+   "tab": "Pictures",
+   "v": true,
+   "d": "No \"Today's games\" and no \"Yesterday's results\" slides on socials (Telegram and WhatsApp still get them).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "SAFE_MODE",
+   "tab": "Pictures",
+   "v": true,
+   "d": "TikTok, Instagram, Threads pictures and captions: no odds, no \"bet\", no bookmaker names, no booking codes, no \"Telegram\".",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "END_CARDS_SAFE",
+   "tab": "Pictures",
+   "v": "MORE GAMES IN BIO | WANT ALL TODAY'S GAMES? CHECK BIO | FREE TIPS DAILY: TAP THE LINK IN BIO | FOLLOW FOR TOMORROW'S PICKS",
+   "d": "End card lines for TikTok / Instagram (one a day, in turn, split by |).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "END_CARD_TELEGRAM",
+   "tab": "Pictures",
+   "v": "SEARCH MATCH VISION 707 ON TELEGRAM",
+   "d": "End card line for X and Facebook.",
+   "kind": "text",
    "c": null
   },
   {
@@ -23449,6 +23608,46 @@
    ]
   },
   {
+   "k": "CS_CAPTION_NEW",
+   "tab": "Texts",
+   "v": true,
+   "d": "Correct scores captions \"Tomorrow's Correct Scores | Sat 7 Nov\" (Off = the 3.28 captions).",
+   "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "CS_HASHTAGS",
+   "tab": "Texts",
+   "v": "#football #correctscore #predictions",
+   "d": "Hashtags of the correct scores post (3-5).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "DAY_HASHTAGS",
+   "tab": "Texts",
+   "v": "#football #predictions #matchvision",
+   "d": "Hashtags of the day post (3-5).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "X_HASHTAGS",
+   "tab": "Texts",
+   "v": "#football #correctscore",
+   "d": "Hashtags on X (2-3).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "CAPTION_HOOKS",
+   "tab": "Texts",
+   "v": "Save This And Check Back After The Games | Which Score Do You See? | Comment Your Score Below | Share This With A Football Friend | Follow For Tomorrow's Scores",
+   "d": "The hook line of the correct scores caption, a different one each day (split by |).",
+   "kind": "text",
+   "c": null
+  },
+  {
    "k": "TITLE_TWO_EUROPEAN",
    "tab": "Texts",
    "v": true,
@@ -23800,6 +23999,14 @@
    "v": true,
    "d": "The banker and every other win go on the channel BEFORE today's results; the results post is always the last one.",
    "kind": "bool",
+   "c": null
+  },
+  {
+   "k": "CS_POST_TIME",
+   "tab": "Channel",
+   "v": "21:00",
+   "d": "The correct scores post goes out the DAY BEFORE at this time (account B + X).",
+   "kind": "text",
    "c": null
   },
   {
@@ -26055,6 +26262,14 @@
    "c": null
   },
   {
+   "k": "REVIEW_BEFORE_POST",
+   "tab": "Phone app",
+   "v": true,
+   "d": "Nothing posts to TikTok / Instagram / Facebook / X by itself: every post shows in the app first (Post, Copy, Skip).",
+   "kind": "bool",
+   "c": null
+  },
+  {
    "k": "CLOUD_POSTING",
    "tab": "Laptop off (cloud)",
    "v": true,
@@ -26109,6 +26324,46 @@
    "d": "Every 10 minutes the bot checks that today's and tomorrow's posts are really in the cloud (GitHub) and writes them again if the internet dropped. 27 Oct: they were missing, so nothing went out until the laptop came back at 12:25.",
    "kind": "bool",
    "c": null
+  },
+  {
+   "k": "ACCOUNT_A_NAME",
+   "tab": "Accounts",
+   "v": "Match Vision",
+   "d": "Account A = the videos (Shorts on TikTok, Instagram, Facebook, YouTube Shorts).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "ACCOUNT_A_HANDLE",
+   "tab": "Accounts",
+   "v": "@matchvision707",
+   "d": "The handle of account A (small on its pictures).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "ACCOUNT_B_NAME",
+   "tab": "Accounts",
+   "v": "Score Vision",
+   "d": "Account B = the pictures (correct scores post + day post).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "ACCOUNT_B_HANDLE",
+   "tab": "Accounts",
+   "v": "@scorevision707",
+   "d": "The handle of account B (small on its pictures).",
+   "kind": "text",
+   "c": null
+  },
+  {
+   "k": "X_ACCOUNTS",
+   "tab": "Accounts",
+   "v": 1,
+   "d": "X accounts (1 = one X account, correct scores only; 2 = A and B).",
+   "kind": "int",
+   "c": null
   }
  ],
  "templates": {
@@ -26118,7 +26373,7 @@
   "TAGS": "football predictions today, football predictions, football tips today, correct score predictions, {LEAGUE_WORDS}, {TEAM_WORDS}, btts predictions, over 2.5 goals predictions, corners predictions, soccer predictions, match vision",
   "CAPTIONS": "{COMP} Predictions | {DATE_WORDS}\n---\nToday's {COMP} Picks | {DATE_WORDS}\n---\n{COMP} Correct Score Predictions | {DATE_WORDS}\n---\nWho Wins Today? | {COMP} Predictions | {DATE_SHORT}\n---\n{N} {COMP} Matches Predicted | {DATE_WORDS}",
   "HASHTAGS BY APP": "TikTok: #matchvision {COMP_TAGS} #footballpredictions #footballtiktok #fyp\nInstagram: #matchvision {COMP_TAGS} #footballpredictions #footballreels #instagram\nX: #MatchVision {COMP_TAGS_X} #FootballPredictions\nThreads: #matchvision {COMP_TAGS} #football\nYouTube Community: #matchvision {COMP_TAGS}\nTelegram:\nWhatsApp:",
-  "CHANNEL GAMES": "{DAY_WORD} Predictions | {DATE_SHORT}\nMatch Vision\n\n{N_WORDS}\n\n{MATCH_LIST}\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n{WATCH_LINE}\n---\n{DAY_WORD} Predictions | {DATE_SHORT}\nMatch Vision\n\n{MATCH_LIST}\n\n🎯 {N_WORDS}. Correct Scores And Banker In The Video.\n{WATCH_LINE}\n---\n⚽ {N_WORDS} | {DAY_WORD} {DATE_SHORT}\nMatch Vision\n\n{MATCH_LIST}\n\n{WATCH_LINE}\n---\n{DAY_WORD} Games | {DATE_SHORT}\n\n{MATCH_LIST}\n\n🎯 All Predictions In Today's Video.\n{WATCH_LINE}\n---\n⚽ {N_WORDS} | {DATE_WORDS}\nMatch Vision\n\n🎯 Correct Score, Safest Pick And Our 2 Odds Banker For Every Game Are In Today's Video. The Games Are On The Picture.\n\n{WATCH_LINE}",
+  "CHANNEL GAMES": "{DAY_WORD} Predictions | {DATE_SHORT}\nMatch Vision\n\n{N_WORDS}\n\n{MATCH_LIST}\n\n🎯 Correct Scores, Top Picks And Our 2 Odds Banker Are All In Today's Video.\n{WATCH_LINE}\n---\n{DAY_WORD} Predictions | {DATE_SHORT}\nMatch Vision\n\n{MATCH_LIST}\n\n🎯 {N_WORDS}. Correct Scores And Banker In The Video.\n{WATCH_LINE}\n---\n⚽ {N_WORDS} | {DAY_WORD} {DATE_SHORT}\nMatch Vision\n\n{MATCH_LIST}\n\n{WATCH_LINE}\n---\n{DAY_WORD} Games | {DATE_SHORT}\n\n{MATCH_LIST}\n\n🎯 All Predictions In Today's Video.\n{WATCH_LINE}\n---\n⚽ {N_WORDS} | {DATE_WORDS}\nMatch Vision\n\n🎯 Correct Score, Safest Pick, Top Picks And Our 2 Odds Banker For Every Game Are In Today's Video.\n\n{WATCH_LINE}",
   "CHANNEL TOP PICKS": "{DAY_WORD} Top Picks | {DATE_SHORT}\nMatch Vision\n\nOur Strongest Picks For Today.\n---\n🏆 {DAY_WORD} Top Picks | {DATE_SHORT}\nMatch Vision\n---\nToday's Safest Picks 🏆\n{DAY_WORD} {DATE_SHORT} | Match Vision",
   "CHANNEL BANKER": "{DAY_WORD} Banker | {DATE_SHORT}\nMatch Vision\n\nToday's 2 Odds Banker.\n---\n💰 {DAY_WORD} 2 Odds Banker | {DATE_SHORT}\nMatch Vision\n---\nToday's Banker 💰\n{DAY_WORD} {DATE_SHORT} | Match Vision",
   "CHANNEL VIDEO": "{DAY_WORD} Predictions | {DATE_SHORT}\nMatch Vision\n{N_WORDS}\n\nCorrect Scores, Top Picks And Our 2 Odds Banker.\n\n{VIDEO_LINK_LINE}\n---\n{DAY_WORD} Predictions | {DATE_SHORT}\nMatch Vision\n\n{N_WORDS}. Correct Scores And Our Banker.\n\n{VIDEO_LINK_LINE}\n---\n{DAY_WORD} Predictions | {DATE_SHORT}\n\n{VIDEO_LINK_LINE}",
@@ -26192,7 +26447,8 @@
   "Shorts": "The Shorts for TikTok, Instagram Reels, Telegram and WhatsApp. Never posted on YouTube.",
   "Pictures": "The swipe post (all games, top picks, banker, follow slide) for Instagram, TikTok, X, Threads and YouTube Community, and the pictures for your channels.",
   "Banker": "The 2 Odds Banker: the safest 2 or 3 picks of the day together.",
-  "Texts": "Titles, descriptions and captions. Edit the words themselves in Templates.txt.",
+  "Texts": "Titles, descriptions and captions. Every word is edited in the window \"Texts and captions\" (left buttons): the picture on top, the caption under it, Save.",
+  "Accounts": "3.40: account A (videos), account B (pictures), X. Names and handles.",
   "Order": "Which matches come first.",
   "Automatic": "API-Football: which matches the builder chooses, and how it predicts. Connect your key with Connect.bat.",
   "Telegram": "The Match Vision bot on your phone. Connect it with Connect.bat.",
@@ -26210,9 +26466,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "lKsC2hQtQsx5ImTBVUptLA==",
-  "nonce": "pASonTlxXGMOHlw3XMKsqQ==",
-  "ct": "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",
-  "mac": "zWjNE0OE+zXjrcVOPwPeA38RkrSZexIUjCpjnxVXPl8="
+  "salt": "cg9+rAnyEEG7/DryrxAXsQ==",
+  "nonce": "hfXsQL7dI7hwUO001OwvZQ==",
+  "ct": "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",
+  "mac": "lj2EOMci6usVPyP43fNXeg4T2Kkdru3pAA/1w2SlFpo="
  }
 }
