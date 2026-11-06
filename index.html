@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.32</title>
+<title>Match Vision 3.32.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.32';   // APP_VERSION = '3.32' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.32.1';   // APP_VERSION = '3.32.1' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1207,7 +1207,7 @@ function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return nee
 // 3.10.6: YouTube results: no channel link, a subscribe line instead (a different one each day)
 const YT_END=['More winning picks coming tomorrow. Subscribe and turn on the bell 🔔','Tomorrow\'s predictions drop soon. Subscribe so you never miss them 🔔','Want tomorrow\'s games? Subscribe and tap the bell 🔔','New predictions every day. Subscribe for tomorrow\'s picks ⚽','More games coming tomorrow. Follow and subscribe 🔥'];
 function ytResults(t,key){const L=String(t||'').split('\n').filter(l=>!/https?:\/\//.test(l)&&!/👇\s*\**\s*$/.test(l.trim()));let h=0;for(const c of String(key||''))h=(h*31+c.charCodeAt(0))>>>0;return (L.join('\n').replace(/\n{3,}/g,'\n\n').trim()+'\n\n'+YT_END[h%YT_END.length]).trim();}
-function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:(p==='yt'&&it.group==='results'?ytResults(it.texts.tg||it.texts.wa,(it.id||'')+(it.title||'')):((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||''));const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
+function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:(p==='yt'&&it.group==='results'&&!(it.texts&&it.texts.yt)?ytResults(it.texts.tg||it.texts.wa,(it.id||'')+(it.title||'')):((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||''));const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
 async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return null;}const imgs=((p==='x'||p==='fb')&&it.images_x)?it.images_x:(it.images||[]);for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${p}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
 async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);if(files===null)return;const ok=await shareTo(p,textFor(it,p),files);
   if(ok&&p!=='copy'){POSTED[d.date]=POSTED[d.date]||{};const o=POSTED[d.date][it.id]=POSTED[d.date][it.id]||{};o[p]=true;savePosted();
@@ -1750,6 +1750,7 @@ const icoRaw=h=>`<span class="i pic">${h}</span>`;
 // ---------- storage for 3.2 ----------
 K.edits='mv_app_edits';K.pend='mv_app_pending';K.ptext='mv_app_pending_texts';K.checks='mv_app_checks';
 let EDITS=jget(K.edits,{});              // "date|id|app" -> your text
+try{if(!store.get('mv_app_v3321')){for(const k of Object.keys(EDITS))if(/\|win\d+\|/.test(k))delete EDITS[k];store.set(K.edits,JSON.stringify(EDITS));store.set('mv_app_v3321','1');}}catch(e){}   // 3.32.1: old saved results texts cleared once
 const saveEdits=()=>{const keep=addDays(todayKey(),-21);for(const k of Object.keys(EDITS))if(k.slice(0,10)<keep)delete EDITS[k];store.set(K.edits,JSON.stringify(EDITS));};
 let PEND=jget(K.pend,{});                // builder setting -> new value (waiting to be sent to the bot)
 let PTEXT=jget(K.ptext,{});              // template part -> new words (waiting to be sent to the bot)
