@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.40</title>
+<title>Match Vision 3.42</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -507,19 +507,26 @@ details.rpost pre{white-space:pre-wrap;font-family:var(--f);font-size:13.5px;bac
 .bkcard{border-radius:18px;padding:14px;margin:0 0 14px;background:linear-gradient(180deg,#15120A,#0B0A07);border:1px solid #6B5520}.bkcard.won{border:2px solid #30D158;box-shadow:0 0 16px rgba(48,209,88,.25)}.bkcard.lost{border-color:#FF453A}
 .bkcard .bkh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.bkcard .bkh b{color:#ECC462;font-weight:900;letter-spacing:.08em}
 .bkcard .bkr{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);border-left:3px solid #ECC462;border-radius:12px;padding:8px 10px;margin-top:7px}.bkcard .bkr .t{flex:1;min-width:0}.bkcard .bkr .t b{display:block;font-size:14px}.bkcard .bkr .t small{color:#aaa;font-size:12px}.bkcard .bkr .o{color:#ECC462;font-weight:800}
+/* 3.41 */
+.tmsfull{font-size:16px;font-weight:800;margin:2px 0 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mrow.scoreonly{justify-content:flex-end}.mrow.scoreonly .mscore{font-size:30px}
+.bkr .sc.lv{color:#FF453A!important}
+.mright{display:flex;flex-direction:column;justify-content:center;gap:8px}.mright .tms.one b{font-size:16px}
+.bkh.col{flex-direction:column;align-items:flex-start;gap:6px}
 /* 3.40: one-line rows, coloured vs, green second records row */
 .bkr.one .t{min-width:0;flex:1}.bkr.one .t b,.bkr.one .t small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bkr.one .t small .pill{font-size:9px;padding:0 6px;margin-left:4px;vertical-align:1px}.bkr.one .t small .sc{display:inline;color:#fff}
 .vsx{font-style:normal;color:#DFFF4F;font-weight:800;font-size:.8em;margin:0 2px}
 .tms.one b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 b.oneline{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.summary-grid.g2 .big,.summary-grid.g2 .bl{color:#30D158}
+.summary-grid.g2 .big,.summary-grid.g2 .bl{}
 .bkcard .bkr .pcr{display:flex;gap:3px;flex:none}.bkcard .bkr .pcr img,.bkcard .bkr .pcr .ini{width:26px;height:26px;object-fit:contain}
 .bkcard .bkr .pcr .ini{font-size:9px;border-radius:50%;background:#222;display:grid;place-items:center;color:#fff}
 .bkcard .pill.live{background:#FF3B30!important;color:#fff!important;border-color:#FF3B30!important}
 .lsc{color:#FF453A!important;font-weight:800}.fsc{color:#C9B27A!important;font-weight:700}
 .sbox .sm2{white-space:nowrap;font-size:clamp(10px,3vw,13px)}.mvw{color:#30D158!important}.mvl{color:#FF453A!important}.pklost{opacity:.75}.wint{padding:10px}.secbar{display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:12px 16px;margin:6px 0 10px;font-size:15px;font-weight:900;letter-spacing:.12em;color:#06140A;background:#30D158}.secbar.lost{background:#FF453A;color:#fff;margin-top:18px}.secbar b{font-size:20px}.pst-lime .pcard{border-color:#5d6b22;background:radial-gradient(120% 60% at 50% 0%,rgba(223,251,81,.16),rgba(0,0,0,0) 60%),linear-gradient(180deg,#0f1408,#080a06)}.pst-lime .pcard .ph b{color:#DFFB51}.pst-lime .pcard .pr{border-left-color:#DFFB51;border-color:rgba(223,251,81,.18)}.pst-lime .pcard .pr .n{background:#DFFB51}.pst-dark .pcard{border-color:#333;background:#0c0c0e}.pst-dark .pcard .ph b{color:#fff}.pst-dark .pcard .pr{border-left-color:#fff;border-color:#2a2a2a}.pst-dark .pcard .pr .n{background:#fff}.pst-blue .pcard{border-color:#1f3d7a;background:radial-gradient(120% 60% at 50% 0%,rgba(64,140,255,.22),rgba(0,0,0,0) 60%),linear-gradient(180deg,#07112a,#050814)}.pst-blue .pcard .ph b{color:#8EC5FF}.pst-blue .pcard .pr{border-left-color:#4A9BFF;border-color:rgba(74,155,255,.2)}.pst-blue .pcard .pr .n{background:#4A9BFF}.pst-red .pcard{border-color:#6b1f1f;background:radial-gradient(120% 60% at 50% 0%,rgba(255,69,58,.2),rgba(0,0,0,0) 60%),linear-gradient(180deg,#160808,#0a0505)}.pst-red .pcard .ph b{color:#FF8A80}.pst-red .pcard .pr{border-left-color:#FF453A;border-color:rgba(255,69,58,.2)}.pst-red .pcard .pr .n{background:#FF453A;color:#fff}
 .qmk{display:inline-flex;gap:6px}.qmb{width:34px;height:30px;border-radius:9px;border:1px solid #333;background:#151515;color:#ddd;font-weight:800;font-size:15px}.qmb.w{color:#22c55e;border-color:#22c55e55}.qmb.l{color:#ef4444;border-color:#ef444455}
+#p-history .sbox .bl,.summary-grid .sbox .bl{color:#30D158!important}   /* 3.42 (Philip): box words green, numbers lime */
 </style>
 <style id="design-midnight-red">
 /* v36 DESIGN: Midnight Red. One accent colour (#DFFB51) on deep black. Visual layer only: no features, data or markup changed. Keep this block last in <head>. */
@@ -938,7 +945,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.40';   // APP_VERSION = '3.40' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.42';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.42' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1269,7 +1276,7 @@ function matchCard(m,d){const L=liveOf(m,d),live=L&&['LIVE','HT'].includes(L.st)
     return `<div class="game pkrow ${s==='l'?'pklost':''}"><span class="pnum ${i===0?'first':''}">${i+1}</span><div class="gm"><b class="oneline">${i===0?'<span class="mtag">SAFEST</span>':''}${isP?'<span class="mtag gold">👑</span>':''}${esc(shortPk(p.text,m))}</b><small>${esc(i===0?(KIND[(p.rule||{}).t]||'Prediction'):marketOf(p,i))}${SET.showChance&&p.chance?` · ${Math.round(p.chance*100)}% chance`:''}</small></div>${SET.showOdds&&p.odds?`<span class="od">${Number(p.odds).toFixed(2)}</span>`:''}<div class="tm" style="width:auto">${(!s&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div></div>`;}).join('');
   const ht=L&&L.hh!=null&&L.st!=='NS'?` · HT ${L.hh}-${L.ha}`:'';
   return `<div class="card slipc" data-m="${m.n}" data-dk="${d.date}" style="padding:14px"><div class="sliphd" style="margin-bottom:8px"><div class="sn"><b class="lgname">${esc(m.league||'')}</b><span>Match ${m.n} · ${esc(m.kickoff||'')}${m.date&&m.date!==d.date?' · '+shortDate(m.date):''}${ht}</span></div><div style="flex:none;margin-left:auto">${statePill(L,m)}</div></div>
-    <div class="mrow2"><button class="minicard" data-big="${m.n}" data-dk="${d.date}" aria-label="The match card">${mvCard(m,d,(d.matches||[]).length,true)}</button><div class="mright"><div class="mrow"><div class="tms one"><b>${esc(shortTeam(m.home))} <i class="vsx">vs</i> ${esc(shortTeam(m.away))}</b></div>${sc}</div></div></div><div class="glist" style="margin-top:10px">${picks}</div></div>`;}
+    <div class="mrow2"><button class="minicard" data-big="${m.n}" data-dk="${d.date}" aria-label="The match card">${mvCard(m,d,(d.matches||[]).length,true)}</button><div class="mright"><div class="tms one"><b>${esc(shortTeam(m.home))} <i class="vsx">vs</i> ${esc(shortTeam(m.away))}</b></div><div class="mrow scoreonly">${sc}</div></div></div><div class="glist" style="margin-top:10px">${picks}</div></div>`;}
 function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Match Vision games for this day.</p></div>`;const now=new Date();const fk=firstKick(d);let banner='';
   const ms=(d.matches||[]).slice().sort((a,b)=>SET.sort==='video'?((a.n||0)-(b.n||0)):SET.sort==='league'?String(a.league).localeCompare(String(b.league))||String(a.kickoff).localeCompare(String(b.kickoff)):String(a.kickoff||'99').localeCompare(String(b.kickoff||'99'))||a.n-b.n);
   const st=ms.map(m=>mState(m,d));const nLive=st.filter(x=>x==='live').length;
@@ -1324,19 +1331,19 @@ function premBlock(td,done){return `<div class="sechd" style="margin:0 0 8px"><s
 // 3.37 (Philip, 7 Nov): Vision Premium, Top picks and Banker pinned at the top of Matches, each followed LIVE (score, minute, tick)
 const shortPk=(t,m)=>{t=String(t||'');if(m){for(const k of ['home','away'])if(m[k]&&shortTeam(m[k])!==m[k])t=t.split(m[k]).join(shortTeam(m[k]));}return t;};
 function pinRow(d,m,text,odds,s){const L=m&&m.n?liveOf(m,d):null;   // 3.40 (Philip): every row = 2 short lines, no wasted space
-  return `<div class="bkr one">${pinCrests(m)}<span class="t"><b>${esc(shortPk(text,m))}</b><small>${esc(shortTeam((m&&m.home)||''))} ${L&&L.gh!=null?`<b class="sc">${L.gh}-${L.ga}</b>`:'<i class="vsx">vs</i>'} ${esc(shortTeam((m&&m.away)||''))} ${m&&m.n?statePill(L,m):''}</small></span>${odds?`<span class="o">${Number(odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}
+  return `<div class="bkr one">${pinCrests(m)}<span class="t"><b>${esc(shortPk(text,m))}</b><small>${esc(shortTeam((m&&m.home)||''))} ${L&&L.gh!=null?`<b class="sc ${mState(m,d)==='live'?'lv':''}">${L.gh}-${L.ga}</b>`:'<i class="vsx">vs</i>'} ${esc(shortTeam((m&&m.away)||''))} ${m&&m.n?statePill(L,m):''}</small></span>${odds?`<span class="o">${Number(odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}
 const pinCrests=m=>m&&m.home?`<span class="pcr">${crestHTML(m.hc,m.home)}${crestHTML(m.ac,m.away)}</span>`:'';   // 3.38: team badges, like the posts
 function pickStateOf(d,m,text){if(!m)return null;const i=(m.picks||[]).findIndex(p=>p.text===text);return i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));}
 function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false)return '';let tot=1,w=0,l=0;
   const rows=tp.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=pickStateOf(d,m,g.text);if(s==='w')w++;if(s==='l')l++;return pinRow(d,m,g.text,g.odds,s);}).join('');
   const st=l?'l':(w===tp.length?'w':null);
-  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Top picks · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh"><b>TOP PICKS · ${tot.toFixed(2)} ODDS</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${tp.length} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
+  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Top picks · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">TOP PICKS ${tot.toFixed(2)}</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${tp.length} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
 function premLive(td){const d=dayOf(td.date);if(!d)return '';let w=0;
   const rows=(td.picks||[]).map(g=>{const m=findM(d,g);const s=premState(g,d);if(s==='w')w++;return pinRow(d,m,g.text,g.odds,s);}).join('');
-  return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium · pinned</span></div><div class="bkcard"><div class="bkh"><b>👑 VISION PREMIUM · ${((td.picks||[]).reduce((a,g)=>a*(g.odds||1),1)).toFixed(2)} ODDS</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
+  return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium · pinned</span></div><div class="bkcard"><div class="bkh col"><b style="white-space:nowrap">👑 VISION PREMIUM ${((td.picks||[]).reduce((a,g)=>a*(g.odds||1),1)).toFixed(2)}</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
 function winTicket(m,d){return `<button class="btn-save w100" data-winshare2="${m.n}" data-dk="${d.date}" style="margin:-4px 0 14px">↗ Share this win (picture + text)</button>`;}
 function bankerBlock(d,st){const bk=d.banker;const rows=bk.games.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n)||{};const i=(m.picks||[]).findIndex(p=>p.text===(g.pick&&g.pick.text));const s=i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));const L=m.n?liveOf(m,d):null;
-    return `<div class="bkr one">${pinCrests(m)}<span class="t"><b>${esc(shortPk((g.pick||{}).text||'',m))}</b><small>${esc(shortTeam(m.home||''))} ${L&&L.gh!=null?`<b class="sc">${L.gh}-${L.ga}</b>`:'<i class="vsx">vs</i>'} ${esc(shortTeam(m.away||''))} ${m.n?statePill(L,m):''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${(!s&&i>=0&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div>`;}).join('');
+    return `<div class="bkr one">${pinCrests(m)}<span class="t"><b>${esc(shortPk((g.pick||{}).text||'',m))}</b><small>${esc(shortTeam(m.home||''))} ${L&&L.gh!=null?`<b class="sc ${mState(m,d)==='live'?'lv':''}">${L.gh}-${L.ga}</b>`:'<i class="vsx">vs</i>'} ${esc(shortTeam(m.away||''))} ${m.n?statePill(L,m):''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${(!s&&i>=0&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div>`;}).join('');
   return `<div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh"><b>${Number(bk.total||0).toFixed(2)} ODDS BANKER</b><span class="pill ${st==='w'?'won':'wait'}">${st==='w'?'✔ WON':st==='l'?'✘ LOST':'WAITING'}</span></div>${rows}${st==='w'?`<button class="btn-save w100" data-card="bankerwon" data-dk="${d.date}" style="margin-top:10px">↗ Share the banker WIN</button>`:''}</div>`;}
 async function shareWin(d,n,p){const m=(d.matches||[]).find(x=>String(x.n)===String(n));if(!m||!m.win)return;toast('Getting the picture…',1400);const f=await fileOf(m.win.img,`win-${d.date}-${n}`);await shareTo(p==='wa'?'wa':'ig',winFmt(m.win.text||'',p==='wa'?'wa':'tg'),f?[f]:[]);}
 
@@ -1661,7 +1668,7 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
     srow('winstyle','Win ticket style',{lime:'1 Lime',gold:'2 Gold',green:'3 Green',blue:'4 Blue',white:'5 White'}[SET.winStyle||'lime']+(SET.winShape==='wide'?' · wide':' · my old card'),'',gi('ticket'))+
     srow('wintext','Win ticket text','First mark, last line, BIG WIN line, extra line, brand','',gi('textbold'))+
     srow('winInResults','Win tickets in Results','The picture with Share buttons',SET.winInResults!==false,gi('gallery'))+
-    srow('csstyle','Correct score win style',{gold:'1 Gold',diamond:'2 Diamond',emerald:'3 Emerald',royal:'4 Royal',fire:'5 Fire'}[SET.csStyle||'gold'],'',gi('crown'))+
+    srow('csstyle','Correct score win style',{mv:'Match Vision (new)',gold:'1 Gold',diamond:'2 Diamond',emerald:'3 Emerald',royal:'4 Royal',fire:'5 Fire'}[SET.csStyle||'mv'],'',gi('crown'))+
     srow('premwinstyle','Premium wins picture',{gold:'1 Gold',lime:'2 Lime',emerald:'3 Emerald',diamond:'4 Diamond',royal:'5 Royal'}[SET.premWinStyle||'gold'],'',gi('crown'))+
     srow('recapstyle','Weekly recap style',['','1 Classic','2 Scoreboard','3 Percent','4 Short','5 Big wins'][+(SET.recapStyle||1)],'',gi('textbold'))+
     srow('recapLink','Weekly recap: YouTube link',"Get Tomorrow's Games + your YouTube link",SET.recapLink!==false,gi('ticket'))+
@@ -1708,7 +1715,7 @@ async function settingsClick(e){const b=e.target.closest('button');if(!b)return;
   if(s==='bankerInResults'){SET.bankerInResults=SET.bankerInResults===false;saveSet();renderSettings();return;}
   if(s==='bankerwinstyle'){choose('Banker win picture',[['gold','1 Gold'],['lime','2 Lime'],['emerald','3 Emerald'],['diamond','4 Diamond'],['royal','5 Royal']],SET.bankerWinStyle||'gold',v=>{SET.bankerWinStyle=v;saveSet();renderSettings();});return;}
   if(s==='tapShare'){SET.tapShare=SET.tapShare===false;saveSet();renderSettings();return;}
-  if(s==='csstyle'){choose('Correct score win style',[['gold','1 Gold'],['diamond','2 Diamond'],['emerald','3 Emerald'],['royal','4 Royal'],['fire','5 Fire']],SET.csStyle||'gold',v=>{SET.csStyle=v;saveSet();renderSettings();});return;}
+  if(s==='csstyle'){choose('Correct score win style',[['mv','Match Vision (new)'],['gold','1 Gold'],['diamond','2 Diamond'],['emerald','3 Emerald'],['royal','4 Royal'],['fire','5 Fire']],SET.csStyle||'mv',v=>{SET.csStyle=v;saveSet();renderSettings();});return;}
   if(s==='premwinstyle'){choose('Premium wins picture',[['gold','1 Gold'],['lime','2 Lime'],['emerald','3 Emerald'],['diamond','4 Diamond'],['royal','5 Royal']],SET.premWinStyle||'gold',v=>{SET.premWinStyle=v;saveSet();renderSettings();});return;}
   if(s==='premstyle'){choose('Premium slip style',[['gold','1 Gold'],['lime','2 Lime'],['dark','3 Dark'],['blue','4 Blue'],['red','5 Red']],SET.premStyle||'gold',v=>{SET.premStyle=v;saveSet();renderSettings();});return;}
   if(s==='wintext'){const a=prompt('First mark before the match (empty = none):',SET.winTop??'✅');if(a===null)return;const b=prompt('Last line ({W} won, {N} total). **two stars** = bold:',SET.winEnd||'🔥 **{W} Of {N} Won**');if(b===null)return;
@@ -2023,8 +2030,8 @@ async function cardCanvas(o){const W=1080,H=o.h||1350,c=document.createElement('
 const MARKW=s=>s==='w'?true:s==='l'?false:null;
 const PWSTY={gold:['#ECC462','#9C8240'],lime:['#DFFB51','#8EA334'],emerald:['#34D399','#1F8A63'],diamond:['#7DD3FC','#3B8DB5'],royal:['#C084FC','#7E4BB0']};
 // 3.9: CORRECT SCORE WIN - its own big card, VIP-like, 5 styles: [accent, dark accent, background top, background bottom]
-const CSSTY={gold:['#ECC462','#9C8240','#1d1607','#070605'],diamond:['#7DD3FC','#3B8DB5','#071827','#04080d'],emerald:['#34D399','#1F8A63','#05241a','#030a07'],royal:['#C084FC','#7E4BB0','#1a0c2b','#07040c'],fire:['#FB923C','#B45A1E','#2a1105','#0a0503']};
-async function csCanvas(o){const P=CSSTY[SET.csStyle]||CSSTY.gold,[A,A2,B1,B2]=P;const rows=o.rows.slice(0,3),W=1080,H=640+rows.length*130+120,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');const fam="'Inter','Outfit',system-ui,sans-serif";
+const CSSTY={mv:['#DFFF4F','#8EA334','#0f120b','#040404'],gold:['#ECC462','#9C8240','#1d1607','#070605'],diamond:['#7DD3FC','#3B8DB5','#071827','#04080d'],emerald:['#34D399','#1F8A63','#05241a','#030a07'],royal:['#C084FC','#7E4BB0','#1a0c2b','#07040c'],fire:['#FB923C','#B45A1E','#2a1105','#0a0503']};
+async function csCanvas(o){const P=CSSTY[SET.csStyle||'mv']||CSSTY.mv,[A,A2,B1,B2]=P;const rows=o.rows.slice(0,3),W=1080,H=640+rows.length*130+120,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');const fam="'Inter','Outfit',system-ui,sans-serif";
   try{await document.fonts.ready;}catch(e){}
   let g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,B1);g.addColorStop(1,B2);x.fillStyle=g;x.fillRect(0,0,W,H);
   const rg=x.createRadialGradient(W/2,330,20,W/2,330,620);rg.addColorStop(0,A+'55');rg.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=rg;x.fillRect(0,0,W,H);
