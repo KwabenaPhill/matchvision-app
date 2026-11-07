@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.34</title>
+<title>Match Vision 3.35</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.34';   // APP_VERSION = '3.34' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.35';   // APP_VERSION = '3.35' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1209,7 +1209,12 @@ const YT_END=['More winning picks coming tomorrow. Subscribe and turn on the bel
 function ytResults(t,key){const L=String(t||'').split('\n').filter(l=>!/https?:\/\//.test(l)&&!/👇\s*\**\s*$/.test(l.trim()));let h=0;for(const c of String(key||''))h=(h*31+c.charCodeAt(0))>>>0;return (L.join('\n').replace(/\n{3,}/g,'\n\n').trim()+'\n\n'+YT_END[h%YT_END.length]).trim();}
 function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:(p==='yt'&&it.group==='results'&&!(it.texts&&it.texts.yt)?ytResults(it.texts.tg||it.texts.wa,(it.id||'')+(it.title||'')):((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||''));const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
 async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return null;}const imgs=((p==='x'||p==='fb')&&it.images_x)?it.images_x:(it.images||[]);for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${p}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
-async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);if(files===null)return;const ok=await shareTo(p,textFor(it,p),files);
+// 3.35 (Philip, 7 Nov): TikTok has a Title box and a Description box: the title line is kept apart (🏷️ Title button)
+function ttTitle(it){if(!appsOf(it).includes('tt'))return '';const ls=(textFor(it,'tt')||'').split('\n').filter(l=>l.trim());return ls.length>1&&/ \| /.test(ls[0])?ls[0].trim():'';}
+function ttDesc(it){const t=textFor(it,'tt')||'';const ti=ttTitle(it);if(!ti)return t;return t.replace(ti,'').replace(/^\s*\n/,'').trim();}
+const ttlBtn=it=>ttTitle(it)?'<button data-ttl="1">🏷️ Title</button>':'';
+async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);if(files===null)return;const tsplit=p==='tt'&&ttTitle(it);const ok=await shareTo(p,tsplit?ttDesc(it):textFor(it,p),files);
+  if(ok&&tsplit)setTimeout(()=>toast('TikTok: the DESCRIPTION is copied. For the Title box come back and tap 🏷️ Title.',6000),4200);
   if(ok&&p!=='copy'){POSTED[d.date]=POSTED[d.date]||{};const o=POSTED[d.date][it.id]=POSTED[d.date][it.id]||{};o[p]=true;savePosted();
     const next=itemsOf(d).find(x=>!isDone(d,x));setTimeout(()=>toast(isDone(d,it)?(next?`Done ✓ Next: ${next.title}`:'Everything for this day is sent ✓'):`Sent to ${PNAME[p]} ✓`,3000),900);}
   refresh(true);if(subRender)rerenderSub();}
@@ -1226,9 +1231,10 @@ function postCard(d,it){const p=postedOf(d,it.id);const ap=appsOf(it);const show
     ${xs.length>1?xs.slice(1).map((x,i)=>`<div class="xreply"><span>${bi('x')}X reply ${i+1} (post it under the first one)</span><button data-xr="${i+1}">Copy</button></div>`).join(''):''}
     ${it.group==='shorts'?(it.video?`<video class="vplayer" src="${esc(media(it.video))}" controls playsinline preload="none" poster="${esc(media((it.images||[])[0]||''))}"></video><div class="btn-row"><button class="btn-half" data-p="vid">📥 Save to gallery</button><button class="btn-half" data-p="vidshare">↗ Share the video</button></div>`:`<div class="vnote">🎬 The video is on your laptop, full quality:<br><b>${esc(it.file||'Ready to Upload')}</b><br>Or tap 📥 in the bot's pack to get it on the phone.</div>`):''}
     ${sl?`<div class="pstat">${esc(sl)}</div>`:''}
-    <div class="mini">${ap.map(x=>btnHTML(x,p[x],accLabel(it,x))).join('')}${btnHTML('copy',false)}<button data-edit="1">✏️ Edit text</button></div></div>`;}
+    <div class="mini">${ap.map(x=>btnHTML(x,p[x],accLabel(it,x))).join('')}${btnHTML('copy',false)}${ttlBtn(it)}<button data-edit="1">✏️ Edit text</button></div></div>`;}
 async function postClick(e,after){const b=e.target.closest('button');if(!b)return;const card=b.closest('[data-post]');if(!card)return;const d=dayOf(card.dataset.dk);if(!d)return;const it=(d.posts||[]).find(x=>x.id===card.dataset.post);if(!it)return;
   if(b.dataset.edit){closeSheet();setTimeout(()=>editPost(d,it),250);return;}
+  if(b.dataset.ttl){toast(copyText(ttTitle(it))?'Title copied: paste it in TikTok\'s Title box':'Copy failed',3500);return;}
   if(b.dataset.xr){const xs=xParts(styled(it.texts.x,'x'));toast(copyText(xs[+b.dataset.xr]||'')?`Reply ${b.dataset.xr} copied`:'Copy failed');return;}
   if(b.dataset.p==='vid'){toast('Getting the video…',1500);const f=await fileOf(it.video,`${it.title||it.id} ${d.date}`);if(f)saveFile(f,'Video saved');else toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return;}
   if(b.dataset.p==='vidshare'){const f=await fileOf(it.video,`${it.title||it.id} ${d.date}`);if(f&&canShareFiles([f])){try{await navigator.share({files:[f]});}catch(err){}}else if(f)saveFile(f,'Video saved');else toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return;}
@@ -1262,7 +1268,8 @@ function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Matc
   const has=k=>ms.filter((m,i)=>k==='all'||st[i]===k);
   const chips=`<div class="chips scroll" style="margin-bottom:10px">${[['all','All'],['live','Live'],['up','Upcoming'],['fin','Finished']].map(([k,l])=>`<button class="chip ${matchFilter===k?'on':''}" data-mf="${k}">${l} ${has(k).length}</button>`).join('')}<button class="chip ${matchFilter==='vip'?'on':''}" data-mf="vip">👑 VIP</button></div>`;
   const list=has(matchFilter).filter((m,i)=>SET.showFin===true||matchFilter==='fin'||mState(m,d)!=='fin');
-  const ptd=premDay(d);const pinP=ptd&&!premDone(ptd)?premBlock(ptd,false):'';
+  const ptd=premDay(d);const bst=bankerState(d);   // 3.35 (Philip, 7 Nov): Vision Premium AND the banker pinned at the top
+  const pinP=(ptd?premBlock(ptd,premDone(ptd)):'')+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+'<div style="height:12px"></div>':'');
   if(matchFilter==='vip')return banner+chips+(ptd?premBlock(ptd,premDone(ptd)):`<div class="card"><p class="empty">${prem?'No Vision Premium slip for this day.':'Vision Premium is locked: open the Premium tab and type your PIN.'}</p></div>`);
   return banner+chips+pinP+(list.length?list.map(m=>matchCard(m,d)).join(''):`<div class="card"><p class="empty">No matches here.</p></div>`)+`<button class="btn-half w100" data-act="copypicks" style="margin-top:2px">📋 Copy the picks</button>`;}
 function legSheet(d,m){
@@ -1312,7 +1319,7 @@ async function shareWin(d,n,p){const m=(d.matches||[]).find(x=>String(x.n)===Str
 // ---------- HOME ----------
 let homeView=SET.homeView||'posts';
 function todoRow(d,it,next){const p=postedOf(d,it.id);return `<div class="todo" data-item="${esc(it.id)}" data-dk="${d.date}">${rowIcon(it)}<div class="tx"><button class="tt" data-open="${esc(it.id)}" data-dk="${d.date}">${esc(it.title)}${next?'<span class="nx">NEXT</span>':''}${itAt(d,it)?' '+timeChip(d,it):''}${isDone(d,it)?' <span class="nx" style="background:#30D158">SENT</span>':''}</button>
-  <div class="pv">${esc((textFor(it,appsOf(it).find(a=>a!=='x')||'wa')||'').split('\n').find(l=>l.trim())||'')}</div><div class="mini">${appsOf(it).map(x=>btnHTML(x,p[x],accLabel(it,x))).join('')}</div></div></div>`;}
+  <div class="pv">${esc((textFor(it,appsOf(it).find(a=>a!=='x')||'wa')||'').split('\n').find(l=>l.trim())||'')}</div><div class="mini">${appsOf(it).map(x=>btnHTML(x,p[x],accLabel(it,x))).join('')}${ttlBtn(it)}</div></div></div>`;}
 function reminders(d){const out=[],t=todayKey();
   if(feed&&feed.builder&&feed.builder.busy)out.push(['⚙️',`The laptop is building: ${feed.builder.step||''} (${Math.round((feed.builder.done||0)*100)}%)`]);
   if(prem&&SET.premMembers)for(const m of prem.members||[]){const x=m.until;if(!x)continue;const dl=daysBetween(t,x);if(dl<0&&dl>-15)rems(out,'👑',`${m.name}'s Vision Premium ended ${shortDate(x)}. The bot asks "Remove?"`);else if(dl>=0&&dl<=3)rems(out,'👑',`${m.name} ends ${dl===0?'today':dl===1?'tomorrow':`in ${dl} days`}`);}
@@ -1369,6 +1376,7 @@ function homeClick(e,getDay,after){const b=e.target.closest('button,[data-m]');i
   if(b.dataset.act==='reload'){loadFeed(false);return true;}
   if(b.dataset.day){openDay(b.dataset.day);return true;}
   if(b.dataset.open){const d=dayOf(b.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===b.dataset.open);if(it)openPostSheet(d,it);return true;}
+  if(b.dataset.ttl){const row=b.closest('[data-item]');if(row){const d=dayOf(row.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===row.dataset.item);if(it)toast(copyText(ttTitle(it))?'Title copied: paste it in TikTok\'s Title box':'Copy failed',3500);}return true;}
   if(b.dataset.p){const row=b.closest('[data-item]');if(row){const d=dayOf(row.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===row.dataset.item);if(it){const p=b.dataset.p;
       if(b.classList.contains('done')&&!confirm(`Send to ${PNAME[p]} again?\n\nTap Cancel to mark it as NOT sent.`)){const o=postedOf(d,it.id);delete o[p];savePosted();after();return true;}send(d,it,p);}}return true;}
   const card=b.closest('[data-m]');if(card&&card.dataset.dk){const d=dayOf(card.dataset.dk);const m=d&&(d.matches||[]).find(x=>String(x.n)===card.dataset.m);if(m){if(mState(m,d)==='fin'&&SET.tapShare!==false){window.__matchShare={d,m};shareCard('match',d);}else legSheet(d,m);}return true;}
@@ -1509,7 +1517,18 @@ function judgeText(t,home,away,L){if(!L||L.st!=='FT'||L.gh==null)return null;con
   if(q===h+' to win')return gh>ga?'w':'l';if(q===a+' to win')return ga>gh?'w':'l';
   if(q===h+' or draw')return gh>=ga?'w':'l';if(q===a+' or draw')return ga>=gh?'w':'l';if(q==='draw')return gh===ga?'w':'l';return settleAny(t,home,away,L);}
 function premWon(g,d){return MARKW(premState(g,d));}
-function premPicture(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
+// 3.35 (Philip, 7 Nov): "use the exact card on the laptop": the bot's own Vision Premium picture (private mailbox), the app's
+// drawn card only while the picture is not there (no key, or not made yet).
+function premPicture(td){return `<div data-pmx="${esc(td.date)}" data-pmw="${premDone(td)?1:0}">${premPictureHTML(td)}</div>`;}
+const PMX={};
+async function fillPmx(){for(const el of document.querySelectorAll('[data-pmx]:not([data-pmok])')){el.dataset.pmok='1';if(!mbxKey())continue;const k=el.dataset.pmx;
+    try{let j=PMC[k];if(!j){const r=await mbx('mvapp/premium/'+k+'/index.json',true);if(!r.ok)continue;j=PMC[k]=await r.json();}
+      const pics=(j.pictures||[]).filter(p=>!/RESULTS|JOIN|WEEK/i.test(p.name));const won=pics.find(p=>/ WON /.test(' '+p.name+' '));const pk=pics.find(p=>!/ WON/.test(p.name));
+      const pic=(el.dataset.pmw==='1'&&won)?won:(pk||won);if(!pic)continue;
+      let url=PMX[pic.path];if(!url){const r=await mbx(pic.path,true);if(!r.ok)continue;url=PMX[pic.path]=URL.createObjectURL(await r.blob());}
+      el.innerHTML=`<img src="${url}" alt="Vision Premium" style="width:100%;border-radius:16px;display:block">`;}catch(e){}}}
+new MutationObserver(()=>{if(document.querySelector('[data-pmx]:not([data-pmok])'))fillPmx();}).observe(document.body,{childList:true,subtree:true});
+function premPictureHTML(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
     return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · <span class="${L.st==='FT'?'fsc':'lsc'}">${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}</span>`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
   return `<div class="pcard"><div class="ph"><span class="cw">${G.crown}</span><span><b>VISION PREMIUM</b><small>${longDate(td.date)} · Today's strongest picks</small></span></div>${rows}<div class="pf"><span>${(td.picks||[]).length} picks</span>${tot>1?`<span>Combined odds <b>${tot.toFixed(2)}</b></span>`:''}</div></div>`;}
 function renderElite(){const el=$('p-elite');const head=`<div class="sechd" style="margin:0 0 10px"><span class="sect goldc" style="margin:0;display:flex;align-items:center;gap:8px"><span class="eliteimg crown">👑</span>Vision Premium</span>${prem?'<button class="link" data-act="lock" style="color:var(--gold)!important;padding:0">Lock</button>':''}</div>`;
@@ -1521,6 +1540,7 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
     if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
+    {const bd=td&&dayOf(td.date);if(bd&&bd.banker&&(bd.banker.games||[]).length)body+=`<div class="sechd" style="margin:4px 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · ${shortDate(bd.date)}</span></div>`+bankerBlock(bd,bankerState(bd))+`<button class="btn-save w100" data-card="banker" data-dk="${bd.date}" style="margin:8px 0 14px">Share the banker picture</button>`;}   // 3.35
     if(td&&SET.premList===true){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
         if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
         return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
