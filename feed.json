@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-11-07T22:39:25",
+ "updated": "2026-11-07T22:40:29",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-11-07 Saturday",
@@ -1835,7 +1835,799 @@
     "WhatsApp": false,
     "Community": false
    },
-   "results": {},
+   "results": {
+    "date": "2026-11-07",
+    "matches": [
+     {
+      "n": 1,
+      "home": "Valencia",
+      "away": "Real Madrid",
+      "status": "FT",
+      "score": "0-3",
+      "predicted": "0-2",
+      "picks": [
+       {
+        "text": "Real Madrid to win",
+        "market": "RESULT",
+        "odds": 1.35,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Real Madrid over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.46,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 8.5 corners",
+        "market": "CORNERS",
+        "odds": 1.65,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 2,
+      "home": "Osasuna",
+      "away": "Athletic Club",
+      "status": "FT",
+      "score": "1-1",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Athletic Club or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.3,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.36,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 4.5 cards",
+        "market": "CARDS",
+        "odds": 1.72,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 3,
+      "home": "Malaga",
+      "away": "Racing Santander",
+      "status": "FT",
+      "score": "1-2",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Malaga to score",
+        "market": "TEAM GOALS",
+        "odds": 1.24,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Malaga or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.32,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Malaga draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.56,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 4,
+      "home": "Espanyol",
+      "away": "Deportivo La Coruna",
+      "status": "FT",
+      "score": "0-0",
+      "predicted": "1-1",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.25,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Espanyol or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.38,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.82,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 5,
+      "home": "Nottingham Forest",
+      "away": "Manchester City",
+      "status": "FT",
+      "score": "3-1",
+      "predicted": "1-3",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.22,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Manchester City over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.62,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Manchester City to win",
+        "market": "RESULT",
+        "odds": 1.73,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 6,
+      "home": "Leeds United",
+      "away": "Tottenham Hotspur",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.33,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Tottenham Hotspur or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.48,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.68,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 7,
+      "home": "Arsenal",
+      "away": "Hull City",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "2-0",
+      "picks": [
+       {
+        "text": "Arsenal to win",
+        "market": "RESULT",
+        "odds": 1.17,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Arsenal over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.34,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Arsenal -1.5",
+        "market": "HANDICAP",
+        "odds": 1.62,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 8,
+      "home": "Fulham",
+      "away": "Newcastle United",
+      "status": "FT",
+      "score": "1-1",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Fulham or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.34,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Fulham draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.56,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.65,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 9,
+      "home": "Mainz 05",
+      "away": "Bayern Munich",
+      "status": "FT",
+      "score": "1-2",
+      "predicted": "1-3",
+      "picks": [
+       {
+        "text": "Bayern Munich to win",
+        "market": "RESULT",
+        "odds": 1.32,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.42,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Bayern Munich -1.5",
+        "market": "HANDICAP",
+        "odds": 1.84,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 10,
+      "home": "Borussia Dortmund",
+      "away": "Elversberg",
+      "status": "FT",
+      "score": "2-1",
+      "predicted": "2-0",
+      "picks": [
+       {
+        "text": "Borussia Dortmund to win",
+        "market": "RESULT",
+        "odds": 1.35,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Borussia Dortmund over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.44,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 9.5 corners",
+        "market": "CORNERS",
+        "odds": 1.68,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 11,
+      "home": "RB Leipzig",
+      "away": "Augsburg",
+      "status": "FT",
+      "score": "5-2",
+      "predicted": "3-1",
+      "picks": [
+       {
+        "text": "RB Leipzig over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.42,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "RB Leipzig to win",
+        "market": "RESULT",
+        "odds": 1.48,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.52,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 12,
+      "home": "SC Paderborn",
+      "away": "Eintracht Frankfurt",
+      "status": "FT",
+      "score": "2-2",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Eintracht Frankfurt to score",
+        "market": "TEAM GOALS",
+        "odds": 1.22,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Eintracht Frankfurt or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.38,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Eintracht Frankfurt draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.65,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 13,
+      "home": "VfB Stuttgart",
+      "away": "Werder Bremen",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "2-2",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.18,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.28,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.52,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 14,
+      "home": "Paris Saint-Germain",
+      "away": "Troyes",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "3-0",
+      "picks": [
+       {
+        "text": "Paris Saint-Germain over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.22,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.25,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Paris Saint-Germain -1.5",
+        "market": "HANDICAP",
+        "odds": 1.48,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 15,
+      "home": "Auxerre",
+      "away": "Paris FC",
+      "status": "FT",
+      "score": "0-1",
+      "predicted": "0-1",
+      "picks": [
+       {
+        "text": "Paris FC to score",
+        "market": "TEAM GOALS",
+        "odds": 1.24,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Paris FC or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.3,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Paris FC draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.5,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 16,
+      "home": "AS Roma",
+      "away": "Sassuolo",
+      "status": "FT",
+      "score": "3-0",
+      "predicted": "3-1",
+      "picks": [
+       {
+        "text": "AS Roma to win",
+        "market": "RESULT",
+        "odds": 1.32,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.42,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "AS Roma -1.5",
+        "market": "HANDICAP",
+        "odds": 1.92,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 17,
+      "home": "Torino",
+      "away": "Lecce",
+      "status": "FT",
+      "score": "1-1",
+      "predicted": "1-0",
+      "picks": [
+       {
+        "text": "Under 3.5 goals",
+        "market": "GOALS",
+        "odds": 1.24,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Torino draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.36,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Torino to win",
+        "market": "RESULT",
+        "odds": 1.85,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 18,
+      "home": "Cagliari",
+      "away": "Frosinone",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Frosinone to score",
+        "market": "TEAM GOALS",
+        "odds": 1.26,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Frosinone or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.44,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Over 8.5 corners",
+        "market": "CORNERS",
+        "odds": 1.62,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 19,
+      "home": "Parma",
+      "away": "Bologna",
+      "status": "FT",
+      "score": "1-2",
+      "predicted": "0-2",
+      "picks": [
+       {
+        "text": "Bologna or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.24,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Bologna draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.4,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Bologna to win",
+        "market": "RESULT",
+        "odds": 1.89,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 20,
+      "home": "Sporting CP",
+      "away": "Moreirense",
+      "status": "FT",
+      "score": "1-0",
+      "predicted": "3-0",
+      "picks": [
+       {
+        "text": "Sporting CP to win",
+        "market": "RESULT",
+        "odds": 1.18,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Sporting CP over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.32,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Sporting CP -1.5",
+        "market": "HANDICAP",
+        "odds": 1.58,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 21,
+      "home": "Blackburn Rovers",
+      "away": "West Ham United",
+      "status": "FT",
+      "score": "2-1",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "West Ham United draw no bet",
+        "market": "DRAW NO BET",
+        "odds": 1.28,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.6,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.62,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 22,
+      "home": "Wrexham",
+      "away": "Wolves",
+      "status": "FT",
+      "score": "1-1",
+      "predicted": "1-2",
+      "picks": [
+       {
+        "text": "Wolverhampton Wanderers to score",
+        "market": "TEAM GOALS",
+        "odds": 1.25,
+        "p": null,
+        "won": null
+       },
+       {
+        "text": "Wolverhampton Wanderers or draw",
+        "market": "DOUBLE CHANCE",
+        "odds": 1.34,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Under 10.5 corners",
+        "market": "CORNERS",
+        "odds": 1.58,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 23,
+      "home": "Excelsior Rotterdam",
+      "away": "Go Ahead Eagles",
+      "status": "FT",
+      "score": "0-1",
+      "predicted": "2-2",
+      "picks": [
+       {
+        "text": "Over 1.5 goals",
+        "market": "GOALS",
+        "odds": 1.16,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "Over 0.5 goals 1st half",
+        "market": "FIRST HALF",
+        "odds": 1.28,
+        "p": null,
+        "won": false
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.41,
+        "p": null,
+        "won": false
+       }
+      ]
+     },
+     {
+      "n": 24,
+      "home": "Galatasaray",
+      "away": "Amed SK",
+      "status": "FT",
+      "score": "4-3",
+      "predicted": "2-1",
+      "picks": [
+       {
+        "text": "Galatasaray to win",
+        "market": "RESULT",
+        "odds": 1.43,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Over 2.5 goals",
+        "market": "GOALS",
+        "odds": 1.58,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "BTTS - Yes",
+        "market": "BTTS",
+        "odds": 1.66,
+        "p": null,
+        "won": true
+       }
+      ]
+     },
+     {
+      "n": 25,
+      "home": "St Mirren",
+      "away": "Rangers",
+      "status": "FT",
+      "score": "0-2",
+      "predicted": "0-2",
+      "picks": [
+       {
+        "text": "Rangers to win",
+        "market": "RESULT",
+        "odds": 1.44,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "Rangers over 1.5 goals",
+        "market": "TEAM GOALS",
+        "odds": 1.55,
+        "p": null,
+        "won": true
+       },
+       {
+        "text": "BTTS - No",
+        "market": "BTTS",
+        "odds": 1.78,
+        "p": null,
+        "won": true
+       }
+      ]
+     }
+    ],
+    "checked": "2026-11-07T22:39:48",
+    "banker": {
+     "total": 2.04,
+     "won": true
+    },
+    "won": 49,
+    "lost": 25,
+    "waiting": 0,
+    "pick1": [
+     19,
+     24
+    ],
+    "correct_scores": 2
+   },
    "video_link": "https://youtu.be/tNTsftYT2Ec",
    "posts": [
     {
@@ -2073,6 +2865,29 @@
      },
      "ready": true,
      "at": "2026-11-06T21:00"
+    },
+    {
+     "id": "win1",
+     "group": "results",
+     "title": "19/24 results (style 6)",
+     "when": "23:45",
+     "images": [
+      "media/2026-11-07/win-1.jpg"
+     ],
+     "texts": {
+      "tg": "✅ Saturday Results | 7 November\nMatch Vision\n\n🔥 19 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "wa": "✅ *Saturday Results | 7 November*\nMatch Vision\n\n🔥 19 Of 24 Safest Picks Won\n\n*Tomorrow's Games* 👇\nhttps://t.me/matchvision707",
+      "x": "✅ Saturday Results | 7 November\nMatch Vision\n\n🔥 19 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#MatchVision #PremierLeague #EPL #LaLiga #FootballPredictions",
+      "ig": "✅ Saturday Results | 7 November\nMatch Vision\n\n🔥 19 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://t.me/matchvision707\n\n#matchvision #premierleague #epl #laliga #footballpredictions",
+      "th": "✅ Saturday Results | 7 November\nMatch Vision\n\n🔥 19 Of 24 Safest Picks Won\n\nTomorrow's Games 👇\nhttps://www.youtube.com/@MatchVision707",
+      "yt": "✅ 19 Of 24 Won | Saturday 7 November\nMatch Vision\n\nMore Winning Picks Coming Tomorrow. Subscribe And Turn On The Bell 🔔"
+     },
+     "auto": {
+      "tg": true
+     },
+     "note": "",
+     "ready": true,
+     "at": "2026-11-07T23:45"
     }
    ]
   },
@@ -19117,7 +19932,7 @@
    "of": 8
   }
  },
- "banker_streak": 2,
+ "banker_streak": 3,
  "version": "3.50",
  "short_names": {
   "Manchester City": "Man City",
@@ -27963,9 +28778,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "Sj7Nu9Uha8jI4ZLc8dbTlg==",
-  "nonce": "I8gihToG4c4DwIjS29K7Cw==",
-  "ct": "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",
-  "mac": "iMs3Ih9yC+u9pPn4AqxprRVwxBH0U0kIfoNqGiZPESw="
+  "salt": "LoOh2eYw7EW3UHwrUOiK0g==",
+  "nonce": "Fk+YqbIGrAcPzh2Y50yQzw==",
+  "ct": "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",
+  "mac": "xYShxN7xBIsMDuf3fuL59Y+a2S2QtwkwCVSUB7W8Sag="
  }
 }
