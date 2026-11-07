@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.32.1</title>
+<title>Match Vision 3.33</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.32.1';   // APP_VERSION = '3.32.1' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.33';   // APP_VERSION = '3.33' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1377,8 +1377,23 @@ $('p-home').addEventListener('click',e=>homeClick(e,todayDay,()=>renderHome(true
 
 // ---------- Day page (any date) ----------
 function openDay(k){let view='posts';const render=()=>{const d=dayOf(k);if(!d){$('subBody').innerHTML='<p class="empty">This day is not in the app any more.</p>';return;}const keep=homeView;homeView=view;
-  const body=view==='matches'?matchesView(d):view==='results'?resultsView(d):postsView(d);$('subBody').innerHTML=summaryBoxes(d)+body;homeView=keep;};
+  const body=view==='matches'?matchesView(d):view==='results'?resultsView(d):postsView(d);$('subBody').innerHTML=summaryBoxes(d)+body+(view==='posts'?'<div id="pmBox"></div>':'');homeView=keep;if(view==='posts')premiumBox(k);};
   openSub(longDate(k),render);$('subBody').onclick=e=>{const b=e.target.closest('button');if(b&&b.dataset.view){view=b.dataset.view;render();return;}homeClick(e,()=>dayOf(k),render);};}
+
+// ---------- 3.33 (Philip, item 358): the EXACT builder pictures and texts of the day (Vision Premium, channel posts) ----------
+// They come from the PRIVATE mailbox (mvapp/premium/<date>/), never from the public app files (Premium picks are paid).
+const MBX='KwabenaPhill/surestake707-sync';
+function mbxKey(){let a={},b={};try{a=JSON.parse(localStorage.getItem('fixhub_sync')||'{}');}catch(e){}try{b=JSON.parse(localStorage.getItem('ss707_sync')||'{}');}catch(e){}return a.token||b.token||'';}
+const mbx=(p,raw)=>fetch(`https://api.github.com/repos/${MBX}/contents/${p}`,{cache:'no-store',headers:{Authorization:'Bearer '+mbxKey(),Accept:raw?'application/vnd.github.raw':'application/vnd.github+json'}});
+const PMC={};
+async function premiumBox(k){const el=$('pmBox');if(!el)return;if(!mbxKey()){el.innerHTML='';return;}
+  try{let j=PMC[k];if(!j){const r=await mbx('mvapp/premium/'+k+'/index.json',true);if(!r.ok){el.innerHTML='';return;}j=PMC[k]=await r.json();}
+    const pics=j.pictures||[],T=j.texts||{};
+    el.innerHTML=(pics.length?`<div class="card"><div class="ct">Vision Premium (the bot's own pictures)</div>${pics.map((p,i)=>`<img data-pm="${p.path}" alt="" style="width:100%;border-radius:12px;margin-top:8px">`).join('')}</div>`:'')+
+      Object.entries(T).map(([n,t])=>`<div class="card"><div class="ct">${n}</div><pre style="white-space:pre-wrap;font:13px/1.45 Inter,system-ui;margin:6px 0">${String(t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}</pre><button class="btn-half" data-pmcopy="${n}">📋 Copy</button></div>`).join('');
+    el.querySelectorAll('[data-pm]').forEach(async im=>{try{const r=await mbx(im.dataset.pm,true);im.src=URL.createObjectURL(await r.blob());}catch(e){}});
+    el.querySelectorAll('[data-pmcopy]').forEach(b=>b.onclick=ev=>{ev.stopPropagation();try{navigator.clipboard.writeText(T[b.dataset.pmcopy]);toast('Copied ✓');}catch(e){}});}
+  catch(e){el.innerHTML='';}}
 
 // ---------- RECORDS ----------
 let recRange=SET.recRange||'week';
