@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.33</title>
+<title>Match Vision 3.34</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.33';   // APP_VERSION = '3.33' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.34';   // APP_VERSION = '3.34' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1348,7 +1348,7 @@ function upCard(d){const it=(d.posts||[]).find(x=>(x.images||[]).length);const i
 function upcomingCard(){const L=upcomingDays();return L.length?`<div class="sect" style="margin-top:6px">Coming up</div><div class="uplist">${L.map(upCard).join('')}</div><div style="height:14px"></div>`:'';}
 function renderHome(quiet){const el=$('p-home');el.classList.toggle('noanim',!!quiet);if(!feed){el.innerHTML=`<div class="card tint"><div class="ct">Loading Match Vision…</div><div class="cs" style="margin:0">The picks come from your laptop through GitHub.</div><button class="btn-save w100" data-act="reload">Try again</button></div>`;return;}
   const d=todayDay();let body;if(homeView==='matches')body=matchesView(d);else if(homeView==='results')body=resultsView(d);else body=postsView(d)+upcomingCard();
-  el.innerHTML=summaryBoxes(d)+marksBar()+body;}
+  el.innerHTML='<div id="askBox"></div>'+summaryBoxes(d)+marksBar()+body;askBox();}
 // 3.29 (Philip, 30 Oct): a pick still waiting after full time -> tap ✓ or ✕ (also in the banker), then ONE button sends
 // every mark to the laptop, so the results, the banker and the posts update at once.
 function unsentMarks(){return Object.entries(MARKS).filter(([k,x])=>x&&!x.sent);}
@@ -1385,6 +1385,23 @@ function openDay(k){let view='posts';const render=()=>{const d=dayOf(k);if(!d){$
 const MBX='KwabenaPhill/surestake707-sync';
 function mbxKey(){let a={},b={};try{a=JSON.parse(localStorage.getItem('fixhub_sync')||'{}');}catch(e){}try{b=JSON.parse(localStorage.getItem('ss707_sync')||'{}');}catch(e){}return a.token||b.token||'';}
 const mbx=(p,raw)=>fetch(`https://api.github.com/repos/${MBX}/contents/${p}`,{cache:'no-store',headers:{Authorization:'Bearer '+mbxKey(),Accept:raw?'application/vnd.github.raw':'application/vnd.github+json'}});
+// ---------- 3.34 (Philip, 7 Nov): "Top Picks Won" Send / Skip, the same question the bot asks on Telegram ----------
+// The laptop puts the card in the PRIVATE mailbox (mvapp/ask/); the answer goes back there; no answer = Send (laptop timer).
+const ASKC={done:{}};
+async function askBox(){const el=$('askBox');if(!el||!mbxKey())return;
+  try{const r=await mbx('mvapp/ask/index.json',true);if(!r.ok){el.innerHTML='';return;}const ix=await r.json();let html='';
+    for(const p of (ix.items||[])){const q=await (await mbx(p,true)).json().catch(()=>null);if(!q||q.state!=='waiting'||ASKC.done[q.date]||q.deadline*1000<Date.now())continue;
+      let src='';try{const b=await (await mbx(q.picture,true)).blob();src=URL.createObjectURL(b);}catch(e){}
+      const mins=Math.max(0,Math.round((q.deadline*1000-Date.now())/60000));
+      html+=`<div class="card tint"><div class="ct">✅ ${q.title||'Top Picks Won'}: post it on the channel?</div>${src?`<img src="${src}" alt="" style="width:100%;border-radius:12px;margin:8px 0">`:''}<div class="cs" style="white-space:pre-wrap">${(q.caption||'').replace(/</g,'&lt;')}</div><div class="cs">No answer in ${mins} min = Send.</div><div style="display:flex;gap:8px"><button class="btn-save" style="flex:1" data-askans="send" data-askp="${q.answer_path}" data-askd="${q.date}">✅ Send</button><button class="btn-save" style="flex:1;background:#2a2a2e;color:#fff" data-askans="skip" data-askp="${q.answer_path}" data-askd="${q.date}">Skip</button></div></div>`;}
+    el.innerHTML=html;}catch(e){el.innerHTML='';}}
+async function askAnswer(path,date,ans){try{const url=`https://api.github.com/repos/${MBX}/contents/${path}`;const h={Authorization:'Bearer '+mbxKey(),Accept:'application/vnd.github+json','Content-Type':'application/json'};
+    let sha;const g=await fetch(url,{cache:'no-store',headers:h});if(g.ok){sha=(await g.json()).sha;}
+    const body={message:'Match Vision app: '+ans+' '+date,content:btoa(JSON.stringify({answer:ans,at:Date.now()}))};if(sha)body.sha=sha;
+    const r=await fetch(url,{method:'PUT',headers:h,body:JSON.stringify(body)});if(!r.ok)throw new Error('GitHub '+r.status);
+    ASKC.done[date]=1;toast(ans==='send'?'Sent: the laptop posts it within a minute.':'Skipped: no post.',3500);const el=$('askBox');if(el)el.innerHTML='';}
+  catch(e){toast('Not sent ('+e.message+'). Use the buttons in Telegram.',4500);}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-askans]');if(!b)return;e.stopPropagation();askAnswer(b.dataset.askp,b.dataset.askd,b.dataset.askans);},true);
 const PMC={};
 async function premiumBox(k){const el=$('pmBox');if(!el)return;if(!mbxKey()){el.innerHTML='';return;}
   try{let j=PMC[k];if(!j){const r=await mbx('mvapp/premium/'+k+'/index.json',true);if(!r.ok){el.innerHTML='';return;}j=PMC[k]=await r.json();}
