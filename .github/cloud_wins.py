@@ -1117,6 +1117,112 @@ def draw_banker_lime(legs, total, date_label, root, out, fonts=FONTS, brand='MAT
     return out
 
 
+def draw_banker_green(legs, total, date_label, root, out, fonts=FONTS, brand='MATCH VISION', variant='1'):
+    """3.50 (Philip, 7 Nov 2026): the lime banker card with a GREEN header and the total shown once.
+    variant 1 = header "BANKER WON" big, TOTAL ODDS bar at the bottom. variant 2 = header "2.04 ODDS BANKER WON",
+    no bottom bar, bigger rows. variant 3 = variant 1 in the lime colours (lime header, dark words, lime total). variant 4 = variant 3 with every
+    lime part green (header, odds, total). variant 5 = like the results picture: the soft green glow background,
+    green header with WHITE words, rows with a green line, green odds and total. variant 6 = like the correct score
+    picture: olive glow, lime header with black words, lime lines and numbers. variant 7 = variant 5 with a WHITE header
+    and green words. 1600 x 900 like the correct score post. BANKER_WIN_CARD "Green 1" / "Green 2"."""
+    from PIL import Image, ImageDraw
+    LIME, WH, GR, GREEN = (223, 251, 81), (255, 255, 255), (150, 155, 165), (34, 197, 94)
+    BLK = ('Inter-Black.otf', 'InterDisplay-Black.otf')
+    n = max(1, len(legs))
+    two = str(variant).startswith('2')
+    lime = str(variant).startswith('3')
+    allg = str(variant).startswith('4')
+    v6 = str(variant).startswith('6')
+    v7 = str(variant).startswith('7')
+    v5 = str(variant).startswith('5') or v7
+    v8 = str(variant).startswith('8')
+    HEAD, HTXT = (LIME, (10, 10, 12)) if lime else (GREEN, (10, 10, 12)) if allg else (GREEN, WH)
+    if v5:
+        HEAD, HTXT = (WH, GREEN) if v7 else (GREEN, WH)
+    if v6:
+        HEAD, HTXT = LIME, (10, 10, 12)
+    ODD = GREEN if (allg or v5 or v8) else LIME
+    LINE = (30, 120, 60) if v5 else (150, 170, 60) if v6 else None
+    TOTC = LIME if (lime or v6) else GREEN
+    W, H = 1600, 900
+    hb = 150                                          # header height
+    bar = 0 if two else 120                           # bottom TOTAL ODDS bar
+    gap = 20
+    top = 50 + hb + 36
+    space = H - 50 - bar - (gap if bar else 0) - top
+    rh = min(190 if two else 160, (space - (n - 1) * gap) / n)
+    im = Image.new('RGB', (W, H), (10, 10, 12))
+    d = ImageDraw.Draw(im)
+    for y in range(H):
+        k = y / (H - 1)
+        d.line([(0, y), (W, y)], fill=(int(16 - 10 * k), int(17 - 11 * k), int(20 - 12 * k)))
+    if v5 or v6:                                      # the results / correct score background: black with a soft glow
+        from PIL import ImageFilter, ImageChops
+        im = Image.new('RGB', (W, H), (6, 6, 8))
+        gl = Image.new('RGB', (W, H), (0, 0, 0))
+        ImageDraw.Draw(gl).ellipse((W / 2 - 620, H * .42 - 330, W / 2 + 620, H * .42 + 330), fill=(52, 59, 11) if v6 else (28, 70, 32))
+        im = ImageChops.add(im, gl.filter(ImageFilter.GaussianBlur(180)))
+        d = ImageDraw.Draw(im)
+
+    def F(names, px):
+        return _font(fonts, names, px)
+
+    def fit(t, names, px, maxw):
+        while px > 14 and d.textlength(t, font=F(names, px)) > maxw:
+            px -= 2
+        return F(names, px)
+
+    def tick(cx, cy, r, col=GREEN, fg=WH):
+        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=col)
+        d.line([(cx - r * .45, cy), (cx - r * .1, cy + r * .38), (cx + r * .5, cy - r * .35)], fill=fg,
+               width=max(3, int(r * .22)), joint='curve')
+
+    def crest(path, cx, cy, s):
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            c = Image.open(p).convert('RGBA')
+            c.thumbnail((int(s), int(s)))
+            im.paste(c, (int(cx - c.width / 2), int(cy - c.height / 2)), c)
+        else:
+            d.ellipse((cx - s / 2, cy - s / 2, cx + s / 2, cy + s / 2), fill=(45, 45, 48))
+    T = f'{float(total or 0):.2f}'
+    d.rounded_rectangle((60, 50, W - 60, 50 + hb), radius=30, fill=HEAD)
+    title = f'{T} ODDS BANKER WON' if two else 'BANKER WON'
+    d.text((100, 50 + hb / 2), title, font=fit(title, BLK, 76 if two else 96, W - 330), fill=HTXT, anchor='lm')
+    tick(W - 140, 50 + hb / 2, 48, HTXT, HEAD)
+    y = top
+    for g in legs:
+        cy = y + rh / 2
+        d.rounded_rectangle((60, y, W - 60, y + rh), radius=26, fill=(24, 26, 30),
+                            outline=LINE, width=3 if LINE else 0)
+        cs = min(110, rh * 0.62)
+        crest(g.get('hc'), 150, cy, cs)
+        crest(g.get('ac'), 150 + cs + 22, cy, cs)
+        tx = 150 + cs * 1.5 + 60
+        pick = str(g.get('text', '')).upper()
+        d.text((tx, cy), pick, font=fit(pick, BLK, 54 if two else 48, 960 - tx), fill=WH, anchor='lm')
+        if g.get('gh') is not None and g.get('ga') is not None:
+            sc = f'{g["gh"]}-{g["ga"]}'
+            d.text((1100, cy), sc, font=F(BLK, 52 if two else 46), fill=GR, anchor='rm')
+        o = g.get('odds')
+        if o:
+            d.text((W - 200, cy), f'{float(o):.2f}', font=F(BLK, 62 if two else 56), fill=ODD, anchor='rm')
+        tick(W - 130, cy, 40 if two else 36)
+        y += rh + gap
+    if not two:
+        yb = H - 50 - bar
+        d.rounded_rectangle((60, yb, W - 60, yb + bar), radius=26, fill=(24, 26, 30),
+                            outline=(LIME if v6 else GREEN) if LINE else None, width=3 if LINE else 0)
+        f1, f2 = F(BLK, 62), F(BLK, 84)
+        w = d.textlength('TOTAL ODDS  ', font=f1) + d.textlength(T, font=f2)
+        x = W / 2 - w / 2
+        d.text((x, yb + bar / 2), 'TOTAL ODDS  ', font=f1, fill=WH, anchor='lm')
+        d.text((x + d.textlength('TOTAL ODDS  ', font=f1), yb + bar / 2), T, font=f2, fill=TOTC, anchor='lm')
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=92)
+    return out
+
+
 def draw_cs_lime(m, gh, ga, root, out, fonts=FONTS, style='', brand='MATCH VISION', date_label='', odds=None):
     """Like the Vision Premium WON card, in lime: tick, CORRECT SCORE, big WON, date, crests + score, lime bar."""
     from PIL import Image, ImageDraw
@@ -1241,7 +1347,8 @@ def draw_cs14(m, gh, ga, root, out, fonts=FONTS, look='2'):
     LOOKS = {1: ((52, 59, 11), WH, None, YEL, False, (60, 60, 66), GRN),
              2: ((52, 59, 11), (10, 10, 10), LIME, WH, False, LIME, LIME),
              3: ((14, 24, 60), (240, 196, 80), None, WH, True, (240, 196, 80), (240, 196, 80)),
-             4: ((60, 12, 12), WH, (34, 197, 94), WH, True, (34, 197, 94), YEL)}
+             4: ((60, 12, 12), WH, (34, 197, 94), WH, True, (34, 197, 94), YEL),
+             5: ((20, 60, 30), WH, GRN, WH, False, GRN, GRN)}
     try:
         look = int(str(look or '2').split()[0])
     except Exception:
