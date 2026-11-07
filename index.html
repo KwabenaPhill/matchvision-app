@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.37</title>
+<title>Match Vision 3.38</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -507,6 +507,9 @@ details.rpost pre{white-space:pre-wrap;font-family:var(--f);font-size:13.5px;bac
 .bkcard{border-radius:18px;padding:14px;margin:0 0 14px;background:linear-gradient(180deg,#15120A,#0B0A07);border:1px solid #6B5520}.bkcard.won{border:2px solid #30D158;box-shadow:0 0 16px rgba(48,209,88,.25)}.bkcard.lost{border-color:#FF453A}
 .bkcard .bkh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.bkcard .bkh b{color:#ECC462;font-weight:900;letter-spacing:.08em}
 .bkcard .bkr{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);border-left:3px solid #ECC462;border-radius:12px;padding:8px 10px;margin-top:7px}.bkcard .bkr .t{flex:1;min-width:0}.bkcard .bkr .t b{display:block;font-size:14px}.bkcard .bkr .t small{color:#aaa;font-size:12px}.bkcard .bkr .o{color:#ECC462;font-weight:800}
+.bkcard .bkr .pcr{display:flex;gap:3px;flex:none}.bkcard .bkr .pcr img,.bkcard .bkr .pcr .ini{width:26px;height:26px;object-fit:contain}
+.bkcard .bkr .pcr .ini{font-size:9px;border-radius:50%;background:#222;display:grid;place-items:center;color:#fff}
+.bkcard .pill.live{background:#FF3B30!important;color:#fff!important;border-color:#FF3B30!important}
 .lsc{color:#FF453A!important;font-weight:800}.fsc{color:#C9B27A!important;font-weight:700}
 .sbox .sm2{white-space:nowrap;font-size:clamp(10px,3vw,13px)}.mvw{color:#30D158!important}.mvl{color:#FF453A!important}.pklost{opacity:.75}.wint{padding:10px}.secbar{display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:12px 16px;margin:6px 0 10px;font-size:15px;font-weight:900;letter-spacing:.12em;color:#06140A;background:#30D158}.secbar.lost{background:#FF453A;color:#fff;margin-top:18px}.secbar b{font-size:20px}.pst-lime .pcard{border-color:#5d6b22;background:radial-gradient(120% 60% at 50% 0%,rgba(223,251,81,.16),rgba(0,0,0,0) 60%),linear-gradient(180deg,#0f1408,#080a06)}.pst-lime .pcard .ph b{color:#DFFB51}.pst-lime .pcard .pr{border-left-color:#DFFB51;border-color:rgba(223,251,81,.18)}.pst-lime .pcard .pr .n{background:#DFFB51}.pst-dark .pcard{border-color:#333;background:#0c0c0e}.pst-dark .pcard .ph b{color:#fff}.pst-dark .pcard .pr{border-left-color:#fff;border-color:#2a2a2a}.pst-dark .pcard .pr .n{background:#fff}.pst-blue .pcard{border-color:#1f3d7a;background:radial-gradient(120% 60% at 50% 0%,rgba(64,140,255,.22),rgba(0,0,0,0) 60%),linear-gradient(180deg,#07112a,#050814)}.pst-blue .pcard .ph b{color:#8EC5FF}.pst-blue .pcard .pr{border-left-color:#4A9BFF;border-color:rgba(74,155,255,.2)}.pst-blue .pcard .pr .n{background:#4A9BFF}.pst-red .pcard{border-color:#6b1f1f;background:radial-gradient(120% 60% at 50% 0%,rgba(255,69,58,.2),rgba(0,0,0,0) 60%),linear-gradient(180deg,#160808,#0a0505)}.pst-red .pcard .ph b{color:#FF8A80}.pst-red .pcard .pr{border-left-color:#FF453A;border-color:rgba(255,69,58,.2)}.pst-red .pcard .pr .n{background:#FF453A;color:#fff}
 .qmk{display:inline-flex;gap:6px}.qmb{width:34px;height:30px;border-radius:9px;border:1px solid #333;background:#151515;color:#ddd;font-weight:800;font-size:15px}.qmb.w{color:#22c55e;border-color:#22c55e55}.qmb.l{color:#ef4444;border-color:#ef444455}
@@ -928,7 +931,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.37';   // APP_VERSION = '3.37' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.38';   // APP_VERSION = '3.38' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1270,8 +1273,8 @@ function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Matc
   const list=has(matchFilter).filter((m,i)=>SET.showFin===true||matchFilter==='fin'||mState(m,d)!=='fin');
   if(SET.liveFirst!==false)list.sort((a,b)=>(mState(b,d)==='live')-(mState(a,d)==='live'));   // 3.36 (Philip): live games at the top
   const ptd=premDay(d);const bst=bankerState(d);   // 3.35 (Philip, 7 Nov): Vision Premium AND the banker pinned at the top
-  const pinP=(ptd?premBlock(ptd,premDone(ptd))+premLive(ptd):'')+topPin(d)+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+`<button class="btn-half w100" data-card="banker" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the banker picture</button>`:'');
-  if(matchFilter==='vip')return banner+chips+(ptd?premBlock(ptd,premDone(ptd))+premLive(ptd):`<div class="card"><p class="empty">${prem?'No Vision Premium slip for this day.':'Vision Premium is locked: open the Premium tab and type your PIN.'}</p></div>`);
+  const pinP=(ptd?premLive(ptd):'')+topPin(d)+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+`<button class="btn-half w100" data-card="banker" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the banker picture</button>`:'');
+  if(matchFilter==='vip')return banner+chips+(ptd?premLive(ptd):`<div class="card"><p class="empty">${prem?'No Vision Premium slip for this day.':'Vision Premium is locked: open the Premium tab and type your PIN.'}</p></div>`);
   return banner+chips+pinP+(list.length?list.map(m=>matchCard(m,d)).join(''):`<div class="card"><p class="empty">No matches here.</p></div>`)+`<button class="btn-half w100" data-act="copypicks" style="margin-top:2px">📋 Copy the picks</button>`;}
 function legSheet(d,m){
   // 3.3: like Sure Stake - tap Won or Lost on any pick; your tap always wins. "Send to the laptop" puts it in the results and posts.
@@ -1313,7 +1316,8 @@ function premDone(td){const dd=dayOf(td.date);return (td.picks||[]).length>0&&(t
 function premBlock(td,done){return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium slip · ${done?'finished':'pinned'}</span></div><div class="pst-${esc(SET.premStyle||'gold')}">${premPicture(td)}</div>`+(done&&(td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-card="premwon" data-dk="${td.date}" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
 // 3.37 (Philip, 7 Nov): Vision Premium, Top picks and Banker pinned at the top of Matches, each followed LIVE (score, minute, tick)
 function pinRow(d,m,text,odds,s){const L=m&&m.n?liveOf(m,d):null;
-  return `<div class="bkr"><span class="t"><b>${esc(text||'')}</b><small>${esc((m&&m.home)||'')} ${L&&L.gh!=null?`<b style="display:inline;color:#fff">${L.gh}-${L.ga}</b>`:'vs'} ${esc((m&&m.away)||'')}</small></span>${m&&m.n?statePill(L,m):''}${odds?`<span class="o">${Number(odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}
+  return `<div class="bkr">${pinCrests(m)}<span class="t"><b>${esc(text||'')}</b><small>${esc(shortTeam((m&&m.home)||''))} ${L&&L.gh!=null?`<b style="display:inline;color:#fff">${L.gh}-${L.ga}</b>`:'vs'} ${esc(shortTeam((m&&m.away)||''))}</small></span>${m&&m.n?statePill(L,m):''}${odds?`<span class="o">${Number(odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}
+const pinCrests=m=>m&&m.home?`<span class="pcr">${crestHTML(m.hc,m.home)}${crestHTML(m.ac,m.away)}</span>`:'';   // 3.38: team badges, like the posts
 function pickStateOf(d,m,text){if(!m)return null;const i=(m.picks||[]).findIndex(p=>p.text===text);return i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));}
 function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false)return '';let tot=1,w=0,l=0;
   const rows=tp.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=pickStateOf(d,m,g.text);if(s==='w')w++;if(s==='l')l++;return pinRow(d,m,g.text,g.odds,s);}).join('');
@@ -1321,10 +1325,10 @@ function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false)
   return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Top picks · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh"><b>TOP PICKS · ${tot.toFixed(2)} ODDS</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${tp.length} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
 function premLive(td){const d=dayOf(td.date);if(!d)return '';let w=0;
   const rows=(td.picks||[]).map(g=>{const m=findM(d,g);const s=premState(g,d);if(s==='w')w++;return pinRow(d,m,g.text,g.odds,s);}).join('');
-  return `<div class="bkcard" style="margin-top:-4px"><div class="bkh"><b>👑 VISION PREMIUM · LIVE</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
+  return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium · pinned</span></div><div class="bkcard"><div class="bkh"><b>👑 VISION PREMIUM · ${((td.picks||[]).reduce((a,g)=>a*(g.odds||1),1)).toFixed(2)} ODDS</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
 function winTicket(m,d){return `<button class="btn-save w100" data-winshare2="${m.n}" data-dk="${d.date}" style="margin:-4px 0 14px">↗ Share this win (picture + text)</button>`;}
 function bankerBlock(d,st){const bk=d.banker;const rows=bk.games.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n)||{};const i=(m.picks||[]).findIndex(p=>p.text===(g.pick&&g.pick.text));const s=i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));const L=m.n?liveOf(m,d):null;
-    return `<div class="bkr"><span class="t"><b>${esc((g.pick||{}).text||'')}</b><small>${esc(m.home||'')} ${L&&L.gh!=null?`<b style="display:inline;color:#fff">${L.gh}-${L.ga}</b>`:'vs'} ${esc(m.away||'')}</small></span>${m.n?statePill(L,m):''}${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${(!s&&i>=0&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div>`;}).join('');
+    return `<div class="bkr">${pinCrests(m)}<span class="t"><b>${esc((g.pick||{}).text||'')}</b><small>${esc(shortTeam(m.home||''))} ${L&&L.gh!=null?`<b style="display:inline;color:#fff">${L.gh}-${L.ga}</b>`:'vs'} ${esc(shortTeam(m.away||''))}</small></span>${m.n?statePill(L,m):''}${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${(!s&&i>=0&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div>`;}).join('');
   return `<div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh"><b>${Number(bk.total||0).toFixed(2)} ODDS BANKER</b><span class="pill ${st==='w'?'won':'wait'}">${st==='w'?'✔ WON':st==='l'?'✘ LOST':'WAITING'}</span></div>${rows}${st==='w'?`<button class="btn-save w100" data-card="bankerwon" data-dk="${d.date}" style="margin-top:10px">↗ Share the banker WIN</button>`:''}</div>`;}
 async function shareWin(d,n,p){const m=(d.matches||[]).find(x=>String(x.n)===String(n));if(!m||!m.win)return;toast('Getting the picture…',1400);const f=await fileOf(m.win.img,`win-${d.date}-${n}`);await shareTo(p==='wa'?'wa':'ig',winFmt(m.win.text||'',p==='wa'?'wa':'tg'),f?[f]:[]);}
 
