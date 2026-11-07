@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.42</title>
+<title>Match Vision 3.43</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -945,7 +945,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.42';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.42' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.43';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.42' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1282,14 +1282,17 @@ function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Matc
   const st=ms.map(m=>mState(m,d));const nLive=st.filter(x=>x==='live').length;
   if(nLive)banner=`<div class="kick live"><span><span class="cl">${G.ball}</span>${nLive} match${nLive>1?'es':''} live now</span><span>${SET.live?'Live scores on':'Live scores off'}</span></div>`;
   else if(fk&&fk>now&&d.date===todayKey()){const left=Math.ceil((fk-now)/60000);banner=`<div class="kick ${left<=30?'hot':''}"><span>${clockSm}First kick-off ${fmtT(fk)}</span><span>${inMins(left)} left</span></div>`;}
-  const has=k=>ms.filter((m,i)=>k==='all'||st[i]===k);
+  const has=k=>ms.filter((m,i)=>k==='all'?(SET.showFin===true||st[i]!=='fin'):st[i]===k);   // 3.43 (Philip): finished games live in Results, not in Matches
   const chips=`<div class="chips scroll" style="margin-bottom:10px">${[['all','All'],['live','Live'],['up','Upcoming'],['fin','Finished']].map(([k,l])=>`<button class="chip ${matchFilter===k?'on':''}" data-mf="${k}">${l} ${has(k).length}</button>`).join('')}<button class="chip ${matchFilter==='vip'?'on':''}" data-mf="vip">👑 VIP</button></div>`;
   const list=has(matchFilter).filter((m,i)=>SET.showFin===true||matchFilter==='fin'||mState(m,d)!=='fin');
   if(SET.liveFirst!==false)list.sort((a,b)=>(mState(b,d)==='live')-(mState(a,d)==='live'));   // 3.36 (Philip): live games at the top
   const ptd=premDay(d);const bst=bankerState(d);   // 3.35 (Philip, 7 Nov): Vision Premium AND the banker pinned at the top
-  const pinP=(ptd?premLive(ptd):'')+topPin(d)+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+`<button class="btn-half w100" data-card="banker" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the banker picture</button>`:'');
+  const allFin=ns=>SET.showFin!==true&&ns.length>0&&ns.every(m=>m&&mState(m,d)==='fin');   // 3.43: a slip whose games are all over moves to Results
+  const fm=n=>(d.matches||[]).find(x=>x.n===n);
+  const pDone=ptd&&allFin((ptd.picks||[]).map(g=>findM(d,g))),tDone=allFin((d.top_picks||[]).map(g=>fm(g.n))),bDone=d.banker&&allFin((d.banker.games||[]).map(g=>fm(g.n)));
+  const pinP=(ptd&&!pDone?premLive(ptd):'')+(tDone?'':topPin(d))+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false&&!bDone?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+`<button class="btn-half w100" data-card="banker" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the banker picture</button>`:'');
   if(matchFilter==='vip')return banner+chips+(ptd?premLive(ptd):`<div class="card"><p class="empty">${prem?'No Vision Premium slip for this day.':'Vision Premium is locked: open the Premium tab and type your PIN.'}</p></div>`);
-  return banner+chips+pinP+(list.length?list.map(m=>matchCard(m,d)).join(''):`<div class="card"><p class="empty">No matches here.</p></div>`)+`<button class="btn-half w100" data-act="copypicks" style="margin-top:2px">📋 Copy the picks</button>`;}
+  return banner+chips+pinP+(list.length?list.map(m=>matchCard(m,d)).join(''):`<div class="card"><p class="empty">${matchFilter==='all'&&ms.length?'Every game is over: see Results.':'No matches here.'}</p></div>`)+`<button class="btn-half w100" data-act="copypicks" style="margin-top:2px">📋 Copy the picks</button>`;}
 function legSheet(d,m){
   // 3.3: like Sure Stake - tap Won or Lost on any pick; your tap always wins. "Send to the laptop" puts it in the results and posts.
   const render=()=>{const L=liveOf(m,d);const unsent=(m.picks||[]).slice(0,3).some((p,i)=>{const x=MARKS[`${d.date}|${m.n}.${i+1}`];return x&&!x.sent;});
@@ -1664,7 +1667,7 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
   if(f==='matches')return srow('livepage','Live scores',`ESPN ${SET.live?'on':'off'} · every ${SET.every} min`,'',gi('ball'))+
     srow('showPred','Show the correct score','',SET.showPred,gi('scoreboard'))+srow('showOdds','Show odds','',SET.showOdds,gi('ticket'))+
     srow('showChance','Show the chance (%)','From the builder',SET.showChance,gi('pie'))+srow('shortNames','Short team names','So everything fits',SET.shortNames,gi('badge'))+
-    srow('showFin','Show finished matches','In the All list',SET.showFin,gi('flag'))+srow('sort','Order of matches',SET.sort==='video'?'Like the video':SET.sort==='league'?'By league':'By kick-off time','',gi('sort'))+srow('pickOrder','Order of picks',SET.pickOrder==='won'?'Won first':'Like the video (1, 2, 3)','',gi('sort'))+
+    srow('showFin','Show finished matches','Off = finished games and slips move to Results',SET.showFin,gi('flag'))+srow('sort','Order of matches',SET.sort==='video'?'Like the video':SET.sort==='league'?'By league':'By kick-off time','',gi('sort'))+srow('pickOrder','Order of picks',SET.pickOrder==='won'?'Won first':'Like the video (1, 2, 3)','',gi('sort'))+
     srow('winstyle','Win ticket style',{lime:'1 Lime',gold:'2 Gold',green:'3 Green',blue:'4 Blue',white:'5 White'}[SET.winStyle||'lime']+(SET.winShape==='wide'?' · wide':' · my old card'),'',gi('ticket'))+
     srow('wintext','Win ticket text','First mark, last line, BIG WIN line, extra line, brand','',gi('textbold'))+
     srow('winInResults','Win tickets in Results','The picture with Share buttons',SET.winInResults!==false,gi('gallery'))+
