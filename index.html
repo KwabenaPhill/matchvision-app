@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.36</title>
+<title>Match Vision 3.37</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.36';   // APP_VERSION = '3.36' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.37';   // APP_VERSION = '3.37' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1270,8 +1270,8 @@ function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Matc
   const list=has(matchFilter).filter((m,i)=>SET.showFin===true||matchFilter==='fin'||mState(m,d)!=='fin');
   if(SET.liveFirst!==false)list.sort((a,b)=>(mState(b,d)==='live')-(mState(a,d)==='live'));   // 3.36 (Philip): live games at the top
   const ptd=premDay(d);const bst=bankerState(d);   // 3.35 (Philip, 7 Nov): Vision Premium AND the banker pinned at the top
-  const pinP=(ptd?premBlock(ptd,premDone(ptd)):'')+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+'<div style="height:12px"></div>':'');
-  if(matchFilter==='vip')return banner+chips+(ptd?premBlock(ptd,premDone(ptd)):`<div class="card"><p class="empty">${prem?'No Vision Premium slip for this day.':'Vision Premium is locked: open the Premium tab and type your PIN.'}</p></div>`);
+  const pinP=(ptd?premBlock(ptd,premDone(ptd))+premLive(ptd):'')+topPin(d)+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+`<button class="btn-half w100" data-card="banker" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the banker picture</button>`:'');
+  if(matchFilter==='vip')return banner+chips+(ptd?premBlock(ptd,premDone(ptd))+premLive(ptd):`<div class="card"><p class="empty">${prem?'No Vision Premium slip for this day.':'Vision Premium is locked: open the Premium tab and type your PIN.'}</p></div>`);
   return banner+chips+pinP+(list.length?list.map(m=>matchCard(m,d)).join(''):`<div class="card"><p class="empty">No matches here.</p></div>`)+`<button class="btn-half w100" data-act="copypicks" style="margin-top:2px">📋 Copy the picks</button>`;}
 function legSheet(d,m){
   // 3.3: like Sure Stake - tap Won or Lost on any pick; your tap always wins. "Send to the laptop" puts it in the results and posts.
@@ -1311,9 +1311,20 @@ function resultsView(d){if(!d)return `<div class="card"><p class="empty">No resu
 function premDay(d){if(!prem||SET.premPin===false)return null;return (prem.days||[]).find(x=>x.date===d.date)||null;}
 function premDone(td){const dd=dayOf(td.date);return (td.picks||[]).length>0&&(td.picks||[]).every(g=>{const m=findM(dd,g);return premWon(g,dd)!=null||(m&&mState(m,dd)==='fin');});}
 function premBlock(td,done){return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium slip · ${done?'finished':'pinned'}</span></div><div class="pst-${esc(SET.premStyle||'gold')}">${premPicture(td)}</div>`+(done&&(td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-card="premwon" data-dk="${td.date}" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
+// 3.37 (Philip, 7 Nov): Vision Premium, Top picks and Banker pinned at the top of Matches, each followed LIVE (score, minute, tick)
+function pinRow(d,m,text,odds,s){const L=m&&m.n?liveOf(m,d):null;
+  return `<div class="bkr"><span class="t"><b>${esc(text||'')}</b><small>${esc((m&&m.home)||'')} ${L&&L.gh!=null?`<b style="display:inline;color:#fff">${L.gh}-${L.ga}</b>`:'vs'} ${esc((m&&m.away)||'')}</small></span>${m&&m.n?statePill(L,m):''}${odds?`<span class="o">${Number(odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}
+function pickStateOf(d,m,text){if(!m)return null;const i=(m.picks||[]).findIndex(p=>p.text===text);return i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));}
+function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false)return '';let tot=1,w=0,l=0;
+  const rows=tp.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=pickStateOf(d,m,g.text);if(s==='w')w++;if(s==='l')l++;return pinRow(d,m,g.text,g.odds,s);}).join('');
+  const st=l?'l':(w===tp.length?'w':null);
+  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Top picks · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh"><b>TOP PICKS · ${tot.toFixed(2)} ODDS</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${tp.length} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
+function premLive(td){const d=dayOf(td.date);if(!d)return '';let w=0;
+  const rows=(td.picks||[]).map(g=>{const m=findM(d,g);const s=premState(g,d);if(s==='w')w++;return pinRow(d,m,g.text,g.odds,s);}).join('');
+  return `<div class="bkcard" style="margin-top:-4px"><div class="bkh"><b>👑 VISION PREMIUM · LIVE</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
 function winTicket(m,d){return `<button class="btn-save w100" data-winshare2="${m.n}" data-dk="${d.date}" style="margin:-4px 0 14px">↗ Share this win (picture + text)</button>`;}
 function bankerBlock(d,st){const bk=d.banker;const rows=bk.games.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n)||{};const i=(m.picks||[]).findIndex(p=>p.text===(g.pick&&g.pick.text));const s=i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));const L=m.n?liveOf(m,d):null;
-    return `<div class="bkr"><span class="t"><b>${esc((g.pick||{}).text||'')}</b><small>${esc(m.home||'')} vs ${esc(m.away||'')}${L&&L.gh!=null?` · ${L.gh}-${L.ga}`:''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${(!s&&i>=0&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div>`;}).join('');
+    return `<div class="bkr"><span class="t"><b>${esc((g.pick||{}).text||'')}</b><small>${esc(m.home||'')} ${L&&L.gh!=null?`<b style="display:inline;color:#fff">${L.gh}-${L.ga}</b>`:'vs'} ${esc(m.away||'')}</small></span>${m.n?statePill(L,m):''}${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${(!s&&i>=0&&L&&['FT','NF'].includes(L.st))?quickMark(d,m,i):legMark(s)}</div>`;}).join('');
   return `<div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh"><b>${Number(bk.total||0).toFixed(2)} ODDS BANKER</b><span class="pill ${st==='w'?'won':'wait'}">${st==='w'?'✔ WON':st==='l'?'✘ LOST':'WAITING'}</span></div>${rows}${st==='w'?`<button class="btn-save w100" data-card="bankerwon" data-dk="${d.date}" style="margin-top:10px">↗ Share the banker WIN</button>`:''}</div>`;}
 async function shareWin(d,n,p){const m=(d.matches||[]).find(x=>String(x.n)===String(n));if(!m||!m.win)return;toast('Getting the picture…',1400);const f=await fileOf(m.win.img,`win-${d.date}-${n}`);await shareTo(p==='wa'?'wa':'ig',winFmt(m.win.text||'',p==='wa'?'wa':'tg'),f?[f]:[]);}
 
@@ -1537,6 +1548,15 @@ async function fillPmx(){for(const el of document.querySelectorAll('[data-pmx]:n
       PMX['last|'+k+'|'+el.dataset.pmw]=url;
       el.innerHTML=`<img src="${url}" alt="Vision Premium" style="width:100%;border-radius:16px;display:block">`;}catch(e){}}}
 new MutationObserver(()=>{if(document.querySelector('[data-pmx]:not([data-pmok])'))fillPmx();}).observe(document.body,{childList:true,subtree:true});
+// 3.37 (Philip): the Vision Premium picture is ready BEFORE Matches opens (fetched at start and every few minutes)
+async function prefetchPm(){if(!mbxKey())return;for(const k of [todayKey(),addDays(todayKey(),1)]){try{
+    let j=null;try{const r=await mbx('mvapp/premium/'+k+'/index.json',true);if(r.ok){j=await r.json();PMC[k]=j;try{localStorage.setItem('pmix_'+k,JSON.stringify(j));}catch(e){}}}catch(e){}
+    if(!j){try{j=JSON.parse(localStorage.getItem('pmix_'+k)||'null');}catch(e){}}if(!j)continue;PMC[k]=j;
+    const pics=(j.pictures||[]).filter(p=>!/RESULTS|JOIN|WEEK/i.test(p.name));const won=pics.find(p=>/ WON /.test(' '+p.name+' '));const pk=pics.find(p=>!/ WON/.test(p.name));
+    for(const [w,pic] of [['0',pk||won],['1',won||pk]]){if(!pic)continue;let url=PMX[pic.path];
+      if(!url){let b=await pmCacheGet(pic.path);if(!b){const r=await mbx(pic.path,true);if(!r.ok)continue;b=await r.blob();pmCachePut(pic.path,b);}url=PMX[pic.path]=URL.createObjectURL(b);}
+      PMX['last|'+k+'|'+w]=url;}}catch(e){}}}
+setTimeout(prefetchPm,300);setInterval(prefetchPm,4*60000);
 function premPictureHTML(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
     return `<div class="pr"><span class="n">${i+1}</span><span class="cr2">${crestHTML(m&&m.hc,g.home)}</span><span class="cr2">${crestHTML(m&&m.ac,g.away)}</span><span class="t"><b>${esc(shortPick(g.text))}</b><small>${esc(shortTeam(g.home))} vs ${esc(shortTeam(g.away))}${L&&L.gh!=null?` · <span class="${L.st==='FT'?'fsc':'lsc'}">${L.st==='FT'?'FT':L.st==='HT'?'HT':(L.min?L.min+"'":'LIVE')} ${L.gh}-${L.ga}</span>`:(g.kickoff?' · '+esc(g.kickoff):'')}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}<span style="margin-left:6px">${legMark(s)}</span></div>`;}).join('');
   return `<div class="pcard"><div class="ph"><span class="cw">${G.crown}</span><span><b>VISION PREMIUM</b><small>${longDate(td.date)} · Today's strongest picks</small></span></div>${rows}<div class="pf"><span>${(td.picks||[]).length} picks</span>${tot>1?`<span>Combined odds <b>${tot.toFixed(2)}</b></span>`:''}</div></div>`;}
@@ -1549,7 +1569,6 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
     if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
-    {const bd=td&&dayOf(td.date);if(bd&&bd.banker&&(bd.banker.games||[]).length)body+=`<div class="sechd" style="margin:4px 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · ${shortDate(bd.date)}</span></div>`+bankerBlock(bd,bankerState(bd))+`<button class="btn-save w100" data-card="banker" data-dk="${bd.date}" style="margin:8px 0 14px">Share the banker picture</button>`;}   // 3.35
     if(td&&SET.premList===true){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
         if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
         return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
@@ -2052,7 +2071,8 @@ function cardData(kind,d){const t=todayKey();
     return {o:{kind:'bankerwon',title:`${T} ODDS BANKER WON`,sub:`${longDate(d.date)} · The banker of the day`,rows:rws,total:tot2,acc:BS[0],accDark:BS[1],glow:'rgba(236,196,98,.22)',foot:`BANKER WON${SET.winBrand===''?'':' · '+(SET.winBrand||'MATCH VISION')}`,ticks:true,h:Math.min(1350,265+rws.length*187+178)},txt,name:`Banker won ${d.date}`};}
   if(kind==='banker'){const bk=d.banker;if(!bk||!(bk.games||[]).length)return null;rows=bk.games.map(gm=>{const m=(d.matches||[]).find(x=>x.n===gm.n)||{};const p=gm.pick||{};if(gm.odds)tot*=gm.odds;return {h:shortTeam(m.home||''),a:shortTeam(m.away||''),hc:m.hc,ac:m.ac,pick:shortPick(p.text||''),full:p.text||'',odds:gm.odds||p.odds,ko:m.kickoff};});
     title=`${Math.round(bk.total||tot)} ODDS BANKER`;sub=`${longDate(d.date)} · The banker of the day`;}
-  else{const ms=(d.matches||[]).filter(m=>(m.picks||[]).length).slice().sort((a,b)=>(b.picks[0].chance||0)-(a.picks[0].chance||0)).slice(0,5);
+  else{const TP=(d.top_picks||[]);   // 3.37: the builder's TOP PICKS (the Gem's), else the 5 safest
+    const ms=TP.length?TP.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);return m?Object.assign({},m,{picks:[{text:g.text,odds:g.odds}]}):null;}).filter(Boolean):(d.matches||[]).filter(m=>(m.picks||[]).length).slice().sort((a,b)=>(b.picks[0].chance||0)-(a.picks[0].chance||0)).slice(0,5);
     rows=ms.map(m=>{const p=m.picks[0];if(p.odds)tot*=p.odds;return {h:shortTeam(m.home),a:shortTeam(m.away),hc:m.hc,ac:m.ac,pick:shortPick(p.text),full:p.text,odds:p.odds,ko:m.kickoff};});
     title='TOP PICKS';sub=`${longDate(d.date)} · The safest pick of each match`;}
   if(!rows.length)return null;
@@ -2072,7 +2092,7 @@ async function shareCard(kind,d){const cd=cardData(kind,d);if(!cd){toast(kind===
 document.addEventListener('click',e=>{const b=e.target.closest('[data-card]');if(b){e.stopPropagation();e.preventDefault();shareCard(b.dataset.card,dayOf(b.dataset.dk));return;}
   const hs=e.target.closest('#p-history [data-cardshare]');if(hs){e.stopPropagation();e.preventDefault();shareCard('premwon');return;}
   const pc=e.target.closest('#p-elite .pcard');if(pc){e.stopPropagation();shareCard('prem');}},true);
-{const _mv=matchesView;matchesView=function(d){const h=_mv(d);if(!d)return h;return `<div class="cardbtns"><button data-card="picks" data-dk="${d.date}">Top picks picture<small>Tap: share to any app</small></button><button data-card="banker" data-dk="${d.date}">Banker picture<small>Tap: share to any app</small></button></div>`+h;};}
+{const _mv=matchesView;matchesView=function(d){const h=_mv(d);if(!d||SET.smallCardBtns!==true)return h;return `<div class="cardbtns"><button data-card="picks" data-dk="${d.date}">Top picks picture<small>Tap: share to any app</small></button><button data-card="banker" data-dk="${d.date}">Banker picture<small>Tap: share to any app</small></button></div>`+h;};}
 window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,openBuilder,openTemplates,openLivePage,askBot,textsSheet};
 })();
 
