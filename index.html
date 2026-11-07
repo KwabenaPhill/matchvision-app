@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.35</title>
+<title>Match Vision 3.36</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -928,7 +928,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.35';   // APP_VERSION = '3.35' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.36';   // APP_VERSION = '3.36' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1268,6 +1268,7 @@ function matchesView(d){if(!d)return `<div class="card"><p class="empty">No Matc
   const has=k=>ms.filter((m,i)=>k==='all'||st[i]===k);
   const chips=`<div class="chips scroll" style="margin-bottom:10px">${[['all','All'],['live','Live'],['up','Upcoming'],['fin','Finished']].map(([k,l])=>`<button class="chip ${matchFilter===k?'on':''}" data-mf="${k}">${l} ${has(k).length}</button>`).join('')}<button class="chip ${matchFilter==='vip'?'on':''}" data-mf="vip">👑 VIP</button></div>`;
   const list=has(matchFilter).filter((m,i)=>SET.showFin===true||matchFilter==='fin'||mState(m,d)!=='fin');
+  if(SET.liveFirst!==false)list.sort((a,b)=>(mState(b,d)==='live')-(mState(a,d)==='live'));   // 3.36 (Philip): live games at the top
   const ptd=premDay(d);const bst=bankerState(d);   // 3.35 (Philip, 7 Nov): Vision Premium AND the banker pinned at the top
   const pinP=(ptd?premBlock(ptd,premDone(ptd)):'')+(d.banker&&(d.banker.games||[]).length&&SET.bankPin!==false?`<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">🏦 2 odds banker · pinned</span></div>`+bankerBlock(d,bst)+'<div style="height:12px"></div>':'');
   if(matchFilter==='vip')return banner+chips+(ptd?premBlock(ptd,premDone(ptd)):`<div class="card"><p class="empty">${prem?'No Vision Premium slip for this day.':'Vision Premium is locked: open the Premium tab and type your PIN.'}</p></div>`);
@@ -1519,13 +1520,21 @@ function judgeText(t,home,away,L){if(!L||L.st!=='FT'||L.gh==null)return null;con
 function premWon(g,d){return MARKW(premState(g,d));}
 // 3.35 (Philip, 7 Nov): "use the exact card on the laptop": the bot's own Vision Premium picture (private mailbox), the app's
 // drawn card only while the picture is not there (no key, or not made yet).
-function premPicture(td){return `<div data-pmx="${esc(td.date)}" data-pmw="${premDone(td)?1:0}">${premPictureHTML(td)}</div>`;}
+function premPicture(td){const k=td.date,w=premDone(td)?1:0,u=PMX['last|'+k+'|'+w];   // 3.36: never the old card first
+  if(!mbxKey())return `<div>${premPictureHTML(td)}</div>`;
+  return `<div data-pmx="${esc(k)}" data-pmw="${w}" style="min-height:300px">${u?`<img src="${u}" alt="Vision Premium" style="width:100%;border-radius:16px;display:block">`:'<div class="card" style="min-height:300px;display:grid;place-items:center;color:#8e8e93">Getting the Vision Premium picture…</div>'}</div>`;}
 const PMX={};
+async function pmCacheGet(p){try{const c=await caches.open('mv-premium-pics');const r=await c.match('/pm/'+p);return r?await r.blob():null;}catch(e){return null;}}
+async function pmCachePut(p,b){try{const c=await caches.open('mv-premium-pics');await c.put('/pm/'+p,new Response(b));}catch(e){}}
 async function fillPmx(){for(const el of document.querySelectorAll('[data-pmx]:not([data-pmok])')){el.dataset.pmok='1';if(!mbxKey())continue;const k=el.dataset.pmx;
-    try{let j=PMC[k];if(!j){const r=await mbx('mvapp/premium/'+k+'/index.json',true);if(!r.ok)continue;j=PMC[k]=await r.json();}
+    try{let j=PMC[k];if(!j){let r=null;try{r=await mbx('mvapp/premium/'+k+'/index.json',true);}catch(e){}
+        if(r&&r.ok){j=PMC[k]=await r.json();try{localStorage.setItem('pmix_'+k,JSON.stringify(j));}catch(e){}}
+        else{try{j=JSON.parse(localStorage.getItem('pmix_'+k)||'null');}catch(e){}}
+        if(!j){const td=(prem&&prem.days||[]).find(x=>x.date===k);if(td)el.innerHTML=premPictureHTML(td);continue;}}
       const pics=(j.pictures||[]).filter(p=>!/RESULTS|JOIN|WEEK/i.test(p.name));const won=pics.find(p=>/ WON /.test(' '+p.name+' '));const pk=pics.find(p=>!/ WON/.test(p.name));
       const pic=(el.dataset.pmw==='1'&&won)?won:(pk||won);if(!pic)continue;
-      let url=PMX[pic.path];if(!url){const r=await mbx(pic.path,true);if(!r.ok)continue;url=PMX[pic.path]=URL.createObjectURL(await r.blob());}
+      let url=PMX[pic.path];if(!url){let b=await pmCacheGet(pic.path);if(!b){const r=await mbx(pic.path,true);if(!r.ok)continue;b=await r.blob();pmCachePut(pic.path,b);}url=PMX[pic.path]=URL.createObjectURL(b);}
+      PMX['last|'+k+'|'+el.dataset.pmw]=url;
       el.innerHTML=`<img src="${url}" alt="Vision Premium" style="width:100%;border-radius:16px;display:block">`;}catch(e){}}}
 new MutationObserver(()=>{if(document.querySelector('[data-pmx]:not([data-pmok])'))fillPmx();}).observe(document.body,{childList:true,subtree:true});
 function premPictureHTML(td){window.__premTd=td;const d=dayOf(td.date);let tot=1;const rows=(td.picks||[]).map((g,i)=>{const m=findM(d,g);if(g.odds)tot*=g.odds;const s=premState(g,d);const L=m?liveOf(m,d):null;
