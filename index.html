@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.44</title>
+<title>Match Vision 3.45</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -945,7 +945,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.44';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.44' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.45';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.44' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1474,7 +1474,7 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
       for(const g of tp){const m=(d.matches||[]).find(x=>x.n===g.n);const s=pickStateOf(d,m,g.text);if(s==='w'){w++;dec++;}else if(s==='l')dec++;}
       tw2+=w;tn2+=dec;if(dec===tp.length){dn++;if(w===tp.length)dw++;}}
     let pw=0,pn=0;if(prem)for(const x of (prem.days||[]).filter(x=>inRange(x.date)&&x.date<=t)){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;pn++;if(r)pw++;}}
-    return `<div class="summary-grid g2" style="margin-top:8px">${box('Top picks',pct(tw2,tn2),`${tw2} of ${tn2}`,3)}${box('Top picks days',dn?`${dw}/${dn}`:'-',dn?'all won':'none yet',4)}${box('Vision Premium',prem?pct(pw,pn):'🔒',prem?`${pw} of ${pn}`:'PIN',5)}</div>`;})()}
+    return `<div class="summary-grid g2" style="margin-top:8px;grid-template-columns:repeat(2,minmax(0,1fr))!important">${box('Top picks',pct(tw2,tn2),`${tw2} of ${tn2}`,3)}${box('Vision Premium',prem?pct(pw,pn):'🔒',prem?`${pw} of ${pn}`:'PIN',5)}</div>`;})()}
   <div class="pltotal"><span>Correct scores right<small>${recRange==='week'?'This week':recRange==='month'?'This month':'All time'} · from the 23:45 results</small></span><b class="${cs?'up':'flat'}">${cs||'-'}</b></div>
   <div class="streak32"><span><span class="ct">Banker streak</span><small>Bankers won in a row</small></span><b>${feed.banker_streak||0}</b></div>
   <div class="card" style="padding:4px 16px"><button class="trow" data-act="recap"><span class="tn"><b>${recRange==='week'?'Weekly':recRange==='month'?'Monthly':'All time'} results post</b><small>Tap to see it and send it</small></span><span class="ch">›</span></button></div>
