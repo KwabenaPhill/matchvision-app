@@ -1348,7 +1348,8 @@ def draw_cs14(m, gh, ga, root, out, fonts=FONTS, look='2'):
              2: ((52, 59, 11), (10, 10, 10), LIME, WH, False, LIME, LIME),
              3: ((14, 24, 60), (240, 196, 80), None, WH, True, (240, 196, 80), (240, 196, 80)),
              4: ((60, 12, 12), WH, (34, 197, 94), WH, True, (34, 197, 94), YEL),
-             5: ((20, 60, 30), WH, GRN, WH, False, GRN, GRN)}
+             5: ((20, 60, 30), WH, GRN, WH, False, GRN, GRN),
+             6: ((52, 59, 11), WH, GRN, WH, False, GRN, GRN)}     # 3.51 (Philip): green pill, white words, dark background
     try:
         look = int(str(look or '2').split()[0])
     except Exception:
