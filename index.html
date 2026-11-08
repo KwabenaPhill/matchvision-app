@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.45</title>
+<title>Match Vision 3.45.1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -945,7 +945,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.45';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.44' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.45.1';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.44' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1570,10 +1570,11 @@ async function fillPmx(){for(const el of document.querySelectorAll('[data-pmx]:n
         else{try{j=JSON.parse(localStorage.getItem('pmix_'+k)||'null');}catch(e){}}
         if(!j){const td=(prem&&prem.days||[]).find(x=>x.date===k);if(td)el.innerHTML=premPictureHTML(td);continue;}}
       const pics=(j.pictures||[]).filter(p=>!/RESULTS|JOIN|WEEK/i.test(p.name));const won=pics.find(p=>/ WON /.test(' '+p.name+' '));const pk=pics.find(p=>!/ WON/.test(p.name));
-      const pic=(el.dataset.pmw==='1'&&won)?won:(pk||won);if(!pic)continue;
-      let url=PMX[pic.path];if(!url){let b=await pmCacheGet(pic.path);if(!b){const r=await mbx(pic.path,true);if(!r.ok)continue;b=await r.blob();pmCachePut(pic.path,b);}url=PMX[pic.path]=URL.createObjectURL(b);}
+      const pic=(el.dataset.pmw==='1'&&won)?won:(pk||won);const card=()=>{const td=(prem&&prem.days||[]).find(x=>x.date===k);if(td)el.innerHTML=premPictureHTML(td);};   // 3.45.1: no picture yet = the live card, never "Getting..."
+      if(!pic){card();continue;}
+      let url=PMX[pic.path];if(!url){let b=await pmCacheGet(pic.path);if(!b){const r=await mbx(pic.path,true);if(!r.ok){card();continue;}b=await r.blob();pmCachePut(pic.path,b);}url=PMX[pic.path]=URL.createObjectURL(b);}
       PMX['last|'+k+'|'+el.dataset.pmw]=url;
-      el.innerHTML=`<img src="${url}" alt="Vision Premium" style="width:100%;border-radius:16px;display:block">`;}catch(e){}}}
+      el.innerHTML=`<img src="${url}" alt="Vision Premium" style="width:100%;border-radius:16px;display:block">`;}catch(e){try{const td=(prem&&prem.days||[]).find(x=>x.date===el.dataset.pmx);if(td)el.innerHTML=premPictureHTML(td);}catch(e2){}}}}
 new MutationObserver(()=>{if(document.querySelector('[data-pmx]:not([data-pmok])'))fillPmx();}).observe(document.body,{childList:true,subtree:true});
 // 3.37 (Philip): the Vision Premium picture is ready BEFORE Matches opens (fetched at start and every few minutes)
 async function prefetchPm(){if(!mbxKey())return;for(const k of [todayKey(),addDays(todayKey(),1)]){try{
