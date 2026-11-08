@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.43</title>
+<title>Match Vision 3.44</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -945,7 +945,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.43';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.42' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.44';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.44' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1944,15 +1944,15 @@ function sendPending(){const lines=Object.entries(PEND).map(([k,v])=>`set ${k.re
   const t=['=== MATCH VISION TEXTS ==='].concat(Object.entries(PTEXT).map(([k,v])=>`[${k}]\n${v}`)).join('\n');openBot(t);PTEXT={};savePend();}
 function editSetting(s,after){const cur=PEND[s.k]!==undefined?PEND[s.k]:s.v;const set=v=>{if(JSON.stringify(v)===JSON.stringify(s.v))delete PEND[s.k];else PEND[s.k]=v;savePend();after();toast('Added ✓ Tap "Send to the bot" when you are done',3000);};
   if(s.kind==='bool'){set(!cur);return;}
-  if(s.kind==='choice'&&s.c){choose(s.k.replace(/_/g,' '),s.c.map(x=>[x,x]),String(cur),v=>set(v),s.d);return;}
-  editField(s.k.replace(/_/g,' '),String(cur??''),v=>{if(v==null)return;let x=v.trim();if(s.kind==='int'){x=parseInt(x,10);if(isNaN(x)){toast('A whole number please');return;}}else if(s.kind==='float'){x=parseFloat(x);if(isNaN(x)){toast('A number please');return;}}set(x);},{note:s.d});}
+  if(s.kind==='choice'&&s.c){choose(s.n||s.k.replace(/_/g,' '),s.c.map(x=>[x,x]),String(cur),v=>set(v),s.d);return;}
+  editField(s.n||s.k.replace(/_/g,' '),String(cur??''),v=>{if(v==null)return;let x=v.trim();if(s.kind==='int'){x=parseInt(x,10);if(isNaN(x)){toast('A whole number please');return;}}else if(s.kind==='float'){x=parseFloat(x);if(isNaN(x)){toast('A number please');return;}}set(x);},{note:s.d});}
 function openBuilder(tabName,q){const L=(feed&&feed.settings)||[];if(!L.length){openSub('Laptop settings',()=>{$('subBody').innerHTML='<div class="card"><p class="empty">The laptop has not sent its settings yet. They come with the next feed from builder 3.2 (after the next review or results).</p></div>';});return;}
   const tabs=[...new Set(L.map(s=>s.tab))];
-  const render=()=>{const qq=(q||'').toLowerCase();const list=L.filter(s=>(!tabName||s.tab===tabName)&&(!qq||(s.k+' '+s.d).toLowerCase().includes(qq)));
+  const render=()=>{const qq=(q||'').toLowerCase();const list=L.filter(s=>(!tabName||s.tab===tabName)&&(!qq||(s.k+' '+(s.n||'')+' '+s.d).toLowerCase().includes(qq)));
     const bar=pendCount()?`<button class="btn-save w100 sendbar" data-send="1">Send ${pendCount()} change${pendCount()>1?'s':''} to the bot</button>`:'';
     $('subBody').innerHTML=(tabName||q?'':`<p class="muted" style="margin-bottom:10px">The same settings as Settings.bat on the laptop. Change what you want here, then "Send to the bot": the bot saves them on the laptop (a copy of the old settings is kept) and the app shows them after the next update.</p><input id="bq" placeholder="Search a setting (music, thumbnail, upload...)" value="${esc(q||'')}">`)+bar+
-    (tabName||q?`<div class="set-list">${list.map(s=>`<button class="set-row" data-k="${esc(s.k)}"><span class="t">${esc(s.k.replace(/_/g,' '))}<small>${esc(s.d)}</small></span><span class="v ${PEND[s.k]!==undefined?'pend':''}">${esc(fmtVal(PEND[s.k]!==undefined?PEND[s.k]:s.v))}</span></button>`).join('')||'<p class="empty">Nothing found.</p>'}</div>`
-     :`<div class="set-list" style="margin-top:10px">${tabs.map(t=>`<button class="set-row" data-tab="${esc(t)}">${icoLine({'Long video':'shorts','Music':'bell','Thumbnails':'eye','Shorts':'shorts','Pictures':'eye','Banker':'odds','Texts':'pencil','Order':'sort','Automatic':'ball','Telegram':'robot','Review':'flask','Channel':'calendar','Daily jobs':'clock','Vision Premium':'lock'}[t]||'sliders')}<span class="t">${esc(t)}<small>${esc(((feed.tabs_help||{})[t]||'').slice(0,90))}</small></span><span class="v">${L.filter(s=>s.tab===t).length}</span><span class="ch">›</span></button>`).join('')}</div>`);
+    (tabName||q?`<div class="set-list">${list.map(s=>`<button class="set-row" data-k="${esc(s.k)}"><span class="t">${esc(s.n||s.k.replace(/_/g,' '))}<small>${esc(s.d)}</small></span><span class="v ${PEND[s.k]!==undefined?'pend':''}">${esc(fmtVal(PEND[s.k]!==undefined?PEND[s.k]:s.v))}</span></button>`).join('')||'<p class="empty">Nothing found.</p>'}</div>`
+     :`<div class="set-list" style="margin-top:10px">${tabs.map(t=>`<button class="set-row" data-tab="${esc(t)}">${icoLine({'Video':'shorts','Posting':'calendar','Results and Premium':'lock','YouTube':'shorts','Long video':'shorts','Music':'bell','Thumbnails':'eye','Shorts':'shorts','Pictures':'eye','Banker':'odds','Texts':'pencil','Order':'sort','Automatic':'ball','Telegram':'robot','Review':'flask','Channel':'calendar','Daily jobs':'clock','Vision Premium':'lock'}[t]||'sliders')}<span class="t">${esc(t)}<small>${esc(((feed.tabs_help||{})[t]||'').slice(0,90))}</small></span><span class="v">${L.filter(s=>s.tab===t).length}</span><span class="ch">›</span></button>`).join('')}</div>`);
     const bq=$('bq');if(bq)bq.oninput=()=>{const v=bq.value;clearTimeout(bq._t);bq._t=setTimeout(()=>{if(v.trim().length>=2)openBuilder('',v.trim());},500);};};
   openSub(tabName||(q?`"${q}"`:'Laptop settings'),render,!!(tabName||q));$('subBody').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.send){sendPending();render();return;}
     if(b.dataset.tab){openBuilder(b.dataset.tab);return;}if(b.dataset.k){const s=L.find(x=>x.k===b.dataset.k);if(s)editSetting(s,render);}};}
