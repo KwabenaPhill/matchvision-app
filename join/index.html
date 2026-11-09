@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Join Vision Premium, the private VIP room of Match Vision.">
+<link rel="icon" href="../icons/icon-192.png">
+<title>Vision Premium</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap">
+<style>
+/* Layout: one phone-first column. Crown hero, price + country, join buttons, why VIP, steps, wins, socials. */
+:root{
+  --bg:#09090a; --raise:#111112; --card:#151412; --line:#26231b; --line2:#3a331f;
+  --fg:#f6f4ef; --sub:#a3a19b; --dim:#6f6d68;
+  --gold:#e9c46a; --gold2:#f4dc9b; --ink:#16120a; --lime:#d4ff00; --green:#22c55e;
+  --wa:#25d366; --tg:#2aabee;
+  --f:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.soc.off{display:none}
+body{background:var(--bg);color:var(--fg);font-family:var(--f);font-size:16px;line-height:1.5;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:12px}
+
+.hero{margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:34px 24px 30px;text-align:center;
+  background:radial-gradient(120% 90% at 50% 0%,#3a2f12 0%,#17130a 55%,var(--bg) 100%);border-bottom:1px solid var(--line2);
+  display:flex;flex-direction:column;align-items:center;gap:10px}
+.crown{width:64px;height:48px;color:var(--gold)}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.hero h1{margin:0;font-weight:900;font-size:clamp(34px,9vw,46px);letter-spacing:-1px;line-height:1;
+  background:linear-gradient(180deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{margin:0;color:var(--fg);font-weight:600;font-size:16px;max-width:34ch;text-wrap:balance}
+.seats{display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:7px 14px;border:1px solid var(--line2);border-radius:999px;font-size:13px;font-weight:700;color:var(--gold2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #22c55e33}
+
+.label{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin:0}
+section{display:flex;flex-direction:column;gap:14px}
+
+.pricebox{background:var(--card);border:1px solid var(--line2);border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:14px;font-weight:700;color:var(--sub)}
+select{appearance:none;width:100%;min-height:54px;padding:0 44px 0 16px;border-radius:14px;border:1px solid var(--line2);
+  background:var(--raise) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e9c46a' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 14px center/22px;
+  color:var(--fg);font:700 17px var(--f)}
+.amount{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+.amount .big{font-size:46px;font-weight:900;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+.amount .per{font-weight:700;color:var(--sub)}
+.pay{display:flex;flex-direction:column;gap:6px;background:var(--raise);border-radius:14px;padding:14px 16px}
+.pay b{font-weight:800}
+.pay span{color:var(--sub);font-size:14px;font-weight:600}
+
+.btns{display:flex;flex-direction:column;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:60px;border-radius:16px;font-weight:900;font-size:18px;text-decoration:none}
+.btn svg{width:26px;height:26px;flex:none}
+.btn.tg{background:var(--tg);color:#fff}
+.btn.wa{background:var(--wa);color:#04210e}
+.btn.off{background:#1b1b1d;color:var(--dim);pointer-events:none}
+.hint{margin:0;text-align:center;color:var(--dim);font-size:13px}
+
+.why{display:flex;flex-direction:column;gap:2px;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.why div{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border-bottom:1px solid var(--line)}
+.why div:last-child{border-bottom:0}
+.why svg{flex:none;width:26px;height:26px;color:var(--gold);margin-top:1px}
+.why b{display:block;font-weight:800}
+.why span{color:var(--sub);font-size:14px;font-weight:500}
+.intro{margin:0;color:var(--fg);font-size:17px;font-weight:600;line-height:1.55}
+.intro em{font-style:normal;color:var(--gold2)}
+
+.steps{counter-reset:s;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:8px;font-weight:700;font-size:14px;min-width:0}
+.steps li::before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--ink);font-weight:900;display:grid;place-items:center}
+
+.wins{background:var(--card);border:1px dashed var(--line2);border-radius:18px;padding:22px;text-align:center;color:var(--sub);font-weight:600;font-size:14px}
+
+.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.soc{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:92px;padding:10px 6px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-decoration:none;font-weight:700;font-size:13px;text-align:center;min-width:0}
+.soc svg{width:28px;height:28px}
+.soc small{color:var(--dim);font-weight:600;font-size:11px;overflow-wrap:anywhere}
+.soc.off{opacity:.45;pointer-events:none}
+footer{color:var(--dim);font-size:12px;text-align:center;line-height:1.7;display:flex;flex-direction:column;gap:6px;align-items:center}
+.mv{font-style:italic;font-weight:900;color:var(--lime);font-size:24px;letter-spacing:-.5px}
+@media (max-width:360px){.socials{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <svg class="crown" viewBox="0 0 100 74" aria-hidden="true"><path fill="currentColor" d="M0 18 25 40 50 0 75 40 100 18 88 61H12z"/><rect x="10" y="65" width="80" height="9" rx="3" fill="currentColor"/></svg>
+    <div class="eyebrow">Match Vision</div>
+    <h1>VISION PREMIUM</h1>
+    <p>The few picks we study the longest, in one private room.</p>
+    <div class="seats"><span class="dot"></span>Only 30 seats</div>
+  </header>
+
+  <section>
+    <p class="label">Your price</p>
+    <div class="pricebox">
+      <div class="field">
+        <label for="country">Where are you joining from?</label>
+        <select id="country">
+          <optgroup label="Africa">
+            <option value="gh">🇬🇭 Ghana</option>
+            <option value="ng">🇳🇬 Nigeria</option>
+            <option value="ke">🇰🇪 Kenya</option>
+            <option value="za">🇿🇦 South Africa</option>
+            <option value="af">🌍 Other African country</option>
+          </optgroup>
+          <optgroup label="Europe">
+            <option value="uk">🇬🇧 United Kingdom</option>
+            <option value="eu">🇪🇺 Europe</option>
+          </optgroup>
+          <optgroup label="Americas">
+            <option value="us">🇺🇸 USA</option>
+            <option value="ca">🇨🇦 Canada</option>
+          </optgroup>
+          <optgroup label="Rest of the world">
+            <option value="ot">🌐 Other country</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="amount">
+        <div class="big" id="amt">GH₵ 250</div>
+        <div class="per">for 30 days</div>
+      </div>
+      <div class="pay">
+        <b id="payhow">Pay by Mobile Money (MoMo)</b>
+        <span id="paynote">The bot sends you the MoMo number. Pay, send the screenshot, get your link.</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="btns">
+    <a class="btn tg" href="https://t.me/MatchVision707Bot">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.6l-4.9-1.5c-1.1-.3-1.1-1 .2-1.6L20.5 3.1c.9-.3 1.7.2 1.4 1.2Z"/></svg>
+      Join on Telegram
+    </a>
+    <a class="btn wa" id="wa" href="#" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.6 14.1c-.2.7-1.4 1.3-1.9 1.3-.5.1-1.1.1-1.8-.1a16 16 0 0 1-1.6-.6 12.5 12.5 0 0 1-4.8-4.3c-.4-.5-.9-1.5-.9-2.6 0-1 .6-1.6.8-1.8.2-.2.5-.3.6-.3h.5c.1 0 .3 0 .5.4l.7 1.7c.1.1.1.3 0 .4l-.3.5-.4.4c-.1.1-.3.3-.1.5.1.3.6 1 1.3 1.6.9.8 1.6 1 1.9 1.2.2.1.4.1.5-.1l.7-.9c.2-.2.3-.2.5-.1l1.6.8c.2.1.4.2.4.3.1.1.1.6-.1 1.2Z"/></svg>
+      Join on WhatsApp
+    </a>
+  </div>
+
+  <section>
+    <p class="label">Why Vision Premium</p>
+    <p class="intro">Every day we go through every game on the card. Most picks go free on YouTube and Telegram. The few that pass <em>our longest checks</em> go to Vision Premium only.</p>
+    <div class="why">
+      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg><p style="margin:0"><b>Extra hours on every pick</b><span>Form, injuries, line-ups, head to head and how the odds move.</span></p></div>
+      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg><p style="margin:0"><b>3 to 4 strongest picks a day</b><span>About 3.00 to 4.00 total odds. Quality, not a long list.</span></p></div>
+      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg><p style="margin:0"><b>Never on the free channels</b><span>VIP picks are for members only. We only show them after they win.</span></p></div>
+      <div><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg><p style="margin:0"><b>Early, before kick-off</b><span>In the room every morning, so you have time to use them.</span></p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">How to join</p>
+    <ol class="steps">
+      <li>Choose your country above</li>
+      <li>Tap Telegram or WhatsApp</li>
+      <li>Pay the way the bot shows you</li>
+      <li>Send the screenshot, get your private link</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="label">Latest VIP wins</p>
+    <div class="wins">Every day all our VIP picks win, the VIP Won card is added here by itself.</div>
+  </section>
+
+  <section>
+    <p class="label">Follow and contact us</p>
+    <div class="socials">
+      <a class="soc" href="https://t.me/matchvision707"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#2aabee" d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.2-8.3c.4-.4-.1-.6-.6-.2L6 13.6l-4.9-1.5c-1.1-.3-1.1-1 .2-1.6L20.5 3.1c.9-.3 1.7.2 1.4 1.2Z"/></svg>Telegram<small>Free channel</small></a>
+      <a class="soc" href="https://www.youtube.com/@MatchVision707"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ff0033" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8Z"/><path fill="#fff" d="m9.8 15.1 5.8-3.1-5.8-3.1z"/></svg>YouTube<small>@MatchVision707</small></a>
+      <a class="soc" href="https://www.tiktok.com/@matchvision707"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16.6 3c.4 2.2 1.8 3.7 4 3.9v3.1a7.5 7.5 0 0 1-4-1.2v6.4a5.8 5.8 0 1 1-5-5.7v3.2a2.6 2.6 0 1 0 1.8 2.5V3h3.2Z"/></svg>TikTok<small>@matchvision707</small></a>
+      <a class="soc" href="https://www.tiktok.com/@scorevision707"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#d4ff00" d="M16.6 3c.4 2.2 1.8 3.7 4 3.9v3.1a7.5 7.5 0 0 1-4-1.2v6.4a5.8 5.8 0 1 1-5-5.7v3.2a2.6 2.6 0 1 0 1.8 2.5V3h3.2Z"/></svg>Score Vision<small>@scorevision707</small></a>
+      <a class="soc off" href="#" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="#e1306c" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="#e1306c" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="#e1306c"/></svg>Instagram<small>add link</small></a>
+      <a class="soc off" href="#" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#1877f2" d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z"/></svg>Facebook<small>add link</small></a>
+      <a class="soc off" href="#" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/></svg>X<small>add link</small></a>
+      <a class="soc off" href="#" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25d366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>WhatsApp<small>add number</small></a>
+      <a class="soc" href="https://t.me/MatchVision707Bot"><svg viewBox="0 0 100 74" aria-hidden="true"><path fill="#e9c46a" d="M0 18 25 40 50 0 75 40 100 18 88 61H12z"/><rect x="10" y="65" width="80" height="9" rx="3" fill="#e9c46a"/></svg>VIP bot<small>@MatchVision707Bot</small></a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="mv">MV.</div>
+    <div>Predictions are based on data and analysis. No outcome is guaranteed.</div>
+    <div>Match Vision · Vision Premium</div>
+  </footer>
+</div>
+
+<script>
+const P = {
+  gh: ['GH₵ 250', 'Pay by Mobile Money (MoMo)', 'The bot sends you the MoMo number. Pay, send the screenshot, get your link.'],
+  ng: ['$20', 'Pay by card', 'About ₦ 30,000. Card payment right inside Telegram.'],
+  ke: ['$20', 'Pay by card', 'About KSh 2,600. Card payment right inside Telegram.'],
+  za: ['$20', 'Pay by card', 'About R 360. The bot shows the exact amount and how to pay.'],
+  af: ['$20', 'Pay by card', 'The bot shows the amount in your money and how to pay.'],
+  uk: ['$20', 'Pay by card', 'About £16. Card payment right inside Telegram.'],
+  eu: ['$20', 'Pay by card', 'About €18. Card payment right inside Telegram.'],
+  us: ['$20', 'Pay by card', 'Card payment right inside Telegram.'],
+  ca: ['$20', 'Pay by card', 'About C$ 28. Card payment right inside Telegram.'],
+  ot: ['$20', 'Pay by card', 'The bot shows the amount in your money and how to pay.']
+};
+const WA = '';   // WhatsApp number with country code, digits only (Philip adds it)
+if (WA) { const w = document.getElementById('wa'); w.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hello, I want to join Vision Premium'); w.hidden = false; }
+const sel = document.getElementById('country');
+function show(){
+  const p = P[sel.value] || P.ot;
+  document.getElementById('amt').textContent = p[0];
+  document.getElementById('payhow').textContent = p[1];
+  document.getElementById('paynote').textContent = p[2];
+  try { localStorage.setItem('vp-country', sel.value); } catch (e) {}
+}
+try { const c = localStorage.getItem('vp-country'); if (c && P[c]) sel.value = c; } catch (e) {}
+sel.addEventListener('change', show);
+show();
+</script>
+
+</body>
+</html>
