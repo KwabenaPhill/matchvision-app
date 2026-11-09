@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.45.1</title>
+<title>Match Vision 3.46</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -473,7 +473,7 @@ details.rpost pre{white-space:pre-wrap;font-family:var(--f);font-size:13.5px;bac
 .vdays button.on{color:var(--acc);border-color:var(--acc);background:var(--accSoft)}
 .post .ph .phr{display:flex;align-items:center;gap:6px}
 .sbox .pl,.hrow .pl{font-size:13px;font-weight:700;margin-top:4px;font-variant-numeric:tabular-nums}
-.pl.up,.pltotal b.up{color:#30D158}.pl.down,.pltotal b.down{color:#FF453A}.pl.flat,.pltotal b.flat{color:var(--dim)}
+.plsm{font-size:12.5px;font-weight:500;margin-top:4px}.plsm.up{color:#30D158}.plsm.down{color:#FF453A}.pl.up,.pltotal b.up{color:#30D158}.pl.down,.pltotal b.down{color:#FF453A}.pl.flat,.pltotal b.flat{color:var(--dim)}
 .pltotal{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:-4px 0 14px}
 .pltotal span{font-size:14px;font-weight:600;color:#fff}.pltotal small{display:block;font-size:11.5px;font-weight:400;color:var(--dim);margin-top:2px}.pltotal b{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
 .hrow .hr-r{display:flex;align-items:center;gap:8px}.hrow .a .hr-r .pl{margin:0;font-size:13px}.hrow .a .pl.up{color:#30D158}.hrow .a .pl.down{color:#FF453A}
@@ -945,7 +945,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.45.1';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.44' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.46';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.46' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1317,7 +1317,9 @@ function resultsView(d){if(!d)return `<div class="card"><p class="empty">No resu
   const wins=(d.posts||[]).filter(it=>it.group==='results'&&SET.groups.results!==false);
   let h=`<div class="card"><div class="ct">${longDate(d.date)}</div><div class="statrow"><span>Safest picks</span><b>${s.n?`${s.w} of ${s.n} won`:'Waiting'}</b></div><div class="statrow"><span>All predictions</span><b>${c.w+c.l?`<span class="mvw">${c.w} won</span> · <span class="mvl">${c.l} lost</span>`:'Waiting'}${c.p?` · ${c.p} to play`:''}</b></div>
     ${d.banker&&d.banker.games?`<div class="statrow"><span>${Number(d.banker.total||0).toFixed(2)} odds banker</span><b class="${bk==='w'?'mvw':bk==='l'?'mvl':''}">${bk==='w'?'✔ WON':bk==='l'?'✘ LOST':'Waiting'}</b></div>`:''}
-    ${d.results&&d.results.correct_scores!=null?`<div class="statrow"><span>Correct scores right</span><b>${esc(d.results.correct_scores)}</b></div>`:''}</div>`;
+    ${d.results&&d.results.correct_scores!=null?`<div class="statrow"><span>Correct scores right</span><b>${esc(d.results.correct_scores)}</b></div>`:''}
+    ${(()=>{const p=dayPL(d);let pp=0;const px=prem&&(prem.days||[]).find(x=>x.date===d.date);if(px)pp=premPL(px);if(!p.has&&!pp)return '';const tot=p.all+p.bank+pp;
+      return `<div class="statrow" data-stake="1"><span>Profit today<br><small class="muted">Safest ${plTxt(p.safe)} · Top ${plTxt(p.top)} · All ${plTxt(p.all)}${d.banker&&d.banker.games?' · Banker '+plTxt(p.bank):''}${px?' · Premium '+plTxt(pp):''}</small></span><b class="${tot>=0?'mvw':'mvl'}">${plTxt(tot)}</b></div>`;})()}</div>`;
   if(wins.length)h+=`<div class="card"><div class="ct">Ready to send</div><div class="cs">Winning pictures from the laptop. Tap a button to post.</div>${wins.map(it=>todoRow(d,it,false)).join('')}</div>`;
   const ms=(d.matches||[]).filter(m=>mState(m,d)==='fin');const won=[],lost=[];
   for(const m of ms){const L=liveOf(m,d);const st=(m.picks||[]).slice(0,3).map((p,i)=>pickState(p,i,m,d,L));(st.some(x=>x==='l')?lost:won).push(m);}
@@ -1336,6 +1338,15 @@ const shortPk=(t,m)=>{t=String(t||'');if(m){for(const k of ['home','away'])if(m[
 function pinRow(d,m,text,odds,s){const L=m&&m.n?liveOf(m,d):null;   // 3.40 (Philip): every row = 2 short lines, no wasted space
   return `<div class="bkr one">${pinCrests(m)}<span class="t"><b>${esc(shortPk(text,m))}</b><small>${esc(shortTeam((m&&m.home)||''))} ${L&&L.gh!=null?`<b class="sc ${mState(m,d)==='live'?'lv':''}">${L.gh}-${L.ga}</b>`:'<i class="vsx">vs</i>'} ${esc(shortTeam((m&&m.away)||''))} ${m&&m.n?statePill(L,m):''}</small></span>${odds?`<span class="o">${Number(odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}
 const pinCrests=m=>m&&m.home?`<span class="pcr">${crestHTML(m.hc,m.home)}${crestHTML(m.ac,m.away)}</span>`:'';   // 3.38: team badges, like the posts
+// 3.46 (Philip, 9 Nov): PROFIT AND LOSS, 1 unit on every pick as a single at its own odds: won = odds - 1, lost = -1,
+// no odds = not counted. Correct scores are never counted. Total = all picks + banker + Vision Premium.
+function plU(s,o){if(s!=='w'&&s!=='l')return null;o=Number(o);if(!(o>1))return null;return s==='w'?o-1:-1;}
+function dayPL(d){const r={safe:0,all:0,top:0,bank:0,nod:0,has:false};for(const m of d.matches||[]){const L=liveOf(m,d);(m.picks||[]).slice(0,3).forEach((pk,i)=>{const s=pickState(pk,i,m,d,L);if(s!=='w'&&s!=='l')return;const u=plU(s,pk.odds);if(u==null){r.nod++;return;}r.has=true;r.all+=u;if(i===0)r.safe+=u;});}
+  for(const g of d.top_picks||[]){const m=(d.matches||[]).find(x=>x.n===g.n);const u=plU(pickStateOf(d,m,g.text),g.odds);if(u!=null)r.top+=u;}
+  const bk=bankerState(d);if(bk&&d.banker&&Number(d.banker.total)>1){r.bank+=bk==='w'?Number(d.banker.total)-1:-1;r.has=true;}return r;}
+function premPL(x){const dx=dayOf(x.date);let u=0;for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;const v=plU(r?'w':'l',g.odds);if(v!=null)u+=v;}return u;}
+function plTxt(u){const st=Number(SET.stake||1);const t=(u>=0?'+':'−')+Math.abs(u).toFixed(2);return st!==1?t+` (${u>=0?'+':'−'}${Math.abs(u*st).toFixed(0)})`:t;}
+function plSm(u){return `<div class="plsm ${u>=0?'up':'down'}">${plTxt(u)}</div>`;}
 function pickStateOf(d,m,text){if(!m)return null;const i=(m.picks||[]).findIndex(p=>p.text===text);return i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));}
 function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false)return '';let tot=1,w=0,l=0;
   const rows=tp.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=pickStateOf(d,m,g.text);if(s==='w')w++;if(s==='l')l++;return pinRow(d,m,g.text,g.odds,s);}).join('');
@@ -1443,6 +1454,7 @@ async function askAnswer(path,date,ans){try{const url=`https://api.github.com/re
     const r=await fetch(url,{method:'PUT',headers:h,body:JSON.stringify(body)});if(!r.ok)throw new Error('GitHub '+r.status);
     ASKC.done[date]=1;toast(ans==='send'?'Sent: the laptop posts it within a minute.':'Skipped: no post.',3500);const el=$('askBox');if(el)el.innerHTML='';}
   catch(e){toast('Not sent ('+e.message+'). Use the buttons in Telegram.',4500);}}
+document.addEventListener('click',e=>{const st=e.target.closest('[data-stake]');if(!st)return;const v=prompt('My stake per pick (1 = units). Example: 10 for GHS 10 a pick.',String(SET.stake||1));if(v==null)return;const n=Number(String(v).replace(',','.'));if(!(n>0)){toast('Type a number, like 10');return;}SET.stake=n;saveSet();refresh(true);toast('Stake per pick: '+n);},true);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-askans]');if(!b)return;e.stopPropagation();askAnswer(b.dataset.askp,b.dataset.askd,b.dataset.askans);},true);
 const PMC={};
 async function premiumBox(k){const el=$('pmBox');if(!el)return;if(!mbxKey()){el.innerHTML='';return;}
@@ -1464,17 +1476,19 @@ function kindName(k){if(KINDN[k])return KINDN[k];const m=/^([OU])([\d.]+)(.*)$/.
 function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div class="card"><p class="empty">No records yet.</p></div>';return;}const t=todayKey();
   const ds=days().filter(d=>inRange(d.date)).sort((a,b)=>a.date<b.date?1:-1);let sw=0,sn=0,aw=0,an=0,bw=0,bn=0,cs=0;
   for(const d of ds){const s=safestCount(d);sw+=s.w;sn+=s.n;const c=dayCount(d);aw+=c.w;an+=c.w+c.l;const b=bankerState(d);if(b){bn++;if(b==='w')bw++;}if(d.results&&typeof d.results.correct_scores==='number')cs+=d.results.correct_scores;}
-  const box=(lab,v,sub,i)=>`<div class="sbox" style="animation-delay:${i*.04}s"><div class="bl">${lab}</div><div class="big">${v}</div><div class="sm2">${sub}</div></div>`;
+  const box=(lab,v,sub,i,pl)=>`<div class="sbox" style="animation-delay:${i*.04}s"><div class="bl">${lab}</div><div class="big">${v}</div><div class="sm2">${sub}</div>${pl!=null?plSm(pl):''}</div>`;
+  const PL={safe:0,all:0,top:0,bank:0,prem:0};for(const d of ds){const p=dayPL(d);PL.safe+=p.safe;PL.all+=p.all;PL.top+=p.top;PL.bank+=p.bank;}if(prem)for(const x of (prem.days||[]).filter(x=>inRange(x.date)&&x.date<=t))PL.prem+=premPL(x);
   const groups=[];for(const d of days().filter(x=>x.date<=t).sort((a,b)=>a.date<b.date?1:-1)){const w=weekStart(d.date);let g=groups.find(x=>x.w===w);if(!g){g={w,ds:[]};groups.push(g);}g.ds.push(d);}const tw=weekStart(t);
   const wr=Object.entries(feed.win_rate||{}).filter(([k,v])=>v.of>0).sort((a,b)=>b[1].of-a[1].of);
   let premTop='';if(false){const pd=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=pd.find(x=>x.date===t&&premDone(x))||pd.find(x=>x.date<t);if(td)premTop=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium results · live</span></div>`+premPicture(td)+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
   el.innerHTML=premTop+`<div class="sechd rec-head"><span class="sect" style="margin:0">Win rate</span><div class="seg2 rec-range">${[['week','This week'],['month','Month'],['all','All time']].map(([k,l])=>`<button data-rr="${k}" class="${recRange===k?'on':''}">${l}</button>`).join('')}</div></div>
-  <div class="summary-grid">${box('Safest',pct(sw,sn),`${sw} of ${sn}`,0)}${box('All picks',pct(aw,an),`<span class="mvw">${aw} won</span> · <span class="mvl">${an-aw} lost</span>`,1)}${box('Banker',bn?`${bw}/${bn}`:'-',bn?'won':'no banker',2)}</div>
+  <div class="summary-grid">${box('Safest',pct(sw,sn),`${sw} of ${sn}`,0,PL.safe)}${box('All picks',pct(aw,an),`<span class="mvw">${aw} won</span> · <span class="mvl">${an-aw} lost</span>`,1,PL.all)}${box('Banker',bn?`${bw}/${bn}`:'-',bn?'won':'no banker',2,bn?PL.bank:null)}</div>
   ${(()=>{let tw2=0,tn2=0,dw=0,dn=0;for(const d of ds){const tp=d.top_picks||[];if(!tp.length)continue;let w=0,dec=0;   // 3.39 (Philip): Top picks in Records
       for(const g of tp){const m=(d.matches||[]).find(x=>x.n===g.n);const s=pickStateOf(d,m,g.text);if(s==='w'){w++;dec++;}else if(s==='l')dec++;}
       tw2+=w;tn2+=dec;if(dec===tp.length){dn++;if(w===tp.length)dw++;}}
     let pw=0,pn=0;if(prem)for(const x of (prem.days||[]).filter(x=>inRange(x.date)&&x.date<=t)){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;pn++;if(r)pw++;}}
-    return `<div class="summary-grid g2" style="margin-top:8px;grid-template-columns:repeat(2,minmax(0,1fr))!important">${box('Top picks',pct(tw2,tn2),`${tw2} of ${tn2}`,3)}${box('Vision Premium',prem?pct(pw,pn):'🔒',prem?`${pw} of ${pn}`:'PIN',5)}</div>`;})()}
+    return `<div class="summary-grid g2" style="margin-top:8px;grid-template-columns:repeat(2,minmax(0,1fr))!important">${box('Top picks',pct(tw2,tn2),`${tw2} of ${tn2}`,3,PL.top)}${box('Vision Premium',prem?pct(pw,pn):'🔒',prem?`${pw} of ${pn}`:'PIN',5,prem?PL.prem:null)}</div>`;})()}
+  ${(()=>{const tot=PL.all+PL.bank+PL.prem;return `<div class="pltotal" data-stake="1"><span>Total profit ${recRange==='week'?'this week':recRange==='month'?'this month':'all time'}<small>1 unit per pick · at each pick's odds${Number(SET.stake||1)!==1?' · stake '+SET.stake:''}</small></span><b class="${tot>=0?'up':'down'}">${plTxt(tot)}</b></div>`;})()}
   <div class="pltotal"><span>Correct scores right<small>${recRange==='week'?'This week':recRange==='month'?'This month':'All time'} · from the 23:45 results</small></span><b class="${cs?'up':'flat'}">${cs||'-'}</b></div>
   <div class="streak32"><span><span class="ct">Banker streak</span><small>Bankers won in a row</small></span><b>${feed.banker_streak||0}</b></div>
   <div class="card" style="padding:4px 16px"><button class="trow" data-act="recap"><span class="tn"><b>${recRange==='week'?'Weekly':recRange==='month'?'Monthly':'All time'} results post</b><small>Tap to see it and send it</small></span><span class="ch">›</span></button></div>
