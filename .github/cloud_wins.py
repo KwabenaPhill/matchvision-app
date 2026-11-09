@@ -882,7 +882,10 @@ def banker(day, now, root, tg, log=print):
     dd = datetime.date.fromisoformat(day['date'])
     pic = None
     try:
-        pic = (draw_banker_lime if str(c.get('banker_card', '')).startswith('Lime') else
+        if str(c.get('banker_pic', '')).strip().startswith('6'):   # 3.60 (Philip): his style 6 when the laptop is off
+            pic = draw_banker_wide6(out, bk.get('total'), root, os.path.join(root, 'cloud', 'wins', f'{day["date"]}-banker.jpg'), c)
+        else:
+          pic = (draw_banker_lime if str(c.get('banker_card', '')).startswith('Lime') else
                draw_banker if str(c.get('banker_card', '')).startswith('Old') else draw_banker_ticket)(
             out, bk.get('total'), f'{DAYS[dd.weekday()]} {dd.day} {MONTHS[dd.month - 1]}', root,
                           os.path.join(root, 'cloud', 'wins', f'{day["date"]}-banker.jpg'), brand=c.get('brand', 'MATCH VISION'))
@@ -1412,4 +1415,91 @@ def draw_cs14(m, gh, ga, root, out, fonts=FONTS, look='2'):
     d.text((x1 - 124, yc), 'WON', font=F(56), fill=WH, anchor='rm')
     os.makedirs(os.path.dirname(out), exist_ok=True)
     img.save(out, quality=94)
+    return out
+
+
+# ---- 3.60 (Philip, 9 Nov 2026): the BANKER WON picture in his style 6 ("Big total wide", like mv_banker6._won_short)
+def _short_pick(text, c):
+    out = str(text or '')
+    for part in str(c.get('short_words', '') or '').split(';'):
+        if '=' in part:
+            a, b = (x.strip() for x in part.split('=', 1))
+            if a:
+                out = re.sub(re.escape(a), b, out, flags=re.I)
+    out = re.sub(r'\s{2,}', ' ', out).strip()
+    if len(out) > 18:
+        table = sorted(((a.strip(), b.strip()) for a, b in (x.split('=', 1) for x in str(c.get('short_names', '') or '').split(';')
+                                                            if '=' in x)), key=lambda x: -len(x[0]))
+        low = out.lower()
+        for full, short in table:
+            i = low.find(full.lower())
+            if full and i >= 0:
+                out = out[:i] + short + out[i + len(full):]
+                break
+    return out.upper()
+
+
+def draw_banker_wide6(legs, total, root, out, c=None, fonts=FONTS):
+    """BANKER WON (green), the big total (green, or yellow with BANKER_WON_TOP 2), TOTAL ODDS (yellow), one dark row per
+    pick: two crests, the pick, yellow odds, green tick. Wide (BANKER_WON_WIDTH, 1640), no date, no MV, no streak."""
+    from PIL import Image, ImageDraw, ImageFilter, ImageChops
+    c = c or {}
+    GRN, YEL, WH = (34, 197, 94), (250, 204, 21), (255, 255, 255)
+    BLK = ('InterDisplay-Black.otf', 'Inter-Black.otf')
+    W2 = int(c.get('banker_wide') or 1640)
+    n = max(1, len(legs))
+    rh, gap, top = 104, 14, 418
+    H2 = top + n * rh + (n - 1) * gap + 34
+    im = Image.new('RGB', (W2, H2), (4, 4, 6))
+    gl = Image.new('RGB', im.size, (0, 0, 0))
+    ImageDraw.Draw(gl).ellipse((W2 / 2 - 520, 50, W2 / 2 + 520, 420), fill=(52, 59, 11))
+    im = ImageChops.add(im, gl.filter(ImageFilter.GaussianBlur(150)))
+    d = ImageDraw.Draw(im)
+
+    def F(px):
+        return _font(fonts, BLK, px)
+
+    def fit(t, px, maxw):
+        while px > 20 and d.textlength(t, font=F(px)) > maxw:
+            px -= 2
+        return F(px)
+
+    def crest(path, name, cx, cy, s):
+        p = os.path.join(root, path) if path else ''
+        if p and os.path.isfile(p):
+            cr = Image.open(p).convert('RGBA')
+            cr.thumbnail((int(s), int(s)), Image.LANCZOS)
+            im.paste(cr, (int(cx - cr.width / 2), int(cy - cr.height / 2)), cr)
+            return
+        r = s * 0.45
+        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=(34, 34, 40), outline=(90, 90, 96), width=4)
+        ini = ''.join(w[0] for w in str(name or '?').split()[:3]).upper()
+        d.text((cx, cy), ini, font=F(r * 0.8), fill=WH, anchor='mm')
+
+    def tick(cx, cy, r):
+        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=GRN)
+        d.line([(cx - r * .45, cy), (cx - r * .12, cy + r * .36), (cx + r * .5, cy - r * .36)], fill=WH,
+               width=max(5, int(r * .24)), joint='curve')
+
+    yellow_total = str(c.get('banker_top', '1')).strip().startswith('2')
+    d.text((W2 / 2, 66), 'BANKER WON', font=F(80), fill=GRN, anchor='mm')
+    d.text((W2 / 2, 228), f'{float(total or 0):.2f}', font=F(215), fill=YEL if yellow_total else GRN, anchor='mm',
+           stroke_width=3, stroke_fill=(0, 0, 0))
+    d.text((W2 / 2, 360), 'TOTAL ODDS', font=F(54), fill=WH if yellow_total else YEL, anchor='mm')
+    y = top
+    for g in legs:
+        d.rounded_rectangle((60, y, W2 - 60, y + rh), 24, fill=(22, 22, 28), outline=(60, 60, 66), width=2)
+        cs = rh * 0.64
+        crest(g.get('hc'), g.get('home'), 130, y + rh / 2, cs)
+        crest(g.get('ac'), g.get('away'), 130 + cs + 18, y + rh / 2, cs)
+        tx = 130 + cs * 1.5 + 46
+        pick = _short_pick(g.get('text', ''), c)
+        d.text((tx, y + rh / 2), pick, font=fit(pick, 64, W2 - 330 - tx), fill=WH, anchor='lm')
+        o = g.get('odds')
+        if o:
+            d.text((W2 - 160, y + rh / 2), f'{float(o):.2f}', font=F(70), fill=YEL, anchor='rm')
+        tick(W2 - 108, y + rh / 2, 34)
+        y += rh + gap
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    im.save(out, quality=94)
     return out
