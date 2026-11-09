@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.46</title>
+<title>Match Vision 3.47</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -666,6 +666,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-vis
 .game .tm .leg.wait{color:#555}.game .tm .leg.up{color:#30D158;opacity:.75}.game .tm .leg.dn{color:#FF453A;opacity:.75}
 .game .od{font-size:12.5px;color:var(--mute);font-weight:600;flex:none;text-align:right;font-variant-numeric:tabular-nums}
 .mrow{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card .mem+.mem{border-top:1px solid rgba(232,193,99,.55)!important}
 .mrow .tms{flex:1;min-width:0}.mrow .tms b{display:block;font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mrow .tms small{font-size:12px;color:var(--dim)}
 .mscore{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right;line-height:1}
@@ -945,7 +946,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.46';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.46' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.47';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.47' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1605,7 +1606,8 @@ function premPictureHTML(td){window.__premTd=td;const d=dayOf(td.date);let tot=1
 function renderElite(){const el=$('p-elite');const head=`<div class="sechd" style="margin:0 0 10px"><span class="sect goldc" style="margin:0;display:flex;align-items:center;gap:8px"><span class="eliteimg crown">👑</span>Vision Premium</span>${prem?'<button class="link" data-act="lock" style="color:var(--gold)!important;padding:0">Lock</button>':''}</div>`;
   if(!feed||!feed.premium_lock){el.innerHTML=head+`<div class="card goldb"><div class="ct goldc">Not in the app yet</div><div class="cs" style="margin:0">On the laptop: Connect > "4. Connect the app (GitHub)" > type a PIN in the Vision Premium PIN box > Save and test. Then Settings > Update now here.</div></div>`;return;}
   if(!prem){el.innerHTML=head+`<div class="card goldb"><div class="ct goldc">Locked</div><div class="cs">Type the PIN you typed in Connect > App on the laptop. This phone remembers it.</div><input type="text" id="pin" autocomplete="off" autocapitalize="characters" spellcheck="false" style="-webkit-text-security:disc" placeholder="Your PIN"><div class="btn-row"><button class="btn-save gold" data-act="unlock">Unlock</button></div>${premErr?`<p class="muted" style="color:var(--acc);margin-top:8px">${esc(premErr)}</p>`:''}</div>`;return;}
-  const t=todayKey(),price=parseFloat(String(prem.price||'').replace(/[^0-9.]/g,''))||0;const all=(prem.members||[]).slice().sort((a,b)=>(a.until||'')<(b.until||'')?-1:1);
+  const t=todayKey(),price=Number(prem.price_usd)||parseFloat(String(prem.price||'').replace(/[^0-9.]/g,''))||0,FXR=Number(prem.usd_ghs)||0;   // 3.47: the VIP price is in $; cedis at today's rate
+  const M$=a=>`$${Math.round(a)}`+(FXR?` <small style="opacity:.7;font-weight:600">≈ GH₵ ${Math.round(a*FXR).toLocaleString()}</small>`:'');const all=(prem.members||[]).slice().sort((a,b)=>(a.until||'')<(b.until||'')?-1:1);
   const isExp=m=>m.until<t,isDue=m=>m.until>=t&&m.until<=addDays(t,7);const active=all.filter(m=>!isExp(m)).length,due=all.filter(isDue).length,exp=all.filter(isExp).length;let body='';
   if(eliteView==='post'){const ds=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=ds.filter(x=>x.date>=t).sort((a,b)=>a.date<b.date?-1:1)[0]||ds[0];
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
@@ -1620,7 +1622,7 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
       <div class="card vip-post-card"><div class="memhd"><strong>Members list</strong></div><div class="cs" style="margin:0 0 10px">Everyone and when it ends, from the bot.</div><button class="btn-half w100" data-bw="members">Ask the bot</button></div>`;
     body+=`<div class="sect">Earlier days</div><div class="card" style="padding:4px 16px">${ds.filter(x=>x!==td).slice(0,14).map(x=>{const ww=(x.picks||[]).filter(g=>g.won===true).length,ll=(x.picks||[]).filter(g=>g.won===false).length;return `<div class="hrow"><div class="a">${longDate(x.date)}<span>${ww+ll?`${ww}/${ww+ll} won`:'waiting'}</span></div></div>`;}).join('')||'<p class="empty">Nothing yet.</p>'}</div>`;}
   else if(eliteView==='members'){const list=memFilter==='due'?all.filter(isDue):memFilter==='exp'?all.filter(isExp):all;const mon=t.slice(0,7);let paid=0;for(const m of all)for(const p of m.payments||[])if((p.date||'').slice(0,7)===mon)paid+=price*(Number(p.months)||1);
-    body=`<div class="member-count"><strong>${all.length} Member${all.length===1?'':'s'}</strong><span>${active} active · ${Math.max(0,(prem.seats||0)-active)} seats left${price?` · GH₵ ${Math.round(paid)} this month`:''}</span></div><div class="member-filter">${[['all',`All ${all.length}`],['due',`Due soon ${due}`],['exp',`Ended ${exp}`]].map(([k,l])=>`<button data-mf="${k}" class="${memFilter===k?'on':''}">${l}</button>`).join('')}</div>
+    body=`<div class="member-count"><strong>${all.length} Member${all.length===1?'':'s'}</strong><span>${active} active · ${Math.max(0,(prem.seats||0)-active)} seats left${price?` · $${Math.round(paid)} this month`:''}</span></div><div class="member-filter">${[['all',`All ${all.length}`],['due',`Due soon ${due}`],['exp',`Ended ${exp}`]].map(([k,l])=>`<button data-mf="${k}" class="${memFilter===k?'on':''}">${l}</button>`).join('')}</div>
       <button class="btn-save gold w100" data-bw="add" style="margin-bottom:12px">+ Add member (through the bot)</button><div class="card">${list.length?list.map(m=>{const cls=isExp(m)?'exp':isDue(m)?'due':'ok',op=openMem.has(m.name),dl=daysBetween(t,m.until);
         return `<div class="mem"><button class="memhd" data-tog="${esc(m.name)}"><strong>${esc(m.name)}</strong><span class="tag ${cls}">${cls==='exp'?'Ended':cls==='due'?'Due soon':'Active'}</span><span class="ch">${op?'▴':'▾'}</span></button>${op?`<div class="s">${cls==='exp'?'Ended':'Ends'} ${longDate(m.until)}${dl>=0?` · <span class="${dl>=16?'dl-g':dl>=4?'dl-y':'dl-r'}">${dl} days left</span>`:''}</div><div class="s">${m.months||0} month${m.months===1?'':'s'} paid since ${longDate(m.since)}</div><div class="btn-row"><button class="btn-half" data-bw="renew" data-n="${esc(m.name)}">Renew</button><button class="btn-half" data-bw="remove" data-n="${esc(m.name)}">Remove</button></div>`:''}</div>`;}).join(''):'<p class="empty">No members here.</p>'}</div>
       <p class="muted" style="margin-top:4px">Members are changed only by the bot, so the bot and the app never disagree. The buttons copy the bot word and open your bot: paste and send.</p>`;}
@@ -1628,24 +1630,24 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     const vip=[];for(const m of all)for(const p of m.payments||[]){const mo=Number(p.months)||1;const amt=Number(p.amount)||price*Math.abs(mo);vip.push({d:p.date||m.since,n:m.name,a:Math.abs(amt),mo:Math.abs(mo),ref:p.ref||'',out:!!(p.refund||mo<0||amt<0)});}
     const L=vip.filter(x=>inR(x.d)),M=MONEY.filter(x=>inR(x.d));const rec=L.filter(x=>!x.out).reduce((s,x)=>s+x.a,0),ref=L.filter(x=>x.out).reduce((s,x)=>s+x.a,0);
     const add=M.filter(x=>x.type==='in').reduce((s,x)=>s+x.a,0),out=M.filter(x=>x.type==='out').reduce((s,x)=>s+x.a,0)+ref;const bal=rec+add-out;
-    const row=(ic,n,sub,a,plus)=>`<div class="mi"><span class="ic2">${G[ic]}</span><span class="tt"><b>${esc(n)}</b><small>${esc(sub)}</small></span><span class="am ${plus?'plus':'minus'}">${plus?'+':'−'} GH₵ ${Math.round(a)}</span></div>`;
+    const row=(ic,n,sub,a,plus)=>`<div class="mi"><span class="ic2">${G[ic]}</span><span class="tt"><b>${esc(n)}</b><small>${esc(sub)}</small></span><span class="am ${plus?'plus':'minus'}">${plus?'+':'−'} ${M$(a)}</span></div>`;
     body=`<div class="mrange">${[['month','Month'],['year','Year'],['all','All time']].map(([k,l])=>`<button data-mr="${k}" class="${monRange===k?'on':''}">${l}</button>`).join('')}</div>
-      <div class="balcard"><small>VISION PREMIUM BALANCE</small><b>${bal<0?'−':''}GH₵ ${Math.round(Math.abs(bal))}</b></div>
-      <div class="mboxes">${[['rec','VIP RECEIVED',rec,''],['add','ADDED',add,''],['out','TAKEN OUT',out,'color:#FF453A']].map(([k,l,v,c])=>`<button data-mt="${k}" class="${monTab===k?'on':''}"><small>${l}</small><b style="${c}">GH₵ ${Math.round(v)}</b></button>`).join('')}</div>
+      <div class="balcard"><small>VISION PREMIUM BALANCE</small><b>${bal<0?'−':''}${M$(Math.abs(bal))}</b></div>
+      <div class="mboxes">${[['rec','VIP RECEIVED',rec,''],['add','ADDED',add,''],['out','TAKEN OUT',out,'color:#FF453A']].map(([k,l,v,c])=>`<button data-mt="${k}" class="${monTab===k?'on':''}"><small>${l}</small><b style="${c}">$${Math.round(v)}</b></button>`).join('')}</div>
       <div class="mbtns"><button data-money="in">+ Add money</button><button data-money="out">− Take out money</button></div>
       ${(()=>{let title,total,rows;
         if(monTab==='rec'){title='VIP Received';total=rec;rows=L.filter(x=>!x.out).sort((a,b)=>a.d<b.d?1:-1).map(x=>row('card',x.n,`${shortDate(x.d)} · ${x.mo} month${x.mo>1?'s':''}${x.ref?' · ref '+x.ref:''}`,x.a,true)).join('');}
         else if(monTab==='add'){title='Added';total=add;rows=M.filter(x=>x.type==='in').sort((a,b)=>a.d<b.d?1:-1).map(x=>`<div data-mdel="${x.id}">${row('cash',x.note||'Added',longDate(x.d)+' · tap to remove',x.a,true)}</div>`).join('');}
         else{title='Taken Out';total=out;rows=M.filter(x=>x.type==='out').sort((a,b)=>a.d<b.d?1:-1).map(x=>`<div data-mdel="${x.id}">${row('cashout',x.note||'Taken out',longDate(x.d)+' · tap to remove',x.a,false)}</div>`).join('')+L.filter(x=>x.out).map(x=>row('cashout',x.n+' (refund)',longDate(x.d),x.a,false)).join('');}
         const cnt=(rows.match(/class="mi"/g)||[]).length;
-        return `<div class="card mlist"><div class="hd"><span>${title}</span><span class="muted">GH₵ ${Math.round(total)}</span></div>${rows||'<p class="empty">No transactions in this period.</p>'}${cnt?`<div class="mfoot"><span>${cnt} transaction${cnt>1?'s':''}</span><span>${[['month','This month'],['year','This year'],['all','All time']].find(z=>z[0]===monRange)[1]}</span></div>`:''}</div>`;})()}
+        return `<div class="card mlist"><div class="hd"><span>${title}</span><span class="muted">${M$(total)}</span></div>${rows||'<p class="empty">No transactions in this period.</p>'}${cnt?`<div class="mfoot"><span>${cnt} transaction${cnt>1?'s':''}</span><span>${[['month','This month'],['year','This year'],['all','All time']].find(z=>z[0]===monRange)[1]}</span></div>`:''}</div>`;})()}
       <p class="muted">Payments come from the members the bot keeps. Added and taken out money is kept on this phone (Settings > Data > Save backup keeps it safe).</p>`;}
   el.innerHTML=head+`<div class="elite-tabs">${[['members','Members'],['post','Post'],['money','Money']].map(([k,l])=>`<button data-ev="${k}" class="${eliteView===k?'on':''}">${l}</button>`).join('')}</div>`+body;}
 $('p-elite').addEventListener('click',async e=>{const md=e.target.closest('[data-mdel]');if(md){if(confirm('Remove this entry?')){MONEY=MONEY.filter(x=>String(x.id)!==md.dataset.mdel);saveMoney();renderElite();}return;}const b=e.target.closest('button');if(!b)return;
   if(b.dataset.ev){eliteView=b.dataset.ev;renderElite();return;}
   if(b.dataset.mr){monRange=b.dataset.mr;renderElite();return;}if(b.dataset.mt){monTab=b.dataset.mt;renderElite();return;}if(b.dataset.cardshare){shareCard(b.dataset.cardshare==='premwon'?'premwon':'prem');return;}
-  if(b.dataset.money){const kind=b.dataset.money;editField(kind==='in'?'Add money (GH₵)':'Take out money (GH₵)','',v=>{const a=parseFloat(String(v||'').replace(/[^0-9.]/g,''));if(!a){toast('Type an amount');return;}
-      const note=prompt(kind==='in'?'What is it for? (optional)':'What was it for? (optional)')||'';MONEY.push({id:Date.now(),d:todayKey(),a,type:kind,note:note.trim()});saveMoney();monTab=kind==='in'?'add':'out';renderElite();toast(kind==='in'?`+ GH₵ ${a} added`:`− GH₵ ${a} taken out`);},{type:'number',note:'Kept on this phone.'});return;}if(b.dataset.mf){memFilter=b.dataset.mf;renderElite();return;}
+  if(b.dataset.money){const kind=b.dataset.money;editField(kind==='in'?'Add money ($)':'Take out money ($)','',v=>{const a=parseFloat(String(v||'').replace(/[^0-9.]/g,''));if(!a){toast('Type an amount');return;}
+      const note=prompt(kind==='in'?'What is it for? (optional)':'What was it for? (optional)')||'';MONEY.push({id:Date.now(),d:todayKey(),a,type:kind,note:note.trim()});saveMoney();monTab=kind==='in'?'add':'out';renderElite();toast(kind==='in'?`+ $${a} added`:`− $${a} taken out`);},{type:'number',note:'Kept on this phone.'});return;}if(b.dataset.mf){memFilter=b.dataset.mf;renderElite();return;}
   if(b.dataset.tog){openMem.has(b.dataset.tog)?openMem.delete(b.dataset.tog):openMem.add(b.dataset.tog);renderElite();return;}
   if(b.dataset.bw){botWord(b.dataset.bw,b.dataset.n);return;}
   if(b.dataset.act==='unlock'){const p=($('pin').value||'').trim();if(!p){toast('Type your PIN first');return;}toast('Checking…');const ok=await unlockPremium(false,p);toast(ok?'Unlocked ✓':'Wrong PIN');renderElite();return;}
