@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.48</title>
+<title>Match Vision 3.49</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -946,7 +946,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.48';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.47' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.49';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.47' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
 function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
@@ -1404,7 +1404,7 @@ function renderHome(quiet){const el=$('p-home');el.classList.toggle('noanim',!!q
   el.innerHTML='<div id="askBox"></div>'+summaryBoxes(d)+marksBar()+body;askBox();}
 // 3.29 (Philip, 30 Oct): a pick still waiting after full time -> tap ✓ or ✕ (also in the banker), then ONE button sends
 // every mark to the laptop, so the results, the banker and the posts update at once.
-function unsentMarks(){return Object.entries(MARKS).filter(([k,x])=>x&&!x.sent);}
+function unsentMarks(){const t=todayKey();return Object.entries(MARKS).filter(([k,x])=>x&&!x.sent&&String(k).split('|')[0]>=t);}   // 3.49 (Philip): a new day clears old marks from Home
 function marksBar(){const u=unsentMarks();return u.length?`<div class="card tint"><div class="ct">${u.length} result(s) you marked</div><div class="cs">Send them to the laptop: results, banker and posts update at once.</div><button class="btn-save w100" data-sendmarks="1">📤 Send my marks to the laptop</button></div>`:'';}
 function sendAllMarks(){const by={};for(const [k,x] of unsentMarks()){const [dt,ni]=k.split('|');by[dt]=by[dt]||{w:[],l:[],auto:[]};(x.v==='w'?by[dt].w:x.v==='l'?by[dt].l:by[dt].auto).push(ni);x.sent=true;if(!x.v)delete MARKS[k];}
   saveMarks();const lines=[];for(const [dt,ws] of Object.entries(by)){if(ws.w.length)lines.push(`won ${dt} ${ws.w.join(' ')}`);if(ws.l.length)lines.push(`lost ${dt} ${ws.l.join(' ')}`);if(ws.auto.length)lines.push(`auto ${dt} ${ws.auto.join(' ')}`);}
@@ -1607,7 +1607,8 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
   if(!feed||!feed.premium_lock){el.innerHTML=head+`<div class="card goldb"><div class="ct goldc">Not in the app yet</div><div class="cs" style="margin:0">On the laptop: Connect > "4. Connect the app (GitHub)" > type a PIN in the Vision Premium PIN box > Save and test. Then Settings > Update now here.</div></div>`;return;}
   if(!prem){el.innerHTML=head+`<div class="card goldb"><div class="ct goldc">Locked</div><div class="cs">Type the PIN you typed in Connect > App on the laptop. This phone remembers it.</div><input type="text" id="pin" autocomplete="off" autocapitalize="characters" spellcheck="false" style="-webkit-text-security:disc" placeholder="Your PIN"><div class="btn-row"><button class="btn-save gold" data-act="unlock">Unlock</button></div>${premErr?`<p class="muted" style="color:var(--acc);margin-top:8px">${esc(premErr)}</p>`:''}</div>`;return;}
   const t=todayKey(),price=Number(prem.price_usd)||parseFloat(String(prem.price||'').replace(/[^0-9.]/g,''))||0,FXR=Number(prem.usd_ghs)||0;   // 3.47: the VIP price is in $; cedis at today's rate
-  const M$=a=>`$${(Math.round(a*100)/100).toLocaleString()}`;   // 3.48 (Philip): real dollars only, no cedi lineconst all=(prem.members||[]).slice().sort((a,b)=>(a.until||'')<(b.until||'')?-1:1);
+  const M$=a=>`$${(Math.round(a*100)/100).toLocaleString()}`;   // 3.48 (Philip): real dollars only, no cedi line
+  const all=(prem.members||[]).slice().sort((a,b)=>(a.until||'')<(b.until||'')?-1:1);
   const isExp=m=>m.until<t,isDue=m=>m.until>=t&&m.until<=addDays(t,7);const active=all.filter(m=>!isExp(m)).length,due=all.filter(isDue).length,exp=all.filter(isExp).length;let body='';
   if(eliteView==='post'){const ds=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=ds.filter(x=>x.date>=t).sort((a,b)=>a.date<b.date?-1:1)[0]||ds[0];
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
