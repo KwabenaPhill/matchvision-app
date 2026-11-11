@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.51</title>
+<title>Match Vision 3.52</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -916,6 +916,13 @@ html,body{max-width:100%;overflow-x:hidden}
 .dots{max-height:none!important}
 .dots i{width:8px!important;height:8px!important}
 .tchip{display:inline-block;font-size:10px;font-weight:700;padding:1px 6px;border-radius:99px;margin-left:auto;flex:none;vertical-align:middle;white-space:nowrap;line-height:1.5}.drow .tchip{float:right;margin-left:6px}.t-late{background:#FF453A;color:#fff}.t-soon{background:#FFD60A;color:#000}.t-wait{background:#2C2C2E;color:#EBEBF5;border:1px solid #48484A}.t-done{background:rgba(48,209,88,.18);color:#30D158}
+/* 3.52 (C4, Philip 11 Nov): nothing runs past its box or the screen at phone size */
+.mboxes{grid-template-columns:repeat(3,minmax(0,1fr))!important}.mboxes button,.mboxes div{min-width:0;overflow:hidden}
+.mboxes button b,.mboxes div b{font-size:clamp(12px,4.2vw,17px)!important;overflow:hidden;text-overflow:ellipsis}
+.mboxes button small,.mboxes div small{font-size:clamp(8.5px,2.6vw,10.5px)!important;overflow:hidden;text-overflow:ellipsis}
+.summary-grid>*,.sbox,.card,.game,.gm,.hrow{min-width:0}.gm b,.gm small{overflow-wrap:anywhere}
+html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
+.vdays button.today{color:#06140A!important;background:var(--acc)!important;border-color:var(--acc)!important}
 </style>
 </head>
 <body>
@@ -946,7 +953,7 @@ html,body{max-width:100%;overflow-x:hidden}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.51';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.51' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.52';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.52' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1328,10 +1335,11 @@ function resultsView(d){if(!d)return `<div class="card"><p class="empty">No resu
   for(const m of ms){const L=liveOf(m,d);const st=(m.picks||[]).slice(0,3).map((p,i)=>pickState(p,i,m,d,L));(st.some(x=>x==='l')?lost:won).push(m);}
   const csOf=m=>{const L=liveOf(m,d);return !!(m.score&&L&&L.gh!=null&&m.score===`${L.gh}-${L.ga}`);};won.sort((a,b)=>csOf(b)-csOf(a));
   const bk2=bankerState(d);if(d.banker&&d.banker.games&&bk2&&SET.bankerInResults!==false)h+=bankerBlock(d,bk2);
-  if(won.length)h+=`<div class="secbar"><span>✅ WON</span><b>${won.length}</b></div>`+won.map(m=>csOf(m)?`<div class="cswin"><div class="csh">🎯 CORRECT SCORE WIN · BIG WIN</div>${matchCard(m,d)}<button class="btn-save w100 csbtn" data-winshare2="${m.n}" data-dk="${d.date}">↗ Share this correct score win</button></div>`:matchCard(m,d)+(SET.winInResults!==false?winTicket(m,d):'')).join('');
-  if(lost.length)h+=`<div class="secbar lost"><span>✘ LOST</span><b>${lost.length}</b></div>`+lost.map(m=>matchCard(m,d)).join('');
+  const td0=premDay(d),pdone=td0&&premDone(td0),plost=pdone&&(td0.picks||[]).some(g=>premWon(g,d)===false);   // 3.52 (C1)
+  if(won.length||(pdone&&!plost))h+=`<div class="secbar"><span>✅ WON</span><b>${won.length}</b></div>`+(pdone&&!plost?premBlock(td0,true):'')+won.map(m=>csOf(m)?`<div class="cswin"><div class="csh">🎯 CORRECT SCORE WIN · BIG WIN</div>${matchCard(m,d)}<button class="btn-save w100 csbtn" data-winshare2="${m.n}" data-dk="${d.date}">↗ Share this correct score win</button></div>`:matchCard(m,d)+(SET.winInResults!==false?winTicket(m,d):'')).join('');
+  if(lost.length||plost)h+=`<div class="secbar lost"><span>✘ LOST</span><b>${lost.length}</b></div>`+(plost?`<div class="secbar lost" style="margin-top:6px"><span>👑 VIP LOST</span><b></b></div>`+premBlock(td0,true):'')+lost.map(m=>matchCard(m,d)).join('');
   // 3.7.1: the Vision Premium slip goes to Results (pinned at the top) only when ALL its games are done
-  const td=premDay(d);if(td&&premDone(td)){const lostP=(td.picks||[]).some(g=>premWon(g,d)===false);h=lostP?h+`<div class="secbar lost"><span>👑 VIP LOST</span><b></b></div>`+premBlock(td,true):premBlock(td,true)+h;}   // 3.10.2: won = top, lost = bottom
+  // 3.52 (C1, Philip 11 Nov): VIP Won = top of WON, VIP Lost = top of LOST (above)
   return h;}
 function premDay(d){if(!prem||SET.premPin===false)return null;return (prem.days||[]).find(x=>x.date===d.date)||null;}
 function premDone(td){const dd=dayOf(td.date);return (td.picks||[]).length>0&&(td.picks||[]).every(g=>{const m=findM(dd,g);return premWon(g,dd)!=null||(m&&mState(m,dd)==='fin');});}
@@ -1446,7 +1454,10 @@ const mbx=(p,raw)=>fetch(`https://api.github.com/repos/${MBX}/contents/${p}`,{ca
 const ASKC={done:{}};
 async function askBox(){const el=$('askBox');if(!el||!mbxKey())return;
   try{const r=await mbx('mvapp/ask/index.json',true);if(!r.ok){el.innerHTML='';return;}const ix=await r.json();let html='';
-    for(const p of (ix.items||[])){const q=await (await mbx(p,true)).json().catch(()=>null);if(!q||q.state!=='waiting'||ASKC.done[q.date]||q.deadline*1000<Date.now())continue;
+    for(const p of (ix.items||[])){const q=await (await mbx(p,true)).json().catch(()=>null);
+      if(q&&q.kind==='result_ask'){if(q.state!=='waiting'||ASKC.done[p])continue;   // 3.52 (R9): a result no source found
+        html+=`<div class="card tint"><div class="ct">❓ Result not found: ${String(q.match||'').replace(/</g,'&lt;')}</div><div class="cs">No source has the score 3 hours after kick-off. Tap Won or Lost for each pick: it goes to the laptop at once.</div>${(q.picks||[]).map((x,i)=>`<div class="mkrow"><div class="mkt"><span class="pnum">${i+1}</span><span><b>${String(x).replace(/</g,'&lt;')}</b></span></div><div style="display:flex;gap:6px"><button class="btn-half" data-raskp="${q.answer_path}" data-rans="won ${i+1}">✅ Won</button><button class="btn-half" data-raskp="${q.answer_path}" data-rans="lost ${i+1}">❌ Lost</button></div></div>`).join('')}</div>`;continue;}
+      if(!q||q.state!=='waiting'||ASKC.done[q.date]||!(q.deadline*1000>=Date.now()))continue;
       let src='';try{const b=await (await mbx(q.picture,true)).blob();src=URL.createObjectURL(b);}catch(e){}
       const mins=Math.max(0,Math.round((q.deadline*1000-Date.now())/60000));
       html+=`<div class="card tint"><div class="ct">✅ ${q.title||'Top Picks Won'}: post it on the channel?</div>${src?`<img src="${src}" alt="" style="width:100%;border-radius:12px;margin:8px 0">`:''}<div class="cs" style="white-space:pre-wrap">${(q.caption||'').replace(/</g,'&lt;')}</div><div class="cs">No answer in ${mins} min = Send.</div><div style="display:flex;gap:8px"><button class="btn-save" style="flex:1" data-askans="send" data-askp="${q.answer_path}" data-askd="${q.date}">✅ Send</button><button class="btn-save" style="flex:1;background:#2a2a2e;color:#fff" data-askans="skip" data-askp="${q.answer_path}" data-askd="${q.date}">Skip</button></div></div>`;}
@@ -1458,6 +1469,14 @@ async function askAnswer(path,date,ans){try{const url=`https://api.github.com/re
     ASKC.done[date]=1;toast(ans==='send'?'Sent: the laptop posts it within a minute.':'Skipped: no post.',3500);const el=$('askBox');if(el)el.innerHTML='';}
   catch(e){toast('Not sent ('+e.message+'). Use the buttons in Telegram.',4500);}}
 document.addEventListener('click',e=>{const st=e.target.closest('[data-stake]');if(!st)return;const v=prompt('My stake per pick (1 = units). Example: 10 for GHS 10 a pick.',String(SET.stake||1));if(v==null)return;const n=Number(String(v).replace(',','.'));if(!(n>0)){toast('Type a number, like 10');return;}SET.stake=n;saveSet();refresh(true);toast('Stake per pick: '+n);},true);
+async function raskAnswer(path,ans,btn){try{const url=`https://api.github.com/repos/${MBX}/contents/${path}`;const h={Authorization:'Bearer '+mbxKey(),Accept:'application/vnd.github+json','Content-Type':'application/json'};
+    let sha,prev=[];const g=await fetch(url,{cache:'no-store',headers:h});if(g.ok){const j=await g.json();sha=j.sha;try{prev=JSON.parse(atob(j.content.replace(/\n/g,''))).answers||[];}catch(e){}}
+    const n=ans.split(' ')[1];prev=prev.filter(a=>a.split(' ')[1]!==n).concat([ans]);
+    const body={message:'Match Vision app: result '+ans,content:btoa(JSON.stringify({answers:prev,at:Date.now()}))};if(sha)body.sha=sha;
+    const r=await fetch(url,{method:'PUT',headers:h,body:JSON.stringify(body)});if(!r.ok)throw new Error('GitHub '+r.status);
+    if(btn){btn.parentElement.innerHTML=`<b>${ans.startsWith('won')?'✅ Won':'❌ Lost'} ✓</b>`;}toast('Sent: the laptop uses it within a minute.',3000);}
+  catch(e){toast('Not sent ('+e.message+'). Use the buttons in Telegram.',4500);}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-raskp]');if(!b)return;e.stopPropagation();raskAnswer(b.dataset.raskp,b.dataset.rans,b);},true);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-askans]');if(!b)return;e.stopPropagation();askAnswer(b.dataset.askp,b.dataset.askd,b.dataset.askans);},true);
 const PMC={};
 async function premiumBox(k){const el=$('pmBox');if(!el)return;if(!mbxKey()){el.innerHTML='';return;}
@@ -1483,7 +1502,7 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
   const PL={safe:0,all:0,top:0,bank:0,prem:0};for(const d of ds){const p=dayPL(d);PL.safe+=p.safe;PL.all+=p.all;PL.top+=p.top;PL.bank+=p.bank;}if(prem)for(const x of (prem.days||[]).filter(x=>inRange(x.date)&&x.date<=t))PL.prem+=premPL(x);
   const groups=[];for(const d of days().filter(x=>x.date<=t).sort((a,b)=>a.date<b.date?1:-1)){const w=weekStart(d.date);let g=groups.find(x=>x.w===w);if(!g){g={w,ds:[]};groups.push(g);}g.ds.push(d);}const tw=weekStart(t);
   const wr=Object.entries(feed.win_rate||{}).filter(([k,v])=>v.of>0).sort((a,b)=>b[1].of-a[1].of);
-  let premTop='';if(false){const pd=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=pd.find(x=>x.date===t&&premDone(x))||pd.find(x=>x.date<t);if(td)premTop=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium results · live</span></div>`+premPicture(td)+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
+  let premTop='';if(false){const pd=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=pd.find(x=>x.date===t&&premDone(x))||pd.find(x=>x.date<t);if(td)premTop=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium results · live</span></div>`+premPicture(td)+(premDone(td)&&(td.picks||[]).every(g=>(g.won!=null?g.won:premWon(g,dayOf(td.date)))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
   el.innerHTML=premTop+`<div class="sechd rec-head"><span class="sect" style="margin:0">Win rate</span><div class="seg2 rec-range">${[['week','This week'],['month','Month'],['all','All time']].map(([k,l])=>`<button data-rr="${k}" class="${recRange===k?'on':''}">${l}</button>`).join('')}</div></div>
   <div class="summary-grid">${box('Safest',pct(sw,sn),`${sw} of ${sn}`,0,PL.safe)}${box('All picks',pct(aw,an),`<span class="mvw">${aw} won</span> · <span class="mvl">${an-aw} lost</span>`,1,PL.all)}${box('Banker',bn?`${bw}/${bn}`:'-',bn?'won':'no banker',2,bn?PL.bank:null)}</div>
   ${(()=>{let tw2=0,tn2=0,dw=0,dn=0;for(const d of ds){const tp=d.top_picks||[];if(!tp.length)continue;let w=0,dec=0;   // 3.39 (Philip): Top picks in Records
@@ -1536,7 +1555,7 @@ function mvCard(m,d,total,mini){const L=liveOf(m,d);const live=L&&['LIVE','HT'].
     <div class="pks">${(m.picks||[]).slice(0,3).map((p,i)=>{const s=pickState(p,i,m,d,L);return `<div class="pk"><span class="nb">${i+1}</span><span class="tx"><small>${esc(m.labels&&m.labels[i]||marketOf(p,i))}</small><b>${esc(shortPick(p.text))}</b></span>${SET.showOdds&&p.odds?`<span class="po">${Number(p.odds).toFixed(2)}</span>`:''}<span class="ck ${s||'wait'}">${s==='w'?'✓':s==='l'?'✕':s==='up'?'↑':s==='dn'?'↓':'•'}</span></div>`;}).join('')}</div></div>`;}
 function renderVideo(){const el=$('p-video');if(!feed){el.innerHTML='<div class="card"><p class="empty">No videos yet.</p></div>';return;}
   const all=days().slice().sort((a,b)=>a.date<b.date?-1:1);if(!vday||!dayOf(vday)){const td=todayDay();vday=td?td.date:(all[0]||{}).date;}const d=dayOf(vday);
-  const chips=`<div class="vdays">${all.map(x=>`<button data-vd="${x.date}" class="${x.date===vday?'on':''}">${shortDate(x.date).slice(0,3)}<small>${dateOf(x.date).getDate()} ${MONTHS[dateOf(x.date).getMonth()].slice(0,3)}</small></button>`).join('')}</div>`;
+  const chips=`<div class="vdays">${all.map(x=>`<button data-vd="${x.date}" class="${x.date===vday?'on':''}${x.date===todayKey()?' today':''}">${shortDate(x.date).slice(0,3)}<small>${dateOf(x.date).getDate()} ${MONTHS[dateOf(x.date).getMonth()].slice(0,3)}</small></button>`).join('')}</div>`;
   if(!d){el.innerHTML=chips+'<div class="card"><p class="empty">No video for this day.</p></div>';return;}
   const link=typeof d.video_link==='string'?d.video_link.trim():'';const id=ytId(link);const vp=(d.posts||[]).find(x=>x.group==='video');const shorts=(d.posts||[]).filter(x=>x.group==='shorts');
   const thumb=vp&&(vp.images||[])[0]?media(vp.images[0]):id?`https://img.youtube.com/vi/${id}/hqdefault.jpg`:'';
@@ -1546,7 +1565,7 @@ function renderVideo(){const el=$('p-video');if(!feed){el.innerHTML='<div class=
   if(shorts.length)h+=`<div class="sect">Shorts</div><div class="shrow">${shorts.map(s=>`<button class="shc" data-open="${esc(s.id)}" data-dk="${d.date}" style="text-align:left">${(s.images||[])[0]?`<img src="${esc(media(s.images[0]))}" alt="" loading="lazy">`:'<div class="vthumb sh" style="width:100%"></div>'}<b>${esc(s.title)}</b><small>${isDone(d,s)?'Sent ✓':'Tap to post'}</small></button>`).join('')}</div><div style="height:12px"></div>`;
   if(SET.vidCards&&(d.matches||[]).length){const n=d.matches.length;h+=`<div class="sect">Match cards · like the video</div>`+d.matches.slice().sort((a,b)=>a.n-b.n).map(m=>mvCard(m,d,n)).join('');}
   else if((d.matches||[]).length)h+=`<p class="muted" style="text-align:center;margin-top:6px">Every match card is in Home > Matches (tap its small picture).</p>`;
-  el.innerHTML=h;}
+  el.innerHTML=h;try{const s=el.querySelector('.vdays'),b=s&&(s.querySelector('button.today')||s.querySelector('button.on'));if(b)s.scrollLeft=b.offsetLeft-(s.clientWidth-b.offsetWidth)/2;}catch(e){}}
 $('p-video').addEventListener('click',async e=>{const b=e.target.closest('button,[data-m]');if(!b)return;
   if(b.dataset.vd){vday=b.dataset.vd;renderVideo();return;}
   if(b.dataset.open){const d=dayOf(b.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===b.dataset.open);if(it)openPostSheet(d,it);return;}
@@ -1623,11 +1642,11 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
   if(eliteView==='post'){const ds=(prem.days||[]).slice().sort((a,b)=>a.date<b.date?1:-1);const td=ds.filter(x=>x.date>=t).sort((a,b)=>a.date<b.date?-1:1)[0]||ds[0];
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
-    if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+((td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
-    if(td&&SET.premList===true){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
+    if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+(premDone(td)&&(td.picks||[]).every(g=>(g.won!=null?g.won:premWon(g,dayOf(td.date)))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
+    if(td&&SET.premList!==false){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
         if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
         return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
-    else body+='<div class="card"><p class="empty">No Vision Premium picks yet.</p></div>';
+    else if(!td)body+='<div class="card"><p class="empty">No Vision Premium picks yet.</p></div>';
     body+=`<div class="sect">Posts for the room</div><div class="card vip-post-card"><div class="memhd"><strong>Join post</strong></div><div class="cs" style="margin:0 0 10px">"Vision Premium is open", with your MoMo details from Settings on the laptop.</div><button class="btn-save gold w100" data-bw="join post">Get it from the bot</button></div>
       <div class="card vip-post-card"><div class="memhd"><strong>Refund terms</strong></div><div class="cs" style="margin:0 0 10px">Post and pin before anyone pays.</div><button class="btn-save gold w100" data-bw="refund terms">Get it from the bot</button></div>
       <div class="card vip-post-card"><div class="memhd"><strong>Members list</strong></div><div class="cs" style="margin:0 0 10px">Everyone and when it ends, from the bot.</div><button class="btn-half w100" data-bw="members">Ask the bot</button></div>`;
