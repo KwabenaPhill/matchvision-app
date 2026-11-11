@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.53</title>
+<title>Match Vision 3.54</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.53';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.53' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.54';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.53' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1643,9 +1643,8 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     let w=0,n=0,w7=0,n7=0;for(const x of ds){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;n++;if(r)w++;if(x.date>addDays(t,-7)){n7++;if(r)w7++;}}}
     body=`<div class="summary-grid"><div class="sbox"><div class="bl">Record</div><div class="big goldc">${pct(w,n)}</div><div class="sm2">${w} of ${n}</div></div><div class="sbox"><div class="bl">7 days</div><div class="big">${pct(w7,n7)}</div><div class="sm2">${w7} of ${n7}</div></div><div class="sbox"><div class="bl">Status</div><div class="big" style="font-size:20px">${prem.on?'ON':'OFF'}</div><div class="sm2">${esc(prem.price||'')}</div></div></div>`;
     if(td)body+=premPicture(td)+`<button class="btn-save gold w100" data-cardshare="prem" style="margin:-2px 0 8px">Share this picture (any app)</button>`+(premDone(td)&&(td.picks||[]).every(g=>(g.won!=null?g.won:premWon(g,dayOf(td.date)))===true)?`<button class="btn-save w100" data-cardshare="premwon" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:8px"></div>');
-    if(td&&SET.premList!==false){let tot=1;body+=`<div class="card goldb"><div class="ct goldc">${td.date===t?"Today's picks":longDate(td.date)}</div>`+(td.picks||[]).map(g=>{const d=dayOf(td.date);const m=findM(d,g);let s=g.won===true?'w':g.won===false?'l':null,L=null;
-        if(!s&&m){const i=(m.picks||[]).findIndex(p=>p.text===g.text);L=liveOf(m,d);s=i<0?null:pickState(m.picks[i],i,m,d,L);}if(g.odds)tot*=g.odds;
-        return `<div class="game pkr"><div class="tm2">${crestHTML(m&&m.hc,g.home)}${crestHTML(m&&m.ac,g.away)}</div><div class="gm"><b>${legMark(s)} ${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${L&&L.gh!=null?` · ${L.st==='FT'?'FT':L.st==='HT'?'HT':'LIVE'} ${L.gh}-${L.ga}`:g.kickoff?' · '+esc(g.kickoff):''}</small></div>${g.odds?`<span class="od">${Number(g.odds).toFixed(2)}</span>`:''}</div>`;}).join('')+`${tot>1?`<div class="statrow"><span>Combined odds</span><b class="goldc">${tot.toFixed(2)}</b></div>`:''}</div>`;}
+    // 3.54 (Philip 11 Nov): Today's picks on the Premium tab follow LIVE, the same rows as the Matches side (score, minute, tick)
+    if(td&&SET.premList!==false){const dd=dayOf(td.date);let tot=1,w=0,l=0;const n=(td.picks||[]).length;const rows=(td.picks||[]).map(g=>{const m=dd?findM(dd,g):null;if(g.odds)tot*=g.odds;const s=dd?premState(g,dd):(g.won===true?'w':g.won===false?'l':null);if(s==='w')w++;if(s==='l')l++;return dd&&m?pinRow(dd,m,g.text,g.odds,s):`<div class="bkr one"><span class="t"><b>${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${g.kickoff?' · '+esc(g.kickoff):''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}).join('');const st=l?'l':(n&&w===n?'w':null);body+=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 ${td.date===t?"Today's picks · live":longDate(td.date)}</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">👑 VISION PREMIUM ${tot.toFixed(2)}</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${n} WON</span></div>${rows}</div>`;}
     else if(!td)body+='<div class="card"><p class="empty">No Vision Premium picks yet.</p></div>';
     // 3.53 (C2): join post, refund terms and members list moved to the Members side
     body+=`<div class="sect">Earlier days</div><div class="card" style="padding:4px 16px">${ds.filter(x=>x!==td).slice(0,14).map(x=>{const ww=(x.picks||[]).filter(g=>g.won===true).length,ll=(x.picks||[]).filter(g=>g.won===false).length;return `<div class="hrow"><div class="a">${longDate(x.date)}<span>${ww+ll?`${ww}/${ww+ll} won`:'waiting'}</span></div></div>`;}).join('')||'<p class="empty">Nothing yet.</p>'}</div>`;}
