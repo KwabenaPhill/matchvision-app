@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.54</title>
+<title>Match Vision 3.55</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.54';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.54' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.55';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.55' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1030,7 +1030,8 @@ function espnFix(ev){try{const c=ev.competitions[0];const h=c.competitors.find(x
   const s=(c.status||ev.status),t=s.type||{},nm=String(t.name||'');let st=t.state==='pre'?'NS':t.state==='in'?(/HALF_?TIME/i.test(nm)?'HT':'LIVE'):'FT';
   if(/POSTPONED|DELAYED/i.test(nm))st='PST';if(/CANCEL|ABANDON|FORFEIT|SUSPEND/i.test(nm))st='CANC';
   const g=v=>{const n=parseInt(v,10);return isNaN(n)?null:n;};const fh=x=>x.linescores&&x.linescores[0]&&x.linescores[0].value!=null?g(x.linescores[0].value):null;const no=['NS','PST','CANC'].includes(st);
-  return {id:String(ev.id),home:h.team.displayName,away:a.team.displayName,st,min:st==='LIVE'?(parseInt(s.displayClock,10)||null):null,gh:no?null:g(h.score),ga:no?null:g(a.score),hh:fh(h),ha:fh(a),at:new Date().toISOString(),src:'phone'};}catch(e){return null;}}
+  const et=/AET|PEN|EXTRA|SHOOTOUT/i.test(nm)||[h,a].some(x=>(x.linescores||[]).length>2);const n90=x=>{const L=(x.linescores||[]).slice(0,2).map(y=>y&&y.value!=null?g(y.value):null);return L.length===2&&L[0]!=null&&L[1]!=null?L[0]+L[1]:null;};/* 3.55: bets are settled on 90 minutes */
+  return {id:String(ev.id),home:h.team.displayName,away:a.team.displayName,st,min:st==='LIVE'?(parseInt(s.displayClock,10)||null):null,gh:no?null:(et?n90(h):g(h.score)),ga:no?null:(et?n90(a):g(a.score)),hh:fh(h),ha:fh(a),at:new Date().toISOString(),src:'phone'};}catch(e){return null;}}
 async function espnDay(k){const r=await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard?dates=${k.replace(/-/g,'')}&limit=1000`,{cache:'no-store'});if(!r.ok)throw new Error(r.status);const j=await r.json();return (j.events||[]).map(espnFix).filter(Boolean);}
 const STOP=new Set(['fc','cf','afc','sc','ac','as','club','de','the','cd','sd','ss','us','fk','sk','bk','if','ssc','calcio','football','sporting','al','el','la','le','1']);
 const ALIAS={cologne:'koln',internazionale:'inter','paris saint germain':'psg','paris sg':'psg','bayern munchen':'bayern munich','stade brestois 29':'brest','stade brestois':'brest'};
@@ -1227,7 +1228,7 @@ function timeState(d,it){const at=itAt(d,it);if(!at)return null;if(isDone(d,it))
 function timeChip(d,it){const at=itAt(d,it);if(!at)return '';const s=timeState(d,it);const lab=s==='done'?'✓ '+timeLabel(at):timeLabel(at);return `<span class="tchip t-${s}" data-at="${at}" data-dk="${d.date}" data-iid="${esc(it.id)}">${esc(lab)}</span>`;}
 setInterval(()=>{document.querySelectorAll('.tchip').forEach(el=>{const d=dayOf(el.dataset.dk);const it=d&&(d.posts||[]).find(x=>x.id===el.dataset.iid);if(!it)return;const tmp=document.createElement('div');tmp.innerHTML=timeChip(d,it);const c=tmp.firstChild;if(c){el.className=c.className;el.textContent=c.textContent;}});},30000);
 const kindOf=it=>/^short/.test(it.id)?'shorts':/^win/.test(it.id)?'results':it.id;
-const KINDS=[['games',"Today's games"],['picks','Top picks'],['banker','Banker'],['video','Video post'],['swipe','Swipe post'],['shorts','Shorts'],['results','Results']];
+const KINDS=[['games',"Today's games"],['picks','Singles of the day'],['banker','Banker'],['video','Video post'],['swipe','Swipe post'],['shorts','Shorts'],['results','Results']];
 function appsOf(it){const allow=it.apps||GROUP_APPS[it.group]||APPS;const off=SET.postOff||{};const k=kindOf(it);return APPS.filter(p=>allow.includes(p)&&SET.apps[p]&&!off[k+':'+p]&&it.texts&&(it.texts[p]||(p==='yt'&&it.group==='results'&&(it.texts.tg||it.texts.wa)))&&!(p==='tg'&&it.auto&&it.auto.tg));}
 const postedOf=(d,id)=>((POSTED[d.date]||{})[id])||{};
 function isDone(d,it){const p=postedOf(d,it.id);const need=appsOf(it);return need.length>0&&need.every(x=>p[x]);}
@@ -1362,7 +1363,7 @@ function pickStateOf(d,m,text){if(!m)return null;const i=(m.picks||[]).findIndex
 function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false||!tpOn())return '';let tot=1,w=0,l=0;
   const rows=tp.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=pickStateOf(d,m,g.text);if(s==='w')w++;if(s==='l')l++;return pinRow(d,m,g.text,g.odds,s);}).join('');
   const st=l?'l':(w===tp.length?'w':null);
-  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Top picks · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">TOP PICKS ${tot.toFixed(2)}</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${tp.length} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
+  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Singles of the day · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">SINGLES OF THE DAY</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${tp.length} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
 function premLive(td){const d=dayOf(td.date);if(!d)return '';let w=0;
   const rows=(td.picks||[]).map(g=>{const m=findM(d,g);const s=premState(g,d);if(s==='w')w++;return pinRow(d,m,g.text,g.odds,s);}).join('');
   return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium · pinned</span></div><div class="bkcard"><div class="bkh col"><b style="white-space:nowrap">👑 VISION PREMIUM ${((td.picks||[]).reduce((a,g)=>a*(g.odds||1),1)).toFixed(2)}</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
@@ -1381,7 +1382,7 @@ function reminders(d){const out=[],t=todayKey();
   if(prem&&SET.premMembers)for(const m of prem.members||[]){const x=m.until;if(!x)continue;const dl=daysBetween(t,x);if(dl<0&&dl>-15)rems(out,'👑',`${m.name}'s Vision Premium ended ${shortDate(x)}. The bot asks "Remove?"`);else if(dl>=0&&dl<=3)rems(out,'👑',`${m.name} ends ${dl===0?'today':dl===1?'tomorrow':`in ${dl} days`}`);}
   for(const x of days()){if(x.date<addDays(t,-1)||x.date>addDays(t,1))continue;if(x.date>=t&&!x.video_link)out.push(['🎬',`${shortDate(x.date)}: share the YouTube video to the bot (YouTube app > Share > Telegram > Match Vision bot)`]);
     const ck=x.checklist||{};if(x.date<=t&&ck.YouTube===false&&!x.video_link)out.push(['▶️',`${shortDate(x.date)}: YouTube video not marked as uploaded yet`]);}
-  const sc=feed&&feed.schedule;if(sc){const now=fmtT(new Date());const L=[['picks','📌','Top picks go on the channel'],['games','⚽','Today\'s games go on the channel'],['tomorrow','🌙','Tomorrow\'s games go on the channel'],['upload','⏰','Upload the long video and Short 1 (the biggest teams)'],['results','📊','Results are checked']];
+  const sc=feed&&feed.schedule;if(sc){const now=fmtT(new Date());const L=[['picks','📌','Singles of the day go on the channel'],['games','⚽','Today\'s games go on the channel'],['tomorrow','🌙','Tomorrow\'s games go on the channel'],['upload','⏰','Upload the long video and Short 1 (the biggest teams)'],['results','📊','Results are checked']];
     for(const [k,ic,w] of L){const tt=sc[k];if(tt&&tt>now)out.push([ic,`${tt} · ${w}`]);}}
   if(source==='saved')out.push(['📶','Offline: showing the last picks saved on this phone']);
   else if(feed&&feed.updated){const age=(Date.now()-new Date(feed.updated))/36e5;if(age>30)out.push(['💻',`The laptop last sent news ${Math.round(age)} hours ago. Is it on, with the bot running?`]);}
@@ -1460,7 +1461,7 @@ async function askBox(){const el=$('askBox');if(!el||!mbxKey())return;
       if(!q||q.state!=='waiting'||ASKC.done[q.date]||!(q.deadline*1000>=Date.now()))continue;
       let src='';try{const b=await (await mbx(q.picture,true)).blob();src=URL.createObjectURL(b);}catch(e){}
       const mins=Math.max(0,Math.round((q.deadline*1000-Date.now())/60000));
-      html+=`<div class="card tint"><div class="ct">✅ ${q.title||'Top Picks Won'}: post it on the channel?</div>${src?`<img src="${src}" alt="" style="width:100%;border-radius:12px;margin:8px 0">`:''}<div class="cs" style="white-space:pre-wrap">${(q.caption||'').replace(/</g,'&lt;')}</div><div class="cs">No answer in ${mins} min = Send.</div><div style="display:flex;gap:8px"><button class="btn-save" style="flex:1" data-askans="send" data-askp="${q.answer_path}" data-askd="${q.date}">✅ Send</button><button class="btn-save" style="flex:1;background:#2a2a2e;color:#fff" data-askans="skip" data-askp="${q.answer_path}" data-askd="${q.date}">Skip</button></div></div>`;}
+      html+=`<div class="card tint"><div class="ct">✅ ${q.title||'Singles Of The Day'}: post it on the channel?</div>${src?`<img src="${src}" alt="" style="width:100%;border-radius:12px;margin:8px 0">`:''}<div class="cs" style="white-space:pre-wrap">${(q.caption||'').replace(/</g,'&lt;')}</div><div class="cs">No answer in ${mins} min = Send.</div><div style="display:flex;gap:8px"><button class="btn-save" style="flex:1" data-askans="send" data-askp="${q.answer_path}" data-askd="${q.date}">✅ Send</button><button class="btn-save" style="flex:1;background:#2a2a2e;color:#fff" data-askans="skip" data-askp="${q.answer_path}" data-askd="${q.date}">Skip</button></div></div>`;}
     el.innerHTML=html;}catch(e){el.innerHTML='';}}
 async function askAnswer(path,date,ans){try{const url=`https://api.github.com/repos/${MBX}/contents/${path}`;const h={Authorization:'Bearer '+mbxKey(),Accept:'application/vnd.github+json','Content-Type':'application/json'};
     let sha;const g=await fetch(url,{cache:'no-store',headers:h});if(g.ok){sha=(await g.json()).sha;}
@@ -1509,7 +1510,7 @@ function renderHistory(){const el=$('p-history');if(!feed){el.innerHTML='<div cl
       for(const g of tp){const m=(d.matches||[]).find(x=>x.n===g.n);const s=pickStateOf(d,m,g.text);if(s==='w'){w++;dec++;}else if(s==='l')dec++;}
       tw2+=w;tn2+=dec;if(dec===tp.length){dn++;if(w===tp.length)dw++;}}
     let pw=0,pn=0;if(prem)for(const x of (prem.days||[]).filter(x=>inRange(x.date)&&x.date<=t)){const dx=dayOf(x.date);for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;pn++;if(r)pw++;}}
-    return `<div class="summary-grid g2" style="margin-top:8px;grid-template-columns:repeat(2,minmax(0,1fr))!important">${tpOn()?box('Top picks',pct(tw2,tn2),`${tw2} of ${tn2}`,3,PL.top):''}${box('Vision Premium',prem?pct(pw,pn):'🔒',prem?`${pw} of ${pn}`:'PIN',5,prem?PL.prem:null)}</div>`;})()}
+    return `<div class="summary-grid g2" style="margin-top:8px;grid-template-columns:repeat(2,minmax(0,1fr))!important">${tpOn()?box('Singles',pct(tw2,tn2),`${tw2} of ${tn2}`,3,PL.top):''}${box('Vision Premium',prem?pct(pw,pn):'🔒',prem?`${pw} of ${pn}`:'PIN',5,prem?PL.prem:null)}</div>`;})()}
   ${(()=>{const tot=PL.all+PL.bank+PL.prem;return `<div class="pltotal" data-stake="1"><span>Total profit ${recRange==='week'?'this week':recRange==='month'?'this month':'all time'}<small>1 unit per pick · at each pick's odds${Number(SET.stake||1)!==1?' · stake '+SET.stake:''}</small></span><b class="${tot>=0?'up':'down'}">${plTxt(tot)}</b></div>`;})()}
   <div class="pltotal"><span>Correct scores right<small>${recRange==='week'?'This week':recRange==='month'?'This month':'All time'} · from the 23:45 results</small></span><b class="${cs?'up':'flat'}">${cs||'-'}</b></div>
   <div class="streak32"><span><span class="ct">Banker streak</span><small>Bankers won in a row</small></span><b>${feed.banker_streak||0}</b></div>
@@ -2018,7 +2019,7 @@ function openTemplates(){const T=(feed&&feed.templates)||{};const names=Object.k
     if(b.dataset.n){const n=b.dataset.n;editField(n,PTEXT[n]!=null?PTEXT[n]:T[n],v=>{if(v==null)return;if(v.trim()===String(T[n]).trim())delete PTEXT[n];else PTEXT[n]=v;savePend();render();toast('Changed ✓ Tap "Send to the bot" when you are done',3000);},{multi:true,note:'The picture this text goes with, then the words. Keep the words in { } (the builder fills them in).',img:tplPic(n)});}};}
 // 3.32 (Philip, 6 Nov): each text shown like a real post: the newest picture it goes with on top, the caption under it
 function tplPic(n){try{const d=todayDay()||days()[0];if(!d)return '';const P=d.posts||[];const by=id=>P.find(x=>x.id===id||String(x.id).startsWith(id));
-  const it=/GAMES/.test(n)?by('games'):/TOP PICKS|PICKS/.test(n)?by('picks'):/BANKER/.test(n)?by('banker'):/VIDEO|DESCRIPTION|TITLE|TAGS|PINNED/.test(n)?by('video'):/WIN|RESULT/.test(n)?by('win'):/SHORT|CAPTION|HASHTAG/.test(n)?by('short'):/CORRECT|CS /.test(n)?by('cs'):by('day_safe')||by('swipe');
+  const it=/GAMES/.test(n)?by('games'):/TOP PICKS|SINGLES|PICKS/.test(n)?by('picks'):/BANKER/.test(n)?by('banker'):/VIDEO|DESCRIPTION|TITLE|TAGS|PINNED/.test(n)?by('video'):/WIN|RESULT/.test(n)?by('win'):/SHORT|CAPTION|HASHTAG/.test(n)?by('short'):/CORRECT|CS /.test(n)?by('cs'):by('day_safe')||by('swipe');
   const im=it&&(it.images||[])[0];return im?media(im):'';}catch(e){return '';}}
 
 // ---------- backup of this app (settings, sent ticks, your edits) ----------
@@ -2178,7 +2179,7 @@ async function shareCard(kind,d){let lap=await builderBlob(kind,d);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-card]');if(b){e.stopPropagation();e.preventDefault();shareCard(b.dataset.card,dayOf(b.dataset.dk));return;}
   const hs=e.target.closest('#p-history [data-cardshare]');if(hs){e.stopPropagation();e.preventDefault();shareCard('premwon');return;}
   const pc=e.target.closest('#p-elite .pcard');if(pc){e.stopPropagation();shareCard('prem');}},true);
-{const _mv=matchesView;matchesView=function(d){const h=_mv(d);if(!d||SET.smallCardBtns!==true)return h;return `<div class="cardbtns">${tpOn()?`<button data-card="picks" data-dk="${d.date}">Top picks picture<small>Tap: share to any app</small></button>`:''}<button data-card="banker" data-dk="${d.date}">Banker picture<small>Tap: share to any app</small></button></div>`+h;};}
+{const _mv=matchesView;matchesView=function(d){const h=_mv(d);if(!d||SET.smallCardBtns!==true)return h;return `<div class="cardbtns">${tpOn()?`<button data-card="picks" data-dk="${d.date}">Singles of the day picture<small>Tap: share to any app</small></button>`:''}<button data-card="banker" data-dk="${d.date}">Banker picture<small>Tap: share to any app</small></button></div>`+h;};}
 window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,openBuilder,openTemplates,openLivePage,askBot,textsSheet};
 })();
 
