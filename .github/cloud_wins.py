@@ -43,9 +43,17 @@ def espn_day(date_iso):
             def fh(c):
                 ls = c.get('linescores') or []
                 return gi(ls[0].get('value')) if ls and isinstance(ls[0], dict) else None
+
+            def ninety(c):                            # 3.68: bets are settled on the 90-minute score
+                ls = c.get('linescores') or []
+                v = [gi(x.get('value')) if isinstance(x, dict) else None for x in ls[:2]]
+                return v[0] + v[1] if len(v) == 2 and None not in v else None
+            et = bool(re.search(r'AET|PEN|EXTRA|SHOOTOUT', name, re.I)) or \
+                any(len(c.get('linescores') or []) > 2 for c in (h, a))
             out.append({'id': str(ev.get('id')), 'home': (h.get('team') or {}).get('displayName', ''),
-                        'away': (a.get('team') or {}).get('displayName', ''), 'done': done,
-                        'gh': gi(h.get('score')), 'ga': gi(a.get('score')), 'hh': fh(h), 'ha': fh(a)})
+                        'away': (a.get('team') or {}).get('displayName', ''), 'done': done and (not et or ninety(h) is not None),
+                        'gh': ninety(h) if et else gi(h.get('score')), 'ga': ninety(a) if et else gi(a.get('score')),
+                        'hh': fh(h), 'ha': fh(a)})
         except Exception:
             continue
     return out
