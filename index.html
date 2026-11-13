@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.55</title>
+<title>Match Vision 3.56</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.55';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.55' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.56';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.55' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1028,7 +1028,7 @@ function markOf(d,m,i){const x=MARKS[`${d.date}|${m.n}.${i+1}`];return x&&x.v||n
 function saveMarks(){store.set(K.marks,JSON.stringify(MARKS));}
 function espnFix(ev){try{const c=ev.competitions[0];const h=c.competitors.find(x=>x.homeAway==='home'),a=c.competitors.find(x=>x.homeAway==='away');
   const s=(c.status||ev.status),t=s.type||{},nm=String(t.name||'');let st=t.state==='pre'?'NS':t.state==='in'?(/HALF_?TIME/i.test(nm)?'HT':'LIVE'):'FT';
-  if(/POSTPONED|DELAYED/i.test(nm))st='PST';if(/CANCEL|ABANDON|FORFEIT|SUSPEND/i.test(nm))st='CANC';
+  if(/POSTPONED/i.test(nm))st='PST';else if(/DELAYED/i.test(nm))st='NS';if(/CANCEL|ABANDON|FORFEIT|SUSPEND/i.test(nm))st='CANC';/* 3.56: delayed is never postponed */
   const g=v=>{const n=parseInt(v,10);return isNaN(n)?null:n;};const fh=x=>x.linescores&&x.linescores[0]&&x.linescores[0].value!=null?g(x.linescores[0].value):null;const no=['NS','PST','CANC'].includes(st);
   const et=/AET|PEN|EXTRA|SHOOTOUT/i.test(nm)||[h,a].some(x=>(x.linescores||[]).length>2);const n90=x=>{const L=(x.linescores||[]).slice(0,2).map(y=>y&&y.value!=null?g(y.value):null);return L.length===2&&L[0]!=null&&L[1]!=null?L[0]+L[1]:null;};/* 3.55: bets are settled on 90 minutes */
   return {id:String(ev.id),home:h.team.displayName,away:a.team.displayName,st,min:st==='LIVE'?(parseInt(s.displayClock,10)||null):null,gh:no?null:(et?n90(h):g(h.score)),ga:no?null:(et?n90(a):g(a.score)),hh:fh(h),ha:fh(a),at:new Date().toISOString(),src:'phone'};}catch(e){return null;}}
@@ -1047,7 +1047,7 @@ async function liveTick(force){if(!SET.live||liveBusy||!feed||!navigator.onLine|
     for(const k of Object.keys(ESPN))if(!want.has(k))delete ESPN[k];store.set(K.espn,JSON.stringify(ESPN));}finally{liveBusy=false;}
   if(ok&&!subRender&&!$('sheet').classList.contains('open'))refresh(true);else if(ok&&subRender)rerenderSub();}
 const RANK={NS:0,PST:1,LIVE:2,HT:2,NF:3,CANC:3,FT:4};
-function liveOf(m,d){const k=m.date||d.date,mine=ESPN[k]&&findGame(m,ESPN[k].games||[]);const lap=m.live;if(!mine)return lap||null;if(!lap)return mine;
+function liveOf(m,d){const k=m.date||d.date;let mine=ESPN[k]&&findGame(m,ESPN[k].games||[]);const lap=m.live;/* 3.56 (bug A+B): the laptop's API-Football score is the main one; ESPN on the phone alone never makes a game postponed */if(mine&&['PST','CANC'].includes(mine.st)&&!(lap&&['PST','CANC'].includes(lap.st)))mine=lap?null:Object.assign({},mine,{st:'NS',gh:null,ga:null});if(lap&&lap.src==='API-Football')return lap;if(!mine)return lap||null;if(!lap)return mine;
   const a=RANK[mine.st]||0,b=RANK[lap.st]||0;if(b>a)return lap;if(a>b)return Object.assign({},mine,{hh:mine.hh!=null?mine.hh:lap.hh,ha:mine.ha!=null?mine.ha:lap.ha});
   if(a===2&&(lap.min||0)>(mine.min||0))return lap;return Object.assign({},mine,{hh:mine.hh!=null?mine.hh:lap.hh,ha:mine.ha!=null?mine.ha:lap.ha});}
 
@@ -1276,7 +1276,7 @@ function openPostSheet(d,it){openSheet(`<div class="modal-title">${esc(it.title)
 // ---------- the match card (Home and day pages) ----------
 let openMatch=new Set(),matchFilter='all';
 function legMark(s){return s==='w'?'<span class="leg won">✔</span>':s==='l'?'<span class="leg lost">✘</span>':s==='up'?'<span class="leg up">↑</span>':s==='dn'?'<span class="leg dn">↓</span>':'<span class="leg wait">•</span>';}
-function statePill(L,m){if(!L||L.st==='NS')return `<span class="pill wait">${esc(m.kickoff||'--:--')}</span>`;if(L.st==='LIVE')return `<span class="pill live">LIVE ${L.min?L.min+"'":''}</span>`;if(L.st==='HT')return '<span class="pill live">HT</span>';if(L.st==='PST')return '<span class="pill wait">POSTPONED</span>';if(L.st==='CANC')return '<span class="pill wait">CANCELLED</span>';if(L.st==='NF')return '<span class="pill wait">CHECK</span>';return '<span class="pill wait">FT</span>';}
+function statePill(L,m){if(!L||L.st==='NS')return `<span class="pill wait">${esc(m.kickoff||'--:--')}</span>`;if(L.st==='LIVE')return `<span class="pill live">LIVE ${L.min?L.min+"'":''}</span>`;if(L.st==='HT')return '<span class="pill live">HT</span>';if(L.st==='PST')return '<span class="pill wait">POSTPONED (void)</span>';if(L.st==='CANC')return '<span class="pill wait">CANCELLED</span>';if(L.st==='NF')return '<span class="pill wait">CHECK</span>';return '<span class="pill wait">FT</span>';}
 function premSetOf(d){if(!prem)return [];const x=(prem.days||[]).find(p=>p.date===d.date);return x?x.picks||[]:[];}
 // 3.10.7 (Philip, 20 Oct): a finished match with a pick nobody could decide: two small buttons right on the pick
 function quickMark(d,m,i){const k=`${d.date}|${m.n}.${i+1}`;return `<span class="qmk"><button class="qmb w" data-qmk="w" data-k="${k}" aria-label="Won">✓</button><button class="qmb l" data-qmk="l" data-k="${k}" aria-label="Lost">✕</button></span>`;}
