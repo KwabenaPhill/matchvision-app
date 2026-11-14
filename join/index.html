@@ -11,12 +11,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap">
 <style>
-/* Join page 4.0 (14 Nov 2026): VIP record (not banker), animated MV logo, 3 hero styles (?hero=a|b|c),
+/* Join page 4.1 (14 Nov 2026): VIP record (not banker), animated MV logo, 3 hero styles (?hero=a|b|c),
    Title Case, pay bar always on, FAQ + Terms + Refunds + Responsible Play + Privacy. Match Vision black + lime. */
 :root{
   --bg:#F3F7E4; --paper:#FFFFFF; --ink:#0D0D0D; --ink2:#2B2E25; --sub:#55594B; --dim:#7A7E70; --line:#0D0D0D17;
   --dark:#111111; --dark2:#1B1B1D; --dark3:#26262A;
-  --lime:#DFFB51; --lime2:#C9E63B; --win:#B8F04A; --part:#F2B544; --loss:#E5484D; --none:#3A3A3E;
+  --lime:#DFFB51; --lime2:#C9E63B; --win:#16A34A; --part:#F2B544; --loss:#E5484D; --none:#3A3A3E;
   --f:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --h:"Sora","Inter",system-ui,sans-serif;
   --padL:max(18px,env(safe-area-inset-left,0px)); --padR:max(18px,env(safe-area-inset-right,0px));
@@ -63,7 +63,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .drawer .head img{height:28px}
 .drawer .x{width:42px;height:42px;border-radius:12px;border:0;background:var(--dark3);color:#fff;font-size:18px}
 .drawer a{color:#fff;text-decoration:none;font-weight:600;font-size:17px;padding:14px 12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center}
-.drawer a::after{content:"→";color:var(--lime)}
+.drawer a::after{content:"";flex:none;width:30px;height:30px;border-radius:10px;background:#FFFFFF0F url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23DFFB51' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' d='m9 6 6 6-6 6'/%3E%3C/svg%3E") no-repeat center/16px;transition:transform .2s ease,background-color .2s ease}
+.drawer a:hover::after{transform:translateX(3px);background-color:#DFFB5126}
 .drawer a:hover{background:var(--dark3)}
 .drawer .sep{height:1px;background:#2A2A2E;margin:10px 12px}
 .drawer a.small{font-size:15px;color:#C9C9CE;padding:11px 12px}
@@ -72,8 +73,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 /* ===== Common ===== */
 section{display:flex;flex-direction:column;gap:18px}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sub)}
-.eyebrow::before{content:"";width:18px;height:3px;border-radius:3px;background:var(--ink)}
+.eyebrow{align-self:flex-start;display:inline-flex;align-items:center;gap:9px;background:var(--dark);color:var(--lime);border-radius:999px;padding:8px 15px 8px 12px;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 20px #0D0D0D1F}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px #DFFB5133}
 .title{font-family:var(--h);font-size:clamp(26px,7.4vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.12}
 .lead{color:var(--sub);font-size:16.5px;line-height:1.6}
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border-radius:16px;font-weight:800;font-size:16.5px;text-decoration:none;border:0;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
@@ -110,17 +111,26 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 /* B: dark card, strongest contrast */
 .hero.b{flex-direction:column}
 .hero.b .card{position:relative;overflow:hidden;background:var(--dark);color:#fff;border-radius:30px;padding:28px 22px 24px;display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 50px #0D0D0D38;isolation:isolate}
+.hero.b .card{background:linear-gradient(160deg,#1A1C14 0%,#111111 45%,#0B0B0B 100%);border:1px solid #FFFFFF14}
 .hero.b .card::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  radial-gradient(circle at 88% -10%,#DFFB5140,transparent 45%),radial-gradient(circle at -10% 110%,#DFFB5122,transparent 45%),
-  linear-gradient(#FFFFFF08 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,#FFFFFF08 1px,transparent 1px) 0 0/28px 28px}
+  radial-gradient(120% 70% at 100% 0%,#DFFB5138,transparent 55%),radial-gradient(90% 60% at 0% 100%,#16A34A26,transparent 60%)}
+.hero.b .card::after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;border-radius:50%;border:1px solid #DFFB5133;box-shadow:0 0 0 40px #DFFB510A,0 0 0 80px #DFFB5106;z-index:-1;animation:glow 6s ease-in-out infinite}
+@keyframes glow{50%{transform:scale(1.06);opacity:.75}}
 .hero.b .chip{align-self:flex-start;background:#DFFB511F;color:var(--lime);border:1px solid #DFFB5140}
 .hero.b h1{font-family:var(--h);font-weight:800;font-size:clamp(32px,9vw,44px);line-height:1.08;letter-spacing:-.04em}
 .hero.b h1 em{font-style:normal;color:var(--lime)}
 .hero.b .lead{color:#C8C8CC}
 .hero.b .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.hero.b .stats div{background:#FFFFFF0D;border:1px solid #FFFFFF14;border-radius:16px;padding:12px 10px}
-.hero.b .stats b{display:block;font-family:var(--h);font-size:21px;font-weight:800;color:var(--lime);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.hero.b .stats span{display:block;font-size:12px;color:#B5B5BA;line-height:1.3;margin-top:2px}
+.hero.b .stats a{position:relative;display:flex;flex-direction:column;text-decoration:none;border-radius:18px;padding:14px 12px 12px;transition:transform .2s ease,box-shadow .2s ease}
+.hero.b .stats a:hover{transform:translateY(-3px)}
+.hero.b .stats a::after{content:"";position:absolute;right:10px;top:12px;width:14px;height:14px;opacity:.6;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%230D0D0D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' d='M7 17 17 7M8 7h9v9'/%3E%3C/svg%3E") no-repeat center/contain}
+.hero.b .stats b{display:block;font-family:var(--h);font-size:24px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.hero.b .stats span{display:block;font-size:12px;font-weight:700;line-height:1.3;margin-top:4px}
+.hero.b .stats .s1{background:var(--lime);color:var(--ink);box-shadow:0 10px 24px #DFFB5140}
+.hero.b .stats .s2{background:#16A34A;color:#fff;box-shadow:0 10px 24px #16A34A40}
+.hero.b .stats .s2::after{filter:invert(1)}
+.hero.b .stats .s3{background:#fff;color:var(--ink)}
+.hero.b .stats .s1 span,.hero.b .stats .s3 span{color:#2B2E25}
 .hero.b .ctas{display:flex;flex-direction:column;gap:10px}
 .hero.b .btn.ghost{color:#fff;border-color:#FFFFFF3D}
 .hero.b .trust{color:#C8C8CC}
@@ -140,7 +150,11 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 
 /* ===== VIP record ===== */
 .kpis{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:10px;align-items:stretch}
-.kpi{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 10px;text-align:center;box-shadow:0 10px 24px #0D0D0D0D;display:flex;flex-direction:column;justify-content:center}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 10px;text-align:center;box-shadow:0 10px 24px #0D0D0D0D;display:flex;flex-direction:column;justify-content:center;transition:transform .2s ease,box-shadow .2s ease}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 16px 30px #0D0D0D1A}
+.kpi em{font-style:normal;font-size:11px;font-weight:800;color:var(--sub);margin-top:8px;letter-spacing:.04em}
+.kpi.main em{color:var(--lime)}
+.kpi.green{background:#16A34A;border-color:#16A34A}.kpi.green b{color:#fff}.kpi.green span,.kpi.green em{color:#E7FBEF}
 .kpi b{font-family:var(--h);font-weight:800;font-size:clamp(22px,6.4vw,28px);letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
 .kpi span{color:var(--sub);font-size:12.5px;line-height:1.3;margin-top:4px}
 .kpi.main{background:var(--dark);border-color:var(--dark)}
@@ -154,7 +168,7 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .cal button{aspect-ratio:1;border-radius:11px;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:var(--none);color:#D0D0D4;font-variant-numeric:tabular-nums;opacity:0;transform:scale(.6);padding:0}
 .cal button b{font-size:15px;font-weight:800;line-height:1}
 .cal button small{font-size:10px;font-weight:700;opacity:.85;line-height:1}
-.cal button.w{background:var(--win);color:#0D0D0D}
+.cal button.w{background:var(--win);color:#fff;box-shadow:inset 0 0 0 1px #FFFFFF26}
 .cal button.p{background:var(--part);color:#0D0D0D}
 .cal button.l{background:var(--loss);color:#fff}
 .cal button.e{background:#1C1C1F;pointer-events:none}
@@ -164,23 +178,31 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .key{display:flex;gap:8px 16px;flex-wrap:wrap;margin-top:16px;font-size:13px;color:#D6D6D9}
 .key span{display:inline-flex;align-items:center;gap:7px}
 .key i{width:11px;height:11px;border-radius:4px;display:inline-block}
-.honest{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 16px;font-size:14px;color:var(--ink2)}
-.honest svg{width:20px;height:20px;flex:none;margin-top:1px}
+.honest{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,#FBFFE9,#EEF8C9);border:1.5px solid #0D0D0D1F;border-radius:20px;padding:16px 18px}
+.honest .ic{flex:none;width:46px;height:46px;border-radius:14px;background:var(--dark);display:grid;place-items:center}
+.honest .ic svg{width:24px;height:24px;color:var(--lime)}
+.honest b{display:block;font-family:var(--h);font-size:16.5px;font-weight:800;letter-spacing:-.01em}
+.honest span{display:block;color:var(--ink2);font-size:14px;line-height:1.5;margin-top:2px}
 .dayinfo{margin-top:14px;background:#FFFFFF0D;border:1px solid #FFFFFF14;border-radius:14px;padding:12px 14px;font-size:14px;color:#E4E4E7;display:flex;justify-content:space-between;gap:10px;align-items:center}
 .dayinfo button{border:0;background:var(--lime);color:var(--ink);font-weight:800;font-size:13px;border-radius:10px;padding:8px 12px;flex:none}
 
 /* ===== Latest results gallery ===== */
-.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--padL)) 0 calc(-1 * var(--padR));padding:4px var(--padL) 18px;scrollbar-width:none}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--padL)) 0 calc(-1 * var(--padR));padding:8px 9% 22px;scrollbar-width:none;scroll-behavior:smooth}
 .rail::-webkit-scrollbar{display:none}
-.shot{flex:0 0 74%;max-width:340px;scroll-snap-align:start;border:0;padding:0;background:var(--dark);border-radius:20px;overflow:hidden;box-shadow:0 14px 30px #0D0D0D26;text-align:left;transition:transform .2s ease}
-.shot:hover{transform:translateY(-3px)}
+.shot{flex:0 0 86%;max-width:440px;scroll-snap-align:center;border:0;padding:0;background:var(--dark);border-radius:22px;overflow:hidden;box-shadow:0 18px 36px #0D0D0D2E;text-align:left;transform:scale(.9);opacity:.55;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .45s ease}
+.shot.on{transform:none;opacity:1}
 .shot img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#1B1B1D}
-.shot div{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;color:#fff;font-size:13.5px;font-weight:700}
-.shot div span{background:var(--lime);color:var(--ink);border-radius:999px;padding:3px 9px;font-size:12px}
-.shot div span.pp{background:var(--part)}
+.shot div{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;color:#fff;font-size:15px;font-weight:800;gap:10px}
+.shot div span{background:var(--win);color:#fff;border-radius:999px;padding:5px 11px;font-size:12.5px;white-space:nowrap;flex:none}
+.shot div span.pp{background:var(--part);color:var(--ink)}
 .shot div span.ll{background:var(--loss);color:#fff}
-.railnav{display:flex;justify-content:flex-end;gap:8px;margin-top:-6px}
-.railnav button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--paper);font-size:18px;font-weight:700}
+.railnav{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:-8px}
+.railnav button{width:44px;height:44px;border-radius:50%;border:0;background:var(--dark);display:grid;place-items:center;transition:transform .15s ease}
+.railnav button:active{transform:scale(.92)}
+.railnav button svg{width:18px;height:18px;color:var(--lime)}
+.dots{display:flex;gap:6px}
+.dots i{width:7px;height:7px;border-radius:9px;background:#0D0D0D2E;transition:width .3s ease,background .3s ease}
+.dots i.on{width:22px;background:var(--ink)}
 
 /* ===== Checkout ===== */
 .checkout{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:0 22px 48px #0D0D0D14;overflow:hidden}
@@ -190,6 +212,8 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .step-h i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--dark);color:var(--lime);display:grid;place-items:center;font-size:13px;font-weight:800;flex:none}
 .picker{display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:10px 14px 10px 16px;border-radius:18px;border:2px solid var(--ink);background:var(--bg);text-align:left;transition:box-shadow .15s ease}
 .picker:hover{box-shadow:0 0 0 4px #DFFB51AA}
+.picker.flash{animation:flash 1.4s ease 2}
+@keyframes flash{0%,100%{box-shadow:0 0 0 0 #DFFB5100}40%{box-shadow:0 0 0 8px #DFFB51}}
 .picker .flag{font-size:32px;line-height:1;flex:none}
 .picker .nm{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
 .picker .nm b{font-size:17px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -238,6 +262,7 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .flow b{display:block;font-weight:800;font-size:15px}
 .flow span{color:var(--sub);font-size:13.5px}
 .acc{display:grid;gap:10px}
+.acc:not(.all) details.more{display:none}
 .acc details{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .acc summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;font-weight:800;font-size:15.5px;cursor:pointer}
 .acc summary::-webkit-details-marker{display:none}
@@ -300,6 +325,54 @@ body.lock .bar{visibility:hidden}
 .viewer .vx{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;width:44px;height:44px;border-radius:12px;border:0;background:#FFFFFF1A;color:#fff;font-size:20px}
 .viewer .vn{display:flex;gap:10px;margin-top:14px}
 .viewer .vn button{width:52px;height:44px;border-radius:12px;border:0;background:#FFFFFF1A;color:#fff;font-size:20px}
+
+
+/* ===== Record sheet ===== */
+.rows{overflow-y:auto;padding:4px 14px 18px;display:grid;gap:8px}
+.rrow{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--bg);border:0;text-align:left;width:100%}
+.rrow .d{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.rrow .d b{font-weight:800;font-size:15px}
+.rrow .d small{color:var(--sub);font-size:12.5px}
+.rrow .sc{flex:none;border-radius:999px;padding:6px 11px;font-weight:800;font-size:13px;color:#fff;background:var(--part)}
+.rrow .sc.w{background:var(--win)}.rrow .sc.l{background:var(--loss)}.rrow .sc.p{color:var(--ink)}
+.rrow .go{flex:none;width:30px;height:30px;border-radius:10px;background:var(--dark);display:grid;place-items:center}
+.rrow .go svg{width:15px;height:15px;color:var(--lime)}
+.rsum{margin:0 20px 6px;font-size:13.5px;color:var(--sub)}
+
+/* ===== Help chat (like KOBI) ===== */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:16;width:58px;height:58px;border-radius:50%;border:0;background:var(--lime);color:var(--ink);display:grid;place-items:center;box-shadow:0 12px 30px #0D0D0D40,0 0 0 4px #FFFFFFB3;transform:scale(0) rotate(-30deg);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.fab.show{transform:none}
+.fab svg{width:26px;height:26px}
+.fab .badge{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;border-radius:10px;background:var(--loss);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;padding:0 5px;border:2px solid #fff}
+body.lock .fab{visibility:hidden}
+.chat{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(88px + env(safe-area-inset-bottom,0px));z-index:45;width:min(380px,calc(100vw - 24px));height:min(560px,calc(100vh - 170px));background:#0F1010;color:#fff;border:1px solid #FFFFFF1A;border-radius:24px;box-shadow:0 30px 70px #00000066;display:flex;flex-direction:column;overflow:hidden;transform-origin:bottom right;animation:chatIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes chatIn{from{opacity:0;transform:scale(.85) translateY(20px)}}
+.chat .ch{display:flex;align-items:center;gap:12px;padding:14px 14px 12px;border-bottom:1px solid #FFFFFF12;background:linear-gradient(160deg,#1A1C14,#0F1010)}
+.chat .av{width:44px;height:44px;border-radius:14px;background:var(--dark);display:grid;place-items:center;border:1px solid #DFFB5140;flex:none}
+.chat .av img{width:32px}
+.chat .who{flex:1;min-width:0;line-height:1.25}
+.chat .who b{display:block;font-family:var(--h);font-size:16px}
+.chat .who small{display:flex;align-items:center;gap:6px;color:#4ADE80;font-size:12px;font-weight:600}
+.chat .who small i{width:7px;height:7px;border-radius:50%;background:#22C55E}
+.chat .cx{width:36px;height:36px;border-radius:11px;border:0;background:#FFFFFF12;color:#fff;font-size:16px}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:radial-gradient(#FFFFFF08 1px,transparent 1px) 0 0/18px 18px}
+.msg{max-width:86%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.5;animation:up .3s ease}
+.msg.bot{align-self:flex-start;background:#1C1D1F;border:1px solid #FFFFFF12;border-bottom-left-radius:6px}
+.msg.me{align-self:flex-end;background:var(--lime);color:var(--ink);font-weight:600;border-bottom-right-radius:6px}
+.msg a.act,.msg button.act{display:inline-flex;margin-top:9px;margin-right:6px;background:var(--lime);color:var(--ink);text-decoration:none;font-weight:800;font-size:13px;border-radius:10px;padding:8px 12px;border:0}
+.msg .typing{display:inline-flex;gap:4px}
+.msg .typing i{width:6px;height:6px;border-radius:50%;background:#9A9AA0;animation:blink 1s infinite}
+.msg .typing i:nth-child(2){animation-delay:.15s}.msg .typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{50%{opacity:.25}}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 12px 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;border:1px solid #FFFFFF24;background:#FFFFFF0A;color:#fff;border-radius:999px;padding:8px 13px;font-size:13px;font-weight:700}
+.chips button:hover{border-color:var(--lime);color:var(--lime)}
+.cin{display:flex;gap:8px;padding:10px 12px 12px}
+.cin input{flex:1;min-width:0;background:#1C1D1F;border:1px solid #FFFFFF1A;border-radius:14px;color:#fff;font:500 15px var(--f);padding:12px 14px;outline:0}
+.cin input:focus{border-color:var(--lime)}
+.cin button{width:48px;border-radius:14px;border:0;background:var(--lime);color:var(--ink);display:grid;place-items:center}
+.cin button svg{width:20px;height:20px}
 
 /* ===== Motion ===== */
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -369,9 +442,9 @@ body.lock .bar{visibility:hidden}
       <h1>Football Picks With <em>Proof You Can Check</em> Before You Pay</h1>
       <p class="lead">Our Few Strongest Picks Every Morning Before Kick-Off. Every VIP Result Is Shown, Wins And Losses.</p>
       <div class="stats">
-        <div><b data-k="rate">–</b><span>VIP Picks Won</span></div>
-        <div><b data-k="perfect">–</b><span>Perfect VIP Days</span></div>
-        <div><b>30</b><span>Seats Only</span></div>
+        <a class="s1" href="#record" data-rec="all"><b data-k="rate">–</b><span>VIP Picks Won</span></a>
+        <a class="s2" href="#record" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect VIP Days</span></a>
+        <a class="s3" href="#join"><b>30</b><span>Seats Only</span></a>
       </div>
       <div class="ctas">
         <a class="btn lime shine" href="#join">Join Vision Premium <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -398,9 +471,9 @@ body.lock .bar{visibility:hidden}
     <span class="eyebrow">Our VIP Record</span>
     <h2 class="title">Every Vision Premium Day, Wins And Losses</h2>
     <div class="kpis">
-      <div class="kpi"><b data-k="won">–</b><span>VIP Picks Won</span></div>
-      <div class="kpi main"><b data-k="rate">–</b><span>Win Rate</span></div>
-      <div class="kpi"><b data-k="perfect">–</b><span>Perfect Days</span></div>
+      <button class="kpi" data-rec="all"><b data-k="won">–</b><span>VIP Picks Won</span><em>See All ›</em></button>
+      <button class="kpi main" data-rec="all"><b data-k="rate">–</b><span>Win Rate</span><em>See All ›</em></button>
+      <button class="kpi green" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect Days</span><em>See Them ›</em></button>
     </div>
     <div class="board" id="board">
       <div class="t"><b>Vision Premium</b><span id="calRange">Loading…</span></div>
@@ -408,7 +481,7 @@ body.lock .bar{visibility:hidden}
       <div class="key"><span><i style="background:var(--win)"></i>All Picks Won</span><span><i style="background:var(--part)"></i>Some Picks Won</span><span><i style="background:var(--loss)"></i>None Won</span></div>
       <div class="dayinfo" id="dayinfo" hidden><span id="dayText"></span><button id="dayOpen" hidden>See Card</button></div>
     </div>
-    <div class="honest"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg><span>Tap Any Day To See Its Result. We Never Hide A Losing Day: Every VIP Result Is Posted, Wins And Losses.</span></div>
+    <div class="honest"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg></span><p><b>Tap Any Day To See Its Result</b><span>We Never Hide A Losing Day. Every VIP Result Is Posted, Wins And Losses.</span></p></div>
   </section>
 
   <!-- Latest results -->
@@ -416,7 +489,7 @@ body.lock .bar{visibility:hidden}
     <span class="eyebrow">Latest VIP Results</span>
     <h2 class="title">Real Cards From The VIP Room</h2>
     <div class="rail" id="rail"></div>
-    <div class="railnav"><button id="railPrev" aria-label="Previous">←</button><button id="railNext" aria-label="Next">→</button></div>
+    <div class="railnav"><button id="railPrev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"/></svg></button><div class="dots" id="dots"></div><button id="railNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg></button></div>
   </section>
 
   <!-- Join -->
@@ -453,6 +526,31 @@ body.lock .bar{visibility:hidden}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq">
+    <span class="eyebrow">Questions And Answers</span>
+    <h2 class="title">Everything You Need To Know</h2>
+    <div class="acc" id="faqList">
+      <details><summary>How Much Is Vision Premium?</summary><div class="body"><p>$20 For 30 Days. Select Your Country Above To See The Price In Your Own Money. In Ghana It Is GH₵ 250.</p></div></details>
+      <details><summary>How Do I Pay?</summary><div class="body"><p>Select Your Country, Choose How To Pay And Tap Pay. In Ghana You Pay By Mobile Money. More Ways To Pay Are Coming Soon.</p></div></details>
+      <details><summary>When Do I Get My Join Link?</summary><div class="body"><p>As Soon As Your Payment Is Confirmed (Usually Within 30 Minutes). Your Link Works Once, For You Only.</p></div></details>
+      <details><summary>When Do The Picks Come?</summary><div class="body"><p>Every Day Around 05:00 Ghana Time (GMT), Before Kick-Off.</p></div></details>
+      <details><summary>Are The Picks Guaranteed?</summary><div class="body"><p>No. No Prediction Is Ever Guaranteed And Losing Days Can Happen. We Post Our Strongest Picks Based On Research, And We Show Every Result Honestly, Wins And Losses.</p></div></details>
+      <details><summary>Can I Get A Refund?</summary><div class="body"><p>Yes, If You Ask Within 24 Hours Of Paying And You Have Not Joined The Room Yet. See The Refund Policy Below.</p></div></details>
+      <details class="more"><summary>How Long Does It Last?</summary><div class="body"><p>Your Membership Lasts 30 Days From The Day You Join.</p></div></details>
+      <details class="more"><summary>Is It A One-Time Payment?</summary><div class="body"><p>One Payment Gives You 30 Days In The Room. To Stay After That, You Pay Again. We Remind You Before It Ends. Nothing Renews By Itself.</p></div></details>
+      <details class="more"><summary>What Do I Get Every Day?</summary><div class="body"><p>Our Safest VIP Picks Every Day (1 To 7 Short Games, Usually About 2 To 4 Total Odds), Posted In A Private Room Only Members Can See.</p></div></details>
+      <details class="more"><summary>Do You Show Losing Days?</summary><div class="body"><p>Yes. Every VIP Day Is In Our Record Above, Wins And Losses. Tap Any Day To See Its Card.</p></div></details>
+      <details class="more"><summary>Can I Join From Any Country?</summary><div class="body"><p>Yes. Select Your Country And You See The Price In Your Own Money And The Ways To Pay From There.</p></div></details>
+      <details class="more"><summary>Is My Payment Safe?</summary><div class="body"><p>Yes. Every Payment Is Recorded With Its Reference, And We Never See Or Keep Your Card Details.</p></div></details>
+      <details class="more"><summary>Do I Need Telegram?</summary><div class="body"><p>Yes. Vision Premium Is A Private Telegram Room, So You Need Telegram (Free) To Join.</p></div></details>
+      <details class="more"><summary>Can I Share My Join Link?</summary><div class="body"><p>No. Each Link Is For You Only And Works Once. Shared Links Are Cancelled.</p></div></details>
+      <details class="more"><summary>My Join Link Does Not Work</summary><div class="body"><p>Message Us And We Send You A New One.</p></div></details>
+      <details class="more"><summary>How Do I Renew?</summary><div class="body"><p>Before Your 30 Days End We Remind You. Pay Again The Same Way And Your Membership Continues.</p></div></details>
+    </div>
+    <button class="btn ghost" id="faqMore" style="align-self:center">Show All Questions</button>
+  </section>
+
   <!-- What you get -->
   <section id="why">
     <span class="eyebrow">What You Get</span>
@@ -477,25 +575,6 @@ body.lock .bar{visibility:hidden}
       <li><p><b>Get Picks Every Morning</b><span>In The Room Before Kick-Off, For 30 Days.</span></p></li>
     </ol>
     <a class="btn dark shine" href="#join" style="align-self:center">Start Winning Today <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <span class="eyebrow">Questions And Answers</span>
-    <h2 class="title">Everything You Need To Know</h2>
-    <div class="acc">
-      <details><summary>How Much Is Vision Premium?</summary><div class="body"><p>$20 For 30 Days. Select Your Country Above To See The Price In Your Own Money. In Ghana It Is GH₵ 250.</p></div></details>
-      <details><summary>How Long Does It Last?</summary><div class="body"><p>Your Membership Lasts 30 Days From The Day You Join.</p></div></details>
-      <details><summary>Is It A One-Time Payment?</summary><div class="body"><p>One Payment Gives You 30 Days In The Room. To Stay After That, You Pay Again. We Remind You Before It Ends. Nothing Renews By Itself.</p></div></details>
-      <details><summary>How Do I Pay?</summary><div class="body"><p>Select Your Country, Choose How To Pay And Tap Pay. In Ghana You Pay By Mobile Money. More Ways To Pay Are Coming Soon.</p></div></details>
-      <details><summary>What Do I Get Every Day?</summary><div class="body"><p>Our Safest VIP Picks Every Day (1 To 7 Short Games, Usually About 2 To 4 Total Odds), Posted In A Private Room Only Members Can See.</p></div></details>
-      <details><summary>When Do The Picks Come?</summary><div class="body"><p>Every Day Around 05:00 Ghana Time (GMT), Before Kick-Off.</p></div></details>
-      <details><summary>Are The Picks Guaranteed?</summary><div class="body"><p>No. No Prediction Is Ever Guaranteed And Losing Days Can Happen. We Post Our Strongest Picks Based On Research, And We Show Every Result Honestly, Wins And Losses.</p></div></details>
-      <details><summary>When Do I Get My Join Link?</summary><div class="body"><p>As Soon As Your Payment Is Confirmed (Usually Within 30 Minutes). Your Link Works Once, For You Only.</p></div></details>
-      <details><summary>Do I Need Telegram?</summary><div class="body"><p>Yes. Vision Premium Is A Private Telegram Room, So You Need Telegram (Free) To Join.</p></div></details>
-      <details><summary>My Join Link Does Not Work</summary><div class="body"><p>Each Join Link Works Once, For You Only. Message Us And We Send You A New One.</p></div></details>
-      <details><summary>Can I Get A Refund?</summary><div class="body"><p>Yes, If You Ask Within 24 Hours Of Paying And You Have Not Joined The Room Yet. See The Refund Policy Below.</p></div></details>
-    </div>
   </section>
 
   <!-- Terms -->
@@ -556,7 +635,7 @@ body.lock .bar{visibility:hidden}
     <a class="brand" href="#" aria-label="Back To Top"><img src="logo.png" alt="Match Vision"></a>
     <div class="flinks"><button data-goto="t-terms">Terms</button><button data-goto="t-refund">Refunds</button><button data-goto="t-play">Responsible Play</button><button data-goto="t-privacy">Privacy</button><button data-goto="faq">FAQ</button></div>
     <div>18+ Only. Predictions Are Based On Data And Analysis. No Outcome Is Guaranteed.</div>
-    <div>© <span id="yr">2026</span> Match Vision · Vision Premium · Page 4.0</div>
+    <div>© <span id="yr">2026</span> Match Vision · Vision Premium · Page 4.1</div>
   </footer>
 </main>
 
@@ -564,7 +643,7 @@ body.lock .bar{visibility:hidden}
   <div class="in">
     <button class="flag" id="barFlag" aria-label="Change Country">🇺🇸</button>
     <button class="p" id="barPrice" aria-label="Change Country"><b id="baramt">$20</b><span id="barsub">30 Days · United States</span></button>
-    <a class="btn lime" id="barPay" href="https://t.me/MatchVision707Bot" target="_blank" rel="noopener">Pay Now</a>
+    <a class="btn lime" id="barPay" href="#join">Pay Now</a>
   </div>
 </div>
 
@@ -577,6 +656,24 @@ body.lock .bar{visibility:hidden}
       <input id="q" type="search" placeholder="Search Your Country" autocomplete="off" aria-label="Search Your Country"></label>
     <div class="list" id="list"></div>
   </div>
+</div>
+
+<div class="sheet" id="recsheet" hidden role="dialog" aria-modal="true" aria-labelledby="rec-t">
+  <div class="shade" data-close></div>
+  <div class="box">
+    <div class="grab"></div>
+    <div class="sh"><b id="rec-t">Every VIP Day</b><button data-close aria-label="Close">✕</button></div>
+    <p class="rsum" id="recSum"></p>
+    <div class="rows" id="recRows"></div>
+  </div>
+</div>
+
+<button class="fab" id="fab" aria-label="Ask Us A Question"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg><span class="badge">1</span></button>
+<div class="chat" id="chat" hidden role="dialog" aria-label="Vision Premium Help">
+  <div class="ch"><span class="av"><img src="logo.png" alt=""></span><div class="who"><b>Vision Premium Help</b><small><i></i>Online · Answers In Seconds</small></div><button class="cx" id="chatX" aria-label="Close Chat">✕</button></div>
+  <div class="msgs" id="msgs"></div>
+  <div class="chips" id="chips"></div>
+  <form class="cin" id="cform"><input id="cq" autocomplete="off" placeholder="Ask Anything About Vision Premium" aria-label="Your Question"><button aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.4 20.4 21 12 3.4 3.6l.1 6.5L15 12l-11.5 1.9z"/></svg></button></form>
 </div>
 
 <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="VIP Result">
@@ -694,7 +791,7 @@ function render() {
   }).join('');
   const m = method && METHODS[method];
   $('paytext').textContent = m ? 'Pay ' + p.text + ' With ' + (method === 'card' ? 'Card' : m.name) : 'Pay ' + p.text;
-  $('paybtn').href = payLink(); $('barPay').href = payLink();
+  $('paybtn').href = payLink();
   $('safetext').textContent = (m && m.link) ? 'Secure Checkout. Your Private VIP Link Comes Right After Payment.' : 'You Finish This Payment With Our VIP Assistant. Your Private Link Comes Right After It Is Confirmed.';
   try { localStorage.setItem('vp-cc', cur[0]); } catch (e) {}
 }
@@ -764,12 +861,36 @@ viewer.addEventListener('click', function (e) { if (e.target === viewer) closeVi
 $('vprev').addEventListener('click', function () { showShot(vi - 1); });
 $('vnext').addEventListener('click', function () { showShot(vi + 1); });
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') { closeSheet(); setMenu(false); closeViewer(); }
+  if (e.key === 'Escape') { closeSheet(); setMenu(false); closeViewer(); closeRecord(); closeChat(); }
   if (!viewer.hidden && e.key === 'ArrowLeft') showShot(vi - 1);
   if (!viewer.hidden && e.key === 'ArrowRight') showShot(vi + 1);
 });
-$('railPrev').addEventListener('click', function () { $('rail').scrollBy({ left: -$('rail').clientWidth * .8, behavior: 'smooth' }); });
-$('railNext').addEventListener('click', function () { $('rail').scrollBy({ left: $('rail').clientWidth * .8, behavior: 'smooth' }); });
+// ---------- VIP cards: centred, slide by themselves, swipe any time ----------
+let cardAt = 0, auto = null, pausedUntil = 0;
+function cards() { return [].slice.call(document.querySelectorAll('#rail .shot')); }
+function goCard(i, smooth) {
+  const cs = cards(); if (!cs.length) return;
+  cardAt = (i + cs.length) % cs.length; const c = cs[cardAt], r = $('rail');
+  r.scrollTo({ left: c.offsetLeft - (r.clientWidth - c.clientWidth) / 2, behavior: smooth === false ? 'auto' : 'smooth' });
+}
+function markCard() {
+  const r = $('rail'), mid = r.scrollLeft + r.clientWidth / 2; let best = 0, bd = 1e9;
+  cards().forEach(function (c, i) { const d = Math.abs(c.offsetLeft + c.clientWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+  cardAt = best;
+  cards().forEach(function (c, i) { c.classList.toggle('on', i === best); });
+  [].slice.call(document.querySelectorAll('#dots i')).forEach(function (d, i) { d.classList.toggle('on', i === best); });
+}
+let rq = 0; $('rail').addEventListener('scroll', function () { cancelAnimationFrame(rq); rq = requestAnimationFrame(markCard); }, { passive: true });
+['pointerdown', 'touchstart', 'wheel'].forEach(function (ev) { $('rail').addEventListener(ev, function () { pausedUntil = Date.now() + 7000; }, { passive: true }); });
+$('railPrev').addEventListener('click', function () { pausedUntil = Date.now() + 7000; goCard(cardAt - 1); });
+$('railNext').addEventListener('click', function () { pausedUntil = Date.now() + 7000; goCard(cardAt + 1); });
+$('dots').addEventListener('click', function (e) { const d = e.target.closest('i'); if (d) { pausedUntil = Date.now() + 7000; goCard(+d.dataset.i); } });
+function startAuto() {
+  if (auto || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let seen = false;
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { seen = es[0].isIntersecting; }, { threshold: .4 }).observe($('rail'));
+  auto = setInterval(function () { if (seen && Date.now() > pausedUntil && document.visibilityState === 'visible' && viewer.hidden) goCard(cardAt + 1); }, 3500);
+}
 $('heroTicket').addEventListener('click', function () { openViewer(0); });
 
 // ---------- Start ----------
@@ -833,12 +954,112 @@ function showRecord(list) {
     $('dayOpen').hidden = si < 0; $('dayOpen').onclick = function () { openViewer(si); };
   });
   $('rail').innerHTML = withImg.map(function (r, i) {
-    const c = r.won === r.of ? '' : r.won === 0 ? 'll' : 'pp';
+    const c = r.won === r.of ? '' : r.won === 0 ? 'll' : 'pp';  // green, red or amber
     return '<button type="button" class="shot" data-s="' + i + '"><img loading="lazy" src="../' + r.img + '" alt="Vision Premium ' + words(r.date) + '"><div>' + words(r.date) + '<span class="' + c + '">' + r.won + '/' + r.of + ' Won</span></div></button>';
   }).join('') || '<p class="lead">Our Latest VIP Cards Show Here.</p>';
-  $('rail').onclick = function (e) { const b = e.target.closest('.shot'); if (b) openViewer(+b.dataset.s); };
+  $('rail').onclick = function (e) { const b = e.target.closest('.shot'); if (!b) return; if (+b.dataset.s !== cardAt) { pausedUntil = Date.now() + 7000; goCard(+b.dataset.s); } else openViewer(+b.dataset.s); };
+  $('dots').innerHTML = withImg.map(function (_, i) { return '<i data-i="' + i + '"></i>'; }).join('');
+  setTimeout(function () { goCard(0, false); markCard(); startAuto(); }, 60);
+  recDays = days;
   if (withImg[0]) { $('heroImg').src = '../' + withImg[0].img; $('heroTag').textContent = 'Latest VIP Result · ' + withImg[0].won + '/' + withImg[0].of + ' Won'; }
 }
+// ---------- Every VIP day, in a list (from the numbers and the hero tiles) ----------
+let recDays = [];
+const recsheet = $('recsheet');
+const GO = '<span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg></span>';
+function openRecord(kind) {
+  if (!recDays.length) return;
+  const list = recDays.slice().reverse().filter(function (r) { return kind !== 'perfect' || r.won === r.of; });
+  let W = 0, N = 0; recDays.forEach(function (r) { W += r.won; N += r.of; });
+  $('rec-t').textContent = kind === 'perfect' ? 'Perfect VIP Days' : 'Every VIP Day';
+  $('recSum').textContent = kind === 'perfect' ? list.length + ' Days Where Every VIP Pick Won.' : W + ' Of ' + N + ' VIP Picks Won Over ' + recDays.length + ' Days. Wins And Losses.';
+  $('recRows').innerHTML = list.map(function (r) {
+    const c = r.won === r.of ? 'w' : r.won === 0 ? 'l' : 'p';
+    const si = shots.findIndex(function (s) { return s.date === r.date; });
+    return '<button class="rrow" data-si="' + si + '"><span class="d"><b>' + words(r.date) + '</b><small>' + (r.odds ? 'Total Odds ' + r.odds.toFixed(2) : 'VIP Picks') + (si >= 0 ? ' · Tap To See The Card' : '') + '</small></span><span class="sc ' + c + '">' + r.won + '/' + r.of + ' Won</span>' + (si >= 0 ? GO : '') + '</button>';
+  }).join('');
+  recsheet.hidden = false; lock(true);
+}
+function closeRecord() { if (recsheet.hidden) return; recsheet.hidden = true; lock(false); }
+recsheet.addEventListener('click', function (e) {
+  if (e.target.closest('[data-close]')) return closeRecord();
+  const b = e.target.closest('.rrow'); if (b && +b.dataset.si >= 0) { closeRecord(); openViewer(+b.dataset.si); }
+});
+document.addEventListener('click', function (e) { const b = e.target.closest('[data-rec]'); if (b && recDays.length) { e.preventDefault(); openRecord(b.dataset.rec); } });
+
+// ---------- Pay Now (bar): to the country and payment part ----------
+$('barPay').addEventListener('click', function (e) {
+  e.preventDefault();
+  $('join').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(function () { const p = $('picker'); p.classList.remove('flash'); void p.offsetWidth; p.classList.add('flash'); }, 500);
+});
+
+// ---------- FAQ: the first 6, then Show All ----------
+$('faqMore').addEventListener('click', function () {
+  const l = $('faqList'), all = l.classList.toggle('all');
+  this.textContent = all ? 'Show Fewer Questions' : 'Show All Questions';
+});
+
+// ---------- Help chat: answers from this page, or hands over to the team ----------
+const chat = $('chat'), fab = $('fab');
+const ANS = [
+  [/price|cost|how much|pay how much|\$|cedi|naira|pound|euro|amount|fee/i, function () { const p = priceOf(cur); return 'Vision Premium Is ' + p.text + ' For 30 Days In ' + cur[1] + (cur[2] === 'USD' || cur[0] === 'GH' ? '.' : ' (About $' + USD_PRICE + ' USD).') + ' Change Your Country In Step 1 To See Your Own Money.'; }, 'pay'],
+  [/how (do|can) i pay|payment|momo|mobile money|card|visa|mastercard|google pay|apple pay|bank|mpesa|m-pesa/i, function () { return 'Select Your Country, Choose How To Pay And Tap Pay. In Ghana You Pay By Mobile Money; Elsewhere By Card. Google Pay, Apple Pay And Bank Transfer Are Coming Soon.'; }, 'pay'],
+  [/when|time|morning|what time|kick/i, function () { return 'The VIP Picks Are Posted In The Room Every Day Around 05:00 Ghana Time (GMT), Before Kick-Off.'; }],
+  [/guarantee|sure|100|fixed|never lose|always win|lose|loss/i, function () { return 'No Prediction Is Ever Guaranteed And Losing Days Can Happen. We Post Our Strongest Picks And Show Every Result Honestly, Wins And Losses. See Our VIP Record Above.'; }, 'record'],
+  [/refund|money back/i, function () { return 'Ask Within 24 Hours Of Paying If You Have Not Joined The Room Yet, And We Refund In Full. After You Join, Payments Are Not Refunded, But If A Problem Is On Our Side We Add Free Days.'; }, 'refund'],
+  [/link|join link|not work|expired|invite/i, function () { return 'Your Private Join Link Comes As Soon As Your Payment Is Confirmed (Usually Within 30 Minutes). It Works Once, For You Only. If It Does Not Work, Message Us And We Send A New One.'; }, 'talk'],
+  [/long|days|month|renew|one.?time|cancel/i, function () { return 'One Payment Gives You 30 Days In The Room. Nothing Renews By Itself: We Remind You Before It Ends And You Pay Again To Stay.'; }],
+  [/what do i get|picks|how many|odds|games|leagues/i, function () { return 'Every Day You Get Our Safest VIP Picks: 1 To 7 Short Games, Usually About 2 To 4 Total Odds, Posted In A Private Room Before Kick-Off.'; }],
+  [/record|result|win rate|proof|won/i, function () { let W = 0, N = 0; recDays.forEach(function (r) { W += r.won; N += r.of; }); return N ? 'So Far ' + W + ' Of ' + N + ' VIP Picks Won (' + Math.round(W * 100 / N) + '%) Over ' + recDays.length + ' Days. Every Day Is In Our Record, Wins And Losses.' : 'Every VIP Day Is In Our Record Above, Wins And Losses.'; }, 'record'],
+  [/telegram|need telegram|app/i, function () { return 'Yes, Vision Premium Is A Private Telegram Room, So You Need Telegram (Free) To Join.'; }],
+  [/safe|scam|trust|real|legit/i, function () { return 'Vision Premium Is Run By The Match Vision Team, The Same Team Behind Our Daily YouTube Predictions. Every VIP Result Is Shown Above, And Every Payment Is Recorded With Its Reference.'; }, 'record'],
+  [/human|person|admin|talk|speak|contact|help|message/i, function () { return 'Of Course. Tap Below To Message The Match Vision Team Directly. We Reply As Soon As We Can.'; }, 'talk']
+];
+const CHIPS = [['How Much Is It?', 'How much is it?'], ['How Do I Pay?', 'How do I pay?'], ['When Do Picks Come?', 'When do the picks come?'], ['Are Picks Guaranteed?', 'Are the picks guaranteed?'], ['Refunds', 'Can I get a refund?'], ['Talk To The Team', 'I want to talk to a person']];
+function action(kind) {
+  if (kind === 'pay') return '<button class="act" data-act="pay">Go To Payment</button>';
+  if (kind === 'record') return '<button class="act" data-act="record">See Our VIP Record</button>';
+  if (kind === 'refund') return '<button class="act" data-act="refund">Refund Policy</button>';
+  if (kind === 'talk') return '<a class="act" href="' + BOT + '" target="_blank" rel="noopener">Message The Team</a>' + (WA ? '<a class="act" href="https://wa.me/' + WA + '" target="_blank" rel="noopener">WhatsApp</a>' : '');
+  return '';
+}
+function say(html, who) { const m = document.createElement('div'); m.className = 'msg ' + (who || 'bot'); m.innerHTML = html; $('msgs').appendChild(m); $('msgs').scrollTop = 1e9; return m; }
+function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function ask(text) {
+  text = String(text || '').trim(); if (!text) return;
+  say(esc(text), 'me');
+  const t = say('<span class="typing"><i></i><i></i><i></i></span>');
+  setTimeout(function () {
+    const hit = ANS.find(function (a) { return a[0].test(text); });
+    t.innerHTML = hit ? esc(hit[1]()) + '<br>' + action(hit[2]) : 'I Do Not Have An Answer For That Yet. Tap Below And The Match Vision Team Will Reply To You Directly.<br>' + action('talk');
+    $('msgs').scrollTop = 1e9;
+  }, 650);
+}
+let greeted = false;
+function openChat() {
+  chat.hidden = false; fab.querySelector('.badge').hidden = true;
+  if (!greeted) {
+    greeted = true;
+    say('Hi 👋 Welcome To <b>Vision Premium</b>. Ask Me Anything About The Price, Payment, Picks Or Your Join Link.');
+    $('chips').innerHTML = CHIPS.map(function (c) { return '<button type="button" data-q="' + esc(c[1]) + '">' + c[0] + '</button>'; }).join('');
+  }
+  if (matchMedia('(min-width: 700px)').matches) $('cq').focus();
+}
+function closeChat() { chat.hidden = true; }
+fab.addEventListener('click', function () { chat.hidden ? openChat() : closeChat(); });
+$('chatX').addEventListener('click', closeChat);
+$('chips').addEventListener('click', function (e) { const b = e.target.closest('button'); if (b) ask(b.dataset.q); });
+$('cform').addEventListener('submit', function (e) { e.preventDefault(); ask($('cq').value); $('cq').value = ''; });
+$('msgs').addEventListener('click', function (e) {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  closeChat();
+  if (b.dataset.act === 'pay') $('barPay').click();
+  if (b.dataset.act === 'record') $('record').scrollIntoView({ behavior: 'smooth' });
+  if (b.dataset.act === 'refund') openTerm('t-refund');
+});
+addEventListener('scroll', function () { fab.classList.toggle('show', scrollY > 500); }, { passive: true });
+
 // The laptop sends the record inside feed.json every day (vip_record). Until then, vip.json next to this page is used.
 fetch('../feed.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (f) {
   if (f && Array.isArray(f.vip_record) && f.vip_record.length) return f.vip_record;
