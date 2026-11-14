@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.57';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.57' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.57';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.55' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1326,11 +1326,11 @@ function copyPicks(d){const t=['MATCH VISION · '+longDate(d.date),''].concat((d
 // ---------- Results view ----------
 function resultsView(d){if(!d)return `<div class="card"><p class="empty">No results yet.</p></div>`;const c=dayCount(d),s=safestCount(d),bk=bankerState(d);
   const wins=(d.posts||[]).filter(it=>it.group==='results'&&SET.groups.results!==false);
-  let h=`<div class="card"><div class="ct">${longDate(d.date)}</div><div class="statrow"><span>Safest picks</span><b>${s.n?(s.w===s.n?`<span class="mvw">${s.w} of ${s.n} won</span>`:`<span class="mvw">${s.w} of ${s.n} won</span> · <span class="mvl">${s.n-s.w} lost</span>`):'Waiting'}</b></div><div class="statrow"><span>All predictions</span><b>${c.w+c.l?`<span class="mvw">${c.w} won</span> · <span class="mvl">${c.l} lost</span>`:'Waiting'}${c.p?` · ${c.p} to play`:''}</b></div>
+  let h=`<div class="card"><div class="ct">${longDate(d.date)}</div><div class="statrow"><span>Safest picks</span><b>${s.n?`${s.w} of ${s.n} won`:'Waiting'}</b></div><div class="statrow"><span>All predictions</span><b>${c.w+c.l?`<span class="mvw">${c.w} won</span> · <span class="mvl">${c.l} lost</span>`:'Waiting'}${c.p?` · ${c.p} to play`:''}</b></div>
     ${d.banker&&d.banker.games?`<div class="statrow"><span>${Number(d.banker.total||0).toFixed(2)} odds banker</span><b class="${bk==='w'?'mvw':bk==='l'?'mvl':''}">${bk==='w'?'✔ WON':bk==='l'?'✘ LOST':'Waiting'}</b></div>`:''}
     ${d.results&&d.results.correct_scores!=null?`<div class="statrow"><span>Correct scores right</span><b>${esc(d.results.correct_scores)}</b></div>`:''}
     ${(()=>{const p=dayPL(d);let pp=0;const px=prem&&(prem.days||[]).find(x=>x.date===d.date);if(px)pp=premPL(px);if(!p.has&&!pp)return '';const tot=p.all+p.bank+pp;
-      return `<div class="statrow" data-stake="1"><span>Profit today<br><small class="muted">Safest ${plC(p.safe)} · Singles ${plC(p.top)} · All ${plC(p.all)}${d.banker&&d.banker.games?' · Banker '+plC(p.bank):''}${px?' · Premium '+plC(pp):''}</small></span><b class="${tot>=0?'mvw':'mvl'}">${plTxt(tot)}</b></div>`;})()}</div>`;
+      return `<div class="statrow" data-stake="1"><span>Profit today<br><small class="muted">Safest ${plTxt(p.safe)} · Top ${plTxt(p.top)} · All ${plTxt(p.all)}${d.banker&&d.banker.games?' · Banker '+plTxt(p.bank):''}${px?' · Premium '+plTxt(pp):''}</small></span><b class="${tot>=0?'mvw':'mvl'}">${plTxt(tot)}</b></div>`;})()}</div>`;
   if(wins.length)h+=`<div class="card"><div class="ct">Ready to send</div><div class="cs">Winning pictures from the laptop. Tap a button to post.</div>${wins.map(it=>todoRow(d,it,false)).join('')}</div>`;
   const ms=(d.matches||[]).filter(m=>mState(m,d)==='fin');const won=[],lost=[];
   for(const m of ms){const L=liveOf(m,d);const st=(m.picks||[]).slice(0,3).map((p,i)=>pickState(p,i,m,d,L));(st.some(x=>x==='l')?lost:won).push(m);}
@@ -1347,8 +1347,9 @@ function premDone(td){const dd=dayOf(td.date);return (td.picks||[]).length>0&&(t
 function premBlock(td,done){return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium slip · ${done?'finished':'pinned'}</span></div><div class="pst-${esc(SET.premStyle||'gold')}">${premPicture(td)}</div>`+(done&&(td.picks||[]).some(g=>premWon(g,dayOf(td.date))===true)?`<button class="btn-save w100" data-card="premwon" data-dk="${td.date}" style="margin:0 0 14px">✅ Share the Premium WINS</button>`:'<div style="height:12px"></div>');}
 // 3.37 (Philip, 7 Nov): Vision Premium, Top picks and Banker pinned at the top of Matches, each followed LIVE (score, minute, tick)
 const shortPk=(t,m)=>{t=String(t||'');if(m){for(const k of ['home','away'])if(m[k]&&shortTeam(m[k])!==m[k])t=t.split(m[k]).join(shortTeam(m[k]));}return t;};
-function pinRow(d,m,text,odds,s){const L=m&&m.n?liveOf(m,d):null;   // 3.40 (Philip): every row = 2 short lines, no wasted space
-  return `<div class="bkr one">${pinCrests(m)}<span class="t"><b>${esc(shortPk(text,m))}</b><small>${esc(shortTeam((m&&m.home)||''))} ${L&&L.gh!=null?`<b class="sc ${mState(m,d)==='live'?'lv':''}">${L.gh}-${L.ga}</b>`:'<i class="vsx">vs</i>'} ${esc(shortTeam((m&&m.away)||''))} ${m&&m.n?statePill(L,m):''}</small></span>${odds?`<span class="o">${Number(odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}
+function pinRow(d,m,text,odds,s,sg){const gr=sg&&(s==='l'||s==='v');   // 3.57 (Philip, 14 Nov): sg = Singles card: lost grey, postponed last
+  const L=m&&m.n?liveOf(m,d):null;   // 3.40 (Philip): every row = 2 short lines, no wasted space
+  return `<div class="bkr one${gr?' pklost':''}">${pinCrests(m)}<span class="t"><b>${esc(shortPk(text,m))}</b><small>${esc(shortTeam((m&&m.home)||''))} ${L&&L.gh!=null?`<b class="sc ${mState(m,d)==='live'?'lv':''}">${L.gh}-${L.ga}</b>`:'<i class="vsx">vs</i>'} ${esc(shortTeam((m&&m.away)||''))} ${m&&m.n?statePill(L,m):''}</small></span>${sg&&s==='v'?'<span class="o" style="font-size:11px;color:#8C8C94">POSTPONED</span>':odds?`<span class="o"${gr?' style="color:#8C8C94"':''}>${Number(odds).toFixed(2)}</span>`:''}${sg&&s==='l'?'<span class="leg" style="color:#8C8C94">✕</span>':sg&&s==='v'?'<span class="leg" style="color:#8C8C94">⏸</span>':legMark(s)}</div>`;}
 const pinCrests=m=>m&&m.home?`<span class="pcr">${crestHTML(m.hc,m.home)}${crestHTML(m.ac,m.away)}</span>`:'';   // 3.38: team badges, like the posts
 // 3.46 (Philip, 9 Nov): PROFIT AND LOSS, 1 unit on every pick as a single at its own odds: won = odds - 1, lost = -1,
 // no odds = not counted. Correct scores are never counted. Total = all picks + banker + Vision Premium.
@@ -1358,13 +1359,15 @@ function dayPL(d){const r={safe:0,all:0,top:0,bank:0,nod:0,has:false};for(const 
   const bk=bankerState(d);if(bk&&d.banker&&Number(d.banker.total)>1){r.bank+=bk==='w'?Number(d.banker.total)-1:-1;r.has=true;}return r;}
 function premPL(x){const dx=dayOf(x.date);let u=0;for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;const v=plU(r?'w':'l',g.odds);if(v!=null)u+=v;}return u;}
 function plTxt(u){const st=Number(SET.stake||1);const t=(u>=0?'+':'−')+Math.abs(u).toFixed(2);return st!==1?t+` (${u>=0?'+':'−'}${Math.abs(u*st).toFixed(0)})`:t;}
-function plC(u){return `<span class="${u>0.0001?'mvw':u<-0.0001?'mvl':''}">${plTxt(u)}</span>`;}   // 3.57 (Philip 14 Nov): plus green, minus red
 function plSm(u){return `<div class="plsm ${u>=0?'up':'down'}">${plTxt(u)}</div>`;}
 function pickStateOf(d,m,text){if(!m)return null;const i=(m.picks||[]).findIndex(p=>p.text===text);return i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));}
-function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false||!tpOn())return '';let tot=1,w=0,l=0;
-  const rows=tp.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=pickStateOf(d,m,g.text);if(s==='w')w++;if(s==='l')l++;return pinRow(d,m,g.text,g.odds,s);}).join('');
-  const st=l?'l':(w===tp.length?'w':null);
-  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Singles of the day · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">SINGLES OF THE DAY</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${tp.length} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
+function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false||!tpOn())return '';let tot=1,w=0,l=0,nv=0;
+  /* 3.57 (Philip, 14 Nov): like the results picture: won at the top, then the rest, then lost (grey), postponed last and not counted */
+  const it=tp.map((g,i)=>{const m=(d.matches||[]).find(x=>x.n===g.n);if(g.odds)tot*=g.odds;const s=pickStateOf(d,m,g.text);const L=m&&m.n?liveOf(m,d):null;const v=s!=='w'&&s!=='l'&&!!L&&['PST','CANC'].includes(L.st);if(s==='w')w++;if(s==='l')l++;if(v)nv++;return {g,m,s,v,i};});
+  const rk=x=>x.v?3:x.s==='w'?0:x.s==='l'?2:1;if(SET.singlesOrder!==false)it.sort((a,b)=>rk(a)-rk(b)||a.i-b.i);
+  const rows=it.map(x=>pinRow(d,x.m,x.g.text,x.g.odds,x.v?'v':x.s,true)).join('');const np=tp.length-nv;
+  const st=np&&w===np?'w':null;
+  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Singles of the day · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">SINGLES OF THE DAY</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${np} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
 function premLive(td){const d=dayOf(td.date);if(!d)return '';let w=0;
   const rows=(td.picks||[]).map(g=>{const m=findM(d,g);const s=premState(g,d);if(s==='w')w++;return pinRow(d,m,g.text,g.odds,s);}).join('');
   return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium · pinned</span></div><div class="bkcard"><div class="bkh col"><b style="white-space:nowrap">👑 VISION PREMIUM ${((td.picks||[]).reduce((a,g)=>a*(g.odds||1),1)).toFixed(2)}</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
@@ -2163,17 +2166,10 @@ async function builderBlob(kind,d){try{
       if(!pic)return kind==='premwon'?'wait':null;let b=await pmCacheGet(pic.path);if(!b){const r=await mbx(pic.path,true);if(!r.ok)return null;b=await r.blob();pmCachePut(pic.path,b);}return b;}
     if(kind==='picks'||kind==='banker'){const dd=d||dayOf(todayKey());const it=dd&&(dd.posts||[]).find(x=>x.id===kind);if(!it)return null;
       const fs=await filesFor(it,'any');return fs&&fs[0]?fs[0]:null;}
-    // 3.57 (Philip 14 Nov: "let the app use everything of the builder"): the builder's own win ticket and Banker Won picture
-    if(kind==='match'){const ms=window.__matchShare;const m=ms&&ms.m;if(!m||!m.win||!m.win.img)return null;
-      const fs=await filesFor({id:'win'+m.n,images:[m.win.img]},'any');return fs&&fs[0]?fs[0]:null;}
-    if(kind==='bankerwon'){const dd=d||dayOf(todayKey());const it=dd&&(dd.posts||[]).find(x=>x.id==='bkwon');if(!it)return null;
-      const fs=await filesFor(it,'any');return fs&&fs[0]?fs[0]:null;}
   }catch(e){}return null;}
 async function shareCard(kind,d){let lap=await builderBlob(kind,d);
   if(lap==='wait'){const td=window.__premTd;const dd=td&&dayOf(td.date);const w=(td&&td.picks||[]).filter(g=>premWon(g,dd)===true).length;toast(`The WON picture comes when every pick has won (${w}/${(td&&td.picks||[]).length} now)`,4000);return;}
-  const cd=cardData(kind,d)||(lap?{o:{},name:kind,txt:''}:null);
-  if(cd&&lap&&kind==='match'){const m=window.__matchShare&&window.__matchShare.m;if(m&&m.win&&m.win.text)cd.txt=String(m.win.text).replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g,'$1**$2**');}   // 3.57: the builder's words
-  if(cd&&lap&&kind==='bankerwon'){const dd=d||dayOf(todayKey());const it=dd&&(dd.posts||[]).find(x=>x.id==='bkwon');const t=it&&it.texts&&(it.texts.tg||it.texts.wa);if(t)cd.txt=t;}if(!cd){toast(kind==='banker'?'No banker for this day':'Nothing to show for this day yet');return;}toast(lap?'Getting the picture…':'Making the picture…',1500);
+  const cd=cardData(kind,d)||(lap?{o:{},name:kind,txt:''}:null);if(!cd){toast(kind==='banker'?'No banker for this day':'Nothing to show for this day yet');return;}toast(lap?'Getting the picture…':'Making the picture…',1500);
   const c=lap?null:(kind==='match'&&cd.o.big)?await csCanvas(cd.o):(kind==='match'&&SET.winShape==='wide')?await winCanvas(cd.o):await cardCanvas(cd.o);const FM=(kind==='match'||kind==='bankerwon')?winFmt:styled;const blob=lap?lap:await new Promise(r=>c.toBlob(r,'image/jpeg',.93));const file=new File([blob],cd.name+'.jpg',{type:'image/jpeg'});const url=URL.createObjectURL(blob);const text=cd.txt;
   openSheet(`<div class="cshare"><img src="${url}" alt=""><button class="btn-save ${kind==='prem'?'gold':''} w100" data-cs="any">Share picture and text (pick any app)</button>
     <div class="cs-apps">${['wa','tg','tt','ig','x','yt'].map(p=>`<button data-cs="${p}">${SVG[p]||''}<span>${PNAME[p]}</span></button>`).join('')}<button data-cs="copy">${SVG.copy||''}<span>Copy text</span></button></div>
