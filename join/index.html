@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
 <style>
-/* Join page 2.0 (14 Nov 2026): light page in Match Vision black + lime. Logo pill, hero, live stats, banker record, price card, why, steps, socials, sticky join bar. */
+/* Join page 2.1 (14 Nov 2026): light page in Match Vision black + lime. Logo pill, hero, live stats, banker record, price card, why, steps, socials, sticky join bar. */
 :root{
   --bg:#F1F7DA; --bg2:#E6F0BE; --ink:#0E0E0E; --dark:#121212; --dark2:#1C1C1F; --sub:#4A4F3A; --dim:#6E7360;
   --lime:#DFFB51; --lime2:#C8E83A; --line:#0E0E0E1F; --win:#B8F04A; --loss:#E5484D; --none:#3A3A3E;
@@ -48,8 +48,11 @@ p{margin:0}
 .badge{display:flex;align-items:center;gap:12px;background:var(--dark);color:var(--lime);border-radius:22px;padding:14px 20px;font-weight:600;font-size:14.5px;line-height:1.35;text-align:center;box-shadow:0 6px 18px #0E0E0E26}
 .badge .dot{flex:none}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px #DFFB5133}
-.hero h1{margin:0;font-family:var(--h);font-weight:700;font-size:clamp(34px,10.4vw,48px);line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
-.hero h1 mark{background:linear-gradient(transparent 70%,var(--lime) 70%,var(--lime) 92%,transparent 92%);color:inherit;padding:0 2px;font-weight:800}
+.hero h1{margin:0;font-family:var(--h);font-weight:700;font-size:clamp(34px,10.4vw,48px);line-height:1.18;letter-spacing:-.035em;text-wrap:balance}
+.hero h1 mark{color:inherit;font-weight:800;background:none;padding:0}
+.hero h1 mark span{background-image:linear-gradient(90deg,var(--lime),var(--lime2));background-repeat:no-repeat;background-position:0 100%;background-size:0% .16em;
+  padding-bottom:.2em;-webkit-box-decoration-break:clone;box-decoration-break:clone;animation:draw 1s .55s cubic-bezier(.65,0,.35,1) forwards}
+@keyframes draw{to{background-size:100% .16em}}
 .hero .sub{color:var(--sub);font-size:16px;max-width:32ch;text-wrap:balance}
 .cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:58px;padding:0 34px;border-radius:14px;background:var(--dark);color:var(--lime);font-weight:700;font-size:17px;text-decoration:none;box-shadow:0 5px 0 #000,0 10px 22px #0E0E0E33;transition:transform .12s ease,box-shadow .12s ease}
 .cta svg{width:22px;height:22px}
@@ -59,11 +62,11 @@ p{margin:0}
 
 /* Live stats */
 .stats{position:relative;text-align:center;display:flex;flex-direction:column;gap:22px;padding:26px 0 30px;isolation:isolate}
-.stats::before{content:"";position:absolute;inset:-10px -40px;z-index:-1;
+.stats::before{content:"";position:absolute;inset:-10px -40px;-webkit-mask:linear-gradient(#000 75%,transparent);mask:linear-gradient(#000 75%,transparent);z-index:-1;
   background:radial-gradient(circle at 50% 62%,#FFFFFFCC 0 18%,transparent 19%),
     radial-gradient(circle at 50% 62%,transparent 0 33%,#0E0E0E14 33.2%,transparent 33.6%),
     radial-gradient(circle at 50% 62%,transparent 0 52%,#0E0E0E10 52.2%,transparent 52.6%),
-    radial-gradient(ellipse at 50% 60%,#DFFB5166,transparent 65%)}
+    radial-gradient(closest-side at 50% 60%,#DFFB5170,transparent)}
 .stats h2{margin:0;font-family:var(--h);font-weight:800;font-size:clamp(34px,10vw,46px);letter-spacing:-.04em;line-height:1.05;
   color:var(--ink);text-shadow:0 3px 0 var(--lime)}
 .cards{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px;align-items:center}
@@ -165,7 +168,40 @@ footer .pill img{height:28px}
 .bar .p b{font-family:var(--h);font-size:19px;font-weight:800;color:var(--lime);font-variant-numeric:tabular-nums}
 .bar .p span{font-size:12px;color:#C9C9C9}
 .bar .btn{min-height:48px;padding:0 24px;font-size:15px;flex:none;box-shadow:none}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.bar,.cta{transition:none}}
+/* Motion (join page 2.1): everything moves gently, nothing jumps */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.hero>*{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
+.hero>*:nth-child(2){animation-delay:.08s}.hero>*:nth-child(3){animation-delay:.16s}.hero>*:nth-child(4){animation-delay:.24s}.hero>*:nth-child(5){animation-delay:.32s}
+@keyframes up{from{opacity:0;transform:translateY(18px)}}
+.pill{animation:drop .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes drop{from{opacity:0;transform:translateY(-14px)}}
+.dot{position:relative}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+.cta{position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,#DFFB5155,transparent);transform:skewX(-20deg);animation:shine 3.6s 1.4s ease-in-out infinite}
+@keyframes shine{0%{left:-60%}35%,100%{left:130%}}
+.cta svg{transition:transform .2s ease}.cta:hover svg{transform:translateX(4px)}
+.sc{animation:bob 5s ease-in-out infinite}
+.sc:nth-child(2){animation-delay:-1.6s}.sc:nth-child(3){animation-delay:-3.2s}
+@keyframes bob{50%{transform:translateY(-7px)}}
+.stats::before{animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.04);opacity:.85}}
+.live{display:inline-flex;align-items:center;gap:8px;align-self:center;background:var(--dark);color:#fff;border-radius:999px;padding:6px 14px 6px 12px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.live .dot{width:8px;height:8px;background:#ff3b3b;box-shadow:none}
+.live small{font-weight:500;letter-spacing:0;text-transform:none;color:#C9C9C9;font-size:12px}
+.grid i{opacity:0;transform:scale(.6)}
+.board.go .grid i{animation:pop .45s cubic-bezier(.3,1.5,.5,1) forwards;animation-delay:calc(var(--k) * 70ms)}
+@keyframes pop{to{opacity:1;transform:none}}
+.btn.tg{position:relative;overflow:hidden}
+.btn.tg::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:35%;background:linear-gradient(100deg,transparent,#FFFFFF80,transparent);transform:skewX(-20deg);animation:shine 3.6s 2.2s ease-in-out infinite}
+.amount .big{transition:transform .25s ease}
+.amount .big.flip{animation:flip .4s ease}
+@keyframes flip{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+.why div,.steps li{transition:transform .2s ease,box-shadow .2s ease}
+.why div:hover,.steps li:hover{transform:translateY(-3px);box-shadow:0 10px 22px #0E0E0E1A}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.rv,.grid i{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -188,7 +224,7 @@ footer .pill img{height:28px}
 <div class="wrap">
   <header class="hero">
     <div class="badge"><span class="dot"></span>For football fans tired of fake tips, losing streaks and empty promises</div>
-    <h1>Football Picks With <mark>Proof You Can Check</mark> Before You Pay</h1>
+    <h1>Football Picks With <mark><span>Proof You Can Check</span></mark> Before You Pay</h1>
     <p class="sub">Vision Premium: the few picks we study the longest, in one private room.</p>
     <a class="cta" href="#price">Join Vision Premium
       <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -196,6 +232,7 @@ footer .pill img{height:28px}
   </header>
 
   <section class="stats" id="proof" aria-live="polite">
+    <div class="live"><span class="dot"></span>Live record <small id="s-upd"></small></div>
     <h2 id="headline">Picks Won!</h2>
     <div class="cards">
       <div class="sc"><b id="s-won">–</b><span>Picks won</span></div>
@@ -304,7 +341,7 @@ footer .pill img{height:28px}
   <footer>
     <div class="pill"><img src="logo.png" alt="Match Vision" width="50" height="28"></div>
     <div>Predictions are based on data and analysis. No outcome is guaranteed.</div>
-    <div>Match Vision · Vision Premium · join page 2.0</div>
+    <div>Match Vision · Vision Premium · join page 2.1</div>
   </footer>
 </div>
 
@@ -333,7 +370,8 @@ if (WA) { const w = document.getElementById('wa'); w.href = 'https://wa.me/' + W
 const sel = document.getElementById('country');
 function show(){
   const p = P[sel.value] || P.ot;
-  document.getElementById('amt').textContent = p[0];
+  const amt = document.getElementById('amt'); amt.textContent = p[0];
+  amt.classList.remove('flip'); void amt.offsetWidth; amt.classList.add('flip');
   document.getElementById('baramt').textContent = p[0];
   document.getElementById('payhow').textContent = p[1];
   document.getElementById('paynote').textContent = p[2];
@@ -345,7 +383,7 @@ show();
 // The sticky join bar only shows once the main join button has scrolled out of view.
 const bar = document.getElementById('bar');
 if ('IntersectionObserver' in window) {
-  // join page 2.0: also hidden while the top Join button is on screen
+  // join page 2.1: also hidden while the top Join button is on screen
   const seen = new Set();
   const io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
@@ -376,33 +414,58 @@ function board(title, days, pickList) {
   const rows = days.slice().reverse().map(function (d) { return { d: d.date, r: dayResult(d, pickList(d)) }; });
   const done = rows.filter(function (x) { return x.r === 'w' || x.r === 'l'; });
   const won = done.filter(function (x) { return x.r === 'w'; }).length;
+  let k = 0;
   const tiles = rows.map(function (x) {
     const n = Number(x.d.slice(8, 10));
     const c = x.r === 'w' ? 'w' : x.r === 'l' ? 'l' : '';
     const t = x.r === 'w' ? 'won' : x.r === 'l' ? 'lost' : x.r === 'p' ? 'waiting for results' : 'no picks';
-    return '<i class="' + c + '" title="' + x.d + ': ' + t + '">' + n + '</i>';
+    return '<i style="--k:' + (k++) + '" class="' + c + '" title="' + x.d + ': ' + t + '">' + n + '</i>';
   });
-  while (tiles.length % 7) tiles.push('<i class="e"></i>');
+  while (tiles.length % 7) tiles.push('<i style="--k:' + (k++) + '" class="e"></i>');
   return '<div class="perf"><div class="head"><b>' + title + '</b><small>' + won + ' / ' + done.length + ' wins</small></div>' +
     '<div class="board"><div class="t"><b>Performance</b><span>Last ' + rows.length + ' days</span></div>' +
     '<div class="grid">' + tiles.join('') + '</div>' +
     '<div class="key"><span><i style="background:var(--win)"></i>Win</span><span><i style="background:var(--loss)"></i>Loss</span><span><i style="background:var(--none)"></i>No picks / waiting</span></div></div></div>';
 }
+// Numbers roll up from 0 when they come on screen
+function countUp(el, to, suffix) {
+  const run = function () {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = to.toLocaleString('en') + suffix; return; }
+    const t0 = performance.now(), d = 1400;
+    (function step(t) { const p = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * e).toLocaleString('en') + suffix; if (p < 1) requestAnimationFrame(step); })(t0);
+  };
+  if (!('IntersectionObserver' in window)) return run();
+  const o = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { o.disconnect(); run(); } }, { threshold: .4 }); o.observe(el);
+}
+// Sections slide in as you scroll
+function watch(els, cls) {
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add(cls); }); return; }
+  const o = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add(cls); o.unobserve(e.target); } }); }, { threshold: .15 });
+  els.forEach(function (e) { o.observe(e); });
+}
+document.querySelectorAll('.wrap>section, .why>div, .steps li, .pricebox, footer').forEach(function (e) { e.classList.add('rv'); });
+watch(document.querySelectorAll('.rv'), 'in');
 fetch('../feed.json', { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (f) {
   let won = 0, of = 0;
   Object.values(f.win_rate || {}).forEach(function (v) { won += v.won || 0; of += v.of || 0; });
+  if (f.updated) {
+    const mins = Math.max(0, Math.round((Date.now() - new Date(f.updated + 'Z').getTime()) / 60000));
+    document.getElementById('s-upd').textContent = mins < 60 ? '· updated ' + (mins < 2 ? 'just now' : mins + ' min ago') : mins < 1440 ? '· updated ' + Math.round(mins / 60) + ' h ago' : '';
+  }
   if (of) {
     const nice = won >= 100 ? Math.floor(won / 50) * 50 : won;
     document.getElementById('headline').textContent = nice.toLocaleString('en') + '+ Picks Won!';
-    document.getElementById('s-won').textContent = won.toLocaleString('en');
-    document.getElementById('s-rate').textContent = Math.round(won * 100 / of) + '%';
+    countUp(document.getElementById('s-won'), won, '');
+    countUp(document.getElementById('s-rate'), Math.round(won * 100 / of), '%');
     document.getElementById('s-note').textContent = won.toLocaleString('en') + ' of ' + of.toLocaleString('en') + ' free picks won. Live from our public results.';
   }
-  document.getElementById('s-streak').textContent = (f.banker_streak !== undefined && f.banker_streak !== null) ? f.banker_streak : '–';
+  if (typeof f.banker_streak === 'number') countUp(document.getElementById('s-streak'), f.banker_streak, '');
   const days = (f.days || []).filter(function (d) { return d.date; });
   if (days.length) {
     document.getElementById('rail').innerHTML =
       board('Banker', days, function (d) { return d.banker && d.banker.games ? d.banker.games.map(function (g) { return { n: g.n, text: g.pick && g.pick.text }; }) : []; });
+    watch(document.querySelectorAll('#rail .board'), 'go');
   }
 }).catch(function () {
   document.getElementById('rail').innerHTML = '<div class="perf"><div class="loading board">Our record shows here when you are online.</div></div>';
