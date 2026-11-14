@@ -43,6 +43,11 @@ def _clean(text, home, away):
     q = re.sub(r'\(\s*\d+\.\d+\s*\)', ' ', q)                    # "(1.62)" odds, never "(-1)"
     q = q.replace('(', ' ').replace(')', ' ')
     q = _tag_teams(q, home, away)
+    # 3.70 (Philip 14 Nov, all the bookmaker markets): multigoals "2-3" / "2 or 3 goals", highest scoring half, HT/FT
+    q = re.sub(r'\bmulti ?goals?\s*(\d+)\s*(?:-|to|or)\s*(\d+)\b', r' range \1 \2 ', q)
+    q = re.sub(r'\b(\d+)\s*(?:-|to|or)\s*(\d+)\s+goals\b', r' range \1 \2 ', q)
+    q = re.sub(r'\bhighest scoring half\b', ' hsh ', q)
+    q = re.sub(r'\b(?:ht\s*/\s*ft|half ?time\s*/\s*full ?time)\b', ' htft ', q)
     q = re.sub(r'\b(asian handicap|european handicap|handicap|hcap|ah)\b', ' ', q)
     q = re.sub(r'\b(goals?|full ?time|ft|match result|1x2|total|the match|in the match)\b', ' ', q)
     q = re.sub(r'\bboth teams to score\b|\bboth teams score\b|\bgg\b', ' btts ', q)
@@ -75,6 +80,41 @@ def _one(q, gh, ga, hh, ha):
         return None
     if re.search(r'corner|card|booking|offside|shot|foul|throw', q):
         return None
+    # --- 3.70: the new markets that need both halves (before the 1st / 2nd half rules)
+    m = re.search(r'\brange (\d+) (\d+)\b', q)
+    if m:
+        lo_, hi_ = sorted((int(m.group(1)), int(m.group(2))))
+        return 'won' if lo_ <= tot <= hi_ else 'lost'
+    if re.search(r'\bhsh\b', q):
+        if hh is None or ha is None:
+            return None
+        h1, h2 = hh + ha, tot - hh - ha
+        if re.search(r'\b(1st|first)\b', q):
+            return 'won' if h1 > h2 else 'lost'
+        if re.search(r'\b(2nd|second)\b', q):
+            return 'won' if h2 > h1 else 'lost'
+        if re.search(r'\b(equal|draw|tie|same|x)\b', q):
+            return 'won' if h1 == h2 else 'lost'
+        return None
+    m = re.search(r'\bhtft\s*(home|away|draw|x|1|2)\s*/\s*(home|away|draw|x|1|2)\b', q)
+    if m:
+        if hh is None or ha is None:
+            return None
+        def res(a, b):
+            return 'home' if a > b else ('away' if b > a else 'draw')
+        w = {'1': 'home', '2': 'away', 'x': 'draw'}
+        want1, want2 = w.get(m.group(1), m.group(1)), w.get(m.group(2), m.group(2))
+        return 'won' if res(hh, ha) == want1 and res(gh, ga) == want2 else 'lost'
+    m = re.search(r'\b(home|away)\s*(?:to )?score in both halves\b', q)
+    if m:
+        if hh is None or ha is None:
+            return None
+        a1, a2 = (hh, gh - hh) if m.group(1) == 'home' else (ha, ga - ha)
+        return 'won' if a1 > 0 and a2 > 0 else 'lost'
+    if re.search(r'\bin both halves\b', q) and not re.search(r'\b(home|away|btts)\b', q):
+        if hh is None or ha is None:
+            return None
+        return 'won' if hh + ha > 0 and tot - hh - ha > 0 else 'lost'
     # --- 2nd half / 1st half: judge the same words on that half's score
     if re.search(r'\b(2nd half|second half|2h)\b', q):
         if hh is None or ha is None:
