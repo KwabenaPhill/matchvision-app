@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.60</title>
+<title>Match Vision 3.61</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.60';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.59' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.61';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.59' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1257,7 +1257,7 @@ function ytResults(t,key){const L=String(t||'').split('\n').filter(l=>!/https?:\
 function textFor(it,p){const ed=EDITS[editKey(it,p)];const raw=ed!=null?ed:(p==='yt'&&it.group==='results'&&!(it.texts&&it.texts.yt)?ytResults(it.texts.tg||it.texts.wa,(it.id||'')+(it.title||'')):((it.texts&&(it.texts[p]||it.texts.wa||it.texts.tg))||''));const s=styled(raw,p);return p==='x'?xParts(s)[0]||s:s;}
 async function filesFor(it,p){const L=[];if(it.video){const v=await fileOf(it.video,it.id);if(v)return [v];toast('The video is still going online from the laptop. Try again in 2 minutes.',4500);return null;}const imgs=((p==='x'||p==='fb')&&it.images_x)?it.images_x:(it.images||[]);for(let i=0;i<imgs.length;i++){let f=await fileOf(imgs[i],`${it.id}_${p}_${i+1}`);if(f){f=await fitFile(f,p);L.push(f);}}return L;}
 // 3.35 (Philip, 7 Nov): TikTok has a Title box and a Description box: the title line is kept apart (🏷️ Title button)
-function ttTitle(it){if(!appsOf(it).includes('tt'))return '';const ls=(textFor(it,'tt')||'').split('\n').filter(l=>l.trim());return ls.length>1&&/ \| /.test(ls[0])?ls[0].trim():'';}
+function ttTitle(it){if(!appsOf(it).includes('tt'))return '';const ls=(textFor(it,'tt')||'').split('\n').filter(l=>l.trim());return ls.length>1&&(/ \| /.test(ls[0])||it.id==='cs')?ls[0].trim():'';}   /* 3.61: the Football Lx title line is the TikTok title too */
 function ttDesc(it){const t=textFor(it,'tt')||'';const ti=ttTitle(it);if(!ti)return t;return t.replace(ti,'').replace(/^\s*\n/,'').trim();}
 const ttlBtn=it=>ttTitle(it)?'<button data-ttl="1">🏷️ Title</button>':'';
 async function send(d,it,p){toast(it.video?'Getting the video…':'Getting the picture…',1400);const files=p==='copy'?[]:await filesFor(it,p);if(files===null)return;const tsplit=p==='tt'&&ttTitle(it);const ok=await shareTo(p,tsplit?ttDesc(it):textFor(it,p),files);
