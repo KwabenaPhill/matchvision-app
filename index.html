@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.59</title>
+<title>Match Vision 3.60</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.59';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.59' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.60';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.59' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -979,12 +979,13 @@ const inMins=m=>m>=60?`${Math.floor(m/60)}h ${m%60}m`:`${m} min`;
 const K={feed:'mv_app_feed',pin:'mv_app_pin',set:'mv_app_set',tab:'mv_app_tab',espn:'mv_app_espn',posted:'mv_app_posted',marks:'mv_app_marks'};
 const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
 const jget=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d:v;}catch(e){return d;}};
-const DEF={live:true,every:2,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
+const DEF={live:true,every:1,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
   apps:{wa:true,x:true,ig:true,tt:true,th:true,fb:true,yt:true,tg:false},
   bold:true,boldTitle:true,boldBrand:false,boldLeague:false,capWords:true,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
   showOdds:true,showChance:false,showPred:true,showFin:true,sort:'video',pickOrder:'video',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
   vidCards:true,recRange:'week',premMembers:true};
-let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v332){SET.v332=1;SET.apps=Object.assign({fb:true},SET.apps||{});}   // 3.32: Facebook Page button
+let SET=Object.assign({},DEF,jget(K.set,{}));if(!SET.v360){SET.v360=1;SET.every=1;try{localStorage.setItem(K.set,JSON.stringify(SET));}catch(e){}}   /* 3.60 (Philip 15 Nov): live check every minute = the default, set now */
+if(!SET.v332){SET.v332=1;SET.apps=Object.assign({fb:true},SET.apps||{});}   // 3.32: Facebook Page button
 if(!SET.v323){SET.v323=1;SET.sort='video';SET.pickOrder='video';}if(!SET.v37){SET.v37=1;SET.showFin=false;}if(!SET.v3110){SET.v3110=1;SET.boldBrand=false;}if(!SET.v328){SET.v328=1;SET.capWords=true;}if(!SET.v36){SET.v36=1;SET.boldLeague=false;SET.tgBold=SET.tgBold||'letters';SET.tagsOff=Object.assign({tg:true},SET.tagsOff||{});}SET.apps=Object.assign({},DEF.apps,SET.apps||{});SET.groups=Object.assign({},DEF.groups,SET.groups||{});
 const saveSet=()=>store.set(K.set,JSON.stringify(SET));
 let POSTED=jget(K.posted,{});   // date -> item id -> app -> true  (what YOU sent from this phone)
@@ -1039,15 +1040,33 @@ function words(n){return String(n||'').toLowerCase().normalize('NFD').replace(/[
 function sameTeam(a,b){const al=x=>{const w=words(x).join(' ');return ALIAS[w]||w;};const A=al(a).split(' ').filter(Boolean),B=al(b).split(' ').filter(Boolean);if(!A.length||!B.length)return 0;if(A.join(' ')===B.join(' '))return 1;let hit=0;for(const w of A){if(B.some(x=>x===w||(w.length>3&&x.length>3&&(x.startsWith(w)||w.startsWith(x)))))hit++;}return hit/Math.min(A.length,B.length);}
 function findGame(m,games){if(m.live&&m.live.espn){const g=games.find(x=>x.id===String(m.live.espn));if(g)return g;}let best=null,sc=0;
   for(const g of games){const s1=sameTeam(m.home,g.home),s2=sameTeam(m.away,g.away),s=Math.min(s1,s2)*.6+Math.max(s1,s2)*.4;if(Math.min(s1,s2)<0.5)continue;if(s>sc){sc=s;best=g;}}return sc>=0.72?best:null;}
+/* 3.60 (Philip 15 Nov, #1794758533568): every minute; when ESPN is full, used up or misses games, the phone uses HIS
+   API-Football key (the laptop puts it in the PRIVATE mailbox mvapp/live/af.json; never in this public app). */
+const AFC={k:null,at:0};let AFD=jget('mv_app_afd',{});
+async function afKey(){if(SET.afKey)return SET.afKey;if(AFC.k!==null&&Date.now()-AFC.at<3*3600e3)return AFC.k;AFC.at=Date.now();AFC.k='';
+  try{if(mbxKey()){const r=await mbx('mvapp/live/af.json',true);if(r.ok){const j=await r.json();AFC.k=String(j.key||'');}}}catch(e){}return AFC.k;}
+const AFST={NS:'NS',TBD:'NS','1H':'LIVE','2H':'LIVE',ET:'LIVE',BT:'LIVE',P:'LIVE',LIVE:'LIVE',INT:'LIVE',SUSP:'LIVE',HT:'HT',FT:'FT',AET:'FT',PEN:'FT',PST:'PST',CANC:'CANC',ABD:'CANC',AWD:'CANC',WO:'CANC'};
+function afFixP(x){try{const f=x.fixture,st=AFST[f.status.short]||'NS',no=['NS','PST','CANC'].includes(st);const sc=x.score||{};const ft=sc.fulltime&&sc.fulltime.home!=null&&['AET','PEN'].includes(f.status.short);
+  return {id:'af'+f.id,home:x.teams.home.name,away:x.teams.away.name,st,min:st==='LIVE'?(f.status.elapsed||null):null,gh:no?null:(ft?sc.fulltime.home:x.goals.home),ga:no?null:(ft?sc.fulltime.away:x.goals.away),
+    hh:sc.halftime?sc.halftime.home:null,ha:sc.halftime?sc.halftime.away:null,at:new Date().toISOString(),src:'phone-af'};}catch(e){return null;}}
+function afUse(){const u=jget('mv_app_afuse',{});return u.d===todayKey()?u:{d:todayKey(),n:0,left:null};}
+async function afDay(k){const key=await afKey();if(!key)throw new Error('no key');const u=afUse();if(u.left!=null&&u.left<1500)throw new Error('kept for the laptop');
+  const r=await fetch(`https://v3.football.api-sports.io/fixtures?date=${k}&timezone=Africa/Accra`,{headers:{'x-apisports-key':key},cache:'no-store'});
+  const left=parseInt(r.headers.get('x-ratelimit-requests-remaining')||'',10);u.n=(u.n||0)+1;if(!isNaN(left))u.left=left;store.set('mv_app_afuse',JSON.stringify(u));
+  const j=await r.json();const er=j.errors&&(Array.isArray(j.errors)?j.errors:Object.values(j.errors));if(er&&er.length)throw new Error(String(er[0]));return (j.response||[]).map(afFixP).filter(Boolean);}
 let liveBusy=false;
 async function liveTick(force){if(!SET.live||liveBusy||!feed||!navigator.onLine||document.hidden)return;const t=todayKey(),want=new Set([t,addDays(t,-1)]);const ds=new Set();
   for(const d of days())for(const m of d.matches||[])if(want.has(m.date||d.date)&&!(m.live&&['FT','CANC','PST'].includes(m.live.st)))ds.add(m.date||d.date);   /* 3.58 (F77): the laptop's postponed is final */
   if(!ds.size)return;liveBusy=true;let ok=false;
-  try{for(const k of ds){const old=ESPN[k];if(!force&&old&&Date.now()-old.at<(SET.every||2)*60e3)continue;try{ESPN[k]={at:Date.now(),games:await espnDay(k)};ok=true;}catch(e){}}
-    for(const k of Object.keys(ESPN))if(!want.has(k))delete ESPN[k];store.set(K.espn,JSON.stringify(ESPN));}finally{liveBusy=false;}
+  try{for(const k of ds){const old=ESPN[k];let espnOk=!!old;if(force||!old||Date.now()-old.at>=(SET.every||1)*60e3){try{ESPN[k]={at:Date.now(),games:await espnDay(k)};ok=true;espnOk=true;}catch(e){espnOk=false;}}
+      /* 3.60: ESPN failed, or a game on the list is not on ESPN: API-Football with his key */
+      const miss=(days().find(d=>d.date===k)||{matches:[]}).matches.some(m=>!(m.live&&['FT','CANC','PST'].includes(m.live.st))&&!(ESPN[k]&&findGame(m,ESPN[k].games||[])));
+      if((!espnOk||miss)&&SET.afOn!==false&&(force||!AFD[k]||Date.now()-AFD[k].at>=(SET.every||1)*60e3)){try{AFD[k]={at:Date.now(),games:await afDay(k)};ok=true;}catch(e){AFD[k]=Object.assign({games:[]},AFD[k]||{},{at:Date.now(),err:String(e.message||e).slice(0,60)});}}}
+    for(const k of Object.keys(ESPN))if(!want.has(k))delete ESPN[k];for(const k of Object.keys(AFD))if(!want.has(k))delete AFD[k];store.set(K.espn,JSON.stringify(ESPN));store.set('mv_app_afd',JSON.stringify(AFD));}finally{liveBusy=false;}
   if(ok&&!subRender&&!$('sheet').classList.contains('open'))refresh(true);else if(ok&&subRender)rerenderSub();}
 const RANK={NS:0,PST:1,LIVE:2,HT:2,NF:3,CANC:3,FT:4};
-function liveOf(m,d){const k=m.date||d.date;let mine=ESPN[k]&&findGame(m,ESPN[k].games||[]);const lap=m.live;/* 3.56 (bug A+B): the laptop's API-Football score is the main one; ESPN on the phone alone never makes a game postponed */if(mine&&['PST','CANC'].includes(mine.st)&&!(lap&&['PST','CANC'].includes(lap.st)))mine=lap?null:Object.assign({},mine,{st:'NS',gh:null,ga:null});if(lap&&lap.src==='API-Football')return lap;if(!mine)return lap||null;if(!lap)return mine;
+function liveOf(m,d){const k=m.date||d.date;let mine=(AFD[k]&&findGame(m,AFD[k].games||[]))||(ESPN[k]&&findGame(m,ESPN[k].games||[]));   /* 3.60: his API-Football first on the phone, ESPN after */
+  const lap=m.live;/* 3.56 (bug A+B): the laptop's API-Football score is the main one; ESPN on the phone alone never makes a game postponed */if(mine&&['PST','CANC'].includes(mine.st)&&!(lap&&['PST','CANC'].includes(lap.st)))mine=lap?null:Object.assign({},mine,{st:'NS',gh:null,ga:null});if(lap&&lap.src==='API-Football')return lap;if(!mine)return lap||null;if(!lap)return mine;
   const a=RANK[mine.st]||0,b=RANK[lap.st]||0;if(b>a)return lap;if(a>b)return Object.assign({},mine,{hh:mine.hh!=null?mine.hh:lap.hh,ha:mine.ha!=null?mine.ha:lap.ha});
   if(a===2&&(lap.min||0)>(mine.min||0))return lap;return Object.assign({},mine,{hh:mine.hh!=null?mine.hh:lap.hh,ha:mine.ha!=null?mine.ha:lap.ha});}
 
@@ -1326,11 +1345,11 @@ function copyPicks(d){const t=['MATCH VISION · '+longDate(d.date),''].concat((d
 // ---------- Results view ----------
 function resultsView(d){if(!d)return `<div class="card"><p class="empty">No results yet.</p></div>`;const c=dayCount(d),s=safestCount(d),bk=bankerState(d);
   const wins=(d.posts||[]).filter(it=>it.group==='results'&&SET.groups.results!==false);
-  let h=`<div class="card"><div class="ct">${longDate(d.date)}</div><div class="statrow"><span>Safest picks</span><b>${s.n?`${s.w} of ${s.n} won`:'Waiting'}</b></div><div class="statrow"><span>All predictions</span><b>${c.w+c.l?`<span class="mvw">${c.w} won</span> · <span class="mvl">${c.l} lost</span>`:'Waiting'}${c.p?` · ${c.p} to play`:''}</b></div>
+  let h=`<div class="card"><div class="ct">${longDate(d.date)}</div><div class="statrow"><span>Safest picks</span><b>${s.n?`<span class="${s.w?'mvw':'mvl'}">${s.w} of ${s.n} won</span>`:'Waiting'}</b></div><div class="statrow"><span>All predictions</span><b>${c.w+c.l?`<span class="mvw">${c.w} won</span> · <span class="mvl">${c.l} lost</span>`:'Waiting'}${c.p?` · ${c.p} to play`:''}</b></div>
     ${d.banker&&d.banker.games?`<div class="statrow"><span>${Number(d.banker.total||0).toFixed(2)} odds banker</span><b class="${bk==='w'?'mvw':bk==='l'?'mvl':''}">${bk==='w'?'✔ WON':bk==='l'?'✘ LOST':'Waiting'}</b></div>`:''}
     ${d.results&&d.results.correct_scores!=null?`<div class="statrow"><span>Correct scores right</span><b>${esc(d.results.correct_scores)}</b></div>`:''}
     ${(()=>{const p=dayPL(d);let pp=0;const px=prem&&(prem.days||[]).find(x=>x.date===d.date);if(px)pp=premPL(px);if(!p.has&&!pp)return '';const tot=p.all+p.bank+pp;
-      return `<div class="statrow" data-stake="1"><span>Profit today<br><small class="muted">Safest ${plTxt(p.safe)} · Top ${plTxt(p.top)} · All ${plTxt(p.all)}${d.banker&&d.banker.games?' · Banker '+plTxt(p.bank):''}${px?' · Premium '+plTxt(pp):''}</small></span><b class="${tot>=0?'mvw':'mvl'}">${plTxt(tot)}</b></div>`;})()}</div>`;
+      return `<div class="statrow" data-stake="1"><span>Profit today<br><small class="muted">Safest ${plC(p.safe)} · Singles ${plC(p.top)} · All ${plC(p.all)}${d.banker&&d.banker.games?' · Banker '+plC(p.bank):''}${px?' · Premium '+plC(pp):''}</small></span><b class="${tot>=0?'mvw':'mvl'}">${plTxt(tot)}</b></div>`;})()}</div>`;
   if(wins.length)h+=`<div class="card"><div class="ct">Ready to send</div><div class="cs">Winning pictures from the laptop. Tap a button to post.</div>${wins.map(it=>todoRow(d,it,false)).join('')}</div>`;
   const ms=(d.matches||[]).filter(m=>mState(m,d)==='fin');const won=[],lost=[];
   for(const m of ms){const L=liveOf(m,d);const st=(m.picks||[]).slice(0,3).map((p,i)=>pickState(p,i,m,d,L));(st.some(x=>x==='l')?lost:won).push(m);}
@@ -1358,6 +1377,8 @@ function dayPL(d){const r={safe:0,all:0,top:0,bank:0,nod:0,has:false};for(const 
   for(const g of d.top_picks||[]){const m=(d.matches||[]).find(x=>x.n===g.n);const u=plU(pickStateOf(d,m,g.text),g.odds);if(u!=null)r.top+=u;}
   const bk=bankerState(d);if(bk&&d.banker&&Number(d.banker.total)>1){r.bank+=bk==='w'?Number(d.banker.total)-1:-1;r.has=true;}return r;}
 function premPL(x){const dx=dayOf(x.date);let u=0;for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r==null)continue;const v=plU(r?'w':'l',g.odds);if(v!=null)u+=v;}return u;}
+/* 3.60 (Philip 15 Nov, #1794758203166): every number in Profit today: plus green, minus red (Banker and Premium too) */
+function plC(u){u=Number(u)||0;return `<span class="${u>=0?'mvw':'mvl'}">${plTxt(u)}</span>`;}
 function plTxt(u){const st=Number(SET.stake||1);const t=(u>=0?'+':'−')+Math.abs(u).toFixed(2);return st!==1?t+` (${u>=0?'+':'−'}${Math.abs(u*st).toFixed(0)})`:t;}
 function plSm(u){return `<div class="plsm ${u>=0?'up':'down'}">${plTxt(u)}</div>`;}
 function pickStateOf(d,m,text){if(!m)return null;const i=(m.picks||[]).findIndex(p=>p.text===text);return i<0?null:pickState(m.picks[i],i,m,d,liveOf(m,d));}
@@ -1602,6 +1623,12 @@ function judgeText(t,home,away,L){if(!L||L.st!=='FT'||L.gh==null)return null;con
   if(q===h+' to score')return gh>0?'w':'l';if(q===a+' to score')return ga>0?'w':'l';
   if(q===h+' to win')return gh>ga?'w':'l';if(q===a+' to win')return ga>gh?'w':'l';
   if(q===h+' or draw')return gh>=ga?'w':'l';if(q===a+' or draw')return ga>=gh?'w':'l';if(q==='draw')return gh===ga?'w':'l';return settleAny(t,home,away,L);}
+/* 3.60 (Philip 15 Nov, #1794758462464): Earlier days show the real result: each pick from the day's results (like the record),
+   else the laptop's VIP record (feed vip_record); 'waiting' only for a day that is not finished yet. */
+function premEarlier(x,t){const dx=dayOf(x.date);let w=0,l=0,n=(x.picks||[]).length;for(const g of x.picks||[]){const r=g.won!=null?g.won:premWon(g,dx);if(r===true)w++;else if(r===false)l++;}
+  const vr=((feed&&feed.vip_record)||[]).find(v=>v.date===x.date);if(vr&&(w+l<(vr.of||0))){w=vr.won||0;n=vr.of||n;l=n-w;}
+  const done=n&&w+l>=n;const txt=!n?'no picks':done?`${w}/${n} won`:(w+l?`${w}/${n} won · ${n-w-l} left`:(x.date<t?'no result yet':'waiting'));
+  const cls=done?(w===n?'mvw':'mvl'):'';return `<div class="hrow"><div class="a">${longDate(x.date)}<span class="${cls}">${txt}</span></div></div>`;}
 function premWon(g,d){return MARKW(premState(g,d));}
 // 3.35 (Philip, 7 Nov): "use the exact card on the laptop": the bot's own Vision Premium picture (private mailbox), the app's
 // drawn card only while the picture is not there (no key, or not made yet).
@@ -1652,7 +1679,7 @@ function renderElite(){const el=$('p-elite');const head=`<div class="sechd" styl
     if(td&&SET.premList!==false){const dd=dayOf(td.date);let tot=1,w=0,l=0;const n=(td.picks||[]).length;const rows=(td.picks||[]).map(g=>{const m=dd?findM(dd,g):null;if(g.odds)tot*=g.odds;const s=dd?premState(g,dd):(g.won===true?'w':g.won===false?'l':null);if(s==='w')w++;if(s==='l')l++;return dd&&m?pinRow(dd,m,g.text,g.odds,s):`<div class="bkr one"><span class="t"><b>${esc(g.text)}</b><small>${esc(g.home)} vs ${esc(g.away)}${g.kickoff?' · '+esc(g.kickoff):''}</small></span>${g.odds?`<span class="o">${Number(g.odds).toFixed(2)}</span>`:''}${legMark(s)}</div>`;}).join('');const st=l?'l':(n&&w===n?'w':null);body+=`<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 ${td.date===t?"Today's picks · live":longDate(td.date)}</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">👑 VISION PREMIUM ${tot.toFixed(2)}</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${n} WON</span></div>${rows}</div>`;}
     else if(!td)body+='<div class="card"><p class="empty">No Vision Premium picks yet.</p></div>';
     // 3.53 (C2): join post, refund terms and members list moved to the Members side
-    body+=`<div class="sect">Earlier days</div><div class="card" style="padding:4px 16px">${ds.filter(x=>x!==td).slice(0,14).map(x=>{const ww=(x.picks||[]).filter(g=>g.won===true).length,ll=(x.picks||[]).filter(g=>g.won===false).length;return `<div class="hrow"><div class="a">${longDate(x.date)}<span>${ww+ll?`${ww}/${ww+ll} won`:'waiting'}</span></div></div>`;}).join('')||'<p class="empty">Nothing yet.</p>'}</div>`;}
+    body+=`<div class="sect">Earlier days</div><div class="card" style="padding:4px 16px">${ds.filter(x=>x!==td).slice(0,14).map(x=>premEarlier(x,t)).join('')||'<p class="empty">Nothing yet.</p>'}</div>`;}
   else if(eliteView==='members'){const list=memFilter==='due'?all.filter(isDue):memFilter==='exp'?all.filter(isExp):all;const mon=t.slice(0,7);let paid=0;for(const m of all)for(const p of m.payments||[])if((p.date||'').slice(0,7)===mon)paid+=Number(p.ghs)||GHS(Number(p.amount)||price*(Number(p.months)||1),p.currency||p.cur,p.date);
     body=`<div class="member-count"><strong>${all.length} Member${all.length===1?'':'s'}</strong><span>${active} active · ${Math.max(0,(prem.seats||0)-active)} seats left${price?` · ${M$(paid)} this month`:''}</span></div><div class="member-filter">${[['all',`All ${all.length}`],['due',`Due soon ${due}`],['exp',`Ended ${exp}`]].map(([k,l])=>`<button data-mf="${k}" class="${memFilter===k?'on':''}">${l}</button>`).join('')}</div>
       <button class="btn-save gold w100" data-bw="add" style="margin-bottom:12px">+ Add member (through the bot)</button><div class="card">${list.length?list.map(m=>{const cls=isExp(m)?'exp':isDue(m)?'due':'ok',op=openMem.has(m.name),dl=daysBetween(t,m.until);
@@ -1716,7 +1743,7 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
     srow('premRecords','Premium results in Records','Vision Premium live at the top of Records',SET.premRecords!==false,gi('gallery'));
   if(f==='texts')return srow('daytexts','Today\'s texts','Edit one post, or copy all and paste all back','',gi('notepad'))+
     srow('templates','Texts and captions (laptop)','Titles, captions, channel posts, Vision Premium',feed&&feed.templates?Object.keys(feed.templates).length+' parts':'',gi('textbold'));
-  if(f==='matches')return srow('livepage','Live scores',`ESPN ${SET.live?'on':'off'} · every ${SET.every} min`,'',gi('ball'))+
+  if(f==='matches')return srow('livepage','Live scores',`ESPN ${SET.live?'on':'off'} · API-Football ${SET.afOn!==false?'on':'off'} · every ${SET.every} min`,'',gi('ball'))+
     srow('showPred','Show the correct score','',SET.showPred,gi('scoreboard'))+srow('showOdds','Show odds','',SET.showOdds,gi('ticket'))+
     srow('showChance','Show the chance (%)','From the builder',SET.showChance,gi('pie'))+srow('shortNames','Short team names','So everything fits',SET.shortNames,gi('badge'))+
     srow('showFin','Show finished matches','Off = finished games and slips move to Results',SET.showFin,gi('flag'))+srow('sort','Order of matches',SET.sort==='video'?'Like the video':SET.sort==='league'?'By league':'By kick-off time','',gi('sort'))+srow('pickOrder','Order of picks',SET.pickOrder==='won'?'Won first':'Like the video (1, 2, 3)','',gi('sort'))+
@@ -1978,12 +2005,14 @@ function openLivePage(){const render=()=>{const t=todayKey();const g=(ESPN[t]&&E
   $('subBody').innerHTML=`<p class="muted" style="margin-bottom:12px">The app checks the score of every match on your list, fills in the minute and marks each prediction ✔ won or ✘ lost by itself. The 23:45 results on the laptop are the official ones.</p>
   <div class="set-title">Sources</div><div class="set-list">
    <button class="set-row" data-l="espn">${icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#D00"/><text x="12" y="15.5" text-anchor="middle" font-family="Arial" font-weight="900" font-style="italic" font-size="8" fill="#fff">ESPN</text></svg>')}<span class="t">ESPN on this phone<small>Free, no key. Used while the app is open</small></span>${onOff(SET.live)}</button>
+   <button class="set-row" data-l="af">${icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#0B5"/><text x="12" y="15.5" text-anchor="middle" font-family="Arial" font-weight="900" font-size="8" fill="#fff">API</text></svg>')}<span class="t">API-Football on this phone<small>Your key${AFC.k||SET.afKey?' ✓':' (comes from the laptop)'} · when ESPN is full or misses a game · ${afUse().n||0} calls today${afUse().left!=null?' · '+afUse().left+' left':''}${AFD[t]&&AFD[t].err?' · '+esc(AFD[t].err):''}</small></span>${onOff(SET.afOn!==false)}</button>
    <div class="set-row">${icoRaw(MVLOGO)}<span class="t">The laptop (API-Football + ESPN)<small>${lap?`Last news ${shortDate(keyOf(lap))} ${fmtT(lap)}`:'Not yet'} · full-time messages on Telegram</small></span></div></div>
   <div class="card" style="margin-top:14px"><div class="ct">Check every</div><div class="chips">${[1,2,3,5].map(v=>`<button class="chip ${SET.every===v?'on':''}" data-ev="${v}">${v} min</button>`).join('')}</div>
-   <div class="statrow"><span>Checks today (this phone)</span><b>${n}</b></div><div class="statrow"><span>Games found today</span><b>${g.length}</b></div><div class="statrow"><span>Last update</span><b>${at?fmtT(at):'Not yet'}</b></div></div>
+   <div class="statrow"><span>Checks today (this phone)</span><b>${n}</b></div><div class="statrow"><span>Games found today</span><b>${g.length}${AFD[t]&&(AFD[t].games||[]).length?' + '+AFD[t].games.length+' API':''}</b></div><div class="statrow"><span>Last update</span><b>${at?fmtT(at):'Not yet'}</b></div></div>
   <button class="btn-save w100" data-l="now">Check scores now</button>`;};
   openSub('Live scores',render);$('subBody').onclick=async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.ev){SET.every=+b.dataset.ev;saveSet();render();return;}
-    if(b.dataset.l==='espn'){SET.live=!SET.live;saveSet();render();if(SET.live)liveTick(true);return;}if(b.dataset.l==='now'){toast('Checking…');await liveTick(true);render();toast('Updated ✓');}};}
+    if(b.dataset.l==='espn'){SET.live=!SET.live;saveSet();render();if(SET.live)liveTick(true);return;}
+    if(b.dataset.l==='af'){SET.afOn=SET.afOn===false;saveSet();render();if(SET.afOn!==false)liveTick(true);return;}if(b.dataset.l==='now'){toast('Checking…');await liveTick(true);render();toast('Updated ✓');}};}
 const _liveTick=liveTick;
 liveTick=async function(force){const t=todayKey();const c=jget(K.checks,{});const before=ESPN[t]&&ESPN[t].at;await _liveTick(force);if(ESPN[t]&&ESPN[t].at!==before){c[t]=(c[t]||0)+1;for(const k of Object.keys(c))if(k<addDays(t,-3))delete c[k];store.set(K.checks,JSON.stringify(c));}};
 
@@ -2402,5 +2431,43 @@ function voiceTyping(btn,box,tell){
   draw();
 })();
 </script>
+
+<script>
+/* PIC VIEW (Philip, 15 Nov 2026, Fix Hub #1794759022709): in Fix notes, tap any picture to see it full size.
+   Voice recording keeps going: the viewer only sits on top, it never touches the Speak button or the microphone.
+   ‹ › = other pictures of the same note, tap the dark part or ✕ to go back. */
+(function(){
+  if(window.__fxPicView)return;window.__fxPicView=1;
+  let L=[],i=0,v=null;
+  function make(){
+    v=document.createElement('div');v.id='fxPicView';
+    v.style.cssText='display:none;position:fixed;inset:0;z-index:2147483600;background:rgba(0,0,0,.94);flex-direction:column;align-items:center;justify-content:center;padding:12px';
+    const b='background:#1c1c1f;color:#fff;border:1px solid #333;border-radius:12px;font:700 16px system-ui,sans-serif;padding:10px 16px;min-width:48px;cursor:pointer';
+    v.innerHTML='<div id="fxPicRec" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);left:14px;color:#ff5a5f;font:700 13px system-ui,sans-serif"></div>'+
+      '<img id="fxPicImg" alt="" style="max-width:100%;max-height:80vh;object-fit:contain;border-radius:10px;touch-action:pinch-zoom">'+
+      '<div style="display:flex;gap:10px;align-items:center;margin-top:14px"><button data-pv="-1" style="'+b+'">‹</button><span id="fxPicN" style="color:#bbb;font:600 13px system-ui,sans-serif;min-width:44px;text-align:center"></span><button data-pv="1" style="'+b+'">›</button><button data-pv="0" style="'+b+'">✕ Close</button></div>';
+    document.body.appendChild(v);
+    v.addEventListener('click',e=>{e.stopPropagation();const k=e.target.closest('[data-pv]');
+      if(k){const d=+k.dataset.pv;if(!d){hide();return;}i=(i+d+L.length)%L.length;show();return;}
+      if(e.target===v)hide();});
+    let x0=null;v.addEventListener('touchstart',e=>{x0=e.touches.length===1?e.touches[0].clientX:null;},{passive:true});
+    v.addEventListener('touchend',e=>{if(x0===null||L.length<2)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>60){i=(i+(dx<0?1:-1)+L.length)%L.length;show();}},{passive:true});
+  }
+  function rec(){const s=document.getElementById('fxSheet');return !!(s&&s.querySelector('.rec'));}
+  function show(){v.querySelector('#fxPicImg').src=L[i];v.querySelector('#fxPicN').textContent=L.length>1?(i+1)+' / '+L.length:'';
+    v.querySelectorAll('[data-pv="-1"],[data-pv="1"]').forEach(x=>x.style.visibility=L.length>1?'visible':'hidden');
+    v.querySelector('#fxPicRec').textContent=rec()?'🎤 Still recording':'';}
+  function hide(){if(v)v.style.display='none';}
+  setInterval(()=>{if(v&&v.style.display==='flex')v.querySelector('#fxPicRec').textContent=rec()?'🎤 Still recording':'';},1000);
+  document.addEventListener('click',e=>{
+    const im=e.target&&e.target.closest&&e.target.closest('#fxSheet img');if(!im||!im.src)return;
+    e.preventDefault();e.stopPropagation();
+    const box=im.parentElement.closest('#fxNewPics,.note,div')||im.parentElement;
+    L=[...box.querySelectorAll('img')].map(x=>x.src).filter(Boolean);i=Math.max(0,L.indexOf(im.src));if(!L.length)L=[im.src];
+    if(!v)make();v.style.display='flex';show();},true);
+  document.addEventListener('keydown',e=>{if(v&&v.style.display==='flex'){if(e.key==='Escape')hide();else if(e.key==='ArrowRight'&&L.length>1){i=(i+1)%L.length;show();}else if(e.key==='ArrowLeft'&&L.length>1){i=(i-1+L.length)%L.length;show();}}});
+})();
+</script>
+
 </body>
 </html>
