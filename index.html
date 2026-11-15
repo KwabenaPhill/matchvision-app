@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.57</title>
+<title>Match Vision 3.58</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -926,7 +926,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.10.10</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.58</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -953,12 +953,12 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.57';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.55' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.58';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.58' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
 // 3.10.4: the badge shows the newest version: the app's, or the laptop builder's (from the feed) when that is newer
-function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);document.getElementById('tver').textContent='v'+(b&&d>0?b:VERSION);}catch(e){}}
+function verBadge(){try{const b=(typeof feed!=='undefined'&&feed&&feed.version)?String(feed.version):'';const n=x=>String(x).split('.').map(v=>parseInt(v)||0);const a=n(b),c=n(VERSION);let d=0;for(let i=0;i<4&&!d;i++)d=(a[i]||0)-(c[i]||0);const el=document.getElementById('tver');el.textContent='v'+VERSION;el.title='App v'+VERSION+(b?' · laptop bot v'+b:'');if(document.title!=='Match Vision '+VERSION)document.title='Match Vision '+VERSION;void d;}catch(e){}}   // 3.58 (F79): header = title = VERSION
 setInterval(verBadge,3000);
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -1041,7 +1041,7 @@ function findGame(m,games){if(m.live&&m.live.espn){const g=games.find(x=>x.id===
   for(const g of games){const s1=sameTeam(m.home,g.home),s2=sameTeam(m.away,g.away),s=Math.min(s1,s2)*.6+Math.max(s1,s2)*.4;if(Math.min(s1,s2)<0.5)continue;if(s>sc){sc=s;best=g;}}return sc>=0.72?best:null;}
 let liveBusy=false;
 async function liveTick(force){if(!SET.live||liveBusy||!feed||!navigator.onLine||document.hidden)return;const t=todayKey(),want=new Set([t,addDays(t,-1)]);const ds=new Set();
-  for(const d of days())for(const m of d.matches||[])if(want.has(m.date||d.date)&&!(m.live&&['FT','CANC'].includes(m.live.st)))ds.add(m.date||d.date);
+  for(const d of days())for(const m of d.matches||[])if(want.has(m.date||d.date)&&!(m.live&&['FT','CANC','PST'].includes(m.live.st)))ds.add(m.date||d.date);   /* 3.58 (F77): the laptop's postponed is final */
   if(!ds.size)return;liveBusy=true;let ok=false;
   try{for(const k of ds){const old=ESPN[k];if(!force&&old&&Date.now()-old.at<(SET.every||2)*60e3)continue;try{ESPN[k]={at:Date.now(),games:await espnDay(k)};ok=true;}catch(e){}}
     for(const k of Object.keys(ESPN))if(!want.has(k))delete ESPN[k];store.set(K.espn,JSON.stringify(ESPN));}finally{liveBusy=false;}
@@ -2191,7 +2191,7 @@ window.__mv={styled,xParts,get feed(){return feed;},showTab,openDay,bigCard,open
 
 <!-- 3.23 (Philip, 25 Oct 2026): FIX NOTES - save fixes and ideas with pictures and voice, then send them all to Claude in one go -->
 <style>
-#fxBtn{position:fixed;left:14px;bottom:150px;z-index:9998;width:52px;height:52px;border-radius:26px;border:1px solid rgba(255,255,255,.18);background:#1b1c1f;color:#fff;font-size:24px;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+#fxBtn{position:fixed;left:6px;bottom:150px;z-index:9998;width:40px;height:40px;border-radius:20px;opacity:.6;border:1px solid rgba(255,255,255,.18);background:#1b1c1f;color:#fff;font-size:19px;box-shadow:0 6px 18px rgba(0,0,0,.45)}   /* 3.58 (F80): smaller, see-through: it covered card titles */
 #fxBtn b{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:10px;background:#e5484d;color:#fff;font:700 12px/20px system-ui;padding:0 5px}
 #fxSheet{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:none}
 #fxSheet .in{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:#141517;border-radius:22px 22px 0 0;padding:16px 16px 28px;color:#fff;font:15px/1.4 system-ui,sans-serif}
