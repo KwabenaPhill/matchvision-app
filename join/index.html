@@ -11,8 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap">
 <style>
-/* Join page 4.2 (14 Nov 2026): VIP record (not banker), animated MV logo, 3 hero styles (?hero=a|b|c),
-   Title Case, pay bar always on, FAQ + Terms + Refunds + Responsible Play + Privacy. Match Vision black + lime. */
+/* Join page 5.0 (15 Nov 2026): one VIP record section (numbers + every day + real cards), How It Works inside the join card,
+   24 questions, help bot with country time (never a country name by default) and hand-over to the team. 4.2 looks kept. */
 :root{
   --bg:#F3F7E4; --paper:#FFFFFF; --ink:#0D0D0D; --ink2:#2B2E25; --sub:#55594B; --dim:#7A7E70; --line:#0D0D0D17;
   --dark:#111111; --dark2:#1B1B1D; --dark3:#26262A;
@@ -179,6 +179,30 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .honest span{display:block;color:var(--ink2);font-size:14px;line-height:1.5;margin-top:2px}
 .dayinfo{margin-top:14px;background:#FFFFFF0D;border:1px solid #FFFFFF14;border-radius:14px;padding:12px 14px;font-size:14px;color:#E4E4E7;display:flex;justify-content:space-between;gap:10px;align-items:center}
 .dayinfo button{border:0;background:var(--lime);color:var(--ink);font-weight:800;font-size:13px;border-radius:10px;padding:8px 12px;flex:none}
+
+/* ===== 5.0: numbers inside the board, cards under it, after-you-pay, ask box ===== */
+.board .sum{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:8px;margin-bottom:16px}
+.board .sum button{border:1px solid #FFFFFF14;background:#FFFFFF0D;border-radius:16px;padding:12px 8px;text-align:center;color:#fff;display:flex;flex-direction:column;align-items:center;gap:2px;transition:border-color .2s ease,background .2s ease}
+.board .sum button:hover{border-color:#DFFB5166;background:#FFFFFF14}
+.board .sum b{font-family:var(--h);font-size:clamp(20px,6vw,26px);font-weight:800;color:#fff;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
+.board .sum .main b{color:var(--lime);font-size:clamp(26px,7.6vw,32px)}
+.board .sum span{font-size:11.5px;color:#B5B5BA;line-height:1.25}
+.allbtn{margin-top:14px;width:100%;border:1px solid #FFFFFF1A;background:#FFFFFF0D;color:#fff;border-radius:14px;min-height:46px;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.allbtn svg{width:16px;height:16px;color:var(--lime)}
+.sub{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:4px}
+.sub b{font-family:var(--h);font-size:16px;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
+.sub span{color:var(--sub);font-size:12.5px;text-align:right}
+.flow.mini li{padding:11px 14px;background:var(--bg);border:0}
+.flow.mini li::before{width:28px;height:28px;font-size:13px}
+.step.after .step-h i{background:var(--win);color:#fff}
+.askbox{display:flex;flex-direction:column;gap:12px;background:var(--dark);color:#fff;border-radius:22px;padding:20px}
+.askbox b{font-family:var(--h);font-size:18px;font-weight:800;letter-spacing:-.01em}
+.askbox p{color:#C8C8CC;font-size:14px}
+.askbox .row{display:flex;flex-direction:column;gap:10px}
+.askbox .btn{min-height:50px;font-size:15px;padding:0 14px}
+.askbox .btn.ghost{color:#fff;border-color:#FFFFFF3D}
+.faqgrp{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:8px 4px 0}
+.acc:not(.all) .faqgrp.more{display:none}
 
 /* ===== Latest results gallery ===== */
 .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--padL)) 0 calc(-1 * var(--padR));padding:8px 9% 22px;scrollbar-width:none;scroll-behavior:smooth}
@@ -403,9 +427,7 @@ body.lock .fab{visibility:hidden}
     <div class="head"><img src="logo.png" alt="Match Vision"><button class="x" data-close aria-label="Close Menu">✕</button></div>
     <a href="#join">Join Vision Premium</a>
     <a href="#record">Our VIP Record</a>
-    <a href="#results">Latest VIP Results</a>
     <a href="#why">What You Get</a>
-    <a href="#how">How It Works</a>
     <a href="#faq">Questions And Answers</a>
     <a href="#contact">Follow And Contact Us</a>
     <div class="sep"></div>
@@ -434,7 +456,7 @@ body.lock .fab{visibility:hidden}
     <div class="card">
       <div class="chip"><span class="dot"></span>Vision Premium · Private VIP Room</div>
       <h1>Football Picks With <em>Proof You Can Check</em> Before You Pay</h1>
-      <p class="lead">Our Few Strongest Picks Every Morning Before Kick-Off. Every VIP Result Is Shown, Wins And Losses.</p>
+      <p class="lead">A Few Strong Picks Every Morning, In A Private Room. Our Full Record Is Below, Wins And Losses.</p>
       <div class="stats">
         <a class="s1" href="#record" data-rec="all"><b data-k="rate">–</b><span>VIP Picks Won</span></a>
         <a class="s2" href="#record" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect VIP Days</span></a>
@@ -460,28 +482,24 @@ body.lock .fab{visibility:hidden}
     </div>
   </section>
 
-  <!-- VIP record -->
+  <!-- VIP record: the numbers, every day and the real cards, all in one place -->
   <section id="record">
     <span class="eyebrow">Our VIP Record</span>
-    <h2 class="title">Every Vision Premium Day, Wins And Losses</h2>
-    <div class="kpis">
-      <button class="kpi" data-rec="all"><b data-k="won">–</b><span>VIP Picks Won</span></button>
-      <button class="kpi main" data-rec="all"><b data-k="rate">–</b><span>Win Rate</span></button>
-      <button class="kpi" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect Days</span></button>
-    </div>
+    <h2 class="title">Every VIP Day, Wins And Losses</h2>
+    <p class="lead">Nothing Is Hidden. Tap Any Day To See Its Result, Or Open A Real Card From The Room Below.</p>
     <div class="board" id="board">
+      <div class="sum">
+        <button type="button" data-rec="all"><b data-k="won">–</b><span>VIP Picks Won</span></button>
+        <button type="button" class="main" data-rec="all"><b data-k="rate">–</b><span>Win Rate</span></button>
+        <button type="button" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect Days</span></button>
+      </div>
       <div class="t"><b>Vision Premium</b><span id="calRange">Loading…</span></div>
       <div class="cal" id="cal"></div>
       <div class="key"><span><i style="background:var(--win)"></i>All Picks Won</span><span><i style="background:var(--part)"></i>Some Picks Won</span><span><i style="background:var(--loss)"></i>None Won</span></div>
       <div class="dayinfo" id="dayinfo" hidden><span id="dayText"></span><button id="dayOpen" hidden>See Card</button></div>
+      <button type="button" class="allbtn" data-rec="all">See The Full List, Day By Day <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg></button>
     </div>
-    <div class="honest"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg></span><p><b>Tap Any Day To See Its Result</b><span>We Never Hide A Losing Day. Every VIP Result Is Posted, Wins And Losses.</span></p></div>
-  </section>
-
-  <!-- Latest results -->
-  <section id="results">
-    <span class="eyebrow">Latest VIP Results</span>
-    <h2 class="title">Real Cards From The VIP Room</h2>
+    <div class="sub"><b>Real Cards From The Room</b><span>Tap A Card To Open It</span></div>
     <div class="rail" id="rail"></div>
     <div class="railnav"><button id="railPrev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"/></svg></button><div class="dots" id="dots"></div><button id="railNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg></button></div>
   </section>
@@ -517,6 +535,27 @@ body.lock .fab{visibility:hidden}
         <p class="agree">By Paying You Agree To Our <button data-goto="t-terms">Terms</button>, <button data-goto="t-refund">Refund Policy</button> And <button data-goto="t-play">Responsible Play</button> Rules.</p>
         <p class="safe"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span id="safetext">Your Private VIP Link Comes Right After Your Payment Is Confirmed.</span></p>
       </div>
+      <div class="step after">
+        <div class="step-h"><i>✓</i>After You Pay</div>
+        <ol class="flow mini">
+          <li><p><b>Payment Confirmed</b><span>Usually Within 30 Minutes.</span></p></li>
+          <li><p><b>Your Private Join Link</b><span>Works Once, For You Only.</span></p></li>
+          <li><p><b>Picks Every Morning</b><span id="flowTime">In The Room Before Kick-Off, For 30 Days.</span></p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you get -->
+  <section id="why">
+    <span class="eyebrow">What You Get</span>
+    <h2 class="title">Fewer Picks. Longer Checks.</h2>
+    <p class="lead">We Study Every Game On The Card. Most Picks Go Free On YouTube And Telegram. Only The Few That Pass Our Longest Checks Go To Vision Premium.</p>
+    <div class="feats">
+      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg><p><b>Our Safest VIP Picks Every Day</b><span>1 To 7 Short Games, Usually About 2 To 4 Total Odds. Never Huge Odds.</span></p></div>
+      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg><p><b>Early, Before Kick-Off</b><span id="featTime">Posted In The Room Every Morning Around 05:00 GMT.</span></p></div>
+      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg><p><b>Extra Research On Every Pick</b><span>Form, Injuries, Line-Ups, Head To Head And How The Odds Move.</span></p></div>
+      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><p><b>A Private Room For Members Only</b><span>VIP Picks Never Go To The Free Channels Before The Games.</span></p></div>
     </div>
   </section>
 
@@ -525,50 +564,47 @@ body.lock .fab{visibility:hidden}
     <span class="eyebrow">Questions And Answers</span>
     <h2 class="title">Everything You Need To Know</h2>
     <div class="acc" id="faqList">
-      <details><summary>How Much Is Vision Premium?</summary><div class="body"><p>$20 For 30 Days. Select Your Country Above To See The Price In Your Own Money. In Ghana It Is GH₵ 250.</p></div></details>
-      <details><summary>How Do I Pay?</summary><div class="body"><p>Select Your Country, Choose How To Pay And Tap Pay. In Ghana You Pay By Mobile Money. More Ways To Pay Are Coming Soon.</p></div></details>
-      <details><summary>When Do I Get My Join Link?</summary><div class="body"><p>As Soon As Your Payment Is Confirmed (Usually Within 30 Minutes). Your Link Works Once, For You Only.</p></div></details>
-      <details><summary>When Do The Picks Come?</summary><div class="body"><p>Every Day Around 05:00 Ghana Time (GMT), Before Kick-Off.</p></div></details>
-      <details><summary>Are The Picks Guaranteed?</summary><div class="body"><p>No. No Prediction Is Ever Guaranteed And Losing Days Can Happen. We Post Our Strongest Picks Based On Research, And We Show Every Result Honestly, Wins And Losses.</p></div></details>
+      <details><summary>How Much Is Vision Premium?</summary><div class="body"><p>$20 For 30 Days. Select Your Country Above To See The Price In Your Own Money.</p></div></details>
+      <details><summary>How Do I Pay?</summary><div class="body"><p>Select Your Country, Choose A Way To Pay And Tap Pay. The Ways To Pay Depend On Your Country: Card, Mobile Money Or Bank Transfer. Our VIP Assistant Finishes The Payment With You.</p></div></details>
+      <details><summary>When Do I Get My Join Link?</summary><div class="body"><p>As Soon As Your Payment Is Confirmed, Usually Within 30 Minutes. Your Link Works Once, For You Only.</p></div></details>
+      <details><summary>When Do The Picks Come?</summary><div class="body"><p id="faqTime">Every Day Around 05:00 GMT, Before Kick-Off. Select Your Country Above To See This In Your Own Time.</p></div></details>
+      <details><summary>Are The Picks Guaranteed?</summary><div class="body"><p>No. No Prediction Is Ever Guaranteed And Losing Days Can Happen. We Post Our Strongest Picks Based On Research, And We Show Every Result, Wins And Losses.</p></div></details>
       <details><summary>Can I Get A Refund?</summary><div class="body"><p>Yes, If You Ask Within 24 Hours Of Paying And You Have Not Joined The Room Yet. See The Refund Policy Below.</p></div></details>
+
+      <div class="faqgrp more">Your Membership</div>
       <details class="more"><summary>How Long Does It Last?</summary><div class="body"><p>Your Membership Lasts 30 Days From The Day You Join.</p></div></details>
-      <details class="more"><summary>Is It A One-Time Payment?</summary><div class="body"><p>One Payment Gives You 30 Days In The Room. To Stay After That, You Pay Again. We Remind You Before It Ends. Nothing Renews By Itself.</p></div></details>
-      <details class="more"><summary>What Do I Get Every Day?</summary><div class="body"><p>Our Safest VIP Picks Every Day (1 To 7 Short Games, Usually About 2 To 4 Total Odds), Posted In A Private Room Only Members Can See.</p></div></details>
+      <details class="more"><summary>Is It A One-Time Payment?</summary><div class="body"><p>One Payment Gives You 30 Days In The Room. Nothing Renews By Itself. We Remind You Before It Ends And You Pay Again To Stay.</p></div></details>
+      <details class="more"><summary>How Do I Renew?</summary><div class="body"><p>Before Your 30 Days End We Remind You. Pay Again The Same Way And Your Membership Continues Without A Break.</p></div></details>
+      <details class="more"><summary>Can I Cancel?</summary><div class="body"><p>There Is Nothing To Cancel. Nothing Renews By Itself, So If You Do Not Pay Again Your Membership Simply Ends After 30 Days.</p></div></details>
+      <details class="more"><summary>Is There A Free Trial Or A Discount?</summary><div class="body"><p>Not Right Now. Our Free Picks On YouTube And Telegram Are The Best Way To Test Us First. If We Ever Run An Offer, It Is Announced On Our Channels.</p></div></details>
+      <details class="more"><summary>Can I Pay For A Friend?</summary><div class="body"><p>Yes. Pay As Usual, Then Tell Our VIP Assistant The Telegram Name Of The Person Who Should Get The Join Link.</p></div></details>
+
+      <div class="faqgrp more">The Picks</div>
+      <details class="more"><summary>What Do I Get Every Day?</summary><div class="body"><p>Our Safest VIP Picks Every Day: 1 To 7 Short Games, Usually About 2 To 4 Total Odds, Posted In A Private Room Only Members Can See.</p></div></details>
+      <details class="more"><summary>How Are VIP Picks Different From The Free Picks?</summary><div class="body"><p>Free Picks Cover The Whole Day. VIP Picks Are The Few Games That Pass Our Longest Checks, With Short Odds, And They Never Go To The Free Channels Before Kick-Off.</p></div></details>
+      <details class="more"><summary>Which Leagues Do You Cover?</summary><div class="body"><p>Top Leagues First: Premier League, La Liga, Serie A, Bundesliga, Ligue 1, The Champions League And International Games. Smaller Leagues Only When A Pick Is Strong.</p></div></details>
       <details class="more"><summary>Do You Show Losing Days?</summary><div class="body"><p>Yes. Every VIP Day Is In Our Record Above, Wins And Losses. Tap Any Day To See Its Card.</p></div></details>
+      <details class="more"><summary>Are There Picks Every Day, Even Weekends?</summary><div class="body"><p>Yes, Every Day There Is Football. On A Rare Day With No Good Games We Say So In The Room, And Days Lost On Our Side Are Added Back To Your Membership.</p></div></details>
+      <details class="more"><summary>Where Do I Place The Bets?</summary><div class="body"><p>With Any Bookmaker You Already Use. We Only Share The Picks; You Choose Where And How Much To Bet. Always Bet Only What You Can Afford To Lose.</p></div></details>
+
+      <div class="faqgrp more">Payment And Safety</div>
       <details class="more"><summary>Can I Join From Any Country?</summary><div class="body"><p>Yes. Select Your Country And You See The Price In Your Own Money And The Ways To Pay From There.</p></div></details>
       <details class="more"><summary>Is My Payment Safe?</summary><div class="body"><p>Yes. Every Payment Is Recorded With Its Reference, And We Never See Or Keep Your Card Details.</p></div></details>
+      <details class="more"><summary>My Payment Went Through But I Got No Link</summary><div class="body"><p>Give It Up To 30 Minutes. Still Nothing? Message Our VIP Assistant With Your Payment Reference And We Sort It Out Right Away.</p></div></details>
       <details class="more"><summary>Do I Need Telegram?</summary><div class="body"><p>Yes. Vision Premium Is A Private Telegram Room, So You Need Telegram (Free) To Join.</p></div></details>
       <details class="more"><summary>Can I Share My Join Link?</summary><div class="body"><p>No. Each Link Is For You Only And Works Once. Shared Links Are Cancelled.</p></div></details>
       <details class="more"><summary>My Join Link Does Not Work</summary><div class="body"><p>Message Us And We Send You A New One.</p></div></details>
-      <details class="more"><summary>How Do I Renew?</summary><div class="body"><p>Before Your 30 Days End We Remind You. Pay Again The Same Way And Your Membership Continues.</p></div></details>
+      <details class="more"><summary>How Old Do I Have To Be?</summary><div class="body"><p>18 Or Older, Or The Legal Age To Bet In Your Country. See Responsible Play Below.</p></div></details>
     </div>
     <button class="btn ghost" id="faqMore" style="align-self:center">Show All Questions</button>
-  </section>
-
-  <!-- What you get -->
-  <section id="why">
-    <span class="eyebrow">What You Get</span>
-    <h2 class="title">Fewer Picks. Longer Checks.</h2>
-    <p class="lead">Every Day We Study Every Game On The Card. Most Picks Go Free On YouTube And Telegram. Only The Few That Pass Our Longest Checks Go To Vision Premium.</p>
-    <div class="feats">
-      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg><p><b>Our Safest VIP Picks Every Day</b><span>1 To 7 Short Games, Usually About 2 To 4 Total Odds. Never Huge Odds.</span></p></div>
-      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg><p><b>Early, Before Kick-Off</b><span>Posted In The Room Every Morning Around 05:00 Ghana Time (GMT).</span></p></div>
-      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 19V9m6 10V5m6 14v-7m4 7H2"/></svg><p><b>Extra Research On Every Pick</b><span>Form, Injuries, Line-Ups, Head To Head And How The Odds Move.</span></p></div>
-      <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2"/></svg><p><b>A Private Room For Members Only</b><span>VIP Picks Never Go To The Free Channels Before The Games.</span></p></div>
+    <div class="askbox">
+      <b>Still Have A Question?</b>
+      <p>Ask Our Help And Get An Answer In Seconds. Anything It Cannot Answer Goes Straight To The Match Vision Team.</p>
+      <div class="row">
+        <button type="button" class="btn lime" id="askOpen">Ask Our Help</button>
+        <a class="btn ghost" href="https://t.me/MatchVision707Bot" target="_blank" rel="noopener">Message The Team</a>
+      </div>
     </div>
-  </section>
-
-  <!-- How it works -->
-  <section id="how">
-    <span class="eyebrow">How It Works</span>
-    <h2 class="title">From Payment To Your First Picks</h2>
-    <ol class="flow">
-      <li><p><b>Pay Securely</b><span>Choose Your Country And The Way You Want To Pay.</span></p></li>
-      <li><p><b>Payment Confirmed</b><span>Usually Within 30 Minutes.</span></p></li>
-      <li><p><b>Get Your Private Join Link</b><span>It Works For You Only.</span></p></li>
-      <li><p><b>Get Picks Every Morning</b><span>In The Room Before Kick-Off, For 30 Days.</span></p></li>
-    </ol>
-    <a class="btn dark shine" href="#join" style="align-self:center">Start Winning Today <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </section>
 
   <!-- Terms -->
@@ -629,7 +665,7 @@ body.lock .fab{visibility:hidden}
     <a class="brand" href="#" aria-label="Back To Top"><img src="logo.png" alt="Match Vision"></a>
     <div class="flinks"><button data-goto="t-terms">Terms</button><button data-goto="t-refund">Refunds</button><button data-goto="t-play">Responsible Play</button><button data-goto="t-privacy">Privacy</button><button data-goto="faq">FAQ</button></div>
     <div>18+ Only. Predictions Are Based On Data And Analysis. No Outcome Is Guaranteed.</div>
-    <div>© <span id="yr">2026</span> Match Vision · Vision Premium · Page 4.2</div>
+    <div>© <span id="yr">2026</span> Match Vision · Vision Premium · Page 5.0</div>
   </footer>
 </main>
 
@@ -679,7 +715,8 @@ body.lock .fab{visibility:hidden}
 
 <script>
 /* ===== SETTINGS PHILIP CAN CHANGE ===== */
-const USD_PRICE = 20;                        // price for everyone outside Ghana, in US dollars
+const USD_PRICE = 20;                        // price for everyone, in US dollars (FIXED below can give one country its own price)
+const PICK_TIME = '05:00';                   // when the VIP picks are posted, GMT, 24-hour
 const FIXED = { GH: 250 };                    // countries with their own fixed price in their own money (Ghana GH₵ 250)
 const BOT = 'https://t.me/MatchVision707Bot';
 const HERO = 'b';                             // default hero style: 'a' light, 'b' dark card, 'c' latest VIP ticket
@@ -726,6 +763,39 @@ const C = [
  ['TN','Tunisia','TND',3],['TR','Türkiye','TRY',41],['UG','Uganda','UGX',3600],['UA','Ukraine','UAH',41],['AE','United Arab Emirates','AED',3.67],
  ['ZM','Zambia','ZMW',24],['ZW','Zimbabwe','USD',1],['XX','Other Country','USD',1]
 ];
+// One time zone per country, for "when do the picks come" in the member's own time. Countries with many zones use the main one.
+const TZ = {US:'America/New_York',GB:'Europe/London',GH:'Africa/Accra',NG:'Africa/Lagos',KE:'Africa/Nairobi',ZA:'Africa/Johannesburg',CA:'America/Toronto',
+ DZ:'Africa/Algiers',AO:'Africa/Luanda',AR:'America/Argentina/Buenos_Aires',AU:'Australia/Sydney',AT:'Europe/Vienna',BH:'Asia/Bahrain',BD:'Asia/Dhaka',BE:'Europe/Brussels',
+ BJ:'Africa/Porto-Novo',BW:'Africa/Gaborone',BR:'America/Sao_Paulo',BF:'Africa/Ouagadougou',BI:'Africa/Bujumbura',CM:'Africa/Douala',CN:'Asia/Shanghai',CO:'America/Bogota',
+ CD:'Africa/Kinshasa',CI:'Africa/Abidjan',HR:'Europe/Zagreb',CY:'Asia/Nicosia',CZ:'Europe/Prague',DK:'Europe/Copenhagen',EG:'Africa/Cairo',ET:'Africa/Addis_Ababa',
+ FI:'Europe/Helsinki',FR:'Europe/Paris',GA:'Africa/Libreville',GM:'Africa/Banjul',DE:'Europe/Berlin',GR:'Europe/Athens',GN:'Africa/Conakry',HK:'Asia/Hong_Kong',HU:'Europe/Budapest',
+ IN:'Asia/Kolkata',ID:'Asia/Jakarta',IE:'Europe/Dublin',IL:'Asia/Jerusalem',IT:'Europe/Rome',JM:'America/Jamaica',JP:'Asia/Tokyo',KW:'Asia/Kuwait',LB:'Asia/Beirut',LR:'Africa/Monrovia',
+ LU:'Europe/Luxembourg',MW:'Africa/Blantyre',MY:'Asia/Kuala_Lumpur',ML:'Africa/Bamako',MT:'Europe/Malta',MU:'Indian/Mauritius',MX:'America/Mexico_City',MA:'Africa/Casablanca',
+ MZ:'Africa/Maputo',NA:'Africa/Windhoek',NL:'Europe/Amsterdam',NZ:'Pacific/Auckland',NE:'Africa/Niamey',NO:'Europe/Oslo',OM:'Asia/Muscat',PK:'Asia/Karachi',PH:'Asia/Manila',
+ PL:'Europe/Warsaw',PT:'Europe/Lisbon',QA:'Asia/Qatar',RO:'Europe/Bucharest',RW:'Africa/Kigali',SA:'Asia/Riyadh',SN:'Africa/Dakar',SL:'Africa/Freetown',SG:'Asia/Singapore',
+ SK:'Europe/Bratislava',SI:'Europe/Ljubljana',KR:'Asia/Seoul',SS:'Africa/Juba',ES:'Europe/Madrid',SE:'Europe/Stockholm',CH:'Europe/Zurich',TZ:'Africa/Dar_es_Salaam',TH:'Asia/Bangkok',
+ TG:'Africa/Lome',TT:'America/Port_of_Spain',TN:'Africa/Tunis',TR:'Europe/Istanbul',UG:'Africa/Kampala',UA:'Europe/Kyiv',AE:'Asia/Dubai',ZM:'Africa/Lusaka',ZW:'Africa/Harare'};
+let picked = false;   // true once the member chose a country (saved on their phone). Until then times are GMT only.
+// "05:00 GMT" and, once a country is picked, the same moment in that country's own time: "05:00 GMT (12:00 AM EST In United States)"
+function pickTime() {
+  const gmt = PICK_TIME + ' GMT';
+  if (!picked || !TZ[cur[0]]) return gmt;
+  try {
+    const d = new Date(); d.setUTCHours(+PICK_TIME.slice(0, 2), +PICK_TIME.slice(3, 5), 0, 0);
+    const parts = new Intl.DateTimeFormat('en', { timeZone: TZ[cur[0]], hour: 'numeric', minute: '2-digit', timeZoneName: 'short' }).formatToParts(d);
+    const get = function (t) { return (parts.find(function (p) { return p.type === t; }) || {}).value || ''; };
+    const zone = get('timeZoneName');
+    if (/^(GMT|UTC)$/.test(zone)) return gmt;                       // same time as GMT: say it once
+    const local = get('hour') + ':' + get('minute') + ' ' + get('dayPeriod') + (/^[A-Z]{2,5}$/.test(zone) ? ' ' + zone : '');  // 12:00 AM EST, or just 6:00 AM
+    return gmt + ' (' + local.replace(/\s+/g, ' ').trim() + ' In ' + cur[1] + ')';
+  } catch (e) { return gmt; }
+}
+function showTimes() {
+  const t = pickTime();
+  if ($('featTime')) $('featTime').textContent = 'Posted In The Room Every Morning Around ' + t + '.';
+  if ($('faqTime')) $('faqTime').textContent = 'Every Day Around ' + t + ', Before Kick-Off.' + (picked ? '' : ' Select Your Country Above To See This In Your Own Time.');
+  if ($('flowTime')) $('flowTime').textContent = 'In The Room Around ' + t + ', For 30 Days.';
+}
 const MOMO_LANDS = ['UG','TZ','ZM','RW','CM','CI','SN','BJ','BF','ML','NE','TG','GN','GA','CD','MW','MZ','SL','LR','GM','BI','SS'];
 function methodsFor(code) {
   if (code === 'GH') return ['momo', 'bank', 'ghcard'];
@@ -772,8 +842,9 @@ function render() {
   $('p-name').textContent = cur[1];
   $('p-cur').textContent = 'Prices In ' + curName(cur[2]) + ' (' + cur[2] + ')';
   const amt = $('amt'); amt.textContent = p.text; amt.classList.remove('flip'); void amt.offsetWidth; amt.classList.add('flip');
-  $('usd').textContent = p.fixed ? 'Ghana Price, In Ghana Cedis' : (cur[2] === 'USD' ? 'In US Dollars' : 'About $' + USD_PRICE + ' USD, Shown In ' + curName(cur[2]));
-  $('fine').textContent = p.fixed ? 'One Fixed Price For Everyone In Ghana.' : cur[2] === 'USD' ? 'One Price For 30 Days Of Vision Premium.' : 'Rounded To A Friendly Number. The Exact Amount Is Shown Before You Confirm.';
+  $('usd').textContent = p.fixed ? 'Fixed Price In ' + curName(cur[2]) : (cur[2] === 'USD' ? 'In US Dollars' : 'About $' + USD_PRICE + ' USD, Shown In ' + curName(cur[2]));
+  $('fine').textContent = p.fixed ? 'One Fixed Price For Everyone In ' + cur[1] + '.' : cur[2] === 'USD' ? 'One Price For 30 Days Of Vision Premium.' : 'Rounded To A Friendly Number. The Exact Amount Is Shown Before You Confirm.';
+  showTimes();
   $('baramt').textContent = p.text; $('barsub').textContent = '30 Days · ' + cur[1];
   const list = methodsFor(cur[0]);
   if (!method || list.indexOf(method) < 0 || !METHODS[method].live) method = list.filter(function (k) { return METHODS[k].live; })[0] || null;
@@ -787,7 +858,7 @@ function render() {
   $('paytext').textContent = m ? 'Pay ' + p.text + ' With ' + (method === 'card' ? 'Card' : m.name) : 'Pay ' + p.text;
   $('paybtn').href = payLink();
   $('safetext').textContent = (m && m.link) ? 'Secure Checkout. Your Private VIP Link Comes Right After Payment.' : 'You Finish This Payment With Our VIP Assistant. Your Private Link Comes Right After It Is Confirmed.';
-  try { localStorage.setItem('vp-cc', cur[0]); } catch (e) {}
+  if (picked) { try { localStorage.setItem('vp-cc', cur[0]); } catch (e) {} }
 }
 $('methods').addEventListener('click', function (e) {
   const b = e.target.closest('.m'); if (!b || b.classList.contains('soon')) return;
@@ -818,7 +889,7 @@ function closeSheet() { if (sheet.hidden) return; sheet.hidden = true; lock(fals
 q.addEventListener('input', fill);
 $('list').addEventListener('click', function (e) {
   const b = e.target.closest('button[data-cc]'); if (!b) return;
-  cur = C.find(function (c) { return c[0] === b.dataset.cc; }) || C[0]; method = null; render(); closeSheet();
+  cur = C.find(function (c) { return c[0] === b.dataset.cc; }) || C[0]; picked = true; method = null; render(); closeSheet();
 });
 sheet.addEventListener('click', function (e) { if (e.target.closest('[data-close]')) closeSheet(); });
 
@@ -888,7 +959,7 @@ function startAuto() {
 $('heroTicket').addEventListener('click', function () { openViewer(0); });
 
 // ---------- Start ----------
-try { const s = localStorage.getItem('vp-cc'); const f = s && C.find(function (c) { return c[0] === s; }); if (f) cur = f; } catch (e) {}
+try { const s = localStorage.getItem('vp-cc'); const f = s && C.find(function (c) { return c[0] === s; }); if (f) { cur = f; picked = true; } } catch (e) {}
 render();
 if (WA) { const w = $('wa'); w.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Hello, I Want To Join Vision Premium'); w.classList.remove('off'); w.removeAttribute('aria-disabled'); w.querySelector('small').textContent = '+' + WA; }
 fetch('https://open.er-api.com/v6/latest/USD').then(function (r) { return r.json(); }).then(function (d) {
@@ -997,26 +1068,47 @@ $('faqMore').addEventListener('click', function () {
 // ---------- Help chat: answers from this page, or hands over to the team ----------
 const chat = $('chat'), fab = $('fab');
 const ANS = [
-  [/price|cost|how much|pay how much|\$|cedi|naira|pound|euro|amount|fee/i, function () { const p = priceOf(cur); return 'Vision Premium Is ' + p.text + ' For 30 Days In ' + cur[1] + (cur[2] === 'USD' || cur[0] === 'GH' ? '.' : ' (About $' + USD_PRICE + ' USD).') + ' Change Your Country In Step 1 To See Your Own Money.'; }, 'pay'],
-  [/how (do|can) i pay|payment|momo|mobile money|card|visa|mastercard|google pay|apple pay|bank|mpesa|m-pesa/i, function () { return 'Select Your Country, Choose How To Pay And Tap Pay. In Ghana You Pay By Mobile Money; Elsewhere By Card. Google Pay, Apple Pay And Bank Transfer Are Coming Soon.'; }, 'pay'],
-  [/when|time|morning|what time|kick/i, function () { return 'The VIP Picks Are Posted In The Room Every Day Around 05:00 Ghana Time (GMT), Before Kick-Off.'; }],
-  [/guarantee|sure|100|fixed|never lose|always win|lose|loss/i, function () { return 'No Prediction Is Ever Guaranteed And Losing Days Can Happen. We Post Our Strongest Picks And Show Every Result Honestly, Wins And Losses. See Our VIP Record Above.'; }, 'record'],
-  [/refund|money back/i, function () { return 'Ask Within 24 Hours Of Paying If You Have Not Joined The Room Yet, And We Refund In Full. After You Join, Payments Are Not Refunded, But If A Problem Is On Our Side We Add Free Days.'; }, 'refund'],
-  [/link|join link|not work|expired|invite/i, function () { return 'Your Private Join Link Comes As Soon As Your Payment Is Confirmed (Usually Within 30 Minutes). It Works Once, For You Only. If It Does Not Work, Message Us And We Send A New One.'; }, 'talk'],
-  [/long|days|month|renew|one.?time|cancel/i, function () { return 'One Payment Gives You 30 Days In The Room. Nothing Renews By Itself: We Remind You Before It Ends And You Pay Again To Stay.'; }],
-  [/what do i get|picks|how many|odds|games|leagues/i, function () { return 'Every Day You Get Our Safest VIP Picks: 1 To 7 Short Games, Usually About 2 To 4 Total Odds, Posted In A Private Room Before Kick-Off.'; }],
-  [/record|result|win rate|proof|won/i, function () { let W = 0, N = 0; recDays.forEach(function (r) { W += r.won; N += r.of; }); return N ? 'So Far ' + W + ' Of ' + N + ' VIP Picks Won (' + Math.round(W * 100 / N) + '%) Over ' + recDays.length + ' Days. Every Day Is In Our Record, Wins And Losses.' : 'Every VIP Day Is In Our Record Above, Wins And Losses.'; }, 'record'],
-  [/telegram|need telegram|app/i, function () { return 'Yes, Vision Premium Is A Private Telegram Room, So You Need Telegram (Free) To Join.'; }],
-  [/safe|scam|trust|real|legit/i, function () { return 'Vision Premium Is Run By The Match Vision Team, The Same Team Behind Our Daily YouTube Predictions. Every VIP Result Is Shown Above, And Every Payment Is Recorded With Its Reference.'; }, 'record'],
-  [/human|person|admin|talk|speak|contact|help|message/i, function () { return 'Of Course. Tap Below To Message The Match Vision Team Directly. We Reply As Soon As We Can.'; }, 'talk']
+  // [what the member may type, the answer, button]. First match wins, so the exact ones come first.
+  [/free trial|trial|discount|coupon|promo|offer|cheaper|voucher/i, function () { return 'There Is No Free Trial Or Discount Right Now. Our Free Picks On YouTube And Telegram Are The Best Way To Test Us First.'; }, 'record'],
+  [/paypal|crypto|bitcoin|usdt|binance|skrill|payoneer|cash ?app|venmo|zelle|revolut|wise/i, function () { return 'That Way To Pay Is Not On The Page Yet. Select Your Country To See The Ways You Can Pay Today, Or Message The Team And We Find A Way That Works For You.'; }, 'talk'],
+  [/paid|went through|no link|not (got|received|get)|didn.?t (get|receive)|still waiting|reference|confirm/i, function () { return 'Give It Up To 30 Minutes After Paying. Still No Link? Message The Team With Your Payment Reference And We Sort It Out Right Away.'; }, 'talk'],
+  [/price|cost|how much|\$|cedi|naira|shilling|rand|pound|euro|dollar|amount|fee|charge/i, function () { const p = priceOf(cur); return 'Vision Premium Is ' + p.text + ' For 30 Days' + (picked ? ' In ' + cur[1] : '') + (cur[2] === 'USD' || p.fixed ? '.' : ' (About $' + USD_PRICE + ' USD).') + (picked ? '' : ' Select Your Country In Step 1 To See The Price In Your Own Money.'); }, 'pay'],
+  [/how (do|can|to) i pay|how to pay|payment|pay with|momo|mobile money|card|visa|mastercard|google pay|apple pay|bank|transfer|mpesa|m-pesa|airtel|mtn|telecel|wallet/i, function () { const names = methodsFor(cur[0]).filter(function (k) { return METHODS[k].live; }).map(function (k) { return METHODS[k].name; }); return 'Select Your Country, Choose A Way To Pay And Tap Pay.' + (picked && names.length ? ' In ' + cur[1] + ' You Can Pay By ' + names.join(' Or ') + '.' : ' The Ways To Pay Depend On Your Country: Card, Mobile Money Or Bank Transfer.') + ' Our VIP Assistant Finishes The Payment With You.'; }, 'pay'],
+  [/refund|money back|charge ?back/i, function () { return 'Ask Within 24 Hours Of Paying If You Have Not Joined The Room Yet, And We Refund In Full. After You Join, Payments Are Not Refunded, But If A Problem Is On Our Side We Add Free Days.'; }, 'refund'],
+  [/share|friend|someone else|gift|for my (brother|sister|wife|husband|partner)/i, function () { return 'You Can Pay For A Friend: Pay As Usual, Then Tell Our VIP Assistant Their Telegram Name. But Your Own Join Link Is For You Only And Works Once. Shared Links Are Cancelled.'; }, 'pay'],
+  [/link|invite|expired|not work|join the room|how do i join|access/i, function () { return 'Your Private Join Link Comes As Soon As Your Payment Is Confirmed, Usually Within 30 Minutes. It Works Once, For You Only. If It Does Not Work, Message Us And We Send A New One.'; }, 'talk'],
+  [/when|what time|time|morning|kick|late|early|daily|every ?day|weekend|sunday|saturday/i, function () { return 'The VIP Picks Are Posted In The Room Every Day Around ' + pickTime() + ', Before Kick-Off.' + (picked ? '' : ' Select Your Country In Step 1 And I Show You This In Your Own Time.'); }],
+  [/guarantee|sure|100|fixed|never lose|always win|lose|loss|losing/i, function () { return 'No Prediction Is Ever Guaranteed And Losing Days Can Happen. We Post Our Strongest Picks And Show Every Result, Wins And Losses. See Our VIP Record.'; }, 'record'],
+  [/cancel|stop|unsubscribe|auto ?renew|renew|subscription/i, function () { return 'Nothing Renews By Itself, So There Is Nothing To Cancel. One Payment Is 30 Days. We Remind You Before It Ends And You Pay Again Only If You Want To Stay.'; }],
+  [/how long|days|month|one.?time|one time|expire|last/i, function () { return 'One Payment Gives You 30 Days In The Room, From The Day You Join. Nothing Renews By Itself.'; }],
+  [/difference|free picks|vip vs|why pay|worth|better than/i, function () { return 'Free Picks Cover The Whole Day. VIP Picks Are The Few Games That Pass Our Longest Checks, With Short Odds, And They Never Go To The Free Channels Before Kick-Off.'; }, 'record'],
+  [/league|competition|premier|la liga|serie|bundesliga|champions|country.?s football|which games/i, function () { return 'Top Leagues First: Premier League, La Liga, Serie A, Bundesliga, Ligue 1, The Champions League And International Games. Smaller Leagues Only When A Pick Is Strong.'; }],
+  [/what do i get|picks|how many|odds|games|accumulator|acca|slip|single|banker/i, function () { return 'Every Day You Get Our Safest VIP Picks: 1 To 7 Short Games, Usually About 2 To 4 Total Odds, Posted In A Private Room Before Kick-Off.'; }],
+  [/where (do|can|should) i bet|bookmaker|bookie|bet365|sportybet|betway|1xbet|stake|how much (should|to) (i )?bet|bankroll/i, function () { return 'Place The Bets With Any Bookmaker You Already Use. We Only Share The Picks; You Choose Where And How Much To Bet. Always Bet Only What You Can Afford To Lose.'; }],
+  [/record|result|win rate|proof|won|history|track/i, function () { let W = 0, N = 0; recDays.forEach(function (r) { W += r.won; N += r.of; }); return N ? 'So Far ' + W + ' Of ' + N + ' VIP Picks Won (' + Math.round(W * 100 / N) + '%) Over ' + recDays.length + ' Days. Every Day Is In Our Record, Wins And Losses.' : 'Every VIP Day Is In Our Record, Wins And Losses.'; }, 'record'],
+  [/telegram|need telegram|which app|whatsapp/i, function () { return 'Vision Premium Is A Private Telegram Room, So You Need Telegram (Free) To Join. Payment Help Is On Telegram Too' + (WA ? ' And On WhatsApp.' : '.'); }, 'talk'],
+  [/country|countries|my country|currency|change (the )?country|not in the list/i, function () { return 'You Can Join From Any Country. Select Your Country In Step 1 To See The Price In Your Own Money And The Ways To Pay From There. Not In The List? Choose Other Country.'; }, 'pay'],
+  [/age|18|old|minor|under/i, function () { return 'Vision Premium Is For Adults Only: 18 Or Older, Or The Legal Age To Bet In Your Country.'; }],
+  [/safe|scam|trust|real|legit|fake|who are you|who is behind/i, function () { return 'Vision Premium Is Run By The Match Vision Team, The Same Team Behind Our Daily YouTube Predictions. Every VIP Result Is Shown On This Page, And Every Payment Is Recorded With Its Reference.'; }, 'record'],
+  [/youtube|channel|video|tiktok|follow|social/i, function () { return 'Find Us On YouTube And TikTok As @MatchVision707, And On Our Free Telegram Channel. The Links Are At The Bottom Of This Page.'; }, 'contact'],
+  [/seat|spots|full|sold out|limit|how many members/i, function () { return 'The Room Keeps Only 30 Seats, So Every Member Gets Attention. When It Is Full, New Members Wait For A Seat To Open.'; }, 'pay'],
+  [/language|english|french|spanish|portuguese/i, function () { return 'The Room And This Page Are In English. The Picks Are Short And Easy To Read In Any Language.'; }],
+  [/hello|^hi\b|^hey|good (morning|afternoon|evening)|thank|thanks/i, function () { return 'Hello 👋 Happy To Help. Ask Me About The Price, Payment, Picks, Refunds Or Your Join Link.'; }],
+  [/human|person|admin|real person|talk|speak|contact|support|help me|message|complain/i, function () { return 'Of Course. Tap Below To Message The Match Vision Team Directly. We Reply As Soon As We Can.'; }, 'talk']
 ];
-const CHIPS = [['How Much Is It?', 'How much is it?'], ['How Do I Pay?', 'How do I pay?'], ['When Do Picks Come?', 'When do the picks come?'], ['Are Picks Guaranteed?', 'Are the picks guaranteed?'], ['Refunds', 'Can I get a refund?'], ['Talk To The Team', 'I want to talk to a person']];
+const CHIPS = [['How Much Is It?', 'How much is it?'], ['How Do I Pay?', 'How do I pay?'], ['When Do Picks Come?', 'When do the picks come?'], ['What Do I Get?', 'What do I get every day?'], ['Are Picks Guaranteed?', 'Are the picks guaranteed?'], ['Refunds', 'Can I get a refund?'], ['My Link', 'I paid but got no link'], ['Talk To The Team', 'I want to talk to a person']];
 function action(kind) {
   if (kind === 'pay') return '<button class="act" data-act="pay">Go To Payment</button>';
   if (kind === 'record') return '<button class="act" data-act="record">See Our VIP Record</button>';
   if (kind === 'refund') return '<button class="act" data-act="refund">Refund Policy</button>';
   if (kind === 'talk') return '<a class="act" href="' + BOT + '" target="_blank" rel="noopener">Message The Team</a>' + (WA ? '<a class="act" href="https://wa.me/' + WA + '" target="_blank" rel="noopener">WhatsApp</a>' : '');
+  if (kind === 'contact') return '<button class="act" data-act="contact">See Our Channels</button>';
   return '';
+}
+// A question the bot cannot answer goes to the team, already typed in, so the member only taps Send.
+function sendToTeam(text) {
+  const q = encodeURIComponent('Question From The Vision Premium Page: ' + text);
+  return '<a class="act" href="' + BOT + '?text=' + q + '" target="_blank" rel="noopener">Send This Question To The Team</a>' + (WA ? '<a class="act" href="https://wa.me/' + WA + '?text=' + q + '" target="_blank" rel="noopener">WhatsApp</a>' : '');
 }
 function say(html, who) { const m = document.createElement('div'); m.className = 'msg ' + (who || 'bot'); m.innerHTML = html; $('msgs').appendChild(m); $('msgs').scrollTop = 1e9; return m; }
 function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -1026,7 +1118,7 @@ function ask(text) {
   const t = say('<span class="typing"><i></i><i></i><i></i></span>');
   setTimeout(function () {
     const hit = ANS.find(function (a) { return a[0].test(text); });
-    t.innerHTML = hit ? esc(hit[1]()) + '<br>' + action(hit[2]) : 'I Do Not Have An Answer For That Yet. Tap Below And The Match Vision Team Will Reply To You Directly.<br>' + action('talk');
+    t.innerHTML = hit ? esc(hit[1]()) + '<br>' + action(hit[2]) : 'I Do Not Have An Answer For That Yet, So Let Me Pass It To The Match Vision Team. Tap Below And Your Question Is Already Typed In; Just Send It. We Reply As Soon As We Can.<br>' + sendToTeam(text);
     $('msgs').scrollTop = 1e9;
   }, 650);
 }
@@ -1035,7 +1127,7 @@ function openChat() {
   chat.hidden = false; fab.querySelector('.badge').hidden = true;
   if (!greeted) {
     greeted = true;
-    say('Hi 👋 Welcome To <b>Vision Premium</b>. Ask Me Anything About The Price, Payment, Picks Or Your Join Link.');
+    say('Hi 👋 Welcome To <b>Vision Premium</b>. Ask Me Anything About The Price, Payment, Picks, Refunds Or Your Join Link. Anything I Cannot Answer Goes Straight To The Team.');
     $('chips').innerHTML = CHIPS.map(function (c) { return '<button type="button" data-q="' + esc(c[1]) + '">' + c[0] + '</button>'; }).join('');
   }
   if (matchMedia('(min-width: 700px)').matches) $('cq').focus();
@@ -1051,7 +1143,9 @@ $('msgs').addEventListener('click', function (e) {
   if (b.dataset.act === 'pay') $('barPay').click();
   if (b.dataset.act === 'record') $('record').scrollIntoView({ behavior: 'smooth' });
   if (b.dataset.act === 'refund') openTerm('t-refund');
+  if (b.dataset.act === 'contact') $('contact').scrollIntoView({ behavior: 'smooth' });
 });
+$('askOpen').addEventListener('click', function () { fab.classList.add('show'); openChat(); });
 addEventListener('scroll', function () { fab.classList.toggle('show', scrollY > 500); }, { passive: true });
 
 // The laptop sends the record inside feed.json every day (vip_record). Until then, vip.json next to this page is used.
