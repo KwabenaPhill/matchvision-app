@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap">
 <style>
-/* Join page 5.0 (15 Nov 2026): one VIP record section (numbers + every day + real cards), How It Works inside the join card,
+/* Join page 5.1 (15 Nov 2026), calmer: quiet eyebrows, one button per place, less text, more space.: one VIP record section (numbers + every day + real cards), How It Works inside the join card,
    24 questions, help bot with country time (never a country name by default) and hand-over to the team. 4.2 looks kept. */
 :root{
   --bg:#F3F7E4; --paper:#FFFFFF; --ink:#0D0D0D; --ink2:#2B2E25; --sub:#55594B; --dim:#7A7E70; --line:#0D0D0D17;
@@ -33,7 +33,7 @@ p{margin:0}
 h1,h2,h3{margin:0}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:12px}
-.wrap{max-width:520px;margin:0 auto;padding:0 var(--padR) 0 var(--padL);display:flex;flex-direction:column;gap:64px}
+.wrap{max-width:520px;margin:0 auto;padding:0 var(--padR) 0 var(--padL);display:flex;flex-direction:column;gap:72px}
 
 /* ===== Header ===== */
 .top{position:sticky;top:0;z-index:20;background:rgba(243,247,228,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
@@ -72,10 +72,11 @@ button{font:inherit;color:inherit;cursor:pointer}
 @keyframes fade{from{opacity:0}}
 
 /* ===== Common ===== */
-section{display:flex;flex-direction:column;gap:18px}
-.eyebrow{align-self:flex-start;display:inline-flex;align-items:center;gap:9px;background:var(--dark);color:var(--lime);border-radius:999px;padding:8px 15px 8px 12px;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 8px 20px #0D0D0D1F}
-.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px #DFFB5133}
-.title{font-family:var(--h);font-size:clamp(26px,7.4vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.12}
+section{display:flex;flex-direction:column;gap:16px}
+section .eyebrow+.title{margin-top:-6px}
+.eyebrow{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;color:var(--sub);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px var(--dark)}
+.title{font-family:var(--h);font-size:clamp(24px,6.8vw,30px);font-weight:800;letter-spacing:-.03em;line-height:1.15}
 .lead{color:var(--sub);font-size:16.5px;line-height:1.6}
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border-radius:16px;font-weight:800;font-size:16.5px;text-decoration:none;border:0;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
 .btn svg{width:20px;height:20px;transition:transform .2s ease}
@@ -154,9 +155,9 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .kpi.main{background:var(--dark);border-color:var(--dark)}
 .kpi.main b{color:var(--lime);font-size:clamp(30px,8.6vw,38px)}
 .kpi.main span{color:#C8C8CC}
-.board{background:var(--dark);color:#fff;border-radius:26px;padding:22px 18px;box-shadow:0 18px 40px #0D0D0D2E}
+.board{background:var(--dark);color:#fff;border-radius:26px;padding:22px 18px;box-shadow:0 14px 34px #0D0D0D1F}
 .board .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:16px}
-.board .t b{font-family:var(--h);font-size:19px;font-weight:700}
+.board .t b{font-family:var(--h);font-size:16px;font-weight:700}
 .board .t span{color:#B5B5BA;font-size:13.5px}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
 .cal button{aspect-ratio:1;border-radius:11px;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:var(--none);color:#D0D0D4;font-variant-numeric:tabular-nums;opacity:0;transform:scale(.6);padding:0}
@@ -187,7 +188,7 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .board .sum b{font-family:var(--h);font-size:clamp(20px,6vw,26px);font-weight:800;color:#fff;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
 .board .sum .main b{color:var(--lime);font-size:clamp(26px,7.6vw,32px)}
 .board .sum span{font-size:11.5px;color:#B5B5BA;line-height:1.25}
-.allbtn{margin-top:14px;width:100%;border:1px solid #FFFFFF1A;background:#FFFFFF0D;color:#fff;border-radius:14px;min-height:46px;font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.allbtn{margin-top:14px;align-self:flex-start;border:0;background:none;color:var(--lime);padding:0;font-weight:800;font-size:14px;display:inline-flex;align-items:center;gap:6px}
 .allbtn svg{width:16px;height:16px;color:var(--lime)}
 .sub{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:4px}
 .sub b{font-family:var(--h);font-size:16px;font-weight:800;letter-spacing:-.01em;white-space:nowrap}
@@ -223,7 +224,7 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .dots i.on{width:22px;background:var(--ink)}
 
 /* ===== Checkout ===== */
-.checkout{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:0 22px 48px #0D0D0D14;overflow:hidden}
+.checkout{background:var(--paper);border:1px solid var(--line);border-radius:28px;box-shadow:0 14px 34px #0D0D0D0F;overflow:hidden}
 .step{padding:22px 20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line)}
 .step:first-child{border-top:0}
 .step-h{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15.5px}
@@ -268,12 +269,12 @@ body[data-hero="a"] .hero[data-v="a"],body[data-hero="b"] .hero[data-v="b"],body
 .safe svg{width:15px;height:15px;flex:none}
 
 /* ===== Cards, steps, FAQ ===== */
-.feats{display:grid;gap:12px}
-.feat{display:flex;gap:14px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px;transition:transform .2s ease,box-shadow .2s ease}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.feat{display:flex;flex-direction:column;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 14px;transition:transform .2s ease,box-shadow .2s ease}
 .feat:hover{transform:translateY(-3px);box-shadow:0 12px 26px #0D0D0D12}
-.feat svg{flex:none;width:44px;height:44px;padding:11px;border-radius:13px;background:var(--dark);color:var(--lime)}
-.feat b{display:block;font-weight:800;font-size:15.5px}
-.feat span{color:var(--sub);font-size:14px}
+.feat svg{flex:none;width:40px;height:40px;padding:10px;border-radius:12px;background:var(--dark);color:var(--lime)}
+.feat b{display:block;font-weight:800;font-size:14.5px;line-height:1.3}
+.feat span{display:block;color:var(--sub);font-size:13px;line-height:1.45;margin-top:3px}
 .flow{counter-reset:s;display:grid;gap:10px;margin:0;padding:0;list-style:none}
 .flow li{counter-increment:s;display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:16px}
 .flow li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--lime);color:var(--ink);font-family:var(--h);font-weight:800;font-size:15px;border:1.5px solid var(--ink)}
@@ -393,7 +394,7 @@ body.lock .fab{visibility:hidden}
 .cin button svg{width:20px;height:20px}
 
 /* ===== Motion ===== */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
 .hero.a>*,.hero.c>*,.hero.b .card>*{animation:up .7s cubic-bezier(.2,.7,.2,1) both}
 .hero.a>*:nth-child(2),.hero.c>*:nth-child(2),.hero.b .card>*:nth-child(2){animation-delay:.08s}
@@ -456,15 +457,14 @@ body.lock .fab{visibility:hidden}
     <div class="card">
       <div class="chip"><span class="dot"></span>Vision Premium · Private VIP Room</div>
       <h1>Football Picks With <em>Proof You Can Check</em> Before You Pay</h1>
-      <p class="lead">A Few Strong Picks Every Morning, In A Private Room. Our Full Record Is Below, Wins And Losses.</p>
+      <p class="lead">A Few Strong Picks Every Morning, In A Private Room. Every Result Shown, Wins And Losses.</p>
       <div class="stats">
-        <a class="s1" href="#record" data-rec="all"><b data-k="rate">–</b><span>VIP Picks Won</span></a>
-        <a class="s2" href="#record" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect VIP Days</span></a>
-        <a class="s3" href="#join"><b>30</b><span>Seats Only</span></a>
+        <a class="s1" href="#record" data-rec="all"><b data-k="rate">–</b><span>Win Rate</span></a>
+        <a class="s2" href="#record" data-rec="all"><b data-k="won">–</b><span>Picks Won</span></a>
+        <a class="s3" href="#record" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect Days</span></a>
       </div>
       <div class="ctas">
-        <a class="btn lime shine" href="#join">Join Vision Premium <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn ghost" href="#record">See Our VIP Record</a>
+        <a class="btn lime" href="#join">Join Vision Premium <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
       <div class="trust"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg>Secure Payment</span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>30 Days Access</span></div>
     </div>
@@ -486,20 +486,14 @@ body.lock .fab{visibility:hidden}
   <section id="record">
     <span class="eyebrow">Our VIP Record</span>
     <h2 class="title">Every VIP Day, Wins And Losses</h2>
-    <p class="lead">Nothing Is Hidden. Tap Any Day To See Its Result, Or Open A Real Card From The Room Below.</p>
     <div class="board" id="board">
-      <div class="sum">
-        <button type="button" data-rec="all"><b data-k="won">–</b><span>VIP Picks Won</span></button>
-        <button type="button" class="main" data-rec="all"><b data-k="rate">–</b><span>Win Rate</span></button>
-        <button type="button" data-rec="perfect"><b data-k="perfect">–</b><span>Perfect Days</span></button>
-      </div>
-      <div class="t"><b>Vision Premium</b><span id="calRange">Loading…</span></div>
+      <div class="t"><b>Tap A Day</b><span id="calRange">Loading…</span></div>
       <div class="cal" id="cal"></div>
       <div class="key"><span><i style="background:var(--win)"></i>All Picks Won</span><span><i style="background:var(--part)"></i>Some Picks Won</span><span><i style="background:var(--loss)"></i>None Won</span></div>
       <div class="dayinfo" id="dayinfo" hidden><span id="dayText"></span><button id="dayOpen" hidden>See Card</button></div>
-      <button type="button" class="allbtn" data-rec="all">See The Full List, Day By Day <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg></button>
+      <button type="button" class="allbtn" data-rec="all">Full List, Day By Day <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg></button>
     </div>
-    <div class="sub"><b>Real Cards From The Room</b><span>Tap A Card To Open It</span></div>
+    <div class="sub"><b>Real Cards From The Room</b><span>Tap To Open</span></div>
     <div class="rail" id="rail"></div>
     <div class="railnav"><button id="railPrev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"/></svg></button><div class="dots" id="dots"></div><button id="railNext" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg></button></div>
   </section>
@@ -507,7 +501,7 @@ body.lock .fab{visibility:hidden}
   <!-- Join -->
   <section id="join">
     <span class="eyebrow">Join Vision Premium</span>
-    <h2 class="title">Join In 3 Simple Steps</h2>
+    <h2 class="title">Join In Three Steps</h2>
     <div class="checkout">
       <div class="step">
         <div class="step-h"><i>1</i>Select Your Country</div>
@@ -550,7 +544,6 @@ body.lock .fab{visibility:hidden}
   <section id="why">
     <span class="eyebrow">What You Get</span>
     <h2 class="title">Fewer Picks. Longer Checks.</h2>
-    <p class="lead">We Study Every Game On The Card. Most Picks Go Free On YouTube And Telegram. Only The Few That Pass Our Longest Checks Go To Vision Premium.</p>
     <div class="feats">
       <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/></svg><p><b>Our Safest VIP Picks Every Day</b><span>1 To 7 Short Games, Usually About 2 To 4 Total Odds. Never Huge Odds.</span></p></div>
       <div class="feat"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg><p><b>Early, Before Kick-Off</b><span id="featTime">Posted In The Room Every Morning Around 05:00 GMT.</span></p></div>
@@ -599,7 +592,7 @@ body.lock .fab{visibility:hidden}
     <button class="btn ghost" id="faqMore" style="align-self:center">Show All Questions</button>
     <div class="askbox">
       <b>Still Have A Question?</b>
-      <p>Ask Our Help And Get An Answer In Seconds. Anything It Cannot Answer Goes Straight To The Match Vision Team.</p>
+      <p>Answers In Seconds. Anything Our Help Cannot Answer Goes To The Team.</p>
       <div class="row">
         <button type="button" class="btn lime" id="askOpen">Ask Our Help</button>
         <a class="btn ghost" href="https://t.me/MatchVision707Bot" target="_blank" rel="noopener">Message The Team</a>
@@ -665,7 +658,7 @@ body.lock .fab{visibility:hidden}
     <a class="brand" href="#" aria-label="Back To Top"><img src="logo.png" alt="Match Vision"></a>
     <div class="flinks"><button data-goto="t-terms">Terms</button><button data-goto="t-refund">Refunds</button><button data-goto="t-play">Responsible Play</button><button data-goto="t-privacy">Privacy</button><button data-goto="faq">FAQ</button></div>
     <div>18+ Only. Predictions Are Based On Data And Analysis. No Outcome Is Guaranteed.</div>
-    <div>© <span id="yr">2026</span> Match Vision · Vision Premium · Page 5.0</div>
+    <div>© <span id="yr">2026</span> Match Vision · Vision Premium · Page 5.1</div>
   </footer>
 </main>
 
@@ -698,7 +691,7 @@ body.lock .fab{visibility:hidden}
   </div>
 </div>
 
-<button class="fab" id="fab" aria-label="Ask Us A Question"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg><span class="badge">1</span></button>
+<button class="fab" id="fab" aria-label="Ask Us A Question"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg><span class="badge" hidden>1</span></button>
 <div class="chat" id="chat" hidden role="dialog" aria-label="Vision Premium Help">
   <div class="ch"><span class="av"><img src="logo.png" alt=""></span><div class="who"><b>Vision Premium Help</b><small><i></i>Online · Answers In Seconds</small></div><button class="cx" id="chatX" aria-label="Close Chat">✕</button></div>
   <div class="msgs" id="msgs"></div>
@@ -998,7 +991,7 @@ function showRecord(list) {
   document.querySelectorAll('[data-k="rate"]').forEach(function (el) { countUp(el, Math.round(W * 100 / N), '%'); });
   document.querySelectorAll('[data-k="perfect"]').forEach(function (el) { countUp(el, perfect, ''); });
   const last = days.slice(-28);
-  $('calRange').textContent = 'Last ' + last.length + ' VIP Days';
+  $('calRange').textContent = 'Last ' + last.length + ' Days · Wins And Losses';
   let k = 0;
   const cells = last.map(function (r, i) {
     const c = r.won === r.of ? 'w' : r.won === 0 ? 'l' : 'p';
