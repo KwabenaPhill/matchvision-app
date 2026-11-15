@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.58</title>
+<title>Match Vision 3.59</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -926,7 +926,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.58</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.59</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.58';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.58' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.59';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.59' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -2166,8 +2166,13 @@ async function builderBlob(kind,d){try{
       if(!pic)return kind==='premwon'?'wait':null;let b=await pmCacheGet(pic.path);if(!b){const r=await mbx(pic.path,true);if(!r.ok)return null;b=await r.blob();pmCachePut(pic.path,b);}return b;}
     if(kind==='picks'||kind==='banker'){const dd=d||dayOf(todayKey());const it=dd&&(dd.posts||[]).find(x=>x.id===kind);if(!it)return null;
       const fs=await filesFor(it,'any');return fs&&fs[0]?fs[0]:null;}
+    if(kind==='match'){const ms=window.__matchShare;const w=ms&&ms.m&&ms.m.win;   // 3.59 (F82): the laptop's win picture
+      if(w&&w.img){const f=await fileOf(w.img,`win-${ms.d.date}-${ms.m.n}`);if(f)return f;}}
   }catch(e){}return null;}
 async function shareCard(kind,d){let lap=await builderBlob(kind,d);
+  if(!lap&&SET.appDraws!==true){const cd0=cardData(kind,d);   // 3.59 (F82): the app never draws old-style pictures
+    if(cd0&&cd0.txt){try{await navigator.clipboard.writeText(((kind==='match'||kind==='bankerwon')?winFmt:styled)(cd0.txt,'wa'));}catch(e){}}
+    toast('⚠️ Old style: the laptop has no picture for this yet (it makes one for every win and every post). The app does not draw old pictures. '+(cd0&&cd0.txt?'The text is copied.':''),5500);return;}
   if(lap==='wait'){const td=window.__premTd;const dd=td&&dayOf(td.date);const w=(td&&td.picks||[]).filter(g=>premWon(g,dd)===true).length;toast(`The WON picture comes when every pick has won (${w}/${(td&&td.picks||[]).length} now)`,4000);return;}
   const cd=cardData(kind,d)||(lap?{o:{},name:kind,txt:''}:null);if(!cd){toast(kind==='banker'?'No banker for this day':'Nothing to show for this day yet');return;}toast(lap?'Getting the picture…':'Making the picture…',1500);
   const c=lap?null:(kind==='match'&&cd.o.big)?await csCanvas(cd.o):(kind==='match'&&SET.winShape==='wide')?await winCanvas(cd.o):await cardCanvas(cd.o);const FM=(kind==='match'||kind==='bankerwon')?winFmt:styled;const blob=lap?lap:await new Promise(r=>c.toBlob(r,'image/jpeg',.93));const file=new File([blob],cd.name+'.jpg',{type:'image/jpeg'});const url=URL.createObjectURL(blob);const text=cd.txt;
