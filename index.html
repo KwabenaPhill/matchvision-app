@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.61</title>
+<title>Match Vision 3.62</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.61';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.61' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.62';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.62' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1388,7 +1388,7 @@ function topPin(d){const tp=(d.top_picks||[]);if(!tp.length||SET.topPin===false|
   const rk=x=>x.v?3:x.s==='w'?0:x.s==='l'?2:1;if(SET.singlesOrder!==false)it.sort((a,b)=>rk(a)-rk(b)||a.i-b.i);
   const rows=it.map(x=>pinRow(d,x.m,x.g.text,x.g.odds,x.v?'v':x.s,true)).join('');const np=tp.length-nv;
   const st=np&&w===np?'w':null;
-  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Singles of the day · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">SINGLES OF THE DAY</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${np} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the top picks picture</button>`;}
+  return `<div class="sechd" style="margin:0 0 8px"><span class="sect" style="margin:0">⭐ Singles of the day · pinned</span></div><div class="bkcard ${st==='w'?'won':st==='l'?'lost':''}"><div class="bkh col"><b style="white-space:nowrap">SINGLES OF THE DAY</b><span class="pill ${st==='w'?'won':'wait'}">${w}/${np} WON</span></div>${rows}</div><button class="btn-half w100" data-card="picks" data-dk="${d.date}" style="margin:-6px 0 14px">↗ Share the singles picture</button>`;}
 function premLive(td){const d=dayOf(td.date);if(!d)return '';let w=0;
   const rows=(td.picks||[]).map(g=>{const m=findM(d,g);const s=premState(g,d);if(s==='w')w++;return pinRow(d,m,g.text,g.odds,s);}).join('');
   return `<div class="sechd" style="margin:0 0 8px"><span class="sect goldc" style="margin:0">👑 Vision Premium · pinned</span></div><div class="bkcard"><div class="bkh col"><b style="white-space:nowrap">👑 VISION PREMIUM ${((td.picks||[]).reduce((a,g)=>a*(g.odds||1),1)).toFixed(2)}</b><span class="pill wait">${w}/${(td.picks||[]).length} WON</span></div>${rows}</div>`;}
@@ -1516,7 +1516,7 @@ async function premiumBox(k){const el=$('pmBox');if(!el)return;if(!mbxKey()){el.
 
 // ---------- RECORDS ----------
 let recRange=SET.recRange||'week';
-function inRange(k){const t=todayKey();if(recRange==='week')return k>addDays(t,-7)&&k<=t;if(recRange==='month')return k.slice(0,7)===t.slice(0,7);return k<=t;}
+function inRange(k){const t=todayKey();if(recRange==='week')return k>=weekStart(t)&&k<=t;   /* 3.62 (P8): Monday to Sunday, like the laptop */if(recRange==='month')return k.slice(0,7)===t.slice(0,7);return k<=t;}
 const pct=(w,n)=>n?Math.round(w/n*100)+'%':'-';
 function weekStart(k){const d=dateOf(k);const wd=(d.getDay()+6)%7;d.setDate(d.getDate()-wd);return keyOf(d);}
 const KINDN={'DC':'Win or draw','DRAW':'Draw','WIN':'Win','TEAM':'Team goals','BTTS-Y':'Both teams score','BTTS-N':'Not both score'};
@@ -2182,10 +2182,10 @@ function cardData(kind,d){const t=todayKey();
   else{const TP=(d.top_picks||[]);   // 3.37: the builder's TOP PICKS (the Gem's), else the 5 safest
     const ms=TP.length?TP.map(g=>{const m=(d.matches||[]).find(x=>x.n===g.n);return m?Object.assign({},m,{picks:[{text:g.text,odds:g.odds}]}):null;}).filter(Boolean):(d.matches||[]).filter(m=>(m.picks||[]).length).slice().sort((a,b)=>(b.picks[0].chance||0)-(a.picks[0].chance||0)).slice(0,5);
     rows=ms.map(m=>{const p=m.picks[0];if(p.odds)tot*=p.odds;return {h:shortTeam(m.home),a:shortTeam(m.away),hc:m.hc,ac:m.ac,pick:shortPick(p.text),full:p.text,odds:p.odds,ko:m.kickoff};});
-    title='TOP PICKS';sub=`${longDate(d.date)} · The safest pick of each match`;}
+    title='SINGLES OF THE DAY';sub=`${longDate(d.date)} · The singles of the day`;}   // 3.62 (P16)
   if(!rows.length)return null;
-  const txt=`⚽ MATCH VISION\n${title.charAt(0)+title.slice(1).toLowerCase()} · ${longDate(d.date)}\n\n`+rows.map((r,i)=>`${i+1}. ${r.h} vs ${r.a}${r.ko?` (${r.ko})`:''}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+(tot>1?`\n\n📊 Combined odds: ${tot.toFixed(2)}`:'')+`\n\nNo prediction is 100%. Bet responsibly.`;
-  return {o:{kind,title,sub,rows,total:tot,acc:'#DFFB51',accDark:'#8EA334',glow:'rgba(223,251,81,.16)',foot:'MATCH VISION'},txt,name:`Match Vision ${kind==='banker'?'Banker':'Top picks'} ${d.date}`};}
+  const txt=`⚽ MATCH VISION\n${title.charAt(0)+title.slice(1).toLowerCase()} · ${longDate(d.date)}\n\n`+rows.map((r,i)=>`${kind==='picks'?'':(i+1)+'. '}${r.h} vs ${r.a}${r.ko?` (${r.ko})`:''}\n👉 ${r.full}${r.odds?` @ ${Number(r.odds).toFixed(2)}`:''}`).join('\n\n')+(tot>1&&kind!=='picks'?`\n\n📊 Combined odds: ${tot.toFixed(2)}`:'')+`\n\nNo prediction is 100%. Bet responsibly.`;
+  return {o:{kind,title,sub,rows,total:tot,acc:'#DFFB51',accDark:'#8EA334',glow:'rgba(223,251,81,.16)',foot:'MATCH VISION'},txt,name:`Match Vision ${kind==='banker'?'Banker':'Singles'} ${d.date}`};}
 // 3.40 (Philip): share the BUILDER's own pictures (the new style) whenever they exist: Vision Premium (mailbox), top picks, banker
 async function builderBlob(kind,d){try{
     if(kind==='prem'||kind==='premwon'){const td=window.__premTd;const k=(td&&td.date)||todayKey();let j=PMC[k];
