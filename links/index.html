@@ -7,33 +7,29 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:#0a0a0b;color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;min-height:100vh;
- background-image:radial-gradient(ellipse 120% 45% at 50% -10%,rgba(223,251,81,.22),transparent 70%)}
-.wrap{max-width:480px;margin:0 auto;padding:18px 16px 28px}
-header{display:flex;align-items:center;gap:14px;padding:6px 2px 16px}
-.logo{width:64px;height:64px;border-radius:50%;background:#161618;border:2px solid #dffb51;display:grid;place-items:center;flex:none;overflow:hidden}
+ background-image:radial-gradient(ellipse 120% 45% at 50% -10%,rgba(223,251,81,.22),transparent 70%),radial-gradient(ellipse 90% 40% at 50% 58%,rgba(110,128,18,.38),rgba(60,70,10,.18) 55%,transparent 80%);background-attachment:fixed}
+.wrap{max-width:480px;margin:0 auto;padding:22px 16px 28px}
+header{text-align:center;padding:4px 0 14px}
+.logo{width:84px;height:84px;border-radius:50%;background:#161618;margin:0 auto 10px;overflow:hidden}
 .logo img{width:100%;height:100%;object-fit:cover}
-h1{font-size:21px;font-weight:800;letter-spacing:-.2px}
-.bio{font-size:13px;color:#b9b9c0;margin-top:3px;line-height:1.35}
-.btn{display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:10px 14px;margin-bottom:12px;border-radius:18px;
- background:#141416;border:1px solid #26262b;color:#fff;text-decoration:none;font-size:16px;font-weight:700;cursor:pointer;text-align:left}
+h1{font-size:22px;font-weight:800}
+.bio{font-size:13px;color:#e8e8ea;margin-top:4px;line-height:1.4}
+.soc{display:flex;justify-content:center;gap:22px;margin-top:12px}
+.soc a{width:28px;height:28px;display:block}
+.soc svg{width:100%;height:100%}
+.btn{display:flex;align-items:center;gap:14px;width:100%;min-height:64px;padding:10px 14px;margin-bottom:12px;border-radius:18px;
+ background:#050505;border:0;color:#fff;text-decoration:none;font-size:16px;font-weight:600;cursor:pointer;text-align:left}
 .btn:active{transform:scale(.985)}
 .ic{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:12px}
 .ic svg{width:100%;height:100%}
-.t{flex:1;line-height:1.25}
-.t small{display:block;font-size:12px;font-weight:600;color:#9a9aa2;margin-top:2px}
-.ch{color:#55555c;font-size:22px;flex:none}
-.vip{background:linear-gradient(135deg,#dffb51,#b9e30f);color:#0b0b0c;border:0;min-height:76px;
- box-shadow:0 0 0 2px rgba(223,251,81,.35),0 10px 30px rgba(223,251,81,.25);animation:glow 2.4s ease-in-out infinite}
-.vip .t{font-size:17px;font-weight:900}
-.vip .t small{color:#2b3105;font-weight:700}
-.vip .ic{background:#0b0b0c}
-.vip .ic svg{width:30px;height:24px}
-.vip .ch{color:#0b0b0c}
-.vip .ic path,.vip .ic rect{fill:#dffb51}
-@keyframes glow{50%{box-shadow:0 0 0 3px rgba(223,251,81,.55),0 12px 38px rgba(223,251,81,.45)}}
+.t{flex:1;line-height:1.25;text-align:center;padding-right:44px;font-size:15px}
+.vip{background:#050505;color:#dffb51;border:2px solid #dffb51;box-shadow:0 0 18px rgba(223,251,81,.18)}
+.vip .t{font-weight:900;font-size:19px;padding-right:0;white-space:nowrap}
+.vip .ic{background:#dffb51}
+.vip .ic svg{width:28px;height:22px}
 .yt .ic{background:#fff}.yt .ic svg{width:30px;height:22px}
-.x .ic{background:#000;border:1px solid #333}.x .ic svg{width:22px;height:22px}
-.tt .ic{background:#000;border:1px solid #333}.tt .ic svg{width:28px;height:28px}
+.x .ic{background:#fff}.x .ic svg{width:22px;height:22px}
+.tt .ic{background:transparent}.tt .ic svg{width:28px;height:28px}
 .foot{text-align:center;color:#6e6e76;font-size:12px;margin-top:18px;line-height:1.6}
 .sheet{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center;z-index:9}
 .sheet.on{display:flex}
@@ -51,15 +47,21 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.2px}
 .vt{font-size:14px;font-weight:700;margin-top:8px;line-height:1.3}
 .vd{font-size:12px;color:#9a9aa2;margin-top:2px}
 .watch{display:flex;align-items:center;justify-content:center;gap:8px;background:#ff0000;color:#fff;font-weight:800;border-radius:14px;padding:14px;text-decoration:none;margin-top:4px}
-</style></head><body><div class="wrap">
+</style></head><body><svg width="0" height="0" style="position:absolute"><symbol id="ttp" viewBox="0 0 512 512"><path d="M412.19 118.66a109.27 109.27 0 0 1-9.45-5.5 132.87 132.87 0 0 1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14 23.9 350 16 350.13 16h-82.44v318.78c0 4.28 0 8.51-.18 12.690 0 .52-.05 1-.08 1.56a70 70 0 0 1-35.22 55.56 68.8 68.8 0 0 1-34.11 9c-38.41 0-69.54-31.32-69.54-70s31.13-70 69.54-70a68.9 68.9 0 0 1 21.41 3.39l.1-83.94a153.14 153.14 0 0 0-118 34.52 161.79 161.79 0 0 0-35.3 43.53c-3.48 6-16.61 30.11-18.2 69.24-1 22.21 5.67 45.22 8.85 54.73v.2c2 5.6 9.75 24.71 22.38 40.82A167.53 167.53 0 0 0 115 470.66c40.11 27.12 84.36 25.34 84.36 25.34 7.66-.31 33.32 0 62.46-13.81 32.32-15.31 50.72-38.12 50.72-38.12a158.46 158.46 0 0 0 27.64-45.93c7.46-19.61 9.95-43.13 9.95-52.53V176.49c1 .6 14.32 9.41 14.32 9.41s19.19 12.3 49.13 20.31c21.48 5.7 50.42 6.9 50.42 6.9v-81.84c-10.14 1.1-30.73-2.1-51.81-12.61Z"/></symbol></svg><div class="wrap">
 <header><div class="logo"><img src="../icons/icon-192.png" alt="Match Vision"></div>
-<div><h1>Match Vision</h1><div class="bio">Daily Football Predictions · Correct Scores · Banker 👑</div></div></header>
-<a class="btn vip" href="../join/"><span class="ic"><svg viewBox="0 0 64 48"><path d="M4 40 0 8l18 14L32 0l14 22L64 8l-4 32Z" fill="#0b0b0c"/><rect x="4" y="42" width="56" height="6" rx="3" fill="#0b0b0c"/></svg></span><span class="t">Join Vision Premium (VIP)<small>Safest picks before kick-off · $20/month</small></span><span class="ch">›</span></a>
-<a class="btn" href="https://t.me/matchvision707"><span class="ic"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="120" fill="#2AABEE"/><path d="M81.5 130.2 52.2 120.6s-3.5-1.4-2.4-4.6c.2-.7.7-1.2 2.1-2.2 6.5-4.5 120.1-45.4 120.1-45.4s3.2-1.1 5.1-.4a2.8 2.8 0 0 1 1.9 2.1 9.4 9.4 0 0 1 .3 2.6c0 .8-.1 1.4-.2 2.5-.7 11.2-21.4 94.5-21.4 94.5s-1.2 4.9-5.7 5a8.1 8.1 0 0 1-5.9-2.2c-8.7-7.5-38.8-27.7-45.5-32.2a1.3 1.3 0 0 1-.5-.9c-.1-.5.4-1 .4-1s52.4-46.6 53.8-51.5c.1-.4-.3-.6-.8-.4-3.5 1.3-63.8 39.4-70.5 43.6a3.2 3.2 0 0 1-1.6.1Z" fill="#fff"/></svg></span><span class="t">Telegram<small>Free picks every day</small></span><span class="ch">›</span></a>
-<button class="btn yt" id="ytb"><span class="ic"><svg viewBox="0 0 28.57 20"><path d="M27.97 3.12A3.58 3.58 0 0 0 25.45.6C23.22 0 14.29 0 14.29 0S5.35 0 3.12.6A3.58 3.58 0 0 0 .6 3.12C0 5.35 0 10 0 10s0 4.65.6 6.88a3.58 3.58 0 0 0 2.52 2.52c2.23.6 11.17.6 11.17.6s8.93 0 11.16-.6a3.58 3.58 0 0 0 2.52-2.52c.6-2.23.6-6.88.6-6.88s0-4.65-.6-6.88Z" fill="#FF0000"/><path d="M11.43 14.29 18.85 10l-7.42-4.29v8.58Z" fill="#fff"/></svg></span><span class="t">YouTube<small>Today's predictions video</small></span><span class="ch">›</span></button>
-<a class="btn tt" href="https://www.tiktok.com/@matchvision707"><span class="ic"><svg viewBox="0 0 512 512"><path fill="#fff" d="M412.19 118.66a109.27 109.27 0 0 1-9.45-5.5 132.87 132.87 0 0 1-24.27-20.62c-18.1-20.71-24.86-41.72-27.35-56.43h.1C349.14 23.9 350 16 350.13 16h-82.44v318.78c0 4.28 0 8.51-.18 12.69 0 .52-.05 1-.08 1.56a70 70 0 0 1-35.22 55.56 68.8 68.8 0 0 1-34.11 9c-38.41 0-69.54-31.32-69.54-70s31.13-70 69.54-70a68.9 68.9 0 0 1 21.41 3.39l.1-83.94a153.14 153.14 0 0 0-118 34.52 161.79 161.79 0 0 0-35.3 43.53c-3.48 6-16.61 30.11-18.2 69.24-1 22.21 5.67 45.22 8.85 54.73v.2c2 5.6 9.75 24.71 22.38 40.82A167.53 167.53 0 0 0 115 470.66c40.11 27.12 84.36 25.34 84.36 25.34 7.66-.31 33.32 0 62.46-13.81 32.32-15.31 50.72-38.12 50.72-38.12a158.46 158.46 0 0 0 27.64-45.93c7.46-19.61 9.95-43.13 9.95-52.53V176.49c1 .6 14.32 9.41 14.32 9.41s19.19 12.3 49.13 20.31c21.48 5.7 50.42 6.9 50.42 6.9v-81.84c-10.14 1.1-30.73-2.1-51.81-12.61Z"/></svg></span><span class="t">TikTok<small>@matchvision707</small></span><span class="ch">›</span></a>
-<a class="btn" href="https://www.instagram.com/matchvision707"><span class="ic"><svg viewBox="0 0 132 132"><defs><radialGradient id="ig1" cx="35" cy="142" r="140" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"/><stop offset=".1" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></radialGradient></defs><rect x="1" y="1" width="130" height="130" rx="30" fill="url(#ig1)"/><rect x="28" y="28" width="76" height="76" rx="22" fill="none" stroke="#fff" stroke-width="9"/><circle cx="66" cy="66" r="18" fill="none" stroke="#fff" stroke-width="9"/><circle cx="90" cy="42" r="6" fill="#fff"/></svg></span><span class="t">Instagram<small>@matchvision707</small></span><span class="ch">›</span></a>
-<a class="btn x" href="https://x.com/matchvision707"><span class="ic"><svg viewBox="0 0 300 271"><path fill="#fff" d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"/></svg></span><span class="t">X<small>Correct scores every day</small></span><span class="ch">›</span></a>
+<h1>Match Vision</h1><div class="bio">Daily Football Predictions · Correct Scores · Banker 👑</div>
+<div class="soc">
+<a href="https://www.tiktok.com/@matchvision707" aria-label="TikTok"><svg viewBox="0 0 512 512"><use href="#ttp" fill="#fff"/></svg></a>
+<a href="https://www.youtube.com/@MatchVision707" aria-label="YouTube"><svg viewBox="0 0 28.57 20"><path d="M27.97 3.12A3.58 3.58 0 0 0 25.45.6C23.22 0 14.29 0 14.29 0S5.35 0 3.12.6A3.58 3.58 0 0 0 .6 3.12C0 5.35 0 10 0 10s0 4.65.6 6.88a3.58 3.58 0 0 0 2.52 2.52c2.23.6 11.17.6 11.17.6s8.93 0 11.16-.6a3.58 3.58 0 0 0 2.52-2.52c.6-2.23.6-6.88.6-6.88s0-4.65-.6-6.88Z" fill="#fff"/><path d="M11.43 14.29 18.85 10l-7.42-4.29v8.58Z" fill="#0a0a0b"/></svg></a>
+<a href="https://www.instagram.com/matchvision707" aria-label="Instagram"><svg viewBox="0 0 132 132"><rect x="10" y="10" width="112" height="112" rx="32" fill="none" stroke="#fff" stroke-width="11"/><circle cx="66" cy="66" r="24" fill="none" stroke="#fff" stroke-width="11"/><circle cx="96" cy="36" r="7" fill="#fff"/></svg></a>
+<a href="https://x.com/matchvision707" aria-label="X"><svg viewBox="0 0 300 271"><path fill="#fff" d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"/></svg></a>
+</div></header>
+<a class="btn vip" href="../join/"><span class="ic"><svg viewBox="0 0 64 48"><path d="M4 40 0 8l18 14L32 0l14 22L64 8l-4 32Z" fill="#0b0b0c"/><rect x="4" y="42" width="56" height="6" rx="3" fill="#0b0b0c"/></svg></span><span class="t">Join Vision Premium (VIP)</span></a>
+<a class="btn" href="https://t.me/matchvision707"><span class="ic"><svg viewBox="0 0 240 240"><circle cx="120" cy="120" r="120" fill="#2AABEE"/><path d="M81.5 130.2 52.2 120.6s-3.5-1.4-2.4-4.6c.2-.7.7-1.2 2.1-2.2 6.5-4.5 120.1-45.4 120.1-45.4s3.2-1.1 5.1-.4a2.8 2.8 0 0 1 1.9 2.1 9.4 9.4 0 0 1 .3 2.6c0 .8-.1 1.4-.2 2.5-.7 11.2-21.4 94.5-21.4 94.5s-1.2 4.9-5.7 5a8.1 8.1 0 0 1-5.9-2.2c-8.7-7.5-38.8-27.7-45.5-32.2a1.3 1.3 0 0 1-.5-.9c-.1-.5.4-1 .4-1s52.4-46.6 53.8-51.5c.1-.4-.3-.6-.8-.4-3.5 1.3-63.8 39.4-70.5 43.6a3.2 3.2 0 0 1-1.6.1Z" fill="#fff"/></svg></span><span class="t">Telegram: Free Picks Daily</span></a>
+<button class="btn yt" id="ytb"><span class="ic"><svg viewBox="0 0 28.57 20"><path d="M27.97 3.12A3.58 3.58 0 0 0 25.45.6C23.22 0 14.29 0 14.29 0S5.35 0 3.12.6A3.58 3.58 0 0 0 .6 3.12C0 5.35 0 10 0 10s0 4.65.6 6.88a3.58 3.58 0 0 0 2.52 2.52c2.23.6 11.17.6 11.17.6s8.93 0 11.16-.6a3.58 3.58 0 0 0 2.52-2.52c.6-2.23.6-6.88.6-6.88s0-4.65-.6-6.88Z" fill="#FF0000"/><path d="M11.43 14.29 18.85 10l-7.42-4.29v8.58Z" fill="#fff"/></svg></span><span class="t">YouTube: Today's Predictions</span></button>
+<a class="btn tt" href="https://www.tiktok.com/@matchvision707"><span class="ic"><svg viewBox="0 0 512 512"><g transform="translate(-10,-8)"><use href="#ttp" fill="#25F4EE"/></g><g transform="translate(10,8)"><use href="#ttp" fill="#FE2C55"/></g><use href="#ttp" fill="#fff"/></svg></span><span class="t">TikTok: Match Vision</span></a>
+<a class="btn" href="https://www.instagram.com/matchvision707"><span class="ic"><svg viewBox="0 0 132 132"><defs><radialGradient id="ig1" cx="35" cy="142" r="140" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fd5"/><stop offset=".1" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></radialGradient></defs><rect x="1" y="1" width="130" height="130" rx="30" fill="url(#ig1)"/><rect x="28" y="28" width="76" height="76" rx="22" fill="none" stroke="#fff" stroke-width="9"/><circle cx="66" cy="66" r="18" fill="none" stroke="#fff" stroke-width="9"/><circle cx="90" cy="42" r="6" fill="#fff"/></svg></span><span class="t">Instagram: Match Vision</span></a>
+<a class="btn x" href="https://x.com/matchvision707"><span class="ic"><svg viewBox="0 0 300 271"><path fill="#000" d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"/></svg></span><span class="t">X: Correct Scores Every Day</span></a>
 <div class="foot">Every result posted, win or lose · 18+ · Play responsibly<br>Match Vision, a Gen2 Technologies brand</div>
 </div>
 <div class="sheet" id="sh"><div class="panel"><div class="grab"></div>
