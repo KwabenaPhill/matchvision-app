@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.62</title>
+<title>Match Vision 3.63</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks ESPN's free scoreboard itself while it is open.
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.62';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.62' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.63';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.63' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1718,7 +1718,7 @@ $('p-elite').addEventListener('click',async e=>{const md=e.target.closest('[data
 // ---------- SETTINGS (Sure Stake's grouped rows; every choice is kept on this phone) ----------
 const onOff=v=>`<span class="toggle ${v?'on':''}"></span>`;
 const srow=(k,t,sub,v,ico)=>`<button class="set-row" data-s="${k}">${ico||gi('sliders')}<span class="t">${t}${sub?`<small>${sub}</small>`:''}</span>${v!=null&&v!==''?(typeof v==='boolean'?onOff(v):`<span class="v">${v}</span>`):''}${typeof v==='boolean'?'':'<span class="ch">›</span>'}</button>`;
-const FOLDERS=[['posting','Posting','Apps, picture sizes, bold, hand, hashtags','plane'],['texts','Texts and captions','Today\'s texts and the laptop\'s words','notepad'],
+const FOLDERS=[['template','Template','Every post: its time, picture, words and order + the last check','notepad'],['posting','Posting','Apps, picture sizes, bold, hand, hashtags','plane'],['texts','Texts and captions','Today\'s texts and the laptop\'s words','notepad'],
   ['matches','Matches and records','Live scores, odds, correct score, order','ball'],['video','Video','Video, Shorts and thumbnail settings','clapper'],
   ['laptop','Laptop and bot','All laptop settings, ask the bot, the day\'s times, test','laptop'],['premium','Vision Premium','Member reminders, lock','crown'],
   ['links','Links','Telegram channel, YouTube, your bot','chain'],['data','Data','Backup, restore, update, reset','database']];
@@ -1785,7 +1785,7 @@ function renderSettings(){const pc=pendCount();
   <button class="btn-danger" id="clearAll" style="margin-top:16px">Clear this app's data on this phone</button><p class="muted" style="text-align:center;margin-top:8px">Only Match Vision app data. Match Vision app ${VERSION}${feed&&feed.version?` · laptop builder ${esc(feed.version)}`:''}</p>`;
   if(setFolder&&subRender&&$('sub').classList.contains('open'))rerenderSub();}
 const TOGGLES=['bold','uniBold','hand','capWords','tags','live','showPred','showOdds','showChance','showFin','vidCards','premMembers','shortNames'];
-async function settingsClick(e){const b=e.target.closest('button');if(!b)return;if(b.dataset.fold){openFolder(b.dataset.fold);return;}const s=b.dataset.s;
+async function settingsClick(e){const b=e.target.closest('button');if(!b)return;if(b.dataset.fold==='template'){openTemplate();return;}if(b.dataset.fold){openFolder(b.dataset.fold);return;}const s=b.dataset.s;
   if(b.id==='clearAll'){if(!confirm('Clear Match Vision app data on this phone (saved picks, sent ticks, settings, PIN)? Nothing on the laptop changes.'))return;Object.values(K).forEach(k=>store.del(k));POSTED={};SET=Object.assign({},DEF);prem=null;ESPN={};toast('Cleared');loadFeed(true);return;}
   const tk=s==='boldUni'?'uniBold':s;if(TOGGLES.includes(tk)){SET[tk]=!SET[tk];saveSet();renderSettings();if(tk==='live'&&SET.live)liveTick(true);return;}
   if(s==='tgbold'){const o=['letters','stars','none'];SET.tgBold=o[(o.indexOf(SET.tgBold)+1)%3];saveSet();renderSettings();toast('Telegram bold: '+(SET.tgBold==='stars'?'**stars**':SET.tgBold==='none'?'no bold':'bold letters'));return;}
@@ -1841,6 +1841,8 @@ function openBoldParts(){const L=[['boldTitle','The first line','Friday Predicti
   const sample='Friday Predictions | 16 October\nMatch Vision\n\n11 Matches Predicted Today\n\nLaLiga\n19:00  Deportivo La Coruna vs Levante\n\n👇 Watch All Predictions:\n'+SET.youtube;
   const render=()=>{$('subBody').innerHTML=`<div class="set-list">${L.map(([k,t,s])=>`<button class="set-row" data-k="${k}"><span class="t">${t}<small>${esc(s)}</small></span>${onOff(SET[k])}</button>`).join('')}</div><div class="sect" style="margin-top:16px">WhatsApp looks like</div><div class="post"><pre>${previewHTML(styled(sample,'wa'))}</pre></div><div class="sect">X, Instagram, TikTok look like</div><div class="post"><pre>${esc(styled(sample,'x'))}</pre></div>`;};
   openSub('Which words are bold',render);$('subBody').onclick=e=>{const b=e.target.closest('button');if(!b||!b.dataset.k)return;SET[b.dataset.k]=!SET[b.dataset.k];saveSet();render();};}
+/* 3.63 (Philip 16 Nov): the DAY TEMPLATE from the laptop (every post, time, picture, words, order, rules) + the last check */
+function openTemplate(){openSub('Template',()=>{const T=(feed&&feed.template)||[];const c=(feed&&feed.template_check)||{};const rows=(c.rows||[]).map(r=>`<div class="cs" style="margin:2px 0">${r[0]===true?'✅':r[0]===false?'❌':'⏳'} ${esc(r[1])}</div>`).join('');$('subBody').innerHTML=(c.date?`<div class="card"><div class="ct">Last check · ${esc(c.date)} ${esc(c.kind||'')}</div>${rows||'<div class="cs">Nothing checked yet.</div>'}</div>`:'')+(T.length?T.map(s=>`<div class="card"><div class="ct">${esc(s.t)}</div>${(s.lines||[]).map(l=>`<div class="cs" style="margin:3px 0;white-space:pre-wrap">${esc(l)}</div>`).join('')}</div>`).join(''):'<p class="muted">The template comes from the laptop (Match Vision 3.77.1 or newer). Open the app again in a minute.</p>');});}
 function openHow(){openSub('How it works',()=>{$('subBody').innerHTML=`<div class="card"><div class="ct">1. The laptop makes the day</div><div class="cs" style="margin:0">After you answer the review on Telegram, the builder makes the video, the Shorts, the pictures and every post. Then it sends the day here by itself (through GitHub).</div></div>
   <div class="card"><div class="ct">2. You post from Home</div><div class="cs" style="margin:0">Each post has its picture and the text for every app, with the important words bold. Tap WhatsApp, X, Instagram, TikTok or Threads: the picture and the text go into that app. If the text is not under the picture, long-press the caption box and tap Paste. The Telegram channel is posted by the bot. YouTube stays on the laptop.</div></div>
   <div class="card"><div class="ct">3. The matches go live</div><div class="cs" style="margin:0">While the app is open it asks the free live scoreboard every ${SET.every} min. ✔ won, ✘ lost, ↑ winning now, ↓ losing now. Corners and cards are checked at 23:45.</div></div>
