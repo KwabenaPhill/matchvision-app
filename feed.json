@@ -1,6 +1,6 @@
 {
  "app": "Match Vision",
- "updated": "2026-11-17T21:16:11",
+ "updated": "2026-11-17T21:38:15",
  "builder": {
   "busy": false,
   "step": "Finished: 2026-11-17 Tuesday",
@@ -35,14 +35,14 @@
      "ac": "media/crests/portugal.png",
      "live": {
       "st": "LIVE",
-      "min": 71,
+      "min": 90,
       "gh": 2,
       "ga": 3,
       "hh": 2,
       "ha": 2,
       "espn": "1528992",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:34:05"
      },
      "picks": [
       {
@@ -101,14 +101,14 @@
      "ac": "media/crests/norway.png",
      "live": {
       "st": "LIVE",
-      "min": 70,
+      "min": 90,
       "gh": 2,
-      "ga": 1,
+      "ga": 2,
       "hh": 2,
       "ha": 1,
       "espn": "1528993",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:35:21"
      },
      "picks": [
       {
@@ -170,14 +170,14 @@
      "ac": "media/crests/georgia.png",
      "live": {
       "st": "LIVE",
-      "min": 72,
+      "min": 90,
       "gh": 1,
       "ga": 0,
       "hh": 1,
       "ha": 0,
       "espn": "1528994",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:32:59"
      },
      "picks": [
       {
@@ -239,14 +239,14 @@
      "ac": "media/crests/northern-ireland.png",
      "live": {
       "st": "LIVE",
-      "min": 70,
+      "min": 90,
       "gh": 1,
       "ga": 1,
       "hh": 1,
       "ha": 0,
       "espn": "1528995",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:36:28"
      },
      "picks": [
       {
@@ -308,14 +308,14 @@
      "ac": "media/crests/austria.png",
      "live": {
       "st": "LIVE",
-      "min": 71,
+      "min": 90,
       "gh": 1,
       "ga": 1,
       "hh": 1,
       "ha": 0,
       "espn": "1528996",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:34:05"
      },
      "picks": [
       {
@@ -374,14 +374,14 @@
      "ac": "media/crests/kosovo.png",
      "live": {
       "st": "LIVE",
-      "min": 70,
-      "gh": 2,
+      "min": 90,
+      "gh": 3,
       "ga": 0,
       "hh": 1,
       "ha": 0,
       "espn": "1528997",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:36:28"
      },
      "picks": [
       {
@@ -440,14 +440,14 @@
      "ac": "media/crests/sweden.png",
      "live": {
       "st": "LIVE",
-      "min": 71,
+      "min": 90,
       "gh": 1,
       "ga": 1,
       "hh": 1,
       "ha": 1,
       "espn": "1528998",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:34:05"
      },
      "picks": [
       {
@@ -506,14 +506,14 @@
      "ac": "media/crests/romania.png",
      "live": {
       "st": "LIVE",
-      "min": 72,
-      "gh": 1,
+      "min": 90,
+      "gh": 2,
       "ga": 1,
       "hh": 1,
       "ha": 1,
       "espn": "1528999",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:34:05"
      },
      "picks": [
       {
@@ -572,14 +572,14 @@
      "ac": "media/crests/morocco.png",
      "live": {
       "st": "LIVE",
-      "min": 52,
+      "min": 74,
       "gh": 0,
       "ga": 1,
       "hh": 0,
       "ha": 1,
       "espn": "1545901",
       "src": "API-Football",
-      "at": "2026-11-17T21:15:31"
+      "at": "2026-11-17T21:37:34"
      },
      "picks": [
       {
@@ -26209,7 +26209,7 @@
   }
  },
  "banker_streak": 0,
- "version": "3.82.0",
+ "version": "3.83.0",
  "short_names": {
   "Manchester City": "Man City",
   "Manchester United": "Man Utd",
@@ -26707,6 +26707,15 @@
    "n": "Yesterday's Wins"
   },
   {
+   "k": "YW_AFTER_VOICE_SECONDS",
+   "tab": "Video",
+   "v": 2.0,
+   "d": "YESTERDAY'S WINS (singles, banker) stays this long after its voice, then the video moves on.",
+   "kind": "float",
+   "c": null,
+   "n": "Yw After Voice Seconds"
+  },
+  {
    "k": "YW_BANKER_LOOK",
    "tab": "Video",
    "v": "2  Banker Won picture",
@@ -26805,7 +26814,7 @@
   {
    "k": "MUSIC_UNDER_VOICE",
    "tab": "Video",
-   "v": 0.08,
+   "v": 0.06,
    "d": "While a voice talks, the music goes down to this part of its normal loudness (0.25 = 25%). 1.0 = the music does not go down.",
    "kind": "float",
    "c": null,
@@ -26877,11 +26886,38 @@
   {
    "k": "VOICE_TAIL_SECONDS",
    "tab": "Video",
-   "v": 0.35,
-   "d": "The music comes back up only this long AFTER a voice line has fully ended, never during it.",
+   "v": 0.5,
+   "d": "The music comes back up only this long AFTER a voice line has fully ended, never during it. 3.83 (Philip 17 Nov): 0.5 = he finishes, a short breath, then the music glides up.",
    "kind": "float",
    "c": null,
    "n": "Music Back Up After Voice"
+  },
+  {
+   "k": "MUSIC_DOWN_SECONDS",
+   "tab": "Video",
+   "v": 0.4,
+   "d": "How long the music takes to glide DOWN before a voice (never a jump).",
+   "kind": "float",
+   "c": null,
+   "n": "Music Down Seconds"
+  },
+  {
+   "k": "MUSIC_UP_SECONDS",
+   "tab": "Video",
+   "v": 1.0,
+   "d": "How long the music takes to glide back UP after a voice (never a sudden loud jump).",
+   "kind": "float",
+   "c": null,
+   "n": "Music Up Seconds"
+  },
+  {
+   "k": "VL_VERSIONS",
+   "tab": "Video",
+   "v": 10,
+   "d": "How many versions of every voice line (Texts > VL TEXT, split by |). The video uses every version before one comes again.",
+   "kind": "int",
+   "c": null,
+   "n": "Vl Versions"
   },
   {
    "k": "VIP_CARD_ON",
@@ -28014,7 +28050,7 @@
    "k": "BANKER_MAX",
    "tab": "Pictures",
    "v": 2.15,
-   "d": "Highest total odds for the banker (Gem and bot: 1.90 to 2.50).",
+   "d": "Highest total odds for the banker (instructions 1.90 to 2.15).",
    "kind": "float",
    "c": null,
    "n": "Banker Max"
@@ -28905,8 +28941,8 @@
   {
    "k": "VL_TEXT_01",
    "tab": "Texts",
-   "v": "Hello football fans. Welcome to Match Vision for another big match day. | Welcome back to Match Vision. It's a big day of football, so let's get straight into it. | Hey football fans, welcome to Match Vision. Plenty of games today, and we've got you covered. | Welcome to Match Vision, your home for daily football predictions. Let's go. | Hello and welcome to Match Vision. Another match day is here, and it's a good one.",
-   "d": "01 Welcome voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "What's up, football family? It's Match Vision. Let's get into today's games. | Match Vision here. New day, new games, every one predicted. | What's up, everyone? Welcome to Match Vision. Big day of football today. | Match Vision here. Fresh games, fresh picks. Let's go. | What's up, football family? Match Vision is back with today's games. | Match Vision here. Another match day, and we've got every game covered. | What's good, football fans? It's Match Vision. Let's get started. | Match Vision here. New day, new predictions. Let's get into it. | What's up, football family? Welcome back to Match Vision. | Match Vision here. A full day of football, and every game predicted.",
+   "d": "01 Welcome voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 01"
@@ -28914,8 +28950,8 @@
   {
    "k": "VL_TEXT_02",
    "tab": "Texts",
-   "v": "Let's take a quick look at yesterday's safest pick results. | Before today's games, let's take a quick look at yesterday's safest pick results. | First, here are yesterday's safest pick results. | Let's start with a quick look at yesterday's safest pick results. | Quick check on yesterday's safest pick results first.",
-   "d": "02 Results voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Let's take a quick look at yesterday's safest pick results. | Before today's games, let's take a quick look at yesterday's safest pick results. | First, here are yesterday's safest pick results. | Let's start with a quick look at yesterday's safest pick results. | Quick check on yesterday's safest pick results first. | Let's see how we did yesterday. | First, a look back. Here's how yesterday's safest picks ended. | Yesterday's results are in. Let's take a look. | Before we look ahead, here's how yesterday's safest picks finished. | Here's how yesterday went for our safest picks.",
+   "d": "02 Results voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 02"
@@ -28923,8 +28959,8 @@
   {
    "k": "VL_TEXT_03",
    "tab": "Texts",
-   "v": "Today you're getting all our predictions, our singles of the day, and the banker of the day. Stay to the end for the banker. | In today's video you'll get a correct score for every game, our singles of the day, and the banker of the day at the end. | Here's what's coming today. Every game predicted, our singles of the day, and the banker saved for the end. | Today we've got predictions for every game, our strongest singles of the day, and the banker of the day. Don't miss the banker at the end. | You'll get the full list of predictions, our singles of the day, and the banker of the day. Keep watching, the banker comes last.",
-   "d": "03 What you get voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Today you're getting all our predictions, our singles of the day, and the banker of the day. Stay to the end for the banker. | In today's video you'll get a correct score for every game, our singles of the day, and the banker of the day at the end. | Here's what's coming today. Every game predicted, our singles of the day, and the banker saved for the end. | Today we've got predictions for every game, our strongest singles of the day, and the banker of the day. Don't miss the banker at the end. | You'll get the full list of predictions, our singles of the day, and the banker of the day. Keep watching, the banker comes last. | Every game today has a prediction, plus our singles of the day and one banker to finish. Make sure you stay for that. | Coming up: every game predicted, our singles of the day, and the banker right at the end. | Today it's every game with a prediction, our singles of the day, and the banker to close the video. | You'll see a prediction for every game, then our singles of the day, and the banker last of all. | Here's the plan for today. Every game predicted, our singles, and the banker at the end. Stick around.",
+   "d": "03 What you get voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 03"
@@ -28932,8 +28968,8 @@
   {
    "k": "VL_TEXT_04",
    "tab": "Texts",
-   "v": "Right, let's get into today's games. | Okay, let's start with today's predictions. | Let's get into it. | Here we go with today's games. | Alright, on to today's predictions.",
-   "d": "04 Start voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Right, let's get into today's games. | Okay, let's start with today's predictions. | Let's get into it. | Here we go with today's games. | Alright, on to today's predictions. | Let's kick things off with today's games. | Okay, first game coming up. | Right, here come today's predictions. | Let's start with the first game. | Alright, let's look at today's games.",
+   "d": "04 Start voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 04"
@@ -28941,8 +28977,8 @@
   {
    "k": "VL_TEXT_05",
    "tab": "Texts",
-   "v": "{League} next. | Now, {League}. | Over to {League}. | Let's move to {League}. | Next up, {League}.",
-   "d": "05 Leagues voice ({League} = the league name): voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "{League} next. | Now, {League}. | Over to {League}. | Let's move to {League}. | Next up, {League}. | Moving on to {League}. | Now let's go to {League}. | Time for {League}. | On to {League}. | Here's {League}.",
+   "d": "05 Leagues voice ({League} = the league name): voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 05"
@@ -28950,8 +28986,8 @@
   {
    "k": "VL_TEXT_06",
    "tab": "Texts",
-   "v": "If you're new here, hit subscribe. New picks every day. | New here? Subscribe and turn on the bell for daily predictions. | If this is your first time here, please subscribe. More picks every day. | Just found us? Hit subscribe so you never miss a day. | If you're new to Match Vision, subscribe now. Fresh picks every day.",
-   "d": "06 Middle subscribe voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "If you're new here, hit subscribe. New picks every day. | New here? Subscribe and turn on the bell for daily predictions. | If this is your first time here, please subscribe. More picks every day. | Just found us? Hit subscribe so you never miss a day. | If you're new to Match Vision, subscribe now. Fresh picks every day. | Enjoying the picks? Subscribe, it's free, and we post every day. | Quick one. If you're new, hit subscribe. New predictions every day. | Like what you see? Subscribe so you get tomorrow's picks too. | New to the channel? Subscribe and turn on the bell. We're here every day. | If these picks help you, hit subscribe. Fresh games every day.",
+   "d": "06 Middle subscribe voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 06"
@@ -28959,8 +28995,8 @@
   {
    "k": "VL_TEXT_07",
    "tab": "Texts",
-   "v": "Now, our singles of the day. These are the games we trust most. | Here are today's singles of the day, the strongest games on the list. | Time for the singles of the day. These are our most confident picks today. | Let's look at today's singles of the day. | Now the singles of the day, the games we like the most today.",
-   "d": "07 Top picks voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Now, our singles of the day. These are the games we trust most. | Here are today's singles of the day, the strongest games on the list. | Time for the singles of the day. These are our most confident picks today. | Let's look at today's singles of the day. | Now the singles of the day, the games we like the most today. | Here come the singles of the day, the games we feel best about today. | Now our singles of the day. Each one stands on its own. | Time for today's singles, the picks we like the most. | Here are our singles of the day. These are the ones we trust. | Now, the singles of the day, our strongest picks for today.",
+   "d": "07 Top picks voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 07"
@@ -28968,8 +29004,8 @@
   {
    "k": "VL_TEXT_08",
    "tab": "Texts",
-   "v": "Time for the banker of the day. | And now, the banker of the day. | Here it is, today's banker. | Finally, the banker of the day. | Now the one you've been waiting for, the banker of the day.",
-   "d": "08 Banker voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Now for the big one. Today's banker. | Saved the best for last. Here's today's banker. | Now for the big one. Today's banker, made from our surest picks. | We saved the best for last. Today's banker. | And now the big one. Here's the banker of the day. | Best for last. This is today's banker. | Now for the one you've been waiting for. Today's banker. | Saved the best till the end. Here's the banker. | Here's the big one. Today's banker, our surest picks of the day. | And we saved the best for last. The banker of the day.",
+   "d": "08 Banker voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 08"
@@ -28977,8 +29013,8 @@
   {
    "k": "VL_TEXT_09",
    "tab": "Texts",
-   "v": "Here are all of today's picks together in one place. Save them before the games start. | And here's every pick from today in one place. Take a screenshot before kick off. | All of today's predictions together. Save this list before the games start. | Here's the full list for today. Screenshot it so you have it ready. | Every pick from today, all in one place. Save it before kick off.",
-   "d": "09 All picks voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Here are all of today's picks together in one place. Save them before the games start. | And here's every pick from today in one place. Take a screenshot before kick off. | All of today's predictions together. Save this list before the games start. | Here's the full list for today. Screenshot it so you have it ready. | Every pick from today, all in one place. Save it before kick off. | That's every pick from today on one screen. Grab a screenshot now. | Here's everything from today in one place. Save it before the games start. | All of today's picks on one screen. Screenshot this one. | Every prediction from today, together. Take a screenshot before kick-off. | Here's the full list from today. Save it so you have it ready.",
+   "d": "09 All picks voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 09"
@@ -28986,8 +29022,8 @@
   {
    "k": "VL_TEXT_10",
    "tab": "Texts",
-   "v": "Join our free Telegram channel. The link is in the description. | For more picks, join our free Telegram channel. Link in the description. | Our free Telegram channel has even more. The link is below. | Join us on Telegram for free. You'll find the link in the description. | Want more? Join our free Telegram channel, link in the description.",
-   "d": "10 Telegram voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Join our free Telegram channel. The link is in the description. | For more picks, join our free Telegram channel. Link in the description. | Our free Telegram channel has even more. The link is below. | Join us on Telegram for free. You'll find the link in the description. | Want more? Join our free Telegram channel, link in the description. | There's more waiting for you on our free Telegram channel. The link's in the description. | Want results as they happen? Join our free Telegram channel, link in the description. | Our Telegram channel is free, and the link is in the description. | Join the free Telegram channel for more. You'll find the link below. | For live results and more picks, join our free Telegram. The link is in the description.",
+   "d": "10 Telegram voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 10"
@@ -28995,8 +29031,8 @@
   {
    "k": "VL_TEXT_11",
    "tab": "Texts",
-   "v": "Subscribe and turn on the bell. New predictions tomorrow. | Hit subscribe and turn on the bell. We're back tomorrow with new predictions. | Subscribe so you're ready for tomorrow's predictions. | Don't forget to subscribe. New picks are coming tomorrow. | Turn on the bell and subscribe. Tomorrow's predictions are coming soon.",
-   "d": "11 End voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "Subscribe and turn on the bell. New predictions tomorrow. | Hit subscribe and turn on the bell. We're back tomorrow with new predictions. | Subscribe so you're ready for tomorrow's predictions. | Don't forget to subscribe. New picks are coming tomorrow. | Turn on the bell and subscribe. Tomorrow's predictions are coming soon. | That's it for today. Subscribe and we'll see you tomorrow with fresh predictions. | That's all for today. Hit subscribe, and we'll be back tomorrow. | We're done for today. Subscribe so you don't miss tomorrow's games. | That's today's games. Subscribe and come back tomorrow for more. | All done for today. Turn on the bell, new predictions tomorrow.",
+   "d": "11 End voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 11"
@@ -29004,8 +29040,8 @@
   {
    "k": "VL_TEXT_12",
    "tab": "Texts",
-   "v": "And it gets better. Every one of yesterday's singles won, and the banker won too. | Yesterday was a clean sweep. All of our singles won, and so did the banker. | What a day yesterday. The singles all came in, and the banker landed as well. | Look at this. Yesterday's singles went all green, and the banker won too. | A perfect day yesterday. Every single won, plus the banker on top.",
-   "d": "12 Yesterday wins (top picks AND banker won) voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "And it gets better. Every one of yesterday's singles won, and the banker won too. | Yesterday was a clean sweep. All of our singles won, and so did the banker. | What a day yesterday. The singles all came in, and the banker landed as well. | Look at this. Yesterday's singles went all green, and the banker won too. | A perfect day yesterday. Every single won, plus the banker on top. | Yesterday couldn't have gone better. Every single won, and the banker too. | All green yesterday. Every single and the banker came in. | What a day. All of yesterday's singles won, and so did the banker. | Yesterday was perfect. The singles all won, and the banker landed. | Every single won yesterday, and the banker came in as well.",
+   "d": "12 Yesterday wins (top picks AND banker won) voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 12"
@@ -29013,8 +29049,8 @@
   {
    "k": "VL_TEXT_13",
    "tab": "Texts",
-   "v": "And yesterday's singles? Every one of them won. | All of yesterday's singles came in. Not one of them missed. | Yesterday's singles went all green. Every one of them won. | Clean sweep on the singles yesterday. Every pick won. | Every single from yesterday won. That's how we like it.",
-   "d": "13 Yesterday wins (only top picks won) voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "And yesterday's singles? Every one of them won. | All of yesterday's singles came in. Not one of them missed. | Yesterday's singles went all green. Every one of them won. | Clean sweep on the singles yesterday. Every pick won. | Every single from yesterday won. That's how we like it. | Every one of yesterday's singles came through. Not a single miss. | All of yesterday's singles won. All green. | Yesterday's singles? Every one of them came in. | Not one single missed yesterday. They all won. | All green on the singles yesterday. Every one won.",
+   "d": "13 Yesterday wins (only top picks won) voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 13"
@@ -29022,8 +29058,8 @@
   {
    "k": "VL_TEXT_14",
    "tab": "Texts",
-   "v": "And yesterday's banker came in as well. | Yesterday's banker won. Another one in the bag. | The banker landed again yesterday. | And our banker from yesterday? It won. | Yesterday's banker did the job once again.",
-   "d": "14 Yesterday wins (only banker won) voice: the 5 versions, split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
+   "v": "All green again yesterday. The banker came in. | Another banker in the bag yesterday. That's how we do it. | All green again. Yesterday's banker won. | Another banker in the bag. Yesterday's banker won. | The banker? All green again yesterday. | Yesterday's banker came in. Another one in the bag. | All green again yesterday. The banker did the job. | Another one in the bag. The banker won yesterday. | All green yesterday. The banker landed again. | Banker in the bag again yesterday. That's how we do it.",
+   "d": "14 Yesterday wins (only banker won) voice: up to 10 versions (VL VERSIONS), split by | (a line you change is made again by the bot with ElevenLabs). Never \"codes\", \"slips\" or \"see you next time\".",
    "kind": "text",
    "c": null,
    "n": "Vl Text 14"
@@ -29201,8 +29237,8 @@
   {
    "k": "VL_TEXT_16",
    "tab": "Texts",
-   "v": "Yesterday's banker won. That's {N} in a row! | The banker wins again. {N} straight! | {N} bankers in a row, and counting. | Another banker win. That makes {N} in a row. | The streak goes on. {N} bankers in a row!",
-   "d": "3.71: 16 Banker won N in a row (only the banker won). {N} = the number. 5 lines separated by |.",
+   "v": "Yesterday's banker won. That's {N} in a row! | The banker wins again. {N} straight! | {N} bankers in a row, and counting. | Another banker win. That makes {N} in a row. | The streak goes on. {N} bankers in a row! | Yesterday's banker won again. That's {N} in a row now. | All green again. That's {N} bankers in a row. | Another banker in the bag. {N} in a row! | The banker came in again. {N} straight wins. | {N} bankers in a row now. All green again yesterday.",
+   "d": "3.71: 16 Banker won N in a row (only the banker won). {N} = the number. up to 10 lines separated by | (VL VERSIONS).",
    "kind": "text",
    "c": null,
    "n": "Vl Text 16"
@@ -29210,8 +29246,8 @@
   {
    "k": "VL_TEXT_17",
    "tab": "Texts",
-   "v": "That's {N} bankers in a row! | {N} bankers in a row now. | The banker streak is now {N}. | That makes {N} bankers in a row. | {N} in a row for the banker!",
-   "d": "3.71: 17 the words said after line 12 (singles AND banker won) when the banker won N in a row. 5 lines separated by |.",
+   "v": "That's {N} bankers in a row! | {N} bankers in a row now. | The banker streak is now {N}. | That makes {N} bankers in a row. | {N} in a row for the banker! | {N} straight banker wins! | That makes it {N} in a row. | {N} banker wins in a row now! | The streak is now {N}. | {N} in a row, and counting.",
+   "d": "3.71: 17 the words said after line 12 (singles AND banker won) when the banker won N in a row. up to 10 lines separated by | (VL VERSIONS).",
    "kind": "text",
    "c": null,
    "n": "Vl Text 17"
@@ -29219,8 +29255,8 @@
   {
    "k": "VL_TEXT_18",
    "tab": "Texts",
-   "v": "Yesterday, {W} of our {N} singles won. | {W} out of {N} singles came in yesterday. | Our singles yesterday: {W} of {N} won. | Yesterday's singles finished {W} out of {N}. | {W} of yesterday's {N} singles landed.",
-   "d": "3.73.9: 18 the singles voice when not every single won. {W} = won, {N} = played. 5 lines separated by |.",
+   "v": "Yesterday, {W} of our {N} singles won. | {W} out of {N} singles came in yesterday. | Our singles yesterday: {W} of {N} won. | Yesterday's singles finished {W} out of {N}. | {W} of yesterday's {N} singles landed. | From yesterday's singles, {W} out of {N} came in. | {W} of our {N} singles won yesterday. | Yesterday, {W} out of {N} singles landed. | Our singles yesterday finished {W} out of {N}. | {W} of yesterday's {N} singles came through.",
+   "d": "3.73.9: 18 the singles voice when not every single won. {W} = won, {N} = played. up to 10 lines separated by | (VL VERSIONS).",
    "kind": "text",
    "c": null,
    "n": "Vl Text 18"
@@ -30971,8 +31007,8 @@
   {
    "k": "VIP_MIN_TOTAL",
    "tab": "Results and Premium",
-   "v": 3.0,
-   "d": "The lowest VIP total odds: 3.00, never under.",
+   "v": 3.15,
+   "d": "The lowest VIP total odds. 3.83 (Philip 17 Nov, instructions 5.5): 3.15.",
    "kind": "float",
    "c": null,
    "n": "Vip Min Total"
@@ -32077,8 +32113,8 @@
   {
    "k": "TITLE_TOP_TWO_SHARE",
    "tab": "YouTube",
-   "v": 60,
-   "d": "How much of the day (percent) the two biggest competitions must have together for TITLE TOP TWO.",
+   "v": 35,
+   "d": "How much of the day (percent) the two biggest competitions must have together for TITLE TOP TWO. 3.83 (Philip 17 Nov: the 16 Nov title said \"FOOTBALL\" on a Nations League + AFCON day; the 17 Nov style is right): 35 = the competitions are named on almost every day.",
    "kind": "int",
    "c": null,
    "n": "Title Top Two Share"
@@ -33384,8 +33420,8 @@
   {
    "k": "SINGLES_CONF_MIN",
    "tab": "Automatic",
-   "v": 60,
-   "d": "3.82 (instructions 5.3): the lowest % of each Singles Of The Day pick. 0 = off.",
+   "v": 55,
+   "d": "3.82: the lowest % of each Singles Of The Day pick (instructions 5.5: 60%+, 55% only when fewer than 5 reach 60%). 0 = off.",
    "kind": "int",
    "c": null,
    "n": "Singles Conf Min"
@@ -33393,8 +33429,8 @@
   {
    "k": "PICK3_CONF_MIN",
    "tab": "Automatic",
-   "v": 30,
-   "d": "3.72.8 (Philip, 15 Nov): the lowest confidence % of PICK 3 (30 = 30% to 100%). 0 = off.",
+   "v": 40,
+   "d": "3.72.8: the lowest confidence % of PICK 3. 3.83 (instructions 5.5): 50%+, 40% the lowest (with the reason in NOTE). 0 = off.",
    "kind": "int",
    "c": null,
    "n": "Pick3 Conf Min"
@@ -33697,20 +33733,20 @@
   "LINE TOPPICKS CARD TITLE": "SINGLES OF THE DAY",
   "LINE TOPPICKS WON TITLE": "SINGLES OF THE DAY",
   "LINE BANKER STREAK TEXT": "🔥 {N} Bankers In A Row",
-  "LINE VL TEXT 01": "Hello football fans. Welcome to Match Vision for another big match day. | Welcome back to Match Vision. It's a big day of football, so let's get straight into it. | Hey football fans, welcome to Match Vision. Plenty of games today, and we've got you covered. | Welcome to Match Vision, your home for daily football predictions. Let's go. | Hello and welcome to Match Vision. Another match day is here, and it's a good one.",
-  "LINE VL TEXT 02": "Let's take a quick look at yesterday's safest pick results. | Before today's games, let's take a quick look at yesterday's safest pick results. | First, here are yesterday's safest pick results. | Let's start with a quick look at yesterday's safest pick results. | Quick check on yesterday's safest pick results first.",
-  "LINE VL TEXT 03": "Today you're getting all our predictions, our singles of the day, and the banker of the day. Stay to the end for the banker. | In today's video you'll get a correct score for every game, our singles of the day, and the banker of the day at the end. | Here's what's coming today. Every game predicted, our singles of the day, and the banker saved for the end. | Today we've got predictions for every game, our strongest singles of the day, and the banker of the day. Don't miss the banker at the end. | You'll get the full list of predictions, our singles of the day, and the banker of the day. Keep watching, the banker comes last.",
-  "LINE VL TEXT 04": "Right, let's get into today's games. | Okay, let's start with today's predictions. | Let's get into it. | Here we go with today's games. | Alright, on to today's predictions.",
-  "LINE VL TEXT 05": "{League} next. | Now, {League}. | Over to {League}. | Let's move to {League}. | Next up, {League}.",
-  "LINE VL TEXT 06": "If you're new here, hit subscribe. New picks every day. | New here? Subscribe and turn on the bell for daily predictions. | If this is your first time here, please subscribe. More picks every day. | Just found us? Hit subscribe so you never miss a day. | If you're new to Match Vision, subscribe now. Fresh picks every day.",
-  "LINE VL TEXT 07": "Now, our singles of the day. These are the games we trust most. | Here are today's singles of the day, the strongest games on the list. | Time for the singles of the day. These are our most confident picks today. | Let's look at today's singles of the day. | Now the singles of the day, the games we like the most today.",
-  "LINE VL TEXT 08": "Time for the banker of the day. | And now, the banker of the day. | Here it is, today's banker. | Finally, the banker of the day. | Now the one you've been waiting for, the banker of the day.",
-  "LINE VL TEXT 09": "Here are all of today's picks together in one place. Save them before the games start. | And here's every pick from today in one place. Take a screenshot before kick off. | All of today's predictions together. Save this list before the games start. | Here's the full list for today. Screenshot it so you have it ready. | Every pick from today, all in one place. Save it before kick off.",
-  "LINE VL TEXT 10": "Join our free Telegram channel. The link is in the description. | For more picks, join our free Telegram channel. Link in the description. | Our free Telegram channel has even more. The link is below. | Join us on Telegram for free. You'll find the link in the description. | Want more? Join our free Telegram channel, link in the description.",
-  "LINE VL TEXT 11": "Subscribe and turn on the bell. New predictions tomorrow. | Hit subscribe and turn on the bell. We're back tomorrow with new predictions. | Subscribe so you're ready for tomorrow's predictions. | Don't forget to subscribe. New picks are coming tomorrow. | Turn on the bell and subscribe. Tomorrow's predictions are coming soon.",
-  "LINE VL TEXT 12": "And it gets better. Every one of yesterday's singles won, and the banker won too. | Yesterday was a clean sweep. All of our singles won, and so did the banker. | What a day yesterday. The singles all came in, and the banker landed as well. | Look at this. Yesterday's singles went all green, and the banker won too. | A perfect day yesterday. Every single won, plus the banker on top.",
-  "LINE VL TEXT 13": "And yesterday's singles? Every one of them won. | All of yesterday's singles came in. Not one of them missed. | Yesterday's singles went all green. Every one of them won. | Clean sweep on the singles yesterday. Every pick won. | Every single from yesterday won. That's how we like it.",
-  "LINE VL TEXT 14": "And yesterday's banker came in as well. | Yesterday's banker won. Another one in the bag. | The banker landed again yesterday. | And our banker from yesterday? It won. | Yesterday's banker did the job once again."
+  "LINE VL TEXT 01": "What's up, football family? It's Match Vision. Let's get into today's games. | Match Vision here. New day, new games, every one predicted. | What's up, everyone? Welcome to Match Vision. Big day of football today. | Match Vision here. Fresh games, fresh picks. Let's go. | What's up, football family? Match Vision is back with today's games. | Match Vision here. Another match day, and we've got every game covered. | What's good, football fans? It's Match Vision. Let's get started. | Match Vision here. New day, new predictions. Let's get into it. | What's up, football family? Welcome back to Match Vision. | Match Vision here. A full day of football, and every game predicted.",
+  "LINE VL TEXT 02": "Let's take a quick look at yesterday's safest pick results. | Before today's games, let's take a quick look at yesterday's safest pick results. | First, here are yesterday's safest pick results. | Let's start with a quick look at yesterday's safest pick results. | Quick check on yesterday's safest pick results first. | Let's see how we did yesterday. | First, a look back. Here's how yesterday's safest picks ended. | Yesterday's results are in. Let's take a look. | Before we look ahead, here's how yesterday's safest picks finished. | Here's how yesterday went for our safest picks.",
+  "LINE VL TEXT 03": "Today you're getting all our predictions, our singles of the day, and the banker of the day. Stay to the end for the banker. | In today's video you'll get a correct score for every game, our singles of the day, and the banker of the day at the end. | Here's what's coming today. Every game predicted, our singles of the day, and the banker saved for the end. | Today we've got predictions for every game, our strongest singles of the day, and the banker of the day. Don't miss the banker at the end. | You'll get the full list of predictions, our singles of the day, and the banker of the day. Keep watching, the banker comes last. | Every game today has a prediction, plus our singles of the day and one banker to finish. Make sure you stay for that. | Coming up: every game predicted, our singles of the day, and the banker right at the end. | Today it's every game with a prediction, our singles of the day, and the banker to close the video. | You'll see a prediction for every game, then our singles of the day, and the banker last of all. | Here's the plan for today. Every game predicted, our singles, and the banker at the end. Stick around.",
+  "LINE VL TEXT 04": "Right, let's get into today's games. | Okay, let's start with today's predictions. | Let's get into it. | Here we go with today's games. | Alright, on to today's predictions. | Let's kick things off with today's games. | Okay, first game coming up. | Right, here come today's predictions. | Let's start with the first game. | Alright, let's look at today's games.",
+  "LINE VL TEXT 05": "{League} next. | Now, {League}. | Over to {League}. | Let's move to {League}. | Next up, {League}. | Moving on to {League}. | Now let's go to {League}. | Time for {League}. | On to {League}. | Here's {League}.",
+  "LINE VL TEXT 06": "If you're new here, hit subscribe. New picks every day. | New here? Subscribe and turn on the bell for daily predictions. | If this is your first time here, please subscribe. More picks every day. | Just found us? Hit subscribe so you never miss a day. | If you're new to Match Vision, subscribe now. Fresh picks every day. | Enjoying the picks? Subscribe, it's free, and we post every day. | Quick one. If you're new, hit subscribe. New predictions every day. | Like what you see? Subscribe so you get tomorrow's picks too. | New to the channel? Subscribe and turn on the bell. We're here every day. | If these picks help you, hit subscribe. Fresh games every day.",
+  "LINE VL TEXT 07": "Now, our singles of the day. These are the games we trust most. | Here are today's singles of the day, the strongest games on the list. | Time for the singles of the day. These are our most confident picks today. | Let's look at today's singles of the day. | Now the singles of the day, the games we like the most today. | Here come the singles of the day, the games we feel best about today. | Now our singles of the day. Each one stands on its own. | Time for today's singles, the picks we like the most. | Here are our singles of the day. These are the ones we trust. | Now, the singles of the day, our strongest picks for today.",
+  "LINE VL TEXT 08": "Now for the big one. Today's banker. | Saved the best for last. Here's today's banker. | Now for the big one. Today's banker, made from our surest picks. | We saved the best for last. Today's banker. | And now the big one. Here's the banker of the day. | Best for last. This is today's banker. | Now for the one you've been waiting for. Today's banker. | Saved the best till the end. Here's the banker. | Here's the big one. Today's banker, our surest picks of the day. | And we saved the best for last. The banker of the day.",
+  "LINE VL TEXT 09": "Here are all of today's picks together in one place. Save them before the games start. | And here's every pick from today in one place. Take a screenshot before kick off. | All of today's predictions together. Save this list before the games start. | Here's the full list for today. Screenshot it so you have it ready. | Every pick from today, all in one place. Save it before kick off. | That's every pick from today on one screen. Grab a screenshot now. | Here's everything from today in one place. Save it before the games start. | All of today's picks on one screen. Screenshot this one. | Every prediction from today, together. Take a screenshot before kick-off. | Here's the full list from today. Save it so you have it ready.",
+  "LINE VL TEXT 10": "Join our free Telegram channel. The link is in the description. | For more picks, join our free Telegram channel. Link in the description. | Our free Telegram channel has even more. The link is below. | Join us on Telegram for free. You'll find the link in the description. | Want more? Join our free Telegram channel, link in the description. | There's more waiting for you on our free Telegram channel. The link's in the description. | Want results as they happen? Join our free Telegram channel, link in the description. | Our Telegram channel is free, and the link is in the description. | Join the free Telegram channel for more. You'll find the link below. | For live results and more picks, join our free Telegram. The link is in the description.",
+  "LINE VL TEXT 11": "Subscribe and turn on the bell. New predictions tomorrow. | Hit subscribe and turn on the bell. We're back tomorrow with new predictions. | Subscribe so you're ready for tomorrow's predictions. | Don't forget to subscribe. New picks are coming tomorrow. | Turn on the bell and subscribe. Tomorrow's predictions are coming soon. | That's it for today. Subscribe and we'll see you tomorrow with fresh predictions. | That's all for today. Hit subscribe, and we'll be back tomorrow. | We're done for today. Subscribe so you don't miss tomorrow's games. | That's today's games. Subscribe and come back tomorrow for more. | All done for today. Turn on the bell, new predictions tomorrow.",
+  "LINE VL TEXT 12": "And it gets better. Every one of yesterday's singles won, and the banker won too. | Yesterday was a clean sweep. All of our singles won, and so did the banker. | What a day yesterday. The singles all came in, and the banker landed as well. | Look at this. Yesterday's singles went all green, and the banker won too. | A perfect day yesterday. Every single won, plus the banker on top. | Yesterday couldn't have gone better. Every single won, and the banker too. | All green yesterday. Every single and the banker came in. | What a day. All of yesterday's singles won, and so did the banker. | Yesterday was perfect. The singles all won, and the banker landed. | Every single won yesterday, and the banker came in as well.",
+  "LINE VL TEXT 13": "And yesterday's singles? Every one of them won. | All of yesterday's singles came in. Not one of them missed. | Yesterday's singles went all green. Every one of them won. | Clean sweep on the singles yesterday. Every pick won. | Every single from yesterday won. That's how we like it. | Every one of yesterday's singles came through. Not a single miss. | All of yesterday's singles won. All green. | Yesterday's singles? Every one of them came in. | Not one single missed yesterday. They all won. | All green on the singles yesterday. Every one won.",
+  "LINE VL TEXT 14": "All green again yesterday. The banker came in. | Another banker in the bag yesterday. That's how we do it. | All green again. Yesterday's banker won. | Another banker in the bag. Yesterday's banker won. | The banker? All green again yesterday. | Yesterday's banker came in. Another one in the bag. | All green again yesterday. The banker did the job. | Another one in the bag. The banker won yesterday. | All green yesterday. The banker landed again. | Banker in the bag again yesterday. That's how we do it."
  },
  "tabs_help": {
   "Long video": "The daily YouTube video: how long it is, how long each match stays, the timing of the picks, quality.",
@@ -34879,9 +34915,9 @@
  "premium_lock": {
   "v": 1,
   "iter": 150000,
-  "salt": "pEUWiHeGDiKAC4ean5zFYg==",
-  "nonce": "Ss5Aho3gWtUjThjUdswm6w==",
-  "ct": "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",
-  "mac": "zEj17tZW7H4XVV7gYge+ouJilU7Yle/7R77L64NoXFk="
+  "salt": "YFJUF90vyLkncMpE8jHRoQ==",
+  "nonce": "5mkNmaoyLWUUie2aC+aQ1w==",
+  "ct": "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",
+  "mac": "zBYnqt4kq3CwqACzA8RXwx8Rkt6S/coyC+Q/8DSg2F4="
  }
 }
