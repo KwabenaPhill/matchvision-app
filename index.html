@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.65</title>
+<title>Match Vision 3.66</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -951,9 +951,9 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // Match Vision app 3.0 - built on the Sure Stake 707 Hub design (v47.1): same font, cards, buttons, sheets, tabs and
 // share buttons, in Match Vision colours. Data comes ONLY from feed.json, which the laptop builder sends to GitHub
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
-// Live scores: the app asks ESPN's free scoreboard itself while it is open.
+// Live scores: the app asks YOUR API-Football (the same key as the laptop) itself while it is open (3.66).
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.65';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.65' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.66';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.66' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -979,7 +979,7 @@ const inMins=m=>m>=60?`${Math.floor(m/60)}h ${m%60}m`:`${m} min`;
 const K={feed:'mv_app_feed',pin:'mv_app_pin',set:'mv_app_set',tab:'mv_app_tab',espn:'mv_app_espn',posted:'mv_app_posted',marks:'mv_app_marks'};
 const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}},del(k){try{localStorage.removeItem(k);}catch(e){}}};
 const jget=(k,d)=>{try{const v=JSON.parse(store.get(k)||'null');return v==null?d:v;}catch(e){return d;}};
-const DEF={live:true,every:1,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
+const DEF={live:true,every:1,fast:true,bot:'MatchVision707Bot',channel:'https://t.me/matchvision707',youtube:'https://www.youtube.com/@MatchVision707',url:'feed.json',
   apps:{wa:true,x:true,ig:true,tt:true,th:true,fb:true,yt:true,tg:false},
   bold:true,boldTitle:true,boldBrand:false,boldLeague:false,capWords:true,boldWatch:true,uniBold:true,tags:true,igTags:5,hand:true,tgBold:'letters',tagsOff:{tg:true},
   showOdds:true,showChance:false,showPred:true,showFin:true,sort:'video',pickOrder:'video',homeView:'posts',groups:{morning:true,video:true,swipe:true,shorts:true,results:true},
@@ -1022,26 +1022,21 @@ async function unlockPremium(quiet,pin){premErr='';const lock=feed&&feed.premium
   try{const body=await unlockWith(lock,p);if(!body){prem=null;premErr='Wrong PIN. Use the PIN typed in Connect > App on the laptop.';if(pin)store.del(K.pin);return false;}prem=body;if(pin)store.set(K.pin,pin);return true;}
   catch(e){prem=null;premErr='This phone could not open the lock ('+e.message+').';return false;}}
 
-// ---------- Live scores (ESPN, free) ----------
-let ESPN=jget(K.espn,{});
+// ---------- Live scores (YOUR API-Football only, 3.66) ----------
+/* 3.66 (Philip 18 Nov): ESPN and every other free board are gone. Only his API-Football key, on the phone and on
+   the laptop, so both sides always show the same score. The old ESPN cache on the phone is just left behind. */
 let MARKS=jget(K.marks,{});   // 3.3: picks YOU marked won or lost on this phone (date|n.i -> 'w' / 'l', sent:true when sent to the laptop)
 function markOf(d,m,i){const x=MARKS[`${d.date}|${m.n}.${i+1}`];return x&&x.v||null;}
 function saveMarks(){store.set(K.marks,JSON.stringify(MARKS));}
-function espnFix(ev){try{const c=ev.competitions[0];const h=c.competitors.find(x=>x.homeAway==='home'),a=c.competitors.find(x=>x.homeAway==='away');
-  const s=(c.status||ev.status),t=s.type||{},nm=String(t.name||'');let st=t.state==='pre'?'NS':t.state==='in'?(/HALF_?TIME/i.test(nm)?'HT':'LIVE'):'FT';
-  if(/POSTPONED/i.test(nm))st='PST';else if(/DELAYED/i.test(nm))st='NS';if(/CANCEL|ABANDON|FORFEIT|SUSPEND/i.test(nm))st='CANC';/* 3.56: delayed is never postponed */
-  const g=v=>{const n=parseInt(v,10);return isNaN(n)?null:n;};const fh=x=>x.linescores&&x.linescores[0]&&x.linescores[0].value!=null?g(x.linescores[0].value):null;const no=['NS','PST','CANC'].includes(st);
-  const et=/AET|PEN|EXTRA|SHOOTOUT/i.test(nm)||[h,a].some(x=>(x.linescores||[]).length>2);const n90=x=>{const L=(x.linescores||[]).slice(0,2).map(y=>y&&y.value!=null?g(y.value):null);return L.length===2&&L[0]!=null&&L[1]!=null?L[0]+L[1]:null;};/* 3.55: bets are settled on 90 minutes */
-  return {id:String(ev.id),home:h.team.displayName,away:a.team.displayName,st,min:st==='LIVE'?(parseInt(s.displayClock,10)||null):null,gh:no?null:(et?n90(h):g(h.score)),ga:no?null:(et?n90(a):g(a.score)),hh:fh(h),ha:fh(a),at:new Date().toISOString(),src:'phone'};}catch(e){return null;}}
-async function espnDay(k){const r=await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard?dates=${k.replace(/-/g,'')}&limit=1000`,{cache:'no-store'});if(!r.ok)throw new Error(r.status);const j=await r.json();return (j.events||[]).map(espnFix).filter(Boolean);}
+/* 3.66: the two free-board readers are removed with the free boards themselves. */
 const STOP=new Set(['fc','cf','afc','sc','ac','as','club','de','the','cd','sd','ss','us','fk','sk','bk','if','ssc','calcio','football','sporting','al','el','la','le','1']);
 const ALIAS={cologne:'koln',internazionale:'inter','paris saint germain':'psg','paris sg':'psg','bayern munchen':'bayern munich','stade brestois 29':'brest','stade brestois':'brest'};
 function words(n){return String(n||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(w=>w&&!STOP.has(w));}
 function sameTeam(a,b){const al=x=>{const w=words(x).join(' ');return ALIAS[w]||w;};const A=al(a).split(' ').filter(Boolean),B=al(b).split(' ').filter(Boolean);if(!A.length||!B.length)return 0;if(A.join(' ')===B.join(' '))return 1;let hit=0;for(const w of A){if(B.some(x=>x===w||(w.length>3&&x.length>3&&(x.startsWith(w)||w.startsWith(x)))))hit++;}return hit/Math.min(A.length,B.length);}
 function findGame(m,games){if(m.live&&m.live.espn){const g=games.find(x=>x.id===String(m.live.espn));if(g)return g;}let best=null,sc=0;
   for(const g of games){const s1=sameTeam(m.home,g.home),s2=sameTeam(m.away,g.away),s=Math.min(s1,s2)*.6+Math.max(s1,s2)*.4;if(Math.min(s1,s2)<0.5)continue;if(s>sc){sc=s;best=g;}}return sc>=0.72?best:null;}
-/* 3.60 (Philip 15 Nov, #1794758533568): every minute; when ESPN is full, used up or misses games, the phone uses HIS
-   API-Football key (the laptop puts it in the PRIVATE mailbox mvapp/live/af.json; never in this public app). */
+/* 3.66 (Philip 18 Nov): the phone looks with HIS API-Football key only. The laptop puts the key in the PRIVATE
+   mailbox mvapp/live/af.json (never in this public app); Settings > Live scores > Your key can also hold it. */
 const AFC={k:null,at:0};let AFD=jget('mv_app_afd',{});
 async function afKey(){if(SET.afKey)return SET.afKey;if(AFC.k!==null&&Date.now()-AFC.at<3*3600e3)return AFC.k;AFC.at=Date.now();AFC.k='';
   try{if(mbxKey()){const r=await mbx('mvapp/live/af.json',true);if(r.ok){const j=await r.json();AFC.k=String(j.key||'');}}}catch(e){}return AFC.k;}
@@ -1050,7 +1045,7 @@ function afFixP(x){try{const f=x.fixture,st=AFST[f.status.short]||'NS',no=['NS',
   return {id:'af'+f.id,home:x.teams.home.name,away:x.teams.away.name,st,min:st==='LIVE'?(f.status.elapsed||null):null,gh:no?null:(ft?sc.fulltime.home:x.goals.home),ga:no?null:(ft?sc.fulltime.away:x.goals.away),
     hh:sc.halftime?sc.halftime.home:null,ha:sc.halftime?sc.halftime.away:null,at:new Date().toISOString(),src:'phone-af'};}catch(e){return null;}}
 function afUse(){const u=jget('mv_app_afuse',{});return u.d===todayKey()?u:{d:todayKey(),n:0,left:null};}
-async function afDay(k){const key=await afKey();if(!key)throw new Error('no key');const u=afUse();if(u.left!=null&&u.left<1500)throw new Error('kept for the laptop');
+async function afDay(k){const key=await afKey();if(!key)throw new Error('no key');const u=afUse();if(u.left!=null&&u.left<400)throw new Error('kept for the laptop');
   const r=await fetch(`https://v3.football.api-sports.io/fixtures?date=${k}&timezone=Africa/Accra`,{headers:{'x-apisports-key':key},cache:'no-store'});
   const left=parseInt(r.headers.get('x-ratelimit-requests-remaining')||'',10);u.n=(u.n||0)+1;if(!isNaN(left))u.left=left;store.set('mv_app_afuse',JSON.stringify(u));
   const j=await r.json();const er=j.errors&&(Array.isArray(j.errors)?j.errors:Object.values(j.errors));if(er&&er.length)throw new Error(String(er[0]));return (j.response||[]).map(afFixP).filter(Boolean);}
@@ -1058,19 +1053,21 @@ let liveBusy=false;
 async function liveTick(force){if(!SET.live||liveBusy||!feed||!navigator.onLine||document.hidden)return;const t=todayKey(),want=new Set([t,addDays(t,-1)]);const ds=new Set();
   for(const d of days())for(const m of d.matches||[])if(want.has(m.date||d.date)&&!(m.live&&['FT','CANC','PST'].includes(m.live.st)))ds.add(m.date||d.date);   /* 3.58 (F77): the laptop's postponed is final */
   if(!ds.size)return;liveBusy=true;let ok=false;
-  try{for(const k of ds){const old=ESPN[k];let espnOk=!!old;if(force||!old||Date.now()-old.at>=(SET.every||1)*60e3){try{ESPN[k]={at:Date.now(),games:await espnDay(k)};ok=true;espnOk=true;}catch(e){espnOk=false;}}
-      /* 3.60: ESPN failed, or a game on the list is not on ESPN: API-Football with his key */
-      const miss=(days().find(d=>d.date===k)||{matches:[]}).matches.some(m=>!(m.live&&['FT','CANC','PST'].includes(m.live.st))&&!(ESPN[k]&&findGame(m,ESPN[k].games||[])));
-      if((!espnOk||miss)&&SET.afOn!==false&&(force||!AFD[k]||Date.now()-AFD[k].at>=(SET.every||1)*60e3)){try{AFD[k]={at:Date.now(),games:await afDay(k)};ok=true;}catch(e){AFD[k]=Object.assign({games:[]},AFD[k]||{},{at:Date.now(),err:String(e.message||e).slice(0,60)});}}}
-    for(const k of Object.keys(ESPN))if(!want.has(k))delete ESPN[k];for(const k of Object.keys(AFD))if(!want.has(k))delete AFD[k];store.set(K.espn,JSON.stringify(ESPN));store.set('mv_app_afd',JSON.stringify(AFD));}finally{liveBusy=false;}
+  /* 3.66: a game LIVE or at half time = look every 30 s (SET.fast), otherwise every SET.every minute */
+  const on=[...ds].some(k=>((AFD[k]&&AFD[k].games)||[]).some(g=>['LIVE','HT'].includes(g.st)))||days().some(d=>(d.matches||[]).some(m=>m.live&&['LIVE','HT'].includes(m.live.st)));
+  const wait=(SET.fast!==false&&on)?30e3:(SET.every||1)*60e3;
+  try{for(const k of ds){if(force||!AFD[k]||Date.now()-AFD[k].at>=wait){try{AFD[k]={at:Date.now(),games:await afDay(k)};ok=true;}catch(e){AFD[k]=Object.assign({games:[]},AFD[k]||{},{at:Date.now(),err:String(e.message||e).slice(0,60)});}}}
+    for(const k of Object.keys(AFD))if(!want.has(k))delete AFD[k];store.set('mv_app_afd',JSON.stringify(AFD));}finally{liveBusy=false;}
   if(ok&&!subRender&&!$('sheet').classList.contains('open'))refresh(true);else if(ok&&subRender)rerenderSub();}
 const RANK={NS:0,PST:1,LIVE:2,HT:2,NF:3,CANC:3,FT:4};
 /* 3.64 (Philip 16 Nov: Somalia v Ghana showed FT 0-1 at 81 minutes, the game was still on): FULL TIME is shown only
    when it is possible (105 minutes after the kick-off). Before that the game stays LIVE: no won/lost, no result. */
 function liveOf(m,d){const L=liveOf0(m,d);if(!L||L.st!=='FT'||L.src==='you')return L;const ko=koDate(m,d);
   if(ko&&Date.now()-ko<105*60e3)return Object.assign({},L,{st:'LIVE',min:L.min||90});return L;}
-function liveOf0(m,d){const k=m.date||d.date;let mine=(AFD[k]&&findGame(m,AFD[k].games||[]))||(ESPN[k]&&findGame(m,ESPN[k].games||[]));   /* 3.60: his API-Football first on the phone, ESPN after */
-  const lap=m.live;/* 3.56 (bug A+B): the laptop's API-Football score is the main one; ESPN on the phone alone never makes a game postponed */if(mine&&['PST','CANC'].includes(mine.st)&&!(lap&&['PST','CANC'].includes(lap.st)))mine=lap?null:Object.assign({},mine,{st:'NS',gh:null,ga:null});if(lap&&lap.src==='API-Football')return lap;if(!mine)return lap||null;if(!lap)return mine;
+function liveOf0(m,d){const k=m.date||d.date;const mine=AFD[k]&&findGame(m,AFD[k].games||[]);   /* 3.66: only his API-Football */
+  const lap=m.live;if(!mine)return lap||null;if(!lap)return mine;
+  /* 3.66 (Philip 18 Nov, "the syncing is very late"): both sides are HIS API now, so the one further on wins and
+     on the same step the bigger minute wins. The laptop's feed can be minutes old; the phone looked a moment ago. */
   const a=RANK[mine.st]||0,b=RANK[lap.st]||0;if(b>a)return lap;if(a>b)return Object.assign({},mine,{hh:mine.hh!=null?mine.hh:lap.hh,ha:mine.ha!=null?mine.ha:lap.ha});
   if(a===2&&(lap.min||0)>(mine.min||0))return lap;return Object.assign({},mine,{hh:mine.hh!=null?mine.hh:lap.hh,ha:mine.ha!=null?mine.ha:lap.ha});}
 
@@ -1331,7 +1328,7 @@ function legSheet(d,m){
   // 3.3: like Sure Stake - tap Won or Lost on any pick; your tap always wins. "Send to the laptop" puts it in the results and posts.
   const render=()=>{const L=liveOf(m,d);const unsent=(m.picks||[]).slice(0,3).some((p,i)=>{const x=MARKS[`${d.date}|${m.n}.${i+1}`];return x&&!x.sent;});
     $('sheetBox').innerHTML=`<div class="modal-title">${esc(m.home)} vs ${esc(m.away)}</div><p class="muted" style="margin-bottom:10px"><b class="lgname">${esc(m.league||'')}</b> · ${esc(m.kickoff||'')} · Match ${m.n}</p>
-    ${L&&L.st&&!['NS','NF'].includes(L.st)?`<div class="statrow"><span>Score</span><b>${L.st==='LIVE'?(L.min?L.min+"'":'Live'):L.st==='PST'?'Postponed':L.st} ${L.st==='PST'?'':`${L.gh??0}-${L.ga??0}`}</b></div>${L.hh!=null?`<div class="statrow"><span>Half time</span><b>${L.hh}-${L.ha}</b></div>`:''}${L.corners!=null?`<div class="statrow"><span>Corners</span><b>${L.corners}</b></div>`:''}${L.cards!=null?`<div class="statrow"><span>Cards</span><b>${L.cards}</b></div>`:''}<div class="statrow"><span>From</span><b>${L.src==='phone'?'ESPN (this phone)':esc(L.src||'The laptop')} · ${fmtT(new Date(L.at||Date.now()))}</b></div>`:`<p class="muted">${L&&L.st==='NF'?'No scoreboard has this match. Mark the picks yourself below.':'Not started yet. The score comes in by itself.'}</p>`}
+    ${L&&L.st&&!['NS','NF'].includes(L.st)?`<div class="statrow"><span>Score</span><b>${L.st==='LIVE'?(L.min?L.min+"'":'Live'):L.st==='PST'?'Postponed':L.st} ${L.st==='PST'?'':`${L.gh??0}-${L.ga??0}`}</b></div>${L.hh!=null?`<div class="statrow"><span>Half time</span><b>${L.hh}-${L.ha}</b></div>`:''}${L.corners!=null?`<div class="statrow"><span>Corners</span><b>${L.corners}</b></div>`:''}${L.cards!=null?`<div class="statrow"><span>Cards</span><b>${L.cards}</b></div>`:''}<div class="statrow"><span>From</span><b>${L.src==='phone-af'?'Your API (this phone)':esc(L.src||'The laptop')} · ${fmtT(new Date(L.at||Date.now()))}</b></div>`:`<p class="muted">${L&&L.st==='NF'?'No scoreboard has this match. Mark the picks yourself below.':'Not started yet. The score comes in by itself.'}</p>`}
     ${m.score?`<div class="statrow"><span>Correct score</span><b>${esc(m.score)}</b></div>`:''}
     ${(m.picks||[]).slice(0,3).map((p,i)=>{const s=pickState(p,i,m,d,L);const mk=markOf(d,m,i);return `<div class="mkrow"><div class="mkt"><span class="pnum">${i+1}</span><span><b>${esc(p.text)}</b><small>${s==='w'?'<em class="okc">✔ Won</em>':s==='l'?'<em class="noc">✘ Lost</em>':s==='up'?'↑ Winning now':s==='dn'?'↓ Losing now':/corner|card/i.test(p.text)?'Waiting for the match numbers':'Waiting'}${mk?' · set by you':p.mine?' · set by you (laptop)':s?' · automatic':''}</small></span></div>
       <div class="btn-row"><button class="res-btn w ${mk==='w'?'on':''}" data-mk="w" data-i="${i}">Won</button><button class="res-btn l ${mk==='l'?'on':''}" data-mk="l" data-i="${i}">Lost</button><button class="res-btn ${!mk?'on':''}" data-mk="auto" data-i="${i}">Auto</button></div></div>`;}).join('')}
@@ -1747,7 +1744,7 @@ function folderRows(f){const appsOn=APPS.filter(p=>SET.apps[p]);const upd=feed&&
     srow('premRecords','Premium results in Records','Vision Premium live at the top of Records',SET.premRecords!==false,gi('gallery'));
   if(f==='texts')return srow('daytexts','Today\'s texts','Edit one post, or copy all and paste all back','',gi('notepad'))+
     srow('templates','Texts and captions (laptop)','Titles, captions, channel posts, Vision Premium',feed&&feed.templates?Object.keys(feed.templates).length+' parts':'',gi('textbold'));
-  if(f==='matches')return srow('livepage','Live scores',`ESPN ${SET.live?'on':'off'} · API-Football ${SET.afOn!==false?'on':'off'} · every ${SET.every} min`,'',gi('ball'))+
+  if(f==='matches')return srow('livepage','Live scores',`Your API ${SET.live?'on':'off'} · every ${SET.every} min${SET.fast!==false?' · 30 s while a game is live':''}`,'',gi('ball'))+
     srow('showPred','Show the correct score','',SET.showPred,gi('scoreboard'))+srow('showOdds','Show odds','',SET.showOdds,gi('ticket'))+
     srow('showChance','Show the chance (%)','From the builder',SET.showChance,gi('pie'))+srow('shortNames','Short team names','So everything fits',SET.shortNames,gi('badge'))+
     srow('showFin','Show finished matches','Off = finished games and slips move to Results',SET.showFin,gi('flag'))+srow('sort','Order of matches',SET.sort==='video'?'Like the video':SET.sort==='league'?'By league':'By kick-off time','',gi('sort'))+srow('pickOrder','Order of picks',SET.pickOrder==='won'?'Won first':'Like the video (1, 2, 3)','',gi('sort'))+
@@ -1790,7 +1787,7 @@ function renderSettings(){const pc=pendCount();
   if(setFolder&&subRender&&$('sub').classList.contains('open'))rerenderSub();}
 const TOGGLES=['bold','uniBold','hand','capWords','tags','live','showPred','showOdds','showChance','showFin','vidCards','premMembers','shortNames'];
 async function settingsClick(e){const b=e.target.closest('button');if(!b)return;if(b.dataset.fold==='template'){openTemplate();return;}if(b.dataset.fold){openFolder(b.dataset.fold);return;}const s=b.dataset.s;
-  if(b.id==='clearAll'){if(!confirm('Clear Match Vision app data on this phone (saved picks, sent ticks, settings, PIN)? Nothing on the laptop changes.'))return;Object.values(K).forEach(k=>store.del(k));POSTED={};SET=Object.assign({},DEF);prem=null;ESPN={};toast('Cleared');loadFeed(true);return;}
+  if(b.id==='clearAll'){if(!confirm('Clear Match Vision app data on this phone (saved picks, sent ticks, settings, PIN)? Nothing on the laptop changes.'))return;Object.values(K).forEach(k=>store.del(k));POSTED={};SET=Object.assign({},DEF);prem=null;AFD={};store.del('mv_app_afd');store.del('mv_app_afuse');toast('Cleared');loadFeed(true);return;}
   const tk=s==='boldUni'?'uniBold':s;if(TOGGLES.includes(tk)){SET[tk]=!SET[tk];saveSet();renderSettings();if(tk==='live'&&SET.live)liveTick(true);return;}
   if(s==='tgbold'){const o=['letters','stars','none'];SET.tgBold=o[(o.indexOf(SET.tgBold)+1)%3];saveSet();renderSettings();toast('Telegram bold: '+(SET.tgBold==='stars'?'**stars**':SET.tgBold==='none'?'no bold':'bold letters'));return;}
   if(s==='winInResults'){SET.winInResults=SET.winInResults===false;saveSet();renderSettings();return;}
@@ -2018,20 +2015,23 @@ function textsSheet(d){openSheet(`<div class="modal-title">📝 All texts · ${s
     if(b.dataset.a==='undo'){for(const k of Object.keys(EDITS))if(k.startsWith(d.date+'|'))delete EDITS[k];saveEdits();toast('Back to the laptop\'s words');refresh(true);return;}closeSheet();});}
 
 // ---------- Live scores page (like Sure Stake) ----------
-function openLivePage(){const render=()=>{const t=todayKey();const g=(ESPN[t]&&ESPN[t].games)||[];const at=ESPN[t]&&ESPN[t].at?new Date(ESPN[t].at):null;const lap=feed&&feed.updated?new Date(feed.updated):null;const n=(jget(K.checks,{})[t])||0;
-  $('subBody').innerHTML=`<p class="muted" style="margin-bottom:12px">The app checks the score of every match on your list, fills in the minute and marks each prediction ✔ won or ✘ lost by itself. The 23:45 results on the laptop are the official ones.</p>
-  <div class="set-title">Sources</div><div class="set-list">
-   <button class="set-row" data-l="espn">${icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#D00"/><text x="12" y="15.5" text-anchor="middle" font-family="Arial" font-weight="900" font-style="italic" font-size="8" fill="#fff">ESPN</text></svg>')}<span class="t">ESPN on this phone<small>Free, no key. Used while the app is open</small></span>${onOff(SET.live)}</button>
-   <button class="set-row" data-l="af">${icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#0B5"/><text x="12" y="15.5" text-anchor="middle" font-family="Arial" font-weight="900" font-size="8" fill="#fff">API</text></svg>')}<span class="t">API-Football on this phone<small>Your key${AFC.k||SET.afKey?' ✓':' (comes from the laptop)'} · when ESPN is full or misses a game · ${afUse().n||0} calls today${afUse().left!=null?' · '+afUse().left+' left':''}${AFD[t]&&AFD[t].err?' · '+esc(AFD[t].err):''}</small></span>${onOff(SET.afOn!==false)}</button>
-   <div class="set-row">${icoRaw(MVLOGO)}<span class="t">The laptop (API-Football + ESPN)<small>${lap?`Last news ${shortDate(keyOf(lap))} ${fmtT(lap)}`:'Not yet'} · full-time messages on Telegram</small></span></div></div>
+function openLivePage(){const render=()=>{const t=todayKey();const g=(AFD[t]&&AFD[t].games)||[];const at=AFD[t]&&AFD[t].at?new Date(AFD[t].at):null;const lap=feed&&feed.updated?new Date(feed.updated):null;const n=(jget(K.checks,{})[t])||0;
+  $('subBody').innerHTML=`<p class="muted" style="margin-bottom:12px">The app checks the score of every match on your list with YOUR API-Football key, fills in the minute and marks each prediction ✔ won or ✘ lost by itself. The 23:45 results on the laptop are the official ones.</p>
+  <div class="set-title">Source</div><div class="set-list">
+   <button class="set-row" data-l="af">${icoRaw('<svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#0B5"/><text x="12" y="15.5" text-anchor="middle" font-family="Arial" font-weight="900" font-size="8" fill="#fff">API</text></svg>')}<span class="t">Your API-Football on this phone<small>The only source${AFC.k||SET.afKey?' · key ✓':' · no key yet: tap Your key'} · ${afUse().n||0} calls today${afUse().left!=null?' · '+afUse().left+' left':''}${AFD[t]&&AFD[t].err?' · '+esc(AFD[t].err):''}</small></span>${onOff(SET.live)}</button>
+   <button class="set-row" data-l="key">${icoRaw(MVLOGO)}<span class="t">Your key<small>${SET.afKey?'Typed on this phone ✓':AFC.k?'Comes from the laptop ✓':'Not here yet: tap and paste your API-Football key'}</small></span></button>
+   <div class="set-row">${icoRaw(MVLOGO)}<span class="t">The laptop (your API too)<small>${lap?`Last news ${shortDate(keyOf(lap))} ${fmtT(lap)}`:'Not yet'} · full-time messages on Telegram</small></span></div></div>
   <div class="card" style="margin-top:14px"><div class="ct">Check every</div><div class="chips">${[1,2,3,5].map(v=>`<button class="chip ${SET.every===v?'on':''}" data-ev="${v}">${v} min</button>`).join('')}</div>
-   <div class="statrow"><span>Checks today (this phone)</span><b>${n}</b></div><div class="statrow"><span>Games found today</span><b>${g.length}${AFD[t]&&(AFD[t].games||[]).length?' + '+AFD[t].games.length+' API':''}</b></div><div class="statrow"><span>Last update</span><b>${at?fmtT(at):'Not yet'}</b></div></div>
+   <div class="set-list" style="margin-top:10px"><button class="set-row" data-l="fast"><span class="t">Fast while a game is live<small>Every 30 seconds while a match is LIVE or at half time</small></span>${onOff(SET.fast!==false)}</button></div>
+   <div class="statrow"><span>Checks today (this phone)</span><b>${n}</b></div><div class="statrow"><span>Games found today</span><b>${g.length}</b></div><div class="statrow"><span>Last update</span><b>${at?fmtT(at):'Not yet'}</b></div></div>
   <button class="btn-save w100" data-l="now">Check scores now</button>`;};
   openSub('Live scores',render);$('subBody').onclick=async e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.ev){SET.every=+b.dataset.ev;saveSet();render();return;}
-    if(b.dataset.l==='espn'){SET.live=!SET.live;saveSet();render();if(SET.live)liveTick(true);return;}
-    if(b.dataset.l==='af'){SET.afOn=SET.afOn===false;saveSet();render();if(SET.afOn!==false)liveTick(true);return;}if(b.dataset.l==='now'){toast('Checking…');await liveTick(true);render();toast('Updated ✓');}};}
+    if(b.dataset.l==='af'){SET.live=!SET.live;saveSet();render();if(SET.live)liveTick(true);return;}
+    if(b.dataset.l==='fast'){SET.fast=SET.fast===false;saveSet();render();if(SET.fast!==false)liveTick(true);return;}
+    if(b.dataset.l==='key'){const r=prompt('Your API-Football key (it stays on this phone only):',SET.afKey||'');if(r===null)return;SET.afKey=r.trim();saveSet();AFC.k=null;AFC.at=0;render();toast(SET.afKey?'Key saved on this phone ✓':'Key removed');liveTick(true);return;}
+    if(b.dataset.l==='now'){toast('Checking…');await liveTick(true);render();toast('Updated ✓');}};}
 const _liveTick=liveTick;
-liveTick=async function(force){const t=todayKey();const c=jget(K.checks,{});const before=ESPN[t]&&ESPN[t].at;await _liveTick(force);if(ESPN[t]&&ESPN[t].at!==before){c[t]=(c[t]||0)+1;for(const k of Object.keys(c))if(k<addDays(t,-3))delete c[k];store.set(K.checks,JSON.stringify(c));}};
+liveTick=async function(force){const t=todayKey();const c=jget(K.checks,{});const before=AFD[t]&&AFD[t].at;await _liveTick(force);if(AFD[t]&&AFD[t].at!==before){c[t]=(c[t]||0)+1;for(const k of Object.keys(c))if(k<addDays(t,-3))delete c[k];store.set(K.checks,JSON.stringify(c));}};
 
 // ---------- the builder's settings, from the phone (sent to the bot, the bot saves them on the laptop) ----------
 function fmtVal(v){if(typeof v==='boolean')return v?'On':'Off';const s=String(v??'');return s.length>40?s.slice(0,40)+'…':s||'—';}
