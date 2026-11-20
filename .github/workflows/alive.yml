@@ -1,0 +1,25 @@
+name: Laptop bot watchdog (tells Philip when the bot is down)
+# 3.95 (Philip 20 Nov 2026): the laptop bot writes cloud/alive.json every few minutes. This job runs on GitHub,
+# so it still works when the laptop is off, and sends ONE message when the bot stops and ONE when it is back.
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: mv-alive
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Is the laptop bot alive
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOWN_MINUTES: '30'
+        run: python3 .github/cloud_alive.py
