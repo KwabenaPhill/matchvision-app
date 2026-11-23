@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.66</title>
+<title>Match Vision 3.67</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -926,7 +926,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 </style>
 </head>
 <body>
-<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.66</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
+<header class="app-top"><div class="brand"><span class="blogo" id="hLogo"><img src="icons/icon-192.png" alt=""></span><div><div class="bn">MATCH <b>VISION</b></div><div class="bd" id="hDate"></div></div></div><span class="topr"><span class="tver" id="tver">v3.67</span><button class="askbtn" id="askBtn" aria-label="Ask the bot"><svg viewBox="0 0 40 40" width="22" height="22"><rect x="9" y="13" width="22" height="17" rx="5" fill="#29A9EB"/><circle cx="15.5" cy="21" r="2.6" fill="#fff"/><circle cx="24.5" cy="21" r="2.6" fill="#fff"/><path d="M16 26.5h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M20 13V8" stroke="#29A9EB" stroke-width="2"/><circle cx="20" cy="7" r="2.2" fill="#DFFB51"/></svg>Ask</button></span></header>
 
 <main class="page active" id="p-home"></main>
 <main class="page" id="p-history"></main>
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks YOUR API-Football (the same key as the laptop) itself while it is open (3.66).
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.66';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.66' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.67';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.67' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1438,7 +1438,7 @@ function upCard(d){const it=(d.posts||[]).find(x=>(x.images||[]).length);const i
 function upcomingCard(){const L=upcomingDays();return L.length?`<div class="sect" style="margin-top:6px">Coming up</div><div class="uplist">${L.map(upCard).join('')}</div><div style="height:14px"></div>`:'';}
 function renderHome(quiet){const el=$('p-home');el.classList.toggle('noanim',!!quiet);if(!feed){el.innerHTML=`<div class="card tint"><div class="ct">Loading Match Vision…</div><div class="cs" style="margin:0">The picks come from your laptop through GitHub.</div><button class="btn-save w100" data-act="reload">Try again</button></div>`;return;}
   const d=todayDay();let body;if(homeView==='matches')body=matchesView(d);else if(homeView==='results')body=resultsView(d);else body=postsView(d)+upcomingCard();
-  el.innerHTML='<div id="askBox"></div>'+summaryBoxes(d)+marksBar()+body;askBox();}
+  el.innerHTML='<div id="askBox">'+(window.ASKH||'')+'</div>'+summaryBoxes(d)+marksBar()+body;askBox();}   /* 3.67: the question stays on screen (no blink) */
 // 3.29 (Philip, 30 Oct): a pick still waiting after full time -> tap ✓ or ✕ (also in the banker), then ONE button sends
 // every mark to the laptop, so the results, the banker and the posts update at once.
 function unsentMarks(){const t=todayKey();return Object.entries(MARKS).filter(([k,x])=>x&&!x.sent&&String(k).split('|')[0]>=t);}   // 3.49 (Philip): a new day clears old marks from Home
@@ -1478,22 +1478,22 @@ function mbxKey(){let a={},b={};try{a=JSON.parse(localStorage.getItem('fixhub_sy
 const mbx=(p,raw)=>fetch(`https://api.github.com/repos/${MBX}/contents/${p}`,{cache:'no-store',headers:{Authorization:'Bearer '+mbxKey(),Accept:raw?'application/vnd.github.raw':'application/vnd.github+json'}});
 // ---------- 3.34 (Philip, 7 Nov): "Top Picks Won" Send / Skip, the same question the bot asks on Telegram ----------
 // The laptop puts the card in the PRIVATE mailbox (mvapp/ask/); the answer goes back there; no answer = Send (laptop timer).
-const ASKC={done:{}};
+const ASKC={done:{},ans:{}};
 async function askBox(){const el=$('askBox');if(!el||!mbxKey())return;
-  try{const r=await mbx('mvapp/ask/index.json',true);if(!r.ok){el.innerHTML='';return;}const ix=await r.json();let html='';
+  try{const r=await mbx('mvapp/ask/index.json',true);if(!r.ok){if(r.status===404){el.innerHTML='';window.ASKH='';}return;}const ix=await r.json();let html='';
     for(const p of (ix.items||[])){const q=await (await mbx(p,true)).json().catch(()=>null);
       if(q&&q.kind==='result_ask'){if(q.state!=='waiting'||ASKC.done[p])continue;   // 3.52 (R9): a result no source found
-        html+=`<div class="card tint"><div class="ct">❓ Result not found: ${String(q.match||'').replace(/</g,'&lt;')}</div><div class="cs">No source has the score 3 hours after kick-off. Tap Won or Lost for each pick: it goes to the laptop at once.</div>${(q.picks||[]).map((x,i)=>`<div class="mkrow"><div class="mkt"><span class="pnum">${i+1}</span><span><b>${String(x).replace(/</g,'&lt;')}</b></span></div><div style="display:flex;gap:6px"><button class="btn-half" data-raskp="${q.answer_path}" data-rans="won ${i+1}">✅ Won</button><button class="btn-half" data-raskp="${q.answer_path}" data-rans="lost ${i+1}">❌ Lost</button></div></div>`).join('')}</div>`;continue;}
+        html+=`<div class="card tint"><div class="ct">❓ Result not found: ${String(q.match||'').replace(/</g,'&lt;')}</div><div class="cs">No source has the score ${q.hours||4} hours after kick-off. Tap Won or Lost for each pick: it goes to the laptop at once. No answer in ${q.web_minutes||10} min = the laptop searches the web; nothing there = postponed.</div>${(q.picks||[]).map((x,i)=>{const a=ASKC.ans[q.answer_path+'|'+(i+1)];return `<div class="mkrow"><div class="mkt"><span class="pnum">${i+1}</span><span><b>${String(x).replace(/</g,'&lt;')}</b></span></div>${a?`<div style="display:flex;gap:6px"><b>${a.startsWith('won')?'✅ Won':'❌ Lost'} ✓</b></div>`:`<div style="display:flex;gap:6px"><button class="btn-half" data-raskp="${q.answer_path}" data-rans="won ${i+1}">✅ Won</button><button class="btn-half" data-raskp="${q.answer_path}" data-rans="lost ${i+1}">❌ Lost</button></div>`}</div>`;}).join('')}</div>`;continue;}
       if(!q||q.state!=='waiting'||ASKC.done[q.date]||!(q.deadline*1000>=Date.now()))continue;
       let src='';try{const b=await (await mbx(q.picture,true)).blob();src=URL.createObjectURL(b);}catch(e){}
       const mins=Math.max(0,Math.round((q.deadline*1000-Date.now())/60000));
       html+=`<div class="card tint"><div class="ct">✅ ${q.title||'Singles Of The Day'}: post it on the channel?</div>${src?`<img src="${src}" alt="" style="width:100%;border-radius:12px;margin:8px 0">`:''}<div class="cs" style="white-space:pre-wrap">${(q.caption||'').replace(/</g,'&lt;')}</div><div class="cs">No answer in ${mins} min = Send.</div><div style="display:flex;gap:8px"><button class="btn-save" style="flex:1" data-askans="send" data-askp="${q.answer_path}" data-askd="${q.date}">✅ Send</button><button class="btn-save" style="flex:1;background:#2a2a2e;color:#fff" data-askans="skip" data-askp="${q.answer_path}" data-askd="${q.date}">Skip</button></div></div>`;}
-    el.innerHTML=html;}catch(e){el.innerHTML='';}}
+    if(window.ASKH!==html||(!el.innerHTML&&html)){el.innerHTML=html;}window.ASKH=html;}catch(e){}}   /* 3.67: no blink, a failed look keeps the card */
 async function askAnswer(path,date,ans){try{const url=`https://api.github.com/repos/${MBX}/contents/${path}`;const h={Authorization:'Bearer '+mbxKey(),Accept:'application/vnd.github+json','Content-Type':'application/json'};
     let sha;const g=await fetch(url,{cache:'no-store',headers:h});if(g.ok){sha=(await g.json()).sha;}
     const body={message:'Match Vision app: '+ans+' '+date,content:btoa(JSON.stringify({answer:ans,at:Date.now()}))};if(sha)body.sha=sha;
     const r=await fetch(url,{method:'PUT',headers:h,body:JSON.stringify(body)});if(!r.ok)throw new Error('GitHub '+r.status);
-    ASKC.done[date]=1;toast(ans==='send'?'Sent: the laptop posts it within a minute.':'Skipped: no post.',3500);const el=$('askBox');if(el)el.innerHTML='';}
+    ASKC.done[date]=1;toast(ans==='send'?'Sent: the laptop posts it within a minute.':'Skipped: no post.',3500);const el=$('askBox');if(el)el.innerHTML='';window.ASKH='';}
   catch(e){toast('Not sent ('+e.message+'). Use the buttons in Telegram.',4500);}}
 document.addEventListener('click',e=>{const st=e.target.closest('[data-stake]');if(!st)return;const v=prompt('My stake per pick (1 = units). Example: 10 for GHS 10 a pick.',String(SET.stake||1));if(v==null)return;const n=Number(String(v).replace(',','.'));if(!(n>0)){toast('Type a number, like 10');return;}SET.stake=n;saveSet();refresh(true);toast('Stake per pick: '+n);},true);
 async function raskAnswer(path,ans,btn){try{const url=`https://api.github.com/repos/${MBX}/contents/${path}`;const h={Authorization:'Bearer '+mbxKey(),Accept:'application/vnd.github+json','Content-Type':'application/json'};
@@ -1501,7 +1501,7 @@ async function raskAnswer(path,ans,btn){try{const url=`https://api.github.com/re
     const n=ans.split(' ')[1];prev=prev.filter(a=>a.split(' ')[1]!==n).concat([ans]);
     const body={message:'Match Vision app: result '+ans,content:btoa(JSON.stringify({answers:prev,at:Date.now()}))};if(sha)body.sha=sha;
     const r=await fetch(url,{method:'PUT',headers:h,body:JSON.stringify(body)});if(!r.ok)throw new Error('GitHub '+r.status);
-    if(btn){btn.parentElement.innerHTML=`<b>${ans.startsWith('won')?'✅ Won':'❌ Lost'} ✓</b>`;}toast('Sent: the laptop uses it within a minute.',3000);}
+    ASKC.ans[path+'|'+n]=ans;if(btn){btn.parentElement.innerHTML=`<b>${ans.startsWith('won')?'✅ Won':'❌ Lost'} ✓</b>`;}const bx=$('askBox');if(bx)window.ASKH=bx.innerHTML;toast('Sent: the laptop uses it within a minute.',3000);}
   catch(e){toast('Not sent ('+e.message+'). Use the buttons in Telegram.',4500);}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-raskp]');if(!b)return;e.stopPropagation();raskAnswer(b.dataset.raskp,b.dataset.rans,b);},true);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-askans]');if(!b)return;e.stopPropagation();askAnswer(b.dataset.askp,b.dataset.askd,b.dataset.askans);},true);
