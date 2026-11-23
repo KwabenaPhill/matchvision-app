@@ -11,7 +11,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Match Vision 3.67</title>
+<title>Match Vision 3.68</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -953,7 +953,7 @@ html,body{overflow-x:hidden;max-width:100%}img,video{max-width:100%}
 // (after every review, every finished match and the results). The app never sends anything back: the bot is the boss.
 // Live scores: the app asks YOUR API-Football (the same key as the laptop) itself while it is open (3.66).
 // Storage: only keys that start with "mv_app_" (never touches other apps).
-const VERSION='3.67';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.67' (the laptop reads this line for its "APP UPDATED" message)
+const VERSION='3.68';try{if(!localStorage.getItem('mv341cs')){localStorage.setItem('mv341cs','1');setTimeout(()=>{try{if(typeof SET!=='undefined'&&(!SET.csStyle||SET.csStyle==='gold')){SET.csStyle='mv';if(typeof saveSet==='function')saveSet();}}catch(e){}},500);}}catch(e){}   // APP_VERSION = '3.68' (the laptop reads this line for its "APP UPDATED" message)
 try{document.getElementById('tver').textContent='v'+VERSION;}catch(e){}
 // 3.51 (Philip, 9 Nov, #MV19/#MV31): Top Picks follow the laptop switch TOPPICKS_ALL_ON (Off = hidden in the app too)
 function tpOn(){try{const x=((typeof feed!=='undefined'&&feed&&feed.settings)||[]).find(s=>s.k==='TOPPICKS_ALL_ON');return !x||x.v!==false;}catch(e){return true;}}
@@ -1041,7 +1041,7 @@ const AFC={k:null,at:0};let AFD=jget('mv_app_afd',{});
 async function afKey(){if(SET.afKey)return SET.afKey;if(AFC.k!==null&&Date.now()-AFC.at<3*3600e3)return AFC.k;AFC.at=Date.now();AFC.k='';
   try{if(mbxKey()){const r=await mbx('mvapp/live/af.json',true);if(r.ok){const j=await r.json();AFC.k=String(j.key||'');}}}catch(e){}return AFC.k;}
 const AFST={NS:'NS',TBD:'NS','1H':'LIVE','2H':'LIVE',ET:'LIVE',BT:'LIVE',P:'LIVE',LIVE:'LIVE',INT:'LIVE',SUSP:'LIVE',HT:'HT',FT:'FT',AET:'FT',PEN:'FT',PST:'PST',CANC:'CANC',ABD:'CANC',AWD:'CANC',WO:'CANC'};
-function afFixP(x){try{const f=x.fixture,st=AFST[f.status.short]||'NS',no=['NS','PST','CANC'].includes(st);const sc=x.score||{};const ft=sc.fulltime&&sc.fulltime.home!=null&&['AET','PEN'].includes(f.status.short);
+function afFixP(x){try{const f=x.fixture,sc=x.score||{};const ft=sc.fulltime&&sc.fulltime.home!=null&&['AET','PEN','ET','BT','P'].includes(f.status.short);const st=ft?'FT':(AFST[f.status.short]||'NS'),no=['NS','PST','CANC'].includes(st);   // 3.68: extra time = full time on the 90-minute score
   return {id:'af'+f.id,home:x.teams.home.name,away:x.teams.away.name,st,min:st==='LIVE'?(f.status.elapsed||null):null,gh:no?null:(ft?sc.fulltime.home:x.goals.home),ga:no?null:(ft?sc.fulltime.away:x.goals.away),
     hh:sc.halftime?sc.halftime.home:null,ha:sc.halftime?sc.halftime.away:null,at:new Date().toISOString(),src:'phone-af'};}catch(e){return null;}}
 function afUse(){const u=jget('mv_app_afuse',{});return u.d===todayKey()?u:{d:todayKey(),n:0,left:null};}
